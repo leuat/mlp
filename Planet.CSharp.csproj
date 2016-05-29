@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8423E9C-3911-2672-3137-89A7BAC6554B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.3.4f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_3_4;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_3_4;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Planet.CSharp.Plugins.csproj">
+      <Project>{2C5990F4-A1AD-D264-D94C-9F35755503F2}</Project>
+      <Name>Planet.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\ComboBox\Scripts\ComboBox.cs" />
+    <Compile Include="Assets\ComboBox\Scripts\ComboBoxItem.cs" />
+    <Compile Include="Assets\ComboBox\Scripts\TestComboBox.cs" />
+    <Compile Include="Assets\Planet\Scripts\Atmosphere.cs" />
+    <Compile Include="Assets\Planet\Scripts\C2DMap.cs" />
+    <Compile Include="Assets\Planet\Scripts\CloudSettings.cs" />
+    <Compile Include="Assets\Planet\Scripts\CloudTexture.cs" />
+    <Compile Include="Assets\Planet\Scripts\Clouds.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LMesh.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LMeshTriangle.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LSMesh.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LSMeshBox.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LSMeshGenericBox.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LSMeshWedge.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\LStyle.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\Noise4D.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\SpaceCamera.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\ThreadQueue.cs" />
+    <Compile Include="Assets\Planet\Scripts\Core\Util.cs" />
+    <Compile Include="Assets\Planet\Scripts\CubeSphere.cs" />
+    <Compile Include="Assets\Planet\Scripts\Planet.cs" />
+    <Compile Include="Assets\Planet\Scripts\PlanetSettings.cs" />
+    <Compile Include="Assets\Planet\Scripts\QuadField.cs" />
+    <Compile Include="Assets\Planet\Scripts\QuadNode.cs" />
+    <Compile Include="Assets\Planet\Scripts\QuadPoint.cs" />
+    <Compile Include="Assets\Planet\Scripts\Rings.cs" />
+    <Compile Include="Assets\Planet\Scripts\Sea.cs" />
+    <Compile Include="Assets\Planet\Scripts\Surface.cs" />
+    <Compile Include="Assets\Planet\Scripts\World.cs" />
+    <Compile Include="Assets\Planet\Scripts\WorldMC.cs" />
+    <Compile Include="Assets\Planet\Scripts\ocean\AddBuoyancy.cs" />
+    <Compile Include="Assets\Planet\Scripts\ocean\FourierCPU.cs" />
+    <Compile Include="Assets\Planet\Scripts\ocean\Ocean.cs" />
+    <Compile Include="Assets\Planet\Scripts\ocean\WaveSpectriumCPU.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Planet\Resources\system1.xml" />
+    <None Include="Assets\Planet\Shaders\Atmo\Atmosphere.cginc" />
+    <None Include="Assets\Planet\Shaders\Atmo\CopyInscatter1.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\CopyInscatterN.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\CopyIrradiance.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\Inscatter1.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\InscatterN.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\InscatterS.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\Irradiance1.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\IrradianceN.compute" />
+    <None Include="Assets\Planet\Shaders\Atmo\PreprocessCommon.cginc" />
+    <None Include="Assets\Planet\Shaders\Atmo\Sky.shader" />
+    <None Include="Assets\Planet\Shaders\Atmo\SkyMap.shader" />
+    <None Include="Assets\Planet\Shaders\Atmo\Transmittance.compute" />
+    <None Include="Assets\Planet\Shaders\Atmosphere.cginc" />
+    <None Include="Assets\Planet\Shaders\Bump.shader" />
+    <None Include="Assets\Planet\Shaders\Clouds.shader" />
+    <None Include="Assets\Planet\Shaders\Core\Utility.cginc" />
+    <None Include="Assets\Planet\Shaders\Ground.shader" />
+    <None Include="Assets\Planet\Shaders\GroundBackup.shader" />
+    <None Include="Assets\Planet\Shaders\NewGround.shader" />
+    <None Include="Assets\Planet\Shaders\Normal-ParallaxSpec.shader" />
+    <None Include="Assets\Planet\Shaders\Rings.shader" />
+    <None Include="Assets\Planet\Shaders\Sky.shader" />
+    <None Include="Assets\Planet\Shaders\Space.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\Normals.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\OriginalUpSampleElevation.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\Planet.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\PlanetWithForests.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\Terrain.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\TerrainHeightAsColor.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\TerrainWithForests.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\UpSampleElevation.shader" />
+    <None Include="Assets\Planet\Shaders\Terrain\UpSampleOrtho.shader" />
+    <None Include="Assets\Planet\Shaders\util.cginc" />
+    <None Include="Assets\Planet\Shaders\water.shader" />
+    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\TangyTextures Free Materials\about.txt.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>
