@@ -32,14 +32,15 @@ namespace LemonSpawn {
 		public static int minQuadNodeLevel = 2;
 		public static double AU = 1.4960*Mathf.Pow(10,8); // AU in km
 		public static float LOD_Distance = 100000;
-		public static bool MoveCam = false;
+        public static float LOD_ProjectionDistance = 10000000;
+        public static bool MoveCam = false;
 		public static bool RenderText = false;
 		public static float RingProbability = 0.5f;
 		public static float RingRadiusRequirement = 4000;
 		public static int CloudTextureSize = 1024;
 		public static bool UseThreading = true;
 		public static bool RenderMenu = true;
-		public static float version = 0.09f;
+		public static float version = 0.1f;
 		public static float MinCameraHeight = 0.05f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
@@ -59,32 +60,6 @@ namespace LemonSpawn {
 	
 	
 	
-	public class SpaceAtmosphere {
-		Material mat;
-		GameObject sun;
-		public Color color;
-		public float m_g = -0.990f;				// The Mie phase asymmetry factor, must be between 0.999 to -0.999
-		public float hdr = 0.1f;
-		public SpaceAtmosphere(Material m, GameObject s, Color col, float h) {
-			mat = m;
-			sun = s;
-			color = col;
-			hdr = h;
-		}
-		
-		
-		public void Update()
-		{
-			mat.SetVector("v3LightPos",  sun.transform.forward*-1.0f);
-			mat.SetColor ("sunColor", color);
-			mat.SetFloat("fHdrExposure", hdr*Atmosphere.sunScale);
-			mat.SetFloat("g", m_g);
-			mat.SetFloat("g2", m_g*m_g);
-			
-		}
-		
-		
-	}
 	
 	#if UNITY_EDITOR
 	
@@ -122,18 +97,28 @@ namespace LemonSpawn {
 //		public int m_gridSize = 96;
 		public int m_maxQuadNodeLevel = 11;
 		public int m_minQuadNodeLevel = 2;
-		private SpaceAtmosphere space;
-		static public Material spaceMaterial;
-		static public Material groundMaterial; 
-		public List<Planet> planets = new List<Planet>();
-		public static Planet planet;
-		public static Stats stats = new Stats();
-		// Use this for initialization
+
+
 		public static GameObject canvas;
 		public SerializedWorld szWorld;
-		public static GameObject slider;
-		
-		public void ClickOverview() {
+        public GameObject mainCamera;
+        private GameObject closeCamera;
+
+        public static Camera MainCamera;
+        public static Camera CloseCamera;
+        public static Stats stats = new Stats();
+        public static GameObject MainCameraObject;
+        public static GameObject slider;
+        public static SpaceCamera SpaceCamera;
+        public static bool hasScene = false;
+        public static SerializedWorld SzWorld;
+
+        private SolarSystem solarSystem;
+
+
+
+
+        public void ClickOverview() {
 			if (RenderSettings.renderType == RenderType.Normal)
 				RenderSettings.renderType = RenderType.Overview;
 			else
@@ -141,143 +126,24 @@ namespace LemonSpawn {
 		}
 		
 		
-		public void LoadWorld(string data, bool isFile, bool ExitOnSave ) {
-			ClearStarSystem();
-			SerializedWorld sz;
-			if (isFile) {
-				//			RenderSettings.extraText = data;
-				
-				if (!System.IO.File.Exists(data)) {
-					RenderSettings.extraText = ("ERROR: Could not find file :'" + data + "'");
-					return;
-				}
-				sz = SerializedWorld.DeSerialize(data);
-			}
-			else
-				sz = SerializedWorld.DeSerializeString(data);	 
-				
-			szWorld = sz;
-			RenderSettings.ExitSaveOnRendered = ExitOnSave;
-			RenderSettings.extraText = "";
-			SetSkybox((int)sz.skybox);
-			RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
-			RenderSettings.ScreenshotX = sz.screenshot_height;
-			RenderSettings.ScreenshotY = sz.screenshot_width;
-			RenderSettings.ResolutionScale = sz.resolutionScale;
-			int cnt = 0;
-			hasScene = true;
-			RenderSettings.isVideo = sz.isVideo();
-			if (RenderSettings.isVideo == true)
-				RenderSettings.ExitSaveOnRendered = false;
-			
-			
-			//		RenderSettings.isVideo = false;	
-			slider.SetActive(RenderSettings.isVideo);	
-			foreach (SerializedPlanet sp in sz.Planets) {
-				//GameObject go = transform.GetChild(i).gameObject;
-				GameObject go = new GameObject(sp.name);
-				go.transform.parent = transform;
-				//				go.transform.position = new Vector3((float)(sp.pos_x*RenderSettings.AU), (float)(sp.pos_y*RenderSettings.AU), (float)(sp.pos_z*RenderSettings.AU));
-				//				Planet p = new Planet(sp.DeSerialize(go), go.GetComponent<CloudSettings>());
-				Planet p = new Planet(sp.DeSerialize(go, cnt++,sz.global_radius_scale));
-				p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), sphere);
-				planets.Add (p);
-			}
-			
-			PopulateOverviewList("Overview");
-		}
 		
 		public void Slide() {
 			float v = slider.GetComponent<Slider>().value;
-			szWorld.getInterpolatedCamera(v, planets);
+			szWorld.getInterpolatedCamera(v, solarSystem.planets);
 		}
 		
-		protected void FocusOnPlanet(string n) {
-			GameObject gc = GameObject.Find ("CameraLOD");
-			//Camera c = gc.GetComponent<Camera>();
-			Planet planet = null;
-			foreach (Planet p in planets)
-				if (p.pSettings.name == n)
-					planet = p; 
-			
-			if (planet == null)
-				return;
-			
-			Vector3 pos = planet.pSettings.pos.toVectorf();
-			float s = (float)(planet.pSettings.radius*szWorld.overview_distance/RenderSettings.AU);
-			Vector3 dir = pos.normalized*s;
-			Vector3 side = Vector3.Cross(Vector3.up, dir);
-			
-			pos = pos - dir - side.normalized*s;
-			pos.y+=s;
-			
-			gc.GetComponent<SpaceCamera>().SetLookCamera(pos,  planet.pSettings.gameObject.transform.position, Vector3.up);
-			UpdateWorldCamera();			
-			Update();
-			gc.GetComponent<SpaceCamera>().SetLookCamera(pos,  planet.pSettings.gameObject.transform.position, Vector3.up);
-			UpdateWorldCamera();			
-			
-		}
+		
 		
 		public static void MoveCamera(Vector3 dp) {
-			GameObject gc = GameObject.Find ("CameraLOD");
-			gc.GetComponent<SpaceCamera>().MoveCamera(dp);
-			
-		}
-		
-		
-		protected void PopulateOverviewList(string box) {
-			ComboBox cbx = GameObject.Find (box).GetComponent<ComboBox>();
-			cbx.ClearItems();
-			List<ComboBoxItem> l = new List<ComboBoxItem>();
-			foreach (Planet p in planets)  {
-				ComboBoxItem ci = new ComboBoxItem();
-				ci.Caption = p.pSettings.name;
-				string n = p.pSettings.name;
-				ci.OnSelect = delegate {
-					FocusOnPlanet(n);
-				};
-				l.Add (ci);
-			}
-			//		foreach (ComboBoxItem i in l)
-			//			Debug.Log (i.Caption);
-			
-			cbx.AddItems(l.ToArray());
+            SpaceCamera.MoveCamera(dp);
 			
 		}
 		
 		
 		
-		public void ClearStarSystem() {
-			planets.Clear();
-			for (int i=0;i<transform.childCount;i++) { 
-				GameObject go = transform.GetChild(i).gameObject;
-				GameObject.Destroy(go);
-				//	Debug.Log ("Destroying " + go.name);
-			}
 			
-			
-		}
 		
-		public void InitializeFromScene() {
-			
-			for (int i=0;i<transform.childCount;i++) {
-				GameObject go = transform.GetChild(i).gameObject;
-				Planet p = new Planet(go.GetComponent<PlanetSettings>(), null);
-				p.pSettings.pos.Set(go.transform.position);
-				go.transform.parent = transform;
-                p.pSettings.parent = go;
-				p.pSettings.planetType = PlanetType.planetTypes[p.pSettings.planetTypeIndex];
-//				p.pSettings.planetType = PlanetType.planetTypes[1];
-				p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), sphere);
-				planets.Add (p);
-			}
-			
-			RenderSettings.ResolutionScale = szWorld.resolutionScale;
-			
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
-		}
+		
 		
 		private string GetScreenshotFilename() {
 			string OutputDir = Application.dataPath + "/../";
@@ -340,10 +206,10 @@ namespace LemonSpawn {
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
-			LoadWorld(xml, false, false);
+			solarSystem.LoadWorld(xml, false, false);
 			szWorld.IterateCamera();
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
+			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
+            solarSystem.space.hdr = szWorld.sun_intensity;
 		}
 		
 		//	#endif	
@@ -385,10 +251,10 @@ namespace LemonSpawn {
 		public void LoadXmlFile() {
 			string xml = GameObject.Find ("XMLText").GetComponent<Text>().text;
 			GameObject.Find ("XMLText").GetComponent<Text>().text = " ";
-			LoadWorld(xml, false,false);
+            solarSystem.LoadWorld(xml, false,false);
 			szWorld.IterateCamera();
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
+            solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
+            solarSystem.space.hdr = szWorld.sun_intensity;
 		}
 		#endif
 		
@@ -398,13 +264,13 @@ namespace LemonSpawn {
 			string[] cmd = System.Environment.GetCommandLineArgs ();
 			if (cmd.Length>1)  {
 				if (cmd[1]!="")
-					LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
+                    solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
 			}
 			
 			//		LoadWorld("Assets/Planet/Resources/system1.xml", true);
 			szWorld.IterateCamera();
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
+			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
+            solarSystem.space.hdr = szWorld.sun_intensity;
 			
 		}
 		
@@ -435,7 +301,6 @@ namespace LemonSpawn {
 		
 		Texture2D tx_background, tx_load;
 		int load_percent;
-		bool hasScene = false;
 		
 		
 		void OnGUI () {
@@ -469,25 +334,47 @@ namespace LemonSpawn {
 			GUI.Label(new Rect(Screen.width/2 - 40,(int)(Screen.height*(2/3f)), 200,200 ), RenderSettings.generatingText);	
 		}
 		
-		void Start () {
-			
+
+        void SetupCloseCamera()
+        {
+            MainCamera = mainCamera.GetComponent<Camera>();
+            MainCameraObject = mainCamera;
+            SpaceCamera = mainCamera.GetComponent<SpaceCamera>();
+            closeCamera = new GameObject("CloseCamera");
+            CloseCamera = closeCamera.AddComponent<Camera>();
+            CloseCamera.clearFlags = CameraClearFlags.Depth;
+            CloseCamera.fieldOfView = MainCamera.fieldOfView;
+            CloseCamera.nearClipPlane = 2;
+            CloseCamera.farClipPlane = 200000;
+            CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
+
+
+        }
+
+        void Start () {
+
+            solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+
+            SzWorld = szWorld;
+
 			canvas = GameObject.Find ("Canvas");
-			spaceMaterial = (Material)Resources.Load("SpaceMaterial");	
-			groundMaterial = (Material)Resources.Load("GroundMaterial");
             spaceBackground = GameObject.Find("SunBackgroundSphere");
-//            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
+            //            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
+
+            //CloseCamera = closeCamera.GetComponent<Camera>();
+            SetupCloseCamera();
+
 
             RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
 			RenderSettings.sizeVBO = szWorld.resolution;
 			RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
 			RenderSettings.MoveCam = true;
-			SetSkybox((int)szWorld.skybox);
 			
 			slider = GameObject.Find ("Slider");
 			if (slider!=null)
 				slider.SetActive(false);
-		
-			
+
+            MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance*1.1f;			
 			
 			
 			
@@ -495,8 +382,7 @@ namespace LemonSpawn {
 			//		LoadWorld("system1.xml", true);
 			//		szWorld.IterateCamera();
 			PlanetType.Initialize();
-			space = new SpaceAtmosphere(spaceMaterial, sun, Color.white, 0.1f);
-			InitializeFromScene();
+			solarSystem.InitializeFromScene();
 			Application.runInBackground = true;
 			
 		}
@@ -512,39 +398,17 @@ namespace LemonSpawn {
 		}
 		#endif	
 		
-		void findClosestPlanet() {
-			if (planets.Count>0)
-				planet = planets[0];
-			
-			float min = 1E10f;
-			foreach (Planet p in planets) {
-				float l = (p.pSettings.gameObject.transform.position).magnitude;
-				if (l<min) {
-					planet = p;
-					min = l;
-				}
-			}		
-			
-		}
 		
 		
 		
-		void setSun() {
-			//		if (World.WorldCamera
-			if (sun==null)
-				return;
-			sun.transform.rotation = Quaternion.FromToRotation(Vector3.forward, World.WorldCamera.toVectorf().normalized);
-			sun.GetComponent<Light>().color = space.color;
-		}
 		
 		// Update is called once per frame
 		
         
 
 		public void UpdateWorldCamera() {
-			GameObject cam = GameObject.Find("CameraLOD");
 			
-			WorldCamera = cam.GetComponent<SpaceCamera>().getPos();//  cam.transform.position;
+			WorldCamera = mainCamera.GetComponent<SpaceCamera>().getPos();//  cam.transform.position;
 		}
 		private bool modifier = false;
 		private bool ctrlModifier = false;
@@ -556,17 +420,10 @@ namespace LemonSpawn {
 		}	
 		
 		void Update () {
-			setSun();
-			if (space!=null)			
-				space.Update();
+            solarSystem.Update();			
 			
 			
-			
-			GameObject cam = GameObject.Find("CameraLOD");
-			SpaceCamera sc = cam.GetComponent<SpaceCamera>();
-
-            GameObject lodCam = GameObject.Find("CameraNormal");
-            lodCam.transform.rotation = cam.transform.rotation;
+            closeCamera.transform.rotation = mainCamera.transform.rotation;
 
 
 
@@ -574,22 +431,21 @@ namespace LemonSpawn {
 			//		Debug.Log (WorldCamera.toVectorf());
 			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
 			
-			findClosestPlanet();
-			Camera c = GameObject.Find ("CameraLOD").GetComponent<Camera>();
 			
 			//Debug.Log (planet.pSettings.name);
 			
-			if (planet!=null)
-				planet.ConstrainCameraExterior();
 			
 			if (Input.GetKey(KeyCode.Escape)) {
 				Application.Quit();
 			}
 			float s = 0.35f;
-			if (Input.GetKey (KeyCode.Alpha9))
-				c.fieldOfView-=1*s;
-			if (Input.GetKey (KeyCode.Alpha0))
-				c.fieldOfView+=1*s;
+			if (Input.GetKey (KeyCode.Alpha9)) { 
+				MainCamera.fieldOfView-=1*s;
+            }
+            if (Input.GetKey(KeyCode.Alpha0))
+            {
+                MainCamera.fieldOfView += 1 * s;
+            }
 			
 			if (Input.GetKeyDown (KeyCode.LeftShift)) 
 				modifier = true;
@@ -620,16 +476,6 @@ namespace LemonSpawn {
 			if (RenderSettings.RenderMenu)
 				Log();
 			
-			foreach (Planet p in planets)
-				p.Update();	
-			
-			
-//			Debug.Log (space.hdr);
-			
-			if (planet == null)
-				return;		
-			if (planet.pSettings.atmosphere!=null)
-				planet.pSettings.atmosphere.setClippingPlanes();	
 			
 			
 		}
@@ -639,19 +485,6 @@ namespace LemonSpawn {
 			Application.Quit();
 		}
 		
-		public static void SetSkybox(int s) {
-			string skybox = "Skybox3";
-            s = s % 6;
-
-			if (s==1) skybox = "Skybox4";
-			if (s==2) skybox = "Skybox5";
-			if (s==3) skybox = "Skybox2";
-            if (s == 4) skybox = "Skybox7";
-            if (s == 5) skybox = "Skybox8";
-
-            UnityEngine.RenderSettings.skybox = (Material)Resources.Load(skybox);
-			
-		}
 		
 		private int extraTimer = 10;
 		

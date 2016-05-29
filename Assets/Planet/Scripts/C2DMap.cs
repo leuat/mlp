@@ -228,7 +228,7 @@ namespace LemonSpawn
 					rgb.fromC2DMap(this, c);
 					Texture2D t = new Texture2D(C2DMap.sizeX, C2DMap.sizeY);
 					rgb.toTexture(t);
-					byte[] b = t.EncodeToPNG();
+//					byte[] b = t.EncodeToPNG();
 					t.Apply();
 					//File.WriteAllBytes(Application.dataPath + "/tex.png", b);
 					return t;
@@ -917,21 +917,16 @@ namespace LemonSpawn
 		
 				public void calculateMultiridged (float seed, float heightScale, float frequency, float lacunarity, float gain, float offset, float ioffset)
 				{
-						float octaves = 12;
         
-						float rx = seed * 7.72423f;
-						float ry = seed * 5.12352f;
         
 						float nx = sizeX;
 						float ny = sizeY;
 
-						float sx = shift.x * 0;
-						float sy = shift.y * 0;
 
 						for (int i=0; i<nx; i++) {
 								for (int j=0; j<ny; j++) {
 										//Vector3 p = new Vector3((i / (nx - 1) + sy) * frequency + rx, 0, (j / (ny - 1) + sx) * frequency + ry);
-										Vector3 p = new Vector3 ((i / (nx - 0) + sy) + rx, 0, (j / (ny - 0) + sx) + ry);
+//										Vector3 p = new Vector3 ((i / (nx - 0) + sy) + rx, 0, (j / (ny - 0) + sx) + ry);
 										float v = 0;//Util.getRidgedMf (p, frequency, (int)octaves, lacunarity, 0, offset, gain, ioffset);
 										map [i, j] = v * heightScale;
 					

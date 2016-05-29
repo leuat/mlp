@@ -450,8 +450,6 @@ public class WorldMC : MonoBehaviour {
 		
 			
 					
-		GameObject cam = GameObject.Find("Camera");
-		SpaceCamera sc = cam.GetComponent<SpaceCamera>();
 		UpdateWorldCamera();		
 //		Debug.Log (WorldCamera.toVectorf());
 	//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);

@@ -42,3 +42,11 @@ float iq_noise( float3 x )
                    lerp( hash(n+170.0), hash(n+171.0),f.x),f.y),f.z);
 }
  
+
+float r_noise(float3 n, float s, int cnt) {
+	float v = 0;
+	//	return 0;
+	for (int i = 1; i<cnt; i++)
+		v += (iq_noise(s*i*n) + 0.5) / (i);
+	return clamp(pow(v / (cnt / 1.85), 8), 0.0, 1.0);
+}

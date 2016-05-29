@@ -195,7 +195,6 @@ namespace LemonSpawn {
 			
 			c.fieldOfView = sc.fov;
 
-			GameObject cam = GameObject.Find("Camera");
 			
 			Atmosphere.sunScale = Mathf.Clamp (1.0f/  pos.magnitude, 0.0001f, 1);
 			frame++;
@@ -338,6 +337,7 @@ namespace LemonSpawn {
 		public Color emissionColor;
 		public float cloudRadius = 1.02f;
 		public bool hasRings;
+        public float specularity = 0;
 		public float ringAmplitude = 1;
 		public float metallicity = 0;
 		public List<Frame> Frames = new List<Frame>();
@@ -350,8 +350,11 @@ namespace LemonSpawn {
 		public bool hasClouds = false;
 		public bool hasSea = false;
 		public Sea sea;
-		
-		public Frame getFrame(int i) {
+
+        public Plane[] cameraPlanes;
+
+
+        public Frame getFrame(int i) {
 			if (i>=0 && i<Frames.Count)
 				return Frames[i];
 			return null;
@@ -486,9 +489,10 @@ namespace LemonSpawn {
 			localCamera = World.WorldCamera.Sub (posInKm).toVectorf();// - transform.position;
 			Quaternion q = 	Quaternion.Euler(new Vector3(0, -rotation/(2*Mathf.PI)*360f,0));
 			localCamera = q*localCamera;
-			
-			
-		}
+
+
+            cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
+        }
 		
 	}
 	

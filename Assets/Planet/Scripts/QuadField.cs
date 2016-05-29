@@ -43,7 +43,7 @@ namespace LemonSpawn {
 		
 		
 		private float radius;
-		private Vector3 planeNormal;
+		private Vector3 planeNormal = Vector3.zero;
 		public void Init(int x) {
 			
 			sizeVertices = x + 3;
@@ -99,8 +99,10 @@ namespace LemonSpawn {
 			
 		}
 
-		private Vector3 P;
-						
+        private Vector3 P = Vector3.zero;			
+
+
+        	
 		public  void Setup( float rad,  Vector3 p1,  Vector3 p2,
 		                         Vector3 p3) {
 			radius = rad;
@@ -446,7 +448,6 @@ namespace LemonSpawn {
 			
 				Vector3 v = getVertex(x, y);
 				Vector3 n = getNormal(x, y)*-1;
-				int j = x+1;
 				Vector3 t = Vector3.up;//-(getVertex(j,y) - v).normalized;
 				int idx = -1;
 				

@@ -23,6 +23,7 @@ namespace LemonSpawn {
             m_go.transform.localPosition = Vector3.zero;
             m_go.transform.localScale = Vector3.one;
 
+
             psOcean = m_go.AddComponent<PlanetSettings>();
 
             psOcean.atmosphere = new Atmosphere();
@@ -40,7 +41,7 @@ namespace LemonSpawn {
             psOcean.hasSea = false;
             psOcean.hasClouds = false;
             psOcean.Initialize();
-            psOcean.maxQuadNodeLevel /= 2;
+            psOcean.maxQuadNodeLevel = 3; ;
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
             psOcean.terrainObject = m_go;
             psOcean.castShadows = false;
@@ -89,22 +90,9 @@ namespace LemonSpawn {
         {
             base.Update();
             MaintainSea();
-            float dist = Mathf.Clamp((float)(planetSettings.currentDistance/100000000.0), 0, 0.005f);
                    
-            float t = Mathf.Max(planetSettings.liquidThreshold, dist);
-//            Debug.Log(t);
-            float rad = planetSettings.radius * (1 + t);
-
-            //            m_radius = m_innerRadius
-          //  if (m_go!=null)
-           //     m_go.transform.localScale = new Vector3(rad,rad, rad);
             m_groundMaterial.SetFloat("time", Time.time*0.01f);
             ocean.Update();
-//            psOcean.Update();
- 
-//            Debug.Log(psOcean.radius);
-
-            //            Mathf.Max(planetSettings.liquidThreshold, dist));
         }
 
 

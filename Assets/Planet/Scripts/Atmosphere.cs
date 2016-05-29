@@ -26,7 +26,6 @@ public class Atmosphere
 	protected float m_innerRadius;		 	// Radius of the ground sphere
 	protected float m_outerRadius;		 	// Radius of the sky sphere
 	private float m_scaleDepth = 0.25f; 	// The scale depth (i.e. the altitude at which the atmosphere's average density is found)
-	private Camera mainCamera;
 	public static float sunScale = 1;				
 	protected Quaternion rot = Quaternion.identity;
 	protected Texture2D noiseTexture = null;
@@ -71,6 +70,8 @@ public class Atmosphere
             m_groundMaterial.SetFloat("_BumpScale", planetSettings.bumpScale);
             m_groundMaterial.SetColor("_EmissionColor", planetSettings.emissionColor);
             m_groundMaterial.SetFloat("_EmissionScaleUI", 0.2f);
+            m_groundMaterial.SetFloat("_Glossiness", planetSettings.specularity);
+
             m_groundMaterial.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
             m_groundMaterial.SetTexture("_Noise", noiseTexture);
             //	m_groundMaterial.SetTexture ("_DetailNormalMap", planetSettings.bumpMap);
@@ -122,7 +123,6 @@ public class Atmosphere
 									
 		m_skyMaterial = new Material(sky.shader);
 		m_skyMesh = sphere;
-		mainCamera = GameObject.Find ("CameraLOD").GetComponent<Camera>();
 		//The outer sphere must be 2.5% larger that the inner sphere
 		//m_outerScaleFactor = m_skySphere.transform.localScale.x;
 		m_outerRadius = pSettings.atmosphereHeight* radius;
@@ -138,7 +138,6 @@ public class Atmosphere
 	
 	public virtual void Update () 
 	{
-//		Vector3 diff = (mainCamera.transform.localPosition - planetSettings.transform.position);
 		if (planetSettings.bumpMap!=null && m_groundMaterial!=null) {
 			m_groundMaterial.SetTexture ("_BumpMap", planetSettings.bumpMap);
 		}
@@ -160,10 +159,11 @@ public class Atmosphere
 	
 	public void setClippingPlanes() {
 		float h = planetSettings.localCamera.magnitude - m_innerRadius;
-		float np = Mathf.Max (Mathf.Min (h*0.01f, 50), 0.1f);
+		float np = Mathf.Max (Mathf.Min (h*0.1f, 50), 0.1f);
             //		Debug.Log (np);
             //		np = 10f;
-		GameObject.Find("CameraNormal").GetComponent<Camera>().nearClipPlane = np;
+        if (World.CloseCamera!=null)
+        World.CloseCamera.nearClipPlane = np;
 //		Debug.Log (np);
 					
 	}

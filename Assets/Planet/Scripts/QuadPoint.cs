@@ -23,7 +23,7 @@ namespace LemonSpawn {
 		private PlanetSettings planetSettings = null;
 		
 		// for culling
-		float[] dots = new float[4];
+//		float[] dots = new float[4];
 		
 		
 /*		public void setupShader() {

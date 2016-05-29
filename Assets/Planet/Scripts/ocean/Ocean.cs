@@ -151,18 +151,6 @@ namespace OceanSurfaceEffects
                 Debug.Log("Bias must not be less than 1, changing to 1");
             }
 
-//            Mesh mesh = CreateRadialGrid(m_resolution, m_resolution);
-
-            float far = Camera.main.farClipPlane;
-
-/*            m_grid = new GameObject("Ocean Grid");
-            m_grid.AddComponent<MeshFilter>();
-            m_grid.AddComponent<MeshRenderer>();
-            m_grid.GetComponent<Renderer>().material = m_oceanMat;
-            m_grid.GetComponent<MeshFilter>().mesh = mesh;
-            */
-//            m_grid.transform.parent = parent;
-
             //Make radial grid have a radius equal to far plane
             m_oceanMat.SetTexture("_FresnelLookUp", m_fresnelLookUp);
             m_oceanMat.SetVector("_GridSizes", m_waves.gridSizes);

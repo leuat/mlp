@@ -91,7 +91,6 @@ public class SpaceCamera : MonoBehaviour {
 		if (!RenderSettings.MoveCam)
 			return;
 		
-		
 		lastMouse = Input.mousePosition - lastMouse ;
 		lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0 );
 		mouseAdd+=0.1f*lastMouse;
@@ -101,10 +100,10 @@ public class SpaceCamera : MonoBehaviour {
 		lastMouse =  Input.mousePosition;
 		Vector3 p = GetBaseInput();
 		float h = 1;
-		if (LemonSpawn.World.planet!=null) {
-			float r =LemonSpawn.World.planet.pSettings.radius;
-			h = Mathf.Min (0.0001f + LemonSpawn.World.planet.pSettings.getScaledHeight()*r/5000f, 1);
-			World.stats.Height = LemonSpawn.World.planet.pSettings.getHeight();
+		if (SolarSystem.planet!=null) {
+			float r = SolarSystem.planet.pSettings.radius;
+			h = Mathf.Min (0.0001f + SolarSystem.planet.pSettings.getScaledHeight()*r/5000f, 1);
+			World.stats.Height = SolarSystem.planet.pSettings.getHeight();
 		}
 		p*=h;
 		

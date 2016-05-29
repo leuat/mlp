@@ -51,7 +51,6 @@ namespace LemonSpawn
 				public static Texture2D logo = null, background = null, background2 = null;
 				public static Texture2D texRed = null, texGreen = null;
 				// Parent object
-				GameObject parent = null;
 				private static bool outputVerified = false;
 //				public static Output output = null;
 				// Define menu item

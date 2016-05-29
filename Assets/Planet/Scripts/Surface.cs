@@ -403,7 +403,7 @@ public class Surface {
 			float s = scale;
 			
 			
-				SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
+//				SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
 			//		SurfaceFilter p1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 0.1f, cont);		
 			
 			
@@ -423,7 +423,7 @@ public class Surface {
 			
 			SurfaceCombiner ccrater = new SurfaceCombiner(SurfaceCombiner.ADD, 0.9f, 2f, craters, f2);
 			
-			SurfaceCombiner c1 = new SurfaceCombiner(SurfaceCombiner.MUL, 60, 0, cont, ccrater);
+//			SurfaceCombiner c1 = new SurfaceCombiner(SurfaceCombiner.MUL, 60, 0, cont, ccrater);
 
 									
 			SurfaceFilter add = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.000f, 1, ccrater);
