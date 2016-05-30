@@ -214,13 +214,14 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 		}
 		*/
 
+
+
 		VertexOutputForwardBase2 LvertForwardBase(VertexInput v)
 		{
 			VertexOutputForwardBase2 o;
 			UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 
 			float4 capV = v.vertex;
-
 			float4 posWorld = mul(_Object2World, capV);
 			#if UNITY_SPECCUBE_BOX_PROJECTION
 				o.posWorld = posWorld.xyz;
@@ -230,7 +231,6 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 
 
 			o.pos = mul(UNITY_MATRIX_MVP, capV);
-
 
 //			o.vpos = capV;
 
@@ -373,7 +373,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									hColor = mixHeight(topColor, hColor, 1000, 0.0035	, h);
 									hColor = mixHeight(hColor, basinColor, 500, 0.001	, h);
 									hColor = mixHeight(hColor, hillColor, 100, hillyThreshold, dd);
-									hColor = mixHeight(hColor, basinColor2, 1000, liquidThreshold, h);
+									hColor = mixHeight(hColor, 3*basinColor2, 3000, liquidThreshold, h);
 
 
 

@@ -41,7 +41,7 @@ namespace LemonSpawn {
             psOcean.hasSea = false;
             psOcean.hasClouds = false;
             psOcean.Initialize();
-            psOcean.maxQuadNodeLevel = 3; ;
+            psOcean.maxQuadNodeLevel = 9; ;
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
             psOcean.terrainObject = m_go;
             psOcean.castShadows = false;

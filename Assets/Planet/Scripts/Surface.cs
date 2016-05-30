@@ -366,11 +366,11 @@ public class Surface {
 			
 			
 			SurfaceCombiner adde = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f, end1, f1);
-
+            
 //			SurfaceCombiner m2 = new SurfaceCombiner(SurfaceCombiner.MUL, 1f, 2f, Continents(2, 3.69235f, 0.02f), River(96.4321f, a*10.5f, 2, 1.0f));
 			SurfaceGenerator lsp = new SurfaceGenerator(SurfaceGenerator.PERLIN,0.8f, 3.2351f,0,0);
 			SurfaceFilter lsp2 = new SurfaceFilter(SurfaceFilter.SUB, 1f, 0.05f, 0,lsp);
-			SurfaceFilter lsp3 = new SurfaceFilter(SurfaceFilter.MINMAX, 1f, 0.0f, 0.02f,lsp2);
+			SurfaceFilter lsp3 = new SurfaceFilter(SurfaceFilter.MINMAX, 1f, -0.0f, 0.02f,lsp2);
 			SurfaceCombiner m2 = new SurfaceCombiner(SurfaceCombiner.MUL, 1f, 2f, lsp3, River(96.4321f, a*5.5f, 2, 1.0f));
 			
 									
@@ -387,7 +387,7 @@ public class Surface {
 			
 			SurfaceFilter sf = new SurfaceFilter(SurfaceFilter.SUB, 1f, 1f*a, 0, adde);
 			
-			SurfaceFilter liquidCap2 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 1000, sf);
+			SurfaceFilter liquidCap2 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,-0.002f, 1000, sf);
 //			SurfaceFilter liquidCap = new SurfaceFilter(SurfaceFilter.MINMAX, 1,ps.liquidThreshold, 1000, liquidCap2);
 			
 			return liquidCap2;
@@ -458,10 +458,40 @@ public class Surface {
 		return surfaceNode.Calculate(noise, p2);
 		
 	}
-	
-	
-	
-	
-}
+
+
+        public Vector3 GetNormal(Vector3 p, int lod, float ps)
+        {
+            noise.seed = planetSettings.seed / 2352f;
+
+            if (surfaceNode == null)
+                return Vector3.zero;
+
+            float scale = 0.0001f;
+            Vector3 any = Vector3.Cross(p, Vector3.up);
+            Vector3 right = Vector3.Cross(any, p).normalized;
+            Vector3 left = Vector3.Cross(right, p).normalized;
+
+            float h1 = surfaceNode.Calculate(noise, (p).normalized);
+            float h2 = surfaceNode.Calculate(noise, (p + left*scale).normalized);
+            float h3 = surfaceNode.Calculate(noise, (p + right*scale).normalized);
+
+            //            Debug.Log(h1 + " , " + h2 + ", " + h3);
+
+            float s = 1000;
+            Vector3 p1 = p.normalized * ps*(1+h1)*s;
+            Vector3 p2 = (p + left * scale).normalized * ps*(1+h2)*s;
+            Vector3 p3 = (p + right * scale).normalized * ps*(1+h3)*s;
+
+
+            return Vector3.Cross(p1 - p2, p1 - p3).normalized;
+            //		p2.z+=planetSettings.seed*0.01f;
+
+        }
+
+
+
+
+    }
 
 }

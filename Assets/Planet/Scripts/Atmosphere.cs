@@ -159,16 +159,18 @@ public class Atmosphere
 	
 	public void setClippingPlanes() {
 		float h = planetSettings.localCamera.magnitude - m_innerRadius;
-		float np = Mathf.Max (Mathf.Min (h*0.1f, 50), 0.1f);
+		float np = Mathf.Max (Mathf.Min (h*0.01f, 50), 0.01f);
+            float fp = Mathf.Min(Mathf.Max(h*150, 100000), 200000);
             //		Debug.Log (np);
             //		np = 10f;
-        if (World.CloseCamera!=null)
+            if (World.CloseCamera!=null)
         World.CloseCamera.nearClipPlane = np;
-//		Debug.Log (np);
-					
-	}
-	
-	protected float iscale = 1;
+            World.CloseCamera.farClipPlane = fp;
+            //		Debug.Log (np);
+
+        }
+
+        protected float iscale = 1;
 	
 	protected virtual void InitMaterial(Material mat)
 	{
@@ -203,7 +205,41 @@ public class Atmosphere
 		mat.SetVector("v3Translate", planetSettings.transform.position);
 
 	}
-}
+
+        public virtual void InitAtmosphereMaterial(Material mat)
+        {
+
+
+            localscale = planetSettings.transform.parent.localScale.x;
+           // Debug.Log(localscale);
+            //rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
+            rot = Quaternion.Inverse(m_sky.transform.rotation);
+            
+            float ds = localscale;
+            Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(m_waveLength.x, 4.0f), 1.0f / Mathf.Pow(m_waveLength.y, 4.0f), 1.0f / Mathf.Pow(m_waveLength.z, 4.0f));
+            float scale = 1.0f / (m_outerRadius - m_innerRadius);
+            mat.SetVector("v3LightPos", (m_sun.transform.forward * -1.0f));
+            mat.SetVector("lightDir", rot * (m_sun.transform.forward * -1.0f));
+            mat.SetVector("v3InvWavelength", invWaveLength4);
+            mat.SetFloat("fOuterRadius", m_outerRadius * ds);
+            mat.SetFloat("fOuterRadius2", m_outerRadius * m_outerRadius * ds * ds);
+            mat.SetFloat("fInnerRadius", m_innerRadius * ds * iscale);
+            mat.SetFloat("fInnerRadius2", m_innerRadius * m_innerRadius * ds);
+            mat.SetFloat("fKrESun", m_kr * planetSettings.m_ESun * sunScale);
+            mat.SetFloat("fKmESun", m_km * planetSettings.m_ESun * sunScale);
+            mat.SetFloat("fKr4PI", m_kr * 4.0f * Mathf.PI);
+            mat.SetFloat("fKm4PI", m_km * 4.0f * Mathf.PI);
+            mat.SetFloat("fScale", scale);
+            mat.SetFloat("fScaleDepth", m_scaleDepth);
+            mat.SetFloat("fScaleOverScaleDepth", scale / m_scaleDepth);
+            mat.SetFloat("fHdrExposure", planetSettings.m_hdrExposure);
+            mat.SetFloat("g", m_g);
+            mat.SetFloat("g2", m_g * m_g);
+            mat.SetVector("v3Translate", planetSettings.transform.position);
+            mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
+
+        }
+    }
 
 }
 

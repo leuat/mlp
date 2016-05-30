@@ -61,6 +61,7 @@
 			float4 tangent : TANGENT;
 		};
 
+		
 		struct v2f
 		{
 			//float4 vpos : SV_POSITION;
@@ -87,6 +88,8 @@
 									float3 H = normalize(V + _SunDir);
 									return _SunColor * pow(abs(dot(H, N)), _SunPow);
 								}
+
+
 
 
 
@@ -117,14 +120,16 @@
 									//uv += RadialCoords(normalize(v.vertex.xyz)) * 1223;
 									o.texcoord.xy = uv;
 
-									float dist = clamp(distance(_WorldSpaceCameraPos.xyz, o.pos) / _LodFadeDist, 0.0, 1.0);
+									float dist = clamp(distance(_WorldSpaceCameraPos.xyz, o.pos) / _LodFadeDist*0.01, 0.0, 1.0);
 									float lod = _MaxLod * dist;
 									//lod = 0;
-/*									float ht = 0.0;
-									ht += tex2Dlod(_Map0, float4(uv*0.1, 0, lod)*1).x;
-									ht += tex2Dlod(_Map0, float4(uv*0.1, 0, lod)*1).y;
-									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*10.2), v.vertex.w));
-	*/								
+
+									float ht = 0.0;
+									float wscale = 0.5;
+									ht += tex2Dlod(_Map0, float4(uv*wscale, 0, lod)*1).x;
+									ht += tex2Dlod(_Map0, float4(uv*wscale*0.9123, 0, lod)*1).y;
+									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
+									
 
 											return o;
 										}
@@ -210,7 +215,7 @@
 
 
 													return float4(c.rgb
-														+ specularReflection, 0.85 + specularReflection.b);
+														+ specularReflection, 0.95 + specularReflection.b);
 
 												}
 													ENDCG

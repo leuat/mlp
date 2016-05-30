@@ -285,7 +285,7 @@ float3 groundColor(float3 c0, float3 c1, float3 color) {
 
 	float3 atm = 2 * c0 + 0.2*c1;
 
-
+//	return 1.4*atm;
 	//	return 2*atm * color;
 	return lerp(1.5 * color, 1.4*atm, atmosphereDensity);
 

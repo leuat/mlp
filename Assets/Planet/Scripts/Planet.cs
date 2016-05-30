@@ -19,16 +19,21 @@ namespace LemonSpawn
         public TextMesh infoText;
         public GameObject infoTextGO;
         public static Color color = new Color(1f, 1f, 0.8f, 0.6f);
+        public Environment environment;
+
 
         public Planet(PlanetSettings p, CloudSettings cs)
         {
             pSettings = p;
             if (pSettings != null)
                 pSettings.cloudSettings = cs;
+
         }
         public Planet(PlanetSettings p)
         {
             pSettings = p;
+
+
         }
 
 
@@ -60,6 +65,8 @@ namespace LemonSpawn
                 clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
+
+            environment = new Environment(pSettings);
 
         }
 
@@ -138,19 +145,6 @@ namespace LemonSpawn
 
 
 
-        public void tagAll(GameObject g, string tag, int layer)
-        {
-            if (g.tag == tag)
-                return;
-
-            g.tag = tag;
-            g.layer = layer;
-            for (int i = 0; i < g.transform.childCount; i++)
-            {
-                GameObject go = g.transform.GetChild(i).gameObject;
-                tagAll(go, tag, layer);
-            }
-        }
 
 
         private void cameraAndPosition()
@@ -170,13 +164,13 @@ namespace LemonSpawn
             double ds = dist / RenderSettings.LOD_Distance;
             if (ds < 1)
             {
-                tagAll(pSettings.parent, "Normal", 10);
+                Util.tagAll(pSettings.parent, "Normal", 10);
                 pSettings.currentTag = "Normal";
                 pSettings.currentLayer = 10;
             }
             else
             {
-                tagAll(pSettings.parent, "LOD", 9);
+                Util.tagAll(pSettings.parent, "LOD", 9);
                 pSettings.currentTag = "LOD";
                 pSettings.currentLayer = 9;
 
@@ -226,6 +220,9 @@ namespace LemonSpawn
                 clouds.Update();
             if (pSettings.sea != null)
                 pSettings.sea.Update();
+
+            if (environment != null)
+                environment.Update();
 
         }
 

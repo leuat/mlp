@@ -47,8 +47,8 @@ Shader "LemonSpawn/Sky"
 							float3 col = getRayleighPhase(fCos2) * IN.c0 + getMiePhase(fCos, fCos2, g, g2)*IN.c1;
 							//Adjust color from HDR
 			//				col = IN.c0;
-							float d = 0.2;
-							col = pow(col, 0.3) - float3(d, d, d);
+							float d = 0.1;
+							col = pow(col, 0.5) - float3(d, d, d);
 							col = 1.0 - exp(col * -fHdrExposure);
 							float a = pow(col.b,2);
 

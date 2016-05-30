@@ -80,7 +80,7 @@ namespace OceanSurfaceEffects
         /// A higher wind speed gives greater swell to the waves.
         /// </summary>
         [SerializeField]
-        float m_windSpeed = 8.0f;
+        float m_windSpeed = 7.0f;
 
         /// <summary>
         /// Scales the height of the waves.
@@ -138,12 +138,6 @@ namespace OceanSurfaceEffects
 
             CreateFresnelLookUp();
 
-            if (m_resolution * m_resolution >= 65000)
-            {
-                m_resolution = (int)Mathf.Sqrt(65000);
-
-                Debug.Log("Grid resolution set to high. Setting resolution to the maximum allowed(" + m_resolution.ToString() + ")");
-            }
 
             if (m_bias < 1.0f)
             {

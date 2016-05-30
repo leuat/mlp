@@ -41,7 +41,7 @@ namespace LemonSpawn {
 		public static bool UseThreading = true;
 		public static bool RenderMenu = true;
 		public static float version = 0.1f;
-		public static float MinCameraHeight = 0.05f;
+		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
 		public static int ScreenshotX = 1680;
@@ -102,6 +102,7 @@ namespace LemonSpawn {
 		public static GameObject canvas;
 		public SerializedWorld szWorld;
         public GameObject mainCamera;
+        public GameObject effectCamera;
         private GameObject closeCamera;
 
         public static Camera MainCamera;
@@ -348,6 +349,7 @@ namespace LemonSpawn {
             CloseCamera.farClipPlane = 200000;
             CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
 
+            effectCamera.GetComponent<Camera>().fieldOfView = MainCamera.fieldOfView; 
 
         }
 
@@ -422,12 +424,11 @@ namespace LemonSpawn {
 		void Update () {
             solarSystem.Update();			
 			
-			
             closeCamera.transform.rotation = mainCamera.transform.rotation;
+            effectCamera.transform.rotation = mainCamera.transform.rotation;
 
 
-
-			UpdateWorldCamera();		
+            UpdateWorldCamera();		
 			//		Debug.Log (WorldCamera.toVectorf());
 			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
 			
