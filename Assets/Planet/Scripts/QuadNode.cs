@@ -20,7 +20,7 @@ namespace LemonSpawn
 
         public QuadField quadField;
         public QuadNode parent;
-        public int currentQuadrant = -1;
+        public int currentQuadrant = -1, currentLevel;
         public float currentScale;
 
         public QuadNode father;
@@ -55,7 +55,6 @@ namespace LemonSpawn
 
         public GameObject quadGO = null;
 
-
         private void setGOproperties()
         {
             if (quadGO == null)
@@ -84,6 +83,14 @@ namespace LemonSpawn
                 return;
 
             quadGO = quadField.Realise(planetSettings.castShadows);
+            MeshCollider c = quadGO.AddComponent<MeshCollider>();
+            c.enabled = false;
+            c.material = (PhysicMaterial)Resources.Load("PhysicsMaterial/surface");
+//            c.fri
+            
+
+
+            //            if (currentLevel == max)
             setGOproperties();
             thread = null;
         }
@@ -141,7 +148,11 @@ namespace LemonSpawn
         public void setAllEnabled(bool enabled)
         {
             if (quadGO != null)
+            {
                 quadGO.GetComponent<Renderer>().enabled = enabled;
+                quadGO.GetComponent<MeshCollider>().enabled = enabled;
+
+            }
             if (children != null)
                 foreach (QuadNode qn in children)
                     qn.setAllEnabled(enabled);
@@ -149,7 +160,7 @@ namespace LemonSpawn
 
         }
 
-
+        
         public void Realise()
         {
             // Faen fix denne buggen med children == null
@@ -198,9 +209,12 @@ namespace LemonSpawn
                 }
 
                 if (quadGO != null)
+                {
                     quadGO.GetComponent<Renderer>().enabled = !allSet;
+                    quadGO.GetComponent<MeshCollider>().enabled = !allSet;
+                }
 
-                foreach (QuadNode qn in children)
+                    foreach (QuadNode qn in children)
                     //if (qn.quadGO != null)
                     //	qn.quadGO.GetComponent<Renderer>().enabled = allSet;
                     qn.setAllEnabled(allSet);
@@ -435,7 +449,9 @@ namespace LemonSpawn
                 deleteChildren();
                 return;
             }
-//
+            //
+
+            currentLevel = level;
 
             int modifier = 0;
             if (!isEnvironment)

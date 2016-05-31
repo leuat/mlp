@@ -8,17 +8,95 @@ namespace LemonSpawn
 
    
 
+    public class EnvironmentMaterialReplace
+    {
+        public string originalMaterialName;
+        public List<Material> materials = new List<Material>();
+        public List<string> materialStrings = new List<string>();
+
+        public EnvironmentMaterialReplace(string n, string [] mats)
+        {
+            originalMaterialName = n;
+            foreach (string s in mats)
+            {
+                materials.Add((Material)Resources.Load(s));
+                materialStrings.Add(s);
+            }
+        }
+        public Material getRandomMat()
+        {
+            return materials[Util.rnd.Next() % materials.Count];
+        }
+        public Material getRandomInstantiatedMat()
+        {
+            string m = materialStrings[Util.rnd.Next() % materials.Count];
+            Material mat = (Material)Resources.Load(m);
+            if (mat == null)
+                Debug.Log("Cound not find material " + m);
+            return mat;
+        }
+    }
+
+
+
+public class EnvironmentType
+    {
+        public string name;
+        public GameObject prefab;
+
+        EnvironmentMaterialReplace[] replaceList;
+
+        public EnvironmentType(string pfName, EnvironmentMaterialReplace[] lst)
+        {
+            name = pfName.Trim();
+            prefab = (GameObject)Resources.Load(pfName);
+            replaceList = lst;
+        }
+
+        public EnvironmentMaterialReplace findReplace(string materialName)
+        {
+            foreach (EnvironmentMaterialReplace er in replaceList)
+            {
+                if (materialName.Contains(er.originalMaterialName))
+                    return er;
+            }
+            return null;
+        }
+
+
+        public Material[] Replace(Material[] materials, PlanetSettings planetSettings)
+        {
+            for (int i=0;i<materials.Length;i++)
+            {
+                EnvironmentMaterialReplace replace = findReplace(materials[i].name);
+                if (replace!=null)
+                {
+                    materials[i] = replace.getRandomInstantiatedMat();
+                }
+                
+                planetSettings.atmosphere.InitAtmosphereMaterial(materials[i]);
+                Vector3 c1 = (Vector3.one - Util.randomVector(0.1f, 0.2f, 0.2f)) * 2;
+                materials[i].SetColor("_Color", new Color(c1.x, c1.y, c1.z, 1));
+            }
+            return materials;
+
+        }
+
+
+    }
+
+
 
     public class Environment
     {
         private PlanetSettings planetSettings;
 
-        private int maxCount = 2500;
-        private float maxDist = 500;
+        private int maxCount = 250;
+        private float maxDist = 250;
 
         private List<GameObject> objects = new List<GameObject>();
         private List<GameObject> removeObjects = new List<GameObject>();
-        private List<GameObject> prefabs = new List<GameObject>();
+        private List<EnvironmentType> environmentTypes = new List<EnvironmentType>();
 
 
 
@@ -26,36 +104,36 @@ namespace LemonSpawn
         {
             planetSettings = ps;
 
-//            prefabs.Add((GameObject)Resources.Load("Conifer_Desktop"));
-  //          prefabs.Add((GameObject)Resources.Load("Palm_Desktop"));
-//            prefabs.Add((GameObject)Resources.Load("Broadleaf_Desktop"));
+            //            prefabs.Add((GameObject)Resources.Load("Conifer_Desktop"));
+            //          prefabs.Add((GameObject)Resources.Load("Palm_Desktop"));
+            //            prefabs.Add((GameObject)Resources.Load("Broadleaf_Desktop"));
 
-            prefabs.Add((GameObject)Resources.Load("baum_pine_m"));
-            prefabs.Add((GameObject)Resources.Load("baum_l1_m"));
-            prefabs.Add((GameObject)Resources.Load("baum_l2_m"));
+            /*            prefabs.Add((GameObject)Resources.Load("baum_pine_m"));
+                        prefabs.Add((GameObject)Resources.Load("baum_l1_m"));
+                        prefabs.Add((GameObject)Resources.Load("baum_l2_m"));
+                        */
 
-            prefabs.Add((GameObject)Resources.Load("LTree1"));
+            EnvironmentMaterialReplace[] std = new EnvironmentMaterialReplace[] {
+                    new EnvironmentMaterialReplace("LBark", new string [] { "LGnarled", "LWood1", "LMeaty", "LSlimySkin", "LStudded" }),
+                    new EnvironmentMaterialReplace("LLeaf", new string [] { "LLeaf", "LConiferLeaf" })
+                    };
+
+            environmentTypes.Add(new EnvironmentType("LTree1", std));
+            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
+            environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
+            environmentTypes.Add(new EnvironmentType("baum_l2_m", std));
+
+            maxCount = planetSettings.environmentDensity;
 
         }
 
-        public void initializeAllMaterial(Component[] components)
+        public void initializeAllMaterial(Component[] components, EnvironmentType et)
         {
-
-            
             foreach (Component c in components)
             {
-                //Debug.Log(c.name);
                 MeshRenderer mr = c.GetComponent<MeshRenderer>();
                 if (mr != null)
-                    foreach (Material m in mr.materials)
-                    {
-                        //Debug.Log("Setting " +m.name);
-                        planetSettings.atmosphere.InitAtmosphereMaterial(m);
-                        Vector3 c1 = (Vector3.one - Util.randomVector(0.1f, 0.2f, 0.2f))*2;
-                        m.SetColor("_Color", new Color(c1.x, c1.y, c1.z, 1));
-
-                    }
-                //initializeAllMaterial(c);
+                    mr.materials = et.Replace(mr.materials, planetSettings);
             }
         }
 
@@ -89,15 +167,17 @@ namespace LemonSpawn
                     if (Vector3.Dot(normal, pos) < 0.98)
                         continue;
 
-                    GameObject go = (GameObject)GameObject.Instantiate(prefabs[Util.rnd.Next() % prefabs.Count], realP - planetSettings.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
+                    EnvironmentType et = environmentTypes[Util.rnd.Next()%environmentTypes.Count];
+
+                    GameObject go = (GameObject)GameObject.Instantiate(et.prefab, realP - planetSettings.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
                     //                go.transform.rotation = Quaternion.FromToRotation(Vector3.up, pos) * go.transform.rotation;
                     go.transform.RotateAround(pos, Util.rnd.Next() % 360);
                     GameObject.Destroy(go.GetComponent<Rigidbody>());
-                    go.transform.localScale = Vector3.one * 0.4f * (float)(0.8 + (Util.rnd.NextDouble() * 0.4));
+                    go.transform.localScale = Vector3.one * 0.4f * (float)(0.8 + (Util.rnd.NextDouble() * 0.4))*0.4f;
                     go.transform.parent = planetSettings.transform;
                     Util.tagAll(go, "Normal", 10);
 
-                    initializeAllMaterial(go.GetComponents<Component>());
+                    initializeAllMaterial(go.GetComponents<Component>(), et);
 
 
 

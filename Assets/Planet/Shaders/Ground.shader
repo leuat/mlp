@@ -215,7 +215,6 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 		*/
 
 
-
 		VertexOutputForwardBase2 LvertForwardBase(VertexInput v)
 		{
 			VertexOutputForwardBase2 o;

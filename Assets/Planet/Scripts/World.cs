@@ -51,9 +51,13 @@ namespace LemonSpawn {
 		public static float ResolutionScale = 1;
 		public static bool isVideo = false;
 		public static string generatingText = "Downloading data from satellite...";
-	}
-	
-	public class Constants {
+        public static float vehicleFollowHeight = 10;
+        public static float vehicleFollowDistance = 10;
+
+
+    }
+
+    public class Constants {
 		public static string[] Clouds = new string[] {"earthclouds", "earthclouds2","gasclouds"}; 
 		
 	}
@@ -114,6 +118,10 @@ namespace LemonSpawn {
         public static bool hasScene = false;
         public static SerializedWorld SzWorld;
 
+        public bool followVehicle = false;
+
+        public Vector3 vehiclePos, vehicleDir;
+
         private SolarSystem solarSystem;
 
 
@@ -142,11 +150,43 @@ namespace LemonSpawn {
 		
 		
 		
-			
-		
-		
-		
-		private string GetScreenshotFilename() {
+		public static void addBall()
+        {
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            go.transform.parent = SolarSystem.planet.pSettings.transform;
+            go.transform.localPosition = SolarSystem.planet.pSettings.localCamera + World.MainCamera.transform.forward * 2;
+            SolarSystem.planet.pSettings.tagGameObject(go);
+            go.AddComponent<Rigidbody>();
+            Material ball = (Material)Resources.Load("BallMaterial");
+            go.GetComponent<MeshRenderer>().material = ball;
+            SolarSystem.planet.pSettings.atmosphere.InitAtmosphereMaterial(ball);
+        }
+
+        public static void addWheels()
+        {
+            GameObject go = GameObject.Find("car_root");
+            GameObject gorb = GameObject.Find("car_root");
+            go.transform.parent = SolarSystem.planet.pSettings.transform;
+            go.transform.localPosition = SolarSystem.planet.pSettings.localCamera + World.MainCamera.transform.forward * 2;
+            go.transform.rotation = Quaternion.FromToRotation(Vector3.up, SolarSystem.planet.pSettings.transform.position*-1);
+
+
+            SolarSystem.planet.pSettings.tagGameObjectAll(go);
+            SolarSystem.planet.pSettings.InitializeAtmosphereMaterials(go);
+            Rigidbody rb = gorb.GetComponent<Rigidbody>();
+            rb.velocity.Set(0, 0, 0);
+            rb.angularVelocity.Set(0, 0, 0);
+            rb.Sleep();
+            /*            go.AddComponent<Rigidbody>();
+                        Material ball = (Material)Resources.Load("BallMaterial");
+                        go.GetComponent<MeshRenderer>().material = ball;
+                        SolarSystem.planet.pSettings.atmosphere.InitAtmosphereMaterial(ball);*/
+        }
+
+
+
+
+        private string GetScreenshotFilename() {
 			string OutputDir = Application.dataPath + "/../";
 			DirectoryInfo info = new DirectoryInfo(OutputDir);
 			FileInfo[] fileInfo = info.GetFiles();
@@ -193,6 +233,9 @@ namespace LemonSpawn {
 		
 		//	#if UNITY_STANDALONE
 		
+
+
+
 		public void LoadFromFile() {
 			if (ThreadQueue.currentThreads.Count != 0 || ThreadQueue.threadQueue.Count!=0)
 				return;
@@ -447,8 +490,13 @@ namespace LemonSpawn {
             {
                 MainCamera.fieldOfView += 1 * s;
             }
-			
-			if (Input.GetKeyDown (KeyCode.LeftShift)) 
+
+            if (Input.GetKeyUp(KeyCode.B))
+                addBall();
+            if (Input.GetKeyUp(KeyCode.V))
+                addWheels();
+
+            if (Input.GetKeyDown (KeyCode.LeftShift)) 
 				modifier = true;
 			if (Input.GetKeyUp (KeyCode.LeftShift)) 
 				modifier = false;
@@ -464,7 +512,11 @@ namespace LemonSpawn {
 				if (Input.GetKeyUp(KeyCode.Alpha2))
 					RenderSettings.RenderText = !RenderSettings.RenderText;
 			}
-			
+
+            if (Input.GetKeyUp(KeyCode.F1))
+                followVehicle = !followVehicle;
+
+
 			if (Input.GetKeyUp (KeyCode.Space)) {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
 				canvas.SetActive(RenderSettings.RenderMenu);
@@ -476,12 +528,32 @@ namespace LemonSpawn {
 			
 			if (RenderSettings.RenderMenu)
 				Log();
-			
-			
+
+
+            if (followVehicle)
+                FollowVehicle("car_root");
 			
 		}
 		
-		public void ExitSave() {
+        private void FollowVehicle(string s)
+        {
+            GameObject go = GameObject.Find(s);
+            Vector3 t = go.transform.position + go.transform.forward*RenderSettings.vehicleFollowDistance;
+            Vector3 c = go.transform.position + go.transform.forward * RenderSettings.vehicleFollowDistance * -1 + go.transform.up * RenderSettings.vehicleFollowHeight;
+            Vector3 up = SolarSystem.planet.pSettings.transform.position.normalized * -1;
+            float t1 = 0.5f;
+
+            vehicleDir = vehicleDir * (1 - t1) + t * t1;
+            vehiclePos = vehiclePos * (1 - t1) + c * t1;
+
+
+            float t0 = 0.2f;
+            SpaceCamera.MoveCamera(vehiclePos*t0);
+            SpaceCamera.SetLookCamera(vehicleDir.normalized * (1-t0) + SpaceCamera.curDir * t0, up);
+
+        }
+
+        public void ExitSave() {
 			SaveScreenshot();
 			Application.Quit();
 		}

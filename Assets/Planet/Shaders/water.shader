@@ -60,7 +60,6 @@
 			float3 normal : NORMAL;
 			float4 tangent : TANGENT;
 		};
-
 		
 		struct v2f
 		{

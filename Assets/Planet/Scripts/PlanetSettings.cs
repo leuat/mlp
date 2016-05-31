@@ -315,6 +315,8 @@ namespace LemonSpawn {
 		public float globalTerrainHeightScale = 1.0f;
 		public float globalTerrainScale = 1.0f;
 		public float rotation;
+        public float Gravity;
+        public int environmentDensity = 0;
         public int maxQuadNodeLevel;
         public int planetTypeIndex;
         public string currentTag = "Normal";
@@ -352,6 +354,42 @@ namespace LemonSpawn {
 		public Sea sea;
 
         public Plane[] cameraPlanes;
+
+
+        public void tagGameObject(GameObject go)
+        {
+            //   Util.tagAll(pSettings.parent, "Normal", 10);
+            go.tag = currentTag;
+            go.layer = currentLayer;
+
+        }
+
+        public void tagGameObjectAll(GameObject go)
+        {
+            //   Util.tagAll(pSettings.parent, "Normal", 10);
+            go.tag = currentTag;
+            go.layer = currentLayer;
+            foreach (Transform t in go.transform)
+                tagGameObjectAll(t.gameObject);
+
+        }
+
+        public void InitializeAtmosphereMaterials(GameObject go)
+        {
+            MeshRenderer mr = go.GetComponent<MeshRenderer>();
+            if (mr != null)
+            {
+                atmosphere.InitAtmosphereMaterial(mr.material);
+            }
+
+
+            foreach (Transform t in go.transform)
+                InitializeAtmosphereMaterials(t.gameObject);
+
+        }
+
+
+
 
 
         public Frame getFrame(int i) {

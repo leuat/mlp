@@ -129,17 +129,17 @@
 
 		float3 specularReflection = _SpecColor
 			* pow(max(0.0, dot(
-
 				reflect(-lightDirection, normalDirection),
-				viewDirection)), _Glossiness);
+				viewDirection)), _Glossiness*100);
 
 		float light = max(-0.0, dot(normalDirection, lightDirection));
 
 
 		float4 color = tex2D(_MainTex, uv*_Scale)*_Color;
-
+		
 		if (color.a < _Alpha)
 			discard;
+
 
 		//			float3 skyColor = texCUBE(_SkyBox, WorldReflectionVector(IN, o.Normal)*float3(-1,1,1)).rgb;//flip x
 		c.rgb = groundColor(IN.c0, IN.c1, color*light);

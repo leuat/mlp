@@ -382,8 +382,7 @@ public class Surface {
 			
 			SurfaceFilter pebbleCap = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.05f*a, 0.07f*a, pebbles);
 			
-//			adde = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f* ps.globalTerrainScale, adde, pebbleCap);
-			adde = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f* ps.globalTerrainHeightScale, adde, pebbleCap);
+//			adde = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f* ps.globalTerrainHeightScale, adde, pebbleCap);
 			
 			SurfaceFilter sf = new SurfaceFilter(SurfaceFilter.SUB, 1f, 1f*a, 0, adde);
 			
@@ -455,7 +454,7 @@ public class Surface {
 			return 0;
 		Vector3 p2 = p;
 //		p2.z+=planetSettings.seed*0.01f;
-		return surfaceNode.Calculate(noise, p2);
+		return surfaceNode.Calculate(noise, p2)*planetSettings.globalTerrainHeightScale;
 		
 	}
 

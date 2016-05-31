@@ -18,6 +18,7 @@ public class SpaceCamera : MonoBehaviour {
 	private Vector3 mouseAdd = new Vector3();
 	float rotate = 0;
 	float rotateT = 0;
+        public Vector3 up;
 	//private GameObject actualCamera;
 	private DVector actualCamera = new DVector();
 	
@@ -36,13 +37,22 @@ public class SpaceCamera : MonoBehaviour {
 		return actualCamera;
 //		return actualCamera.transform.position;
 	}
-	
-	public void SetLookCamera(Vector3 p, Vector3 dir, Vector3 up) {
+
+        public Vector3 getRPos()
+        {
+            return actualCamera.toVectorf()*(float)RenderSettings.AU;
+            //		return actualCamera.transform.position;
+        }
+
+
+        public void SetLookCamera(Vector3 p, Vector3 dir, Vector3 u) {
 //		transform.rotation  = rot;
 		actualCamera.Set(p*(float)RenderSettings.AU);
 		World.WorldCamera.Set (p*(float)RenderSettings.AU);
 
-		SetLookCamera(dir, up);		
+            curDir = dir;
+		SetLookCamera(dir, u);
+            up = u;
 	}
 	
 	public void MoveCamera(Vector3 dp) {
@@ -51,20 +61,21 @@ public class SpaceCamera : MonoBehaviour {
 			
 	}
 	
-	public void SetLookCameraTarget(Vector3 p, Vector3 target, Vector3 up) {
+	public void SetLookCameraTarget(Vector3 p, Vector3 target, Vector3 u) {
 			//		transform.rotation  = rot;
 		actualCamera.Set(p*(float)RenderSettings.AU);
 		World.WorldCamera.Set (p*(float)RenderSettings.AU);
 		transform.up = up;		
 		transform.LookAt(target);
-			
-//		SetLookCamera(theta, phi, up);		
-	}
-		
-	
-	
-	
-		public void SetLookCamera(Vector3 dir, Vector3 up) {
+            up = u;
+
+            //		SetLookCamera(theta, phi, up);		
+        }
+
+
+        public Vector3 curDir;
+
+        public void SetLookCamera(Vector3 dir, Vector3 up) {
 			//		transform.rotation  = rot;
 			
 			
@@ -73,6 +84,7 @@ public class SpaceCamera : MonoBehaviour {
 			Quaternion q = new Quaternion();
 						
 			q.SetLookRotation(dir, up);
+            curDir = dir;
 			transform.rotation = q;
 			//transform.rotation = Quaternion.AngleAxis(roll, dir);									
 		}

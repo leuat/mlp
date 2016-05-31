@@ -260,13 +260,14 @@ namespace LemonSpawn
         public static void SetSkybox(int s)
         {
             string skybox = "Skybox3";
-            s = s % 6;
+            s = s % 7;
 
             if (s == 1) skybox = "Skybox4";
             if (s == 2) skybox = "Skybox5";
             if (s == 3) skybox = "Skybox2";
             if (s == 4) skybox = "Skybox7";
             if (s == 5) skybox = "Skybox8";
+            if (s == 6) skybox = "Skybox9";
 
             UnityEngine.RenderSettings.skybox = (Material)Resources.Load(skybox);
 

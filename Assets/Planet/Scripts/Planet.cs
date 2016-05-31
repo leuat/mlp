@@ -22,6 +22,9 @@ namespace LemonSpawn
         public Environment environment;
 
 
+        
+
+
         public Planet(PlanetSettings p, CloudSettings cs)
         {
             pSettings = p;
@@ -125,6 +128,10 @@ namespace LemonSpawn
             Instantiate();
             pSettings.Update();
             UpdateText();
+            if (SolarSystem.planet == this)
+            {
+                Physics.gravity = pSettings.transform.position.normalized * pSettings.Gravity;
+            }
 
         }
 
@@ -141,6 +148,7 @@ namespace LemonSpawn
             }
 
         }
+
 
 
 
