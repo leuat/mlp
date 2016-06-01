@@ -50,14 +50,15 @@ namespace LemonSpawn {
 
             m_innerRadius = planetSettings.radius;
             m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
-
+            m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
+            m_radius = m_outerRadius;
             initFixedMateriarProperties(false);
             InitMaterial(m_groundMaterial);
             
             m_groundMaterial.SetVector("waterColor", planetSettings.m_waterColor);
             m_groundMaterial.SetFloat("_Metallic", 0);
 
-            m_sky = m_go; 
+            //m_sky = m_go; 
 
         }
 
@@ -90,7 +91,7 @@ namespace LemonSpawn {
         {
             base.Update();
             MaintainSea();
-                   
+            InitAtmosphereMaterial(m_groundMaterial);
             m_groundMaterial.SetFloat("time", Time.time*0.01f);
             ocean.Update();
         }

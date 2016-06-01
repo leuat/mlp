@@ -142,8 +142,7 @@
 
 
 		//			float3 skyColor = texCUBE(_SkyBox, WorldReflectionVector(IN, o.Normal)*float3(-1,1,1)).rgb;//flip x
-		c.rgb = groundColor(IN.c0, IN.c1, color*light);
-
+		c.rgb = groundColor(IN.c0, IN.c1, color*light, IN.worldPosition.xyz);
 
 
 

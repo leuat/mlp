@@ -376,7 +376,6 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 
 
 
-
 									//	float3 diff = hColor*(i.c0*3 + i.c1)*1;//0.35*(hColor*1 + 1.25*cc + hColor*cc);
 										float3 diff = hColor;
 										//float3 diff = 0.35*(hColor*0 + 1.00*i.c0 + i.c1);
@@ -386,16 +385,13 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 											float4 spc = _Color;// float4(1, 1, 1, 1);// *specularity * 1;
 											float omr = s.oneMinusReflectivity;
 											float omr2 = s.oneMinusRoughness;
-
 											//	diff = groundColor(i.c0, i.c1, diff);
-
 												half4 c = UNITY_BRDF_PBS(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);
-
 
 												c.rgb += UNITY_BRDF_GI(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, occlusion, gi);
 												c.rgb += Emission(i.tex.xy);
 
-												c.rgb = groundColor(i.c0, i.c1, c.rgb);
+												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld);
 
 												return OutputForward(c, s.alpha);
 											}

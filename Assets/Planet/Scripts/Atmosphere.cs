@@ -213,7 +213,7 @@ public class Atmosphere
             localscale = planetSettings.transform.parent.localScale.x;
            // Debug.Log(localscale);
             //rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
-            rot = Quaternion.Inverse(m_sky.transform.rotation);
+            rot = Quaternion.Inverse(planetSettings.transform.rotation);
             
             float ds = localscale;
             Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(m_waveLength.x, 4.0f), 1.0f / Mathf.Pow(m_waveLength.y, 4.0f), 1.0f / Mathf.Pow(m_waveLength.z, 4.0f));

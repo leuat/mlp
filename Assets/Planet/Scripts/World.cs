@@ -541,14 +541,14 @@ namespace LemonSpawn {
             Vector3 t = go.transform.position + go.transform.forward*RenderSettings.vehicleFollowDistance;
             Vector3 c = go.transform.position + go.transform.forward * RenderSettings.vehicleFollowDistance * -1 + go.transform.up * RenderSettings.vehicleFollowHeight;
             Vector3 up = SolarSystem.planet.pSettings.transform.position.normalized * -1;
-            float t1 = 0.5f;
+            float t1 = 0.9f;
 
             vehicleDir = vehicleDir * (1 - t1) + t * t1;
             vehiclePos = vehiclePos * (1 - t1) + c * t1;
 
 
-            float t0 = 0.2f;
-            SpaceCamera.MoveCamera(vehiclePos*t0);
+            float t0 = 0.95f;
+            SpaceCamera.MoveCamera(vehiclePos*(1-t0));
             SpaceCamera.SetLookCamera(vehicleDir.normalized * (1-t0) + SpaceCamera.curDir * t0, up);
 
         }

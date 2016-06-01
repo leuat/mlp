@@ -279,15 +279,18 @@ float3 mixHeight(float3 c1, float3 c2, float spread, float center, float val) {
 	return c1*a + c2*(1 - a);
 }
 
-float3 groundColor(float3 c0, float3 c1, float3 color) {
+float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp) {
 	//return  (atmosphereDensity*2*c0 + (1.0*color*clamp(1-atmosphereDensity,0,1) + atmosphereDensity*0.1*c1);
 
 
 	float3 atm = 2 * c0 + 0.2*c1;
 
+	float dist = length(_WorldSpaceCameraPos - wp);
+	float scale = clamp(sqrt(dist*0.0007), 0, 1);
+
 //	return 1.4*atm;
 	//	return 2*atm * color;
-	return lerp(1.5 * color, 1.4*atm, atmosphereDensity);
+	return lerp(1.1 * color, 1.2*atm, atmosphereDensity*scale);
 
 	//return (atmosphereDensity*(2 * c0 + 0.2*c1) + (1 - atmosphereDensity)*color);
 

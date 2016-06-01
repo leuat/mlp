@@ -128,7 +128,8 @@
 									ht += tex2Dlod(_Map0, float4(uv*wscale, 0, lod)*1).x;
 									ht += tex2Dlod(_Map0, float4(uv*wscale*0.9123, 0, lod)*1).y;
 									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
-									
+//									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
+
 
 											return o;
 										}
@@ -165,7 +166,7 @@
 													float3 N = normalize(float3(-slope.x, 2.0, -slope.y)); //shallow normal
 													float3 N2 = normalize(float3(-slope.x, 0.5, -slope.y)); //sharp normal
 
-													float3 V = normalize(_WorldSpaceCameraPos - IN.pos);
+													float3 V = normalize(_WorldSpaceCameraPos - IN.worldPosition);
 
 
 													float3 normal = IN.normal;// N.xzy;
@@ -200,21 +201,20 @@
 															viewDirection)), 50);
 
 													float light = max(-0.2, dot(normalDirection, lightDirection));
-
-
 													//			float3 skyColor = texCUBE(_SkyBox, WorldReflectionVector(IN, o.Normal)*float3(-1,1,1)).rgb;//flip x
-													float3 skyColor = (IN.c0 + IN.c1)*5;// float3(2, 0.7, 0.4) * 1;
+													float3 skyColor = (3*IN.c0 + 0.2*IN.c1)*1;// float3(2, 0.7, 0.4) * 1;
 
 													float3 wc = lerp(waterColor, skyColor, fresnel) + Sun(V, N2);
+													//wc = float4(1,0,0,1);
 
-
-													//c.rgb = (IN.c0 + wc*light + 0.05*IN.c1);
-													c.rgb = groundColor(IN.c0, IN.c1, wc*light);
-
+//													atmosphereDensity = 1;
+//													return  float4(1.4*(2 * IN.c0 + 0.2*IN.c1) ,1);
+													c.rgb = groundColor(IN.c0, IN.c1, wc*light, IN.worldPosition);
+//													return  float4(wc*atmosphereDensity, 1);
 
 
 													return float4(c.rgb
-														+ specularReflection, 0.95 + specularReflection.b);
+														+ specularReflection, +0.95 + specularReflection.b);
 
 												}
 													ENDCG
