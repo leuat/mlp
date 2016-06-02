@@ -55,6 +55,8 @@ public class EnvironmentType
 
         public EnvironmentMaterialReplace findReplace(string materialName)
         {
+            if (replaceList == null)
+                return null;
             foreach (EnvironmentMaterialReplace er in replaceList)
             {
                 if (materialName.Contains(er.originalMaterialName))
@@ -75,8 +77,8 @@ public class EnvironmentType
                 }
                 
                 planetSettings.atmosphere.InitAtmosphereMaterial(materials[i]);
-                Vector3 c1 = (Vector3.one - Util.randomVector(0.1f, 0.2f, 0.2f)) * 2;
-                materials[i].SetColor("_Color", new Color(c1.x, c1.y, c1.z, 1));
+                //Vector3 c1 = (Vector3.one - Util.randomVector(0.1f, 0.2f, 0.2f)) * 2;
+                //materials[i].SetColor("_Color", new Color(c1.x, c1.y, c1.z, 1));
             }
             return materials;
 
