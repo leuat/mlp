@@ -94,7 +94,7 @@ public class EnvironmentType
         private PlanetSettings planetSettings;
 
         private int maxCount = 250;
-        private float maxDist = 250;
+        private float maxDist = 500;
 
         private List<GameObject> objects = new List<GameObject>();
         private List<GameObject> removeObjects = new List<GameObject>();

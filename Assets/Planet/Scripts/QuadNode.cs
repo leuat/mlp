@@ -153,6 +153,7 @@ namespace LemonSpawn
                 quadGO.GetComponent<MeshCollider>().enabled = enabled;
 
             }
+            
             if (children != null)
                 foreach (QuadNode qn in children)
                     qn.setAllEnabled(enabled);
@@ -463,7 +464,7 @@ namespace LemonSpawn
                 deleteChildren();
                 return;
             }
-//            displayDebug();
+            //            displayDebug();
 
 
 
