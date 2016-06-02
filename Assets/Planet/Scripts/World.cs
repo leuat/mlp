@@ -321,14 +321,14 @@ namespace LemonSpawn {
 		#endif
 		
 		#if UNITY_STANDALONE_OSX
-		public void LoadCommandLineXML() {
+/*		public void LoadCommandLineXML() {
 			
 			
 			System.IO.StreamWriter standardOutput = new System.IO.StreamWriter(System.Console.OpenStandardOutput());
 			standardOutput.AutoFlush = true;
 			System.Console.SetOut(standardOutput);
 			
-			string[] cmd = Util.GetOSXCommandParams();
+			string--[] cmd = Util.GetOSXCommandParams();
 			if (cmd.Length>1)  {
 				if (cmd[1]!="")
 					LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
@@ -340,7 +340,7 @@ namespace LemonSpawn {
 			space.hdr = szWorld.sun_intensity;
 			
 		}
-		
+*/		
 		#endif
 		
 		Texture2D tx_background, tx_load;
