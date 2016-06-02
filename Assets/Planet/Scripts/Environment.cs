@@ -119,10 +119,10 @@ public class EnvironmentType
                     };
 
             environmentTypes.Add(new EnvironmentType("LTree1", std));
-            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
+/*            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
             environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
             environmentTypes.Add(new EnvironmentType("baum_l2_m", std));
-
+            */
             maxCount = planetSettings.environmentDensity;
 
         }

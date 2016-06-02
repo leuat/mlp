@@ -45,6 +45,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _OcclusionMap
         second:
           m_Texture: {fileID: 0}
@@ -71,13 +78,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -97,6 +97,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Alpha
+        second: 1
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -107,6 +111,10 @@ Material:
         first:
           name: _Glossiness
         second: 0.53
+      data:
+        first:
+          name: _Metallic
+        second: 0
       data:
         first:
           name: _BumpScale
@@ -127,14 +135,6 @@ Material:
         first:
           name: _Mode
         second: 0
-      data:
-        first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Alpha
-        second: 1
     m_Colors:
       data:
         first:
@@ -143,7 +143,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1.9395947, g: 1.7517983, b: 1.882559, a: 1}
+        second: {r: 1.9352248, g: 1.7400641, b: 1.8807104, a: 1}
       data:
         first:
           name: _SpecColor
