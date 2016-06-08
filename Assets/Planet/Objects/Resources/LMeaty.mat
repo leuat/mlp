@@ -158,11 +158,11 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1.8475258, g: 1.8261442, b: 1.7628326, a: 1}
+        second: {r: 0.44117647, g: 0.44117647, b: 0.44117647, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
       data:
         first:
           name: _TreeInstanceColor
