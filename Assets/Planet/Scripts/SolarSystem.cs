@@ -244,8 +244,11 @@ namespace LemonSpawn
         }
         protected void PopulateOverviewList(string box)
         {
-            ComboBox cbx = GameObject.Find(box).GetComponent<ComboBox>();
-            cbx.ClearItems();
+			GameObject b = GameObject.Find(box);
+			if (b == null)
+				return;
+			ComboBox cbx = b.GetComponent<ComboBox>();
+			cbx.ClearItems();
             List<ComboBoxItem> l = new List<ComboBoxItem>();
             foreach (Planet p in planets)
             {

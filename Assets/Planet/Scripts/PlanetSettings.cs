@@ -532,8 +532,8 @@ namespace LemonSpawn {
 			Quaternion q = 	Quaternion.Euler(new Vector3(0, -rotation/(2*Mathf.PI)*360f,0));
 			localCamera = q*localCamera;
 
-
-            cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
+			if (World.CloseCamera != null)
+            	cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
         }
 		
 	}

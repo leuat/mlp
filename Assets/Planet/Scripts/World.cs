@@ -365,7 +365,7 @@ namespace LemonSpawn {
 		
 
 		
-		void OnGUI () {
+		protected virtual void OnGUI () {
 			
 			//	return;
 			
