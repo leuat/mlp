@@ -65,12 +65,13 @@ public class Atmosphere
             m_groundMaterial.SetColor("topColor", planetSettings.m_topColor);
             if (bump)
             m_groundMaterial.SetTexture("_BumpMap", planetSettings.bumpMap);
+            m_groundMaterial.SetFloat("metallicity", planetSettings.metallicity);
             m_groundMaterial.SetFloat("_Metallic", planetSettings.metallicity);
             m_groundMaterial.SetFloat("hillyThreshold", planetSettings.hillyThreshold);
             m_groundMaterial.SetFloat("_BumpScale", planetSettings.bumpScale);
             m_groundMaterial.SetColor("_EmissionColor", planetSettings.emissionColor);
             m_groundMaterial.SetFloat("_EmissionScaleUI", 0.2f);
-            m_groundMaterial.SetFloat("_Glossiness", planetSettings.specularity);
+            m_groundMaterial.SetFloat("_Glossiness", planetSettings.specularity );
 
             m_groundMaterial.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
             m_groundMaterial.SetTexture("_Noise", noiseTexture);

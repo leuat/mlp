@@ -23,7 +23,7 @@ namespace LemonSpawn {
 		public static int orgThreads = 0;
 		public static List<TQueue> currentThreads =new List<TQueue>();
 		public bool threadDone = true;
-		private static int maxThreads = 3;	
+		private static int maxThreads = SystemInfo.processorCount-1;	
 		public Vector3 localPosition;
 		public float sort = 0;
 		
@@ -42,7 +42,7 @@ namespace LemonSpawn {
 */				
 					float d1 = p1.gt.sort;
 					float d2 = p2.gt.sort;
-					
+                //    Debug.Log(d1);
 					if (d1>d2) return 1;
 					if (d1<d2) return -1;
 					return 0;

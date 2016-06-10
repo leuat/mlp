@@ -18,6 +18,7 @@ uniform float3 basinColor, topColor, middleColor, middleColor2, basinColor2, wat
 uniform float liquidThreshold, atmosphereDensity;
 uniform float fade = 0.2;
 uniform float time;
+uniform float metallicity;
 
 
 float scale(float fCos)

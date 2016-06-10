@@ -16,7 +16,6 @@ Shader "LemonSpawn/Ground"
 		_Parallax("Height Scale", Range(0.005, 0.08)) = 0.02
 		_ParallaxMap("Height Map", 2D) = "black" {}
 
-
 		_OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
 		_OcclusionMap("Occlusion", 2D) = "white" {}
 
@@ -252,6 +251,8 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 					normalWorld = normalize(capV.xyz);
 				}
 				*/
+//			normalWorld = normalize(capV.xyz);
+
 				o.n1 = normalWorld;
 				#ifdef _TANGENT_TO_WORLD
 					float4 tangentWorld = float4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
@@ -382,8 +383,10 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 										float d = 0.05;
 										//	diff -=float3(d,d,d);
 
-											float4 spc = _Color;// float4(1, 1, 1, 1);// *specularity * 1;
-											float omr = s.oneMinusReflectivity;
+
+										//float4 spc =_Color;// float4(1, 1, 1, 1);// *specularity * 1;
+										float4 spc = _Color*0.25;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
+										float omr = s.oneMinusReflectivity;
 											float omr2 = s.oneMinusRoughness;
 											//	diff = groundColor(i.c0, i.c1, diff);
 												half4 c = UNITY_BRDF_PBS(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);

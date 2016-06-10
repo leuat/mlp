@@ -194,7 +194,7 @@
 													//normalDirection = normalize(IN.normal + normalDirectopm);
 													float fresnel = Fresnel(V, normalDirection);
 
-													specularReflection = float3(1, 1, 1)
+													specularReflection = float3(1, 1, 1)*0.5
 														* pow(max(0.0, dot(
 
 															reflect(-lightDirection, normalDirection),

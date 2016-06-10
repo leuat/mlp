@@ -28,7 +28,7 @@ namespace LemonSpawn {
 		public static int sizeVBO = 96;
 		public static bool assProjection = true;
 		public static bool flatShading = false;
-		public static int maxQuadNodeLevel = 11;
+		public static int maxQuadNodeLevel = 14;
 		public static int minQuadNodeLevel = 2;
 		public static bool cullCamera = false;
 		public static double AU = 1.4960*Mathf.Pow(10,8); // AU in km
@@ -328,7 +328,7 @@ namespace LemonSpawn {
 			string[] cmd = System.Environment.GetCommandLineArgs ();
 			if (cmd.Length>1)  {
 				if (cmd[1]!="")
-                    solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
+                    solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true, this);
 			}
 			
 			//		LoadWorld("Assets/Planet/Resources/system1.xml", true);
@@ -406,7 +406,7 @@ namespace LemonSpawn {
             CloseCamera = closeCamera.AddComponent<Camera>();
             CloseCamera.clearFlags = CameraClearFlags.Depth;
             CloseCamera.nearClipPlane = 2;
-            CloseCamera.farClipPlane = 200000;
+            CloseCamera.farClipPlane = 220000;
             CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
 			setFieldOfView(MainCamera.fieldOfView);
 
@@ -536,8 +536,9 @@ namespace LemonSpawn {
 				canvas.SetActive(RenderSettings.RenderMenu);
 			}
 			
-			//		ThreadQueue.SortQueue(WorldCamera);
-			if (RenderSettings.UseThreading) 
+            if (SolarSystem.planet!=null)
+	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.localCamera);
+    		if (RenderSettings.UseThreading) 
 				ThreadQueue.MaintainThreadQueue();
 			
 			if (RenderSettings.RenderMenu)

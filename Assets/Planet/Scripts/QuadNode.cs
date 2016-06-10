@@ -402,7 +402,7 @@ namespace LemonSpawn
 
         private float findMinDistance(Vector3 cam, bool nestFurther)
         {
-            float min = 10E10f;
+            float min = 10E30f;
 
             mtmp = (cam - qb.centerReal.P) / planetSettings.getPlanetSize();
             min = Mathf.Min(min, mtmp.sqrMagnitude);

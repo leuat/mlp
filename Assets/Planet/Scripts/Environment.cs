@@ -120,9 +120,9 @@ public class EnvironmentType
                     new EnvironmentMaterialReplace("LLeaf", new string [] { "LLeaf", "LConiferLeaf" })
                     };
 
-//            environmentTypes.Add(new EnvironmentType("LTree1", std));
+            environmentTypes.Add(new EnvironmentType("LTree1", std));
 //			environmentTypes.Add(new EnvironmentType("MeatTree", std));
-			environmentTypes.Add(new EnvironmentType("Horetre", std));
+	//		environmentTypes.Add(new EnvironmentType("Horetre", std));
 /*            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
             environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
             environmentTypes.Add(new EnvironmentType("baum_l2_m", std));

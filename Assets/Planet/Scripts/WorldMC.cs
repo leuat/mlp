@@ -191,13 +191,13 @@ public class WorldMC : World {
 			string[] cmd = System.Environment.GetCommandLineArgs ();
 			if (cmd.Length>1)  {
 				if (cmd[1]!="")
-				LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
+				solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true, this);
 			}
 			
 			//		LoadWorld("Assets/Planet/Resources/system1.xml", true);
 			szWorld.IterateCamera();
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
+            solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
+            solarSystem.space.hdr = szWorld.sun_intensity;
 			
 		}
 
