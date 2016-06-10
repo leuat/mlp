@@ -150,7 +150,9 @@ namespace LemonSpawn
             if (quadGO != null)
             {
                 quadGO.GetComponent<Renderer>().enabled = enabled;
-                quadGO.GetComponent<MeshCollider>().enabled = enabled;
+				MeshCollider mc = quadGO.GetComponent<MeshCollider>();
+				if (mc!=null)
+                	mc.enabled = enabled;
 
             }
             
@@ -212,7 +214,9 @@ namespace LemonSpawn
                 if (quadGO != null)
                 {
                     quadGO.GetComponent<Renderer>().enabled = !allSet;
-                    quadGO.GetComponent<MeshCollider>().enabled = !allSet;
+					MeshCollider mc = quadGO.GetComponent<MeshCollider>();
+					if (mc!=null)
+						mc.enabled = !allSet;
                 }
 
                     foreach (QuadNode qn in children)
@@ -426,6 +430,9 @@ namespace LemonSpawn
 
         bool isWithinCameraBounds()
         {
+        	if (!RenderSettings.cullCamera)
+        		return true;
+
             bounds.SetMinMax(qb.PReal[0].P + planetSettings.transform.position, qb.PReal[2].P + planetSettings.transform.position);
 
 

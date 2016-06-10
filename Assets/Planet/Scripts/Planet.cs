@@ -168,8 +168,9 @@ namespace LemonSpawn
             d.Scale(Mathf.Min((float)dist, (float)RenderSettings.LOD_ProjectionDistance));
 
             Vector3 pos = d.toVectorf();
-
             double ds = dist / RenderSettings.LOD_Distance;
+//			Debug.Log(ds);
+
             if (ds < 1)
             {
                 Util.tagAll(pSettings.parent, "Normal", 10);
@@ -213,7 +214,7 @@ namespace LemonSpawn
             MaintainPlanet();
             // Rotation test		
             //		pSettings.rotation+=0.05f;
-
+            //pSettings.rotation = 0;
 
             pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, pSettings.rotation / (2 * Mathf.PI) * 360f, 0));
             //			pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0,pSettings.rotation/(2*Mathf.PI)*360f));

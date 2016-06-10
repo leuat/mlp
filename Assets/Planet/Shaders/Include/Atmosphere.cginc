@@ -40,7 +40,7 @@ void AtmFromGround(float4 vert, out float3 c0, out float3 c1) {
 
 	// Calculate the ray's starting position, then calculate its scattering offset
 	float3 v3Start = v3CameraPos;
-	float fDepth = exp((fInnerRadius - fCameraHeight) * (1.0 / fScaleDepth));
+	float fDepth = exp(clamp(fInnerRadius*1.0 - fCameraHeight,-10,0) * (1.0 / fScaleDepth));
 	float fCameraAngle = dot(-v3Ray, v3Pos);
 	float fLightAngle = dot(v3LightPos, v3Pos);
 	float fCameraScale = scale(fCameraAngle);
@@ -286,7 +286,7 @@ float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp) {
 	float3 atm = 2 * c0 + 0.2*c1;
 
 	float dist = length(_WorldSpaceCameraPos - wp);
-	float scale = clamp(sqrt(dist*0.0007), 0, 1);
+	float scale = clamp(sqrt(dist/fInnerRadius*35.0), 0, 1);
 
 //	return 1.4*atm;
 	//	return 2*atm * color;

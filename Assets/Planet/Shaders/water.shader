@@ -115,7 +115,7 @@
 										cross(o.normal, o.T)
 										* v.tangent.w); // tangent.w is specific to Unity
 
-									float2 uv = RadialCoords(normalize(v.vertex.xyz)) * 200;
+									float2 uv = RadialCoords(normalize(v.vertex.xyz)) * 200/(fOuterRadius/50000.0);
 									//uv += RadialCoords(normalize(v.vertex.xyz)) * 1223;
 									o.texcoord.xy = uv;
 
@@ -127,7 +127,7 @@
 									float wscale = 0.5;
 									ht += tex2Dlod(_Map0, float4(uv*wscale, 0, lod)*1).x;
 									ht += tex2Dlod(_Map0, float4(uv*wscale*0.9123, 0, lod)*1).y;
-									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
+//									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2*(fInnerRadius/50000)), v.vertex.w));
 //									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
 
 

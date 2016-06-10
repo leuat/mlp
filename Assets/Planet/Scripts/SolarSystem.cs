@@ -173,7 +173,7 @@ namespace LemonSpawn
 
         }
 
-        public void LoadWorld(string data, bool isFile, bool ExitOnSave)
+        public void LoadWorld(string data, bool isFile, bool ExitOnSave, World world)
         {
             ClearStarSystem();
             SerializedWorld sz;
@@ -206,21 +206,28 @@ namespace LemonSpawn
                 RenderSettings.ExitSaveOnRendered = false;
 
 
-            //		RenderSettings.isVideo = false;	
-            World.slider.SetActive(RenderSettings.isVideo);
+            //		RenderSettings.isVideo = false;
+            if (World.slider!=null)	
+	            World.slider.SetActive(RenderSettings.isVideo);
             foreach (SerializedPlanet sp in sz.Planets)
             {
                 //GameObject go = transform.GetChild(i).gameObject;
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
+
                 //				go.transform.position = new Vector3((float)(sp.pos_x*RenderSettings.AU), (float)(sp.pos_y*RenderSettings.AU), (float)(sp.pos_z*RenderSettings.AU));
                 //				Planet p = new Planet(sp.DeSerialize(go), go.GetComponent<CloudSettings>());
                 Planet p = new Planet(sp.DeSerialize(go, cnt++, sz.global_radius_scale));
+				p.pSettings.parent = go;
+
                 p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);
             }
-
             PopulateOverviewList("Overview");
+            //sz.IterateCamera();
+			//World.SzWorld = sz;
+			world.setWorld(sz);
+			//Debug.Log("Before leaving: " + World.SzWorld.Cameras.Count);
         }
         public void ClearStarSystem()
         {

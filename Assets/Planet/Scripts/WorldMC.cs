@@ -15,25 +15,12 @@ namespace LemonSpawn {
 
 
 
-public class WorldMC : MonoBehaviour {
+public class WorldMC : World {
 
 
 //	public static DVector WorldCamera = new DVector();
-	public GameObject sun;
-	public Mesh sphere;
-	public int m_gridSize = 96;
-	public int m_maxQuadNodeLevel = 11;
-	public int m_minQuadNodeLevel = 2;
-	private SpaceAtmosphere space;
-	static public Material spaceMaterial;
-	static public Material groundMaterial; 
-	public List<Planet> planets = new List<Planet>();
-	public static Planet planet;
-	public static Stats stats = new Stats();
-	// Use this for initialization
-	public static GameObject canvas;
-	public SerializedWorld szWorld;
-	public static GameObject slider;
+//	public GameObject sun;
+//	public Mesh sphere;
 	
 	public void ClickOverview() {
 		if (RenderSettings.renderType == RenderType.Normal)
@@ -43,60 +30,17 @@ public class WorldMC : MonoBehaviour {
 	}
 			    
 	
-	public void LoadWorld(string data, bool isFile, bool ExitOnSave ) {
-		ClearStarSystem();
-		SerializedWorld sz;
-		if (isFile) {
-//			RenderSettings.extraText = data;
-				
-			if (!System.IO.File.Exists(data)) {
-				RenderSettings.extraText = ("ERROR: Could not find file :'" + data + "'");
-				return;
-			}
-			 sz = SerializedWorld.DeSerialize(data);
-			 }
-		else
-			sz = SerializedWorld.DeSerializeString(data);	 
-		szWorld = sz;
-		RenderSettings.ExitSaveOnRendered = ExitOnSave;
-		RenderSettings.extraText = "";
-		SetSkybox((int)sz.skybox);
-		RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
-		RenderSettings.ScreenshotX = sz.screenshot_height;
-		RenderSettings.ScreenshotY = sz.screenshot_width;
-		int cnt = 0;
-		hasScene = true;
-		RenderSettings.isVideo = sz.isVideo();
-		if (RenderSettings.isVideo == true)
-			RenderSettings.ExitSaveOnRendered = false;
-			
-			
-//		RenderSettings.isVideo = false;	
-		slider.SetActive(RenderSettings.isVideo);	
-		foreach (SerializedPlanet sp in sz.Planets) {
-				//GameObject go = transform.GetChild(i).gameObject;
-				GameObject go = new GameObject(sp.name);
-				go.transform.parent = transform;
-//				go.transform.position = new Vector3((float)(sp.pos_x*RenderSettings.AU), (float)(sp.pos_y*RenderSettings.AU), (float)(sp.pos_z*RenderSettings.AU));
-//				Planet p = new Planet(sp.DeSerialize(go), go.GetComponent<CloudSettings>());
-				Planet p = new Planet(sp.DeSerialize(go, cnt++,sz.global_radius_scale));
-				p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), sphere);
-				planets.Add (p);
-			}
-			
-		PopulateOverviewList("Overview");
-	}
-	
+
 	public void Slide() {
 		float v = slider.GetComponent<Slider>().value;
-		szWorld.getInterpolatedCamera(v, planets);
+		szWorld.getInterpolatedCamera(v, solarSystem.planets);
 	}
 	
 	protected void FocusOnPlanet(string n) {
 		GameObject gc = GameObject.Find ("Camera");
 		//Camera c = gc.GetComponent<Camera>();
 		Planet planet = null;
-		foreach (Planet p in planets)
+		foreach (Planet p in solarSystem.planets)
 			if (p.pSettings.name == n)
 				planet = p; 
 	
@@ -119,18 +63,13 @@ public class WorldMC : MonoBehaviour {
 			
 	}
 	
-	public static void MoveCamera(Vector3 dp) {
-		GameObject gc = GameObject.Find ("Camera");
-		gc.GetComponent<SpaceCamera>().MoveCamera(dp);
-			
-	}
-	
+
 	
 	protected void PopulateOverviewList(string box) {
 			ComboBox cbx = GameObject.Find (box).GetComponent<ComboBox>();
 			cbx.ClearItems();
 			List<ComboBoxItem> l = new List<ComboBoxItem>();
-			foreach (Planet p in planets)  {
+			foreach (Planet p in solarSystem.planets)  {
 				ComboBoxItem ci = new ComboBoxItem();
 				ci.Caption = p.pSettings.name;
 				string n = p.pSettings.name;
@@ -149,7 +88,7 @@ public class WorldMC : MonoBehaviour {
 	
 	
 	public void ClearStarSystem() {
-		planets.Clear();
+		solarSystem.planets.Clear();
 		for (int i=0;i<transform.childCount;i++) { 
 			GameObject go = transform.GetChild(i).gameObject;
 			GameObject.Destroy(go);
@@ -159,16 +98,6 @@ public class WorldMC : MonoBehaviour {
 				
 	}
 	
-	public void InitializeFromScene() {
-		
-			for (int i=0;i<transform.childCount;i++) {
-				GameObject go = transform.GetChild(i).gameObject;
-				Planet p = new Planet(go.GetComponent<PlanetSettings>(), go.GetComponent<CloudSettings>());
-				p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), sphere);
-				planets.Add (p);
-			}
-			
-	}
 
 	private string GetScreenshotFilename() {
 			string OutputDir = Application.dataPath + "/../";
@@ -214,30 +143,6 @@ public class WorldMC : MonoBehaviour {
 		File.WriteAllBytes( file , bytes);
 	
 	}
-			
-//	#if UNITY_STANDALONE
-		
-	public void LoadFromFile() {
-		if (ThreadQueue.currentThreads.Count != 0 || ThreadQueue.threadQueue.Count!=0)
-			return;
-		//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
-		string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
-//		RenderSettings.extraText = file;
-		if (!System.IO.File.Exists(file)) {
-			RenderSettings.extraText = ("ERROR: Could not find file :'" + file + "'");
-			return;
-		}
-				
-		string xml = System.IO.File.ReadAllText(file);
-//			RenderSettings.extraText += "\n" + xml;
-			//		Debug.Log (xml);
-		LoadWorld(xml, false, false);
-		szWorld.IterateCamera();
-		space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-		space.hdr = szWorld.sun_intensity;
-	}
-	
-//	#endif	
 	void CreateConfig(string fname) {
 		
 		SerializedPlanet p = new SerializedPlanet();
@@ -276,10 +181,7 @@ public class WorldMC : MonoBehaviour {
 	public void LoadXmlFile() {
 			string xml = GameObject.Find ("XMLText").GetComponent<Text>().text;
 			GameObject.Find ("XMLText").GetComponent<Text>().text = " ";
-			LoadWorld(xml, false,false);
-			szWorld.IterateCamera();
-			space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-			space.hdr = szWorld.sun_intensity;
+			LoadXmlFile(xml);
 	}
 	#endif
 		
@@ -312,22 +214,19 @@ public class WorldMC : MonoBehaviour {
 		string[] cmd = Util.GetOSXCommandParams();
 		if (cmd.Length>1)  {
 			if (cmd[1]!="")
-			LoadWorld(Application.dataPath + "/../" + cmd[1], true, true);
+			solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true, this);
 		}
 		
 //		LoadWorld("Assets/Planet/Resources/system1.xml", true);
 		szWorld.IterateCamera();
-		space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-		space.hdr = szWorld.sun_intensity;
+			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
+			solarSystem.space.hdr = szWorld.sun_intensity;
 			
 	}
 	
 	#endif
 	
-	Texture2D tx_background, tx_load;
-	int load_percent;
-	bool hasScene = false;
-	
+
 	
 	void OnGUI () {
 	
@@ -349,7 +248,8 @@ public class WorldMC : MonoBehaviour {
 			return;
 		if (load_percent==100)
 			return;
-			
+
+			return;	
 	//	return;
 		GUI.DrawTexture( new Rect(0,0,Screen.width, Screen.height), tx_background);
 		float h = 0.08f;
@@ -360,23 +260,17 @@ public class WorldMC : MonoBehaviour {
 		GUI.Label(new Rect(Screen.width/2 - 40,(int)(Screen.height*(2/3f)), 200,200 ), RenderSettings.generatingText);	
 	}
 	
-	void Start () {
-		
-		canvas = GameObject.Find ("Canvas");
-		spaceMaterial = (Material)Resources.Load("SpaceMaterial");	
-		groundMaterial = (Material)Resources.Load("GroundMaterial");			
-		RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
-		RenderSettings.sizeVBO = m_gridSize;
-		RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
+	public override void Start () {
+
+		base.Start();
 		slider = GameObject.Find ("Slider");
+
 		if (slider!=null)
 			slider.SetActive(false);
 		
 //		CreateConfig("system1.xml");
 //		LoadWorld("system1.xml", true);
 //		szWorld.IterateCamera();
-		PlanetType.Initialize();
-		space = new SpaceAtmosphere(spaceMaterial, sun, Color.white, 0.1f);
 
 		#if UNITY_STANDALONE
 			LoadCommandLineXML();
@@ -388,126 +282,31 @@ public class WorldMC : MonoBehaviour {
 			
 */		
 		// FOCUS som er problemet
-		Application.runInBackground = true;
 	}
 	
-	#if UNITY_EDITOR
-	[MenuItem("GameObject/LemonSpawn/Planet")]		
-	static void CreatePlanet () {
-		GameObject p = new GameObject("Planet");
-		if (Selection.activeGameObject != null)
-			p.transform.parent = Selection.activeGameObject.transform;
-		p.AddComponent<PlanetSettings>();		
-//		p.AddComponent<CloudSettings>();		
-	}
-	#endif	
-	
-	void findClosestPlanet() {
-		if (planets.Count>0)
-			planet = planets[0];
-			
-		float min = 1E10f;
-		foreach (Planet p in planets) {
-			float l = (p.pSettings.gameObject.transform.position).magnitude;
-			if (l<min) {
-				planet = p;
-				min = l;
-			}
-		}		
-		
-	}
-	
-	
-	
+
 	void setSun() {
 //		if (World.WorldCamera
 		if (sun==null)
 			return;
 		sun.transform.rotation = Quaternion.FromToRotation(Vector3.forward, World.WorldCamera.toVectorf().normalized);
-		sun.GetComponent<Light>().color = space.color;
+		sun.GetComponent<Light>().color = solarSystem.space.color;
 	}
 	
 	// Update is called once per frame
 	
-	public void UpdateWorldCamera() {
-		GameObject cam = GameObject.Find("Camera");
-			
-		World.WorldCamera = cam.GetComponent<SpaceCamera>().getPos();//  cam.transform.position;	
-	}
-	private bool modifier = false;
-	private bool ctrlModifier = false;
-		
 	private void UpdateSlider() {
 	
 		
 	
 	}	
 		
-	void Update () {
-		setSun();
-		if (space!=null)			
-			space.Update();
-		
-			
-					
-		UpdateWorldCamera();		
-//		Debug.Log (WorldCamera.toVectorf());
-	//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
-			                 
-		findClosestPlanet();
-		Camera c = GameObject.Find ("Camera").GetComponent<Camera>();
-		
-		//Debug.Log (planet.pSettings.name);
-		
-		if (planet!=null)
-			planet.ConstrainCameraExterior();
-		
-		if (Input.GetKey(KeyCode.Escape)) {
-			Application.Quit();
-		}
-		float s = 0.35f;
-		if (Input.GetKey (KeyCode.Alpha9))
-			c.fieldOfView-=1*s;
-		if (Input.GetKey (KeyCode.Alpha0))
-			c.fieldOfView+=1*s;
-
-		if (Input.GetKeyDown (KeyCode.LeftShift)) 
-				modifier = true;
-		if (Input.GetKeyUp (KeyCode.LeftShift)) 
-				modifier = false;
-		if (Input.GetKeyDown (KeyCode.LeftControl)) 
-				ctrlModifier = true;
-		if (Input.GetKeyUp (KeyCode.LeftControl)) 
-				ctrlModifier = false;
-		if (modifier && ctrlModifier)
-			{
-				if (Input.GetKeyUp(KeyCode.Alpha1))
-					RenderSettings.MoveCam = !RenderSettings.MoveCam;
-			
-			if (Input.GetKeyUp(KeyCode.Alpha2))
-				RenderSettings.RenderText = !RenderSettings.RenderText;
-		}
-						
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
-			canvas.SetActive(RenderSettings.RenderMenu);
-		}
-		
-//		ThreadQueue.SortQueue(WorldCamera);
-		if (RenderSettings.UseThreading) 
-			ThreadQueue.MaintainThreadQueue();
+	public override void Update () {
+		base.Update();
 			
 		if (RenderSettings.RenderMenu)
 			Log();
 
-		foreach (Planet p in planets)
-			p.Update();	
-			
-		if (planet == null)
-				return;		
-		if (planet.pSettings.atmosphere!=null)
-				planet.pSettings.atmosphere.setClippingPlanes();	
-			
 		
 	}
 	
@@ -515,18 +314,9 @@ public class WorldMC : MonoBehaviour {
 		SaveScreenshot();
 		Application.Quit();
 	}
-	
-	public static void SetSkybox(int s) {
-		string skybox = "Skybox3";
-		if (s==1) skybox = "Skybox4";
-		if (s==2) skybox = "Skybox5";
-		if (s==3) skybox = "Skybox2";
-		UnityEngine.RenderSettings.skybox = (Material)Resources.Load(skybox);
-			
-	}
-	
-	private int extraTimer = 10;
-	
+
+
+
 	void Log() {
 		string s = "";
 		float val = 1;

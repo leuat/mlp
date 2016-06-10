@@ -183,17 +183,19 @@ namespace LemonSpawn {
 		public void IterateCamera() {
 			GameObject gc = GameObject.Find ("Camera");
 			Camera c = gc.GetComponent<Camera>();
-			
+
 			if (frame>=Cameras.Count)
 				return;
-				
+
+			//Debug.Log("JAH");
+
 			SerializedCamera sc = Cameras[frame];
 			//gc.GetComponent<SpaceCamera>().SetCamera(new Vector3(sc.cam_x, sc.cam_y, sc.cam_z), Quaternion.Euler (new Vector3(sc.rot_x, sc.rot_y, sc.rot_z)));
 			Vector3 up = new Vector3(sc.up_x, sc.up_y, sc.up_z);
 			Vector3 pos = new Vector3(sc.cam_x, sc.cam_y, sc.cam_z);
 			gc.GetComponent<SpaceCamera>().SetLookCamera(pos, sc.getDir(), up);
 			
-			c.fieldOfView = sc.fov;
+			//c.fieldOfView = sc.fov;
 
 			
 			Atmosphere.sunScale = Mathf.Clamp (1.0f/  pos.magnitude, 0.0001f, 1);
@@ -276,7 +278,7 @@ namespace LemonSpawn {
 		public static List<PlanetType> planetTypes = new List<PlanetType>();
 		public static void Initialize() {
 //			planetTypes.Add (new PlanetType(Surface.InitializeTerra, "Terra", new Color(0.2f, 0.3f, 0.1f), new Color(0.3f, 0.2f, 0.1f), new Color(0.1f, 0.3f, 0.3f), new Color(0.1f, 0.2f, 0.2f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
-			planetTypes.Add (new PlanetType(Surface.InitializeTerra, "Terra", new Color(0.3f, 0.5f, 0.2f), new Color(0.3f, 0.2f, 0.1f), new Color(0.4f, 0.4f, 0.1f), new Color(0.1f, 0.1f, 0.0f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
+			planetTypes.Add (new PlanetType(Surface.InitializeNew, "Terra", new Color(0.3f, 0.5f, 0.2f), new Color(0.3f, 0.2f, 0.1f), new Color(0.4f, 0.4f, 0.1f), new Color(0.1f, 0.1f, 0.0f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
 			planetTypes.Add (new PlanetType(Surface.InitializeDesolate, "Desolate", new Color(0.4f, 0.4f, 0.4f), new Color(0.3f, 0.3f, 0.3f), "", new Vector2(100, 10000), new Vector2(0,1000), RenderSettings.minQuadNodeLevel,0.2f));
 			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Cold gas giant", new Color(0.2f, 0.5f, 0.7f), new Color(0.1f, 0.2f, 0.2f), "", new Vector2(12000, 1000000), new Vector2(0,200),1,1));
 			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Hot gas giant", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(50000, 5000000), new Vector2(150,1000),1,1));
@@ -306,12 +308,12 @@ namespace LemonSpawn {
 	public class PlanetSettings : MonoBehaviour {
 		
 		public float outerRadiusScale = 1.05f;
-		public float m_hdrExposure = 1.5f;
-		public float m_ESun = 20.0f; 			// Sun brightness constant
+		public float m_hdrExposure = 3f;
+		public float m_ESun = 10.0f; 			// Sun brightness constant
 		public float radius = 5000;
 		public float temperature = 300f;
 		public float hillyThreshold = 0.99f;
-		public float liquidThreshold = 0.00f;
+		public float liquidThreshold = 0.001f;
 		public float globalTerrainHeightScale = 1.0f;
 		public float globalTerrainScale = 1.0f;
 		public float rotation;
@@ -329,7 +331,7 @@ namespace LemonSpawn {
 		public int seed;
 		public Vector3 localCamera;
 		public Color m_surfaceColor, m_surfaceColor2, m_basinColor, m_basinColor2, m_topColor = Color.white;
-		public Color m_waterColor = new Color(0.1f, 0.2f, 0.5f,1.0f);
+		public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f,1.0f);
 		public PlanetType planetType;
 		public Texture2D clouds;
 		public Atmosphere atmosphere;
@@ -481,11 +483,13 @@ namespace LemonSpawn {
 				
 			}
 			
-			
+			globalTerrainHeightScale = 1.0f;
+			globalTerrainScale = 8;
+
 			if (radius >= 5000) 
 			{
-				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
-				cloudSettings = new CloudSettings();
+				//clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
+				//cloudSettings = new CloudSettings();
 			}
 			if (planetType.Name == "Terra") {
 				sea = new Sea();

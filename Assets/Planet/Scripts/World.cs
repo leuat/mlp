@@ -30,11 +30,13 @@ namespace LemonSpawn {
 		public static bool flatShading = false;
 		public static int maxQuadNodeLevel = 11;
 		public static int minQuadNodeLevel = 2;
+		public static bool cullCamera = false;
 		public static double AU = 1.4960*Mathf.Pow(10,8); // AU in km
 		public static float LOD_Distance = 100000;
         public static float LOD_ProjectionDistance = 10000000;
         public static bool MoveCam = false;
 		public static bool RenderText = false;
+		public static int waterMaxQuadNodeLever = 3;
 		public static float RingProbability = 0.5f;
 		public static float RingRadiusRequirement = 4000;
 		public static int CloudTextureSize = 1024;
@@ -107,6 +109,7 @@ namespace LemonSpawn {
 		public SerializedWorld szWorld;
         public GameObject mainCamera;
         public GameObject effectCamera;
+        public bool initializeFromScene;
         private GameObject closeCamera;
 
         public static Camera MainCamera;
@@ -118,11 +121,20 @@ namespace LemonSpawn {
         public static bool hasScene = false;
         public static SerializedWorld SzWorld;
 
+
+		protected Texture2D tx_background, tx_load;
+		protected int load_percent;
+
         public bool followVehicle = false;
+		protected int extraTimer = 10;
+
 
         public Vector3 vehiclePos, vehicleDir;
 
-        private SolarSystem solarSystem;
+        protected SolarSystem solarSystem;
+		private bool modifier = false;
+		private bool ctrlModifier = false;
+		
 
 
 
@@ -147,8 +159,7 @@ namespace LemonSpawn {
             SpaceCamera.MoveCamera(dp);
 			
 		}
-		
-		
+
 		
 		public static void addBall()
         {
@@ -207,7 +218,14 @@ namespace LemonSpawn {
 			
 			
 		}
-		
+
+		public void setFieldOfView(float fov) {
+			CloseCamera.fieldOfView = fov;
+			MainCamera.fieldOfView = fov;
+			effectCamera.GetComponent<Camera>().fieldOfView = fov; 
+
+		}
+
 		
 		public void SaveScreenshot() {
 			Camera camera = GameObject.Find ("Camera").GetComponent<Camera>();
@@ -236,6 +254,10 @@ namespace LemonSpawn {
 
 
 
+		public void setWorld(SerializedWorld sz) {
+			szWorld = sz;
+		}
+
 		public void LoadFromFile() {
 			if (ThreadQueue.currentThreads.Count != 0 || ThreadQueue.threadQueue.Count!=0)
 				return;
@@ -250,7 +272,7 @@ namespace LemonSpawn {
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
-			solarSystem.LoadWorld(xml, false, false);
+			solarSystem.LoadWorld(xml, false, false, this);
 			szWorld.IterateCamera();
 			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
@@ -292,10 +314,8 @@ namespace LemonSpawn {
 		
 		#if UNITY_STANDALONE
 		
-		public void LoadXmlFile() {
-			string xml = GameObject.Find ("XMLText").GetComponent<Text>().text;
-			GameObject.Find ("XMLText").GetComponent<Text>().text = " ";
-            solarSystem.LoadWorld(xml, false,false);
+		public void LoadXmlFile(string filename) {
+            solarSystem.LoadWorld(filename, false,false, this);
 			szWorld.IterateCamera();
             solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
@@ -343,9 +363,7 @@ namespace LemonSpawn {
 */		
 		#endif
 		
-		Texture2D tx_background, tx_load;
-		int load_percent;
-		
+
 		
 		void OnGUI () {
 			
@@ -387,16 +405,15 @@ namespace LemonSpawn {
             closeCamera = new GameObject("CloseCamera");
             CloseCamera = closeCamera.AddComponent<Camera>();
             CloseCamera.clearFlags = CameraClearFlags.Depth;
-            CloseCamera.fieldOfView = MainCamera.fieldOfView;
             CloseCamera.nearClipPlane = 2;
             CloseCamera.farClipPlane = 200000;
             CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
-
-            effectCamera.GetComponent<Camera>().fieldOfView = MainCamera.fieldOfView; 
+			setFieldOfView(MainCamera.fieldOfView);
 
         }
 
-        void Start () {
+
+        public virtual void Start () {
 
             solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 
@@ -427,7 +444,8 @@ namespace LemonSpawn {
 			//		LoadWorld("system1.xml", true);
 			//		szWorld.IterateCamera();
 			PlanetType.Initialize();
-			solarSystem.InitializeFromScene();
+			if (initializeFromScene)
+				solarSystem.InitializeFromScene();
 			Application.runInBackground = true;
 			
 		}
@@ -454,41 +472,37 @@ namespace LemonSpawn {
 		public void UpdateWorldCamera() {
 			
 			WorldCamera = mainCamera.GetComponent<SpaceCamera>().getPos();//  cam.transform.position;
+			closeCamera.transform.rotation = mainCamera.transform.rotation;
+            effectCamera.transform.rotation = mainCamera.transform.rotation;
+
 		}
-		private bool modifier = false;
-		private bool ctrlModifier = false;
-		
 		private void UpdateSlider() {
 			
 			
 			
 		}	
 		
-		void Update () {
+		public virtual void Update () {
+			UpdateWorldCamera();		
             solarSystem.Update();			
 			
-            closeCamera.transform.rotation = mainCamera.transform.rotation;
-            effectCamera.transform.rotation = mainCamera.transform.rotation;
 
-
-            UpdateWorldCamera();		
 			//		Debug.Log (WorldCamera.toVectorf());
 			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
 			
 			
 			//Debug.Log (planet.pSettings.name);
-			
-			
+
 			if (Input.GetKey(KeyCode.Escape)) {
 				Application.Quit();
 			}
 			float s = 0.35f;
 			if (Input.GetKey (KeyCode.Alpha9)) { 
-				MainCamera.fieldOfView-=1*s;
+				//MainCamera.fieldOfView-=1*s;
             }
             if (Input.GetKey(KeyCode.Alpha0))
             {
-                MainCamera.fieldOfView += 1 * s;
+                //MainCamera.fieldOfView += 1 * s;
             }
 
             if (Input.GetKeyUp(KeyCode.B))
@@ -559,8 +573,7 @@ namespace LemonSpawn {
 		}
 		
 		
-		private int extraTimer = 10;
-		
+
 		void Log() {
 			string s = "";
 			float val = 1;
