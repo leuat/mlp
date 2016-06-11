@@ -9,8 +9,8 @@ public class CloudSettings { //: MonoBehaviour {
 	public float LS_CloudTimeScale = 5;
 	public float LS_CloudScale = 4;
 	public float LS_CloudScattering = 0.75f;
-	public float LS_CloudIntensity = 5;
-	public float LS_CloudSharpness = 1.45f;
+	public float LS_CloudIntensity = 6;
+	public float LS_CloudSharpness = 1.35f;
 	public float LS_CloudThickness = 0.7f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;

@@ -52,7 +52,7 @@ Shader "LemonSpawn/Sky"
 							col = 1.0 - exp(col * -fHdrExposure);
 							float a = pow(col.b,2);
 
-							return float4(col, a +1.0);
+							return float4(col, a);
 							}
 
 

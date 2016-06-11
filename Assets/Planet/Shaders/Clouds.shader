@@ -5,7 +5,7 @@
 	}
 	SubShader {
 //	    Tags {"Queue"="Transparent-1" "IgnoreProjector"="True" "RenderType"="Transparent"}
-	    Tags {"Queue"="Transparent+1100" "IgnoreProjector"="True" "RenderType"="Transparent"}
+	    Tags {"Queue"="Transparent+1105" "IgnoreProjector"="True" "RenderType"="Transparent"}
         LOD 400
 
 
@@ -302,10 +302,11 @@
 				col = 0;
 				
 			}
-		
+			
 			c.rgb=  (t*albedoColor + (1-t)*m.rgb*ls_cloudcolor)*NL*globalLight + col;
-			t = 0.2;
+			t = 0.35;
 			c.a = 0.5*clamp(5*ls_cloudthickness*pow(t*x + (1-t)*m.r,2)*dist,0,1);
+
 //			c.rgb = col;
 //			c.a = 1;
 			return c;

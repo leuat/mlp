@@ -121,12 +121,14 @@ public class EnvironmentType
                     };
 
             environmentTypes.Add(new EnvironmentType("LTree1", std));
-//			environmentTypes.Add(new EnvironmentType("MeatTree", std));
-	//		environmentTypes.Add(new EnvironmentType("Horetre", std));
-/*            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
-            environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
-            environmentTypes.Add(new EnvironmentType("baum_l2_m", std));
-            */
+//            environmentTypes.Add(new EnvironmentType("PSystem", std));
+
+            //			environmentTypes.Add(new EnvironmentType("MeatTree", std));
+            //		environmentTypes.Add(new EnvironmentType("Horetre", std));
+            /*            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
+                        environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
+                        environmentTypes.Add(new EnvironmentType("baum_l2_m", std));
+                        */
             maxCount = planetSettings.environmentDensity;
 
         }
@@ -161,7 +163,7 @@ public class EnvironmentType
 
                 pos = planetSettings.localCamera + sphere;
                 pos = pos.normalized;
-                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + planetSettings.surface.GetHeight(pos, 0));
+                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f)*planetSettings.surface.GetHeight(pos, 0));
 
 
                 float dist = (planetSettings.localCamera - realP).magnitude;
