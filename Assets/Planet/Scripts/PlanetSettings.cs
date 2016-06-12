@@ -353,7 +353,9 @@ namespace LemonSpawn {
 		public float atmosphereHeight = 1.025f;
 		public bool hasClouds = false;
 		public bool hasSea = false;
-		public Sea sea;
+        public bool hasVolumetricClouds = false;
+        public bool hasEnvironment = false;
+        public Sea sea;
 
         public Plane[] cameraPlanes;
 

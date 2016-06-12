@@ -8,6 +8,7 @@ Shader "LemonSpawn/Sky"
 		{
 
 			Cull Front
+			Zwrite off
 			//			Blend SrcAlpha OneMinusSrcAlpha
 						Blend One One
 						CGPROGRAM

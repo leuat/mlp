@@ -430,7 +430,7 @@ namespace LemonSpawn {
 		public GameObject Realise(bool castShadows) {
 			//mesh.FacesFromVertices();
 			mesh.createMesh();
-            //mesh.mesh.RecalculateNormals();
+            mesh.mesh.RecalculateNormals();
 
 			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			
@@ -448,7 +448,7 @@ namespace LemonSpawn {
 			
 				Vector3 v = getVertex(x, y);
 				Vector3 n = getNormal(x, y)*-1;
-				Vector3 t = Vector3.up;//-(getVertex(j,y) - v).normalized;
+				Vector3 t = (getVertex(x+1,y) - v).normalized;
 				int idx = -1;
 				
 				if (vertexTable.ContainsKey(VecToInt(x,y)))

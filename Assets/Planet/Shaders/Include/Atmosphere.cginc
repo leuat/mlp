@@ -241,10 +241,14 @@ void getGroundAtmosphere(float4 vertex, out float3 c0, out float3 c1) {
 	float3 tmp;
 	//float4 nv = v.vertex;//float4(normalize(v.vertex)*(fInnerRadius+100));
 						 //	float4 nv = float4(normalize(v.vertex)*(fInnerRadius+clamp(fCameraHeight,0,200)));
-	if (fCameraHeight > fOuterRadius)
+	if (fCameraHeight > fOuterRadius) {
 		AtmFromSpace(vertex, c0, c1);
-	else
+		//c0 = float3(0, 1, 0);
+	}
+	else {
 		AtmFromGround(vertex, c0, c1);
+		//c0 = float3(1, 0, 0);
+	}
 
 }
 
@@ -280,14 +284,14 @@ float3 mixHeight(float3 c1, float3 c2, float spread, float center, float val) {
 	return c1*a + c2*(1 - a);
 }
 
-float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp) {
-	//return  (atmosphereDensity*2*c0 + (1.0*color*clamp(1-atmosphereDensity,0,1) + atmosphereDensity*0.1*c1);
 
+float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScale = 1) {
+	//return  (atmosphereDensity*2*c0 + (1.0*color*clamp(1-atmosphereDensity,0,1) + atmosphereDensity*0.1*c1);
 
 	float3 atm = 2 * c0 + 0.2*c1;
 
 	float dist = length(_WorldSpaceCameraPos - wp);
-	float scale = clamp(sqrt(dist/fInnerRadius*35.0), 0, 1);
+	float scale = clamp(sqrt(dist/fInnerRadius*35.0*distScale), 0, 1);
 
 //	return 1.4*atm;
 	//	return 2*atm * color;

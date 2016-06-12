@@ -43,6 +43,11 @@ public class EnvironmentType
     {
         public string name;
         public GameObject prefab;
+        public float heightAdd = 0;
+        public float heightMul = 1;
+        public float normalThreshold = 0.98f;
+        public float scale = 0.1f;
+        public float maxDist = 500;
 
         EnvironmentMaterialReplace[] replaceList;
 
@@ -51,6 +56,18 @@ public class EnvironmentType
             name = pfName.Trim();
             prefab = (GameObject)Resources.Load(pfName);
             replaceList = lst;
+        }
+
+        public EnvironmentType(string pfName, EnvironmentMaterialReplace[] lst, float hAdd, float hMul, float nThreshold, float s, float mdist)
+        {
+            name = pfName.Trim();
+            prefab = (GameObject)Resources.Load(pfName);
+            replaceList = lst;
+            heightMul = hMul;
+            heightAdd = hAdd;
+            normalThreshold = nThreshold;
+            scale = s;
+            maxDist = mdist;
         }
 
         public EnvironmentMaterialReplace findReplace(string materialName)
@@ -89,18 +106,41 @@ public class EnvironmentType
 
 
 
+    public class EnvironmentObject
+    {
+        public GameObject go;
+        public EnvironmentType et;
+        public List<Material> materials = new List<Material>();
+        public EnvironmentObject(GameObject g, EnvironmentType e)
+        {
+            go = g;
+            et = e;
+        }
+
+    }
+
     public class Environment
     {
-        private PlanetSettings planetSettings;
+        protected PlanetSettings planetSettings;
 
-        private int maxCount = 250;
-        private float maxDist = 500;
+        protected int maxCount = 250;
+        protected float maxDist;
+        protected List<EnvironmentObject> objects = new List<EnvironmentObject>();
+        protected List<EnvironmentObject> removeObjects = new List<EnvironmentObject>();
+        protected List<EnvironmentType> environmentTypes = new List<EnvironmentType>();
 
-        private List<GameObject> objects = new List<GameObject>();
-        private List<GameObject> removeObjects = new List<GameObject>();
-        private List<EnvironmentType> environmentTypes = new List<EnvironmentType>();
+        public Environment()
+        {
 
+        }
 
+        protected void calculateMaxMaxDist()
+        {
+            maxDist = 0;
+            foreach (EnvironmentType et in environmentTypes)
+                maxDist = Mathf.Max(et.maxDist, maxDist);
+
+        }
 
         public Environment(PlanetSettings ps)
         {
@@ -123,25 +163,38 @@ public class EnvironmentType
             environmentTypes.Add(new EnvironmentType("LTree1", std));
 //            environmentTypes.Add(new EnvironmentType("PSystem", std));
 
-            //			environmentTypes.Add(new EnvironmentType("MeatTree", std));
-            //		environmentTypes.Add(new EnvironmentType("Horetre", std));
+            environmentTypes.Add(new EnvironmentType("MeatTree", std));
+            environmentTypes.Add(new EnvironmentType("Horetre", std));
             /*            environmentTypes.Add(new EnvironmentType("baum_pine_m", std));
                         environmentTypes.Add(new EnvironmentType("baum_l1_m", std));
                         environmentTypes.Add(new EnvironmentType("baum_l2_m", std));
                         */
             maxCount = planetSettings.environmentDensity;
-
+            calculateMaxMaxDist();
         }
 
-        public void initializeAllMaterial(Component[] components, EnvironmentType et)
+
+        public void initializeAllMaterial(Component[] components, EnvironmentType et, List<Material> materials)
         {
             foreach (Component c in components)
             {
                 MeshRenderer mr = c.GetComponent<MeshRenderer>();
                 if (mr != null)
+                {
                     mr.materials = et.Replace(mr.materials, planetSettings);
+                    foreach (Material m in mr.materials)
+                        materials.Add(m);
+                }
             }
         }
+
+        public void UpdateMaterials() { 
+            foreach (EnvironmentObject eo in objects) 
+                foreach (Material m in eo.materials)
+                    planetSettings.atmosphere.InitAtmosphereMaterial(m);
+
+        }
+
 
 
         public void insertRandomObjects(int N, int max)
@@ -152,44 +205,54 @@ public class EnvironmentType
 
             if ((planetSettings.localCamera - camSurface).magnitude > maxDist)
                 return;
+
             int cnt = 0;
             for (int i = 0; i < N; i++)
             {
+                EnvironmentType et = environmentTypes[Util.rnd.Next() % environmentTypes.Count];
 
-                float w = 2 * maxDist;
+                float w = 2 * et.maxDist;
 
                 Vector3 sphere = new Vector3((float)Util.rnd.NextDouble() * w - w / 2, (float)Util.rnd.NextDouble() * w - w / 2, (float)Util.rnd.NextDouble() * w - w / 2);
                 sphere = sphere.normalized * w * 0.9f;
 
                 pos = planetSettings.localCamera + sphere;
                 pos = pos.normalized;
-                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f)*planetSettings.surface.GetHeight(pos, 0));
+                float height = planetSettings.surface.GetHeight(pos, 0);
+                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f) * height);
 
 
                 float dist = (planetSettings.localCamera - realP).magnitude;
                 //                if (dist < maxDist)
                 {
                     Vector3 normal = planetSettings.surface.GetNormal(pos, 0, planetSettings.getPlanetSize());
-                    if (Vector3.Dot(normal, pos) < 0.98)
+                    if (Vector3.Dot(normal, pos) < et.normalThreshold)
                         continue;
 
-                    EnvironmentType et = environmentTypes[Util.rnd.Next()%environmentTypes.Count];
+                    float hadd = et.heightAdd / planetSettings.radius;
+                    float h = (float)(hadd * 0.75 + Util.rnd.NextDouble() * 0.5 * hadd);
+
+                    realP = pos * planetSettings.getPlanetSize() * (1+ h + (et.heightMul) * height);
+
+
 
                     GameObject go = (GameObject)GameObject.Instantiate(et.prefab, realP - planetSettings.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
                     //                go.transform.rotation = Quaternion.FromToRotation(Vector3.up, pos) * go.transform.rotation;
                     go.transform.RotateAround(pos, Util.rnd.Next() % 360);
                     GameObject.Destroy(go.GetComponent<Rigidbody>());
-                    go.transform.localScale = Vector3.one * 0.4f * (float)(0.8 + (Util.rnd.NextDouble() * 0.4))*0.4f;
+                    go.transform.localScale = Vector3.one * (float)(0.8 + (Util.rnd.NextDouble() * 0.4))*et.scale;
                     go.transform.parent = planetSettings.transform;
                     Util.tagAll(go, "Normal", 10);
 
-                    initializeAllMaterial(go.GetComponents<Component>(), et);
+                    EnvironmentObject eo = new EnvironmentObject(go, et);
+                    Renderer rr = go.GetComponent<Renderer>();
+                    if (rr)
+                        eo.materials.Add(rr.material);
+
+                    initializeAllMaterial(go.GetComponents<Component>(), et, eo.materials);
 
 
-
-
-
-                    objects.Add(go);
+                    objects.Add(eo);
                     cnt++;
                     if (cnt > max)
                         return;
@@ -203,30 +266,29 @@ public class EnvironmentType
         public void RemoveObjects()
         {
             
-
-            foreach (GameObject go in objects)
+            
+            foreach (EnvironmentObject eo in objects)
             {
-                if ((go.transform.localPosition - planetSettings.localCamera).magnitude > maxDist)
+                if ((eo.go.transform.localPosition - planetSettings.localCamera).magnitude > eo.et.maxDist)
                 {
-                    removeObjects.Add(go);
+                    removeObjects.Add(eo);
                }
             }
 
-            foreach(GameObject go in removeObjects)
+            foreach(EnvironmentObject eo in removeObjects)
             {
-                objects.Remove(go);
-                GameObject.DestroyImmediate(go);
+                objects.Remove(eo);
+                GameObject.DestroyImmediate(eo.go);
             }
             removeObjects.Clear();
         }
-
-        
 
         public void Update()
         {
 //            if (Util.rnd.NextDouble()>0.98)
             insertRandomObjects(maxCount - objects.Count,50);
             RemoveObjects();
+            UpdateMaterials();
 
 //            foreach (GameObject go in objects)
   //              Debug.DrawLine(go.transform.position + planetSettings.localCamera, go.transform.position + planetSettings.localCamera + go.transform.forward, Color.green, 0.001f);

@@ -427,7 +427,7 @@ namespace OceanSurfaceEffects
 
 			Nullable<float> time  = o as Nullable<float>;
 			
-			InitWaveSpectrum(time.Value);
+			InitWaveSpectrum(time.Value*0.25f);
 			
 			m_bufferIdx = m_fourier.PeformFFT(0, m_fourierBuffer0, m_fourierBuffer1, m_fourierBuffer2);
 

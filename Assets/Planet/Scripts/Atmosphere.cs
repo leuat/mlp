@@ -88,6 +88,7 @@ public class Atmosphere
         }
 
 
+
         public void InitializeParameters()
         {
             m_waveLength = planetSettings.m_atmosphereWavelengths;

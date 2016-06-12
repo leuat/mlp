@@ -20,6 +20,7 @@ namespace LemonSpawn
         public GameObject infoTextGO;
         public static Color color = new Color(1f, 1f, 0.8f, 0.6f);
         public Environment environment;
+        public VolumetricClouds volClouds;
 
 
         
@@ -68,8 +69,10 @@ namespace LemonSpawn
                 clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
-
-            environment = new Environment(pSettings);
+            if (pSettings.hasEnvironment)
+                environment = new Environment(pSettings);
+            if (pSettings.hasVolumetricClouds)
+                volClouds = new VolumetricClouds(pSettings);
 
         }
 
@@ -232,6 +235,9 @@ namespace LemonSpawn
 
             if (environment != null)
                 environment.Update();
+
+            if (volClouds != null)
+                volClouds.Update();
 
         }
 
