@@ -364,6 +364,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									//	hColor = float3(0.2, 0.2 ,0.2);
 									float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
 
+
 									float fCameraHeight = length(v3CameraPos);
 									float camH = clamp(fCameraHeight - fInnerRadius, 0, 1);
 									float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;

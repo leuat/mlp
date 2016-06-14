@@ -60,6 +60,12 @@ public class Clouds : Atmosphere {
 
             m_skyMaterial = m_cloudSettings.material;
             InitAtmosphereMaterial(m_skyMaterial);
+
+            m_innerRadius = planetSettings.radius;
+            m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
+            m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
+            m_radius = m_outerRadius;
+
             InitializeSkyMesh();
 
 

@@ -95,7 +95,7 @@
 	}
 
 
-	inline float getNoise(float3 pos) {
+	inline float getNoiseOld(float3 pos) {
 		float3 p = (pos-v3Translate) / fInnerRadius;
 		float ss = 0.9;
 		float n = noise(p*13);
@@ -113,6 +113,19 @@
 //		n /= 2;
 		return clamp(n - ss,0,1)*0.02;
 	}
+
+	inline float getNoise(float3 pos) {
+		float3 p = (pos - v3Translate) / fInnerRadius;
+		float ss = 0.9;
+		float n = noise(p * 13);
+		n += noise(p*22.324)*0.5;
+		n += noise(p*52.324)*0.45;
+		n += noise(p*152.324)*0.25;
+		n += noise(p*312.324)*0.15;
+		n += noise(p*552.324)*0.10;
+		return clamp(n - ss, 0, 1)*0.02;
+	}
+
 
 	float getHeightFromPosition(float3 p) {
 		return (length(p - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
@@ -137,13 +150,15 @@
 
 			if (h > hSpan.x && h < hSpan.y) {
 				intensity += (getNoise(pos));
-//				if (intensity > 0.2)
-	//				sl = max(sl*0.5, stepLength*0.2);
+				if (intensity > 0.05)
+					sl = stepLength*0.5;
+				else 
+					sl = stepLength*2;
 			}
 			if (h > hSpan.y)
 				done = true;
 
-			if (intensity > 0.6) {
+			if (intensity > 0.65) {
 				done = true;
 			}
 			//intensity += 0.01;
@@ -159,14 +174,16 @@
 		
 		if (intensity>0) 
 		{
-			float clear = 1.1;
+			float clear = 1.05;
 			pos += lDir*stepLength * 5;//*0.01*i*i;
 
-			for (int i = 0; i < 10; i++) {
-				pos += lDir*stepLength * 10;//*0.01*i*i;
+			float s = 2;
+
+			for (int i = 0; i < 10*s; i++) {
+				pos += lDir*stepLength * 10/s;//*0.01*i*i;
 				float h = getHeightFromPosition(pos);
 				if (h > hSpan.x && h < hSpan.y) {
-					clear -= getNoise(pos)*1.8;
+					clear -= getNoise(pos)*1.5/s;
 				}
 				color = clamp(color*clear, 0, 2);
 			}
@@ -203,6 +220,7 @@
 //	viewDirection *= -1;
 	if (intersectSphere(float4(v3Translate * 0, startRadius), v3CameraPos, viewDirection, 250000, t0, t1)) {
 		float3 pos = _WorldSpaceCameraPos + t1*viewDirection;
+//		c = rayCast(pos, viewDirection, h, clamp(abs(10 * t1*0.005), 2, 250), IN.worldPosition, lightDirection);
 		c = rayCast(pos, viewDirection, h, 10, IN.worldPosition, lightDirection);
 	}
 	else
@@ -210,7 +228,7 @@
 
 
 
-	c.rgb = 1*(groundColor(IN.c0, IN.c1, c.rgb*light*2, IN.worldPosition, 10000.05)) + c.rgb*0.5*light;
+	c.rgb = 1*(groundColor(IN.c0, IN.c1, c.rgb*light, IN.worldPosition, 0.1)) + c.rgb*0.5*light;
 	
 
 	return c;
