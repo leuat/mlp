@@ -21,7 +21,7 @@ namespace LemonSpawn
         public static Color color = new Color(1f, 1f, 0.8f, 0.6f);
         public Environment environment;
         public VolumetricClouds volClouds;
-
+        public RenderedClouds rClouds;
 
         
 
@@ -65,14 +65,19 @@ namespace LemonSpawn
             pSettings.Initialize();
             if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
                 rings = new Rings(pSettings, sun);
-            if (pSettings.cloudSettings != null)
-                clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
+            //if (pSettings.cloudSettings != null)
+            //    clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
             if (pSettings.hasEnvironment)
                 environment = new Environment(pSettings);
             if (pSettings.hasVolumetricClouds)
                 volClouds = new VolumetricClouds(pSettings);
+
+
+            if (pSettings.cloudSettings != null)
+                rClouds = new RenderedClouds(sun, sphere, pSettings, pSettings.cloudSettings);
+
 
         }
 
@@ -225,6 +230,7 @@ namespace LemonSpawn
 
             if (pSettings.atmosphere != null)
                 pSettings.atmosphere.Update();
+                
             if (pSettings.cloudSettings != null)
                 pSettings.cloudSettings.Update();
 
@@ -238,6 +244,9 @@ namespace LemonSpawn
 
             if (volClouds != null)
                 volClouds.Update();
+                
+            if (rClouds != null)
+                rClouds.Update();
 
         }
 

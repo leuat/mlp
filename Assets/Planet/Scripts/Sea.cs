@@ -52,8 +52,8 @@ namespace LemonSpawn {
             m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
             m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
             m_radius = m_outerRadius;
-            initFixedMateriarProperties(false);
-            InitMaterial(m_groundMaterial);
+            initGroundMaterial(false);
+            InitAtmosphereMaterial(m_groundMaterial);
             
             m_groundMaterial.SetVector("waterColor", planetSettings.m_waterColor);
             m_groundMaterial.SetFloat("_Metallic", 0);

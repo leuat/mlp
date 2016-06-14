@@ -258,6 +258,7 @@ MonoBehaviour:
   bumpScale: 1
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   cloudRadius: 1.02
+  renderedCloudRadius: 1.03
   hasRings: 1
   specularity: 0
   ringAmplitude: 1
@@ -782,6 +783,7 @@ MonoBehaviour:
   bumpScale: 0.4
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   cloudRadius: 1.02
+  renderedCloudRadius: 1.03
   hasRings: 1
   specularity: 0.2
   ringAmplitude: 1
@@ -791,11 +793,11 @@ MonoBehaviour:
   ringScale: 1
   ringRadius: {x: 0.25, y: 0.35}
   cloudColor: {x: 1, y: 1, z: 1}
-  atmosphereDensity: 0.95
+  atmosphereDensity: 0.9
   atmosphereHeight: 1.019
-  hasClouds: 0
+  hasClouds: 1
   hasSea: 1
-  hasVolumetricClouds: 1
+  hasVolumetricClouds: 0
   hasEnvironment: 0
 --- !u!4 &1176257414
 Transform:
@@ -2828,7 +2830,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418534933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
@@ -3710,6 +3712,7 @@ MonoBehaviour:
   bumpScale: 0
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   cloudRadius: 0
+  renderedCloudRadius: 1.03
   hasRings: 0
   specularity: 0
   ringAmplitude: 1

@@ -340,7 +340,8 @@ namespace LemonSpawn {
 		public float bumpScale = 1.0f;
 		public Color emissionColor;
 		public float cloudRadius = 1.02f;
-		public bool hasRings;
+        public float renderedCloudRadius = 1.03f;
+        public bool hasRings;
         public float specularity = 0;
 		public float ringAmplitude = 1;
 		public float metallicity = 0;

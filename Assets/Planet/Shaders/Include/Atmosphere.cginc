@@ -27,6 +27,38 @@ float scale(float fCos)
 	return fScaleDepth * exp(-0.00287 + x*(0.459 + x*(3.83 + x*(-6.80 + x*5.25))));
 }
 
+
+
+bool intersectSphere(in float4 sp, in float3 ro, inout float3 rd, in float tm, out float t1, out float t2)
+{
+//	bool flip = false;
+	if (length(sp.xyz - ro) < sp.w) {
+		rd *= -1;
+	//	flip = true;
+	}
+
+	bool  r = false;
+	float3  d = ro - sp.xyz;
+	float b = dot(rd, d);
+	float c = dot(d, d) - sp.w*sp.w;
+	float t = b*b - c;
+
+	if (t > 0.0)
+	{
+			t1 = (-b - sqrt(t));
+			t2 = (-b + sqrt(t));
+		return true;
+	}
+	
+	return false;
+
+
+
+}
+
+
+
+
 void AtmFromGround(float4 vert, out float3 c0, out float3 c1) {
 	float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
 	float fCameraHeight = clamp(length(v3CameraPos), 0, 100000);					// The camera's current height
@@ -128,7 +160,7 @@ void AtmFromSpace(float4 vert, out float3 c0, out float3 c1) {
 		v3SamplePoint += v3SampleRay;
 	}
 
-	c0 = v3FrontColor * (v3InvWavelength * fKrESun + fKmESun);
+	c0 = v3FrontColor *(v3InvWavelength * fKrESun + fKmESun);
 	c1 = v3Attenuate;// + v3InvWavelength;
 
 
@@ -301,5 +333,22 @@ float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScal
 
 }
 
+float iqhash(float n)
+{
+	return frac(sin(n)*43758.5453);
+}
 
+float noise(float3 x)
+{
+	// The noise function returns a value in the range -1.0f -> 1.0f
+	float3 p = floor(x);
+	float3 f = frac(x);
+
+	f = f*f*(3.0 - 2.0*f);
+	float n = p.x + p.y*57.0 + 113.0*p.z;
+	return lerp(lerp(lerp(iqhash(n + 0.0), iqhash(n + 1.0), f.x),
+		lerp(iqhash(n + 57.0), iqhash(n + 58.0), f.x), f.y),
+		lerp(lerp(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
+			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);
+}
 

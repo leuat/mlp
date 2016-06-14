@@ -53,7 +53,7 @@ public class Atmosphere
 	}
 
 
-        public void initFixedMateriarProperties(bool bump)
+        public void initGroundMaterial(bool bump)
         {
             m_groundMaterial.SetColor("middleColor", planetSettings.m_surfaceColor);
             m_groundMaterial.SetColor("middleColor2", planetSettings.m_surfaceColor2);
@@ -117,7 +117,7 @@ public class Atmosphere
 		m_sun = sun;
 		m_groundMaterial = new Material(ground.shader);
 		m_groundMaterial.CopyPropertiesFromMaterial(ground);
-            initFixedMateriarProperties(true);
+        initGroundMaterial(true);
 //			_DETAIL_MULX2		
 		
 		
@@ -129,8 +129,8 @@ public class Atmosphere
 		//m_outerScaleFactor = m_skySphere.transform.localScale.x;
 		m_outerRadius = pSettings.atmosphereHeight* radius;
 		m_radius =m_outerRadius;		
-		InitMaterial(m_groundMaterial);
-		InitMaterial(m_skyMaterial);
+		InitAtmosphereMaterial(m_groundMaterial);
+        InitAtmosphereMaterial(m_skyMaterial);
 		InitializeSkyMesh();
 		
         if (m_sky != null)
@@ -152,10 +152,10 @@ public class Atmosphere
 
 		iscale = 1f;	
 		if (m_groundMaterial!=null)
-			InitMaterial(m_groundMaterial);
+			InitAtmosphereMaterial(m_groundMaterial);
 		iscale = 1;
 		if (m_skyMaterial!=null)
-			InitMaterial(m_skyMaterial);
+            InitAtmosphereMaterial(m_skyMaterial);
 		
 	}
 	
@@ -174,11 +174,10 @@ public class Atmosphere
 
         protected float iscale = 1;
 	
-	protected virtual void InitMaterial(Material mat)
+/*	protected virtual void InitMaterial(Material mat)
 	{
 			if (m_sky == null)
 			return;
-
 
 		localscale = m_sky.transform.parent.localScale.x;
 		//rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
@@ -205,9 +204,10 @@ public class Atmosphere
 		mat.SetFloat("g", m_g);
 		mat.SetFloat("g2", m_g*m_g);
 		mat.SetVector("v3Translate", planetSettings.transform.position);
+        mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
 
-	}
-
+        }
+        */
         public virtual void InitAtmosphereMaterial(Material mat)
         {
 

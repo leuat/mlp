@@ -39,10 +39,11 @@ public class CloudSettings { //: MonoBehaviour {
 	}
 					
 	public void Initialize(Material org, PlanetSettings ps, GameObject sun) {
-		material = new Material(org.shader);
-		material.SetTexture("_MainTex", ps.clouds);
+//		material = new Material(org.shader);
+	//	material.SetTexture("_MainTex", ps.clouds);
 		m_sun = sun;
-		material.SetTexture("_CloudTex", (Texture)Resources.Load ("cloudsTexture2"));
+            material = org;
+		//material.SetTexture("_CloudTex", (Texture)Resources.Load ("cloudsTexture2"));
 			
 //		GenerateSeamless();
 		//	material.SetTexture("_CloudTex", LSCloudTexture);
