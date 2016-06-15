@@ -8,7 +8,8 @@ namespace LemonSpawn {
 public class Clouds : Atmosphere {
 
 	private CloudSettings m_cloudSettings;
-			
+
+
 	public Clouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs) {
 		planetSettings = ps;
 		m_sun = sun;
@@ -41,6 +42,9 @@ public class Clouds : Atmosphere {
     {
 
         private CloudSettings m_cloudSettings;
+
+		public bool toggleClouds = false;
+
 
         public RenderedClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
         {
@@ -80,6 +84,8 @@ public class Clouds : Atmosphere {
 
             m_skyMaterial.SetFloat("sradius", m_radius);
             //   Debug.Log("WHOOO" + m_skyMaterial.name);
+
+            m_skySphere.GetComponent<MeshRenderer>().enabled = toggleClouds;
         }
 
 

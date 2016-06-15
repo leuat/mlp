@@ -273,7 +273,7 @@ public class WorldMC : World {
 //		szWorld.IterateCamera();
 
 		#if UNITY_STANDALONE
-			LoadCommandLineXML();
+		//	LoadCommandLineXML();
 		#endif
 /*			LoadWorld("system1.xml", true,false);
 			szWorld.IterateCamera();

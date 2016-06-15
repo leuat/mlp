@@ -116,7 +116,7 @@
 
 	inline float getNoise(float3 pos) {
 		float3 p = (pos - v3Translate) / fInnerRadius;
-		float ss = 0.9;
+		float ss = 1.2;
 		float n = noise(p * 13);
 		n += noise(p*22.324)*0.5;
 		n += noise(p*52.324)*0.45;

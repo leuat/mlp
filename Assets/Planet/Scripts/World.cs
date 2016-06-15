@@ -535,7 +535,10 @@ namespace LemonSpawn {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
 				canvas.SetActive(RenderSettings.RenderMenu);
 			}
-			
+			if (Input.GetKeyUp (KeyCode.L)) {
+				SolarSystem.planet.rClouds.toggleClouds = !SolarSystem.planet.rClouds.toggleClouds;
+			}
+
             if (SolarSystem.planet!=null)
 	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.localCamera);
     		if (RenderSettings.UseThreading) 
