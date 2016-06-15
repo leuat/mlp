@@ -9,7 +9,7 @@
 		_Pow ("Pow", Range(0,4)) = 1.0
 	}
 SubShader {
-	    Tags {"Queue"="Transparent+101" "IgnoreProjector"="True" "RenderType"="Transparent"}
+	    Tags {"Queue"="Transparent+10001" "IgnoreProjector"="True" "RenderType"="Transparent"}
         LOD 400
 
 
@@ -34,7 +34,6 @@ SubShader {
              #include "UnityCG.cginc"
 			 #include "Include/Atmosphere.cginc" 
 
-
              sampler2D _MainTex;
 			 float4 _Color;		
 			 float _Scale;
@@ -42,7 +41,6 @@ SubShader {
 			 float _Alpha;
 			 float _AlphaSub;
     		 float _Pow;
-			 
 			 
 			 uniform float3 centerPos;
     		
@@ -110,9 +108,9 @@ SubShader {
 
 //			float d = 0.2;
 	//		c.rgb += float3(d, d, d);
-
+		
 			float3 r = c.rgb;
-			c.rgb = groundColor(IN.c0, IN.c1, c.rgb, IN.worldPosition, 0.5);
+			c.rgb = groundColor(IN.c0, IN.c1, c.rgb, IN.worldPosition, 0.45);
 //			c.rgb += 0.3*r;
 			float h = (length(worldSpacePosition.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
 

@@ -29,7 +29,6 @@
 	#pragma target 3.0
 	#pragma fragmentoption ARB_precision_hint_fastest
 
-
 //	#pragma enable_d3d11_debug_symbols
 
 

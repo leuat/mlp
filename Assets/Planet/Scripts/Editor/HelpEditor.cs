@@ -21,7 +21,6 @@ namespace LemonSpawn{
 		public class HelpEditor : EditorWindow
 		{
 				static string helpText = "";
-
 				public static void Create (string ht)
 				{
 						helpText = ht;

@@ -8,7 +8,8 @@ namespace LemonSpawn {
 public class Clouds : Atmosphere {
 
 	private CloudSettings m_cloudSettings;
-			
+
+
 	public Clouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs) {
 		planetSettings = ps;
 		m_sun = sun;
@@ -41,7 +42,10 @@ public class Clouds : Atmosphere {
     {
 
         private CloudSettings m_cloudSettings;
-        public Shader shader;
+
+		public bool toggleClouds = false;
+
+
         public RenderedClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
         {
             planetSettings = ps;

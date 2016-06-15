@@ -394,7 +394,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 
 												c.rgb += UNITY_BRDF_GI(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, occlusion, gi);
 												c.rgb += Emission(i.tex.xy);
-												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld);
+												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0);
 
 												return OutputForward(c, s.alpha);
 											}
