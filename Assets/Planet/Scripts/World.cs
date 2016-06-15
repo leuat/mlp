@@ -416,7 +416,6 @@ namespace LemonSpawn {
         public virtual void Start () {
 
             solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
-
             SzWorld = szWorld;
 
 			canvas = GameObject.Find ("Canvas");
@@ -437,13 +436,14 @@ namespace LemonSpawn {
 				slider.SetActive(false);
 
             MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance*1.1f;			
-			
-			
-			
-			//		CreateConfig("system1.xml");
-			//		LoadWorld("system1.xml", true);
-			//		szWorld.IterateCamera();
-			PlanetType.Initialize();
+            MainCamera.depthTextureMode = DepthTextureMode.Depth;
+
+
+
+            //		CreateConfig("system1.xml");
+            //		LoadWorld("system1.xml", true);
+            //		szWorld.IterateCamera();
+            PlanetType.Initialize();
 			if (initializeFromScene)
 				solarSystem.InitializeFromScene();
 			Application.runInBackground = true;

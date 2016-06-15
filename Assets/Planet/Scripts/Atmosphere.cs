@@ -161,7 +161,7 @@ public class Atmosphere
 	
 	public void setClippingPlanes() {
 		float h = planetSettings.localCamera.magnitude - m_innerRadius;
-		float np = Mathf.Max (Mathf.Min (h*0.01f, 50), 0.01f);
+		float np = Mathf.Max (Mathf.Min (h*0.01f, 50), 0.1f);
             float fp = Mathf.Min(Mathf.Max(h*150, 100000), 200000);
             //		Debug.Log (np);
             //		np = 10f;

@@ -54,6 +54,8 @@ public class Clouds : Atmosphere {
             m_cloudSettings = cs;
             InitializeParameters();
 
+            
+
             m_innerRadius = planetSettings.radius;
             m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
 
@@ -70,7 +72,13 @@ public class Clouds : Atmosphere {
             m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
             m_radius = m_outerRadius;
 
-            InitializeSkyMesh();
+            //            InitializeSkyMesh();
+            m_sky = GameObject.Find("cloudBackgroundSphere");
+            if (m_sky == null)
+                return;
+//            m_skySphere = new GameObject("Atmosphere Sky");
+
+            m_sky.GetComponent<Renderer>().material = m_skyMaterial;
 
 
             m_sky.transform.Rotate(new Vector3(90, 0, 0));
