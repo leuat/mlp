@@ -55,7 +55,7 @@ namespace LemonSpawn {
 		public static string generatingText = "Downloading data from satellite...";
         public static float vehicleFollowHeight = 10;
         public static float vehicleFollowDistance = 10;
-
+        public static bool toggleClouds = false;
 
     }
 
@@ -534,6 +534,9 @@ namespace LemonSpawn {
 			if (Input.GetKeyUp (KeyCode.Space)) {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
 				canvas.SetActive(RenderSettings.RenderMenu);
+			}
+			if (Input.GetKeyUp (KeyCode.L)) {
+				RenderSettings.toggleClouds = !RenderSettings.toggleClouds;
 			}
 			
             if (SolarSystem.planet!=null)
