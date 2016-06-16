@@ -410,6 +410,10 @@ namespace LemonSpawn {
             CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
 			setFieldOfView(MainCamera.fieldOfView);
 
+            MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance * 1.1f;
+            MainCamera.depthTextureMode = DepthTextureMode.Depth;
+            CloseCamera.depthTextureMode = DepthTextureMode.Depth;
+
         }
 
 
@@ -435,8 +439,6 @@ namespace LemonSpawn {
 			if (slider!=null)
 				slider.SetActive(false);
 
-            MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance*1.1f;			
-            MainCamera.depthTextureMode = DepthTextureMode.Depth;
 
 
 
@@ -538,7 +540,6 @@ namespace LemonSpawn {
 			if (Input.GetKeyUp (KeyCode.L)) {
 				RenderSettings.toggleClouds = !RenderSettings.toggleClouds;
 			}
-			
             if (SolarSystem.planet!=null)
 	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.localCamera);
     		if (RenderSettings.UseThreading) 

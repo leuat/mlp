@@ -83,7 +83,7 @@ namespace LemonSpawn
             float min = 1E10f;
             foreach (Planet p in planets)
             {
-                float l = (p.pSettings.gameObject.transform.position).magnitude;
+                float l = (p.pSettings.gameObject.transform.position).magnitude - p.pSettings.radius;
                 if (l < min)
                 {
                     planet = p;

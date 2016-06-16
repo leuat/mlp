@@ -3,7 +3,7 @@ Shader "LemonSpawn/Sky"
 {
 	SubShader
 	{
-		Tags { "RenderType" = "Transparent"  "Queue" = "Transparent+1000" }
+		Tags { "RenderType" = "Transparent"  "Queue" = "Transparent+1" }
 		Pass
 		{
 
@@ -28,7 +28,6 @@ Shader "LemonSpawn/Sky"
 						};
 
 
-
 						v2f vert(appdata_base v)
 						{
 							v2f OUT;
@@ -43,17 +42,8 @@ Shader "LemonSpawn/Sky"
 
 						half4 frag(v2f IN) : COLOR
 						{
-							float fCos = dot(v3LightPos, IN.t0) / length(IN.t0);
-							float fCos2 = fCos *fCos;
-							float3 col = getRayleighPhase(fCos2) * IN.c0 + getMiePhase(fCos, fCos2, g, g2)*IN.c1;
-							//Adjust color from HDR
-			//				col = IN.c0;
-							float d = 0.1;
-							col = pow(col, 0.5) - float3(d, d, d);
-							col = 1.0 - exp(col * -fHdrExposure);
-							float a = pow(col.b,2);
 
-							return float4(col, a);
+							return getSkyColor(IN.c0, IN.c1, IN.t0);
 							}
 
 

@@ -27,7 +27,15 @@ float scale(float fCos)
 	return fScaleDepth * exp(-0.00287 + x*(0.459 + x*(3.83 + x*(-6.80 + x*5.25))));
 }
 
+// Calculates the Rayleigh phase function
+float getRayleighPhase(float fCos2)
+{
+	return 0.75 + 0.75*fCos2;
+}
 
+float2 pos2uv(in float3 p) {
+	return float2(0.5 + atan2(p.z, p.x) / (2 * 3.14159), 0.5 - asin(p.y)/3.1459);
+}
 
 bool intersectSphere(in float4 sp, in float3 ro, inout float3 rd, in float tm, out float t1, out float t2)
 {
@@ -64,13 +72,16 @@ inline void swap(inout float a, inout float b) {
 
 
 
-void AtmFromGround(float4 vert, out float3 c0, out float3 c1) {
-	float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
-	float fCameraHeight = clamp(length(v3CameraPos), 0, 100000);					// The camera's current height
-																					//float fCameraHeight2 = fCameraHeight*fCameraHeight;		// fCameraHeight^2
 
+
+void AtmFromGround(float4 vert, out float3 c0, out float3 c1, float3 camPos) {
+	float3 v3CameraPos = camPos - v3Translate;	// The camera's current position
+																					//float fCameraHeight2 = fCameraHeight*fCameraHeight;		// fCameraHeight^2
 																					// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
 	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
+//	float fCameraHeight = clamp(length(v3CameraPos), length(v3Pos) , 1000000);					// The camera's current height
+	float fCameraHeight = clamp(length(v3CameraPos), 0, 1000000);					// The camera's current height
+
 	float3 v3Ray = v3Pos - v3CameraPos;
 	v3Pos = normalize(v3Pos);
 	float fFar = length(v3Ray);
@@ -110,7 +121,7 @@ void AtmFromGround(float4 vert, out float3 c0, out float3 c1) {
 
 	c0 = v3FrontColor * (v3InvWavelength * fKrESun + fKmESun);
 	c1 = v3Attenuate;// + v3InvWavelength;
-
+//	c0 = float3(1, 1, 0);
 
 }
 
@@ -273,19 +284,16 @@ void SkyFromAtm(float4 vert, out float3 c0, out float3 c1, out float3 t0) {
 
 void getGroundAtmosphere(float4 vertex, out float3 c0, out float3 c1) {
 
-	float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
+	float3 v3CameraPos = _WorldSpaceCameraPos -v3Translate;	// The camera's current position
 	float fCameraHeight = length(v3CameraPos);					// The camera's current height
 	float3 tmp;
-	//float4 nv = v.vertex;//float4(normalize(v.vertex)*(fInnerRadius+100));
-						 //	float4 nv = float4(normalize(v.vertex)*(fInnerRadius+clamp(fCameraHeight,0,200)));
 	if (fCameraHeight > fOuterRadius) {
 		AtmFromSpace(vertex, c0, c1);
-		//c0 = float3(0, 1, 0);
 	}
 	else {
-		AtmFromGround(vertex, c0, c1);
-		//c0 = float3(1, 0, 0);
+		AtmFromGround(vertex, c0, c1, _WorldSpaceCameraPos);
 	}
+	
 
 }
 
@@ -296,11 +304,6 @@ float getMiePhase(float fCos, float fCos2, float g, float g2)
 	return 1.5 * ((1.0 - g2) / (2.0 + g2)) * (1.0 + fCos2) / pow(1.0 + g2 - 2.0*g*fCos, 1.5);
 }
 
-// Calculates the Rayleigh phase function
-float getRayleighPhase(float fCos2)
-{
-	return 0.75 + 0.75*fCos2;
-}
 
 
 void getAtmosphere(float4 vertex, out float3 c0, out float3 c1, out float3 t0) {
@@ -363,3 +366,16 @@ float noise(float3 x)
 			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);
 }
 
+
+float4 getSkyColor(float3 c0, float3 c1, float3 t) {
+	float fCos = dot(v3LightPos, t) / length(t);
+	float fCos2 = fCos *fCos;
+	float3 col = getRayleighPhase(fCos2) * c0 + getMiePhase(fCos, fCos2, g, g2)*c1;
+	//Adjust color from HDR
+	//				col = IN.c0;
+	float d = 0.1;
+	col = pow(col, 0.5) - float3(d, d, d);
+	col = 1.0 - exp(col * -fHdrExposure);
+	float a = pow(col.b, 2);
+	return float4(col, a);
+}

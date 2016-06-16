@@ -611,14 +611,15 @@ namespace LemonSpawn
 
         public static void tagAll(GameObject g, string tag, int layer)
         {
-            if (g.tag == tag)
-                return;
+            //if (g.tag == tag)
+            //    return;
 
             g.tag = tag;
             g.layer = layer;
             for (int i = 0; i < g.transform.childCount; i++)
             {
                 GameObject go = g.transform.GetChild(i).gameObject;
+                //UnityEngine.Debug.Log(go.name);
                 tagAll(go, tag, layer);
             }
         }

@@ -177,9 +177,8 @@ namespace LemonSpawn
 
             Vector3 pos = d.toVectorf();
             double ds = dist / RenderSettings.LOD_Distance;
-//			Debug.Log(ds);
-
-            if (ds < 1)
+            //			Debug.Log(ds);
+            if (ds < 1 && SolarSystem.planet == this)
             {
                 Util.tagAll(pSettings.parent, "Normal", 10);
                 pSettings.currentTag = "Normal";
