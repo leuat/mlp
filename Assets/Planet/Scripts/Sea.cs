@@ -92,6 +92,12 @@ namespace LemonSpawn {
             base.Update();
             MaintainSea();
             InitAtmosphereMaterial(m_groundMaterial);
+/*			Debug.Log(planetSettings.m_atmosphereWavelengths);
+			Debug.Log(planetSettings.outerRadiusScale);
+			Debug.Log(planetSettings.radius);*/
+            //planetSettings.m_waterColor = new Vector3(1,0,0);
+			//m_groundMaterial.SetColor("waterColor", planetSettings.m_waterColor);
+		
             m_groundMaterial.SetFloat("time", Time.time*0.01f);
             ocean.Update();
         }

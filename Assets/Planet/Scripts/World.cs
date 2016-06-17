@@ -258,11 +258,12 @@ namespace LemonSpawn {
 			szWorld = sz;
 		}
 
-		public void LoadFromFile() {
+		public void LoadFromXMLFile(string filename) {
 			if (ThreadQueue.currentThreads.Count != 0 || ThreadQueue.threadQueue.Count!=0)
 				return;
 			//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
-			string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
+//			string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
+			string file = Application.dataPath + "/../" + filename;
 			//		RenderSettings.extraText = file;
 			if (!System.IO.File.Exists(file)) {
 				RenderSettings.extraText = ("ERROR: Could not find file :'" + file + "'");
@@ -553,7 +554,44 @@ namespace LemonSpawn {
                 FollowVehicle("car_root");
 			
 		}
-		
+
+
+		public void PopulateFileCombobox(string box, string fileType) {
+				ComboBox cbx = GameObject.Find (box).GetComponent<ComboBox>();
+				cbx.ClearItems();
+				DirectoryInfo info = new DirectoryInfo(".");
+				FileInfo[] fileInfo = info.GetFiles();
+				List<ComboBoxItem> l = new List<ComboBoxItem>();
+				string first="";
+				foreach (FileInfo f in fileInfo)  {
+					//string name = f.Name.Remove(f.Name.Length-4, 4);
+					string[] lst = f.Name.Split('.');
+					if (lst[1].Trim().ToLower() == fileType.Trim().ToLower()) {
+
+						ComboBoxItem ci = new ComboBoxItem();
+
+						ci.Caption = lst[0].Trim().ToLower();
+						string name = f.Name;
+						ci.OnSelect = delegate {
+							LoadFromXMLFile(name);
+						};
+						string n = f.Name;
+						if (first == "")
+							first = "";
+						l.Add (ci);
+					}
+				}
+				cbx.AddItems(l.ToArray());
+				if (first!="") {
+//					LoadFromXMLFile(first);
+//					Debug.Log("WHOO " + first);
+					}
+
+			}
+	
+
+
+
         private void FollowVehicle(string s)
         {
             GameObject go = GameObject.Find(s);

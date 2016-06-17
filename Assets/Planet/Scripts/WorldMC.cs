@@ -267,7 +267,9 @@ public class WorldMC : World {
 
 		if (slider!=null)
 			slider.SetActive(false);
-		
+
+		PopulateFileCombobox("ComboBoxLoadFile", "xml");
+
 //		CreateConfig("system1.xml");
 //		LoadWorld("system1.xml", true);
 //		szWorld.IterateCamera();

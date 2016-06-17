@@ -65,14 +65,14 @@ namespace LemonSpawn
             pSettings.Initialize();
             if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
                 rings = new Rings(pSettings, sun);
-            //if (pSettings.cloudSettings != null)
-            //    clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
+//            if (pSettings.cloudSettings != null)
+ //               clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
             if (pSettings.hasEnvironment)
                 environment = new Environment(pSettings);
             if (pSettings.hasVolumetricClouds)
-                volClouds = new VolumetricClouds(pSettings);
+                volClouds = new VolumetricClouds(pSettings); 
 
 
             if (pSettings.cloudSettings != null)
