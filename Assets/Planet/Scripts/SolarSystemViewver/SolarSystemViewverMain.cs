@@ -46,6 +46,27 @@ namespace LemonSpawn {
 	public class SolarSystemViewverMain : World {
 		private List<DisplayPlanet> dPlanets = new List<DisplayPlanet>();
 		private Vector3 mouseAccel = new Vector3();
+		private Vector3 focusPoint = Vector3.zero;
+		private DisplayPlanet selected = null;
+
+		private void SelectPlanet(DisplayPlanet dp) {
+			selected = dp;
+			focusPoint = dp.go.transform.position;
+		}
+
+		private void UpdateFocus() {
+			if (Input.GetMouseButtonDown (0)) {
+				RaycastHit hit;
+				Debug.Log (MainCamera);
+				Ray ray = MainCamera.ScreenPointToRay (Input.mousePosition);
+				if (Physics.Raycast (ray, out hit)) {
+					foreach (DisplayPlanet dp in dPlanets) {
+						if (dp.go == hit.transform.gameObject)
+							SelectPlanet(dp);
+					}
+				}
+			}
+		}
 
 		private void UpdateCamera () {
 			float s = 1.0f;
@@ -84,12 +105,14 @@ namespace LemonSpawn {
 		public override void Start () { 
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			PlanetType.Initialize();
+			MainCamera = mainCamera.GetComponent<Camera> ();
 
 			LoadData ();
 			PopulateWorld ();
 		}
 	
 		public override void Update () {
+			UpdateFocus ();
 			UpdateCamera ();
 		}
 
