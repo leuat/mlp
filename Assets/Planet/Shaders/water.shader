@@ -223,6 +223,8 @@
 													c.rgb = groundColor(IN.c0, IN.c1, wc*light, IN.worldPosition);
 //													return  float4(wc*atmosphereDensity, 1);
 //													c.rgb = IN.B;
+													c.rgb = atmColor(IN.c0, IN.c1);
+													//c.rgb = waterColor;
 
 													return float4(c.rgb
 														+ specularReflection, +0.95 + specularReflection.b);

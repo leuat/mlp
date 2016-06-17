@@ -22,7 +22,7 @@
       <outerRadiusScale>1.05</outerRadiusScale>
       <atmosphereDensity>0.95</atmosphereDensity>
       <atmosphereHeight>1.015</atmosphereHeight>
-      <name>TerraPlanet 1</name>
+      <name>TerraPlanet 1 Jadda</name>
       <Frames>
 	  	<Frame>
 	  		<id>0</id>
@@ -59,7 +59,7 @@
       <outerRadiusScale>1.05</outerRadiusScale>
       <atmosphereDensity>0.95</atmosphereDensity>
       <atmosphereHeight>1.015</atmosphereHeight>
-      <name>TerraPlanet 1</name>
+      <name>TerraPlanet 2 WHOO</name>
       <Frames>
 	  	<Frame>
 	  		<id>0</id>

@@ -211,7 +211,8 @@ namespace LemonSpawn
 	            World.slider.SetActive(RenderSettings.isVideo);
             foreach (SerializedPlanet sp in sz.Planets)
             {
-                //GameObject go = transform.GetChild(i).gameObject;
+                //GameObject go = transform.GetChild(i).gameObject
+                Debug.Log("adding: " + sp.name); 
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
 
@@ -235,6 +236,7 @@ namespace LemonSpawn
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject go = transform.GetChild(i).gameObject;
+                Debug.Log("Destroying: " + go.name);
                 GameObject.Destroy(go);
                 //	Debug.Log ("Destroying " + go.name);
             }

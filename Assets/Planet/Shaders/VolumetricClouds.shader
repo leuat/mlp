@@ -384,6 +384,7 @@
 	}
 	
 	float3 skyColor = float3(1.0, 1.2, 1.4);
+//	float3 skyColor = float3(1.4, 1.2, 1.0);
 
 	if (outer || inner) {
 		float3 startPos = _WorldSpaceCameraPos + t0.x*viewDirection;
