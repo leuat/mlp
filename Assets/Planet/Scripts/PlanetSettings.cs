@@ -10,18 +10,18 @@ namespace LemonSpawn {
 	[System.Serializable]
 	public class Frame {
 		public int id;
-		public float rotation;
-		public float pos_x;
-		public float pos_y;
-		public float pos_z;
-		public Vector3 pos() {
-			return new Vector3(pos_x, pos_y, pos_z);
+		public double rotation;
+		public double pos_x;
+		public double pos_y;
+		public double pos_z;
+		public DVector pos() {
+			return new DVector(pos_x, pos_y, pos_z);
 		}		
 	}	
 	
 	[System.Serializable]
  	public class SerializedPlanet {
- 		public float outerRadiusScale = 1f;
+ 		public float outerRadiusScale = 1.05f;
  		public float radius = 5000;
  		public int seed = 0;
  		public double pos_x, pos_y, pos_z;
@@ -43,10 +43,12 @@ namespace LemonSpawn {
 			ps.seed = seed;
 			ps.Frames = Frames;
 			ps.radius = radius*radiusScale;
-			ps.atmosphereDensity = atmosphereDensity;
+			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, 0.95f);
 			ps.atmosphereHeight = atmosphereHeight;
-			ps.Randomize(count);
-			return ps;
+
+            ps.Randomize(count);
+
+            return ps;
 		}
 		
 		public SerializedPlanet() {
@@ -78,22 +80,22 @@ namespace LemonSpawn {
 
 	[System.Serializable]
 	public class SerializedCamera {
-		public float cam_x, cam_y, cam_z;
+		public double cam_x, cam_y, cam_z;
 //		public float rot_x, rot_y, rot_z;
 //		public float cam_theta, cam_phi;
-		public float dir_x, dir_y, dir_z;
-		public float up_x, up_y, up_z;
-		public float fov;
-		public float time;
+		public double dir_x, dir_y, dir_z;
+		public double up_x, up_y, up_z;
+		public double fov;
+		public double time;
 		public int frame;
-		public Vector3 getPos() {
-			return new Vector3(cam_x, cam_y, cam_z);
+		public DVector getPos() {
+			return new DVector(cam_x, cam_y, cam_z);
 		}
-		public Vector3 getUp() {
-			return new Vector3(up_x, up_y, up_z);
+		public DVector getUp() {
+			return new DVector(up_x, up_y, up_z);
 		}
-		public Vector3 getDir() {
-			return new Vector3(dir_x, dir_y, dir_z);
+		public DVector getDir() {
+			return new DVector(dir_x, dir_y, dir_z);
 		}
 	}	
 	
@@ -128,9 +130,9 @@ namespace LemonSpawn {
 		}
 		
 		
-		public SerializedCamera getCamera(float t, int add) {
+		public SerializedCamera getCamera(double t, int add) {
 		
-			float ct = 0;
+			double ct = 0;
 			for (int i=0;i<Cameras.Count;i++) {
 				if (t>=ct && t<Cameras[i].time) {
 					return getCamera(i+add-1);
@@ -140,31 +142,31 @@ namespace LemonSpawn {
 			return null;
 		}
 		
-		public void getInterpolatedCamera(float t, List<Planet> planets) {
+		public void getInterpolatedCamera(double t, List<Planet> planets) {
 			// t in [0,1]
 			if (Cameras.Count==1)
 				return;
-			Vector3 pos, up;
-			up = Vector3.up;
+			DVector pos, up;
+			up = new DVector(Vector3.up);
 			
 //			float n = t*(Cameras.Count-1);
 			
-			float maxTime = Cameras[Cameras.Count-1].time;
-			float time = t*maxTime;
+			double maxTime = Cameras[Cameras.Count-1].time;
+			double time = t*maxTime;
 			
 //			SerializedCamera a = getCamera(n-1);
-			SerializedCamera b = getCamera(time, 0);
-			SerializedCamera c = getCamera(time, 1);
+			SerializedCamera b = getCamera((int)time, 0);
+			SerializedCamera c = getCamera((int)time, 1);
 			if (/*a==null || */c == null)
 				return;
 			
-			float dt = 1.0f/(c.time - b.time) *(time - b.time);
+			double dt = 1.0/(c.time - b.time) *(time - b.time);
 			
 			pos = b.getPos() + (c.getPos() - b.getPos())*dt;
 			up = b.getUp() + (c.getUp() - b.getUp())*dt;
 			
 			
-			Vector3 dir = b.getDir() + (c.getDir() - b.getDir())*dt;
+			DVector dir = b.getDir() + (c.getDir() - b.getDir())*dt;
 			
 //			float theta = b.cam_theta + (c.cam_theta - b.cam_theta)*dt;
 //			float phi = b.cam_phi + (c.cam_phi - b.cam_phi)*dt;
@@ -172,17 +174,16 @@ namespace LemonSpawn {
 			foreach (Planet p in planets) {
 				p.InterpolatePositions(b.frame, dt);
 			}
-			
-		//	Debug.Log (time);
-//			Debug.Log (time + " : " + time + " , "  + pos);
-			GameObject gc = GameObject.Find ("Camera");
-			gc.GetComponent<SpaceCamera>().SetLookCamera(pos, dir, up);
+
+            Vector3 dp = (pos*RenderSettings.AU).toVectorf();
+            Debug.DrawLine(dp, dp + up.toVectorf(), Color.green, 10);
+
+
+            World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
 			
 		}
 		
 		public void IterateCamera() {
-			GameObject gc = GameObject.Find ("Camera");
-			Camera c = gc.GetComponent<Camera>();
 
 			if (frame>=Cameras.Count)
 				return;
@@ -191,14 +192,16 @@ namespace LemonSpawn {
 
 			SerializedCamera sc = Cameras[frame];
 			//gc.GetComponent<SpaceCamera>().SetCamera(new Vector3(sc.cam_x, sc.cam_y, sc.cam_z), Quaternion.Euler (new Vector3(sc.rot_x, sc.rot_y, sc.rot_z)));
-			Vector3 up = new Vector3(sc.up_x, sc.up_y, sc.up_z);
-			Vector3 pos = new Vector3(sc.cam_x, sc.cam_y, sc.cam_z);
-			gc.GetComponent<SpaceCamera>().SetLookCamera(pos, sc.getDir(), up);
-			
-			//c.fieldOfView = sc.fov;
+			DVector up = new DVector(sc.up_x, sc.up_y, sc.up_z);
+			DVector pos = new DVector(sc.cam_x, sc.cam_y, sc.cam_z);
+			World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, sc.getDir().toVectorf(), up.toVectorf());
 
+
+
+			//c.fieldOfView = sc.fov;
+             
 			
-			Atmosphere.sunScale = Mathf.Clamp (1.0f/  pos.magnitude, 0.0001f, 1);
+			Atmosphere.sunScale = Mathf.Clamp (1.0f/  (float)pos.Length(), 0.0001f, 1);
 			frame++;
 		}
 		
@@ -308,7 +311,7 @@ namespace LemonSpawn {
 	public class PlanetSettings : MonoBehaviour {
 		
 		public float outerRadiusScale = 1.05f;
-		public float m_hdrExposure = 3f;
+		public float m_hdrExposure = 1.5f;
 		public float m_ESun = 10.0f; 			// Sun brightness constant
 		public float radius = 5000;
 		public float temperature = 300f;
@@ -352,8 +355,9 @@ namespace LemonSpawn {
 		public Vector3 cloudColor = new Vector3(1,1,0);
 		public float atmosphereDensity = 1.0f;
 		public float atmosphereHeight = 1.025f;
-		public bool hasClouds = false;
-		public bool hasSea = false;
+		public bool hasFlatClouds = false;
+        public bool hasBillboardClouds = false;
+        public bool hasSea = false;
         public bool hasVolumetricClouds = false;
         public bool hasEnvironment = false;
         public Sea sea;
@@ -408,8 +412,7 @@ namespace LemonSpawn {
 			if (hasSea) {
 				sea = new Sea();
 			}
-			if (hasClouds)
-				cloudSettings = new CloudSettings();
+			cloudSettings = new CloudSettings();
 
             maxQuadNodeLevel = RenderSettings.maxQuadNodeLevel;
 
@@ -421,8 +424,7 @@ namespace LemonSpawn {
 		
 		public void Randomize(int count) {
 			System.Random r = new System.Random(seed);
-			
-			temperature = (float)r.NextDouble()*500f + 100;
+            temperature = (float)r.NextDouble()*500f + 100;
 			if (count>=2)
 				planetType = PlanetType.getRandomPlanetType(r, radius, temperature);
 			else
@@ -471,8 +473,9 @@ namespace LemonSpawn {
 			cloudColor.x = 1f*(a+b*(float)r.NextDouble());
 			cloudColor.y = 1f*(a+b*(float)r.NextDouble());
 			cloudColor.z = 1f*(a+b*(float)r.NextDouble());
-			
-			metallicity = 0.01f*(float)r.NextDouble();
+
+            //metallicity = 0.01f*(float)r.NextDouble();
+            metallicity = 0;
 							
 			hasRings = false;
 			if (radius>RenderSettings.RingRadiusRequirement && r.NextDouble() < RenderSettings.RingProbability) {
@@ -485,14 +488,15 @@ namespace LemonSpawn {
 				ringRadius.y = 0.25f + 0.20f*(float)r.NextDouble();
 				
 			}
-			
-			globalTerrainHeightScale = 1.0f;
-			globalTerrainScale = 8;
+            m_hdrExposure = 3;
+            m_ESun = 15;
+			globalTerrainHeightScale = 1.5f;
+			globalTerrainScale = 4;
 
 			if (radius >= 5000) 
 			{
-				//clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
-				//cloudSettings = new CloudSettings();
+				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
+				cloudSettings = new CloudSettings();
 			}
 			if (planetType.Name == "Terra") {
 				sea = new Sea();
@@ -525,6 +529,8 @@ namespace LemonSpawn {
 			if (posInKm == null) {
 				posInKm = new DVector();
 			}
+
+
 			posInKm.x = pos.x;
 			posInKm.y = pos.y;
 			posInKm.z = pos.z;

@@ -207,18 +207,19 @@ namespace LemonSpawn
 
 
             //		RenderSettings.isVideo = false;
-            if (World.slider!=null)	
-	            World.slider.SetActive(RenderSettings.isVideo);
+            if (World.Slider!=null)	
+	            World.Slider.SetActive(RenderSettings.isVideo);
+
             foreach (SerializedPlanet sp in sz.Planets)
             {
                 //GameObject go = transform.GetChild(i).gameObject
-                Debug.Log("adding: " + sp.name); 
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
 
                 //				go.transform.position = new Vector3((float)(sp.pos_x*RenderSettings.AU), (float)(sp.pos_y*RenderSettings.AU), (float)(sp.pos_z*RenderSettings.AU));
                 //				Planet p = new Planet(sp.DeSerialize(go), go.GetComponent<CloudSettings>());
                 Planet p = new Planet(sp.DeSerialize(go, cnt++, sz.global_radius_scale));
+//                p.pSettings.radius *= 0.7f;
 				p.pSettings.parent = go;
 
                 p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
@@ -236,7 +237,6 @@ namespace LemonSpawn
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject go = transform.GetChild(i).gameObject;
-                Debug.Log("Destroying: " + go.name);
                 GameObject.Destroy(go);
                 //	Debug.Log ("Destroying " + go.name);
             }

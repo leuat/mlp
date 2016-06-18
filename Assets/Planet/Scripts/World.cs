@@ -42,7 +42,7 @@ namespace LemonSpawn {
 		public static int CloudTextureSize = 1024;
 		public static bool UseThreading = true;
 		public static bool RenderMenu = true;
-		public static float version = 0.1f;
+		public static float version = 0.10f;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
@@ -56,6 +56,19 @@ namespace LemonSpawn {
         public static float vehicleFollowHeight = 10;
         public static float vehicleFollowDistance = 10;
         public static bool toggleClouds = false;
+        public static bool toggleSaveVideo = false;
+
+#if UNITY_STANDALONE_OSX
+        public static string fileDelimiter = "/";
+#endif 
+#if UNITY_STANDALONE_LINUX
+        public static string fileDelimiter = "/";
+#endif 
+#if UNITY_STANDALONE_WIN
+        public static string fileDelimiter = "\\";
+#endif 
+        public static string screenshotDir = "screenshots" + fileDelimiter;
+        public static string movieDir = "screenshots" + fileDelimiter;
 
     }
 
@@ -65,7 +78,7 @@ namespace LemonSpawn {
 	}
 	
 	
-	
+
 	
 	#if UNITY_EDITOR
 	
@@ -116,7 +129,8 @@ namespace LemonSpawn {
         public static Camera CloseCamera;
         public static Stats stats = new Stats();
         public static GameObject MainCameraObject;
-        public static GameObject slider;
+        public GameObject slider;
+        public static GameObject Slider;
         public static SpaceCamera SpaceCamera;
         public static bool hasScene = false;
         public static SerializedWorld SzWorld;
@@ -139,20 +153,6 @@ namespace LemonSpawn {
 
 
 
-        public void ClickOverview() {
-			if (RenderSettings.renderType == RenderType.Normal)
-				RenderSettings.renderType = RenderType.Overview;
-			else
-				RenderSettings.renderType = RenderType.Normal;
-		}
-		
-		
-		
-		public void Slide() {
-			float v = slider.GetComponent<Slider>().value;
-			szWorld.getInterpolatedCamera(v, solarSystem.planets);
-		}
-		
 		
 		
 		public static void MoveCamera(Vector3 dp) {
@@ -160,8 +160,14 @@ namespace LemonSpawn {
 			
 		}
 
-		
-		public static void addBall()
+        protected void ClearMovieDirectory()
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo(Application.dataPath + "/../" + RenderSettings.movieDir);
+            foreach (System.IO.FileInfo file in di.GetFiles()) file.Delete();
+        }
+
+      
+        public static void addBall()
         {
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             go.transform.parent = SolarSystem.planet.pSettings.transform;
@@ -197,8 +203,10 @@ namespace LemonSpawn {
 
 
 
-        private string GetScreenshotFilename() {
-			string OutputDir = Application.dataPath + "/../";
+
+
+        private string GetScreenshotFilename(string dir) {
+			string OutputDir = Application.dataPath + "/../" + dir;
 			DirectoryInfo info = new DirectoryInfo(OutputDir);
 			FileInfo[] fileInfo = info.GetFiles();
 			int current = 0;
@@ -213,7 +221,8 @@ namespace LemonSpawn {
 				}
 			}
 			current++;
-			return OutputDir  + RenderSettings.ScreenshotName + current.ToString("0000") + ".png";
+            string fname = OutputDir + RenderSettings.ScreenshotName + current.ToString("0000") + ".png";
+            return fname;
 			
 			
 			
@@ -227,26 +236,40 @@ namespace LemonSpawn {
 		}
 
 		
-		public void SaveScreenshot() {
-			Camera camera = GameObject.Find ("Camera").GetComponent<Camera>();
-			int resWidth = RenderSettings.ScreenshotX;
-			int resHeight = RenderSettings.ScreenshotY;
-			
-			RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
-			camera.targetTexture = rt;
-			Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
-			camera.Render();
-			RenderTexture.active = rt;
-			screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
-			camera.targetTexture = null;
-			RenderTexture.active = null; // JC: added to avoid errors
-			Destroy(rt);
-			byte[] bytes = screenShot.EncodeToPNG();
-			
-			string file = GetScreenshotFilename();
-			
-			File.WriteAllBytes( file , bytes);
-			
+        protected void WriteScreenshot(string directory)
+        {
+            Camera camera = MainCamera;
+            Camera eCamera = effectCamera.GetComponent<Camera>();
+
+            int resWidth = RenderSettings.ScreenshotX;
+            int resHeight = RenderSettings.ScreenshotY;
+
+            RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
+            camera.targetTexture = rt;
+            eCamera.targetTexture = rt;
+            CloseCamera.targetTexture = rt;
+            Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
+            camera.Render();
+            RenderTexture.active = rt;
+            CloseCamera.Render();
+            eCamera.Render();
+            screenShot.ReadPixels(new Rect(0, 0, resWidth, resHeight), 0, 0);
+            camera.targetTexture = null;
+            eCamera.targetTexture = null;
+            CloseCamera.targetTexture = null;
+            RenderTexture.active = null; // JC: added to avoid errors
+
+            Destroy(rt);
+            byte[] bytes = screenShot.EncodeToPNG();
+
+            string file = GetScreenshotFilename(directory);
+
+            File.WriteAllBytes(file, bytes);
+
+        }
+
+        public void SaveScreenshot() {
+            WriteScreenshot(RenderSettings.screenshotDir);
 		}
 		
 		//	#if UNITY_STANDALONE
@@ -422,8 +445,9 @@ namespace LemonSpawn {
 
             solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
             SzWorld = szWorld;
+            Slider = slider;
 
-			canvas = GameObject.Find ("Canvas");
+            canvas = GameObject.Find ("Canvas");
             spaceBackground = GameObject.Find("SunBackgroundSphere");
             //            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
 
@@ -487,8 +511,7 @@ namespace LemonSpawn {
 		
 		public virtual void Update () {
 			UpdateWorldCamera();		
-            solarSystem.Update();			
-			
+            solarSystem.Update();
 
 			//		Debug.Log (WorldCamera.toVectorf());
 			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
@@ -564,7 +587,9 @@ namespace LemonSpawn {
 				List<ComboBoxItem> l = new List<ComboBoxItem>();
 				string first="";
 				foreach (FileInfo f in fileInfo)  {
-					//string name = f.Name.Remove(f.Name.Length-4, 4);
+                //string name = f.Name.Remove(f.Name.Length-4, 4);
+                if (!f.Name.ToLower().Contains(fileType.ToLower()))
+                    continue;
 					string[] lst = f.Name.Split('.');
 					if (lst[1].Trim().ToLower() == fileType.Trim().ToLower()) {
 

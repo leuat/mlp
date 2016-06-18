@@ -46,8 +46,8 @@
 	  		<pos_z>0</pos_z>
 	  	</Frame>
 	  </Frames>
-
     </SerializedPlanet>
+    
         <SerializedPlanet>
       <radius>17000</radius>
       <pos_x>-0.5</pos_x>

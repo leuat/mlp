@@ -146,14 +146,20 @@ namespace OceanSurfaceEffects
             }
 
             //Make radial grid have a radius equal to far plane
-            m_oceanMat.SetTexture("_FresnelLookUp", m_fresnelLookUp);
-            m_oceanMat.SetVector("_GridSizes", m_waves.gridSizes);
-            m_oceanMat.SetFloat("_MaxLod", m_waves.mipMapLevels);
-			m_oceanMat.SetTexture("_Map0", m_waves.map0);
-			m_oceanMat.SetTexture("_Map1", m_waves.map1);
-			m_oceanMat.SetTexture("_Map2", m_waves.map2);
+           
 
         }
+
+        public void UpdateMaterial(Material mat)
+        {
+            mat.SetTexture("_FresnelLookUp", m_fresnelLookUp);
+            mat.SetVector("_GridSizes", m_waves.gridSizes);
+            mat.SetFloat("_MaxLod", m_waves.mipMapLevels);
+            mat.SetTexture("_Map0", m_waves.map0);
+            mat.SetTexture("_Map1", m_waves.map1);
+            mat.SetTexture("_Map2", m_waves.map2);
+        }
+
 
         public void Update()
         {

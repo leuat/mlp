@@ -20,6 +20,7 @@ uniform float fade = 0.2;
 uniform float time;
 uniform float metallicity;
 
+sampler2D _IQ;
 
 float scale(float fCos)
 {
@@ -364,6 +365,18 @@ float noise(float3 x)
 		lerp(iqhash(n + 57.0), iqhash(n + 58.0), f.x), f.y),
 		lerp(lerp(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
 			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);
+}
+
+float noiseIQ(in float3 x)
+{
+	float3 p = floor(x);
+	float3 f = frac(x);
+	f = f*f*(3.0 - 2.0*f);
+
+	float2 uv = (p.xy + float2(37.0, 17.0)*p.z) + f.xy;
+//	float2 rg = tex2D(_IQ, (uv + 0.5) / 256.0, -100.0).yx;
+	float2 rg = float2(0, 0);
+	return lerp(rg.x, rg.y, f.z);
 }
 
 

@@ -8,7 +8,7 @@ namespace LemonSpawn {
     {
         GameObject parent, m_go;
  		Mesh m_sphere;
-        Ocean ocean;
+        static Ocean ocean;
         CubeSphere cube;
         PlanetSettings psOcean;
 
@@ -27,6 +27,7 @@ namespace LemonSpawn {
             psOcean = m_go.AddComponent<PlanetSettings>();
 
             psOcean.atmosphere = new Atmosphere();
+
             //psOcean.gameObject = psOcean.terrainObject;
 
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
@@ -34,18 +35,28 @@ namespace LemonSpawn {
 
             InitializeParameters();
             m_radius = planetSettings.radius * (1 + planetSettings.liquidThreshold);
-            ocean = new Ocean();
-            m_groundMaterial = (Material)Resources.Load("OceanIndie");
+            if (ocean==null)
+               ocean = new Ocean();
+
+            Material m = (Material)Resources.Load("OceanIndie");
+
+            m_groundMaterial = new Material(m);
+
+
             psOcean.radius = m_radius;
             psOcean.planetType = PlanetType.planetTypes[3];
             psOcean.hasSea = false;
-            psOcean.hasClouds = false;
             psOcean.Initialize();
             psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; ;
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
             psOcean.terrainObject = m_go;
             psOcean.castShadows = false;
-            ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.terrainObject, m_sun, m_groundMaterial);
+//            psOcean.pos.Set(planetSettings.pos.toVectorf());
+
+
+
+            if (ocean != null)
+                ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.terrainObject, m_sun, m_groundMaterial);
 
 
             m_innerRadius = planetSettings.radius;
@@ -78,18 +89,22 @@ namespace LemonSpawn {
                 return;
 
             psOcean.localCamera = planetSettings.localCamera;
+//            Debug.Log(psOcean.localCamera);
 
             cube.SubDivide(RenderSettings.gridDivide);
             cube.Realise();
 
             psOcean.Update();
 
+            ocean.UpdateMaterial(m_groundMaterial);
+
+
         }
 
 
         public override void Update()
         {
-            base.Update();
+            //base.Update();
             MaintainSea();
             InitAtmosphereMaterial(m_groundMaterial);
 /*			Debug.Log(planetSettings.m_atmosphereWavelengths);
@@ -99,7 +114,8 @@ namespace LemonSpawn {
 			//m_groundMaterial.SetColor("waterColor", planetSettings.m_waterColor);
 		
             m_groundMaterial.SetFloat("time", Time.time*0.01f);
-            ocean.Update();
+            if (ocean!=null)
+                ocean.Update();
         }
 
 

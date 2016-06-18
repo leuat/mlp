@@ -12,7 +12,6 @@ namespace LemonSpawn
     {
 
         public PlanetSettings pSettings;// = new PlanetSettings();
-        public Clouds clouds;
         public Rings rings;
         CubeSphere cube;
         public GameObject impostor;
@@ -20,8 +19,9 @@ namespace LemonSpawn
         public GameObject infoTextGO;
         public static Color color = new Color(1f, 1f, 0.8f, 0.6f);
         public Environment environment;
-        public VolumetricClouds volClouds;
-        public RenderedClouds rClouds;
+        public Clouds clouds;
+        public BillboardClouds billboardClouds;
+        public VolumetricClouds volumetricClouds;
 
         
 
@@ -36,12 +36,10 @@ namespace LemonSpawn
         public Planet(PlanetSettings p)
         {
             pSettings = p;
-
-
         }
 
 
-        public void InterpolatePositions(int frame, float dt)
+        public void InterpolatePositions(int frame, double dt)
         {
             //		return;
             Frame f0 = pSettings.getFrame(frame);
@@ -49,12 +47,12 @@ namespace LemonSpawn
             if (f1 == null || f0 == null)
                 return;
 
-            Vector3 pos = f0.pos() + (f1.pos() - f0.pos()) * dt;
-            float rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
+            DVector pos = f0.pos() + (f1.pos() - f0.pos()) * dt;
+            double rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
 
-            pSettings.pos.Set(pos);
-            pSettings.rotation = rot;
-
+            pSettings.pos = pos;
+            pSettings.rotation = (float)rot;
+            
 
         }
 
@@ -65,18 +63,21 @@ namespace LemonSpawn
             pSettings.Initialize();
             if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
                 rings = new Rings(pSettings, sun);
-//            if (pSettings.cloudSettings != null)
- //               clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
+
+            if (pSettings.hasFlatClouds)
+                   clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
+
+
             if (pSettings.hasEnvironment)
                 environment = new Environment(pSettings);
-            if (pSettings.hasVolumetricClouds)
-                volClouds = new VolumetricClouds(pSettings); 
+            if (pSettings.hasBillboardClouds)
+                billboardClouds = new BillboardClouds(pSettings); 
 
 
-            if (pSettings.cloudSettings != null)
-                rClouds = new RenderedClouds(sun, sphere, pSettings, pSettings.cloudSettings);
+            if (pSettings.hasVolumetricClouds == true)
+                volumetricClouds = new VolumetricClouds(sun, sphere, pSettings, pSettings.cloudSettings);
 
 
         }
@@ -233,19 +234,21 @@ namespace LemonSpawn
             if (pSettings.cloudSettings != null)
                 pSettings.cloudSettings.Update();
 
-            if (clouds != null)
-                clouds.Update();
+
             if (pSettings.sea != null)
                 pSettings.sea.Update();
 
             if (environment != null)
                 environment.Update();
 
-            if (volClouds != null)
-                volClouds.Update();
+            if (clouds != null)
+                clouds.Update();
+
+            if (volumetricClouds != null)
+                volumetricClouds.Update();
                 
-            if (rClouds != null)
-                rClouds.Update();
+            if (billboardClouds != null)
+                billboardClouds.Update();
 
         }
 

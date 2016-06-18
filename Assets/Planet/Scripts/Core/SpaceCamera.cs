@@ -14,7 +14,7 @@ public class SpaceCamera : MonoBehaviour {
 	private Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
 	private float totalRun = 1.0f;
 	private Vector3 P;
-	public Vector3 initPos = new Vector3(0,0,0);
+	public DVector initPos = new DVector(0,0,0);
 	private Vector3 mouseAdd = new Vector3();
 	float rotate = 0;
 	float rotateT = 0;
@@ -45,10 +45,10 @@ public class SpaceCamera : MonoBehaviour {
         }
 
 
-        public void SetLookCamera(Vector3 p, Vector3 dir, Vector3 u) {
+        public void SetLookCamera(DVector p, Vector3 dir, Vector3 u) {
 //		transform.rotation  = rot;
-		actualCamera.Set(p*(float)RenderSettings.AU);
-		World.WorldCamera.Set (p*(float)RenderSettings.AU);
+		actualCamera = p*RenderSettings.AU;
+        World.WorldCamera = p * RenderSettings.AU;
 
             curDir = dir;
 		SetLookCamera(dir, u);

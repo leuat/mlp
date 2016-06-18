@@ -240,6 +240,11 @@ public class Atmosphere
             mat.SetVector("v3Translate", planetSettings.transform.position);
             mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
 
+
+/*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
+            Debug.Log("sun:" + planetSettings.m_ESun);
+            Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);
+            */
         }
     }
 

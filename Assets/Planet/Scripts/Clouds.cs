@@ -19,8 +19,8 @@ public class Clouds : Atmosphere {
 		m_outerRadius = planetSettings.radius*planetSettings.outerRadiusScale;
 
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
-            //		m_radius = planetSettings.radius*planetSettings.cloudRadius;	
-            m_radius = m_outerRadius*0.999f;
+            		m_radius = planetSettings.radius*planetSettings.cloudRadius;	
+            //m_radius = m_outerRadius*0.999f;
 			
 		cs.Initialize((Material)Resources.Load ("Clouds"), ps, sun);
 		//InitializeMesh();
@@ -38,7 +38,7 @@ public class Clouds : Atmosphere {
 
 
 
-    public class RenderedClouds : Atmosphere
+    public class VolumetricClouds : Atmosphere
     {
 
         private CloudSettings m_cloudSettings;
@@ -46,7 +46,7 @@ public class Clouds : Atmosphere {
 		public bool toggleClouds = false;
 
 
-        public RenderedClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
+        public VolumetricClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
         {
             planetSettings = ps;
             m_sun = sun;

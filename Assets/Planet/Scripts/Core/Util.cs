@@ -58,6 +58,24 @@ namespace LemonSpawn
         {
             return new DVector(x + o.x, y + o.y, z + o.z);
         }
+        public static DVector operator +(DVector c1, DVector c2)
+        {
+            return c1.Add(c2);
+        }
+        public static DVector operator -(DVector c1, DVector c2)
+        {
+            return c1.Sub(c2);
+        }
+        public static DVector operator *(DVector c1, double s)
+        {
+            return new DVector(c1.x * s, c1.y * s, c1.z * s);
+        }
+        public static DVector operator /(DVector c1, double s)
+        {
+            return new DVector(c1.x / s, c1.y / s, c1.z / s);
+        }
+
+
         public DVector Add(Vector3 o)
         {
             return new DVector(x + o.x, y + o.y, z + o.z);
