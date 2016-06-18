@@ -21,6 +21,8 @@ namespace LemonSpawn
 
 
         private float m_playSpeed = 0;
+        protected Texture2D tx_background, tx_load, tx_record;
+        protected int load_percent;
 
 
         public void ClickOverview()
@@ -56,13 +58,13 @@ namespace LemonSpawn
 
         public void playNormal()
         {
-            setPlaySpeed(0.0001f);
+            setPlaySpeed(0.000025f);
 
         }
 
         public void playFast()
         {
-            setPlaySpeed(0.0004f);
+            setPlaySpeed(0.0001f);
         }
 
         protected void FocusOnPlanet(string n)
@@ -230,14 +232,25 @@ namespace LemonSpawn
 
 
 
-        protected override void OnGUI()
+        protected void OnGUI()
         {
 
             //	return;
 
 
             if (RenderSettings.isVideo)
+            {
+                if (RenderSettings.toggleSaveVideo && m_playSpeed>0)
+                {
+                    int s = Screen.width / 50;
+                    int b = 50;
+                    int t = (int)(Time.time * 2);
+                    if (t % 2==0) {
+                        GUI.DrawTexture(new Rect(Screen.width-b-s, Screen.height -b -s, s,s), tx_record);
+                    } 
+                }
                 return;
+            }
 
             if (tx_background == null)
             {
@@ -247,6 +260,21 @@ namespace LemonSpawn
                 tx_background.Apply();
                 tx_load.SetPixel(0, 0, new Color(0.7f, 0.3f, 0.2f, 1));
                 tx_load.Apply();
+                // Create a circle
+
+
+                int N = 512;
+                tx_record = new Texture2D(N, N);
+                for (int i=0;i<N;i++)
+                    for (int j = 0; j < N; j++)
+                    {
+                        Vector3 p = new Vector3(i / (float)N, j / (float)N,0);
+                        p -= new Vector3(0.5f, 0.5f);
+                        float a = Mathf.Pow(1.8f - 2*p.magnitude, 10);
+                        tx_record.SetPixel(i, j, new Color(1, 0.2f, 0.2f, a));
+
+                    }
+                tx_record.Apply();
                 //			tx_background = (Texture2D)Resources.Load ("cloudsTexture");
 
             }
@@ -271,6 +299,9 @@ namespace LemonSpawn
 
             base.Start();
             solarSystem.InitializeFromScene();
+
+            GameObject.Find("TextVersion").GetComponent<Text>().text = "Version " + RenderSettings.version.ToString("0.00"); ;
+
 
             RenderSettings.MoveCam = false;
             //		slider = GameObject.Find ("Slider");
@@ -371,7 +402,6 @@ namespace LemonSpawn
             }
             load_percent = percent;
 
-            s += "Mission Control AST1100 Version: " + RenderSettings.version.ToString("0.00") + " \n";
             if (RenderSettings.isVideo)
                 s += "Progress: " + percent + " %\n";
             //s+="Height: " + stats.Height.ToString("0.00") + " km \n";

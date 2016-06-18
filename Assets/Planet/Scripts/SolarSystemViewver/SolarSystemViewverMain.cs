@@ -116,7 +116,7 @@ namespace LemonSpawn {
 			UpdateCamera ();
 		}
 
-		protected override void OnGUI() {
+		protected void OnGUI() {
 		}
 	}
 

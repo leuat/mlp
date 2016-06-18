@@ -68,7 +68,7 @@ namespace LemonSpawn {
         public static string fileDelimiter = "\\";
 #endif 
         public static string screenshotDir = "screenshots" + fileDelimiter;
-        public static string movieDir = "screenshots" + fileDelimiter;
+        public static string movieDir = "movie" + fileDelimiter;
 
     }
 
@@ -136,8 +136,6 @@ namespace LemonSpawn {
         public static SerializedWorld SzWorld;
 
 
-		protected Texture2D tx_background, tx_load;
-		protected int load_percent;
 
         public bool followVehicle = false;
 		protected int extraTimer = 10;
@@ -389,37 +387,6 @@ namespace LemonSpawn {
 		
 
 		
-		protected virtual void OnGUI () {
-			
-			//	return;
-			
-			if (RenderSettings.isVideo)
-				return;
-			if (tx_background == null) {
-				tx_background = new Texture2D(1,1);
-				tx_load = new Texture2D(1,1);
-				tx_background.SetPixel(0,0,new Color(0,0,0,1));
-				tx_background.Apply();
-				tx_load.SetPixel(0,0,new Color(0.7f,0.3f,0.2f,1));
-				tx_load.Apply();
-				//			tx_background = (Texture2D)Resources.Load ("cloudsTexture");
-				
-			}
-			if (!hasScene) 
-				return;
-			if (load_percent==100)
-				return;
-			
-			//	return;
-			GUI.DrawTexture( new Rect(0,0,Screen.width, Screen.height), tx_background);
-			float h = 0.08f;
-			int hei = (int)(Screen.height*h);
-			float border = 0.05f;
-			int rectwidth = (int)(Screen.width*(1- 2*border));
-			GUI.DrawTexture(new Rect(Screen.width*border,Screen.height/2 - hei,   (int)(rectwidth/100f*load_percent), 2*hei), tx_load);
-			GUI.Label(new Rect(Screen.width/2 - 40,(int)(Screen.height*(2/3f)), 200,200 ), RenderSettings.generatingText);	
-		}
-		
 
         void SetupCloseCamera()
         {
@@ -655,7 +622,7 @@ namespace LemonSpawn {
 				if (extraTimer--==0)
 					ExitSave();
 			}
-			load_percent = percent;
+//			load_percent = percent;
 			
 			s+="Version: " + RenderSettings.version.ToString("0.00")  + " \n";
 			//if (RenderSettings.isVideo)

@@ -492,8 +492,14 @@ namespace LemonSpawn {
             m_ESun = 15;
 			globalTerrainHeightScale = 1.5f;
 			globalTerrainScale = 4;
+            atmosphereHeight = 1.019f;
+            outerRadiusScale = 1.025f;
 
-			if (radius >= 5000) 
+//             < atmosphereHeight > 1.019 </ atmosphereHeight >
+  //  < outerRadiusScale > 1.025 </ outerRadiusScale >
+
+
+            if (radius >= 5000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
 				cloudSettings = new CloudSettings();
