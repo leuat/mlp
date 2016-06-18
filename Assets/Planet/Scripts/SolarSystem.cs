@@ -102,7 +102,7 @@ namespace LemonSpawn
                 GameObject go = transform.GetChild(i).gameObject;
                 if (go.activeSelf)
                 {
-                    Planet p = new Planet(go.GetComponent<PlanetSettings>(), null);
+                    Planet p = new Planet(go.GetComponent<PlanetSettings>());
                     p.pSettings.pos.Set(go.transform.position);
                     go.transform.parent = transform;
                     p.pSettings.parent = go;
@@ -121,34 +121,6 @@ namespace LemonSpawn
 
 
 
-        protected void FocusOnPlanet(string n)
-        {
-
-            //Camera c = gc.GetComponent<Camera>();
-            Planet planet = null;
-            foreach (Planet p in planets)
-                if (p.pSettings.name == n)
-                    planet = p;
-
-            if (planet == null)
-                return;
-
-            Vector3 pos = planet.pSettings.pos.toVectorf();
-            float s = (float)(planet.pSettings.radius * World.SzWorld.overview_distance / RenderSettings.AU);
-            Vector3 dir = pos.normalized * s;
-            Vector3 side = Vector3.Cross(Vector3.up, dir);
-
-            pos = pos - dir - side.normalized * s;
-            pos.y += s;
-
-            /*            SpaceCamera.SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-                        UpdateWorldCamera();
-                        Update();
-                        SpaceCamera.SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-                        UpdateWorldCamera();*/
-
-
-        }
 
         public void Update()
         {
@@ -212,24 +184,16 @@ namespace LemonSpawn
 
             foreach (SerializedPlanet sp in sz.Planets)
             {
-                //GameObject go = transform.GetChild(i).gameObject
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
 
-                //				go.transform.position = new Vector3((float)(sp.pos_x*RenderSettings.AU), (float)(sp.pos_y*RenderSettings.AU), (float)(sp.pos_z*RenderSettings.AU));
-                //				Planet p = new Planet(sp.DeSerialize(go), go.GetComponent<CloudSettings>());
                 Planet p = new Planet(sp.DeSerialize(go, cnt++, sz.global_radius_scale));
-//                p.pSettings.radius *= 0.7f;
 				p.pSettings.parent = go;
 
                 p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);
             }
-            PopulateOverviewList("Overview");
-            //sz.IterateCamera();
-			//World.SzWorld = sz;
 			world.setWorld(sz);
-			//Debug.Log("Before leaving: " + World.SzWorld.Cameras.Count);
         }
         public void ClearStarSystem()
         {
@@ -244,31 +208,7 @@ namespace LemonSpawn
 
 
         }
-        protected void PopulateOverviewList(string box)
-        {
-			GameObject b = GameObject.Find(box);
-			if (b == null)
-				return;
-			ComboBox cbx = b.GetComponent<ComboBox>();
-			cbx.ClearItems();
-            List<ComboBoxItem> l = new List<ComboBoxItem>();
-            foreach (Planet p in planets)
-            {
-                ComboBoxItem ci = new ComboBoxItem();
-                ci.Caption = p.pSettings.name;
-                string n = p.pSettings.name;
-                ci.OnSelect = delegate
-                {
-                    FocusOnPlanet(n);
-                };
-                l.Add(ci);
-            }
-            //		foreach (ComboBoxItem i in l)
-            //			Debug.Log (i.Caption);
-
-            cbx.AddItems(l.ToArray());
-
-        }
+       
         public static void SetSkybox(int s)
         {
             string skybox = "Skybox3";

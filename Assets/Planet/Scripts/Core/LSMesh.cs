@@ -226,7 +226,7 @@ namespace LemonSpawn {
 			mesh.tangents = tangentList.ToArray();
 			
 //			mesh.RecalculateNormals();
-//			mesh.Optimize();
+			mesh.Optimize();
 			
 		}
 		

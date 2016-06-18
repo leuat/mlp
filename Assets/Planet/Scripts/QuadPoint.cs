@@ -72,6 +72,9 @@ namespace LemonSpawn {
 			//mtmp = mtmp*(radius *(1+ps.surface.GetHeight(mtmp, (int)lod)));
 			
 			centerReal.P = centerReal.P.normalized*planetSettings.getPlanetSize()*(1+ps.surface.GetHeight(centerReal.P.normalized, 0));
+
+
+
 //			centerReal.P.mulDirect(planetSettings.getPlanetSize() + planetSettings.perlin.getHeight(centerReal.P, lod));
 			
 			
@@ -84,13 +87,12 @@ namespace LemonSpawn {
 			*/
 			
 			for (int i = 0; i < 4; i++) {
-				PReal[i].P = PReal[i].P.normalized * planetSettings.getPlanetSize();
-/*				PReal[i].P.mulDirect(planetSettings.getPlanetSize()
-				                     + planetSettings.perlin.getHeight(PReal[i].P, lod));*/
-			}
-			
-			
-		}	
+                //				PReal[i].P = PReal[i].P.normalized * planetSettings.getPlanetSize();
+                PReal[i].P = PReal[i].P * planetSettings.getPlanetSize() * (1 + ps.surface.GetHeight(PReal[i].P.normalized, 0));
+            }
+
+
+        }	
 	}
 
 

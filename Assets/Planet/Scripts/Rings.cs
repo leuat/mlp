@@ -39,7 +39,10 @@ namespace LemonSpawn {
 			mat.SetFloat("radius1", planetSettings.ringRadius.x);		
 			mat.SetFloat("radius2", planetSettings.ringRadius.y);		
 			mat.SetFloat ("planetRadius", planetSettings.radius);
-			
+
+
+            Util.tagAll(GO, "LOD", 9);
+
 			Quaternion rot = Quaternion.Inverse(GO.transform.parent.localRotation);
 			
 			mat.SetVector("lightDir",  rot*(m_sun.transform.forward*-1.0f));

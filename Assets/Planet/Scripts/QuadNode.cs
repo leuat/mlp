@@ -189,10 +189,12 @@ namespace LemonSpawn
             }
             if (recalculate == true && quadField != null && thread == null && quadGO != null)
             {
-                /*					decideNeighbors();
-                                    quadField.ReCalculate(neighbourLOD);
-                                    setGOproperties();
-                                    recalculate = false;*/
+                decideNeighbors();
+                LSMesh m = quadField.ReCalculate(neighbourLOD, planetSettings.castShadows);
+                quadGO.GetComponent<MeshFilter>().mesh = m.mesh;
+                
+                //setGOproperties();
+                recalculate = false;
             }
 
 
@@ -421,10 +423,13 @@ namespace LemonSpawn
         {
             float sec = 0.001f;
             Vector3 pos = planetSettings.transform.position;
-            Debug.DrawLine(qb.PReal[0].P + pos, qb.PReal[1].P + pos, Color.green, sec, false);
-            Debug.DrawLine(qb.PReal[1].P + pos, qb.PReal[2].P + pos, Color.green, sec, false);
-            Debug.DrawLine(qb.PReal[2].P + pos, qb.PReal[3].P + pos, Color.green, sec, false);
-            Debug.DrawLine(qb.PReal[3].P + pos, qb.PReal[0].P + pos, Color.green, sec, false);
+            float d = 0.0002f*(qb.centerReal.P + pos).magnitude;
+            Color c = Color.green / d;
+            c.a = 1;
+            Debug.DrawLine(qb.PReal[0].P + pos, qb.PReal[1].P + pos, c, sec, false);
+            Debug.DrawLine(qb.PReal[1].P + pos, qb.PReal[2].P + pos, c, sec, false);
+            Debug.DrawLine(qb.PReal[2].P + pos, qb.PReal[3].P + pos, c, sec, false);
+            Debug.DrawLine(qb.PReal[3].P + pos, qb.PReal[0].P + pos, c, sec, false);
 
         }
 
@@ -471,7 +476,10 @@ namespace LemonSpawn
                 deleteChildren();
                 return;
             }
-            //            displayDebug();
+            if (quadGO != null) 
+                if (quadGO.GetComponent<Renderer>().enabled == true)
+            if (RenderSettings.displayDebugLines)
+                displayDebug();
 
 
 

@@ -418,11 +418,12 @@ namespace LemonSpawn {
 				.z;
 		}
 		
-		public GameObject ReCalculate(int[] nbh, bool castShadows) {
-			mesh = new LSMesh();
+		public LSMesh ReCalculate(int[] nbh, bool castShadows) {
+  			mesh = new LSMesh();
 			FieldToFloat(nbh);
 			mesh.createMesh();
-			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
+            return mesh;
+//			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			
 		
 		}
@@ -430,8 +431,8 @@ namespace LemonSpawn {
 		public GameObject Realise(bool castShadows) {
 			//mesh.FacesFromVertices();
 			mesh.createMesh();
-            mesh.mesh.RecalculateNormals();
-
+//            mesh.mesh.RecalculateNormals();
+            mesh.mesh.Optimize();
 			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			
 		}

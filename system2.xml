@@ -8,7 +8,7 @@
   <sun_intensity>0.1</sun_intensity>
   <screenshot_width>1280</screenshot_width>
   <screenshot_height>1280</screenshot_height>
-  <overview_distance>40</overview_distance>
+  <overview_distance>4</overview_distance>
   <skybox>8</skybox>
   <Planets>
     <SerializedPlanet>

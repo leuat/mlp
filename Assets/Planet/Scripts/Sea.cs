@@ -59,7 +59,7 @@ namespace LemonSpawn {
                 ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.terrainObject, m_sun, m_groundMaterial);
 
 
-            m_innerRadius = planetSettings.radius;
+            m_innerRadius = planetSettings.radius * m_innerRadiusScale; 
             m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
             m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
             m_radius = m_outerRadius;

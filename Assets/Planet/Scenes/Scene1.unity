@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerRadiusScale: 1.05
+  outerRadiusScale: 1.025
   m_hdrExposure: 2
   m_ESun: 10
   radius: 50000
@@ -729,7 +729,7 @@ MonoBehaviour:
   rotation: 0
   Gravity: 10
   environmentDensity: 500
-  maxQuadNodeLevel: 0
+  maxQuadNodeLevel: 14
   planetTypeIndex: 4
   currentTag: Normal
   currentLayer: 10
@@ -765,17 +765,32 @@ MonoBehaviour:
   ringAmplitude: 1
   metallicity: 0
   Frames: []
-  ringColor: {r: 0.7941176, g: 0.68136257, b: 0.6306228, a: 1}
+  ringColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 1}
   ringScale: 5
   ringRadius: {x: 0.15, y: 0.35}
-  cloudColor: {x: 1, y: 1, z: 1}
-  atmosphereDensity: 0.95
+  cloudColor: {x: 0.7, y: 0.8, z: 1}
+  atmosphereDensity: 0.9
   atmosphereHeight: 1.019
   hasFlatClouds: 1
   hasBillboardClouds: 0
   hasSea: 1
   hasVolumetricClouds: 0
   hasEnvironment: 0
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 0.35
+    LS_CloudScattering: 0.7
+    LS_CloudIntensity: 4
+    LS_CloudSharpness: 1.35
+    LS_CloudThickness: 2
+    LS_ShadowScale: 0.75
+    LS_DistScale: 10
+    LS_CloudColor: {x: 0.3, y: 0.8, z: 1}
+    cloudTexture: {fileID: 0}
+    LSCloudTexture: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -1920,7 +1935,7 @@ MonoBehaviour:
   camSens: 0.2
   initPos:
     x: -1
-    y: 0.01
+    y: 0.0004
     z: 0.0005
   up: {x: 0, y: 0, z: 0}
   curDir: {x: 0, y: 0, z: 0}
@@ -2145,7 +2160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723561327
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,7 +2185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerRadiusScale: 1.05
+  outerRadiusScale: 1.019
   m_hdrExposure: 2
   m_ESun: 10
   radius: 20000
@@ -2229,6 +2244,21 @@ MonoBehaviour:
   hasSea: 0
   hasVolumetricClouds: 0
   hasEnvironment: 0
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 4
+    LS_CloudScattering: 0.74
+    LS_CloudIntensity: 4
+    LS_CloudSharpness: 1.35
+    LS_CloudThickness: 1.1
+    LS_ShadowScale: 0.75
+    LS_DistScale: 10
+    LS_CloudColor: {x: 0, y: 0, z: 0}
+    cloudTexture: {fileID: 0}
+    LSCloudTexture: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0
@@ -2400,7 +2430,7 @@ GameObject:
   - 33: {fileID: 1994386750}
   - 135: {fileID: 1994386749}
   - 23: {fileID: 1994386748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SunBackgroundSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

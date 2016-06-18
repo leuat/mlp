@@ -385,6 +385,9 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 										//	diff -=float3(d,d,d);
 
 
+
+
+
 										//float4 spc =_Color;// float4(1, 1, 1, 1);// *specularity * 1;
 										float4 spc = _Color*0.25;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
 										float omr = s.oneMinusReflectivity;

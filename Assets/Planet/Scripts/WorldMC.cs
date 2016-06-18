@@ -67,58 +67,8 @@ namespace LemonSpawn
             setPlaySpeed(0.0001f);
         }
 
-        protected void FocusOnPlanet(string n)
-        {
-            GameObject gc = mainCamera;
-            //Camera c = gc.GetComponent<Camera>();
-            Planet planet = null;
-            foreach (Planet p in solarSystem.planets)
-                if (p.pSettings.name == n)
-                    planet = p;
-
-            if (planet == null)
-                return;
-
-            DVector pos = planet.pSettings.pos;
-            float s = (float)(planet.pSettings.radius * szWorld.overview_distance / RenderSettings.AU);
-            Vector3 dir = pos.toVectorf().normalized * s;
-            Vector3 side = Vector3.Cross(Vector3.up, dir);
-
-            pos = pos - new DVector(dir) - new DVector(side.normalized * s);
-            pos.y += s;
-
-            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-            UpdateWorldCamera();
-            Update();
-            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-            UpdateWorldCamera();
-
-        }
 
 
-
-        protected void PopulateOverviewList(string box)
-        {
-            ComboBox cbx = GameObject.Find(box).GetComponent<ComboBox>();
-            cbx.ClearItems();
-            List<ComboBoxItem> l = new List<ComboBoxItem>();
-            foreach (Planet p in solarSystem.planets)
-            {
-                ComboBoxItem ci = new ComboBoxItem();
-                ci.Caption = p.pSettings.name;
-                string n = p.pSettings.name;
-                ci.OnSelect = delegate
-                {
-                    FocusOnPlanet(n);
-                };
-                l.Add(ci);
-            }
-            //		foreach (ComboBoxItem i in l)
-            //			Debug.Log (i.Caption);
-
-            cbx.AddItems(l.ToArray());
-
-        }
 
 
 
@@ -164,20 +114,7 @@ namespace LemonSpawn
         {
             RenderSettings.toggleSaveVideo = GameObject.Find("ToggleSaveVideo").GetComponent<Toggle>().isOn;
         }
-
-        /*	public void LoadDirectXml() {
-                string xml = GameObject.Find ("XMLText").GetComponent<Text>().text;
-
-                GameObject.Find ("XMLText").GetComponent<Text>().text = " ";
-        //		Debug.Log (xml);
-                LoadWorld(xml, false);
-                szWorld.IterateCamera();
-                space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-                space.hdr = szWorld.sun_intensity;
-            }
-        */
-
-#if UNITY_STANDALONE
+/*#if UNITY_STANDALONE
 
         public void LoadXmlFile()
         {
@@ -229,29 +166,11 @@ namespace LemonSpawn
 	}
 	
 #endif
+*/
 
 
-
-        protected void OnGUI()
+        protected void GenerateTextures()
         {
-
-            //	return;
-
-
-            if (RenderSettings.isVideo)
-            {
-                if (RenderSettings.toggleSaveVideo && m_playSpeed>0)
-                {
-                    int s = Screen.width / 50;
-                    int b = 50;
-                    int t = (int)(Time.time * 2);
-                    if (t % 2==0) {
-                        GUI.DrawTexture(new Rect(Screen.width-b-s, Screen.height -b -s, s,s), tx_record);
-                    } 
-                }
-                return;
-            }
-
             if (tx_background == null)
             {
                 tx_background = new Texture2D(1, 1);
@@ -265,12 +184,12 @@ namespace LemonSpawn
 
                 int N = 512;
                 tx_record = new Texture2D(N, N);
-                for (int i=0;i<N;i++)
+                for (int i = 0; i < N; i++)
                     for (int j = 0; j < N; j++)
                     {
-                        Vector3 p = new Vector3(i / (float)N, j / (float)N,0);
+                        Vector3 p = new Vector3(i / (float)N, j / (float)N, 0);
                         p -= new Vector3(0.5f, 0.5f);
-                        float a = Mathf.Pow(1.8f - 2*p.magnitude, 10);
+                        float a = Mathf.Pow(1.8f - 2 * p.magnitude, 10);
                         tx_record.SetPixel(i, j, new Color(1, 0.2f, 0.2f, a));
 
                     }
@@ -278,13 +197,11 @@ namespace LemonSpawn
                 //			tx_background = (Texture2D)Resources.Load ("cloudsTexture");
 
             }
-            if (!hasScene)
-                return;
-            if (load_percent == 100)
-                return;
 
-            //	return;	
-            //	return;
+        }
+
+        protected void RenderProgressbar()
+        {
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), tx_background);
             float h = 0.08f;
             int hei = (int)(Screen.height * h);
@@ -292,6 +209,38 @@ namespace LemonSpawn
             int rectwidth = (int)(Screen.width * (1 - 2 * border));
             GUI.DrawTexture(new Rect(Screen.width * border, Screen.height / 2 - hei, (int)(rectwidth / 100f * load_percent), 2 * hei), tx_load);
             GUI.Label(new Rect(Screen.width / 2 - 40, (int)(Screen.height * (2 / 3f)), 200, 200), RenderSettings.generatingText);
+
+        }
+
+        protected void OnGUI()
+        {
+
+            GenerateTextures();
+
+            if (RenderSettings.isVideo)
+            {
+                // Render blinking record sign
+                if (RenderSettings.toggleSaveVideo && m_playSpeed>0)
+                {
+                    int s = Screen.width / 50;
+                    int b = 50;
+                    int t = (int)(Time.time * 2);
+                    if (t % 2==0) {
+                        GUI.DrawTexture(new Rect(Screen.width-b-s, Screen.height -b -s, s,s), tx_record);
+                    } 
+                }
+                return;
+            }
+            // Generate Textures
+            if (!hasScene)
+                return;
+
+            if (load_percent == 100)
+                return;
+
+            if (RenderSettings.toggleProgressbar)
+                RenderProgressbar();
+
         }
 
         public override void Start()
@@ -311,26 +260,15 @@ namespace LemonSpawn
 
             PopulateFileCombobox("ComboBoxLoadFile", "xml");
 
-            //		CreateConfig("system1.xml");
-            //		LoadWorld("system1.xml", true);
-            //		szWorld.IterateCamera();
 
 #if UNITY_STANDALONE
             //	LoadCommandLineXML();
 #endif
-            /*			LoadWorld("system1.xml", true,false);
-                        szWorld.IterateCamera();
-                        space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-                        space.hdr = szWorld.sun_intensity;
-
-            */
-            // FOCUS som er problemet
         }
 
 
         void setSun()
         {
-            //		if (World.WorldCamera
             if (sun == null)
                 return;
 

@@ -19,17 +19,16 @@ public class Clouds : Atmosphere {
 		m_outerRadius = planetSettings.radius*planetSettings.outerRadiusScale;
 
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
-            		m_radius = planetSettings.radius*planetSettings.cloudRadius;	
+            		m_radius = planetSettings.radius*planetSettings.cloudRadius;
             //m_radius = m_outerRadius*0.999f;
-			
-		cs.Initialize((Material)Resources.Load ("Clouds"), ps, sun);
+		cs.Initialize((Material)Resources.Load ("Clouds"), ps, sun, ps.cloudColor);
 		//InitializeMesh();
 //		m_sky = m_cloudObject;
 		m_skyMaterial = m_cloudSettings.material;
         InitAtmosphereMaterial(m_skyMaterial);
 
         InitializeSkyMesh();
-		m_sky.transform.Rotate(new Vector3(90,0,0));
+//		m_sky.transform.Rotate(new Vector3(90,0,0));
 	}
 	
 		
@@ -62,7 +61,7 @@ public class Clouds : Atmosphere {
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
             m_radius = planetSettings.radius * planetSettings.renderedCloudRadius;
 
-            cs.Initialize((Material)Resources.Load("VolumetricClouds"), ps, sun);
+            cs.Initialize((Material)Resources.Load("VolumetricClouds"), ps, sun, ps.cloudColor);
 
             m_skyMaterial = m_cloudSettings.material;
             InitAtmosphereMaterial(m_skyMaterial);

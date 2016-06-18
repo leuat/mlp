@@ -4,14 +4,19 @@ using System.IO;
 
 namespace LemonSpawn {
 
-public class CloudSettings { //: MonoBehaviour {
+
+
+
+
+    [System.Serializable]
+    public class CloudSettings {//: MonoBehaviour {
 	
 	public float LS_CloudTimeScale = 5;
-	public float LS_CloudScale = 4;
-	public float LS_CloudScattering = 0.75f;
-	public float LS_CloudIntensity = 6;
+	public float LS_CloudScale = 0.35f;
+	public float LS_CloudScattering = 0.6f;
+	public float LS_CloudIntensity = 5;
 	public float LS_CloudSharpness = 1.35f;
-	public float LS_CloudThickness = 0.7f;
+	public float LS_CloudThickness = 1.9f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;
 	public Vector3 LS_CloudColor = Vector3.zero;
@@ -38,11 +43,12 @@ public class CloudSettings { //: MonoBehaviour {
 			
 	}
 					
-	public void Initialize(Material org, PlanetSettings ps, GameObject sun) {
+	public void Initialize(Material org, PlanetSettings ps, GameObject sun, Vector3 cc) {
 //		material = new Material(org.shader);
 	//	material.SetTexture("_MainTex", ps.clouds);
 		m_sun = sun;
             material = org;
+            LS_CloudColor = cc;
 		//material.SetTexture("_CloudTex", (Texture)Resources.Load ("cloudsTexture2"));
 			
 //		GenerateSeamless();
@@ -58,8 +64,8 @@ public class CloudSettings { //: MonoBehaviour {
 		if (material==null)
 			return;
 			
-		LS_CloudColor.Set (0.7f,0.5f,0.3f);	
-		material.SetFloat("ls_time", 0*Time.time*LS_CloudTimeScale*0.25f);
+		//LS_CloudColor.Set (1.0f,0.9f,0.8f);	
+		material.SetFloat("ls_time", 2*Time.time*LS_CloudTimeScale*0.25f);
 		material.SetFloat("ls_cloudscale", LS_CloudScale);
 		material.SetFloat("ls_cloudscattering", LS_CloudScattering);
 		material.SetFloat("ls_cloudintensity", LS_CloudIntensity);
@@ -68,6 +74,8 @@ public class CloudSettings { //: MonoBehaviour {
 		material.SetFloat("ls_cloudthickness", LS_CloudThickness);
 		material.SetVector("ls_cloudcolor", LS_CloudColor);
 		material.SetFloat("ls_distScale", LS_DistScale);
+
+
 //		material.SetVector("lightDir", rot*m_sun.transform.forward*-1.0f*-1);
 	}
 }

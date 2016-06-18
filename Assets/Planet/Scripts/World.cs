@@ -57,6 +57,8 @@ namespace LemonSpawn {
         public static float vehicleFollowDistance = 10;
         public static bool toggleClouds = false;
         public static bool toggleSaveVideo = false;
+        public static bool toggleProgressbar = false;
+        public static bool displayDebugLines = false;
 
 #if UNITY_STANDALONE_OSX
         public static string fileDelimiter = "/";
@@ -76,13 +78,12 @@ namespace LemonSpawn {
 		public static string[] Clouds = new string[] {"earthclouds", "earthclouds2","gasclouds"}; 
 		
 	}
-	
-	
 
-	
-	#if UNITY_EDITOR
-	
-	[CustomEditor(typeof(PlanetSettings))]
+
+
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(PlanetSettings))]
 	public class ObjectBuilderEditor : Editor
 	{
 		public override void OnInspectorGUI()
@@ -93,7 +94,7 @@ namespace LemonSpawn {
 			if(GUILayout.Button("Build Object"))
 			{
 				//myScript.BuildObject();
-				Planet p = new Planet(ps, null);
+				Planet p = new Planet(ps);
 				//p.pSettings.pos.Set(go.transform.position);
 				//go.transform.parent = transform;
 				PlanetType.Initialize();
@@ -105,9 +106,28 @@ namespace LemonSpawn {
 			}
 		}
 	}
-	# endif	
-	
-	public class World : MonoBehaviour {
+#endif
+
+
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(PlanetSettings))]
+    public class AddCloudSettings : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            PlanetSettings ps = (PlanetSettings)target;
+            if (GUILayout.Button("Add Clouds"))
+            {
+               // ps.cloudSettings = ps.gameObject.AddComponent<CloudSettings>();
+
+            }
+        }
+    }
+#endif
+    public class World : MonoBehaviour {
 		
 		
 		public static DVector WorldCamera = new DVector();
@@ -298,10 +318,12 @@ namespace LemonSpawn {
 			szWorld.IterateCamera();
 			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
-		}
-		
-		//	#endif	
-		void CreateConfig(string fname) {
+          
+
+        }
+
+        //	#endif	
+        void CreateConfig(string fname) {
 			
 			SerializedPlanet p = new SerializedPlanet();
 			SerializedWorld sz = new SerializedWorld();
@@ -450,20 +472,23 @@ namespace LemonSpawn {
 			GameObject p = new GameObject("Planet");
 			if (Selection.activeGameObject != null)
 				p.transform.parent = Selection.activeGameObject.transform;
-			p.AddComponent<PlanetSettings>();		
-			//		p.AddComponent<CloudSettings>();		
-		}
-		#endif	
-		
-		
-		
-		
-		
-		// Update is called once per frame
-		
-        
+			PlanetSettings ps = p.AddComponent<PlanetSettings>();
+            
+     //       ps.cloudSettings = p.AddComponent<CloudSettings>();
+            //		p.AddComponent<CloudSettings>();		
+        }
+#endif
 
-		public void UpdateWorldCamera() {
+
+
+
+
+
+        // Update is called once per frame
+
+
+
+        public void UpdateWorldCamera() {
 			
 			WorldCamera = mainCamera.GetComponent<SpaceCamera>().getPos();//  cam.transform.position;
 			closeCamera.transform.rotation = mainCamera.transform.rotation;
@@ -531,6 +556,10 @@ namespace LemonSpawn {
 			if (Input.GetKeyUp (KeyCode.L)) {
 				RenderSettings.toggleClouds = !RenderSettings.toggleClouds;
 			}
+            if (Input.GetKeyUp(KeyCode.K))
+            {
+                RenderSettings.displayDebugLines = !RenderSettings.displayDebugLines;
+            }
             if (SolarSystem.planet!=null)
 	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.localCamera);
     		if (RenderSettings.UseThreading) 
@@ -545,8 +574,63 @@ namespace LemonSpawn {
 			
 		}
 
+        protected void FocusOnPlanet(string n)
+        {
+            GameObject gc = mainCamera;
+            //Camera c = gc.GetComponent<Camera>();
+            Planet planet = null;
+            foreach (Planet p in solarSystem.planets)
+                if (p.pSettings.name == n)
+                    planet = p;
 
-		public void PopulateFileCombobox(string box, string fileType) {
+            if (planet == null)
+                return;
+
+            Debug.Log("planet: " + planet.pSettings.name);
+
+            DVector pos = planet.pSettings.pos;
+            float s = (float)(planet.pSettings.radius * szWorld.overview_distance / RenderSettings.AU);
+            Vector3 dir = pos.toVectorf().normalized * s;
+            Vector3 side = Vector3.Cross(Vector3.up, dir);
+
+            pos = pos - new DVector(dir) - new DVector(side.normalized * s);
+            pos.y += s;
+
+            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
+            UpdateWorldCamera();
+            Update();
+            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
+            UpdateWorldCamera();
+
+        }
+
+
+        protected void PopulateOverviewList(string box)
+        {
+            ComboBox cbx = GameObject.Find(box).GetComponent<ComboBox>();
+            cbx.ClearItems();
+            List<ComboBoxItem> l = new List<ComboBoxItem>();
+            foreach (Planet p in solarSystem.planets)
+            {
+                ComboBoxItem ci = new ComboBoxItem();
+                ci.Caption = p.pSettings.name;
+                string n = p.pSettings.name;
+                ci.OnSelect = delegate
+                {
+                    FocusOnPlanet(n);
+                };
+                l.Add(ci);
+            }
+            //		foreach (ComboBoxItem i in l)
+            //			Debug.Log (i.Caption);
+
+            cbx.AddItems(l.ToArray());
+
+        }
+
+
+
+        public void PopulateFileCombobox(string box, string fileType) {
 				ComboBox cbx = GameObject.Find (box).GetComponent<ComboBox>();
 				cbx.ClearItems();
 				DirectoryInfo info = new DirectoryInfo(".");
@@ -566,7 +650,8 @@ namespace LemonSpawn {
 						string name = f.Name;
 						ci.OnSelect = delegate {
 							LoadFromXMLFile(name);
-						};
+                            PopulateOverviewList("Overview");
+                        };
 						string n = f.Name;
 						if (first == "")
 							first = "";

@@ -26,7 +26,7 @@ namespace LemonSpawn {
  		public int seed = 0;
  		public double pos_x, pos_y, pos_z;
  		public string name;
- 		public float rotation = 0;
+ 		public double rotation = 0;
  		public float temperature = 200;
  		public List<Frame> Frames = new List<Frame>();
  		public float atmosphereDensity = 1;
@@ -38,14 +38,15 @@ namespace LemonSpawn {
 			ps.pos.x = pos_x;
 			ps.pos.y = pos_y;
 			ps.pos.z = pos_z;
-			ps.rotation = rotation;
+			ps.rotation = rotation % (2.0*Mathf.PI);
 			ps.temperature = temperature;
 			ps.seed = seed;
 			ps.Frames = Frames;
 			ps.radius = radius*radiusScale;
 			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, 0.95f);
 			ps.atmosphereHeight = atmosphereHeight;
-
+            foreach (Frame f in Frames)
+                f.rotation = f.rotation% (2.0 * Mathf.PI);
             ps.Randomize(count);
 
             return ps;
@@ -114,7 +115,7 @@ namespace LemonSpawn {
 		private int frame = 0;
 		public float skybox = 0;
 		public int resolution = 64;
-		public float overview_distance = 10;
+		public float overview_distance = 4;
 		public int screenshot_width = 1024;
 		public int screenshot_height = 1024;
 		public bool isVideo() {
@@ -174,10 +175,6 @@ namespace LemonSpawn {
 			foreach (Planet p in planets) {
 				p.InterpolatePositions(b.frame, dt);
 			}
-
-            Vector3 dp = (pos*RenderSettings.AU).toVectorf();
-            Debug.DrawLine(dp, dp + up.toVectorf(), Color.green, 10);
-
 
             World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
 			
@@ -319,7 +316,7 @@ namespace LemonSpawn {
 		public float liquidThreshold = 0.001f;
 		public float globalTerrainHeightScale = 1.0f;
 		public float globalTerrainScale = 1.0f;
-		public float rotation;
+		public double rotation;
         public float Gravity;
         public int environmentDensity = 0;
         public int maxQuadNodeLevel;
@@ -361,6 +358,9 @@ namespace LemonSpawn {
         public bool hasVolumetricClouds = false;
         public bool hasEnvironment = false;
         public Sea sea;
+        public CloudSettings cloudSettings = new CloudSettings();
+
+
 
         public Plane[] cameraPlanes;
 
@@ -412,8 +412,6 @@ namespace LemonSpawn {
 			if (hasSea) {
 				sea = new Sea();
 			}
-			cloudSettings = new CloudSettings();
-
             maxQuadNodeLevel = RenderSettings.maxQuadNodeLevel;
 
 			
@@ -470,9 +468,13 @@ namespace LemonSpawn {
 */			
 			a = 1;
 			b = -0.6f;
-			cloudColor.x = 1f*(a+b*(float)r.NextDouble());
-			cloudColor.y = 1f*(a+b*(float)r.NextDouble());
-			cloudColor.z = 1f*(a+b*(float)r.NextDouble());
+            //cloudColor.x = 1f*(a+b*(float)r.NextDouble());
+            //cloudColor.y = 1f*(a+b*(float)r.NextDouble());
+            //cloudColor.z = 1f*(a+b*(float)r.NextDouble());
+            cloudColor.x = 0.7f;
+            cloudColor.y = 0.8f;
+            cloudColor.z = 1;
+
 
             //metallicity = 0.01f*(float)r.NextDouble();
             metallicity = 0;
@@ -488,12 +490,12 @@ namespace LemonSpawn {
 				ringRadius.y = 0.25f + 0.20f*(float)r.NextDouble();
 				
 			}
-            m_hdrExposure = 3;
-            m_ESun = 15;
-			globalTerrainHeightScale = 1.5f;
-			globalTerrainScale = 4;
-            atmosphereHeight = 1.019f;
-            outerRadiusScale = 1.025f;
+            m_hdrExposure = 2;
+            m_ESun = 10;
+            globalTerrainHeightScale = 1.1f + (float)r.NextDouble() ;
+			globalTerrainScale = 2 + (float)(4*r.NextDouble());
+//            atmosphereHeight = 1.019f;
+  //          outerRadiusScale = 1.025f;
 
 //             < atmosphereHeight > 1.019 </ atmosphereHeight >
   //  < outerRadiusScale > 1.025 </ outerRadiusScale >
@@ -502,7 +504,8 @@ namespace LemonSpawn {
             if (radius >= 5000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
-				cloudSettings = new CloudSettings();
+                hasFlatClouds = true;
+                hasVolumetricClouds = false;
 			}
 			if (planetType.Name == "Terra") {
 				sea = new Sea();
@@ -513,7 +516,6 @@ namespace LemonSpawn {
 		}
 		
 		
-		public CloudSettings cloudSettings;
 		
 		public float getHeight() {
 			return localCamera.magnitude - radius;
@@ -544,7 +546,7 @@ namespace LemonSpawn {
 			
 			
 			localCamera = World.WorldCamera.Sub (posInKm).toVectorf();// - transform.position;
-			Quaternion q = 	Quaternion.Euler(new Vector3(0, -rotation/(2*Mathf.PI)*360f,0));
+			Quaternion q = 	Quaternion.Euler(new Vector3(0, -(float)(rotation/(2*Mathf.PI)*360f),0));
 			localCamera = q*localCamera;
 
 			if (World.CloseCamera != null)

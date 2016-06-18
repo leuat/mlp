@@ -26,13 +26,6 @@ namespace LemonSpawn
         
 
 
-        public Planet(PlanetSettings p, CloudSettings cs)
-        {
-            pSettings = p;
-            if (pSettings != null)
-                pSettings.cloudSettings = cs;
-
-        }
         public Planet(PlanetSettings p)
         {
             pSettings = p;
@@ -51,7 +44,7 @@ namespace LemonSpawn
             double rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
 
             pSettings.pos = pos;
-            pSettings.rotation = (float)rot;
+            pSettings.rotation = rot;
             
 
         }
@@ -65,6 +58,9 @@ namespace LemonSpawn
                 rings = new Rings(pSettings, sun);
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
+
+            Debug.Log(pSettings.name);
+           
 
             if (pSettings.hasFlatClouds)
                    clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
@@ -220,13 +216,9 @@ namespace LemonSpawn
                 rings.Update();
 
             MaintainPlanet();
-            // Rotation test		
-            //		pSettings.rotation+=0.05f;
-            //pSettings.rotation = 0;
+            float rot = (float)(pSettings.rotation / (2 * Mathf.PI) * 360f);
 
-            pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, pSettings.rotation / (2 * Mathf.PI) * 360f, 0));
-            //			pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0,pSettings.rotation/(2*Mathf.PI)*360f));
-            //			Debug.Log (	pSettings.rotation/(2*Mathf.PI)*360f);
+            pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
 
             if (pSettings.atmosphere != null)
                 pSettings.atmosphere.Update();

@@ -15,6 +15,7 @@ public class Atmosphere
 	protected Mesh m_skyMesh;
 	protected PlanetSettings planetSettings;
 	protected float localscale;
+    protected float m_innerRadiusScale = 1f;
 	public Vector3 m_waveLength; // Wave length of sun light
 	public float m_kr = 0.0025f; 			// Rayleigh scattering constant
 	public float m_km = 0.0010f; 			// Mie scattering constant
@@ -111,7 +112,7 @@ public class Atmosphere
 		//Get the radius of the sphere. This presumes that the sphere mesh is a unit sphere (radius of 1)
 		//that has been scaled uniformly on the x, y and z axis
 		float radius = pSettings.radius;
-		m_innerRadius = radius;
+            m_innerRadius = radius * m_innerRadiusScale;
 		if (noiseTexture == null)
 			noiseTexture = (Texture2D)Resources.Load("NoiseTexture");
 		m_sun = sun;
@@ -127,13 +128,15 @@ public class Atmosphere
 		m_skyMesh = sphere;
 		//The outer sphere must be 2.5% larger that the inner sphere
 		//m_outerScaleFactor = m_skySphere.transform.localScale.x;
-		m_outerRadius = pSettings.atmosphereHeight* radius;
-		m_radius =m_outerRadius;		
+		m_outerRadius = pSettings.outerRadiusScale* radius;
+        m_radius = m_outerRadius;		
 		InitAtmosphereMaterial(m_groundMaterial);
         InitAtmosphereMaterial(m_skyMaterial);
 		InitializeSkyMesh();
-		
-        if (m_sky != null)
+
+//            m_outerRadius = pSettings.outerRadiusScale * radius;
+
+            if (m_sky != null)
     		localscale = m_sky.transform.parent.localScale.x;
 		
 	}
@@ -227,8 +230,8 @@ public class Atmosphere
             mat.SetFloat("fOuterRadius2", m_outerRadius * m_outerRadius * ds * ds);
             mat.SetFloat("fInnerRadius", m_innerRadius * ds * iscale);
             mat.SetFloat("fInnerRadius2", m_innerRadius * m_innerRadius * ds);
-            mat.SetFloat("fKrESun", m_kr * planetSettings.m_ESun * sunScale);
-            mat.SetFloat("fKmESun", m_km * planetSettings.m_ESun * sunScale);
+            mat.SetFloat("fKrESun", m_kr * planetSettings.m_ESun); // * sunScale
+            mat.SetFloat("fKmESun", m_km * planetSettings.m_ESun);// * sunScale;;
             mat.SetFloat("fKr4PI", m_kr * 4.0f * Mathf.PI);
             mat.SetFloat("fKm4PI", m_km * 4.0f * Mathf.PI);
             mat.SetFloat("fScale", scale);

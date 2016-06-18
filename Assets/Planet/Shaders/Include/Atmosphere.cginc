@@ -81,7 +81,7 @@ void AtmFromGround(float4 vert, out float3 c0, out float3 c1, float3 camPos) {
 																					// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
 	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
 //	float fCameraHeight = clamp(length(v3CameraPos), length(v3Pos) , 1000000);					// The camera's current height
-	float fCameraHeight = clamp(length(v3CameraPos), 0, 1000000);					// The camera's current height
+	float fCameraHeight = clamp(length(v3CameraPos), length(v3Pos)*0, 1000000);					// The camera's current height
 
 	float3 v3Ray = v3Pos - v3CameraPos;
 	v3Pos = normalize(v3Pos);
@@ -91,8 +91,12 @@ void AtmFromGround(float4 vert, out float3 c0, out float3 c1, float3 camPos) {
 	// Calculate the ray's starting position, then calculate its scattering offset
 	float3 v3Start = v3CameraPos;
 	float fDepth = exp(clamp(fInnerRadius*1.0 - fCameraHeight,-10,0) * (1.0 / fScaleDepth));
-	float fCameraAngle = dot(-v3Ray, v3Pos);
-	float fLightAngle = dot(v3LightPos, v3Pos);
+
+	//float fCameraAngle = clamp(dot(-v3Ray, v3Pos),-1,1);
+	float fLightAngle = clamp(dot(v3LightPos, v3Pos),-1,1);
+
+	float fCameraAngle = clamp(dot(-v3Ray, v3Pos), 0.0, 1);
+
 	float fCameraScale = scale(fCameraAngle);
 	float fLightScale = scale(fLightAngle);
 	float fCameraOffset = fDepth*fCameraScale;
