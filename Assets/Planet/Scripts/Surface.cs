@@ -307,7 +307,27 @@ public class Surface {
 		
 
 
-		public static SurfaceFilter Continents(float a, float size, float max) {
+		public static SurfaceFilter Continents2(float a, float size, float max) {
+			SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 40*a, size, 1.8f, 0.25f);
+            SurfaceFilter contf = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 0.01f, cont);
+            SurfaceGenerator cont2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 60*a, 3.231f*size, 1.8f, 0.15f);
+            SurfaceFilter addc2 = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 30*a, 100,cont2);
+
+            //cont2.warpScale = 10000.23952f;
+
+            SurfaceGenerator largeCont = new SurfaceGenerator(SurfaceGenerator.PERLIN, 1000.2345f * a, size*0.2612f, 3, 0);
+
+			SurfaceCombiner sc = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 1f,contf, addc2);
+			
+			SurfaceFilter sub = new SurfaceFilter(SurfaceFilter.SUB, 1, 25*a ,1,sc);
+            SurfaceCombiner largeF = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 0.5f, sub, sub);
+			SurfaceFilter f1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 10*max, largeF);
+           
+			//SurfaceFilter f1 = new SurfaceFilter(SurfaceFilter.POW, 1, 0.2f, max, sub);
+			
+			return f1;
+		}
+public static SurfaceFilter Continents(float a, float size, float max) {
 			SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40*a, size, 1.8f, 0.55f);
 			SurfaceGenerator cont2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40*a, 4.5231f*size, 4.8f, 0.15f);
 			//cont2.warpScale = 10000.23952f;
@@ -319,8 +339,7 @@ public class Surface {
 			//SurfaceFilter f1 = new SurfaceFilter(SurfaceFilter.POW, 1, 0.2f, max, sub);
 			
 			return f1;
-		}
-		
+		}		
 		public static SurfaceNode River(float scale, float amplitude, float steep, float sub) {
 			SurfaceGenerator river = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIVER, 2, scale, 0,0);
 			
@@ -400,8 +419,10 @@ public class Surface {
 
             float s = scale;
             float a = 1 / 7000f;
-            //return new SurfaceGenerator(SurfaceGenerator.FLAT, 0, 0, 0, 0);
+ //           return new SurfaceGenerator(SurfaceGenerator.FLAT, 0, 0, 0, 0);
             SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
+//            SurfaceGenerator f1 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40 * a, 0.21f*s, 1.8f, 0.55f);
+
             //			return f1;
 
 

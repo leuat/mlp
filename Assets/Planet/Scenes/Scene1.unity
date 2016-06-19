@@ -559,7 +559,7 @@ MonoBehaviour:
     resolutionScale: 1.5
     global_radius_scale: 1
     skybox: 1
-    resolution: 64
+    resolution: 48
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -720,7 +720,7 @@ MonoBehaviour:
   rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
-  planetTypeIndex: 5
+  planetTypeIndex: 0
   castShadows: 1
   hasSea: 1
   seed: 1
@@ -782,7 +782,7 @@ MonoBehaviour:
     m_sun: {fileID: 0}
   hasFlatClouds: 0
   hasBillboardClouds: 0
-  hasVolumetricClouds: 0
+  hasVolumetricClouds: 1
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
