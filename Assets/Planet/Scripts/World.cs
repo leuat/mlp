@@ -24,12 +24,14 @@ namespace LemonSpawn {
 	public enum RenderType { Normal, Overview }
 	
 	public class RenderSettings {
-		public static float gridDivide = 10;
+        public static bool UseThreading = true;
+        public static float gridDivide = 10;
 		public static int sizeVBO = 96;
 		public static bool assProjection = true;
 		public static bool flatShading = false;
 		public static int maxQuadNodeLevel = 14;
 		public static int minQuadNodeLevel = 2;
+        public static bool createTerrainColliders = false;
 		public static bool cullCamera = false;
 		public static double AU = 1.4960*Mathf.Pow(10,8); // AU in km
 		public static float LOD_Distance = 100000;
@@ -40,7 +42,6 @@ namespace LemonSpawn {
 		public static float RingProbability = 0.5f;
 		public static float RingRadiusRequirement = 4000;
 		public static int CloudTextureSize = 1024;
-		public static bool UseThreading = true;
 		public static bool RenderMenu = true;
 		public static float version = 0.10f;
 		public static float MinCameraHeight = 1.5f;

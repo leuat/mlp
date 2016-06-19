@@ -83,9 +83,12 @@ namespace LemonSpawn
                 return;
 
             quadGO = quadField.Realise(planetSettings.castShadows);
-            MeshCollider c = quadGO.AddComponent<MeshCollider>();
-            c.enabled = false;
-            c.material = (PhysicMaterial)Resources.Load("PhysicsMaterial/surface");
+            if (RenderSettings.createTerrainColliders)
+            {
+                MeshCollider c = quadGO.AddComponent<MeshCollider>();
+                c.enabled = false;
+                c.material = (PhysicMaterial)Resources.Load("PhysicsMaterial/surface");
+            }
 //            c.fri
             
 
@@ -189,12 +192,11 @@ namespace LemonSpawn
             }
             if (recalculate == true && quadField != null && thread == null && quadGO != null)
             {
-                decideNeighbors();
+/*                decideNeighbors();
                 LSMesh m = quadField.ReCalculate(neighbourLOD, planetSettings.castShadows);
                 quadGO.GetComponent<MeshFilter>().mesh = m.mesh;
                 
-                //setGOproperties();
-                recalculate = false;
+                recalculate = false;*/
             }
 
 

@@ -75,7 +75,8 @@
 					// Normalize
 				
 					y /= 0.5f*NN;
-					return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 0.2,0,1.0);
+					return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 0.3,0,1.0);
+
 				}
 			
 	 	// returns cloud value, outputs normal to N. 

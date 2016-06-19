@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 396641639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100000, y: 100000, z: 100000}
+  m_LocalScale: {x: 75000, y: 75000, z: 75000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -556,10 +556,10 @@ MonoBehaviour:
     sun_col_g: 1
     sun_col_b: 0.8
     sun_intensity: 0.01
-    resolutionScale: 2
+    resolutionScale: 1.5
     global_radius_scale: 1
     skybox: 1
-    resolution: 32
+    resolution: 64
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -720,7 +720,7 @@ MonoBehaviour:
   rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
-  planetTypeIndex: 0
+  planetTypeIndex: 5
   castShadows: 1
   hasSea: 1
   seed: 1
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_basinTexture: {fileID: 2800000, guid: 9bc35ccacbe91574c8ccb3210ed6a057, type: 3}
   m_topColor: {r: 1, g: 1, b: 1, a: 1}
   m_topTexture: {fileID: 2800000, guid: de7e03990d08dcd498dce92a128d9934, type: 3}
-  m_hillColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 0}
+  m_hillColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_hillTexture: {fileID: 2800000, guid: 25233987f72716e479f482648abcb424, type: 3}
   m_waterColor: {r: 0, g: 0.492343, b: 0.97794116, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
@@ -775,8 +775,8 @@ MonoBehaviour:
     LS_ShadowScale: 0.75
     LS_DistScale: 10
     LS_CloudColor: {x: 0.3, y: 0.8, z: 1}
-    cloudTexture: {fileID: 0}
-    LSCloudTexture: {fileID: 0}
+    cloudTexture: {fileID: 2800000, guid: d33cda003e34341c99811778bca33395, type: 3}
+    LSCloudTexture: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}

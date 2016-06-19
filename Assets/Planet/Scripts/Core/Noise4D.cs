@@ -214,29 +214,29 @@ public class Noise4D  {
 	// 2D Scaled Simplex raw noise.
 	//
 	// Returned value will be between loBound and hiBound.
-	float scaled_raw_noise_2d(  float loBound,  float hiBound,  float x,  float y ) {
+	public float scaled_raw_noise_2d(  float loBound,  float hiBound,  float x,  float y ) {
 		return raw_noise_2d(x, y) * (hiBound - loBound) / 2 + (hiBound + loBound) / 2;
 	}
-	
-	
-	// 3D Scaled Simplex raw noise.
-	//
-	// Returned value will be between loBound and hiBound.
-	float scaled_raw_noise_3d(  float loBound,  float hiBound,  float x,  float y,  float z ) {
+
+
+        // 3D Scaled Simplex raw noise.
+        //
+        // Returned value will be between loBound and hiBound.
+        public float scaled_raw_noise_3d(  float loBound,  float hiBound,  float x,  float y,  float z ) {
 		return raw_noise_3d(x, y, z) * (hiBound - loBound) / 2 + (hiBound + loBound) / 2;
 	}
-	
-	// 4D Scaled Simplex raw noise.
-	//
-	// Returned value will be between loBound and hiBound.
-	float scaled_raw_noise_4d(  float loBound,  float hiBound,  float x,  float y,  float z,  float w ) {
+
+        // 4D Scaled Simplex raw noise.
+        //
+        // Returned value will be between loBound and hiBound.
+        public float scaled_raw_noise_4d(  float loBound,  float hiBound,  float x,  float y,  float z,  float w ) {
 		return raw_noise_4d(x, y, z, w) * (hiBound - loBound) / 2 + (hiBound + loBound) / 2;
 	}
-	
-	
-	
-	// 2D raw Simplex noise
-	float raw_noise_2d(  float x,  float y ) {
+
+
+
+        // 2D raw Simplex noise
+        public float raw_noise_2d(  float x,  float y ) {
 		// Noise contributions from the three corners
 		float n0, n1, n2;
 		
@@ -303,10 +303,10 @@ public class Noise4D  {
 		// The result is scaled to return values in the interval [-1,1].
 		return 70.0f * (n0 + n1 + n2);
 	}
-	
-	
-	// 3D raw Simplex noise
-	float raw_noise_3d(  float x,  float y,  float z ) {
+
+
+        // 3D raw Simplex noise
+        public float raw_noise_3d(  float x,  float y,  float z ) {
 		float n0, n1, n2, n3; // Noise contributions from the four corners
 		
 		// Skew the input space to determine which simplex cell we're in

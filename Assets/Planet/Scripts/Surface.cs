@@ -178,7 +178,7 @@ public class SurfaceGenerator : SurfaceNode {
 		
 			s = Mathf.Clamp(s*(1 + scaleAmp*noise.raw_noise_4d(p.x*scaleScale, p.y*scaleScale, p.z*scaleScale, ws)),0.01f,1000);
 		}
-		int mfo = 6;
+		int mfo = 8;
 		
 		
 		if (type==PERLIN) 
@@ -392,6 +392,24 @@ public class Surface {
 			return liquidCap2;
 			//		surfaceNode = f1;
 		}
+
+
+
+        public static SurfaceNode InitializeTerra2(float hscale, float scale, PlanetSettings ps)
+        {
+
+            float s = scale;
+            float a = 1 / 7000f;
+            //return new SurfaceGenerator(SurfaceGenerator.FLAT, 0, 0, 0, 0);
+            SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
+            //			return f1;
+
+
+
+            return f1;
+            //		surfaceNode = f1;
+        }
+
 
 
 

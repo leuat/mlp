@@ -367,7 +367,6 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 							float3 mColor = ((1 - tt)*middleColor + middleColor2*tt);
 							//	float3 bColor = ((1-tt)*basinColor + basinColor2*tt*r_noise(normalize(i.vpos.xyz),2.1032,3));
 
-
 								float3 hColor = mColor*getTex(_Surface, i.tex.xy);//float3(1,1,1);//s.diffColor;
 								//	float3 hillColor = s.diffColor;
 									//if (dd < 0.98 )
@@ -380,11 +379,11 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
 									float wh = (length(i.posWorld.xyz - v3Translate) - fInnerRadius);
 
-
+									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, topThreshold, h);
 									hColor = mixHeight(hColor, basinColor*getTex(_Basin, i.tex.xy), 500, basinThreshold	, h);
 									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, hillyThreshold, dd);
 									hColor = mixHeight(hColor, 3*basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
-									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, topThreshold, h);
+									
 
 
 

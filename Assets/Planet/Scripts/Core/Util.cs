@@ -304,8 +304,8 @@ namespace LemonSpawn
             Vector3 vt = p * frequency;
             for (float octave = 0; octave < octaves; octave++)
             {
-                //float signal = simplex.noise3D (vt);//   Mathf.PerlinNoise(vt.x, vt.z);
-                float signal = initialOffset + noise4D.raw_noise_4d(vt.x, vt.y, vt.z, seed);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+ //               float signal = initialOffset + noise4D.raw_noise_3d(vt.x, vt.y, vt.z);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+                 float signal = initialOffset + noise4D.raw_noise_4d(vt.x, vt.y, vt.z, seed);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
 
                 // Make the ridges.
                 signal = Mathf.Abs(signal);
@@ -316,21 +316,13 @@ namespace LemonSpawn
 
                 signal *= weight;
                 weight = signal * gain;
-                if (weight > 1.0f)
-                {
-                    weight = 1.0f;
-                }
-                if (weight < 0.0f)
-                {
-                    weight = 0.0f;
-                }
-
+                weight = Mathf.Clamp(weight, 0, 1);
 
                 value += (signal * ww[(int)octave]);
                 vt = vt * lacunarity;
                 frequency *= lacunarity;
             }
-            return value;//(value * 1.25) - 1.0;
+            return value;
         }
 
         public static float getNoise(float x, float y, float z)

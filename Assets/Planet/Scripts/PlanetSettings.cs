@@ -283,6 +283,7 @@ namespace LemonSpawn {
 			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Cold gas giant", new Color(0.2f, 0.5f, 0.7f), new Color(0.1f, 0.2f, 0.2f), "", new Vector2(12000, 1000000), new Vector2(0,200),1,1));
 			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Hot gas giant", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(50000, 5000000), new Vector2(150,1000),1,1));
 			planetTypes.Add (new PlanetType(Surface.InitializeNew, "New", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(500, 5000000), new Vector2(150,1000),1,1));
+            planetTypes.Add(new PlanetType(Surface.InitializeTerra2, "Terra2", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(500, 5000000), new Vector2(150, 1000), 1, 1));
         }
 
         public static PlanetType getRandomPlanetType(System.Random r, float radius, float temperature) {
