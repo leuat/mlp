@@ -3,7 +3,7 @@ Shader "LemonSpawn/Ground"
 	Properties
 	{
 		_Color("Color", Color) = (1,1,1,1)
-		_MainTex("Albedo", 2D) = "white" {}
+		_MainTex("Albedo map", 2D) = "white" {}
 		_Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
 
 		_Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
@@ -213,6 +213,8 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 		}
 		*/
 
+		sampler2D _Mountain, _Basin, _Top, _Surface;
+
 
 		VertexOutputForwardBase2 LvertForwardBase(VertexInput v)
 		{
@@ -339,6 +341,14 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 							return OutputForward(c, s.alpha);
 						}
 
+							inline float3 getTex(sampler2D t, in float2 uv) {
+								float3 c = tex2D(t, uv)*0.25;
+//								c += tex2D(t, 0.5323*uv);
+								c += tex2D(t, 0.2213*uv)*0.75;
+
+								c /= 1;
+							return c;
+							}
 
 						half4 LfragForwardBase(VertexOutputForwardBase2 i) : SV_Target
 						{
@@ -353,12 +363,12 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 
 							float dd = dot(normalize(i.posWorld.xyz - v3Translate), normalize(s.normalWorld * 1 + i.n1 * 0));
 
-							float tt = 0.1;//r_noise(normalize(i.vpos.xyz), 3.1032, 3);
+							float tt = clamp(noise(normalize(i.posWorld.xyz - v3Translate)*3.1032)+0.2,0,1);
 							float3 mColor = ((1 - tt)*middleColor + middleColor2*tt);
 							//	float3 bColor = ((1-tt)*basinColor + basinColor2*tt*r_noise(normalize(i.vpos.xyz),2.1032,3));
 
-								float3 hColor = mColor;//float3(1,1,1);//s.diffColor;
-								float3 hillColor = float3(0.2, 0.2, 0.2)*0.5;
+
+								float3 hColor = mColor*getTex(_Surface, i.tex.xy);//float3(1,1,1);//s.diffColor;
 								//	float3 hillColor = s.diffColor;
 									//if (dd < 0.98 )
 									//	hColor = float3(0.2, 0.2 ,0.2);
@@ -371,10 +381,10 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									float wh = (length(i.posWorld.xyz - v3Translate) - fInnerRadius);
 
 
-									hColor = mixHeight(topColor, hColor, 1000, 0.0035	, h);
-									hColor = mixHeight(hColor, basinColor, 500, 0.001	, h);
-									hColor = mixHeight(hColor, hillColor, 100, hillyThreshold, dd);
-									hColor = mixHeight(hColor, 3*basinColor2, 3000, liquidThreshold, h);
+									hColor = mixHeight(hColor, basinColor*getTex(_Basin, i.tex.xy), 500, basinThreshold	, h);
+									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, hillyThreshold, dd);
+									hColor = mixHeight(hColor, 3*basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
+									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, topThreshold, h);
 
 
 

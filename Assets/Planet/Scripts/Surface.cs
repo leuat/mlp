@@ -308,7 +308,7 @@ public class Surface {
 
 
 		public static SurfaceFilter Continents(float a, float size, float max) {
-			SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40*a, size, 1.8f, 0.45f);
+			SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40*a, size, 1.8f, 0.55f);
 			SurfaceGenerator cont2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40*a, 4.5231f*size, 4.8f, 0.15f);
 			//cont2.warpScale = 10000.23952f;
 			
@@ -337,14 +337,14 @@ public class Surface {
 			float s = scale;
 			float a = 1/7000f;
 			
-			SurfaceFilter f1 = Continents(a,0.223f*s, 0.003f);
+			SurfaceFilter f1 = Continents(a,0.223f*s, 0.01f);
 //			return f1;
 						
 												
 //			SurfaceGenerator mountains = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 1f, 10.242f*s, 1.8f, 0.1f);
 			//SurfaceGenerator mountains = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 1f, 103.242f*s, 1.8f, 0.3f);
 			SurfaceGenerator mountains2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 1f, 50.442f*s, 1.8f, 0.123f);
-			SurfaceFilter mountains2f = new SurfaceFilter(SurfaceFilter.INV, 01.6f,01.6f, 0, mountains2);
+			SurfaceFilter mountains2f = new SurfaceFilter(SurfaceFilter.INV, 0.6f,0.6f, 0, mountains2);
 			
 			//SurfaceCombiner cob = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2, mountains, mountains2f);
 			
@@ -370,7 +370,7 @@ public class Surface {
 //			SurfaceCombiner m2 = new SurfaceCombiner(SurfaceCombiner.MUL, 1f, 2f, Continents(2, 3.69235f, 0.02f), River(96.4321f, a*10.5f, 2, 1.0f));
 			SurfaceGenerator lsp = new SurfaceGenerator(SurfaceGenerator.PERLIN,0.8f, 3.2351f,0,0);
 			SurfaceFilter lsp2 = new SurfaceFilter(SurfaceFilter.SUB, 1f, 0.05f, 0,lsp);
-			SurfaceFilter lsp3 = new SurfaceFilter(SurfaceFilter.MINMAX, 1f, -0.0f, 0.02f,lsp2);
+			SurfaceFilter lsp3 = new SurfaceFilter(SurfaceFilter.MINMAX, 1f, -0.0f, 0.025f,lsp2);
 			SurfaceCombiner m2 = new SurfaceCombiner(SurfaceCombiner.MUL, 1f, 2f, lsp3, River(96.4321f, a*5.5f, 2, 1.0f));
 			
 									

@@ -17,7 +17,7 @@ namespace LemonSpawn {
 		public List<GameObject> orbitLines = new List<GameObject>();
 
 		private void CreateOrbit() {
-			float radius = (float)planet.pSettings.pos.Length () * SSVSettings.SolarSystemScale;
+			float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
 			for (int i = 0; i < SSVSettings.OrbitalLineSegments; i++) {
 				float t0 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)i;
 				float t1 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)(i+1);
@@ -94,7 +94,7 @@ namespace LemonSpawn {
 			foreach (Planet p in solarSystem.planets) {
 				GameObject go = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 				go.GetComponent<MeshRenderer> ().material = (Material)Resources.Load ("TempPlanetMaterial");
-				Vector3 coolpos = new Vector3 ((float)p.pSettings.pos.x, (float)p.pSettings.pos.z, (float)p.pSettings.pos.y);
+				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.z, (float)p.pSettings.properties.pos.y);
 				go.transform.position = coolpos * SSVSettings.SolarSystemScale;
 				go.transform.localScale = Vector3.one * SSVSettings.PlanetSizeScale * p.pSettings.radius;
 			

@@ -35,13 +35,13 @@ namespace LemonSpawn {
 			PlanetSettings ps = g.AddComponent<PlanetSettings>();
 			ps.outerRadiusScale = outerRadiusScale;
 			//ps.transform.position.Set (pos_x, pos_y, pos_z);
-			ps.pos.x = pos_x;
-			ps.pos.y = pos_y;
-			ps.pos.z = pos_z;
+			ps.properties.pos.x = pos_x;
+			ps.properties.pos.y = pos_y;
+			ps.properties.pos.z = pos_z;
 			ps.rotation = rotation % (2.0*Mathf.PI);
 			ps.temperature = temperature;
 			ps.seed = seed;
-			ps.Frames = Frames;
+			ps.properties.Frames = Frames;
 			ps.radius = radius*radiusScale;
 			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, 0.95f);
 			ps.atmosphereHeight = atmosphereHeight;
@@ -302,82 +302,118 @@ namespace LemonSpawn {
 		
 				
 	}
-	
-			
 
-	public class PlanetSettings : MonoBehaviour {
-		
-		public float outerRadiusScale = 1.05f;
-		public float m_hdrExposure = 1.5f;
-		public float m_ESun = 10.0f; 			// Sun brightness constant
-		public float radius = 5000;
-		public float temperature = 300f;
-		public float hillyThreshold = 0.99f;
-		public float liquidThreshold = 0.001f;
-		public float globalTerrainHeightScale = 1.0f;
-		public float globalTerrainScale = 1.0f;
-		public double rotation;
-        public float Gravity;
-        public int environmentDensity = 0;
-        public int maxQuadNodeLevel;
-        public int planetTypeIndex;
-        public string currentTag = "Normal";
+    // Hidden properties
+    public class PlanetProperties
+    {
         public int currentLayer = 10;
+        public string currentTag = "Normal";
         public double currentDistance;
-        public bool castShadows = true;
         public DVector pos = new DVector();
-		public DVector posInKm;
-		public GameObject terrainObject, parent;
-		public int seed;
-		public Vector3 localCamera;
-		public Color m_surfaceColor, m_surfaceColor2, m_basinColor, m_basinColor2, m_topColor = Color.white;
-		public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f,1.0f);
-		public PlanetType planetType;
-		public Texture2D clouds;
-		public Atmosphere atmosphere;
-		public Vector3 m_atmosphereWavelengths = new Vector3(0.65f,0.57f,0.475f);
-		public Texture2D bumpMap;
-		public float bumpScale = 1.0f;
-		public Color emissionColor;
-		public float cloudRadius = 1.02f;
-        public float renderedCloudRadius = 1.03f;
-        public bool hasRings;
-        public float specularity = 0;
-		public float ringAmplitude = 1;
-		public float metallicity = 0;
-		public List<Frame> Frames = new List<Frame>();
-		public Color ringColor = Color.white;
-		public float ringScale = 1;
-		public Vector2 ringRadius = new Vector2(0.2f, 0.45f);
-		public Vector3 cloudColor = new Vector3(1,1,0);
-		public float atmosphereDensity = 1.0f;
-		public float atmosphereHeight = 1.025f;
-		public bool hasFlatClouds = false;
-        public bool hasBillboardClouds = false;
-        public bool hasSea = false;
-        public bool hasVolumetricClouds = false;
-        public bool hasEnvironment = false;
-        public Sea sea;
-        public CloudSettings cloudSettings = new CloudSettings();
-
-
-
+        public DVector posInKm;
+        public GameObject terrainObject, parent;
+        public Vector3 localCamera;
+        public List<Frame> Frames = new List<Frame>();
         public Plane[] cameraPlanes;
 
+    }
+    // Public settings
+    public class PlanetSettings : MonoBehaviour {
+
+        [Header("Planet settings")]
+        public double rotation;
+        public float Gravity;
+        public int maxQuadNodeLevel;
+        public int planetTypeIndex;
+        public bool castShadows = true;
+        public bool hasSea = false;
+
+        // Public stuff to be exposed
+        [Header("Atmosphere settings")]
+        public int seed;
+        public float atmosphereDensity = 1.0f;
+        public float atmosphereHeight = 1.025f;
+        public float outerRadiusScale = 1.05f;
+        public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
+        public float m_hdrExposure = 1.5f;
+        public float m_ESun = 10.0f;            // Sun brightness constant
+        public float radius = 5000;
+        public float temperature = 300f;
+
+        [Space(10)]
+        [Header("Ground settings")]
+        public float hillyThreshold = 0.99f;
+        public float liquidThreshold = 0.001f;
+        public float topThreshold = 0.0045f;
+        public float basinThreshold = 0.001f;
+        public float globalTerrainHeightScale = 1.0f;
+        public float globalTerrainScale = 1.0f;
+        public Color m_surfaceColor, m_surfaceColor2;
+        public Texture2D m_surfaceTexture;
+        public Color m_basinColor, m_basinColor2;
+        public Texture2D m_basinTexture;
+        public Color m_topColor;
+        public Texture2D m_topTexture;
+        public Color m_hillColor;
+        public Texture2D m_hillTexture;
+        public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f, 1.0f);
+        public Color emissionColor;
+        public float metallicity = 0;
+        public float specularity = 0;
+        public Texture2D bumpMap;
+
+        [Space(10)]
+        [Header("Environment settings")]
+        public bool hasEnvironment = false;
+        public int environmentDensity = 0;
+
+
+        [Space(10)]
+        [Header("Ring settings")]
+        public bool hasRings;
+        public Color ringColor = Color.white;
+        public float ringScale = 1;
+        public float ringAmplitude = 1;
+        public Vector2 ringRadius = new Vector2(0.2f, 0.45f);
+
+        [Space(10)]
+        [Header("Cloud settings")]
+        public Texture2D clouds;
+        public float bumpScale = 1.0f;
+		public float cloudRadius = 1.02f;
+        public float renderedCloudRadius = 1.03f;
+        public Vector3 cloudColor = new Vector3(1,1,0);
+		public CloudSettings cloudSettings = new CloudSettings();
+        public bool hasFlatClouds = false;
+        public bool hasBillboardClouds = false;
+        public bool hasVolumetricClouds = false;
+
+        public PlanetType planetType;
+        public Atmosphere atmosphere;
+        public Sea sea;
+        public PlanetProperties properties = new PlanetProperties();
+        public Surface surface;
+
+
+        public void setLayer(int layer, string tag)
+        {
+            properties.currentTag = tag;
+            properties.currentLayer = layer;
+        }
 
         public void tagGameObject(GameObject go)
         {
             //   Util.tagAll(pSettings.parent, "Normal", 10);
-            go.tag = currentTag;
-            go.layer = currentLayer;
+            go.tag = properties.currentTag;
+            go.layer = properties.currentLayer;
 
         }
 
         public void tagGameObjectAll(GameObject go)
         {
             //   Util.tagAll(pSettings.parent, "Normal", 10);
-            go.tag = currentTag;
-            go.layer = currentLayer;
+            go.tag = properties.currentTag;
+            go.layer = properties.currentLayer;
             foreach (Transform t in go.transform)
                 tagGameObjectAll(t.gameObject);
 
@@ -402,8 +438,8 @@ namespace LemonSpawn {
 
 
         public Frame getFrame(int i) {
-			if (i>=0 && i<Frames.Count)
-				return Frames[i];
+			if (i>=0 && i< properties.Frames.Count)
+				return properties.Frames[i];
 			return null;
 		}
 		
@@ -518,10 +554,10 @@ namespace LemonSpawn {
 		
 		
 		public float getHeight() {
-			return localCamera.magnitude - radius;
+			return properties.localCamera.magnitude - radius;
 		}
 		public float getScaledHeight() {
-			return (localCamera.magnitude - radius)/radius;
+			return (properties.localCamera.magnitude - radius)/radius;
 		}
 		public float getPlanetSize() {
             return radius;
@@ -530,27 +566,26 @@ namespace LemonSpawn {
 			surface = new Surface(this);
 			
 		}
-		public Surface surface;		
 		
 		
 		public void Update() {
-			if (posInKm == null) {
-				posInKm = new DVector();
+			if (properties.posInKm == null) {
+                properties.posInKm = new DVector();
 			}
 
 
-			posInKm.x = pos.x;
-			posInKm.y = pos.y;
-			posInKm.z = pos.z;
-			posInKm.Scale(RenderSettings.AU);
-			
-			
-			localCamera = World.WorldCamera.Sub (posInKm).toVectorf();// - transform.position;
+            properties.posInKm.x = properties.pos.x;
+            properties.posInKm.y = properties.pos.y;
+            properties.posInKm.z = properties.pos.z;
+            properties.posInKm.Scale(RenderSettings.AU);
+
+
+            properties.localCamera = World.WorldCamera.Sub (properties.posInKm).toVectorf();// - transform.position;
 			Quaternion q = 	Quaternion.Euler(new Vector3(0, -(float)(rotation/(2*Mathf.PI)*360f),0));
-			localCamera = q*localCamera;
+            properties.localCamera = q* properties.localCamera;
 
 			if (World.CloseCamera != null)
-            	cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
+                properties.cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
         }
 		
 	}

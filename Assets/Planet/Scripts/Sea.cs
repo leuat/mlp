@@ -49,14 +49,14 @@ namespace LemonSpawn {
             psOcean.Initialize();
             psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; ;
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
-            psOcean.terrainObject = m_go;
+            psOcean.properties.terrainObject = m_go;
             psOcean.castShadows = false;
 //            psOcean.pos.Set(planetSettings.pos.toVectorf());
 
 
 
             if (ocean != null)
-                ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.terrainObject, m_sun, m_groundMaterial);
+                ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.properties.terrainObject, m_sun, m_groundMaterial);
 
 
             m_innerRadius = planetSettings.radius * m_innerRadiusScale; 
@@ -88,7 +88,7 @@ namespace LemonSpawn {
             if (psOcean == null)
                 return;
 
-            psOcean.localCamera = planetSettings.localCamera;
+            psOcean.properties.localCamera = planetSettings.properties.localCamera;
 //            Debug.Log(psOcean.localCamera);
 
             cube.SubDivide(RenderSettings.gridDivide);

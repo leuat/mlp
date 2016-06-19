@@ -53,9 +53,9 @@ public class Atmosphere
 	public Atmosphere() {
 	}
 
-
         public void initGroundMaterial(bool bump)
         {
+            m_groundMaterial.SetColor("hillColor", planetSettings.m_hillColor);
             m_groundMaterial.SetColor("middleColor", planetSettings.m_surfaceColor);
             m_groundMaterial.SetColor("middleColor2", planetSettings.m_surfaceColor2);
             m_groundMaterial.SetColor("basinColor", planetSettings.m_basinColor);
@@ -75,6 +75,8 @@ public class Atmosphere
             m_groundMaterial.SetFloat("_Glossiness", planetSettings.specularity );
 
             m_groundMaterial.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
+            m_groundMaterial.SetFloat("topThreshold", planetSettings.topThreshold);
+            m_groundMaterial.SetFloat("basinThreshold", planetSettings.basinThreshold);
             m_groundMaterial.SetTexture("_Noise", noiseTexture);
             //	m_groundMaterial.SetTexture ("_DetailNormalMap", planetSettings.bumpMap);
             //	m_groundMaterial.SetFloat ("_DetailNormalMapScale", planetSettings.bumpScale);	
@@ -85,6 +87,10 @@ public class Atmosphere
                 m_groundMaterial.SetTextureScale("_BumpMap", new Vector2(0.1f, 0.1f));
                 m_groundMaterial.SetTextureOffset("_BumpMap", new Vector2(1, 1));
             }
+            m_groundMaterial.SetTexture("_Mountain", planetSettings.m_hillTexture);
+            m_groundMaterial.SetTexture("_Basin", planetSettings.m_basinTexture);
+            m_groundMaterial.SetTexture("_Top", planetSettings.m_topTexture);
+            m_groundMaterial.SetTexture("_Surface", planetSettings.m_surfaceTexture);
 
         }
 
@@ -163,7 +169,7 @@ public class Atmosphere
 	}
 	
 	public void setClippingPlanes() {
-		float h = planetSettings.localCamera.magnitude - m_innerRadius;
+		float h = planetSettings.properties.localCamera.magnitude - m_innerRadius;
 		float np = Mathf.Max (Mathf.Min (h*0.01f, 50), 0.1f);
             float fp = Mathf.Min(Mathf.Max(h*150, 100000), 200000);
             //		Debug.Log (np);

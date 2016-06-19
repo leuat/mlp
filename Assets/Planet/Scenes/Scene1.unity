@@ -717,65 +717,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 0
+  Gravity: 10
+  maxQuadNodeLevel: 14
+  planetTypeIndex: 0
+  castShadows: 1
+  hasSea: 1
+  seed: 1
+  atmosphereDensity: 0.9
+  atmosphereHeight: 1.019
   outerRadiusScale: 1.025
+  m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
   m_hdrExposure: 2
   m_ESun: 10
   radius: 50000
   temperature: 300
-  hillyThreshold: 0.991
+  hillyThreshold: 0.95
   liquidThreshold: 0.0005
+  topThreshold: 0.005
+  basinThreshold: 0.002
   globalTerrainHeightScale: 2
   globalTerrainScale: 5
-  rotation: 0
-  Gravity: 10
-  environmentDensity: 500
-  maxQuadNodeLevel: 14
-  planetTypeIndex: 4
-  currentTag: Normal
-  currentLayer: 10
-  currentDistance: 0
-  castShadows: 1
-  pos:
-    x: 0
-    y: 0
-    z: 0
-  posInKm:
-    x: 0
-    y: 0
-    z: 0
-  terrainObject: {fileID: 0}
-  parent: {fileID: 0}
-  seed: 1
-  localCamera: {x: 0, y: 0, z: 0}
-  m_surfaceColor: {r: 0.75735295, g: 0.74030095, b: 0.13921927, a: 0}
-  m_surfaceColor2: {r: 0.23496974, g: 0.3897059, b: 0.28085697, a: 0}
-  m_basinColor: {r: 0.4079406, g: 0.50735295, b: 0.35067043, a: 0}
-  m_basinColor2: {r: 0.5735294, g: 0.5390944, b: 0.26146194, a: 0}
-  m_topColor: {r: 0.4852941, g: 0.35275525, b: 0.34612888, a: 1}
+  m_surfaceColor: {r: 0.71323526, g: 0.34489915, b: 0.010488763, a: 0}
+  m_surfaceColor2: {r: 0.18490486, g: 0.5588235, b: 0.29579097, a: 0}
+  m_surfaceTexture: {fileID: 2800000, guid: 5b699bdf6a372974581c5811793d3811, type: 3}
+  m_basinColor: {r: 1, g: 0.8409736, b: 0.17647058, a: 0}
+  m_basinColor2: {r: 1, g: 0.9849898, b: 0.45588237, a: 0}
+  m_basinTexture: {fileID: 2800000, guid: 9bc35ccacbe91574c8ccb3210ed6a057, type: 3}
+  m_topColor: {r: 1, g: 1, b: 1, a: 1}
+  m_topTexture: {fileID: 2800000, guid: de7e03990d08dcd498dce92a128d9934, type: 3}
+  m_hillColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 0}
+  m_hillTexture: {fileID: 2800000, guid: 25233987f72716e479f482648abcb424, type: 3}
   m_waterColor: {r: 0, g: 0.492343, b: 0.97794116, a: 1}
-  clouds: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
-  m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
-  bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
-  bumpScale: 0.4
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  cloudRadius: 1.02
-  renderedCloudRadius: 1.03
-  hasRings: 1
-  specularity: 0.2
-  ringAmplitude: 1
   metallicity: 0
-  Frames: []
+  specularity: 0.2
+  bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
+  hasEnvironment: 0
+  environmentDensity: 500
+  hasRings: 1
   ringColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 1}
   ringScale: 5
+  ringAmplitude: 1
   ringRadius: {x: 0.15, y: 0.35}
+  clouds: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
+  bumpScale: 0.4
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
   cloudColor: {x: 0.7, y: 0.8, z: 1}
-  atmosphereDensity: 0.9
-  atmosphereHeight: 1.019
-  hasFlatClouds: 1
-  hasBillboardClouds: 0
-  hasSea: 1
-  hasVolumetricClouds: 0
-  hasEnvironment: 0
   cloudSettings:
     LS_CloudTimeScale: 5
     LS_CloudScale: 0.35
@@ -791,6 +780,9 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -2185,65 +2177,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  planetTypeIndex: 0
+  castShadows: 1
+  hasSea: 0
+  seed: 0
+  atmosphereDensity: 0.9
+  atmosphereHeight: 1.025
   outerRadiusScale: 1.019
+  m_atmosphereWavelengths: {x: 0.5, y: 0.55, z: 0.7}
   m_hdrExposure: 2
   m_ESun: 10
   radius: 20000
   temperature: 300
   hillyThreshold: 0.99
   liquidThreshold: 0.002
+  topThreshold: 0.0045
+  basinThreshold: 0.001
   globalTerrainHeightScale: 1
   globalTerrainScale: 2
-  rotation: 0
-  Gravity: 0
-  environmentDensity: 0
-  maxQuadNodeLevel: 0
-  planetTypeIndex: 0
-  currentTag: Normal
-  currentLayer: 10
-  currentDistance: 0
-  castShadows: 1
-  pos:
-    x: 0
-    y: 0
-    z: 0
-  posInKm:
-    x: 0
-    y: 0
-    z: 0
-  terrainObject: {fileID: 0}
-  parent: {fileID: 0}
-  seed: 0
-  localCamera: {x: 0, y: 0, z: 0}
   m_surfaceColor: {r: 0.625, g: 0.32327586, b: 0, a: 0}
   m_surfaceColor2: {r: 0.33282873, g: 0.37048087, b: 0.39705884, a: 0}
+  m_surfaceTexture: {fileID: 0}
   m_basinColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 0}
   m_basinColor2: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+  m_basinTexture: {fileID: 0}
   m_topColor: {r: 0.15679067, g: 0.182872, b: 0.21323532, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0, g: 0, b: 0, a: 0}
+  m_hillTexture: {fileID: 0}
   m_waterColor: {r: 0.19999999, g: 0.9, b: 0.37862056, a: 1}
-  clouds: {fileID: 0}
-  m_atmosphereWavelengths: {x: 0.5, y: 0.55, z: 0.7}
-  bumpMap: {fileID: 0}
-  bumpScale: 0
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  cloudRadius: 0
-  renderedCloudRadius: 1.03
-  hasRings: 0
-  specularity: 0
-  ringAmplitude: 1
   metallicity: 0
-  Frames: []
+  specularity: 0
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
   ringColor: {r: 1, g: 1, b: 1, a: 1}
   ringScale: 1
+  ringAmplitude: 1
   ringRadius: {x: 0.2, y: 0.45}
+  clouds: {fileID: 0}
+  bumpScale: 0
+  cloudRadius: 0
+  renderedCloudRadius: 1.03
   cloudColor: {x: 1, y: 1, z: 0}
-  atmosphereDensity: 0.9
-  atmosphereHeight: 1.025
-  hasFlatClouds: 0
-  hasBillboardClouds: 0
-  hasSea: 0
-  hasVolumetricClouds: 0
-  hasEnvironment: 0
   cloudSettings:
     LS_CloudTimeScale: 5
     LS_CloudScale: 4
@@ -2259,6 +2240,9 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0

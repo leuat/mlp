@@ -31,19 +31,28 @@ namespace LemonSpawn {
 			threadQueue.Sort(
 				delegate(TQueue p1, TQueue p2)
 				{
-/*					float d1 = (cam - p1.gt.localPosition).magnitude;
-					float d2 = (cam - p2.gt.localPosition).magnitude;
-					float r1 = p1.gt.sort;
-					float r2 = p2.gt.sort;
-				
-					float a = d1 + r1*0.001f;
-					float b = d2 + r2*0.001f;
+                    /*					float d1 = (cam - p1.gt.localPosition).magnitude;
+                                        float d2 = (cam - p2.gt.localPosition).magnitude;
+                                        float r1 = p1.gt.sort;
+                                        float r2 = p2.gt.sort;
 
-*/				
-					float d1 = p1.gt.sort;
-					float d2 = p2.gt.sort;
-                //    Debug.Log(d1);
-					if (d1>d2) return 1;
+                                        float a = d1 + r1*0.001f;
+                                        float b = d2 + r2*0.001f;
+
+                                        */
+                    float d1 = p1.gt.sort;
+                    float d2 = p2.gt.sort;
+
+                    if (RenderSettings.sortInverse)
+                    {
+                        d1 = p2.gt.sort;
+                        d2 = p1.gt.sort;
+
+                    }
+
+
+                    //    Debug.Log(d1);
+                    if (d1>d2) return 1;
 					if (d1<d2) return -1;
 					return 0;
 				}

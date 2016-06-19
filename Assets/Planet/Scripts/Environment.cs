@@ -199,11 +199,11 @@ public class EnvironmentType
 
         public void insertRandomObjects(int N, int max)
         {
-            Vector3 pos = planetSettings.localCamera.normalized;
+            Vector3 pos = planetSettings.properties.localCamera.normalized;
             Vector3 camSurface = pos * planetSettings.getPlanetSize() * (1 + planetSettings.surface.GetHeight(pos, 0));
 
 
-            if ((planetSettings.localCamera - camSurface).magnitude > maxDist)
+            if ((planetSettings.properties.localCamera - camSurface).magnitude > maxDist)
                 return;
 
             int cnt = 0;
@@ -216,13 +216,13 @@ public class EnvironmentType
                 Vector3 sphere = new Vector3((float)Util.rnd.NextDouble() * w - w / 2, (float)Util.rnd.NextDouble() * w - w / 2, (float)Util.rnd.NextDouble() * w - w / 2);
                 sphere = sphere.normalized * w * 0.9f;
 
-                pos = planetSettings.localCamera + sphere;
+                pos = planetSettings.properties.localCamera + sphere;
                 pos = pos.normalized;
                 float height = planetSettings.surface.GetHeight(pos, 0);
                 Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f) * height);
 
 
-                float dist = (planetSettings.localCamera - realP).magnitude;
+                float dist = (planetSettings.properties.localCamera - realP).magnitude;
                 //                if (dist < maxDist)
                 {
                     Vector3 normal = planetSettings.surface.GetNormal(pos, 0, planetSettings.getPlanetSize());
@@ -236,7 +236,7 @@ public class EnvironmentType
 
 
 
-                    GameObject go = (GameObject)GameObject.Instantiate(et.prefab, realP - planetSettings.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
+                    GameObject go = (GameObject)GameObject.Instantiate(et.prefab, realP - planetSettings.properties.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
                     //                go.transform.rotation = Quaternion.FromToRotation(Vector3.up, pos) * go.transform.rotation;
                     go.transform.RotateAround(pos, Util.rnd.Next() % 360);
                     GameObject.Destroy(go.GetComponent<Rigidbody>());
@@ -269,7 +269,7 @@ public class EnvironmentType
             
             foreach (EnvironmentObject eo in objects)
             {
-                if ((eo.go.transform.localPosition - planetSettings.localCamera).magnitude > eo.et.maxDist)
+                if ((eo.go.transform.localPosition - planetSettings.properties.localCamera).magnitude > eo.et.maxDist)
                 {
                     removeObjects.Add(eo);
                }
@@ -291,7 +291,7 @@ public class EnvironmentType
             UpdateMaterials();
 
 //            foreach (GameObject go in objects)
-  //              Debug.DrawLine(go.transform.position + planetSettings.localCamera, go.transform.position + planetSettings.localCamera + go.transform.forward, Color.green, 0.001f);
+  //              Line(go.transform.position + planetSettings.properties.localCamera, go.transform.position + planetSettings.properties.localCamera + go.transform.forward, Color.green, 0.001f);
 
         }
 

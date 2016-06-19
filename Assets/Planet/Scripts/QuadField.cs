@@ -433,7 +433,7 @@ namespace LemonSpawn {
 			mesh.createMesh();
 //            mesh.mesh.RecalculateNormals();
             mesh.mesh.Optimize();
-			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
+			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.properties.currentLayer, planetSettings.properties.currentTag, castShadows);
 			
 		}
 		

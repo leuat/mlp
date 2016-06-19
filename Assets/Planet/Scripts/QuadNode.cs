@@ -66,7 +66,7 @@ namespace LemonSpawn
             if (parent != null && parent.quadGO != null)
                 quadGO.transform.parent = parent.quadGO.transform;
             else
-                quadGO.transform.parent = planetSettings.terrainObject.transform;
+                quadGO.transform.parent = planetSettings.properties.terrainObject.transform;
 
             quadGO.transform.localScale = Vector3.one;
             quadGO.transform.position = Vector3.zero;
@@ -128,7 +128,7 @@ namespace LemonSpawn
             if (parent != null && parent.quadGO != null)
                 quadGO.transform.parent = parent.quadGO.transform;
             else
-                quadGO.transform.parent = planetSettings.terrainObject.transform;
+                quadGO.transform.parent = planetSettings.properties.terrainObject.transform;
 
             quadGO.transform.localScale = Vector3.one;
             quadGO.transform.position = Vector3.zero;
@@ -444,7 +444,7 @@ namespace LemonSpawn
             //if (children != null)
             {
 
-            if (!GeometryUtility.TestPlanesAABB(planetSettings.cameraPlanes, bounds))
+            if (!GeometryUtility.TestPlanesAABB(planetSettings.properties.cameraPlanes, bounds))
                 {
                     //                    deleteChildren();
                     return false;
@@ -457,7 +457,7 @@ namespace LemonSpawn
 
         public void Subdivide(int level, float size)
         {
-            if (Vector3.Dot((World.MainCamera.transform.position - (qb.centerReal.P + planetSettings.localCamera)).normalized, qb.normal.normalized) > 0.1)
+            if (Vector3.Dot((World.MainCamera.transform.position - (qb.centerReal.P + planetSettings.properties.localCamera)).normalized, qb.normal.normalized) > 0.1)
             {
                 deleteChildren();
                 return;
@@ -483,7 +483,7 @@ namespace LemonSpawn
 
 
 
-            float l = Mathf.Pow(findMinDistance(planetSettings.localCamera, true), 1);
+            float l = Mathf.Pow(findMinDistance(planetSettings.properties.localCamera, true), 1);
             float height = RenderSettings.ResolutionScale * 0.035f;
             //			Debug.Log (RenderSettings.ResolutionScale);
 

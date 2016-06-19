@@ -14,8 +14,8 @@ uniform float fScale;			// 1 / (fOuterRadius - fInnerRadius)
 uniform float fScaleDepth;		// The scale depth (i.e. the altitude at which the atmosphere's average density is found)
 uniform float fScaleOverScaleDepth;	// fScale / fScaleDepth
 uniform float fHdrExposure;		// HDR exposure
-uniform float3 basinColor, topColor, middleColor, middleColor2, basinColor2, waterColor;
-uniform float liquidThreshold, atmosphereDensity;
+uniform float3 basinColor, topColor, middleColor, middleColor2, basinColor2, waterColor, hillColor;
+uniform float liquidThreshold, atmosphereDensity, topThreshold, basinThreshold;
 uniform float fade = 0.2;
 uniform float time;
 uniform float metallicity;

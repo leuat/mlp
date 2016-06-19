@@ -103,9 +103,9 @@ namespace LemonSpawn
                 if (go.activeSelf)
                 {
                     Planet p = new Planet(go.GetComponent<PlanetSettings>());
-                    p.pSettings.pos.Set(go.transform.position);
+                    p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
-                    p.pSettings.parent = go;
+                    p.pSettings.properties.parent = go;
                     p.pSettings.planetType = PlanetType.planetTypes[p.pSettings.planetTypeIndex];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
                     p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
@@ -188,7 +188,7 @@ namespace LemonSpawn
                 go.transform.parent = transform;
 
                 Planet p = new Planet(sp.DeSerialize(go, cnt++, sz.global_radius_scale));
-				p.pSettings.parent = go;
+				p.pSettings.properties.parent = go;
 
                 p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);

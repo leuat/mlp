@@ -43,7 +43,7 @@ namespace LemonSpawn
             DVector pos = f0.pos() + (f1.pos() - f0.pos()) * dt;
             double rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
 
-            pSettings.pos = pos;
+            pSettings.properties.pos = pos;
             pSettings.rotation = rot;
             
 
@@ -59,7 +59,6 @@ namespace LemonSpawn
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
 
-            Debug.Log(pSettings.name);
            
 
             if (pSettings.hasFlatClouds)
@@ -80,7 +79,7 @@ namespace LemonSpawn
 
         public string getDistance()
         {
-            double d = pSettings.localCamera.magnitude;
+            double d = pSettings.properties.localCamera.magnitude;
             if (d > 1E6)
                 return (d /= RenderSettings.AU).ToString("F3") + " Au";
             else
@@ -101,7 +100,7 @@ namespace LemonSpawn
             infoTextGO.SetActive(RenderSettings.RenderText);
 
             infoText.fontSize = 40;
-            infoTextGO.transform.position = pSettings.localCamera.normalized * -250;
+            infoTextGO.transform.position = pSettings.properties.localCamera.normalized * -250;
             infoTextGO.transform.rotation = World.MainCameraObject.transform.rotation;
             infoText.color = color;
             infoText.text = pSettings.name + "\n" + getDistance() + "\nType:" + pSettings.planetType.Name;
@@ -120,12 +119,12 @@ namespace LemonSpawn
 
         private void MaintainPlanet()
         {
-            if (pSettings.terrainObject == null)
+            if (pSettings.properties.terrainObject == null)
             {
-                pSettings.terrainObject = new GameObject("terrain");
-                pSettings.terrainObject.transform.parent = pSettings.gameObject.transform;
-                pSettings.terrainObject.transform.localPosition = Vector3.zero;
-                pSettings.terrainObject.transform.localScale = Vector3.one;
+                pSettings.properties.terrainObject = new GameObject("terrain");
+                pSettings.properties.terrainObject.transform.parent = pSettings.gameObject.transform;
+                pSettings.properties.terrainObject.transform.localPosition = Vector3.zero;
+                pSettings.properties.terrainObject.transform.localScale = Vector3.one;
                 cube = new CubeSphere(pSettings, false);
                 if (impostor != null)
                     GameObject.Destroy(impostor);
@@ -142,11 +141,11 @@ namespace LemonSpawn
 
         public void ConstrainCameraExterior()
         {
-            Vector3 p = pSettings.localCamera.normalized;
+            Vector3 p = pSettings.properties.localCamera.normalized;
 
 
             float h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
-            float ch = pSettings.localCamera.magnitude;
+            float ch = pSettings.properties.localCamera.magnitude;
             if (ch < h)
             {
                 World.MoveCamera(p * (h - ch));
@@ -164,11 +163,11 @@ namespace LemonSpawn
         {
             DVector cam = new DVector(World.WorldCamera.x, World.WorldCamera.y, World.WorldCamera.z);
             cam.Scale(1.0 / RenderSettings.AU);
-            DVector d = cam.Sub(pSettings.pos);
+            DVector d = cam.Sub(pSettings.properties.pos);
             double dist = d.Length() * RenderSettings.AU;
             //    double dist = pSettings.getHeight();
             d.Scale(-1.0 / d.Length());
-            pSettings.currentDistance = dist;
+            pSettings.properties.currentDistance = dist;
 
             d.Scale(Mathf.Min((float)dist, (float)RenderSettings.LOD_ProjectionDistance));
 
@@ -177,15 +176,13 @@ namespace LemonSpawn
             //			Debug.Log(ds);
             if (ds < 1 && SolarSystem.planet == this)
             {
-                Util.tagAll(pSettings.parent, "Normal", 10);
-                pSettings.currentTag = "Normal";
-                pSettings.currentLayer = 10;
+                Util.tagAll(pSettings.properties.parent, "Normal", 10);
+                pSettings.setLayer(10, "Normal");
             }
             else
             {
-                Util.tagAll(pSettings.parent, "LOD", 9);
-                pSettings.currentTag = "LOD";
-                pSettings.currentLayer = 9;
+                Util.tagAll(pSettings.properties.parent, "LOD", 9);
+                pSettings.setLayer(9, "LOD");
 
             }
 

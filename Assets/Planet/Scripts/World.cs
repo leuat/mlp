@@ -59,6 +59,7 @@ namespace LemonSpawn {
         public static bool toggleSaveVideo = false;
         public static bool toggleProgressbar = false;
         public static bool displayDebugLines = false;
+        public static bool sortInverse = false;
 
 #if UNITY_STANDALONE_OSX
         public static string fileDelimiter = "/";
@@ -189,7 +190,7 @@ namespace LemonSpawn {
         {
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             go.transform.parent = SolarSystem.planet.pSettings.transform;
-            go.transform.localPosition = SolarSystem.planet.pSettings.localCamera + World.MainCamera.transform.forward * 2;
+            go.transform.localPosition = SolarSystem.planet.pSettings.properties.localCamera + World.MainCamera.transform.forward * 2;
             SolarSystem.planet.pSettings.tagGameObject(go);
             go.AddComponent<Rigidbody>();
             Material ball = (Material)Resources.Load("BallMaterial");
@@ -202,7 +203,7 @@ namespace LemonSpawn {
             GameObject go = GameObject.Find("car_root");
             GameObject gorb = GameObject.Find("car_root");
             go.transform.parent = SolarSystem.planet.pSettings.transform;
-            go.transform.localPosition = SolarSystem.planet.pSettings.localCamera + World.MainCamera.transform.forward * 2;
+            go.transform.localPosition = SolarSystem.planet.pSettings.properties.localCamera + World.MainCamera.transform.forward * 2;
             go.transform.rotation = Quaternion.FromToRotation(Vector3.up, SolarSystem.planet.pSettings.transform.position*-1);
 
 
@@ -561,7 +562,7 @@ namespace LemonSpawn {
                 RenderSettings.displayDebugLines = !RenderSettings.displayDebugLines;
             }
             if (SolarSystem.planet!=null)
-	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.localCamera);
+	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.properties.localCamera);
     		if (RenderSettings.UseThreading) 
 				ThreadQueue.MaintainThreadQueue();
 			
@@ -586,9 +587,7 @@ namespace LemonSpawn {
             if (planet == null)
                 return;
 
-            Debug.Log("planet: " + planet.pSettings.name);
-
-            DVector pos = planet.pSettings.pos;
+            DVector pos = planet.pSettings.properties.pos;
             float s = (float)(planet.pSettings.radius * szWorld.overview_distance / RenderSettings.AU);
             Vector3 dir = pos.toVectorf().normalized * s;
             Vector3 side = Vector3.Cross(Vector3.up, dir);
