@@ -9,7 +9,6 @@
         LOD 400
 
 
-
 		Lighting On
         Cull off
         ZWrite Off

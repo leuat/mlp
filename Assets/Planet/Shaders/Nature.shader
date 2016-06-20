@@ -14,6 +14,7 @@ Shader "LemonSpawn/Nature" {
 
 	}
 
+
 		SubShader{
 		Tags{ "Queue" = "Transparent+11000" "RenderType" = "Transparent" }
 		LOD 400

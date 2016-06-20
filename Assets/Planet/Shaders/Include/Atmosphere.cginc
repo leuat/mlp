@@ -81,7 +81,7 @@ void AtmFromGround(float4 vert, out float3 c0, out float3 c1, float3 camPos) {
 	float3 v3CameraPos = camPos - v3Translate;	// The camera's current position
 																					//float fCameraHeight2 = fCameraHeight*fCameraHeight;		// fCameraHeight^2
 																					// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-	float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
+	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
 //	float fCameraHeight = clamp(length(v3CameraPos), length(v3Pos) , 1000000);					// The camera's current height
 	float fCameraHeight = clamp(length(v3CameraPos), length(v3Pos)*0, 1000000);					// The camera's current height
 
@@ -140,7 +140,7 @@ void AtmFromSpace(float4 vert, out float3 c0, out float3 c1) {
 	float fCameraHeight2 = fCameraHeight*fCameraHeight;			// fCameraHeight^2
 
 																// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-	float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
+	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
 	float3 v3Ray = v3Pos - v3CameraPos;
 	float fFar = length(v3Ray);
 	v3Ray /= fFar;
@@ -196,7 +196,7 @@ void SkyFromSpace(float4 vert, out float3 c0, out float3 c1, out float3 t0) {
 	float fSamples = 3.0;
 
 	// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-	float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
+	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
 	float3 v3Ray = v3Pos - v3CameraPos;
 	float fFar = length(v3Ray);
 	v3Ray /= fFar;
@@ -249,7 +249,7 @@ void SkyFromAtm(float4 vert, out float3 c0, out float3 c1, out float3 t0) {
 
 	float fSamples = 3.0;
 	// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-	float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
+	float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
 	float3 v3Ray = v3Pos - v3CameraPos;
 	float fFar = length(v3Ray);
 	v3Ray /= fFar;

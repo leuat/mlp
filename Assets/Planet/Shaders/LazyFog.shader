@@ -10,6 +10,7 @@ Shader "LemonSpawn/LazyFog" {
 		_AlphaSub ("AlphaSub", Range(0,1)) = 0.0
 		_Pow ("Pow", Range(0,4)) = 1.0
 	}
+
 SubShader {
 	    Tags {"Queue"="Transparent+10001" "IgnoreProjector"="True" "RenderType"="Transparent"}
         LOD 400
@@ -70,7 +71,7 @@ SubShader {
                  o.uv = v.texcoord;
                  o.normal = normalize(v.normal).xyz;
                  o.texcoord = v.texcoord;
- 				 o.worldPosition = mul (unity_ObjectToWorld, v.vertex).xyz;
+ 				 o.worldPosition = mul (_Object2World, v.vertex).xyz;
 			     o.color =v.color;
 				 o.lightWorld = normalize(ObjSpaceLightDir(v.vertex));
   //               TRANSFER_VERTEX_TO_FRAGMENT(o);

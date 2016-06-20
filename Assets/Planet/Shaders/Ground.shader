@@ -4,6 +4,7 @@ Shader "LemonSpawn/Ground"
 {
 	Properties
 	{
+
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Albedo map", 2D) = "white" {}
 		_Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
@@ -117,7 +118,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 	VertexOutputForwardBase o;
 	UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase, o);
 
-	float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
+	float4 posWorld = mul(_Object2World, v.vertex);
 	#if UNITY_SPECCUBE_BOX_PROJECTION
 		o.posWorld = posWorld.xyz;
 	#endif
@@ -224,7 +225,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 			UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 
 			float4 capV = v.vertex;
-			float4 posWorld = mul(unity_ObjectToWorld, capV);
+			float4 posWorld = mul(_Object2World, capV);
 			#if UNITY_SPECCUBE_BOX_PROJECTION
 				o.posWorld = posWorld.xyz;
 			#endif

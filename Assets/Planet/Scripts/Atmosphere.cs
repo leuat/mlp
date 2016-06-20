@@ -139,7 +139,6 @@ public class Atmosphere
 		
 									
 		m_skyMaterial = new Material(sky.shader);
-			Debug.Log (m_skyMaterial);
 		m_skyMesh = sphere;
 		//The outer sphere must be 2.5% larger that the inner sphere
 		//m_outerScaleFactor = m_skySphere.transform.localScale.x;
