@@ -1,4 +1,7 @@
-﻿Shader "LemonSpawn/Water" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+Shader "LemonSpawn/Water" {
 
 	Properties{
 		_Normal("Albedo", 2D) = "bump" {}
@@ -94,8 +97,8 @@
 								{
 									v2f o;
 
-									 float4x4 modelMatrix = _Object2World;
-									float4x4 modelMatrixInverse = _World2Object;
+									 float4x4 modelMatrix = unity_ObjectToWorld;
+									float4x4 modelMatrixInverse = unity_WorldToObject;
 									o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 
 									o.uv = v.texcoord;
@@ -220,11 +223,12 @@
 
 //													atmosphereDensity = 1;
 //													return  float4(1.4*(2 * IN.c0 + 0.2*IN.c1) ,1);
-													c.rgb = groundColor(IN.c0, IN.c1, wc*light, IN.worldPosition);
+													c.rgb = groundColor(IN.c0, IN.c1, wc*light, IN.worldPosition,1);
 //													return  float4(wc*atmosphereDensity, 1);
 //													c.rgb = IN.B;
 												//	c.rgb = atmColor(IN.c0, IN.c1);
 													//c.rgb = waterColor;
+
 
 													return float4(c.rgb
 														+ specularReflection, +0.95 + specularReflection.b);

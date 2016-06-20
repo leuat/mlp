@@ -1,4 +1,6 @@
-﻿Shader "LemonSpawn/Ground"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "LemonSpawn/Ground"
 {
 	Properties
 	{
@@ -133,7 +135,7 @@ struct VertexOutputForwardBase2
 				//float fCameraHeight2 = fCameraHeight*fCameraHeight;		// fCameraHeight^2
 			
 				// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-				float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
+				float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
 				float3 v3Ray = v3Pos - v3CameraPos;
 				v3Pos = normalize(v3Pos);
 				float fFar = length(v3Ray);
@@ -185,7 +187,7 @@ struct VertexOutputForwardBase2
 				float fCameraHeight2 = fCameraHeight*fCameraHeight;			// fCameraHeight^2
 				
 				// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-				float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
+				float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
 				float3 v3Ray = v3Pos - v3CameraPos;
 				float fFar = length(v3Ray);
 				v3Ray /= fFar;
@@ -240,7 +242,7 @@ struct VertexOutputForwardBase2
 	VertexOutputForwardBase2 o;
 	UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 
-	float4 posWorld = mul(_Object2World, v.vertex);
+	float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
 	#if UNITY_SPECCUBE_BOX_PROJECTION
 		o.posWorld = posWorld.xyz;
 	#endif

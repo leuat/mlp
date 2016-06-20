@@ -1,4 +1,6 @@
-﻿Shader "LemonSpawn/LazyFog" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "LemonSpawn/LazyFog" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -68,7 +70,7 @@ SubShader {
                  o.uv = v.texcoord;
                  o.normal = normalize(v.normal).xyz;
                  o.texcoord = v.texcoord;
- 				 o.worldPosition = mul (_Object2World, v.vertex).xyz;
+ 				 o.worldPosition = mul (unity_ObjectToWorld, v.vertex).xyz;
 			     o.color =v.color;
 				 o.lightWorld = normalize(ObjSpaceLightDir(v.vertex));
   //               TRANSFER_VERTEX_TO_FRAGMENT(o);

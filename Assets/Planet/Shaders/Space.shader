@@ -1,4 +1,6 @@
-﻿
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+
 Shader "LemonSpawn/Space" 
 {
 	SubShader 
@@ -61,7 +63,7 @@ Shader "LemonSpawn/Space"
 				float fCameraHeight2 = fCameraHeight*fCameraHeight;			// fCameraHeight^2
 			
 				// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-				float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
+				float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
 				float3 v3Ray = v3Pos - v3CameraPos;
 				float fFar = length(v3Ray);
 				v3Ray /= fFar;
@@ -114,7 +116,7 @@ Shader "LemonSpawn/Space"
 				//float fCameraHeight2 = fCameraHeight*fCameraHeight;		// fCameraHeight^2
 			
 				// Get the ray from the camera to the vertex and its length (which is the far point of the ray passing through the atmosphere)
-				float3 v3Pos = mul(_Object2World, vert).xyz - v3Translate;
+				float3 v3Pos = mul(unity_ObjectToWorld, vert).xyz - v3Translate;
 				float3 v3Ray = v3Pos - v3CameraPos;
 				float fFar = length(v3Ray);
 				v3Ray /= fFar;

@@ -42,7 +42,7 @@ Shader "LemonSpawn/Sky"
 
 						half4 frag(v2f IN) : COLOR
 						{
-
+//							return float4(1,0,0,1);
 							return getSkyColor(IN.c0, IN.c1, IN.t0);
 							}
 
