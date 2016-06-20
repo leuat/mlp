@@ -772,7 +772,7 @@ MonoBehaviour:
     m_sun: {fileID: 0}
   hasFlatClouds: 0
   hasBillboardClouds: 0
-  hasVolumetricClouds: 1
+  hasVolumetricClouds: 0
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
