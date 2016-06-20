@@ -30,24 +30,19 @@ public class Atmosphere
 	public static float sunScale = 1;				
 	protected Quaternion rot = Quaternion.identity;
 	protected Texture2D noiseTexture = null;
-	protected void InitializeSkyMesh() {
+	protected void InitializeSkyMesh(float radius) {
 		m_sky = new GameObject("Atmosphere");
 		m_skySphere = new GameObject("Atmosphere Sky");
 		m_sky.transform.parent = planetSettings.gameObject.transform;
 		m_skySphere.transform.parent = m_sky.transform;
 		m_sky.transform.localPosition = Vector3.zero;
 		
-		m_sky.transform.localScale = new Vector3(m_radius,m_radius,m_radius);
+		m_sky.transform.localScale = new Vector3(radius,radius,radius);
 		m_skySphere.AddComponent<MeshRenderer>().material = m_skyMaterial;
 			m_skySphere.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		m_skySphere.GetComponent<MeshRenderer>().receiveShadows = false;
 		MeshFilter mf = m_skySphere.AddComponent<MeshFilter>();
 		mf.mesh = m_skyMesh;
-		
-//		Material m = new Material
-//		m.CopyPropertiesFromMaterial(m_groundMaterial);
-//		m_groundMaterial = m;		
-//		m_groundMaterial.color = planetSettings.m_surfaceColor;
 		
 	}		
 	public Atmosphere() {
@@ -87,25 +82,42 @@ public class Atmosphere
                 m_groundMaterial.SetTextureScale("_BumpMap", new Vector2(0.1f, 0.1f));
                 m_groundMaterial.SetTextureOffset("_BumpMap", new Vector2(1, 1));
             }
-            m_groundMaterial.SetTexture("_Mountain", planetSettings.m_hillTexture);
-            m_groundMaterial.SetTexture("_Basin", planetSettings.m_basinTexture);
-            m_groundMaterial.SetTexture("_Top", planetSettings.m_topTexture);
-            m_groundMaterial.SetTexture("_Surface", planetSettings.m_surfaceTexture);
+            if (planetSettings.m_hillTexture!=null)
+	            m_groundMaterial.SetTexture("_Mountain", planetSettings.m_hillTexture);
+			if (planetSettings.m_basinTexture!=null)
+		        m_groundMaterial.SetTexture("_Basin", planetSettings.m_basinTexture);
+			if (planetSettings.m_topTexture!=null)
+	    	    m_groundMaterial.SetTexture("_Top", planetSettings.m_topTexture);
+			if (planetSettings.m_surfaceTexture!=null)
+	        	m_groundMaterial.SetTexture("_Surface", planetSettings.m_surfaceTexture);
 
         }
 
 
+        public void InitializeDefaultTextures(Material mat) {
+			m_groundMaterial.SetTexture("_Mountain", (Texture2D)Resources.Load("Textures/seamless_rock"));
+			m_groundMaterial.SetTexture("_Basin", (Texture2D)Resources.Load("Textures/seamless_drough"));
+			m_groundMaterial.SetTexture("_Top", (Texture2D)Resources.Load("Textures/snow"));
+			m_groundMaterial.SetTexture("_Surface", (Texture2D)Resources.Load("Textures/seamless_stone1"));
+        }
 
-        public void InitializeParameters()
+
+        public void InitializeParameters(float radius)
         {
             m_waveLength = planetSettings.m_atmosphereWavelengths;
 
             //m_kr*=pSettings.planetType.atmosphereDensity;
             m_kr *= planetSettings.atmosphereDensity;
             //		m_scaleDepth/=pSettings.atmosphereHeight;
+        	m_outerRadius = radius*planetSettings.outerRadiusScale;
+			m_innerRadius = radius;
 
+			if (noiseTexture == null)
+			noiseTexture = (Texture2D)Resources.Load("NoiseTexture");
 
         }
+
+
 
         public Atmosphere (GameObject sun, Material ground, Material sky, Mesh sphere, PlanetSettings pSettings) 
 	{
@@ -114,33 +126,26 @@ public class Atmosphere
 		if (pSettings == null)
 			return;
 
-            InitializeParameters();			
+         InitializeParameters(planetSettings.radius);			
 		//Get the radius of the sphere. This presumes that the sphere mesh is a unit sphere (radius of 1)
 		//that has been scaled uniformly on the x, y and z axis
-		float radius = pSettings.radius;
-            m_innerRadius = radius * m_innerRadiusScale;
-		if (noiseTexture == null)
-			noiseTexture = (Texture2D)Resources.Load("NoiseTexture");
+
 		m_sun = sun;
 		m_groundMaterial = new Material(ground.shader);
 		m_groundMaterial.CopyPropertiesFromMaterial(ground);
         initGroundMaterial(true);
-//			_DETAIL_MULX2		
+        InitializeDefaultTextures(m_groundMaterial);
 		
 		
-//		m_groundMaterial = ground;
 									
 		m_skyMaterial = new Material(sky.shader);
 		m_skyMesh = sphere;
 		//The outer sphere must be 2.5% larger that the inner sphere
 		//m_outerScaleFactor = m_skySphere.transform.localScale.x;
-		m_outerRadius = pSettings.outerRadiusScale* radius;
-        m_radius = m_outerRadius;		
 		InitAtmosphereMaterial(m_groundMaterial);
         InitAtmosphereMaterial(m_skyMaterial);
-		InitializeSkyMesh();
+		InitializeSkyMesh(m_outerRadius);
 
-//            m_outerRadius = pSettings.outerRadiusScale * radius;
 
             if (m_sky != null)
     		localscale = m_sky.transform.parent.localScale.x;
@@ -183,43 +188,8 @@ public class Atmosphere
 
         protected float iscale = 1;
 	
-/*	protected virtual void InitMaterial(Material mat)
-	{
-			if (m_sky == null)
-			return;
-
-		localscale = m_sky.transform.parent.localScale.x;
-		//rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
-		rot = Quaternion.Inverse(m_sky.transform.rotation);
-			
-		float ds = localscale;
-		Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(m_waveLength.x, 4.0f), 1.0f / Mathf.Pow(m_waveLength.y, 4.0f), 1.0f / Mathf.Pow(m_waveLength.z, 4.0f));
-		float scale = 1.0f / (m_outerRadius - m_innerRadius);
-		mat.SetVector("v3LightPos",  (m_sun.transform.forward*-1.0f));
-		mat.SetVector("lightDir",  rot*(m_sun.transform.forward*-1.0f));
-		mat.SetVector("v3InvWavelength", invWaveLength4);
-		mat.SetFloat("fOuterRadius", m_outerRadius*ds);
-		mat.SetFloat("fOuterRadius2", m_outerRadius*m_outerRadius*ds*ds);
-		mat.SetFloat("fInnerRadius", m_innerRadius*ds*iscale);
-		mat.SetFloat("fInnerRadius2", m_innerRadius*m_innerRadius*ds);
-		mat.SetFloat("fKrESun", m_kr*planetSettings.m_ESun*sunScale);
-		mat.SetFloat("fKmESun", m_km*planetSettings.m_ESun*sunScale);
-		mat.SetFloat("fKr4PI", m_kr*4.0f*Mathf.PI);
-		mat.SetFloat("fKm4PI", m_km*4.0f*Mathf.PI);
-		mat.SetFloat("fScale", scale);	
-		mat.SetFloat("fScaleDepth", m_scaleDepth);
-		mat.SetFloat("fScaleOverScaleDepth", scale/m_scaleDepth);
-		mat.SetFloat("fHdrExposure", planetSettings.m_hdrExposure);
-		mat.SetFloat("g", m_g);
-		mat.SetFloat("g2", m_g*m_g);
-		mat.SetVector("v3Translate", planetSettings.transform.position);
-        mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
-
-        }
-        */
         public virtual void InitAtmosphereMaterial(Material mat)
         {
-
 
             localscale = planetSettings.transform.parent.localScale.x;
            // Debug.Log(localscale);

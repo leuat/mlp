@@ -30,7 +30,7 @@ namespace LemonSpawn {
  		public float temperature = 200;
  		public List<Frame> Frames = new List<Frame>();
  		public float atmosphereDensity = 1;
- 		public float atmosphereHeight = 1;
+// 		public float atmosphereHeight = 1;
 		public PlanetSettings DeSerialize(GameObject g, int count, float radiusScale) {
 			PlanetSettings ps = g.AddComponent<PlanetSettings>();
 			ps.outerRadiusScale = outerRadiusScale;
@@ -44,7 +44,7 @@ namespace LemonSpawn {
 			ps.properties.Frames = Frames;
 			ps.radius = radius*radiusScale;
 			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, 0.95f);
-			ps.atmosphereHeight = atmosphereHeight;
+		//	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation% (2.0 * Mathf.PI);
             ps.Randomize(count);
@@ -65,7 +65,7 @@ namespace LemonSpawn {
 			temperature = ps.temperature;
 			rotation = ps.rotation;
 			seed = ps.seed;
-			atmosphereHeight = ps.atmosphereHeight;
+//			atmosphereHeight = ps.atmosphereHeight;
 			atmosphereDensity= ps.atmosphereDensity;
 		}
 		
@@ -333,8 +333,8 @@ namespace LemonSpawn {
         [Header("Atmosphere settings")]
         public int seed;
         public float atmosphereDensity = 1.0f;
-        public float atmosphereHeight = 1.025f;
-        public float outerRadiusScale = 1.05f;
+//        public float atmosphereHeight = 1.025f;
+        public float outerRadiusScale = 1.025f;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
         public float m_hdrExposure = 1.5f;
         public float m_ESun = 10.0f;            // Sun brightness constant
@@ -343,19 +343,19 @@ namespace LemonSpawn {
 
         [Space(10)]
         [Header("Ground settings")]
-        public float hillyThreshold = 0.99f;
+        public float hillyThreshold = 0.985f;
         public float liquidThreshold = 0.001f;
         public float topThreshold = 0.0045f;
-        public float basinThreshold = 0.001f;
+        public float basinThreshold = 0.0025f;
         public float globalTerrainHeightScale = 1.0f;
         public float globalTerrainScale = 1.0f;
         public Color m_surfaceColor, m_surfaceColor2;
         public Texture2D m_surfaceTexture;
         public Color m_basinColor, m_basinColor2;
         public Texture2D m_basinTexture;
-        public Color m_topColor;
+		public Color m_topColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
         public Texture2D m_topTexture;
-        public Color m_hillColor;
+        public Color m_hillColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
         public Texture2D m_hillTexture;
         public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f, 1.0f);
         public Color emissionColor;

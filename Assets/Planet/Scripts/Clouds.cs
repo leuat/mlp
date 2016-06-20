@@ -27,7 +27,7 @@ public class Clouds : Atmosphere {
 		m_skyMaterial = m_cloudSettings.material;
         InitAtmosphereMaterial(m_skyMaterial);
 
-        InitializeSkyMesh();
+        InitializeSkyMesh(m_radius);
 //		m_sky.transform.Rotate(new Vector3(90,0,0));
 	}
 	
@@ -42,7 +42,7 @@ public class Clouds : Atmosphere {
 
         private CloudSettings m_cloudSettings;
 
-		public bool toggleClouds = false;
+		public bool toggleClouds = true;
 
 
         public VolumetricClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
@@ -51,12 +51,9 @@ public class Clouds : Atmosphere {
             m_sun = sun;
             m_skyMesh = m;
             m_cloudSettings = cs;
-            InitializeParameters();
+            InitializeParameters(planetSettings.radius);
 
             
-
-            m_innerRadius = planetSettings.radius;
-            m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
 
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
             m_radius = planetSettings.radius * planetSettings.renderedCloudRadius;
@@ -68,7 +65,6 @@ public class Clouds : Atmosphere {
 
             //m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
             //m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
-            m_radius = m_outerRadius;
 
             //            InitializeSkyMesh();
             m_sky = GameObject.Find("cloudBackgroundSphere");

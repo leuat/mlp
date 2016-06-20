@@ -33,8 +33,9 @@ namespace LemonSpawn {
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
             cube = new CubeSphere(psOcean, false);
 
-            InitializeParameters();
-            m_radius = planetSettings.radius * (1 + planetSettings.liquidThreshold);
+
+			InitializeParameters(planetSettings.radius);
+			m_radius = planetSettings.radius * (1 + planetSettings.liquidThreshold);
             if (ocean==null)
                ocean = new Ocean();
 
@@ -59,10 +60,6 @@ namespace LemonSpawn {
                 ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.properties.terrainObject, m_sun, m_groundMaterial);
 
 
-            m_innerRadius = planetSettings.radius * m_innerRadiusScale; 
-            m_outerRadius = planetSettings.radius * planetSettings.outerRadiusScale;
-            m_outerRadius = planetSettings.atmosphereHeight * planetSettings.radius;
-            m_radius = m_outerRadius;
             initGroundMaterial(false);
             InitAtmosphereMaterial(m_groundMaterial);
             

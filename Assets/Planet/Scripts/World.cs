@@ -56,7 +56,7 @@ namespace LemonSpawn {
 		public static string generatingText = "Downloading data from satellite...";
         public static float vehicleFollowHeight = 10;
         public static float vehicleFollowDistance = 10;
-        public static bool toggleClouds = false;
+        public static bool toggleClouds = true;
         public static bool toggleSaveVideo = false;
         public static bool toggleProgressbar = false;
         public static bool displayDebugLines = false;
