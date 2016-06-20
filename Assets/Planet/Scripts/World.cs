@@ -25,6 +25,7 @@ namespace LemonSpawn {
 	
 	public class RenderSettings {
         public static bool UseThreading = true;
+        public static bool ignoreXMLResolution = true;
         public static float gridDivide = 10;
 		public static int sizeVBO = 96;
 		public static bool assProjection = true;

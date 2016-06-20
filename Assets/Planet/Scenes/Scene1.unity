@@ -730,7 +730,7 @@ MonoBehaviour:
   globalTerrainScale: 5
   m_surfaceColor: {r: 0.71323526, g: 0.34489915, b: 0.010488763, a: 0}
   m_surfaceColor2: {r: 0.18490486, g: 0.5588235, b: 0.29579097, a: 0}
-  m_surfaceTexture: {fileID: 2800000, guid: 5b699bdf6a372974581c5811793d3811, type: 3}
+  m_surfaceTexture: {fileID: 2800000, guid: bf3fbd7326994da4bba0616c20fd81c0, type: 3}
   m_basinColor: {r: 1, g: 0.8409736, b: 0.17647058, a: 0}
   m_basinColor2: {r: 1, g: 0.9849898, b: 0.45588237, a: 0}
   m_basinTexture: {fileID: 2800000, guid: 9bc35ccacbe91574c8ccb3210ed6a057, type: 3}
@@ -770,7 +770,7 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 0
+  hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
 --- !u!4 &1176257414
@@ -1415,12 +1415,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418534933}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9191284b058eef549b7108b5f04e1117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensityMultiplier: 0.35
+  intensityMultiplier: 0.3
   generalIntensity: 0.5
   blackIntensity: 1
   whiteIntensity: 1

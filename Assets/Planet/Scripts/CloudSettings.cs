@@ -13,10 +13,10 @@ namespace LemonSpawn {
 	
 	public float LS_CloudTimeScale = 5;
 	public float LS_CloudScale = 0.35f;
-	public float LS_CloudScattering = 0.6f;
-	public float LS_CloudIntensity = 5;
+	public float LS_CloudScattering = 0.7f;
+	public float LS_CloudIntensity = 4;
 	public float LS_CloudSharpness = 1.35f;
-	public float LS_CloudThickness = 1.9f;
+	public float LS_CloudThickness = 2f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;
 	public Vector3 LS_CloudColor = Vector3.zero;

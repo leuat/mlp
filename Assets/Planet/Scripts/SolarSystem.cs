@@ -163,14 +163,23 @@ namespace LemonSpawn
             else
                 sz = SerializedWorld.DeSerializeString(data);
 
-            World.SzWorld = sz;
             RenderSettings.ExitSaveOnRendered = ExitOnSave;
             RenderSettings.extraText = "";
             SetSkybox((int)sz.skybox);
-            RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
+            if (RenderSettings.ignoreXMLResolution) {
+				sz.resolutionScale = World.SzWorld.resolutionScale;
+				sz.resolution = World.SzWorld.resolution;
+
+			}
+			else {
+				RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
+				RenderSettings.ResolutionScale = sz.resolutionScale;
+
+			}
+			World.SzWorld = sz;
+
             RenderSettings.ScreenshotX = sz.screenshot_height;
             RenderSettings.ScreenshotY = sz.screenshot_width;
-            RenderSettings.ResolutionScale = sz.resolutionScale;
             int cnt = 0;
             World.hasScene = true;
             RenderSettings.isVideo = sz.isVideo();

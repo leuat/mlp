@@ -23,6 +23,7 @@ namespace LemonSpawn
         private float m_playSpeed = 0;
         protected Texture2D tx_background, tx_load, tx_record;
         protected int load_percent;
+        protected GameObject helpPanel = null;
 
 
         public void ClickOverview()
@@ -243,10 +244,25 @@ namespace LemonSpawn
 
         }
 
+        public void displayHelpPanel() {
+	        if (helpPanel!=null)
+            	helpPanel.SetActive(true);
+
+        }
+
+		public void closeHelpPanel() {
+            if (helpPanel!=null)
+            	helpPanel.SetActive(false);
+
+        }
         public override void Start()
         {
 
             base.Start();
+            helpPanel = GameObject.Find("HelpPanel");
+            if (helpPanel!=null)
+            	helpPanel.SetActive(false);
+
             solarSystem.InitializeFromScene();
 
             GameObject.Find("TextVersion").GetComponent<Text>().text = "Version " + RenderSettings.version.ToString("0.00"); ;

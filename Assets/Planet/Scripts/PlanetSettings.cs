@@ -383,7 +383,7 @@ namespace LemonSpawn {
         public float bumpScale = 1.0f;
 		public float cloudRadius = 1.02f;
         public float renderedCloudRadius = 1.03f;
-        public Vector3 cloudColor = new Vector3(1,1,0);
+        public Vector3 cloudColor = new Vector3(0.7f,0.8f,1f);
 		public CloudSettings cloudSettings = new CloudSettings();
         public bool hasFlatClouds = false;
         public bool hasBillboardClouds = false;
@@ -508,10 +508,10 @@ namespace LemonSpawn {
             //cloudColor.x = 1f*(a+b*(float)r.NextDouble());
             //cloudColor.y = 1f*(a+b*(float)r.NextDouble());
             //cloudColor.z = 1f*(a+b*(float)r.NextDouble());
-            cloudColor.x = 0.7f;
+/*            cloudColor.x = 0.7f;
             cloudColor.y = 0.8f;
             cloudColor.z = 1;
-
+            */
 
             //metallicity = 0.01f*(float)r.NextDouble();
             metallicity = 0;
@@ -538,7 +538,7 @@ namespace LemonSpawn {
   //  < outerRadiusScale > 1.025 </ outerRadiusScale >
 
 
-            if (radius >= 5000) 
+            if (radius >= 1000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
                 hasFlatClouds = true;
