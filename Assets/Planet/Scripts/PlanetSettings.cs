@@ -43,7 +43,7 @@ namespace LemonSpawn {
 			ps.seed = seed;
 			ps.properties.Frames = Frames;
 			ps.radius = radius*radiusScale;
-			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, 0.95f);
+			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, RenderSettings.maxAtmosphereDensity);
 		//	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation% (2.0 * Mathf.PI);
@@ -344,9 +344,9 @@ namespace LemonSpawn {
         [Space(10)]
         [Header("Ground settings")]
         public float hillyThreshold = 0.985f;
-        public float liquidThreshold = 0.001f;
+        public float liquidThreshold = 0.0005f;
         public float topThreshold = 0.0045f;
-        public float basinThreshold = 0.0025f;
+        public float basinThreshold = 0.0015f;
         public float globalTerrainHeightScale = 1.0f;
         public float globalTerrainScale = 1.0f;
         public Color m_surfaceColor, m_surfaceColor2;
@@ -530,7 +530,7 @@ namespace LemonSpawn {
             m_hdrExposure = 2;
             m_ESun = 10;
             globalTerrainHeightScale = 1.1f + (float)r.NextDouble() ;
-			globalTerrainScale = 2 + (float)(4*r.NextDouble());
+			globalTerrainScale = 1 + (float)(3*r.NextDouble());
 //            atmosphereHeight = 1.019f;
   //          outerRadiusScale = 1.025f;
 

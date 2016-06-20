@@ -63,6 +63,8 @@ namespace LemonSpawn {
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
+        public static float maxAtmosphereDensity = 0.9f;
+
 #if UNITY_STANDALONE_OSX
         public static string fileDelimiter = "/";
 #endif 
