@@ -59,7 +59,7 @@ namespace LemonSpawn {
         public static float vehicleFollowDistance = 10;
         public static bool toggleClouds = true;
         public static bool toggleSaveVideo = false;
-        public static bool toggleProgressbar = false;
+        public static bool toggleProgressbar = true;
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
@@ -76,6 +76,9 @@ namespace LemonSpawn {
 #endif 
         public static string screenshotDir = "screenshots" + fileDelimiter;
         public static string movieDir = "movie" + fileDelimiter;
+        public static string dataDir = "data" + fileDelimiter;
+        public static string MCAstSettingsFile = "mcast_settings.xml";
+
 
     }
 
@@ -172,13 +175,25 @@ namespace LemonSpawn {
 		private bool modifier = false;
 		private bool ctrlModifier = false;
 		
+        protected List<Message> messages = new List<Message>();
 
 
 
 
-		
-		
-		public static void MoveCamera(Vector3 dp) {
+       protected void UpdateMessages()
+        {
+            foreach (Message m in messages)
+                if (m.time--<0)
+                {
+                    messages.Remove(m);
+                    return;
+                }
+
+
+        }
+
+
+        public static void MoveCamera(Vector3 dp) {
             SpaceCamera.MoveCamera(dp);
 			
 		}
@@ -228,7 +243,7 @@ namespace LemonSpawn {
 
 
 
-        private string GetScreenshotFilename(string dir) {
+        private string GetScreenshotFilename(string dir, out string pureFile) {
 			string OutputDir = Application.dataPath + "/../" + dir;
 			DirectoryInfo info = new DirectoryInfo(OutputDir);
 			FileInfo[] fileInfo = info.GetFiles();
@@ -245,6 +260,7 @@ namespace LemonSpawn {
 			}
 			current++;
             string fname = OutputDir + RenderSettings.ScreenshotName + current.ToString("0000") + ".png";
+            pureFile = RenderSettings.ScreenshotName + current.ToString("0000") + ".png";
             return fname;
 			
 			
@@ -259,13 +275,10 @@ namespace LemonSpawn {
 		}
 
 		
-        protected void WriteScreenshot(string directory)
+        protected string WriteScreenshot(string directory, int resWidth, int resHeight)
         {
             Camera camera = MainCamera;
             Camera eCamera = effectCamera.GetComponent<Camera>();
-
-            int resWidth = RenderSettings.ScreenshotX;
-            int resHeight = RenderSettings.ScreenshotY;
 
             RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
             camera.targetTexture = rt;
@@ -284,16 +297,14 @@ namespace LemonSpawn {
 
             Destroy(rt);
             byte[] bytes = screenShot.EncodeToPNG();
-
-            string file = GetScreenshotFilename(directory);
+            string pureFile ;
+            string file = GetScreenshotFilename(directory, out pureFile);
 
             File.WriteAllBytes(file, bytes);
-
+            return pureFile;
         }
 
-        public void SaveScreenshot() {
-            WriteScreenshot(RenderSettings.screenshotDir);
-		}
+      
 		
 		//	#if UNITY_STANDALONE
 		
@@ -304,9 +315,9 @@ namespace LemonSpawn {
 			szWorld = sz;
 		}
 
-		public void LoadFromXMLFile(string filename) {
-			if (ThreadQueue.currentThreads.Count != 0 || ThreadQueue.threadQueue.Count!=0)
-				return;
+		public virtual void LoadFromXMLFile(string filename) {
+
+            ThreadQueue.AbortAll();
 			//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
 //			string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
 			string file = Application.dataPath + "/../" + filename;
@@ -363,12 +374,12 @@ namespace LemonSpawn {
 		
 		#if UNITY_STANDALONE
 		
-		public void LoadXmlFile(string filename) {
+/*		public void LoadXmlFile(string filename) {
             solarSystem.LoadWorld(filename, false,false, this);
 			szWorld.IterateCamera();
             solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
-		}
+		}*/
 		#endif
 		
 		#if UNITY_STANDALONE_WIN
@@ -506,9 +517,16 @@ namespace LemonSpawn {
 			
 		}	
 		
-		public virtual void Update () {
+        protected void AddMessage(string s, float t = 1)
+        {
+            messages.Add(new Message(s, t * 100));
+        }
+
+
+        public virtual void Update () {
 			UpdateWorldCamera();		
             solarSystem.Update();
+            UpdateMessages();
 
 			//		Debug.Log (WorldCamera.toVectorf());
 			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
@@ -552,9 +570,9 @@ namespace LemonSpawn {
 
             if (Input.GetKeyUp(KeyCode.Tab))
                 followVehicle = !followVehicle;
+                
 
-
-			if (Input.GetKeyUp (KeyCode.Space)) {
+			if (Input.GetKeyUp (KeyCode.Tab)) {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
 				canvas.SetActive(RenderSettings.RenderMenu);
 			}
@@ -567,6 +585,7 @@ namespace LemonSpawn {
             }
             if (SolarSystem.planet!=null)
 	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.properties.localCamera);
+
     		if (RenderSettings.UseThreading) 
 				ThreadQueue.MaintainThreadQueue();
 			
@@ -610,71 +629,64 @@ namespace LemonSpawn {
 
         protected void PopulateOverviewList(string box)
         {
-            ComboBox cbx = GameObject.Find(box).GetComponent<ComboBox>();
-            cbx.ClearItems();
-            List<ComboBoxItem> l = new List<ComboBoxItem>();
+            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+            cbx.ClearOptions();
+            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
+            l.Add(new Dropdown.OptionData("None"));
             foreach (Planet p in solarSystem.planets)
             {
-                ComboBoxItem ci = new ComboBoxItem();
-                ci.Caption = p.pSettings.name;
+                Dropdown.OptionData ci = new Dropdown.OptionData();
+                ci.text = p.pSettings.name;
                 string n = p.pSettings.name;
-                ci.OnSelect = delegate
-                {
-                    FocusOnPlanet(n);
-                };
                 l.Add(ci);
             }
             //		foreach (ComboBoxItem i in l)
             //			Debug.Log (i.Caption);
 
-            cbx.AddItems(l.ToArray());
+            cbx.AddOptions(l);
 
         }
 
 
 
         public void PopulateFileCombobox(string box, string fileType) {
-				ComboBox cbx = GameObject.Find (box).GetComponent<ComboBox>();
-				cbx.ClearItems();
-				DirectoryInfo info = new DirectoryInfo(".");
+				Dropdown cbx = GameObject.Find (box).GetComponent<Dropdown>();
+                cbx.ClearOptions();
+				DirectoryInfo info = new DirectoryInfo(RenderSettings.dataDir + ".");
 				FileInfo[] fileInfo = info.GetFiles();
-				List<ComboBoxItem> l = new List<ComboBoxItem>();
 				string first="";
-				foreach (FileInfo f in fileInfo)  {
+            List<Dropdown.OptionData> data = new List<Dropdown.OptionData>();
+            foreach (FileInfo f in fileInfo)  {
                 //string name = f.Name.Remove(f.Name.Length-4, 4);
+
                 if (!f.Name.ToLower().Contains(fileType.ToLower()))
                     continue;
 					string[] lst = f.Name.Split('.');
 					if (lst[1].Trim().ToLower() == fileType.Trim().ToLower()) {
 
-						ComboBoxItem ci = new ComboBoxItem();
 
-						ci.Caption = lst[0].Trim().ToLower();
+                        string text = lst[0].Trim().ToLower();
 						string name = f.Name;
-						ci.OnSelect = delegate {
-							LoadFromXMLFile(name);
-                            PopulateOverviewList("Overview");
-                        };
 						string n = f.Name;
 						if (first == "")
 							first = "";
-						l.Add (ci);
+
+                        data.Add(new Dropdown.OptionData(text));
 					}
 				}
-				cbx.AddItems(l.ToArray());
-				if (first!="") {
-//					LoadFromXMLFile(first);
-//					Debug.Log("WHOO " + first);
-					}
+            cbx.AddOptions(data);
 
-			}
-	
+ 
+        }
+
 
 
 
         private void FollowVehicle(string s)
         {
             GameObject go = GameObject.Find(s);
+            if (go == null)
+                return;
             Vector3 t = go.transform.position + go.transform.forward*RenderSettings.vehicleFollowDistance;
             Vector3 c = go.transform.position + go.transform.forward * RenderSettings.vehicleFollowDistance * -1 + go.transform.up * RenderSettings.vehicleFollowHeight;
             Vector3 up = SolarSystem.planet.pSettings.transform.position.normalized * -1;
@@ -690,14 +702,10 @@ namespace LemonSpawn {
 
         }
 
-        public void ExitSave() {
-			SaveScreenshot();
-			Application.Quit();
-		}
 		
 		
 
-		void Log() {
+		protected virtual void Log() {
 			string s = "";
 			float val = 1;
 			if (ThreadQueue.orgThreads!=0)
@@ -706,10 +714,6 @@ namespace LemonSpawn {
 			int percent = 100-(int)(100 * val);
 			
 			
-			if (percent == 100 && RenderSettings.ExitSaveOnRendered && ThreadQueue.currentThreads.Count==0) {
-				if (extraTimer--==0)
-					ExitSave();
-			}
 //			load_percent = percent;
 			
 			s+="Version: " + RenderSettings.version.ToString("0.00")  + " \n";

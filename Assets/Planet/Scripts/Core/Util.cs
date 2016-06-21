@@ -151,6 +151,22 @@ namespace LemonSpawn
     * General utilities
     *
     */
+
+    public class Message
+    {
+        public string message;
+        public float time = 100;
+        public Message(string s)
+        {
+            message = s;
+        }
+        public Message(string s, float t)
+        {
+            message = s;
+            time = t*3;
+        }
+    }
+
     public class Util : MonoBehaviour
     {
 

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
+using System.Xml.Serialization;
 
 
 #if UNITY_EDITOR
@@ -13,6 +14,41 @@ using System.Collections.Generic;
 
 namespace LemonSpawn
 {
+
+    [System.Serializable]
+    public class MCAstSettings
+    {
+        public static int[,] Resolution = new int[11, 2] { 
+            { 320, 200 }, { 640, 480 }, { 800, 600 }, { 1024, 768 }, { 1280, 1024 }, { 1600, 1200 },
+            { 800, 480 }, { 1024, 600 }, { 1280, 720 }, { 1680, 1050 }, { 2048, 1080 } };
+
+        public static int[] GridSizes = new int[6] { 16, 32, 48, 64, 80, 96 };
+
+
+        public int movieResolution = 1;
+        public int gridSize = 2;
+        public int screenShotResolution = 4 ;
+        public bool advancedClouds = false;
+        public bool cameraEffects = true;
+        public string previousFile = "";
+
+
+        public static MCAstSettings DeSerialize(string filename)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(MCAstSettings));
+            TextReader textReader = new StreamReader(filename);
+            MCAstSettings sz = (MCAstSettings)deserializer.Deserialize(textReader);
+            textReader.Close();
+            return sz;
+        }
+        static public void Serialize(MCAstSettings sz, string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(MCAstSettings));
+            TextWriter textWriter = new StreamWriter(filename);
+            serializer.Serialize(textWriter, sz);
+            textWriter.Close();
+        }
+    }
 
 
 
@@ -24,7 +60,56 @@ namespace LemonSpawn
         protected Texture2D tx_background, tx_load, tx_record;
         protected int load_percent;
         protected GameObject helpPanel = null;
+        protected GameObject settingsPanel = null;
+        protected MCAstSettings settings = new MCAstSettings();
 
+        protected void PopulateGUISettings()
+        {
+            GameObject.Find("ScreenshotResolutionCmb").GetComponent<Dropdown>().value = settings.screenShotResolution;
+            GameObject.Find("MovieResolutionCmb").GetComponent<Dropdown>().value = settings.movieResolution;
+            GameObject.Find("GridSizeCmb").GetComponent<Dropdown>().value = settings.gridSize;
+            GameObject.Find("ToggleCameraEffects").GetComponent<Toggle>().isOn = settings.cameraEffects;
+
+        }
+
+        protected void PopulateSettingsFromGUI()
+        {
+            settings.screenShotResolution = GameObject.Find("ScreenshotResolutionCmb").GetComponent<Dropdown>().value;
+            settings.movieResolution = GameObject.Find("MovieResolutionCmb").GetComponent<Dropdown>().value;
+            settings.gridSize = GameObject.Find("GridSizeCmb").GetComponent<Dropdown>().value;
+            settings.cameraEffects = GameObject.Find("ToggleCameraEffects").GetComponent<Toggle>().isOn;
+            int actualGridSize = MCAstSettings.GridSizes[ settings.gridSize ];
+            if (actualGridSize != RenderSettings.sizeVBO)
+            {
+                RenderSettings.sizeVBO = actualGridSize;
+                solarSystem.Reset();
+                AddMessage("New gridsize: Solar system reset");
+
+            }
+            effectCamera.GetComponent<Camera>().enabled = settings.cameraEffects;
+        }
+
+        protected void LoadSettings()
+        {
+            string fname = Application.dataPath + "/../" + RenderSettings.MCAstSettingsFile;
+            if (File.Exists(fname))
+            {
+                settings = MCAstSettings.DeSerialize(fname);
+                AddMessage("Settings file loaded : " + RenderSettings.MCAstSettingsFile);
+
+            }
+            else
+            {
+                AddMessage("Settings file created : " + RenderSettings.MCAstSettingsFile);
+            }
+        }
+
+        protected void SaveSettings()
+        {
+            string fname = Application.dataPath + "/../" + RenderSettings.MCAstSettingsFile;
+            MCAstSettings.Serialize(settings, fname);
+            AddMessage("Settings saved");
+        }
 
         public void ClickOverview()
         {
@@ -43,10 +128,14 @@ namespace LemonSpawn
         }
 
 
+
+
         private void setPlaySpeed(float v)
         {
             if (m_playSpeed == v)
+            {
                 m_playSpeed = 0;
+            }
             else
             {
                 // Clear on play!
@@ -86,9 +175,14 @@ namespace LemonSpawn
 
         }
 
-        
+        public void ExitSave()
+        {
+            SaveScreenshot();
+            Application.Quit();
+        }
 
-      
+
+
         void CreateConfig(string fname)
         {
 
@@ -213,6 +307,17 @@ namespace LemonSpawn
 
         }
 
+        public void SaveScreenshot()
+        {
+            string warn = "";
+            if (percent != 100)
+                warn = " - WARNING: Image not fully processed (" + percent + "%)";
+
+            string file = WriteScreenshot(RenderSettings.screenshotDir, MCAstSettings.Resolution[settings.screenShotResolution,0], MCAstSettings.Resolution[settings.screenShotResolution, 1]);
+            AddMessage("Screenshot saved to " + RenderSettings.screenshotDir + file + warn);
+
+        }
+
         protected void OnGUI()
         {
 
@@ -245,8 +350,11 @@ namespace LemonSpawn
         }
 
         public void displayHelpPanel() {
-	        if (helpPanel!=null)
-            	helpPanel.SetActive(true);
+            if (helpPanel != null)
+            {
+                helpPanel.SetActive(true);
+                helpPanel.transform.SetAsLastSibling();
+            }
 
         }
 
@@ -255,13 +363,109 @@ namespace LemonSpawn
             	helpPanel.SetActive(false);
 
         }
-        public override void Start()
+        public void displaySettingsPanel()
         {
+            if (settingsPanel != null)
+            {
+                settingsPanel.SetActive(true);
+                settingsPanel.transform.SetAsLastSibling();
+            }
 
-            base.Start();
+        }
+
+        public void closeSettingsPanel()
+        {
+            PopulateSettingsFromGUI();
+            if (settingsPanel != null)
+                settingsPanel.SetActive(false);
+
+            SaveSettings();
+
+        }
+
+
+        public void PopulateResolutionCombobox(string box)
+        {
+            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+            cbx.ClearOptions();
+            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
+
+            for (int i=0;i<MCAstSettings.Resolution.GetLength(0);i++)
+            {
+                string s = MCAstSettings.Resolution[i, 0] + "x" + MCAstSettings.Resolution[i, 1];
+                ComboBoxItem ci = new ComboBoxItem();
+                l.Add(new Dropdown.OptionData(s));
+            }
+
+            cbx.AddOptions(l);
+
+        }
+
+        public void PopulateIndexCombobox(string box, int[] lst)
+        {
+            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+            cbx.ClearOptions();
+            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
+
+            for (int i = 0; i < lst.GetLength(0); i++)
+            {
+                string s = ""+ lst[i];
+                ComboBoxItem ci = new ComboBoxItem();
+                l.Add(new Dropdown.OptionData(s));
+            }
+            cbx.AddOptions(l);
+
+        }
+
+
+        private void SetupGUI()
+        {
+            LoadSettings();
             helpPanel = GameObject.Find("HelpPanel");
-            if (helpPanel!=null)
-            	helpPanel.SetActive(false);
+            if (helpPanel != null)
+                helpPanel.SetActive(false);
+
+            settingsPanel = GameObject.Find("SettingsPanel");
+            PopulateFileCombobox("ComboBoxLoadFile", "xml");
+            PopulateResolutionCombobox("MovieResolutionCmb");
+            PopulateResolutionCombobox("ScreenshotResolutionCmb");
+            PopulateIndexCombobox("GridSizeCmb", MCAstSettings.GridSizes);
+            displaySettingsPanel();
+            PopulateGUISettings();
+            
+
+
+
+            if (settingsPanel != null)
+                settingsPanel.SetActive(false);
+
+
+        }
+
+
+        public void LoadFileFromMenu()
+        {
+            int idx = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().value;
+            string name = RenderSettings.dataDir + GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text + ".xml";
+            LoadFromXMLFile(name);
+            settings.previousFile = name;
+            PopulateOverviewList("Overview");
+            slider.GetComponent<Slider>().value = 0;
+
+        }
+
+        public void FocusOnPlanetFromMenu()
+        {
+            int idx = GameObject.Find("Overview").GetComponent<Dropdown>().value;
+            string name = GameObject.Find("Overview").GetComponent<Dropdown>().options[idx].text;
+            FocusOnPlanet(name);
+
+        }
+
+    public override void Start()
+        {
+            base.Start();
+            SetupGUI();
 
             solarSystem.InitializeFromScene();
 
@@ -274,16 +478,31 @@ namespace LemonSpawn
             if (slider != null)
                 slider.SetActive(true);
 
-            PopulateFileCombobox("ComboBoxLoadFile", "xml");
+            if (settings.previousFile != "")
+            {
+                LoadFromXMLFile(settings.previousFile);
+                szWorld.IterateCamera();
+                
+                //                szWorld.getInterpolatedCamera(0, solarSystem.planets);
+
+            }
+
 
 
 #if UNITY_STANDALONE
             //	LoadCommandLineXML();
 #endif
         }
+        public override void LoadFromXMLFile(string filename)
+        {
+            AddMessage("Loading XML file: " + filename);
+            base.LoadFromXMLFile(filename);
+            displaySettingsPanel();
+            PopulateSettingsFromGUI();
+            closeSettingsPanel();
+        }
 
-
-        void setSun()
+            void setSun()
         {
             if (sun == null)
                 return;
@@ -303,8 +522,10 @@ namespace LemonSpawn
 
         protected void UpdatePlay()
         {
+  //          Debug.Log(Time.time + " " + m_playSpeed);
             if (m_playSpeed > 0 && solarSystem.planets.Count!=0)
             {
+                canvas.SetActive(true);
                 float v = slider.GetComponent<Slider>().value;
                 v += m_playSpeed;
                 if (v >= 1)
@@ -312,13 +533,16 @@ namespace LemonSpawn
                     m_playSpeed = 0;
                     v = 0;
                 }
-
+//                Debug.Log("Playspeed after: " + m_playSpeed + " " + Time.time);
                 slider.GetComponent<Slider>().value = v;
+                canvas.SetActive(RenderSettings.RenderMenu);
 
                 szWorld.getInterpolatedCamera(v, solarSystem.planets);
                 if (RenderSettings.toggleSaveVideo)
                 {
-                    WriteScreenshot(RenderSettings.movieDir);
+                    string f = WriteScreenshot(RenderSettings.movieDir,
+                        MCAstSettings.Resolution[settings.movieResolution,0], MCAstSettings.Resolution[settings.movieResolution, 1]);
+                    AddMessage("Movie frame saved to : " + RenderSettings.movieDir + f, 0.025f);
                 }
                 
             }
@@ -329,24 +553,22 @@ namespace LemonSpawn
         {
             base.Update();
 
-            if (RenderSettings.RenderMenu)
-                Log();
 
             UpdatePlay();
 
         }
 
 
+        private int percent;
 
-
-        void Log()
+        protected override void Log()
         {
             string s = "";
             float val = 1;
             if (ThreadQueue.orgThreads != 0)
                 val = (ThreadQueue.threadQueue.Count / (float)ThreadQueue.orgThreads);
 
-            int percent = 100 - (int)(100 * val);
+            percent = 100 - (int)(100 * val);
 
 
             if (percent == 100 && RenderSettings.ExitSaveOnRendered && ThreadQueue.currentThreads.Count == 0)
@@ -360,7 +582,10 @@ namespace LemonSpawn
                 s += "Progress: " + percent + " %\n";
             //s+="Height: " + stats.Height.ToString("0.00") + " km \n";
             //s+="Velocity: " + stats.Velocity.ToString("0.00") + " km/s\n";
-            s += RenderSettings.extraText;
+            s += RenderSettings.extraText + "\n";
+            foreach (Message m in messages)
+                s += m.message + "\n";
+
             GameObject info = GameObject.Find("Logging");
             if (info != null)
                 info.GetComponent<Text>().text = s;

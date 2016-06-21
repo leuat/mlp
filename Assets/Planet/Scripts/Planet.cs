@@ -32,6 +32,12 @@ namespace LemonSpawn
         }
 
 
+        public void Reset()
+        {
+            GameObject.Destroy(pSettings.properties.terrainObject);
+        }
+
+
         public void InterpolatePositions(int frame, double dt)
         {
             //		return;

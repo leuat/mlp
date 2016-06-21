@@ -117,6 +117,22 @@ namespace LemonSpawn {
 		
 		}
 
+        public static void AbortAll()
+        {
+            threadQueue.Clear();
+            bool done = false;
+            while (!done)
+            {
+                done = true;
+                foreach (TQueue tq in threadQueue)
+                {
+                    if (!tq.gt.threadDone)
+                        done = false;
+                }
+                Thread.Sleep(10);
+            }
+        }
+
 }
 
 }

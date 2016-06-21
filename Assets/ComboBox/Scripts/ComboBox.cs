@@ -416,6 +416,7 @@ public class ComboBox : MonoBehaviour
 		{
 			foreach (Transform child in transform)
 				Destroy(child);
+
 			CreateControl();
 		}
 
@@ -426,9 +427,12 @@ public class ComboBox : MonoBehaviour
 		overlayGO.SetActive(false);
 		var overlayImage = overlayGO.AddComponent<Image>();
 		overlayImage.color = new Color32(0, 0, 0, 0);
+//        overlayImage.material = new Material((Material)Resources.Load("CarMaterial"));
 		var canvasTransform = transform;
 		while (canvasTransform.GetComponent<Canvas>() == null)
 			canvasTransform = canvasTransform.parent;
+
+
 		overlayGO.transform.SetParent(canvasTransform, false);
 		var overlayRectTransform = overlayGO.GetComponent<RectTransform>();
 		overlayRectTransform.anchorMin = Vector2.zero;

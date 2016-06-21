@@ -46,6 +46,7 @@ namespace LemonSpawn
         private Mesh sphere;
         public SpaceAtmosphere space;
         public List<Planet> planets = new List<Planet>();
+        public List<GameObject> cameraObjects = new List<GameObject>();
 
         // Closest active planet
         public static Planet planet = null;
@@ -94,6 +95,8 @@ namespace LemonSpawn
         }
 
 
+
+
         public void InitializeFromScene()
         {
 
@@ -102,7 +105,15 @@ namespace LemonSpawn
                 GameObject go = transform.GetChild(i).gameObject;
                 if (go.activeSelf)
                 {
-                    Planet p = new Planet(go.GetComponent<PlanetSettings>());
+                    PlanetSettings ps = go.GetComponent<PlanetSettings>();
+                    if (ps == null)
+                    {
+                        cameraObjects.Add(go);
+                        continue;
+                    }
+
+                    Planet p = new Planet(ps);
+
                     p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
                     p.pSettings.properties.parent = go;
@@ -144,6 +155,14 @@ namespace LemonSpawn
             }
 
         }
+
+
+        public void Reset()
+        {
+            foreach (Planet p in planets)
+                p.Reset();
+        }
+
 
         public void LoadWorld(string data, bool isFile, bool ExitOnSave, World world)
         {
@@ -210,7 +229,8 @@ namespace LemonSpawn
             for (int i = 0; i < transform.childCount; i++)
             {
                 GameObject go = transform.GetChild(i).gameObject;
-                GameObject.Destroy(go);
+                if(go.GetComponent<PlanetSettings>()!=null)
+                    GameObject.Destroy(go);
                 //	Debug.Log ("Destroying " + go.name);
             }
 

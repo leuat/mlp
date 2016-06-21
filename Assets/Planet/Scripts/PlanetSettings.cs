@@ -145,7 +145,7 @@ namespace LemonSpawn {
 		
 		public void getInterpolatedCamera(double t, List<Planet> planets) {
 			// t in [0,1]
-			if (Cameras.Count==1)
+			if (Cameras.Count<=1)
 				return;
 			DVector pos, up;
 			up = new DVector(Vector3.up);
