@@ -558,6 +558,23 @@ namespace LemonSpawn
 
         }
 
+
+        public void TogglePlanetTypes()
+        {
+            RenderSettings.ForceAllPlanetTypes++;
+            if (RenderSettings.ForceAllPlanetTypes>=PlanetType.planetTypes.Count)
+            {
+                RenderSettings.ForceAllPlanetTypes = -1;
+                AddMessage("Resetting to all planet types");
+            }
+            else
+            {
+                AddMessage("Setting all planets to type : " + RenderSettings.ForceAllPlanetTypes +"  (" + PlanetType.planetTypes[RenderSettings.ForceAllPlanetTypes].Name + ")", 4);
+            }
+            LoadFromXMLFile(settings.previousFile, false);
+
+        }
+
         public override void Update()
         {
             base.Update();

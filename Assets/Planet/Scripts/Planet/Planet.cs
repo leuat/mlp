@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 
@@ -221,6 +222,10 @@ namespace LemonSpawn
             MaintainPlanet();
             float rot = (float)(pSettings.rotation / (2 * Mathf.PI) * 360f);
 
+
+       //     Debug.Log(pSettings.getHeight());
+
+//             rot = 0;
             pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
 
             if (pSettings.atmosphere != null)

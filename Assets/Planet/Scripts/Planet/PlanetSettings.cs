@@ -7,249 +7,27 @@ using System.IO;
 
 namespace LemonSpawn {
 
-	[System.Serializable]
-	public class Frame {
-		public int id;
-		public double rotation;
-		public double pos_x;
-		public double pos_y;
-		public double pos_z;
-		public DVector pos() {
-			return new DVector(pos_x, pos_y, pos_z);
-		}		
-	}	
-	
-	[System.Serializable]
- 	public class SerializedPlanet {
- 		public float outerRadiusScale = 1.05f;
- 		public float radius = 5000;
- 		public int seed = 0;
- 		public double pos_x, pos_y, pos_z;
- 		public string name;
- 		public double rotation = 0;
- 		public float temperature = 200;
- 		public List<Frame> Frames = new List<Frame>();
- 		public float atmosphereDensity = 1;
-// 		public float atmosphereHeight = 1;
-		public PlanetSettings DeSerialize(GameObject g, int count, float radiusScale) {
-			PlanetSettings ps = g.AddComponent<PlanetSettings>();
-			ps.outerRadiusScale = outerRadiusScale;
-			//ps.transform.position.Set (pos_x, pos_y, pos_z);
-			ps.properties.pos.x = pos_x;
-			ps.properties.pos.y = pos_y;
-			ps.properties.pos.z = pos_z;
-			ps.rotation = rotation % (2.0*Mathf.PI);
-			ps.temperature = temperature;
-			ps.seed = seed;
-			ps.properties.Frames = Frames;
-			ps.radius = radius*radiusScale;
-			ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, RenderSettings.maxAtmosphereDensity);
-		//	ps.atmosphereHeight = atmosphereHeight;
-            foreach (Frame f in Frames)
-                f.rotation = f.rotation% (2.0 * Mathf.PI);
-            ps.Randomize(count);
-
-            return ps;
-		}
-		
-		public SerializedPlanet() {
-		
-		}
-		
-		public SerializedPlanet(PlanetSettings ps) {
-			outerRadiusScale = ps.outerRadiusScale;
-			radius = ps.radius;
-			pos_x = ps.transform.position.x;
-			pos_y = ps.transform.position.y;
-			pos_z = ps.transform.position.z;
-			temperature = ps.temperature;
-			rotation = ps.rotation;
-			seed = ps.seed;
-//			atmosphereHeight = ps.atmosphereHeight;
-			atmosphereDensity= ps.atmosphereDensity;
-		}
-		
-		
- 	}
 
 
-/*	public class PlanetType {
-		public string Name;
-		public string CloudTexture;
-	}
-*/
+    public class PlanetType {
+        public string Name;
+        public Color color;
+        public Color colorVariation;
+        public Color basinColor;
+        public Color basinColorVariation;
+        public Color seaColor;
+        public int[] atmosphere;
+        public string clouds;
+        public float atmosphereDensity = 1;
+        public float sealevel;
 
-	[System.Serializable]
-	public class SerializedCamera {
-		public double cam_x, cam_y, cam_z;
-//		public float rot_x, rot_y, rot_z;
-//		public float cam_theta, cam_phi;
-		public double dir_x, dir_y, dir_z;
-		public double up_x, up_y, up_z;
-		public double fov;
-		public double time;
-		public int frame;
-		public DVector getPos() {
-			return new DVector(cam_x, cam_y, cam_z);
-		}
-		public DVector getUp() {
-			return new DVector(up_x, up_y, up_z);
-		}
-		public DVector getDir() {
-			return new DVector(dir_x, dir_y, dir_z);
-		}
-	}	
-	
-	
+        public int minQuadLevel;
+        public Vector2 RadiusRange, TemperatureRange;
+        public delegate SurfaceNode InitializeSurface(float a, float scale, PlanetSettings ps);
 
-	[System.Serializable]
-	public class SerializedWorld {
-		public List<SerializedPlanet> Planets = new List<SerializedPlanet>();
-		public List<SerializedCamera> Cameras = new List<SerializedCamera>();
-		public float sun_col_r=1;
-		public float sun_col_g=1;
-		public float sun_col_b=0.8f;
-		public float sun_intensity=0.1f;
-		public float resolutionScale = 1.0f;
-		public float global_radius_scale = 1;
-		private int frame = 0;
-		public float skybox = 0;
-		public string uuid;
-		public int resolution = 64;
-		public float overview_distance = 4;
-		public int screenshot_width = 1024;
-		public int screenshot_height = 1024;
-		public bool isVideo() {
-			if (Cameras.Count>1)
-				return true;
-			return false;
-		}
-		
-		public SerializedCamera getCamera(int i) {
-			if (i>=0 && i<Cameras.Count)
-				return Cameras[i];
-			return null;
-		}
-		
-		
-		public SerializedCamera getCamera(double t, int add) {
-		
-			double ct = 0;
-			for (int i=0;i<Cameras.Count;i++) {
-				if (t>=ct && t<Cameras[i].time) {
-					return getCamera(i+add-1);
-				}
-				ct = Cameras[i].time;				
-			}
-			return null;
-		}
-		
-		public void getInterpolatedCamera(double t, List<Planet> planets) {
-			// t in [0,1]
-			if (Cameras.Count<=1)
-				return;
-			DVector pos, up;
-			up = new DVector(Vector3.up);
-			
-//			float n = t*(Cameras.Count-1);
-			
-			double maxTime = Cameras[Cameras.Count-1].time;
-			double time = t*maxTime;
-			
-//			SerializedCamera a = getCamera(n-1);
-			SerializedCamera b = getCamera((int)time, 0);
-			SerializedCamera c = getCamera((int)time, 1);
-			if (/*a==null || */c == null)
-				return;
-			
-			double dt = 1.0/(c.time - b.time) *(time - b.time);
-			
-			pos = b.getPos() + (c.getPos() - b.getPos())*dt;
-			up = b.getUp() + (c.getUp() - b.getUp())*dt;
-			
-			
-			DVector dir = b.getDir() + (c.getDir() - b.getDir())*dt;
-			
-//			float theta = b.cam_theta + (c.cam_theta - b.cam_theta)*dt;
-//			float phi = b.cam_phi + (c.cam_phi - b.cam_phi)*dt;
-			
-			foreach (Planet p in planets) {
-				p.InterpolatePositions(b.frame, dt);
-			}
-
-            World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
-			
-		}
-		
-		public void IterateCamera() {
-
-			if (frame>=Cameras.Count)
-				return;
-
-			//Debug.Log("JAH");
-
-			SerializedCamera sc = Cameras[frame];
-			//gc.GetComponent<SpaceCamera>().SetCamera(new Vector3(sc.cam_x, sc.cam_y, sc.cam_z), Quaternion.Euler (new Vector3(sc.rot_x, sc.rot_y, sc.rot_z)));
-			DVector up = new DVector(sc.up_x, sc.up_y, sc.up_z);
-			DVector pos = new DVector(sc.cam_x, sc.cam_y, sc.cam_z);
-			World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, sc.getDir().toVectorf(), up.toVectorf());
-
-
-
-			//c.fieldOfView = sc.fov;
-             
-			
-			Atmosphere.sunScale = Mathf.Clamp (1.0f/  (float)pos.Length(), 0.0001f, 1);
-			frame++;
-		}
-		
-		
-		public SerializedWorld() {
-		
-		}
-		
-		
-		public static SerializedWorld DeSerialize(string filename) {
-			XmlSerializer deserializer = new XmlSerializer(typeof(SerializedWorld));
-			TextReader textReader = new StreamReader(filename);
-			SerializedWorld sz = (SerializedWorld)deserializer.Deserialize(textReader);
-			textReader.Close();
-			return sz;
-		}
-		public static SerializedWorld DeSerializeString(string data) {
-			XmlSerializer deserializer = new XmlSerializer(typeof(SerializedWorld));
-			//TextReader textReader = new StreamReader(filename);
-			StringReader sr = new StringReader(data);
-			SerializedWorld sz = (SerializedWorld)deserializer.Deserialize(sr);
-			sr.Close();
-			return sz;
-		}
-		static public void Serialize(SerializedWorld sz, string filename)
-		{
-			XmlSerializer serializer = new XmlSerializer(typeof(SerializedWorld));
-			TextWriter textWriter = new StreamWriter(filename);
-			serializer.Serialize(textWriter, sz);
-			textWriter.Close();
-		}
-		
-		
-	}
-
-	
-	public class PlanetType {
-		public string Name;
-		public Color color;
-		public Color colorVariation;
-		public Color basinColor;
-		public Color basinColorVariation;
-		public string clouds;
-		public float atmosphereDensity = 1;
-		public int minQuadLevel;
-		public Vector2 RadiusRange, TemperatureRange;
-		public delegate SurfaceNode InitializeSurface(float a, float scale, PlanetSettings ps);
-		
-		public InitializeSurface Delegate;
-		public PlanetType(InitializeSurface del, string n, Color c, Color cv, Color b, Color bv, string cl, Vector2 rr, Vector2 tr, int mq, float atm) {
+        public InitializeSurface Delegate;
+        public PlanetType(InitializeSurface del, string n, Color c, Color cv, Color b, Color bv, string cl, Vector2 rr, Vector2 tr, int mq, float atm,
+            float seal, Color seacol, int[] atmidx) {
 			Delegate = del;
 			Name = n;
 			color = c;
@@ -261,30 +39,107 @@ namespace LemonSpawn {
 			atmosphereDensity = atm;
 			TemperatureRange = tr;
 			minQuadLevel = mq;
+            atmosphere = atmidx;
+            seaColor = seacol;
+            sealevel = seal;
+
 		}
-		public PlanetType(InitializeSurface del, string n, Color c, Color cv, string cl, Vector2 rr, Vector2 tr, int mq, float atm) {
-			Delegate = del;
-			Name = n;
-			color = c;
-			colorVariation = cv;
-			clouds = cl;
-			RadiusRange = rr;
-			TemperatureRange = tr;
-			minQuadLevel = mq;
-			basinColor = 0.5f*c;
-			atmosphereDensity = atm;
-			basinColorVariation = 0.5f*cv;
-		}
-		
-		public static List<PlanetType> planetTypes = new List<PlanetType>();
+        public static Vector3[] AtmosphereWavelengths = new Vector3[] {
+            new Vector3(0.65f, 0.57f, 0.475f), // CONFIRMED NORMAL
+            new Vector3(0.6f, 0.6f, 0.6f),    // BLEAK 
+            new Vector3(0.5f, 0.62f, 0.625f), // CONFIRMED RED
+            new Vector3(0.65f, 0.47f, 0.435f), // CONFIRMED CYAN
+            new Vector3(0.60f, 0.5f, 0.60f),  // CONFIRMED GREEN
+            new Vector3(0.65f, 0.67f, 0.475f),   //  Confirmed PURPLE 
+            new Vector3(0.5f, 0.54f, 0.635f),   // CONFIRMED YELLOW
+            new Vector3(0.45f, 0.72f, 0.675f), // CONFIRMED PINK
+
+
+        };
+
+        public static int ATM_NORMAL = 0;
+        public static int ATM_BLEAK = 1;
+        public static int ATM_RED = 2;
+        public static int ATM_CYAN = 3;
+        public static int ATM_GREEN = 4;
+        public static int ATM_PURPLE = 5;
+        public static int ATM_YELLOW = 6;
+        public static int ATM_PINK = 7;
+
+
+
+        public static List<PlanetType> planetTypes = new List<PlanetType>();
 		public static void Initialize() {
-//			planetTypes.Add (new PlanetType(Surface.InitializeTerra, "Terra", new Color(0.2f, 0.3f, 0.1f), new Color(0.3f, 0.2f, 0.1f), new Color(0.1f, 0.3f, 0.3f), new Color(0.1f, 0.2f, 0.2f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
-			planetTypes.Add (new PlanetType(Surface.InitializeNew, "Terra", new Color(0.3f, 0.5f, 0.2f), new Color(0.3f, 0.2f, 0.1f), new Color(0.4f, 0.4f, 0.1f), new Color(0.1f, 0.1f, 0.0f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
-			planetTypes.Add (new PlanetType(Surface.InitializeDesolate, "Desolate", new Color(0.4f, 0.4f, 0.4f), new Color(0.3f, 0.3f, 0.3f), "", new Vector2(100, 10000), new Vector2(0,1000), RenderSettings.minQuadNodeLevel,0.2f));
-			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Cold gas giant", new Color(0.2f, 0.5f, 0.7f), new Color(0.1f, 0.2f, 0.2f), "", new Vector2(12000, 1000000), new Vector2(0,200),1,1));
-			planetTypes.Add (new PlanetType(Surface.InitializeFlat, "Hot gas giant", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(50000, 5000000), new Vector2(150,1000),1,1));
-			planetTypes.Add (new PlanetType(Surface.InitializeNew, "New", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(500, 5000000), new Vector2(150,1000),1,1));
-            planetTypes.Add(new PlanetType(Surface.InitializeTerra2, "Terra2", new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f), "", new Vector2(500, 5000000), new Vector2(150, 1000), 1, 1));
+            //			planetTypes.Add (new PlanetType(Surface.InitializeTerra, "Terra", new Color(0.2f, 0.3f, 0.1f), new Color(0.3f, 0.2f, 0.1f), new Color(0.1f, 0.3f, 0.3f), new Color(0.1f, 0.2f, 0.2f),"", new Vector2(3000, 12000), new Vector2(150,400), RenderSettings.minQuadNodeLevel,1));
+
+
+            float atmDens = 0.8f;
+
+            planetTypes.Add(new PlanetType(
+                Surface.InitializeNew, "Terra",
+                new Color(0.3f, 0.5f, 0.2f), new Color(0.3f, 0.2f, 0.1f),
+                new Color(0.4f, 0.4f, 0.1f), new Color(0.5f, 0.5f, 0.0f), "",
+                new Vector2(3000, 12000),
+                new Vector2(150, 400),
+                RenderSettings.minQuadNodeLevel, atmDens,
+                0.001f, new Color(0.3f, 0.4f, 1.0f), new int[] { ATM_NORMAL }
+                ));
+			planetTypes.Add (new PlanetType(
+                Surface.InitializeDesolate, "Desert", 
+                new Color(0.9f, 0.5f, 0.2f), new Color(0.1f, 0.4f, 0.1f),
+                new Color(0.5f, 0.2f, 0.1f), new Color(0.1f, 0.3f, 0.2f),
+                "", new Vector2(100, 15000), new Vector2(100,1000), 
+                RenderSettings.minQuadNodeLevel, 0.7f,
+                0.000f, Color.black, new int[] { ATM_RED, ATM_YELLOW }
+                ));
+            planetTypes.Add(new PlanetType(
+            Surface.InitializeMountain, "Mountain",
+            new Color(0.9f, 0.5f, 0.2f), new Color(0.1f, 0.4f, 0.1f),
+            new Color(0.5f, 0.2f, 0.1f), new Color(0.1f, 0.3f, 0.2f),
+            "", new Vector2(100, 15000), new Vector2(100, 1000),
+            RenderSettings.minQuadNodeLevel, 0.7f,
+            0.000f, Color.black, new int[] { ATM_RED, ATM_YELLOW }
+            ));
+            planetTypes.Add(new PlanetType(
+                Surface.InitializeFlat, "Cold gas giant",
+                new Color(0.2f, 0.5f, 0.7f), new Color(0.1f, 0.2f, 0.2f),
+                new Color(0.2f, 0.5f, 0.7f), new Color(0.1f, 0.2f, 0.2f),
+                "",
+                new Vector2(12000, 1000000), new Vector2(0, 200),
+                1, 1,
+                0.000f, Color.black, new int[] { ATM_NORMAL, ATM_BLEAK, ATM_CYAN }
+
+                ));
+			planetTypes.Add (new PlanetType(
+                Surface.InitializeFlat, "Hot gas giant", 
+                new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f),
+                new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f),
+                "", 
+                new Vector2(50000, 5000000), new Vector2(150,1000),
+                1,1,
+                0.000f, Color.black, new int[] { ATM_RED, ATM_YELLOW }
+
+                ));
+			planetTypes.Add (new PlanetType(
+                Surface.InitializeNew, "New", 
+                new Color(0.6f, 0.4f, 0.3f), new Color(0.2f, 0.2f, 0.1f),
+                new Color(0.6f, 0.4f, 0.4f), new Color(0.2f, 0.2f, 0.1f),
+                "", new Vector2(500, 5000000), new Vector2(150,1000),
+                1, atmDens,
+                0.001f, new Color(0.3f, 0.4f, 1.0f), new int[] { ATM_NORMAL }
+
+                ));
+            planetTypes.Add(new PlanetType(
+                Surface.InitializeTerra2, 
+                "Terra2", 
+                new Color(0.6f, 0.4f, 0.3f), new Color(0.3f, 0.3f, 0.3f),
+                new Color(0.5f, 0.5f, 0.2f), new Color(0.5f, 0.5f, 0.1f),
+                "", 
+                new Vector2(500, 5000000), new Vector2(150, 1000), 
+                RenderSettings.minQuadNodeLevel, atmDens,
+                0.001f, new Color(0.3f, 0.4f, 1.0f), new int[] { ATM_NORMAL }
+
+                ));
         }
 
         public static PlanetType getRandomPlanetType(System.Random r, float radius, float temperature) {
@@ -338,13 +193,6 @@ namespace LemonSpawn {
         public float outerRadiusScale = 1.025f;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
 
-        public static Vector3[] AtmosphereWavelengths = new Vector3[5] {
-			new Vector3(0.65f, 0.57f, 0.475f),
-			new Vector3(0.75f, 0.47f, 0.475f),
-			new Vector3(0.55f, 0.67f, 0.535f),
-			new Vector3(0.65f, 0.67f, 0.435f),
-			new Vector3(0.65f, 0.67f, 0.675f)
-        };
 
 
         public float m_hdrExposure = 1.5f;
@@ -479,10 +327,14 @@ namespace LemonSpawn {
 			if (planetType == null)
 				return;
 
+            if (RenderSettings.ForceAllPlanetTypes != -1)
+                planetType = PlanetType.planetTypes[RenderSettings.ForceAllPlanetTypes];
 
-			int atm = r.Next()%AtmosphereWavelengths.Length;
-			Debug.Log("Atmosphere index: " + atm);
-			m_atmosphereWavelengths = AtmosphereWavelengths[atm];
+
+            //int atm = r.Next()%AtmosphereWavelengths.Length;
+            //Debug.Log("Atmosphere index: " + atm);
+            int idx = planetType.atmosphere[r.Next()%planetType.atmosphere.Length];
+			m_atmosphereWavelengths = PlanetType.AtmosphereWavelengths[idx];
 
 			bumpMap = (Texture2D)Resources.Load ("Meaty_Normal");
 
@@ -506,6 +358,7 @@ namespace LemonSpawn {
 			m_surfaceColor2.g = planetType.color.g + planetType.colorVariation.g*(float)r.NextDouble();
 			m_surfaceColor2.b = planetType.color.b + planetType.colorVariation.b*(float)r.NextDouble();
 
+            m_waterColor = planetType.seaColor;
 									
 			m_basinColor.r = planetType.basinColor.r + planetType.basinColorVariation.r*(float)r.NextDouble();
 			m_basinColor.g = planetType.basinColor.g + planetType.basinColorVariation.g*(float)r.NextDouble();
@@ -549,22 +402,26 @@ namespace LemonSpawn {
             m_hdrExposure = 1.5f;
             m_ESun = 10;
             globalTerrainHeightScale = 1.1f + (float)r.NextDouble() ;
-			globalTerrainScale = 1 + (float)(3*r.NextDouble());
+			globalTerrainScale = 2 + (float)(6*r.NextDouble());
+
+
+
 //            atmosphereHeight = 1.019f;
   //          outerRadiusScale = 1.025f;
 
 //             < atmosphereHeight > 1.019 </ atmosphereHeight >
   //  < outerRadiusScale > 1.025 </ outerRadiusScale >
 
-  			atmosphereDensity = 0;
+//  			atmosphereDensity = 0;
             if (radius >= 1000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
                 //hasFlatClouds = true;
                 hasVolumetricClouds = false;
 			}
-			if (planetType.Name == "Terra") {
+			if (planetType.sealevel>0 ) {
 				sea = new Sea();
+                liquidThreshold = planetType.sealevel;
 			}
 			
 			surface = new Surface(this);

@@ -188,9 +188,12 @@ public class SurfaceGenerator : SurfaceNode {
 		// getRidgedMf2(Vector3 p, float frequency, int octaves, float lacunarity, float warp, float offset, float gain, float initialOffset, string name, float seed) {
 				
 		if (type == MULTIRIDGE_MOUNTAIN) // 2.5, 0.5, 0.99, 1, 0.5
-			return amp*Util.getRidgedMf(p, s, mfo, 2.2f, 0.5f, 1f,1.2f, 0.3f, name, noise.seed);
-		
-		if (type == DOMAIN1) {
+                                         //			return amp*Util.getRidgedMf(p, s, mfo, 2.2f, 0.5f, 1f,1.0f, 0.3f, name, noise.seed);
+                 return amp * Util.getRidgedMf(p, s, mfo, 2.5f, 0.5f, 0.95f, 0.75f, 0.0f, name, noise.seed);
+//                return amp * Util.getRidgedMf(p, s, mfo, 2.2f, 0.5f, 0.8f, 1.9f, -0.4f, name, noise.seed);
+            //        return amp * Util.getRidgedMf(p, s, mfo, 2.5f, 0.5f, 0.99f, 1.0f, 0.5f, name, noise.seed); // Circular mountains
+
+            if (type == DOMAIN1) {
 			return amp*getDomainVal(p,s);
 		}
 					
@@ -438,41 +441,57 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 
         public static SurfaceNode InitializeDesolate(float a, float scale, PlanetSettings ps) {
 			
-			float s = scale;
+			float s = scale*0.25f;
+
+
+            SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
+
+            //				SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
+            //		SurfaceFilter p1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 0.1f, cont);		
+            a *= 2;
+			
+			SurfaceGenerator p2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 45f*a, 6.19f*s, 4.9f, 0.09f);
+			SurfaceGenerator p3 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 25f*a, 15.19f*s, 8.9f, 0.12f);
+			SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 7f*a, 53.19f*s, 18.9f, 0.01f);
 			
 			
-//				SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
-			//		SurfaceFilter p1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 0.1f, cont);		
-			
-			
-			SurfaceGenerator p2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 17f*a, 13.19f*s, 4.9f, 0.09f);
-			SurfaceGenerator p3 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 20f*a, 15.19f*s, 8.9f, 0.09f);
-			SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 7f*a, 153.19f*s, 18.9f, 0.01f);
-			
-			SurfaceGenerator craters = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 50f*a, 3.19f*s, 18.9f, 0.01f);
 			
 			SurfaceCombiner c2 = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 1, p2, p3);
-			SurfaceCombiner c3 = new SurfaceCombiner(SurfaceCombiner.ADD, 0.75f, 1.5f, c2, p4);
-			
-			
-			
-			SurfaceFilter f2 = new SurfaceFilter(SurfaceFilter.SUB, 1, -0.02f, 1, c3);
-			
-			
-			SurfaceCombiner ccrater = new SurfaceCombiner(SurfaceCombiner.ADD, 0.9f, 2f, craters, f2);
-			
-//			SurfaceCombiner c1 = new SurfaceCombiner(SurfaceCombiner.MUL, 60, 0, cont, ccrater);
+			SurfaceCombiner c3 = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 1.5f, c2, p4);
 
-									
-			SurfaceFilter add = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.000f, 1, ccrater);
-			SurfaceFilter f1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 10, add);
-			
-			
-			return f1;
+
+            SurfaceGenerator craters = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 2f * a, 54.19f * s, 18.9f, 0.01f);
+            SurfaceFilter f2 = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.002f, 1, craters);
+
+            SurfaceCombiner ccrater = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f, c3, f2);
+
+
+            //			SurfaceCombiner c1 = new SurfaceCombiner(SurfaceCombiner.MUL, 60, 0, cont, ccrater);
+
+
+            SurfaceFilter add = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.001f, 1, ccrater);
+    	    SurfaceFilter c1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 10, add);
+            SurfaceCombiner final = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 1.5f, c1, f1);
+            //	
+
+
+            return final;
 			//		surfaceNode = f1;
 		}
-		
-	public Surface(PlanetSettings ps) {
+
+        public static SurfaceNode InitializeMountain(float a, float scale, PlanetSettings ps)
+        {
+
+            float s = scale*0.25f;
+
+
+            SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 50f * a, 6.19f * s, 18.9f, 0.01f);
+            return p4;
+
+        }
+
+
+        public Surface(PlanetSettings ps) {
 		planetSettings = ps;
 		if (ps.planetType!=null)
 			surfaceNode = ps.planetType.Delegate(1f/planetSettings.radius, 1*ps.globalTerrainScale, planetSettings);
