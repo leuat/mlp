@@ -16,7 +16,6 @@ public class Atmosphere
 	protected PlanetSettings planetSettings;
 	protected float localscale;
     protected float m_innerRadiusScale = 1f;
-	public Vector3 m_waveLength; // Wave length of sun light
 	public float m_kr = 0.0025f; 			// Rayleigh scattering constant
 	public float m_km = 0.0010f; 			// Mie scattering constant
 	public float m_g = -0.990f;             // The Mie phase asymmetry factor, must be between 0.999 to -0.999
@@ -104,7 +103,6 @@ public class Atmosphere
 
         public void InitializeParameters(float radius)
         {
-            m_waveLength = planetSettings.m_atmosphereWavelengths;
 
             //m_kr*=pSettings.planetType.atmosphereDensity;
             m_kr *= planetSettings.atmosphereDensity;
@@ -195,9 +193,10 @@ public class Atmosphere
            // Debug.Log(localscale);
             //rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
             rot = Quaternion.Inverse(planetSettings.transform.rotation);
-            
+
+    
             float ds = localscale;
-            Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(m_waveLength.x, 4.0f), 1.0f / Mathf.Pow(m_waveLength.y, 4.0f), 1.0f / Mathf.Pow(m_waveLength.z, 4.0f));
+			Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.x, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.y, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.z, 4.0f));
             float scale = 1.0f / (m_outerRadius - m_innerRadius);
             mat.SetVector("v3LightPos", (m_sun.transform.forward * -1.0f));
             mat.SetVector("lightDir", rot * (m_sun.transform.forward * -1.0f));

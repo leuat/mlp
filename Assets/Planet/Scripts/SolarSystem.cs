@@ -164,7 +164,7 @@ namespace LemonSpawn
         }
 
 
-        public void LoadWorld(string data, bool isFile, bool ExitOnSave, World world)
+        public void LoadWorld(string data, bool isFile, bool ExitOnSave, World world, bool randomizeSeeds = false)
         {
             ClearStarSystem();
             SerializedWorld sz;
@@ -215,7 +215,13 @@ namespace LemonSpawn
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
 
-                Planet p = new Planet(sp.DeSerialize(go, cnt++, sz.global_radius_scale));
+				PlanetSettings ps = sp.DeSerialize(go, cnt++, sz.global_radius_scale);
+				if (randomizeSeeds) {
+					ps.seed = (int)(Random.value * 10000f);
+					ps.Randomize(0);
+				}
+
+                Planet p = new Planet(ps);
 				p.pSettings.properties.parent = go;
 
                 p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);

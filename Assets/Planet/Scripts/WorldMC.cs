@@ -493,13 +493,22 @@ namespace LemonSpawn
             //	LoadCommandLineXML();
 #endif
         }
-        public override void LoadFromXMLFile(string filename)
+        public override void LoadFromXMLFile(string filename, bool randomizeSeed = false)
         {
             AddMessage("Loading XML file: " + filename);
-            base.LoadFromXMLFile(filename);
+
+			if (!Verification.VerifyXML(Application.dataPath + "/../" + filename, Verification.MCAstName)) {
+				AddMessage("ERROR: File " + filename + " is not a valid MCAst data file. Aborting. ", 2.5f);
+				return;
+			}
+
+
+            base.LoadFromXMLFile(filename, randomizeSeed);
             displaySettingsPanel();
             PopulateSettingsFromGUI();
             closeSettingsPanel();
+            Slide();
+
         }
 
             void setSun()
@@ -552,9 +561,18 @@ namespace LemonSpawn
         public override void Update()
         {
             base.Update();
-
-
             UpdatePlay();
+
+            // Randomize seed
+
+			if (Input.GetKeyUp(KeyCode.P)) {
+            	if (settings.previousFile!="") {
+            		LoadFromXMLFile(settings.previousFile, true);
+            		AddMessage("Planet seeds set to random value");
+				}	
+
+            }
+
 
         }
 

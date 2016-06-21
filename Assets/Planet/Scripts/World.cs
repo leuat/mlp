@@ -22,7 +22,9 @@ namespace LemonSpawn {
 		
 	}
 	public enum RenderType { Normal, Overview }
-	
+
+
+
 	public class RenderSettings {
         public static bool UseThreading = true;
         public static bool ignoreXMLResolution = true;
@@ -78,6 +80,8 @@ namespace LemonSpawn {
         public static string movieDir = "movie" + fileDelimiter;
         public static string dataDir = "data" + fileDelimiter;
         public static string MCAstSettingsFile = "mcast_settings.xml";
+
+
 
 
     }
@@ -315,7 +319,7 @@ namespace LemonSpawn {
 			szWorld = sz;
 		}
 
-		public virtual void LoadFromXMLFile(string filename) {
+		public virtual void LoadFromXMLFile(string filename, bool randomizeSeeds = false) {
 
             ThreadQueue.AbortAll();
 			//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
@@ -330,7 +334,7 @@ namespace LemonSpawn {
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
-			solarSystem.LoadWorld(xml, false, false, this);
+			solarSystem.LoadWorld(xml, false, false, this, randomizeSeeds);
 			szWorld.IterateCamera();
 			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
@@ -550,6 +554,7 @@ namespace LemonSpawn {
                 addBall();
             if (Input.GetKeyUp(KeyCode.V))
                 addWheels();
+
 
             if (Input.GetKeyDown (KeyCode.LeftShift)) 
 				modifier = true;

@@ -114,6 +114,7 @@ namespace LemonSpawn {
 		public float global_radius_scale = 1;
 		private int frame = 0;
 		public float skybox = 0;
+		public string uuid;
 		public int resolution = 64;
 		public float overview_distance = 4;
 		public int screenshot_width = 1024;
@@ -336,6 +337,14 @@ namespace LemonSpawn {
 //        public float atmosphereHeight = 1.025f;
         public float outerRadiusScale = 1.025f;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
+
+        public static Vector3[] AtmosphereWavelengths = new Vector3[3] {
+			new Vector3(0.65f, 0.57f, 0.475f),
+			new Vector3(0.75f, 0.57f, 0.475f),
+			new Vector3(0.55f, 0.57f, 0.675f)
+        };
+
+
         public float m_hdrExposure = 1.5f;
         public float m_ESun = 10.0f;            // Sun brightness constant
         public float radius = 5000;
@@ -467,20 +476,16 @@ namespace LemonSpawn {
 				
 			if (planetType == null)
 				return;
-			
-			float a = 0.4f;
-			float b = 0.25f;
-/*			m_atmosphereWavelengths.x = a+ (float)r.NextDouble()*b;
-			m_atmosphereWavelengths.y = a+ (float)r.NextDouble()*b;
-			m_atmosphereWavelengths.z = a+ (float)r.NextDouble()*b;
-*/			
+
+			m_atmosphereWavelengths = AtmosphereWavelengths[r.Next()%AtmosphereWavelengths.Length];
 
 			bumpMap = (Texture2D)Resources.Load ("Meaty_Normal");
-			
-			a = 0.1f;
-			b = 0.8f;
-			a = 0;
-			
+
+
+
+			float a = 0.1f;
+			float b = 0.8f;
+
 			/*m_surfaceColor.r = a+b*(float)r.NextDouble();
 			m_surfaceColor.g = a+b*(float)r.NextDouble();
 			m_surfaceColor.b = a+b*(float)r.NextDouble();
