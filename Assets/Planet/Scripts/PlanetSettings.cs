@@ -338,10 +338,12 @@ namespace LemonSpawn {
         public float outerRadiusScale = 1.025f;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
 
-        public static Vector3[] AtmosphereWavelengths = new Vector3[3] {
+        public static Vector3[] AtmosphereWavelengths = new Vector3[5] {
 			new Vector3(0.65f, 0.57f, 0.475f),
-			new Vector3(0.75f, 0.57f, 0.475f),
-			new Vector3(0.55f, 0.57f, 0.675f)
+			new Vector3(0.75f, 0.47f, 0.475f),
+			new Vector3(0.55f, 0.67f, 0.535f),
+			new Vector3(0.65f, 0.67f, 0.435f),
+			new Vector3(0.65f, 0.67f, 0.675f)
         };
 
 
@@ -352,12 +354,12 @@ namespace LemonSpawn {
 
         [Space(10)]
         [Header("Ground settings")]
-        public float hillyThreshold = 0.985f;
+        public float hillyThreshold = 0.980f;
         public float liquidThreshold = 0.0005f;
-        public float topThreshold = 0.0045f;
+        public float topThreshold = 0.006f;
         public float basinThreshold = 0.0015f;
-        public float globalTerrainHeightScale = 1.0f;
-        public float globalTerrainScale = 1.0f;
+        public float globalTerrainHeightScale = 2.0f;
+        public float globalTerrainScale = 4.0f;
         public Color m_surfaceColor, m_surfaceColor2;
         public Texture2D m_surfaceTexture;
         public Color m_basinColor, m_basinColor2;
@@ -477,7 +479,10 @@ namespace LemonSpawn {
 			if (planetType == null)
 				return;
 
-			m_atmosphereWavelengths = AtmosphereWavelengths[r.Next()%AtmosphereWavelengths.Length];
+
+			int atm = r.Next()%AtmosphereWavelengths.Length;
+			Debug.Log("Atmosphere index: " + atm);
+			m_atmosphereWavelengths = AtmosphereWavelengths[atm];
 
 			bumpMap = (Texture2D)Resources.Load ("Meaty_Normal");
 
@@ -496,11 +501,20 @@ namespace LemonSpawn {
 			m_surfaceColor.r = planetType.color.r + planetType.colorVariation.r*(float)r.NextDouble();
 			m_surfaceColor.g = planetType.color.g + planetType.colorVariation.g*(float)r.NextDouble();
 			m_surfaceColor.b = planetType.color.b + planetType.colorVariation.b*(float)r.NextDouble();
-			
+
+			m_surfaceColor2.r = planetType.color.r + planetType.colorVariation.r*(float)r.NextDouble();
+			m_surfaceColor2.g = planetType.color.g + planetType.colorVariation.g*(float)r.NextDouble();
+			m_surfaceColor2.b = planetType.color.b + planetType.colorVariation.b*(float)r.NextDouble();
+
+									
 			m_basinColor.r = planetType.basinColor.r + planetType.basinColorVariation.r*(float)r.NextDouble();
 			m_basinColor.g = planetType.basinColor.g + planetType.basinColorVariation.g*(float)r.NextDouble();
 			m_basinColor.b = planetType.basinColor.b + planetType.basinColorVariation.b*(float)r.NextDouble();
-			
+
+			m_basinColor2.r = planetType.basinColor.r + planetType.basinColorVariation.r*(float)r.NextDouble();
+			m_basinColor2.g = planetType.basinColor.g + planetType.basinColorVariation.g*(float)r.NextDouble();
+			m_basinColor2.b = planetType.basinColor.b + planetType.basinColorVariation.b*(float)r.NextDouble();
+
 			
 			m_topColor = new Color(0.5f, 0.5f,0.5f);//m_basinColor*1.2f;
 									
@@ -532,7 +546,7 @@ namespace LemonSpawn {
 				ringRadius.y = 0.25f + 0.20f*(float)r.NextDouble();
 				
 			}
-            m_hdrExposure = 2;
+            m_hdrExposure = 1.5f;
             m_ESun = 10;
             globalTerrainHeightScale = 1.1f + (float)r.NextDouble() ;
 			globalTerrainScale = 1 + (float)(3*r.NextDouble());
@@ -542,11 +556,11 @@ namespace LemonSpawn {
 //             < atmosphereHeight > 1.019 </ atmosphereHeight >
   //  < outerRadiusScale > 1.025 </ outerRadiusScale >
 
-
+  			atmosphereDensity = 0;
             if (radius >= 1000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
-                hasFlatClouds = true;
+                //hasFlatClouds = true;
                 hasVolumetricClouds = false;
 			}
 			if (planetType.Name == "Terra") {

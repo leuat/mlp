@@ -108,7 +108,7 @@ namespace LemonSpawn
         {
             string fname = Application.dataPath + "/../" + RenderSettings.MCAstSettingsFile;
             MCAstSettings.Serialize(settings, fname);
-            AddMessage("Settings saved");
+//            AddMessage("Settings saved");
         }
 
         public void ClickOverview()
