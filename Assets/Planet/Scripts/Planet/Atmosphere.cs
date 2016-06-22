@@ -53,7 +53,7 @@ public class Atmosphere
             m_groundMaterial.SetColor("middleColor", planetSettings.m_surfaceColor);
             m_groundMaterial.SetColor("middleColor2", planetSettings.m_surfaceColor2);
             m_groundMaterial.SetColor("basinColor", planetSettings.m_basinColor);
-            m_groundMaterial.SetColor("basinColor2", planetSettings.m_basinColor2);
+//            Debug.Log(planetSettings.m_basinColor);
             m_groundMaterial.SetColor("basinColor2", planetSettings.m_basinColor2);
             m_groundMaterial.SetColor("waterColor", planetSettings.m_waterColor);
             m_groundMaterial.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);

@@ -109,6 +109,8 @@ public class SurfaceGenerator : SurfaceNode {
 	public const int SWISS = 3;
 	public const int MULTIRIDGE_RIDGE_LOWRES = 4;
 	public const int DOMAIN1 = 5;
+	public const int MULTIRIDGE_CRATERS = 7;
+
 	public const int FLAT = 10;
 	float amp;
 	float scale;
@@ -196,7 +198,11 @@ public class SurfaceGenerator : SurfaceNode {
             if (type == DOMAIN1) {
 			return amp*getDomainVal(p,s);
 		}
-					
+
+		if (type == MULTIRIDGE_CRATERS) // 2.5, 0.5, 0.99, 1, 0.5
+                                         //			return amp*Util.getRidgedMf(p, s, mfo, 2.2f, 0.5f, 1f,1.0f, 0.3f, name, noise.seed);
+			return amp * Util.getRidgedMf(p, s, mfo, 2.5f, 0.5f, 0.99f, 1.0f, 0.5f, name, noise.seed); // Circular mountains
+
 			
 		if (type == MULTIRIDGE_RIDGE) 
 				return amp*Util.getRidgedMf(p, s, mfo, 2.5f, 1.5f, 1.0f,0.6f, 0f, name, noise.seed);
@@ -476,6 +482,38 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 
 
             return final;
+			//		surfaceNode = f1;
+		}
+		public static SurfaceNode InitializeMoon(float a, float scale, PlanetSettings ps) {
+			
+			float s = scale*0.25f;
+
+
+            SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
+
+            //				SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
+            //		SurfaceFilter p1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 0.1f, cont);		
+            a *= 2;
+			
+			SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_CRATERS, 45f*a, 2.19f*s, 18.9f, 0.01f);
+			SurfaceGenerator smallCraters = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_CRATERS, 2f*a, 24.19f*s, 18.9f, 0.0f);
+
+			SurfaceFilter subCrater = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.001f, 1, p4);
+			SurfaceFilter minmaxCrater = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 10f, subCrater);
+
+			SurfaceGenerator smallRidges = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 0.5f * a, 154.19f * s, 18.9f, 0.01f);
+		
+
+
+            SurfaceFilter add = new SurfaceFilter(SurfaceFilter.SUB, 1, 0.001f, 1, f1);
+    	    SurfaceFilter c1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1, 0.000f, 0.08f, add);
+            SurfaceCombiner crater2 = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 1.5f, c1, minmaxCrater);
+			SurfaceCombiner crater1 = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f, crater2, smallCraters);
+			SurfaceCombiner crater = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f, crater1, smallRidges);
+            //	
+
+
+            return crater;
 			//		surfaceNode = f1;
 		}
 

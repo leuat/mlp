@@ -341,6 +341,15 @@ namespace LemonSpawn
             return value;
         }
 
+
+        public static Color VaryColor(Color b, Color v, System.Random r) {
+        	Color c = new Color();
+			c.r = b.r + v.r*(float)r.NextDouble();
+			c.g = b.g + v.g*(float)r.NextDouble();
+			c.b = b.b + v.b*(float)r.NextDouble();
+			return c;
+        }
+
         public static float getNoise(float x, float y, float z)
         {
             //tmp2.Set (x, y, z);

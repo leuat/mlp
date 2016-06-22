@@ -28,12 +28,11 @@ namespace LemonSpawn {
 	public class RenderSettings {
         public static bool UseThreading = true;
         public static bool ignoreXMLResolution = true;
-        public static float gridDivide = 10;
 		public static int sizeVBO = 96;
 		public static bool assProjection = true;
 		public static bool flatShading = false;
 		public static int maxQuadNodeLevel = 14;
-		public static int minQuadNodeLevel = 2;
+		public static int minQuadNodeLevel = 3;
         public static bool createTerrainColliders = false;
 		public static bool cullCamera = false;
 		public static double AU = 1.4960*Mathf.Pow(10,8); // AU in km
@@ -64,6 +63,9 @@ namespace LemonSpawn {
         public static bool toggleProgressbar = false;
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
+
+        public static string planetTypesFilename = "planettypes.xml";
+        public static string path = Application.dataPath + "/../";
 
         public static int ForceAllPlanetTypes = -1;
 
@@ -111,9 +113,9 @@ namespace LemonSpawn {
 				Planet p = new Planet(ps);
 				//p.pSettings.pos.Set(go.transform.position);
 				//go.transform.parent = transform;
-				PlanetType.Initialize();
+				PlanetSettings.planetTypes.Initialize();
 //				p.pSettings.planetType = PlanetType.planetTypes[PlanetType.planetTypes.Count-1];
-				p.pSettings.planetType = PlanetType.planetTypes[1];
+				p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[1];
 				p.Initialize(GameObject.Find ("Sun"), (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), (Mesh)Resources.Load("Sphere01"));
 				p.Update();
 				
@@ -457,7 +459,7 @@ namespace LemonSpawn {
             solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
             SzWorld = szWorld;
             Slider = slider;
-
+            PlanetSettings.InitializePlanetTypes();
             canvas = GameObject.Find ("Canvas");
             spaceBackground = GameObject.Find("SunBackgroundSphere");
             //            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
@@ -470,6 +472,7 @@ namespace LemonSpawn {
 			RenderSettings.sizeVBO = szWorld.resolution;
 			RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
 			RenderSettings.MoveCam = true;
+			RenderSettings.ResolutionScale = szWorld.resolutionScale;
 			
 			slider = GameObject.Find ("Slider");
 			if (slider!=null)
@@ -481,7 +484,7 @@ namespace LemonSpawn {
             //		CreateConfig("system1.xml");
             //		LoadWorld("system1.xml", true);
             //		szWorld.IterateCamera();
-            PlanetType.Initialize();
+			PlanetSettings.planetTypes.Initialize();
 			if (initializeFromScene)
 				solarSystem.InitializeFromScene();
 			Application.runInBackground = true;
@@ -568,8 +571,8 @@ namespace LemonSpawn {
 				ctrlModifier = false;
 			if (modifier) // && ctrlModifier)
 			{
-				if (Input.GetKeyUp(KeyCode.Alpha1))
-					RenderSettings.MoveCam = !RenderSettings.MoveCam;
+//				if (Input.GetKeyUp(KeyCode.Alpha1))
+//					RenderSettings.MoveCam = !RenderSettings.MoveCam;
 				
 				if (Input.GetKeyUp(KeyCode.Alpha2))
 					RenderSettings.RenderText = !RenderSettings.RenderText;

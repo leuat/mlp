@@ -232,7 +232,7 @@ Shader "LemonSpawn/Water" {
 
 
 													return float4(c.rgb
-														+ specularReflection, +0.95 + specularReflection.b);
+														+ specularReflection, +0.85 + specularReflection.b);
 
 												}
 													ENDCG

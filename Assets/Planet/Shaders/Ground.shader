@@ -345,6 +345,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 						}
 
 							inline float3 getTex(sampler2D t, in float2 uv) {
+//								return float3(1,1,1);
 								float3 c = tex2D(t, uv)*0.25;
 //								c += tex2D(t, 0.5323*uv);
 								c += tex2D(t, 0.2213*uv)*0.75;
@@ -385,7 +386,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, topThreshold, h);
 									hColor = mixHeight(hColor, basinColor*getTex(_Basin, i.tex.xy), 500, basinThreshold	, h);
 									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, hillyThreshold, dd);
-									hColor = mixHeight(hColor, 3*basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
+									hColor = mixHeight(hColor, basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
 									
 
 

@@ -236,15 +236,6 @@ namespace LemonSpawn
             textReader.Close();
             return sz;
         }
-        public static SerializedWorld DeSerializeString(string data)
-        {
-            XmlSerializer deserializer = new XmlSerializer(typeof(SerializedWorld));
-            //TextReader textReader = new StreamReader(filename);
-            StringReader sr = new StringReader(data);
-            SerializedWorld sz = (SerializedWorld)deserializer.Deserialize(sr);
-            sr.Close();
-            return sz;
-        }
         static public void Serialize(SerializedWorld sz, string filename)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(SerializedWorld));
@@ -253,6 +244,15 @@ namespace LemonSpawn
             textWriter.Close();
         }
 
+		public static SerializedWorld DeSerializeString(string data)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(SerializedWorld));
+            //TextReader textReader = new StreamReader(filename);
+            StringReader sr = new StringReader(data);
+            SerializedWorld sz = (SerializedWorld)deserializer.Deserialize(sr);
+            sr.Close();
+            return sz;
+        }
 
     }
 

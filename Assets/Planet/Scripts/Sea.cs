@@ -45,7 +45,7 @@ namespace LemonSpawn {
 
 
             psOcean.radius = m_radius;
-            psOcean.planetType = PlanetType.planetTypes[3];
+			psOcean.planetType = PlanetSettings.planetTypes.planetTypes[4];
             psOcean.hasSea = false;
             psOcean.Initialize();
             psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; ;
@@ -88,7 +88,7 @@ namespace LemonSpawn {
             psOcean.properties.localCamera = planetSettings.properties.localCamera;
 //            Debug.Log(psOcean.localCamera);
 
-            cube.SubDivide(RenderSettings.gridDivide);
+            cube.SubDivide(RenderSettings.ResolutionScale);
             cube.Realise();
 
             psOcean.Update();

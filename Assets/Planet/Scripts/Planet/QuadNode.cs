@@ -192,11 +192,11 @@ namespace LemonSpawn
             }
             if (recalculate == true && quadField != null && thread == null && quadGO != null)
             {
-/*                decideNeighbors();
+                decideNeighbors();
                 LSMesh m = quadField.ReCalculate(neighbourLOD, planetSettings.castShadows);
                 quadGO.GetComponent<MeshFilter>().mesh = m.mesh;
                 
-                recalculate = false;*/
+                recalculate = false;
             }
 
 
@@ -486,10 +486,8 @@ namespace LemonSpawn
 
 
             float l = Mathf.Pow(findMinDistance(planetSettings.properties.localCamera, true), 1);
-            float height = RenderSettings.ResolutionScale * 0.035f;
-            //			Debug.Log (RenderSettings.ResolutionScale);
-
-            l = l / (height);
+/*            float height = RenderSettings.ResolutionScale * 0.035f;
+            l = l / (height);*/
             //			l = Mathf.Min (l, 10.0f);
             if (level >= RenderSettings.minQuadNodeLevel)
                 if (l > size * size)

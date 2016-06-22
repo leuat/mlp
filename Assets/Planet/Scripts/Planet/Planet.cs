@@ -119,7 +119,7 @@ namespace LemonSpawn
 
         public void Instantiate()
         {
-            cube.SubDivide(RenderSettings.gridDivide);
+            cube.SubDivide(RenderSettings.ResolutionScale);
             cube.Realise();
 
         }

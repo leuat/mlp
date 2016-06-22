@@ -104,7 +104,7 @@ namespace LemonSpawn {
 
 		public override void Start () { 
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
-			PlanetType.Initialize();
+			PlanetSettings.planetTypes.Initialize();
 			MainCamera = mainCamera.GetComponent<Camera> ();
 
 			LoadData ();
