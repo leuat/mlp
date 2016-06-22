@@ -126,6 +126,7 @@ namespace LemonSpawn {
         }
 
 
+
         public void setDelegates() {
         	foreach (PlanetType pt in planetTypes)
         		pt.setDelegate();
@@ -220,7 +221,7 @@ namespace LemonSpawn {
         public Texture2D m_basinTexture;
 		public Color m_topColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
         public Texture2D m_topTexture;
-        public Color m_hillColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        public Color m_hillColor = new Color(0.3f, 0.3f, 0.3f, 1.0f);
         public Texture2D m_hillTexture;
         public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f, 1.0f);
         public Color emissionColor;
@@ -361,12 +362,16 @@ namespace LemonSpawn {
 			m_surfaceColor = Util.VaryColor(planetType.color, planetType.colorVariation, r);
 			m_surfaceColor2 = Util.VaryColor(planetType.color, planetType.colorVariation, r);
             m_waterColor = planetType.seaColor;
-									
+
+
 			m_basinColor = Util.VaryColor(planetType.basinColor, planetType.basinColorVariation, r);
 			m_basinColor2 = Util.VaryColor(planetType.basinColor, planetType.basinColorVariation, r);
+
+//			Debug.Log("Surface color:" + m_surfaceColor + " " + m_surfaceColor2);
+//			Debug.Log("basin color:" + m_basinColor + " " + m_basinColor2);
 	
 			m_topColor = planetType.topColor;//m_basinColor*1.2f;
-									
+//			Debug.Log("TOPColor: " + m_topColor);									
 
             //metallicity = 0.01f*(float)r.NextDouble();
             metallicity = 0;

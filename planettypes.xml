@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PlanetTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <planetTypes>
+      <PlanetType>
+      <Name>Cold gas giant</Name>
+      <color>
+        <r>0.2</r>
+        <g>0.5</g>
+        <b>0.7</b>
+        <a>1</a>
+      </color>
+      <colorVariation>
+        <r>0.1</r>
+        <g>0.2</g>
+        <b>0.2</b>
+        <a>1</a>
+      </colorVariation>
+      <basinColor>
+        <r>0.2</r>
+        <g>0.5</g>
+        <b>0.7</b>
+        <a>1</a>
+      </basinColor>
+      <basinColorVariation>
+        <r>0.1</r>
+        <g>0.2</g>
+        <b>0.2</b>
+        <a>1</a>
+      </basinColorVariation>
+      <seaColor>
+        <r>0</r>
+        <g>0</g>
+        <b>0</b>
+        <a>1</a>
+      </seaColor>
+      <topColor>
+        <r>0.2</r>
+        <g>0.2</g>
+        <b>0.2</b>
+        <a>1</a>
+      </topColor>
+      <atmosphere>
+        <string>ATM_NORMAL</string>
+        <string>ATM_BLEAK</string>
+        <string>ATM_CYAN</string>
+      </atmosphere>
+      <clouds />
+      <atmosphereDensity>1</atmosphereDensity>
+      <sealevel>0</sealevel>
+      <delegateString>Surface.InitializeFlat</delegateString>
+      <minQuadLevel>1</minQuadLevel>
+      <RadiusRange>
+        <x>12000</x>
+        <y>1000000</y>
+      </RadiusRange>
+      <TemperatureRange>
+        <x>0</x>
+        <y>200</y>
+      </TemperatureRange>
+    </PlanetType>
+
     <PlanetType>
       <Name>Terra</Name>
       <color>
@@ -59,21 +117,21 @@
     <PlanetType>
       <Name>Desert</Name>
       <color>
-        <r>0.9</r>
-        <g>0.5</g>
+        <r>0.4</r>
+        <g>0.3</g>
         <b>0.2</b>
         <a>1</a>
       </color>
       <colorVariation>
-        <r>0.1</r>
-        <g>0.4</g>
+        <r>0.2</r>
+        <g>0.1</g>
         <b>0.1</b>
         <a>1</a>
       </colorVariation>
       <basinColor>
         <r>0.2</r>
         <g>0.2</g>
-        <b>0.1</b>
+        <b>0.2</b>
         <a>1</a>
       </basinColor>
       <basinColorVariation>
@@ -89,8 +147,8 @@
         <a>1</a>
       </seaColor>
       <topColor>
-        <r>0.3</r>
-        <g>0.3</g>
+        <r>0.4</r>
+        <g>0.2</g>
         <b>0.1</b>
         <a>1</a>
       </topColor>
@@ -101,7 +159,7 @@
         <string>ATM_NORMAL</string>
       </atmosphere>
       <clouds />
-      <atmosphereDensity>0.8</atmosphereDensity>
+      <atmosphereDensity>0.6</atmosphereDensity>
       <sealevel>0</sealevel>
       <delegateString>Surface.InitializeDesolate</delegateString>
       <minQuadLevel>3</minQuadLevel>
@@ -117,15 +175,15 @@
     <PlanetType>
       <Name>Moon</Name>
       <color>
-        <r>0.5</r>
-        <g>0.5</g>
-        <b>0.5</b>
+        <r>0.4</r>
+        <g>0.4</g>
+        <b>0.4</b>
         <a>1</a>
       </color>
       <colorVariation>
-        <r>0.1</r>
-        <g>0</g>
-        <b>0.1</b>
+        <r>0.05</r>
+        <g>0.0</g>
+        <b>0.02</b>
         <a>1</a>
       </colorVariation>
       <basinColor>
@@ -135,9 +193,9 @@
         <a>1</a>
       </basinColor>
       <basinColorVariation>
-        <r>0.2</r>
-        <g>0.1</g>
-        <b>0.2</b>
+        <r>0.05</r>
+        <g>0.02</g>
+        <b>0.02</b>
         <a>1</a>
       </basinColorVariation>
       <seaColor>
@@ -228,30 +286,30 @@
         <x>100</x>
         <y>1000</y>
       </TemperatureRange>
-    </PlanetType>
-    <PlanetType>
-      <Name>Cold gas giant</Name>
+  </PlanetType>
+   <PlanetType>
+      <Name>Ice</Name>
       <color>
-        <r>0.2</r>
-        <g>0.5</g>
+        <r>0.7</r>
+        <g>0.7</g>
         <b>0.7</b>
         <a>1</a>
       </color>
       <colorVariation>
         <r>0.1</r>
-        <g>0.2</g>
-        <b>0.2</b>
+        <g>0.1</g>
+        <b>0.3</b>
         <a>1</a>
       </colorVariation>
       <basinColor>
         <r>0.2</r>
-        <g>0.5</g>
-        <b>0.7</b>
+        <g>0.2</g>
+        <b>0.2</b>
         <a>1</a>
       </basinColor>
       <basinColorVariation>
         <r>0.1</r>
-        <g>0.2</g>
+        <g>0.1</g>
         <b>0.2</b>
         <a>1</a>
       </basinColorVariation>
@@ -262,30 +320,29 @@
         <a>1</a>
       </seaColor>
       <topColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
+        <r>1</r>
+        <g>1</g>
+        <b>1</b>
         <a>1</a>
       </topColor>
       <atmosphere>
         <string>ATM_NORMAL</string>
-        <string>ATM_BLEAK</string>
-        <string>ATM_CYAN</string>
       </atmosphere>
       <clouds />
-      <atmosphereDensity>1</atmosphereDensity>
+      <atmosphereDensity>0.7</atmosphereDensity>
       <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeFlat</delegateString>
-      <minQuadLevel>1</minQuadLevel>
+      <delegateString>Surface.InitializeMountain</delegateString>
+      <minQuadLevel>3</minQuadLevel>
       <RadiusRange>
-        <x>12000</x>
-        <y>1000000</y>
+        <x>100</x>
+        <y>15000</y>
       </RadiusRange>
       <TemperatureRange>
         <x>0</x>
-        <y>200</y>
+        <y>250</y>
       </TemperatureRange>
     </PlanetType>
+
     <PlanetType>
       <Name>Hot gas giant</Name>
       <color>
