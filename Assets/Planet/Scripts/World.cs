@@ -676,6 +676,10 @@ namespace LemonSpawn {
 
 
                         string text = lst[0].Trim().ToLower();
+                        if (!Verification.VerifyXML(RenderSettings.path + RenderSettings.dataDir + text + ".xml", Verification.MCAstName))
+                        	continue;
+
+
 						string name = f.Name;
 						string n = f.Name;
 						if (first == "")
