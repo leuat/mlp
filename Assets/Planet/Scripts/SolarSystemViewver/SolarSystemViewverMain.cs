@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace LemonSpawn {
 
@@ -25,7 +26,7 @@ namespace LemonSpawn {
 				Vector3 to = new Vector3 (Mathf.Cos (t1), 0, Mathf.Sin (t1)) * radius;
 			
 				GameObject g = new GameObject ();
-				g.transform.parent = go.transform;
+//				g.transform.parent = go.transform;
 				LineRenderer lr = g.AddComponent<LineRenderer> ();
 				lr.material = (Material)Resources.Load ("LineMaterial");
 				lr.SetWidth (SSVSettings.OrbitalLineWidth.x, SSVSettings.OrbitalLineWidth.y);
@@ -53,7 +54,6 @@ namespace LemonSpawn {
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
-			Debug.Log (dp);
 		}
 
 		private void UpdateFocus() {
@@ -98,11 +98,12 @@ namespace LemonSpawn {
 		}
 
 		private void PopulateWorld() {
+			DestroyAllGameObjects();
 			dPlanets.Clear ();
 			foreach (Planet p in solarSystem.planets) {
 				GameObject go = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 				go.GetComponent<MeshRenderer> ().material = (Material)Resources.Load ("TempPlanetMaterial");
-				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.z, (float)p.pSettings.properties.pos.y);
+				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.y, (float)p.pSettings.properties.pos.z);
 				go.transform.position = coolpos * SSVSettings.SolarSystemScale;
 				go.transform.localScale = Vector3.one * SSVSettings.PlanetSizeScale * p.pSettings.radius;
 			
@@ -110,13 +111,16 @@ namespace LemonSpawn {
 			}
 		}
 
+
+
 		public override void Start () { 
+			CurrentApp = Verification.MCAstName;
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			PlanetSettings.InitializePlanetTypes ();
 			MainCamera = mainCamera.GetComponent<Camera> ();
+			PopulateFileCombobox("ComboBoxLoadFile","xml");
 			SzWorld = szWorld;
-			LoadData ();
-			PopulateWorld ();
+//			LoadData ();
 		}
 	
 		public override void Update () {
@@ -126,6 +130,27 @@ namespace LemonSpawn {
 
 		protected void OnGUI() {
 		}
+
+		public void LoadFileFromMenu()
+        {
+            int idx = GameObject.Find("ComboBoxLoadFile").GetComponent<UnityEngine.UI.Dropdown>().value;
+            string name = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text;
+           	if (name=="-")
+           		return;
+			name =RenderSettings.dataDir + name + ".xml";
+
+            LoadFromXMLFile(name);
+	        PopulateOverviewList("Overview");
+			PopulateWorld ();
+ 
+        }
+
+        private void DestroyAllGameObjects() {
+        	foreach (DisplayPlanet dp in dPlanets)
+        		GameObject.Destroy(dp.go);
+        }
+
+
 	}
 
 }

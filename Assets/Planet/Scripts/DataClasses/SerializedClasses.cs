@@ -210,14 +210,16 @@ namespace LemonSpawn
             //gc.GetComponent<SpaceCamera>().SetCamera(new Vector3(sc.cam_x, sc.cam_y, sc.cam_z), Quaternion.Euler (new Vector3(sc.rot_x, sc.rot_y, sc.rot_z)));
             DVector up = new DVector(sc.up_x, sc.up_y, sc.up_z);
             DVector pos = new DVector(sc.cam_x, sc.cam_y, sc.cam_z);
-            World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, sc.getDir().toVectorf(), up.toVectorf());
+			SpaceCamera spc = World.MainCamera.GetComponent<SpaceCamera>();
+            if (spc!=null)
+            	spc.SetLookCamera(pos, sc.getDir().toVectorf(), up.toVectorf());
 
 
 
             //c.fieldOfView = sc.fov;
 
 
-            Atmosphere.sunScale = Mathf.Clamp(1.0f / (float)pos.Length(), 0.0001f, 1);
+            //Atmosphere.sunScale = Mathf.Clamp(1.0f / (float)pos.Length(), 0.0001f, 1);
             frame++;
         }
 
