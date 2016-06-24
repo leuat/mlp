@@ -553,6 +553,7 @@ MonoBehaviour:
     resolutionScale: 1.5
     global_radius_scale: 1
     skybox: 1
+    uuid: 
     resolution: 48
     overview_distance: 10
     screenshot_width: 1024
@@ -711,11 +712,11 @@ MonoBehaviour:
   rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
-  planetTypeIndex: 5
+  planetTypeIndex: 3
   castShadows: 1
-  hasSea: 1
+  hasSea: 0
   seed: 1
-  atmosphereDensity: 0.75
+  atmosphereDensity: 0
   outerRadiusScale: 1.025
   m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
   m_hdrExposure: 2
@@ -725,20 +726,20 @@ MonoBehaviour:
   hillyThreshold: 0.98
   liquidThreshold: 0.0005
   topThreshold: 0.01
-  basinThreshold: 0.002
-  globalTerrainHeightScale: 2
-  globalTerrainScale: 5
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 500
+  globalTerrainScale: 0.1235
   m_surfaceColor: {r: 0.71323526, g: 0.34489915, b: 0.010488763, a: 0}
   m_surfaceColor2: {r: 0.18490486, g: 0.5588235, b: 0.29579097, a: 0}
-  m_surfaceTexture: {fileID: 2800000, guid: bf3fbd7326994da4bba0616c20fd81c0, type: 3}
-  m_basinColor: {r: 1, g: 0.8409736, b: 0.17647058, a: 0}
+  m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
+  m_basinColor: {r: 0.92048687, g: 1, b: 0.17647058, a: 0}
   m_basinColor2: {r: 1, g: 0.9849898, b: 0.45588237, a: 0}
-  m_basinTexture: {fileID: 2800000, guid: 9bc35ccacbe91574c8ccb3210ed6a057, type: 3}
+  m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
   m_topColor: {r: 1, g: 1, b: 1, a: 1}
-  m_topTexture: {fileID: 2800000, guid: de7e03990d08dcd498dce92a128d9934, type: 3}
+  m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
   m_hillColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-  m_hillTexture: {fileID: 2800000, guid: 25233987f72716e479f482648abcb424, type: 3}
-  m_waterColor: {r: 0.03676468, g: 0.880426, b: 1, a: 1}
+  m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
+  m_waterColor: {r: 0.03676468, g: 0.7608518, b: 1, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   metallicity: 0
   specularity: 0.2
@@ -770,9 +771,25 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 1
+  hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
+  planetType:
+    Name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+    colorVariation: {r: 0, g: 0, b: 0, a: 0}
+    basinColor: {r: 0, g: 0, b: 0, a: 0}
+    basinColorVariation: {r: 0, g: 0, b: 0, a: 0}
+    seaColor: {r: 0, g: 0, b: 0, a: 0}
+    topColor: {r: 0, g: 0, b: 0, a: 0}
+    atmosphere: []
+    clouds: 
+    atmosphereDensity: 1
+    sealevel: 0
+    delegateString: 
+    minQuadLevel: 2
+    RadiusRange: {x: 0, y: 0}
+    TemperatureRange: {x: 0, y: 0}
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -2217,6 +2234,22 @@ MonoBehaviour:
   hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
+  planetType:
+    Name: 
+    color: {r: 0, g: 0, b: 0, a: 0}
+    colorVariation: {r: 0, g: 0, b: 0, a: 0}
+    basinColor: {r: 0, g: 0, b: 0, a: 0}
+    basinColorVariation: {r: 0, g: 0, b: 0, a: 0}
+    seaColor: {r: 0, g: 0, b: 0, a: 0}
+    topColor: {r: 0, g: 0, b: 0, a: 0}
+    atmosphere: []
+    clouds: 
+    atmosphereDensity: 1
+    sealevel: 0
+    delegateString: 
+    minQuadLevel: 2
+    RadiusRange: {x: 0, y: 0}
+    TemperatureRange: {x: 0, y: 0}
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0

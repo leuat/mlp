@@ -33,7 +33,12 @@ namespace LemonSpawn {
         public float atmosphereDensity = 1;
         public float sealevel;
 		public string delegateString;
-	
+
+		public float surfaceScaleModifier = 1;
+		public float surfaceHeightModifier = 1;
+
+
+
         public int minQuadLevel = 2;
         public Vector2 RadiusRange, TemperatureRange;
 
@@ -145,7 +150,13 @@ namespace LemonSpawn {
 			return candidates[r.Next()%candidates.Count];
 		}
 
+		public PlanetType getPlanetType(string s) {
+			foreach (PlanetType pt in planetTypes)
+				if (pt.Name.ToLower() == s.ToLower())
+					return pt;
 
+			return null;
+		}
 
         public static PlanetTypes DeSerialize(string filename)
         {
@@ -330,6 +341,12 @@ namespace LemonSpawn {
 				return;
 
 
+			if (!File.Exists(RenderSettings.planetTypesFilename)) {
+				World.FatalError("Could not find planet types file: " + RenderSettings.planetTypesFilename);
+				return;
+			}
+	
+
 			planetTypes = PlanetTypes.DeSerialize(RenderSettings.planetTypesFilename);
 			planetTypes.setDelegates();
 		}
@@ -342,7 +359,7 @@ namespace LemonSpawn {
 			if (count>=2)
 				planetType = planetTypes.getRandomPlanetType(r, radius, temperature);
 			else
-				planetType = planetTypes.planetTypes[0]; // First two are ALWAYS TERRA
+				planetType = planetTypes.getPlanetType("Terra");; // First two are ALWAYS TERRA
 				
 			if (planetType == null)
 				return;
@@ -389,8 +406,10 @@ namespace LemonSpawn {
 			}
             m_hdrExposure = 1.5f;
             m_ESun = 10;
-            globalTerrainHeightScale = 1.1f + 1.1f*(float)r.NextDouble() ;
-			globalTerrainScale = 1.0f + (float)(6*r.NextDouble());
+
+
+            globalTerrainHeightScale = (1.1f + 1.1f*(float)r.NextDouble())*planetType.surfaceHeightModifier;
+			globalTerrainScale = (1.0f + (float)(6*r.NextDouble()))*planetType.surfaceScaleModifier;
 
 
 

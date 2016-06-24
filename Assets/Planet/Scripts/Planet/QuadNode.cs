@@ -190,7 +190,7 @@ namespace LemonSpawn
                 //if (quadGO != null)
                 //	quadGO.GetComponent<Renderer>().enabled = true;
             }
-            if (recalculate == true && quadField != null && thread == null && quadGO != null)
+            if (recalculate == true && quadField != null && thread == null && quadGO != null && RenderSettings.reCalculateQuads)
             {
                 decideNeighbors();
                 LSMesh m = quadField.ReCalculate(neighbourLOD, planetSettings.castShadows);
@@ -257,6 +257,10 @@ namespace LemonSpawn
             qb = new QuadBlock(p1, p2, p3, p4, level, planetSettings);
             qb.lod = level;
             sort = level;
+
+//            sort = (qb.centerReal.P - planetSettings.properties.localCamera).magnitude - level*100; // Distance sorting 
+
+
             parent = par;
             currentQuadrant = cq;
             father = f;

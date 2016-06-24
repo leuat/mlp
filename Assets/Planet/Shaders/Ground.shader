@@ -368,7 +368,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 							float dd = dot(normalize(i.posWorld.xyz - v3Translate), normalize(s.normalWorld * 1 + i.n1 * 0));
 
 							float tt = clamp(noise(normalize(i.posWorld.xyz - v3Translate)*3.1032)+0.2,0,1);
-							float3 mColor = middleColor;//((1 - tt)*middleColor + middleColor2*tt);
+							float3 mColor = ((1 - tt)*middleColor + middleColor2*tt);
 							//	float3 bColor = ((1-tt)*basinColor + basinColor2*tt*r_noise(normalize(i.vpos.xyz),2.1032,3));
 
 								float3 hColor = mColor*getTex(_Surface, i.tex.xy);//float3(1,1,1);//s.diffColor;

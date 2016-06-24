@@ -174,7 +174,8 @@ namespace LemonSpawn
 
                 if (!System.IO.File.Exists(data))
                 {
-                    RenderSettings.extraText = ("ERROR: Could not find file :'" + data + "'");
+                    //RenderSettings.extraText = ("ERROR: Could not find file :'" + data + "'");
+                    World.FatalError("Could not load file: " + data);
                     return;
                 }
                 sz = SerializedWorld.DeSerialize(data);

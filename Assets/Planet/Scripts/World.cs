@@ -64,12 +64,15 @@ namespace LemonSpawn {
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
-        public static string planetTypesFilename = "planettypes.xml";
-        public static string path = Application.dataPath + "/../";
+        public static bool reCalculateQuads = true;
+
+		public static string path = Application.dataPath + "/../";
+
+        public static string planetTypesFilename = path + "planettypes.xml";
 
         public static int ForceAllPlanetTypes = -1;
 
-        public static float maxAtmosphereDensity = 0.8f;
+        public static float maxAtmosphereDensity = 0.9f;
 
 #if UNITY_STANDALONE_OSX
         public static string fileDelimiter = "/";
@@ -160,6 +163,7 @@ namespace LemonSpawn {
         public GameObject effectCamera;
         public bool initializeFromScene;
         private GameObject closeCamera;
+        protected static GameObject FatalErrorPanel;
 
         public static Camera MainCamera;
         public static Camera CloseCamera;
@@ -180,8 +184,8 @@ namespace LemonSpawn {
         public Vector3 vehiclePos, vehicleDir;
 
         protected SolarSystem solarSystem;
-		private bool modifier = false;
-		private bool ctrlModifier = false;
+		protected bool modifier = false;
+		protected bool ctrlModifier = false;
 		
         protected List<Message> messages = new List<Message>();
 
@@ -208,7 +212,11 @@ namespace LemonSpawn {
 
         protected void ClearMovieDirectory()
         {
-            System.IO.DirectoryInfo di = new DirectoryInfo(Application.dataPath + "/../" + RenderSettings.movieDir);
+			System.IO.DirectoryInfo di = new DirectoryInfo(RenderSettings.path + RenderSettings.movieDir);
+			if (!di.Exists) {
+				FatalError("Could not find movie directory : " + RenderSettings.movieDir);
+				return;
+			}
             foreach (System.IO.FileInfo file in di.GetFiles()) file.Delete();
         }
 
@@ -250,10 +258,15 @@ namespace LemonSpawn {
 
 
 
-
         private string GetScreenshotFilename(string dir, out string pureFile) {
-			string OutputDir = Application.dataPath + "/../" + dir;
+			string OutputDir = RenderSettings.path + dir;
 			DirectoryInfo info = new DirectoryInfo(OutputDir);
+			if (!info.Exists) {
+				FatalError("Could not find screen directory :" + dir);
+				pureFile = "";
+				return "";
+
+			}
 			FileInfo[] fileInfo = info.GetFiles();
 			int current = 0;
 			foreach (FileInfo f in fileInfo)  {
@@ -285,6 +298,7 @@ namespace LemonSpawn {
 		
         protected string WriteScreenshot(string directory, int resWidth, int resHeight)
         {
+        	
             Camera camera = MainCamera;
             Camera eCamera = effectCamera.GetComponent<Camera>();
 
@@ -307,8 +321,8 @@ namespace LemonSpawn {
             byte[] bytes = screenShot.EncodeToPNG();
             string pureFile ;
             string file = GetScreenshotFilename(directory, out pureFile);
-
-            File.WriteAllBytes(file, bytes);
+            if (file!="")
+ 	           File.WriteAllBytes(file, bytes);
             return pureFile;
         }
 
@@ -328,13 +342,14 @@ namespace LemonSpawn {
             ThreadQueue.AbortAll();
 			//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
 //			string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
-			string file = Application.dataPath + "/../" + filename;
+			string file = RenderSettings.path + filename;
 			//		RenderSettings.extraText = file;
 			if (!System.IO.File.Exists(file)) {
-				RenderSettings.extraText = ("ERROR: Could not find file :'" + file + "'");
+				//RenderSettings.extraText = ("ERROR: Could not find file :'" + file + "'");
+				FatalError("Could not open file: " + file);
 				return;
 			}
-			
+
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
@@ -454,9 +469,39 @@ namespace LemonSpawn {
         }
 
 
-        public virtual void Start () {
+        public static void FatalError(string errorMessage) {
+        	if (FatalErrorPanel == null) {
+        		Application.Quit();
+        		return;
+        		}
+        	FatalErrorPanel.SetActive(true);
 
-            solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+/*        	string p = Application.dataPath.Replace("/Contents","");
+
+        	string s = " files: ";
+			DirectoryInfo info = new DirectoryInfo(p +".");
+				FileInfo[] fileInfo = info.GetFiles();
+				string first="";
+            foreach (FileInfo f in fileInfo)  
+	            s+=f.Name + " ";
+*/
+        	GameObject.Find("FatalErrorText").GetComponent<Text>().text = errorMessage;
+
+        }
+
+
+        public void SetupErrorPanel() {
+			FatalErrorPanel = GameObject.Find("FatalError");
+        	if (FatalErrorPanel!=null)
+        		FatalErrorPanel.SetActive(false);
+
+        }
+
+        public virtual void Start () {
+        if (solarSystem == null)
+			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+			SetupErrorPanel();
+
             SzWorld = szWorld;
             Slider = slider;
             PlanetSettings.InitializePlanetTypes();
@@ -532,6 +577,13 @@ namespace LemonSpawn {
         }
 
 
+        public void FatalQuit() {
+        	Application.Quit();
+        }	
+
+
+
+
         public virtual void Update () {
 			UpdateWorldCamera();		
             solarSystem.Update();
@@ -544,7 +596,7 @@ namespace LemonSpawn {
 			//Debug.Log (planet.pSettings.name);
 
 			if (Input.GetKey(KeyCode.Escape)) {
-				Application.Quit();
+				FatalQuit();
 			}
 			float s = 0.35f;
 			if (Input.GetKey (KeyCode.Alpha9)) { 
@@ -662,11 +714,16 @@ namespace LemonSpawn {
         public void PopulateFileCombobox(string box, string fileType) {
 				Dropdown cbx = GameObject.Find (box).GetComponent<Dropdown>();
                 cbx.ClearOptions();
-				DirectoryInfo info = new DirectoryInfo(RenderSettings.dataDir + ".");
+				DirectoryInfo info = new DirectoryInfo(RenderSettings.path + RenderSettings.dataDir + ".");
+				if (!info.Exists) {
+					FatalError("Could not find directory: " + RenderSettings.dataDir);
+					return;
+				}
 				FileInfo[] fileInfo = info.GetFiles();
 				string first="";
             List<Dropdown.OptionData> data = new List<Dropdown.OptionData>();
-            foreach (FileInfo f in fileInfo)  {
+			data.Add(new Dropdown.OptionData("-")); 
+		    foreach (FileInfo f in fileInfo)  {
                 //string name = f.Name.Remove(f.Name.Length-4, 4);
 
                 if (!f.Name.ToLower().Contains(fileType.ToLower()))
@@ -683,13 +740,15 @@ namespace LemonSpawn {
 						string name = f.Name;
 						string n = f.Name;
 						if (first == "")
-							first = "";
+							first = f.Name;
 
                         data.Add(new Dropdown.OptionData(text));
 					}
 				}
             cbx.AddOptions(data);
 
+
+//            LoadFromXMLFile(RenderSettings.dataDir +  first);
  
         }
 

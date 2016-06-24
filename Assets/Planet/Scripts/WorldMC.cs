@@ -15,42 +15,7 @@ using System.Collections.Generic;
 namespace LemonSpawn
 {
 
-    [System.Serializable]
-    public class MCAstSettings
-    {
-        public static int[,] Resolution = new int[11, 2] { 
-            { 320, 200 }, { 640, 480 }, { 800, 600 }, { 1024, 768 }, { 1280, 1024 }, { 1600, 1200 },
-            { 800, 480 }, { 1024, 600 }, { 1280, 720 }, { 1680, 1050 }, { 2048, 1080 } };
-
-        public static int[] GridSizes = new int[6] { 16, 32, 48, 64, 80, 96 };
-
-
-        public int movieResolution = 1;
-        public int gridSize = 2;
-        public int screenShotResolution = 4 ;
-        public bool advancedClouds = false;
-        public bool cameraEffects = true;
-        public string previousFile = "";
-
-
-        public static MCAstSettings DeSerialize(string filename)
-        {
-            XmlSerializer deserializer = new XmlSerializer(typeof(MCAstSettings));
-            TextReader textReader = new StreamReader(filename);
-            MCAstSettings sz = (MCAstSettings)deserializer.Deserialize(textReader);
-            textReader.Close();
-            return sz;
-        }
-        static public void Serialize(MCAstSettings sz, string filename)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(MCAstSettings));
-            TextWriter textWriter = new StreamWriter(filename);
-            serializer.Serialize(textWriter, sz);
-            textWriter.Close();
-        }
-    }
-
-
+   
 
     public class WorldMC : World
     {
@@ -61,6 +26,7 @@ namespace LemonSpawn
         protected int load_percent;
         protected GameObject helpPanel = null;
         protected GameObject settingsPanel = null;
+        public GameObject debugPanel = null;
         protected MCAstSettings settings = new MCAstSettings();
 
         protected void PopulateGUISettings()
@@ -91,7 +57,7 @@ namespace LemonSpawn
 
         protected void LoadSettings()
         {
-            string fname = Application.dataPath + "/../" + RenderSettings.MCAstSettingsFile;
+            string fname = RenderSettings.path + RenderSettings.MCAstSettingsFile;
             if (File.Exists(fname))
             {
                 settings = MCAstSettings.DeSerialize(fname);
@@ -106,7 +72,7 @@ namespace LemonSpawn
 
         protected void SaveSettings()
         {
-            string fname = Application.dataPath + "/../" + RenderSettings.MCAstSettingsFile;
+			string fname = RenderSettings.path + RenderSettings.MCAstSettingsFile;
             MCAstSettings.Serialize(settings, fname);
 //            AddMessage("Settings saved");
         }
@@ -420,12 +386,21 @@ namespace LemonSpawn
 
         private void SetupGUI()
         {
-            LoadSettings();
-            helpPanel = GameObject.Find("HelpPanel");
+        	SetupErrorPanel();
+			helpPanel = GameObject.Find("HelpPanel");
             if (helpPanel != null)
                 helpPanel.SetActive(false);
+			settingsPanel = GameObject.Find("SettingsPanel");
+			if (settingsPanel != null)
+                settingsPanel.SetActive(false);
 
-            settingsPanel = GameObject.Find("SettingsPanel");
+			PlanetSettings.InitializePlanetTypes();
+
+			if (settingsPanel != null)
+                settingsPanel.SetActive(true); // must be true before populating
+
+            LoadSettings();
+
             PopulateFileCombobox("ComboBoxLoadFile", "xml");
             PopulateResolutionCombobox("MovieResolutionCmb");
             PopulateResolutionCombobox("ScreenshotResolutionCmb");
@@ -446,7 +421,11 @@ namespace LemonSpawn
         public void LoadFileFromMenu()
         {
             int idx = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().value;
-            string name = RenderSettings.dataDir + GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text + ".xml";
+            string name = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text;
+           	if (name=="-")
+           		return;
+			name =RenderSettings.dataDir + name + ".xml";
+
             LoadFromXMLFile(name);
             settings.previousFile = name;
             PopulateOverviewList("Overview");
@@ -464,13 +443,17 @@ namespace LemonSpawn
 
     public override void Start()
         {
-            base.Start();
-            SetupGUI();
+			if (solarSystem == null)
+			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 
-            solarSystem.InitializeFromScene();
+            SetupGUI();
+			base.Start();
+
+//            solarSystem.InitializeFromScene();
 
             GameObject.Find("TextVersion").GetComponent<Text>().text = "Version " + RenderSettings.version.ToString("0.00"); ;
-
+            debugPanel = GameObject.Find("DebugPanel");
+            debugPanel.SetActive(false);
 
             RenderSettings.MoveCam = false;
             //		slider = GameObject.Find ("Slider");
@@ -497,7 +480,9 @@ namespace LemonSpawn
         {
             AddMessage("Loading XML file: " + filename);
 
-			if (!Verification.VerifyXML(Application.dataPath + "/../" + filename, Verification.MCAstName)) {
+
+
+			if (!Verification.VerifyXML(RenderSettings.path + filename, Verification.MCAstName)) {
 				AddMessage("ERROR: File " + filename + " is not a valid MCAst data file. Aborting. ", 2.5f);
 				return;
 			}
@@ -593,6 +578,11 @@ namespace LemonSpawn
             base.Update();
             UpdatePlay();
 
+            if (modifier)
+            if (Input.GetKeyUp(KeyCode.P)) {
+            	debugPanel.SetActive(!debugPanel.activeSelf);
+
+            }
             // Randomize seed
 
         }

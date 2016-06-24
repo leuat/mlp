@@ -79,7 +79,7 @@ namespace LemonSpawn {
 		}
 
 		private void LoadData() {
-			string file = Application.dataPath + "/../" + "system2.xml";
+			string file = RenderSettings.path + "system2.xml";
 			if (!System.IO.File.Exists(file)) {
 				Debug.Log("ERROR: Could not find file :'" + file + "'");
 				return;

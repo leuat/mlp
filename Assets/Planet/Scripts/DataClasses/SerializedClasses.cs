@@ -257,4 +257,40 @@ namespace LemonSpawn
     }
 
 
+	[System.Serializable]
+    public class MCAstSettings
+    {
+        public static int[,] Resolution = new int[11, 2] { 
+            { 320, 200 }, { 640, 480 }, { 800, 600 }, { 1024, 768 }, { 1280, 1024 }, { 1600, 1200 },
+            { 800, 480 }, { 1024, 600 }, { 1280, 720 }, { 1680, 1050 }, { 2048, 1080 } };
+
+        public static int[] GridSizes = new int[6] { 16, 32, 48, 64, 80, 96 };
+
+
+        public int movieResolution = 1;
+        public int gridSize = 2;
+        public int screenShotResolution = 4 ;
+        public bool advancedClouds = false;
+        public bool cameraEffects = true;
+        public string previousFile = "";
+
+
+        public static MCAstSettings DeSerialize(string filename)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(MCAstSettings));
+            TextReader textReader = new StreamReader(filename);
+            MCAstSettings sz = (MCAstSettings)deserializer.Deserialize(textReader);
+            textReader.Close();
+            return sz;
+        }
+        static public void Serialize(MCAstSettings sz, string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(MCAstSettings));
+            TextWriter textWriter = new StreamWriter(filename);
+            serializer.Serialize(textWriter, sz);
+            textWriter.Close();
+        }
+    }
+
+
 }
