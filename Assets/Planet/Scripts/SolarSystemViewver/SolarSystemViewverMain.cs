@@ -47,17 +47,18 @@ namespace LemonSpawn {
 		private List<DisplayPlanet> dPlanets = new List<DisplayPlanet>();
 		private Vector3 mouseAccel = new Vector3();
 		private Vector3 focusPoint = Vector3.zero;
+		private Vector3 focusPointCur = Vector3.zero;
 		private DisplayPlanet selected = null;
 
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
+			Debug.Log (dp);
 		}
 
 		private void UpdateFocus() {
 			if (Input.GetMouseButtonDown (0)) {
 				RaycastHit hit;
-				Debug.Log (MainCamera);
 				Ray ray = MainCamera.ScreenPointToRay (Input.mousePosition);
 				if (Physics.Raycast (ray, out hit)) {
 					foreach (DisplayPlanet dp in dPlanets) {
@@ -70,11 +71,18 @@ namespace LemonSpawn {
 
 		private void UpdateCamera () {
 			float s = 1.0f;
-			float theta = s * Input.GetAxis ("Mouse X");
-			float phi = s * Input.GetAxis ("Mouse Y") * -1.0f;
+			float theta = 0.0f;
+			float phi = 0.0f;
+
+			if (Input.GetMouseButton (1)) {
+				theta = s * Input.GetAxis ("Mouse X");
+				phi = s * Input.GetAxis ("Mouse Y") * -1.0f;
+			}
 			mouseAccel += new Vector3 (theta, phi, 0);
-			mainCamera.transform.RotateAround (Vector3.zero, Vector3.up, mouseAccel.x);
-			mainCamera.transform.RotateAround (Vector3.zero, mainCamera.transform.right, mouseAccel.y);
+			focusPointCur += (focusPoint - focusPointCur) * 0.1f;
+			mainCamera.transform.RotateAround (focusPointCur, Vector3.up, mouseAccel.x);
+			mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.right, mouseAccel.y);
+			mainCamera.transform.LookAt (focusPointCur);
 			mouseAccel *= 0.9f;
 		}
 
