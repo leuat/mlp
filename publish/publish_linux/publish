@@ -1,0 +1,14 @@
+rm -rf MCAst
+mkdir MCAst
+cp -r mlp/* MCAst
+
+cp start_mcast MCAst/mcast
+cp start_ssview MCAst/ssview
+cp start_mcast_64 MCAst/mcast_64
+cp start_ssview_64 MCAst/ssview_64
+cp -r ../source/* MCAst
+
+rm MCAst_linux.tar.gz
+tar -cf MCAst_linux.tar MCAst/
+gzip MCAst_linux.tar
+scp MCAst_linux.tar.gz leuat@www.irio.co.uk:www/MCAst
