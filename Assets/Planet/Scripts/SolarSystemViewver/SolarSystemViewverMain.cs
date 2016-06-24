@@ -79,7 +79,7 @@ namespace LemonSpawn {
 		}
 
 		private void LoadData() {
-			string file = RenderSettings.path + "system2.xml";
+			string file = RenderSettings.path + RenderSettings.dataDir + "system2.xml";
 			if (!System.IO.File.Exists(file)) {
 				Debug.Log("ERROR: Could not find file :'" + file + "'");
 				return;
@@ -104,9 +104,9 @@ namespace LemonSpawn {
 
 		public override void Start () { 
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
-			PlanetSettings.planetTypes.Initialize();
+			PlanetSettings.InitializePlanetTypes ();
 			MainCamera = mainCamera.GetComponent<Camera> ();
-
+			SzWorld = szWorld;
 			LoadData ();
 			PopulateWorld ();
 		}
