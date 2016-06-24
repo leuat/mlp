@@ -156,6 +156,8 @@ namespace LemonSpawn {
 		public int m_maxQuadNodeLevel = 11;
 		public int m_minQuadNodeLevel = 2;
 
+		public static string CurrentApp;
+
 
 		public static GameObject canvas;
 		public SerializedWorld szWorld;
@@ -498,6 +500,7 @@ namespace LemonSpawn {
         }
 
         public virtual void Start () {
+        CurrentApp = Verification.MCAstName;
         if (solarSystem == null)
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			SetupErrorPanel();

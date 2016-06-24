@@ -1,10 +1,11 @@
 rm -rf MCAst
 cp -r mlp.app MCAst
 
-cp render MCAst/mcast
+cp start_mcast MCAst/mcast
+cp start_ssview MCAst/ssview
 cp -r ../source/* MCAst
 
 rm MCAst_osx.tar.gz
-tar -cf MCAst_osx.tar MCAst/
-gzip MCAst_osx.tar
-scp MCAst_osx.tar.gz leuat@www.irio.co.uk:www/MCAst
+#tar -cf MCAst_osx.tar MCAst/
+#gzip MCAst_osx.tar
+#scp MCAst_osx.tar.gz leuat@www.irio.co.uk:www/MCAst
