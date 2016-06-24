@@ -36,15 +36,16 @@ public class MainApp : MonoBehaviour
 				ok = true;
 			}
 
-			if (!ok)
-				Application.Quit();
 		}
-	}
-	
+        if (!ok)
+            Application.Quit();
+
+    }
 
 
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
 	{
 		if (Input.GetKey (KeyCode.Escape))
 			Application.Quit ();
