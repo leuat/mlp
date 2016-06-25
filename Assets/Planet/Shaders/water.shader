@@ -205,7 +205,7 @@ Shader "LemonSpawn/Water" {
 
 													//													nP = mul(N1.xzy, local2WorldTranspose);
 
-													float3 normalDirection = normalize(normal*0 + nP);
+													float3 normalDirection = normalize(normal*1 + nP);
 													//normalDirection = normalize(IN.normal + normalDirectopm);
 													float fresnel = Fresnel(V, normalDirection);
 
@@ -215,7 +215,7 @@ Shader "LemonSpawn/Water" {
 															reflect(-lightDirection, normalDirection),
 															viewDirection)), 50);
 
-													float light = max(0.18, dot(normalDirection, lightDirection));
+													float light = max(0.18*0, dot(normalDirection, lightDirection));
 													//			float3 skyColor = texCUBE(_SkyBox, WorldReflectionVector(IN, o.Normal)*float3(-1,1,1)).rgb;//flip x
 													float3 skyColor = (3 * IN.c0 + 0.2*IN.c1) * 3;// float3(2, 0.7, 0.4) * 1;
 

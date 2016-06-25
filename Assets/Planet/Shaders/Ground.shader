@@ -383,12 +383,19 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
 									float wh = (length(i.posWorld.xyz - v3Translate) - fInnerRadius);
 
-									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, topThreshold, h);
+//									float modulatedHillyThreshold = hillyThreshold* atan2(i.posWorld.z , i.posWorld.y);
+									float3 ppos = normalize(i.posWorld.xyz - v3Translate);
+//									float modulatedHillyThreshold = atan2(ppos.z, ppos.y);
+									float posY = (clamp(2 * abs(asin(ppos.y) / 3.14159), 0, 1));
+									float modulatedTopThreshold = topThreshold*(1-posY);
+									float modulatedHillyThreshold = hillyThreshold;// clamp(hillyThreshold - 1 * posY, 0, 1);
+
+
+									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, modulatedTopThreshold, h);
 									hColor = mixHeight(hColor, basinColor*getTex(_Basin, i.tex.xy), 500, basinThreshold	, h);
-									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, hillyThreshold, dd);
+									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, modulatedHillyThreshold, dd);
 									hColor = mixHeight(hColor, basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
 //									hColor = mixHeight(topColor, hColor, 4000, topThreshold, h);
-									
 
 
 
@@ -412,6 +419,8 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 												c.rgb += UNITY_BRDF_GI(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, occlusion, gi);
 												c.rgb += Emission(i.tex.xy);
 												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0);
+
+	//											c.rgb = modulatedHillyThreshold;
 
 												return OutputForward(c, s.alpha);
 											}

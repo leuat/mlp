@@ -408,8 +408,8 @@ namespace LemonSpawn {
             m_ESun = 10;
 
 
-            globalTerrainHeightScale = (1.1f + 1.1f*(float)r.NextDouble())*planetType.surfaceHeightModifier;
-			globalTerrainScale = (1.0f + (float)(6*r.NextDouble()))*planetType.surfaceScaleModifier;
+            globalTerrainHeightScale = (1.1f + 1.1f * (float)r.NextDouble())*planetType.surfaceHeightModifier;
+            globalTerrainScale = (1.0f + (float)(6 * r.NextDouble()))*planetType.surfaceScaleModifier;
 
 
 

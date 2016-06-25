@@ -172,6 +172,9 @@
         <x>100</x>
         <y>1000</y>
       </TemperatureRange>
+      <surfaceScaleModifier>1</surfaceScaleModifier>
+      <surfaceHeightModifier>1</surfaceHeightModifier>
+
     </PlanetType>
 
     <PlanetType>
