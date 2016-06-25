@@ -412,7 +412,6 @@ namespace LemonSpawn {
             globalTerrainScale = (1.0f + (float)(6 * r.NextDouble()))*planetType.surfaceScaleModifier;
 
 
-
 //            atmosphereHeight = 1.019f;
   //          outerRadiusScale = 1.025f;
 

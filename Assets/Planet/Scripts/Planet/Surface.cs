@@ -231,6 +231,9 @@ public class Surface {
 	
 	public SurfaceNode surfaceNode;
 	protected PlanetSettings planetSettings;
+
+        static float hScalef = 7000;
+
 	
 		public static SurfaceNode InitializeFlat(float a, float scale, PlanetSettings ps) {
 		return new SurfaceGenerator(SurfaceGenerator.FLAT, 0,0,0,0);	
@@ -276,7 +279,7 @@ public class Surface {
 		public static SurfaceNode InitializeTerra(float hscale, float scale, PlanetSettings ps) {
 			
 			float s = scale;
-			float a = 1/7000f;
+            float a = 1 / hScalef;
 			
 			SurfaceGenerator cont = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40f*a, 0.742f*s, 1.9f, 0.5f);
 			//		SurfaceFilter p1 = new SurfaceFilter(SurfaceFilter.MINMAX, 1,0, 0.1f, cont);		
@@ -363,9 +366,9 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 		public static SurfaceNode InitializeNew(float hscale, float scale, PlanetSettings ps) {
 			
 			float s = scale;
-			float a = 1/7000f;
-			
-			SurfaceFilter f1 = Continents(a,0.223f*s, 0.01f);
+            float a = 1 / hScalef;
+
+            SurfaceFilter f1 = Continents(a,0.223f*s, 0.01f);
 //			return f1;
 						
 												
@@ -427,8 +430,8 @@ public static SurfaceFilter Continents(float a, float size, float max) {
         {
 
             float s = scale;
-            float a = 1 / 7000f;
- //           return new SurfaceGenerator(SurfaceGenerator.FLAT, 0, 0, 0, 0);
+            float a = 1 / hScalef;
+            //           return new SurfaceGenerator(SurfaceGenerator.FLAT, 0, 0, 0, 0);
             SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
 //            SurfaceGenerator f1 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_RIDGE, 40 * a, 0.21f*s, 1.8f, 0.55f);
 
@@ -445,9 +448,10 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 
 
 
-        public static SurfaceNode InitializeDesolate(float a, float scale, PlanetSettings ps) {
+        public static SurfaceNode InitializeDesolate(float hscale, float scale, PlanetSettings ps) {
 			
 			float s = scale*0.25f;
+            float a = 1f / hScalef * 0.4f;
 
 
             SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
@@ -484,9 +488,10 @@ public static SurfaceFilter Continents(float a, float size, float max) {
             return final;
 			//		surfaceNode = f1;
 		}
-		public static SurfaceNode InitializeMoon(float a, float scale, PlanetSettings ps) {
+		public static SurfaceNode InitializeMoon(float hscale, float scale, PlanetSettings ps) {
 			
 			float s = scale*0.25f;
+            float a = 1f / hScalef * 0.4f;
 
 
             SurfaceFilter f1 = Continents(a, 0.223f * s, 0.01f);
@@ -517,10 +522,11 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 			//		surfaceNode = f1;
 		}
 
-        public static SurfaceNode InitializeMountain(float a, float scale, PlanetSettings ps)
+        public static SurfaceNode InitializeMountain(float hscale, float scale, PlanetSettings ps)
         {
 
             float s = scale*0.25f;
+            float a = 1f / hScalef*0.4f;
 
 
             SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 50f * a, 6.19f * s, 18.9f, 0.01f);
