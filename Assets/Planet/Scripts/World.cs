@@ -64,7 +64,7 @@ namespace LemonSpawn {
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
-        public static bool reCalculateQuads = true;
+        public static bool reCalculateQuads = false;
 
 		public static string path = Application.dataPath + "/../";
 
@@ -237,8 +237,11 @@ namespace LemonSpawn {
 
         public static void addWheels()
         {
+            
             GameObject go = GameObject.Find("car_root");
             GameObject gorb = GameObject.Find("car_root");
+            if (go == null)
+                return;
             go.transform.parent = SolarSystem.planet.pSettings.transform;
             go.transform.localPosition = SolarSystem.planet.pSettings.properties.localCamera + World.MainCamera.transform.forward * 2;
             go.transform.rotation = Quaternion.FromToRotation(Vector3.up, SolarSystem.planet.pSettings.transform.position*-1);
@@ -626,10 +629,15 @@ namespace LemonSpawn {
 				ctrlModifier = true;
 			if (Input.GetKeyUp (KeyCode.LeftControl)) 
 				ctrlModifier = false;
-			if (modifier) // && ctrlModifier)
+
+            if (Input.GetKeyUp(KeyCode.V))
+                SolarSystem.planet.pSettings.cloudSettings.Randomize(new System.Random());
+
+
+            if (modifier) // && ctrlModifier)
 			{
-//				if (Input.GetKeyUp(KeyCode.Alpha1))
-//					RenderSettings.MoveCam = !RenderSettings.MoveCam;
+				if (Input.GetKeyUp(KeyCode.K))
+					RenderSettings.MoveCam = !RenderSettings.MoveCam;
 				
 				if (Input.GetKeyUp(KeyCode.Alpha2))
 					RenderSettings.RenderText = !RenderSettings.RenderText;

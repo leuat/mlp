@@ -79,8 +79,8 @@ Shader "LemonSpawn/Nature" {
 		{
 			v2f o;
 
-			float4x4 modelMatrix = unity_ObjectToWorld;
-			float4x4 modelMatrixInverse = unity_WorldToObject;
+			float4x4 modelMatrix = _Object2World;
+			float4x4 modelMatrixInverse = _World2Object;
 			o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 
 			o.texcoord = v.texcoord;

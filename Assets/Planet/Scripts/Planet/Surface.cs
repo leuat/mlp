@@ -529,8 +529,10 @@ public static SurfaceFilter Continents(float a, float size, float max) {
             float a = 1f / hScalef*0.4f;
 
 
-            SurfaceGenerator p4 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 50f * a, 6.19f * s, 18.9f, 0.01f);
-            return p4;
+            SurfaceGenerator m1 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 21f * a, 8.19f * s, 18.9f, 0.01f);
+            SurfaceGenerator p2 = new SurfaceGenerator(SurfaceGenerator.MULTIRIDGE_MOUNTAIN, 50f * a, 2.39f * s, 18.9f, 0.01f);
+            SurfaceCombiner comb = new SurfaceCombiner(SurfaceCombiner.ADD, 0.5f, 2f, m1,p2);
+            return comb;
 
         }
 

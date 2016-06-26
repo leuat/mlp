@@ -254,9 +254,11 @@ namespace LemonSpawn {
             if (!castShadows)
             {
                 go.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-                go.GetComponent<MeshRenderer>().receiveShadows = false;
+//                go.GetComponent<MeshRenderer>().receiveShadows = fals;
 
             }
+            go.GetComponent<MeshRenderer>().receiveShadows = true;
+
             ((MeshFilter)go.GetComponent<MeshFilter>()).mesh = mesh;
 			if (m!=null)
 				go.GetComponent<Renderer>().material = m;

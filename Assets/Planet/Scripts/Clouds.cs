@@ -43,7 +43,7 @@ public class Clouds : Atmosphere {
         private CloudSettings m_cloudSettings;
 
 		public bool toggleClouds = true;
-
+        VolumetricTexture vtexture = new VolumetricTexture();
 
         public VolumetricClouds(GameObject sun, Mesh m, PlanetSettings ps, CloudSettings cs)
         {
@@ -76,6 +76,10 @@ public class Clouds : Atmosphere {
 
             m_skyMaterial.renderQueue = 10000;
             m_sky.transform.Rotate(new Vector3(90, 0, 0));
+
+            vtexture.CreateNoise(8, 6.3245f);
+
+            m_skyMaterial.SetTexture("_NoiseTex3D", vtexture.texture);
         }
 
 
@@ -84,11 +88,13 @@ public class Clouds : Atmosphere {
             if (m_skyMaterial != null)
             {
                 InitAtmosphereMaterial(m_skyMaterial);
+                m_skyMaterial.SetTexture("_NoiseTex3D", vtexture.texture);
+
             }
 
-//            m_skyMaterial.SetFloat("sradius", m_radius);
+            //            m_skyMaterial.SetFloat("sradius", m_radius);
 
-			m_sky.GetComponent<MeshRenderer>().enabled = RenderSettings.toggleClouds;
+            m_sky.GetComponent<MeshRenderer>().enabled = RenderSettings.toggleClouds;
 
         }
 

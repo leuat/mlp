@@ -348,7 +348,7 @@ float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScal
 
 	float dist = length(_WorldSpaceCameraPos - wp);
 	float scale = clamp(sqrt(dist/fInnerRadius*35.0*distScale), 0, 1);
-	return lerp(1.8 * color, atmColor(c0,c1), atmosphereDensity*scale);
+	return lerp(1.6 * color, atmColor(c0,c1), atmosphereDensity*scale);
 
 }
 

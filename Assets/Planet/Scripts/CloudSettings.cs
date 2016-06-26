@@ -12,22 +12,37 @@ namespace LemonSpawn {
     public class CloudSettings {//: MonoBehaviour {
 	
 	public float LS_CloudTimeScale = 5;
-	public float LS_CloudScale = 0.35f;
-	public float LS_CloudScattering = 0.7f;
+	public float LS_CloudScale = 0.11f;
+	public float LS_CloudScattering = 1f;
 	public float LS_CloudIntensity = 4;
-	public float LS_CloudSharpness = 1.35f;
-	public float LS_CloudThickness = 2f;
+	public float LS_CloudSharpness = 1f;
+	public float LS_CloudThickness = 0.6f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;
-	public Vector3 LS_CloudColor = Vector3.zero;
+        public float LS_LargeVortex = 0.1f;
+        public float LS_SmallVortex = 0.02f;
+
+
+
+        public Vector3 LS_CloudColor = Vector3.zero;
 	public Texture2D cloudTexture;
 	public Texture2D LSCloudTexture;
 	public Quaternion rot = Quaternion.identity;
 	public Material material;		
 	public CloudTexture cTexture = new CloudTexture();
 	public GameObject m_sun;
-	
-	public void GenerateTexture() {
+
+
+    public void Randomize(System.Random r)
+        {
+            LS_CloudScale = 0.05f + (float)r.NextDouble() * 0.15f;
+            LS_CloudSharpness = 0.2f + (float)r.NextDouble() * 1.4f;
+            LS_CloudScattering = 0.6f + (float)r.NextDouble() * 0.4f;
+            //LS_LargeVortex = Random.value * 0.1f;
+            //LS_SmallVortex = Random.value * 0.03f;
+        }
+
+        public void GenerateTexture() {
 		cTexture.RenderCloud();
 		LSCloudTexture = cTexture.ToTexture(new Color(1f,0.9f, 0.7f,1)*0.4f);
 			
@@ -74,11 +89,13 @@ namespace LemonSpawn {
 		material.SetFloat("ls_cloudthickness", LS_CloudThickness);
 		material.SetVector("ls_cloudcolor", LS_CloudColor);
 		material.SetFloat("ls_distScale", LS_DistScale);
+            material.SetFloat("LS_LargeVortex", LS_LargeVortex);
+            material.SetFloat("LS_SmallVortex", LS_SmallVortex);
 
 
-//		material.SetVector("lightDir", rot*m_sun.transform.forward*-1.0f*-1);
-	}
-}
+            //		material.SetVector("lightDir", rot*m_sun.transform.forward*-1.0f*-1);
+        }
+    }
 
 
 }

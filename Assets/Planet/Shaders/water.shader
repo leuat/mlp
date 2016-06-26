@@ -9,39 +9,37 @@ Shader "LemonSpawn/Water" {
 		_Perlin("Distortion", 2D) = "white" {}
 		_SunPow("SunPow", float) = 256
 	}
+
+
 		SubShader{
-			//	    Tags {"Queue"="Transparent-1" "IgnoreProjector"="True" "RenderType"="Transparent"}
-			//Tags{ "Queue" = "Transparent+11000" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-			Tags{ "Queue" = "Transparent+1" "RenderType" = "Transparent" }
-				LOD 400
+	//		Tags{ "Queue" = "Transparent+11000" "RenderType" = "Transparent" }
+			Tags{ "LightMode" = "ForwardBase" }
+//			LOD 400
 
-
-
-			Lighting On
-			Cull off
+			Lighting on
+			Cull back
 			ZWrite on
 			ZTest on
-			Blend SrcAlpha OneMinusSrcAlpha
+//			Blend SrcAlpha OneMinusSrcAlpha
 			Pass
 		{
 
 			Tags{ "LightMode" = "ForwardBase" }
-
 			CGPROGRAM
 			// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f members worldPosition)
 
 	#pragma target 3.0
-	#pragma fragmentoption ARB_precision_hint_fastest
+//#pragma fragmentoption ARB_precision_hint_fastest
 
 //	#pragma enable_d3d11_debug_symbols
 
 
 	#pragma vertex vert
 	#pragma fragment frag
-	#pragma multi_compile_fwdbase
 
 	#include "UnityCG.cginc"
-	#include "AutoLight.cginc"
+#pragma multi_compile_fwdbase
+#include "AutoLight.cginc"
 	#include "Include/Utility.cginc"
 	#include "Include/Atmosphere.cginc"
 
@@ -56,25 +54,20 @@ Shader "LemonSpawn/Water" {
 		float3 _SeaColor;
 		samplerCUBE _SkyBox;
 
-		struct vertexInput {
-			float4 vertex : POSITION;
-			float4 texcoord : TEXCOORD0;
-			float3 normal : NORMAL;
-			float4 tangent : TANGENT;
-		};
-		
+
 		struct v2f
 		{
 			//float4 vpos : SV_POSITION;
 			float4 pos : SV_POSITION;
-			float4 texcoord : TEXCOORD0;
-			float3 normal : TEXCOORD1;
-			float4 uv : TEXCOORD2;
-			float3 worldPosition : TEXCOORD3;
-			float3 c0 : TEXCOORD4;
-			float3 c1 : TEXCOORD5;
-			float3 T: TEXCOORD6;
-			float3 B: TEXCOORD7;
+			float4 texcoord : TEXCOORD2;
+			float3 normal : TEXCOORD3;
+//			float4 uv : TEXCOORD2;
+			float3 worldPosition : TEXCOORD4;
+			float3 c0 : TEXCOORD5;
+			float3 c1 : TEXCOORD6;
+			float3 T: TEXCOORD7;
+			float3 B: TEXCOORD8;
+			LIGHTING_COORDS(1, 2)
 		};
 
 
@@ -91,18 +84,15 @@ Shader "LemonSpawn/Water" {
 								}
 
 
-
-
-
-								v2f vert(vertexInput v)
+								v2f vert(appdata_full v)
 								{
 									v2f o;
-
+									
 									 float4x4 modelMatrix = _Object2World;
 									float4x4 modelMatrixInverse = _World2Object;
 									o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-
-									o.uv = v.texcoord;
+									TRANSFER_VERTEX_TO_FRAGMENT(o);
+								//	o.uv = v.texcoord;
 									o.texcoord = v.texcoord;
 									o.worldPosition = mul(modelMatrix, v.vertex);
 
@@ -131,12 +121,15 @@ Shader "LemonSpawn/Water" {
 									ht += tex2Dlod(_Map0, float4(uv*wscale*0.9123, 0, lod)*1).y;
 //									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*15.2*(fInnerRadius/50000)), v.vertex.w));
 //									o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + o.normal*(ht*7.2), v.vertex.w));
-
-
+									
+								
 											return o;
 										}
-
+										
+						
+									
 										fixed4 frag(v2f IN) : COLOR{
+									float attenuation = clamp(LIGHT_ATTENUATION(IN),0.4,1);
 
 											float4 c;
 										float3 specularReflection;
@@ -190,11 +183,7 @@ Shader "LemonSpawn/Water" {
 													//N1 = float3(0, 1, 0);
 													float3 N = (N1);
 													//												N = float3(0, 0, 1);
-												/*													float3 localCoords = float3(-slope.x + 0.5 ,
-																										-slope.y + 0.5, 0.5);
-																									localCoords.z = sqrt(1.0 - dot(localCoords, localCoords));
-													*/												
-
+							
 													float3 nP =
 
 														normalize(mul(N.xzy, local2WorldTranspose));
@@ -224,7 +213,7 @@ Shader "LemonSpawn/Water" {
 
 //													atmosphereDensity = 1;
 //													return  float4(1.4*(2 * IN.c0 + 0.2*IN.c1) ,1);
-													c.rgb = groundColor(IN.c0, IN.c1, wc*light, IN.worldPosition,1);
+													c.rgb = groundColor(IN.c0, IN.c1, wc*light*attenuation, IN.worldPosition,1);
 //													return  float4(wc*atmosphereDensity, 1);
 //													c.rgb = IN.B;
 												//	c.rgb = atmColor(IN.c0, IN.c1);
@@ -232,11 +221,11 @@ Shader "LemonSpawn/Water" {
 
 
 													return float4(c.rgb
-														+ specularReflection, +0.85 + specularReflection.b);
+														+ specularReflection*attenuation, +0.85 + specularReflection.b);
 
 												}
 													ENDCG
 												}
 		}
-			Fallback "Diffuse"
+			Fallback  "VertexLit"
 }

@@ -579,12 +579,21 @@ namespace LemonSpawn
             UpdatePlay();
 
             if (modifier)
-            if (Input.GetKeyUp(KeyCode.P)) {
-            	debugPanel.SetActive(!debugPanel.activeSelf);
+                if (Input.GetKeyUp(KeyCode.P))
+                {
+                    debugPanel.SetActive(!debugPanel.activeSelf);
 
-            }
-            // Randomize seed
+                    // Randomize seed
 
+                }
+
+            if (modifier)
+                if (Input.GetKeyUp(KeyCode.L))
+                {
+                    RenderSettings.MoveCam = !RenderSettings.MoveCam;
+
+
+                }
         }
 
 

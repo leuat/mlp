@@ -2,6 +2,7 @@
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_CloudTex ("Base (RGB)", 2D) = "white" {}
+		_CloudTex2("Base (RGB)", 2D) = "white" {}
 	}
 	SubShader {
 //	    Tags {"Queue"="Transparent-1" "IgnoreProjector"="True" "RenderType"="Transparent"}
@@ -11,7 +12,7 @@
 
 		Lighting On
         Cull off
-        ZWrite Off
+        ZWrite off
         ZTest on
         Blend SrcAlpha OneMinusSrcAlpha
        Pass
@@ -31,7 +32,10 @@
                          
              #include "UnityCG.cginc"
              #include "AutoLight.cginc"
-        sampler2D _MainTex, _CloudTex;
+#include "Include/Utility.cginc"
+#include "Include/Atmosphere.cginc"
+
+        sampler2D _MainTex, _CloudTex,_CloudTex2;
 		float ls_time;
 		float ls_cloudscale;
 		float ls_cloudscattering;
@@ -41,40 +45,30 @@
 		float ls_distScale;
 		float ls_cloudthickness;
 		float3 ls_cloudcolor;
-		
-			uniform float3 v3Translate;		// The objects world pos
-			uniform float3 v3LightPos;		// The direction vector to the light source
-			uniform float3 v3InvWavelength; // 1 / pow(wavelength, 4) for the red, green, and blue channels
-			uniform float fOuterRadius;		// The outer (atmosphere) radius
-			uniform float fOuterRadius2;	// fOuterRadius^2
-			uniform float fInnerRadius;		// The inner (planetary) radius
-			uniform float fInnerRadius2;	// fInnerRadius^2
-			uniform float fKrESun;			// Kr * ESun
-			uniform float fKmESun;			// Km * ESun
-			uniform float fKr4PI;			// Kr * 4 * PI
-			uniform float fKm4PI;			// Km * 4 * PI
-			uniform float fScale;			// 1 / (fOuterRadius - fInnerRadius)
-			uniform float fScaleDepth;		// The scale depth (i.e. the altitude at which the atmosphere's average density is found)
-			uniform float fScaleOverScaleDepth;	// fScale / fScaleDepth
-			uniform float fHdrExposure;		// HDR exposure
-			uniform float g;				// The Mie phase asymmetry factor
-			uniform float g2;				// The Mie phase asymmetry factor squared
+		float LS_LargeVortex;
+		float LS_SmallVortex;
+
+
 			uniform float cloudHeight;
 			uniform float3 lightDir;
 			
 		float getCloud(float2 uv, float scale, float disp) {
 					float y = 0.0f;
 					// Perlin octaves
-					int NN = 6;
+					int NN = 9;
+//					scale = scale*(1 + LS_LargeVortex*tex2D(_CloudTex, uv*0.0441)).x;
+					scale = scale*(1 + pow(LS_LargeVortex*tex2D(_CloudTex2, uv*0.423421).x,0.5));
+					//scale = scale*(1 + LS_SmallVortex*tex2D(_CloudTex, uv*3.234)).x;
+
 					for(int i=0;i < NN; i++) {
 						float k = scale*pow(2,i)  + 0.11934;
-						y+= 1.0/pow(k,0.5)*tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
+						y+= 1.0/pow(k,2)*tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
 						//y+= tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
 					}
 					// Normalize
 				
-					y /= 0.5f*NN;
-					return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 0.3,0,1.0);
+					y /= 2*NN;
+					return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 0.2,0,10);
 
 				}
 			
@@ -123,6 +117,9 @@
                  v2f o;
                  o.pos = mul( UNITY_MATRIX_MVP, v.vertex);
                  o.uv = v.texcoord;
+
+				 o.uv.xy = pos2uv(v.vertex.xyz);
+
                  o.normal = normalize(v.normal).xyz;
                  o.texcoord = v.texcoord;
  				 o.worldPosition = v.vertex;//mul (_Object2World, v.vertex).xyz;
@@ -150,7 +147,7 @@
  			//newPos.y = acos(normalize(worldSpacePosition).z);		
  	//		newPos = 0;
 
-			float x = getNormal(newPos, 5.73252*ls_cloudscale*0.03791, 0.005*ls_shadowscale, N, 0.05*ls_shadowscale, worldSpacePosition.y/1381.1234f + ls_time*0.0002);//getCloud(IN.uv, 1.729134);
+			float x = getNormal(newPos, 25.73252*ls_cloudscale*0.03791, 0.005*ls_shadowscale, N, 0.05*ls_shadowscale, worldSpacePosition.y/1381.1234f + ls_time*0.0002);//getCloud(IN.uv, 1.729134);
 			float3 albedoColor = x*ls_cloudcolor;
 			float3 norm= normalize(worldSpacePosition);
 			N = normalize(N + norm);
@@ -160,8 +157,8 @@
                   reflect(-lightDir, N), 
                   viewDirection)), 2);
 //             spec = 0;
-            float  NL = 0.4*ls_cloudintensity*(1 + spec + saturate((pow((dot(-N, lightDir)),1))));
-            
+            float  NL = 0.4*ls_cloudintensity*(1 + spec + clamp((pow((dot(-N, lightDir)),1)), -0.4, 1));
+//			NL = 1;
 			float4 m = tex2D(_MainTex, IN.uv.xy);
 
 			
@@ -172,12 +169,17 @@
 			float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
 			float fCameraHeight = length(v3CameraPos);					// The camera's current height
 			
-			t = 0.9;
+			/*t = 0.5;
 			c.rgb=  (t*albedoColor + (1-t)*m.rgb*ls_cloudcolor)*NL*globalLight;
-			c.a = 0.6*clamp(5*ls_cloudthickness*pow(t*x + (1-t)*m.r,2)*dist,0,1);
+			c.a = 0.9*clamp(5*ls_cloudthickness*pow(t*x + (1-t)*m.r,2)*dist,0,1);
+*/
 
-//			c.rgb = col;
-//			c.a = 1;
+//			c.rgb = albedoColor * m.rgb * NL*globalLight;
+			c.rgb = albedoColor;
+			c.a = 0.7*clamp(5 * ls_cloudthickness*pow(c.r, 2), 0, 1);
+
+			c.rgb *= NL*globalLight;
+
 			return c;
              }
              ENDCG

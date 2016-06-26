@@ -148,9 +148,9 @@
         <a>1</a>
       </seaColor>
       <topColor>
-        <r>0.4</r>
-        <g>0.2</g>
-        <b>0.1</b>
+        <r>0.9</r>
+        <g>0.9</g>
+        <b>0.9</b>
         <a>1</a>
       </topColor>
       <atmosphere>
@@ -307,14 +307,14 @@
         <a>1</a>
       </colorVariation>
       <basinColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
+        <r>0.3</r>
+        <g>0.3</g>
+        <b>0.3</b>
         <a>1</a>
       </basinColor>
       <basinColorVariation>
-        <r>0.1</r>
-        <g>0.1</g>
+        <r>0.0</r>
+        <g>0.0</g>
         <b>0.2</b>
         <a>1</a>
       </basinColorVariation>

@@ -422,8 +422,9 @@ namespace LemonSpawn {
             if (radius >= 1000) 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
-                //hasFlatClouds = true;
+                hasFlatClouds = true;
                 hasVolumetricClouds = false;
+                cloudSettings.Randomize(r);
 			}
 			if (planetType.sealevel>0 ) {
 				sea = new Sea();

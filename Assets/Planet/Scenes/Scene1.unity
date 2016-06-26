@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &396641640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
     sun_col_g: 1
     sun_col_b: 0.8
     sun_intensity: 0.01
-    resolutionScale: 3
+    resolutionScale: 2
     global_radius_scale: 1
     skybox: 1
     uuid: 
@@ -737,7 +737,7 @@ MonoBehaviour:
   topThreshold: 0.01
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
-  globalTerrainScale: 4
+  globalTerrainScale: 5
   m_surfaceColor: {r: 0.71323526, g: 0.34489915, b: 0.010488763, a: 0}
   m_surfaceColor2: {r: 0.18490486, g: 0.5588235, b: 0.29579097, a: 0}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
@@ -764,23 +764,25 @@ MonoBehaviour:
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {x: 0.7, y: 0.8, z: 1}
+  cloudColor: {x: 0.6, y: 0.8, z: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 0.35
-    LS_CloudScattering: 0.7
+    LS_CloudScale: 0.11
+    LS_CloudScattering: 1
     LS_CloudIntensity: 4
-    LS_CloudSharpness: 1.35
-    LS_CloudThickness: 2
+    LS_CloudSharpness: 1
+    LS_CloudThickness: 0.6
     LS_ShadowScale: 0.75
     LS_DistScale: 10
-    LS_CloudColor: {x: 0.3, y: 0.8, z: 1}
+    LS_LargeVortex: 0.1
+    LS_SmallVortex: 0.02
+    LS_CloudColor: {x: 0.6, y: 0.8, z: 1}
     cloudTexture: {fileID: 2800000, guid: d33cda003e34341c99811778bca33395, type: 3}
     LSCloudTexture: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 0
+  hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
   planetType:
@@ -2251,6 +2253,8 @@ MonoBehaviour:
     LS_CloudThickness: 1.1
     LS_ShadowScale: 0.75
     LS_DistScale: 10
+    LS_LargeVortex: 0.2
+    LS_SmallVortex: 0.02
     LS_CloudColor: {x: 0, y: 0, z: 0}
     cloudTexture: {fileID: 0}
     LSCloudTexture: {fileID: 0}

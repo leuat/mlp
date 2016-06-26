@@ -27,14 +27,16 @@ Shader "LemonSpawn/VolumetricClouds" {
 		CGPROGRAM
 		// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f members worldPosition)
 
-#pragma target 3.0
+#pragma target 4.0
 #pragma fragmentoption ARB_precision_hint_fastest
 
-#pragma enable_d3d11_debug_symbols
+//#pragma enable_d3d11_debug_symbols
 
 #pragma vertex vert
 #pragma fragment frag
 #pragma multi_compile_fwdbase
+
+//#pragma optionNV(unroll all)
 
 #include "UnityCG.cginc"
 #include "AutoLight.cginc"
@@ -140,21 +142,51 @@ Shader "LemonSpawn/VolumetricClouds" {
 		return clamp(n - ss,0,1)*0.02;
 	}
 
-	inline float getNoise(float3 pos, in int N) {
+	uniform sampler3D _NoiseTex3D;
+
+
+
+	inline float getNoiseTexSloww(float3 pos, in int N) {
 		float3 p = (pos - v3Translate) / fInnerRadius;
-		float n = 0; 
+		float n = 0;
 		float ss = 0.5;
 		float ms = 10;// +noise(p*3.123) * 10;
+		float3 shift = float3(0.123, 2.314, 0.6243);
+		float A = 0;
+
+		for (int i = 1; i < N; i++) {
+			float f = pow(2, i)*1.0293;
+			//	n += noise(p*f*ms + shift*f) / (2.0 * i);
+			n += tex3D(_NoiseTex3D, 0.2*p*f*ms + shift*f).a / (2.0 * i);
+			A += 1.0 / (2 * i);
+			//			if (n < 0)
+			//			return 0;
+		}
+		//		n /= A;
+
+		return clamp(n - ss*A, 0, 1)*0.75;
+
+	}
+
+	inline float getNoise(float3 pos, in int N) {
+
+		float3 p = (pos - v3Translate) / fInnerRadius;
+		float n = 0;// noise(p*3.123) * 0.2 - 0.2;;
+		float ss = 0.5;
+		float ms = 10;// 
 		float3 shift= float3(0.123, 2.314, 0.6243);
 		float A = 0;
+	
 		for (int i = 1; i < N; i++) {
 			float f = pow(2, i)*1.0293;
 			n += noise(p*f*ms + shift*f) / (2.0 * i);
+		//	n += tex3D(_NoiseTex3D, p*f*ms + shift*f).a;
 			A += 1.0 / (2 * i);
 //			if (n < 0)
 	//			return 0;
 		}
 //		n /= A;
+		
 		return clamp(n - ss*A, 0, 1)*0.75;
 	}
 
@@ -255,8 +287,9 @@ Shader "LemonSpawn/VolumetricClouds" {
 		float3 dir = normalize(direction);
 		float intensity = startIntensity;
 		float sl = stepLength;
-		int N = length(start - end) / stepLength;
+		int N = clamp(length(start - end) / stepLength,0,1000);
 		int LOD = 7;
+	//	[unroll]
 		for (int i=0;i<N;i++)
 			{
 //				LOD = (int)clamp(100000.0/length(camera -pos),2,8) ;
@@ -321,6 +354,8 @@ Shader "LemonSpawn/VolumetricClouds" {
 	float2 uv = IN.texcoord.xy;
 
 
+//	return tex3D(_NoiseTex3D, float3(uv,0.3)) ;
+
 
 	float3 lightDirection = normalize(v3LightPos);
 //		normalize(_WorldSpaceLightPos0.xyz);
@@ -383,12 +418,13 @@ Shader "LemonSpawn/VolumetricClouds" {
 
 //	return float4(depth, 0, 0, 1);
 	if (inside) {
-		if (depth < 0.9)
+		if (depth < 0.99)
 			discard;
 	}
 	
-	float3 skyColor = float3(1.0, 1.2, 1.4);
-//	float3 skyColor = float3(1.4, 1.2, 1.0);
+	//float3 skyColor = float3(1.0, 1.2, 1.4);
+	float3 skyColor = float3(1.0, 1.3, 1.6)*1;
+	//	float3 skyColor = float3(1.4, 1.2, 1.0);
 
 	if (outer || inner) {
 		float3 startPos = _WorldSpaceCameraPos + t0.x*viewDirection;
@@ -401,6 +437,7 @@ Shader "LemonSpawn/VolumetricClouds" {
 		float4 m = tex2D(_MainTex, IN.texcoord.xy);
 
 		c = rayCast(startPos, endPos, viewDirection, 10, lightDirection, h, inside,0, skyColor, _WorldSpaceCameraPos, light*0.75);
+//		c.a *= 0.75;
 //		c = float4(1, 1, 1,1)*getNoise(startPos)*50;
 	}
 //	c.rgb = 1*(groundColor(IN.c0, IN.c1, c.rgb*light, worldPos, 1000)) + c.rgb*0.1*light;

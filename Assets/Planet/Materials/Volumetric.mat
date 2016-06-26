@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: VolumetricClouds
-  m_Shader: {fileID: 4800000, guid: bed710d554fe71e4b81f30ac56704bf5, type: 3}
+  m_Name: Volumetric
+  m_Shader: {fileID: 4800000, guid: 47843a7a481f3ea40b1c2ee8a41d9219, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 10000
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -136,11 +136,3 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Height
-        second: {r: 0.0001, g: 0.00012, b: 0, a: 0}
-      data:
-        first:
-          name: _H
-        second: {r: 0.008, g: 0.012, b: 0, a: 0}
