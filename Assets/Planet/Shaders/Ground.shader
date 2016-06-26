@@ -387,15 +387,16 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									float3 ppos = normalize(i.posWorld.xyz - v3Translate);
 //									float modulatedHillyThreshold = atan2(ppos.z, ppos.y);
 									float posY = (clamp(2 * abs(asin(ppos.y) / 3.14159), 0, 1));
-									float modulatedTopThreshold = topThreshold*(1-posY);
+									float modulatedTopThreshold = topThreshold*(1-posY*1.1);
 									float modulatedHillyThreshold = hillyThreshold;// clamp(hillyThreshold - 1 * posY, 0, 1);
 
 
-									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, modulatedTopThreshold, h);
 									hColor = mixHeight(hColor, basinColor*getTex(_Basin, i.tex.xy), 500, basinThreshold	, h);
-									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, modulatedHillyThreshold, dd);
+								
 									hColor = mixHeight(hColor, basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
-//									hColor = mixHeight(topColor, hColor, 4000, topThreshold, h);
+									hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, modulatedTopThreshold, h);
+									hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, modulatedHillyThreshold, dd);
+									//									hColor = mixHeight(topColor, hColor, 4000, topThreshold, h);
 
 
 

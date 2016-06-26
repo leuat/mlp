@@ -29,6 +29,8 @@ namespace LemonSpawn {
         public Color seaColor;
         public Color topColor;
         public string[] atmosphere;
+        public string cloudType = "";
+        public Color cloudColor;
         public string clouds;
         public float atmosphereDensity = 1;
         public float sealevel;
@@ -419,13 +421,18 @@ namespace LemonSpawn {
   //  < outerRadiusScale > 1.025 </ outerRadiusScale >
 
   			atmosphereDensity = planetType.atmosphereDensity;
-            if (radius >= 1000) 
+            if (planetType.cloudType!="") 
 			{
 				clouds = (Texture2D)Resources.Load (Constants.Clouds[r.Next()%Constants.Clouds.Length]);
                 hasFlatClouds = true;
                 hasVolumetricClouds = false;
-                cloudSettings.Randomize(r);
-			}
+                if (planetType.cloudType=="terra")
+                    cloudSettings.RandomizeTerra(r);
+                if (planetType.cloudType == "gas")
+                    cloudSettings.RandomizeGas(r);
+                cloudColor.Set(planetType.cloudColor.r, planetType.cloudColor.g, planetType.cloudColor.b);
+
+            }
 			if (planetType.sealevel>0 ) {
 				sea = new Sea();
                 liquidThreshold = planetType.sealevel;

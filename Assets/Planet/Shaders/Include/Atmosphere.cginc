@@ -21,7 +21,9 @@ uniform float liquidThreshold, atmosphereDensity, topThreshold, basinThreshold;
 uniform float fade = 0.2;
 uniform float time;
 uniform float metallicity;
-
+#ifndef PI
+#define PI 3.14159265358979323846264338327
+#endif
 sampler2D _IQ;
 
 float scale(float fCos)
@@ -37,7 +39,8 @@ float getRayleighPhase(float fCos2)
 }
 
 float2 pos2uv(in float3 p) {
-	return float2(0.5 + atan2(p.z, p.x) / (2 * 3.14159), 0.5 - asin(p.y)/3.1459);
+	//p = normalize(p);
+	return float2(0.5 + atan2(p.z, p.x) / (2.0 * PI), 0.5 - asin(p.y)/PI);
 }
 
 bool intersectSphere(in float4 sp, in float3 ro, inout float3 rd, in float tm, out float t1, out float t2)

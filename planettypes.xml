@@ -45,7 +45,15 @@
         <string>ATM_CYAN</string>
       </atmosphere>
       <clouds />
-      <atmosphereDensity>1</atmosphereDensity>
+        <cloudType>gas</cloudType>
+        <cloudColor>
+          <r>0.4</r>
+          <g>0.6</g>
+          <b>0.9</b>
+          <a>1</a>
+        </cloudColor>
+
+        <atmosphereDensity>1</atmosphereDensity>
       <sealevel>0</sealevel>
       <delegateString>Surface.InitializeFlat</delegateString>
       <minQuadLevel>1</minQuadLevel>
@@ -86,8 +94,8 @@
         <a>1</a>
       </basinColorVariation>
       <seaColor>
-        <r>0.3</r>
-        <g>0.4</g>
+        <r>0.4</r>
+        <g>0.7</g>
         <b>1</b>
         <a>1</a>
       </seaColor>
@@ -113,6 +121,14 @@
         <x>150</x>
         <y>400</y>
       </TemperatureRange>
+      <cloudType>terra</cloudType>
+      <cloudColor>
+        <r>0.6</r>
+        <g>0.7</g>
+        <b>0.8</b>
+        <a>1</a>
+      </cloudColor>
+
     </PlanetType>
 
     <PlanetType>
@@ -180,9 +196,9 @@
     <PlanetType>
       <Name>Moon</Name>
       <color>
-        <r>0.4</r>
-        <g>0.4</g>
-        <b>0.4</b>
+        <r>0.3</r>
+        <g>0.3</g>
+        <b>0.3</b>
         <a>1</a>
       </color>
       <colorVariation>
@@ -192,9 +208,9 @@
         <a>1</a>
       </colorVariation>
       <basinColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
+        <r>0.1</r>
+        <g>0.1</g>
+        <b>0.1</b>
         <a>1</a>
       </basinColor>
       <basinColorVariation>
@@ -238,6 +254,13 @@
     </PlanetType>
     <PlanetType>
       <Name>Mountain</Name>
+<!--      <topColor>
+        <r>0.9</r>
+        <g>0.9</g>
+        <b>0.9</b>
+        <a>1</a>
+      </topColor>
+-->
       <color>
         <r>0.9</r>
         <g>0.5</g>
@@ -301,21 +324,21 @@
         <a>1</a>
       </color>
       <colorVariation>
-        <r>0.1</r>
-        <g>0.1</g>
-        <b>0.3</b>
+        <r>0.0</r>
+        <g>0.0</g>
+        <b>0.2</b>
         <a>1</a>
       </colorVariation>
       <basinColor>
         <r>0.3</r>
         <g>0.3</g>
-        <b>0.3</b>
+        <b>0.35</b>
         <a>1</a>
       </basinColor>
       <basinColorVariation>
         <r>0.0</r>
         <g>0.0</g>
-        <b>0.2</b>
+        <b>0.1</b>
         <a>1</a>
       </basinColorVariation>
       <seaColor>
@@ -346,7 +369,15 @@
         <x>0</x>
         <y>250</y>
       </TemperatureRange>
-    </PlanetType>
+     <cloudType>terra</cloudType>
+     <cloudColor>
+       <r>0.6</r>
+       <g>0.7</g>
+       <b>0.8</b>
+       <a>1</a>
+     </cloudColor>
+
+   </PlanetType>
 
     <PlanetType>
       <Name>Hot gas giant</Name>
@@ -403,6 +434,14 @@
         <x>150</x>
         <y>1000</y>
       </TemperatureRange>
+      <cloudType>gas</cloudType>
+      <cloudColor>
+        <r>0.9</r>
+        <g>0.7</g>
+        <b>0.6</b>
+        <a>1</a>
+      </cloudColor>
+
     </PlanetType>
     <PlanetType>
       <Name>New</Name>
@@ -431,8 +470,8 @@
         <a>1</a>
       </basinColorVariation>
       <seaColor>
-        <r>0.3</r>
-        <g>0.4</g>
+        <r>0.5</r>
+        <g>0.7</g>
         <b>1</b>
         <a>1</a>
       </seaColor>

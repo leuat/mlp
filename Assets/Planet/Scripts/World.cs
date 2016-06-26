@@ -631,7 +631,7 @@ namespace LemonSpawn {
 				ctrlModifier = false;
 
             if (Input.GetKeyUp(KeyCode.V))
-                SolarSystem.planet.pSettings.cloudSettings.Randomize(new System.Random());
+                SolarSystem.planet.pSettings.cloudSettings.RandomizeGas(new System.Random());
 
 
             if (modifier) // && ctrlModifier)

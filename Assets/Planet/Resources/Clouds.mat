@@ -36,6 +36,13 @@ Material:
           m_Texture: {fileID: 2800000, guid: 268b2a662d73f88489f77b890a68f679, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CloudTex2
+        second:
+          m_Texture: {fileID: 2800000, guid: 8774cd9cc118a8a489fa30dca0577d46, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats: {}
     m_Colors:
       data:

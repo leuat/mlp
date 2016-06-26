@@ -29,7 +29,7 @@ public class Atmosphere
 	public static float sunScale = 1;				
 	protected Quaternion rot = Quaternion.identity;
 	protected Texture2D noiseTexture = null;
-	protected void InitializeSkyMesh(float radius) {
+	protected void InitializeSkyMeshSphere(float radius) {
 		m_sky = new GameObject("Atmosphere");
 		m_skySphere = new GameObject("Atmosphere Sky");
 		m_sky.transform.parent = planetSettings.gameObject.transform;
@@ -41,10 +41,34 @@ public class Atmosphere
 			m_skySphere.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		m_skySphere.GetComponent<MeshRenderer>().receiveShadows = false;
 		MeshFilter mf = m_skySphere.AddComponent<MeshFilter>();
-		mf.mesh = m_skyMesh;
+
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+
+            mf.mesh = go.GetComponent<MeshFilter>().mesh;
+            GameObject.DestroyImmediate(go);
+            m_skySphere.transform.localScale = Vector3.one * 2;
 		
-	}		
-	public Atmosphere() {
+	}
+
+        protected void InitializeSkyMesh(float radius)
+        {
+            m_sky = new GameObject("Atmosphere");
+            m_skySphere = new GameObject("Atmosphere Sky");
+            m_sky.transform.parent = planetSettings.gameObject.transform;
+            m_skySphere.transform.parent = m_sky.transform;
+            m_sky.transform.localPosition = Vector3.zero;
+
+            m_sky.transform.localScale = new Vector3(radius, radius, radius);
+            m_skySphere.AddComponent<MeshRenderer>().material = m_skyMaterial;
+            m_skySphere.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            m_skySphere.GetComponent<MeshRenderer>().receiveShadows = false;
+            MeshFilter mf = m_skySphere.AddComponent<MeshFilter>();
+            mf.mesh = m_skyMesh;
+
+        }
+
+        public Atmosphere() {
 	}
 
         public void initGroundMaterial(bool bump)

@@ -14,13 +14,14 @@ namespace LemonSpawn {
 	public float LS_CloudTimeScale = 5;
 	public float LS_CloudScale = 0.11f;
 	public float LS_CloudScattering = 1f;
-	public float LS_CloudIntensity = 4;
+	public float LS_CloudIntensity = 2;
 	public float LS_CloudSharpness = 1f;
 	public float LS_CloudThickness = 0.6f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;
         public float LS_LargeVortex = 0.1f;
         public float LS_SmallVortex = 0.02f;
+        public Vector3 LS_Stretch = new Vector3(1, 1, 1);
 
 
 
@@ -33,12 +34,12 @@ namespace LemonSpawn {
 	public GameObject m_sun;
 
 
-    public void Randomize(System.Random r)
+    public void RandomizeTerra(System.Random r)
         {
-            LS_CloudScale = 0.05f + (float)r.NextDouble() * 0.15f;
-            LS_CloudSharpness = 0.2f + (float)r.NextDouble() * 1.4f;
-            LS_CloudScattering = 0.6f + (float)r.NextDouble() * 0.4f;
-            //LS_LargeVortex = Random.value * 0.1f;
+            LS_CloudScale = 0.05f + (float)r.NextDouble() * 0.55f;
+//            LS_CloudSharpness = 0.2f + (float)r.NextDouble() * 1.4f;
+            LS_CloudScattering = 0.7f + (float)r.NextDouble() * 0.4f;
+            LS_LargeVortex = (float)r.NextDouble() * 0.1f;
             //LS_SmallVortex = Random.value * 0.03f;
         }
 
@@ -46,8 +47,24 @@ namespace LemonSpawn {
 		cTexture.RenderCloud();
 		LSCloudTexture = cTexture.ToTexture(new Color(1f,0.9f, 0.7f,1)*0.4f);
 			
-	}	
-	public void GenerateSeamless() {
+	}
+
+        public void RandomizeGas(System.Random r)
+        {
+            LS_CloudScattering = (float)(5 + r.NextDouble() * 6f);
+            LS_CloudIntensity = 1;
+
+
+            LS_CloudScale = 0.1f + (float)r.NextDouble() * 0.65f;
+            LS_CloudSharpness = 0.45f + (float)r.NextDouble() * 0.1f;
+            LS_LargeVortex = (float)r.NextDouble() * 0.5f;
+            LS_Stretch.x = 0.1f + (float)r.NextDouble() * 0.3f;
+            //LS_SmallVortex = Random.value * 0.03f;
+
+        }
+
+
+        public void GenerateSeamless() {
 			C2DMap m1 = new C2DMap();
 			m1.calculatePerlin(0.06f, 2.5f, 10, 0.75f, 0 , 0.03f, 3, Vector2.one, true);
 //			m1.Inv (0.1f);
@@ -91,6 +108,7 @@ namespace LemonSpawn {
 		material.SetFloat("ls_distScale", LS_DistScale);
             material.SetFloat("LS_LargeVortex", LS_LargeVortex);
             material.SetFloat("LS_SmallVortex", LS_SmallVortex);
+            material.SetVector("stretch", LS_Stretch);
 
 
             //		material.SetVector("lightDir", rot*m_sun.transform.forward*-1.0f*-1);
