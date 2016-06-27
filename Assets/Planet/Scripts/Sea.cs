@@ -48,7 +48,7 @@ namespace LemonSpawn {
 			psOcean.planetType = PlanetSettings.planetTypes.getPlanetType("Cold gas giant");
             psOcean.hasSea = false;
             psOcean.Initialize();
-            psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; ;
+            psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; 
             psOcean.atmosphere.m_groundMaterial = m_groundMaterial;
             psOcean.properties.terrainObject = m_go;
             psOcean.castShadows = false;
@@ -65,6 +65,8 @@ namespace LemonSpawn {
             
             m_groundMaterial.SetVector("waterColor", planetSettings.m_waterColor);
             m_groundMaterial.SetFloat("_Metallic", 0);
+
+            planetSettings.cloudSettings.addMaterial(m_groundMaterial);
 
             //m_sky = m_go; 
 

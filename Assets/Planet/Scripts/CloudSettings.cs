@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 namespace LemonSpawn {
 
@@ -19,6 +20,9 @@ namespace LemonSpawn {
 	public float LS_CloudThickness = 0.6f;
 	public float LS_ShadowScale = 0.75f;
 	public float LS_DistScale = 10.0f;
+	public float cloudRadius;
+	public int LS_HasCloudShadows = 0;
+	public float LS_CloudShadowStrength = 0.25f;
         public float LS_LargeVortex = 0.1f;
         public float LS_SmallVortex = 0.02f;
         public Vector3 LS_Stretch = new Vector3(1, 1, 1);
@@ -26,12 +30,13 @@ namespace LemonSpawn {
 
 
         public Vector3 LS_CloudColor = Vector3.zero;
-	public Texture2D cloudTexture;
-	public Texture2D LSCloudTexture;
+	private static Texture2D CloudTexture1, CloudTexture2;
 	public Quaternion rot = Quaternion.identity;
 	public Material material;		
 	public CloudTexture cTexture = new CloudTexture();
 	public GameObject m_sun;
+
+	private List<Material> additionalMaterials = new List<Material>();
 
 
     public void RandomizeTerra(System.Random r)
@@ -44,8 +49,8 @@ namespace LemonSpawn {
         }
 
         public void GenerateTexture() {
-		cTexture.RenderCloud();
-		LSCloudTexture = cTexture.ToTexture(new Color(1f,0.9f, 0.7f,1)*0.4f);
+			cTexture.RenderCloud();
+			CloudTexture1 = cTexture.ToTexture(new Color(1f,0.9f, 0.7f,1)*0.4f);
 			
 	}
 
@@ -81,7 +86,12 @@ namespace LemonSpawn {
 		m_sun = sun;
             material = org;
             LS_CloudColor = cc;
-		//material.SetTexture("_CloudTex", (Texture)Resources.Load ("cloudsTexture2"));
+
+         if (CloudTexture1==null) {
+			CloudTexture1 = (Texture2D)Resources.Load ("Textures/seamless_clouds");
+			CloudTexture2 = (Texture2D)Resources.Load ("Textures/seamless_clouds_blur");
+
+         }
 			
 //		GenerateSeamless();
 		//	material.SetTexture("_CloudTex", LSCloudTexture);
@@ -90,28 +100,44 @@ namespace LemonSpawn {
 	void Start() {
 			
 	}
-	
+
+	public void addMaterial(Material mat) {
+		additionalMaterials.Add(mat);
+	}
+
+	public void setMaterial(Material mat) {
+		mat.SetFloat("ls_time", 2*Time.time*LS_CloudTimeScale*0.25f);
+		mat.SetFloat("ls_cloudscale", LS_CloudScale);
+		mat.SetFloat("ls_cloudscattering", LS_CloudScattering);
+		mat.SetFloat("ls_cloudintensity", LS_CloudIntensity);
+		mat.SetFloat("ls_cloudsharpness", LS_CloudSharpness);
+		mat.SetFloat("ls_shadowscale", LS_ShadowScale);
+		mat.SetFloat("ls_cloudthickness", LS_CloudThickness);
+		mat.SetVector("ls_cloudcolor", LS_CloudColor);
+		mat.SetFloat("ls_distScale", LS_DistScale);
+        mat.SetFloat("LS_LargeVortex", LS_LargeVortex);
+        mat.SetFloat("LS_SmallVortex", LS_SmallVortex);
+        mat.SetVector("stretch", LS_Stretch);
+        mat.SetFloat("ls_cloudShadowStrength",LS_CloudShadowStrength);
+		mat.SetInt("hasCloudShadows",LS_HasCloudShadows);
+        mat.SetTexture("_CloudTex", CloudTexture1);
+		mat.SetTexture("_CloudTex2", CloudTexture2);
+
+		mat.SetFloat("cloudRadius", cloudRadius);
+
+	}
+
+
 	public void Update () {
 	
 		if (material==null)
 			return;
+
+		setMaterial(material);
+		foreach (Material m in additionalMaterials) {
+			setMaterial(m);
+			}
 			
-		//LS_CloudColor.Set (1.0f,0.9f,0.8f);	
-		material.SetFloat("ls_time", 2*Time.time*LS_CloudTimeScale*0.25f);
-		material.SetFloat("ls_cloudscale", LS_CloudScale);
-		material.SetFloat("ls_cloudscattering", LS_CloudScattering);
-		material.SetFloat("ls_cloudintensity", LS_CloudIntensity);
-		material.SetFloat("ls_cloudsharpness", LS_CloudSharpness);
-		material.SetFloat("ls_shadowscale", LS_ShadowScale);
-		material.SetFloat("ls_cloudthickness", LS_CloudThickness);
-		material.SetVector("ls_cloudcolor", LS_CloudColor);
-		material.SetFloat("ls_distScale", LS_DistScale);
-            material.SetFloat("LS_LargeVortex", LS_LargeVortex);
-            material.SetFloat("LS_SmallVortex", LS_SmallVortex);
-            material.SetVector("stretch", LS_Stretch);
-
-
-            //		material.SetVector("lightDir", rot*m_sun.transform.forward*-1.0f*-1);
         }
     }
 

@@ -35,74 +35,12 @@
 #include "Include/Utility.cginc"
 #include "Include/Atmosphere.cginc"
 
-        sampler2D _MainTex, _CloudTex,_CloudTex2;
-		float ls_time;
-		float ls_cloudscale;
-		float ls_cloudscattering;
-		float ls_cloudintensity;
-		float ls_cloudsharpness;
-		float ls_shadowscale;
-		float ls_distScale;
-		float ls_cloudthickness;
-		float3 ls_cloudcolor;
-		float LS_LargeVortex;
-		float LS_SmallVortex;
-		uniform float3 stretch;
+        sampler2D _MainTex;
 
 
 			uniform float cloudHeight;
 			uniform float3 lightDir;
 			
-		float getCloud(float2 uv, float scale, float disp) {
-					float y = 0.0f;
-					// Perlin octaves
-					int NN = 7;
-//					scale = scale*(1 + LS_LargeVortex*tex2D(_CloudTex, uv*0.0441)).x;
-					float useScale = scale*(1 + pow(LS_LargeVortex*tex2D(_CloudTex2, uv*0.423421).x,0.5));
-					//scale = scale*(1 + LS_SmallVortex*tex2D(_CloudTex, uv*3.234)).x;
-					//useScale = scale;
-					float amp = 0;
-					for(int i=0;i < NN; i++) {
-						float k = useScale*pow(2,i)  + 0.11934;
-						float a = 1.0 / pow(i + 1, 2);
-						y+= a*tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
-						//y+= tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
-						amp += a;
-						if (i >= 2)
-							useScale = scale;
-					}
-					// Normalize
-				
-					y /= amp;
-	//				return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 1,0,20);
-					return clamp(pow(ls_cloudscattering * y*5, ls_cloudsharpness) - 1, 0, 20);
-
-				}
-			
-	 	// returns cloud value, outputs normal to N. 
-	 	
-		float getNormal(float2 uv, float scale, float dst, out float3 n, float nscale, float disp) {
-					float height = getCloud(uv, scale, disp);
-					int N =4;
-					for (int i=0;i<N;i++) {
-					
-						float2 du1 = float2(dst*cos((i)*2*3.14159 / (N)), dst*sin(i*2*3.14159/(N)));
-						float2 du2 = float2(dst*cos((i+1)*2*3.14159 / (N)), dst*sin((i+1)*2*3.14159/(N)));
-						
-						float hx = getCloud(uv + du1, scale, disp);
-						float hy = getCloud(uv + du2, scale, disp);
-					
-						float3 d2 = float3(0,height*nscale,0) - float3(du1.x,hx*nscale,du1.y);
-						float3 d1 = float3(0,height*nscale,0) - float3(du2.x,hy*nscale,du2.y);
-					
-						n = n + normalize(cross(d1,d2));
-					}
-					n = normalize(n);
-					return height;
-//					return clamp(height-0.0,0,100);
-					
-		}
-				
 				
              struct v2f
              {
@@ -111,10 +49,6 @@
                  float3 normal : TEXCOORD1;
                  float4 uv : TEXCOORD2;
                  float3 worldPosition : TEXCOORD3;
-//                 float3 t0 : TEXCOORD4;
-//    			float3 c0 : COLOR0;
-//    			float3 c1 : COLOR1;
-
  
                  LIGHTING_COORDS(4,5)
              };
@@ -141,31 +75,22 @@
                  return o;
              }
              			// Calculates the Mie phase function
-	
+
+             				
              
 		fixed4 frag(v2f IN) : COLOR {
 			float3 worldSpacePosition = IN.worldPosition;
 			float3 N = float3(0,0,0);
-//			float3 lightDir = _WorldSpaceLightPos0;			
 			float3 viewDirection = normalize(_WorldSpaceCameraPos - worldSpacePosition);
-//			float dist = clamp(1.0/pow(length(0.5 + 0.0001*ls_distScale*(_WorldSpaceCameraPos - worldSpacePosition)),1.0),0,1);
 			float dist = 1;
- 			//float2 newPos = worldSpacePosition.xz*0.00005;
-			float2 newPos = pos2uv(worldSpacePosition.xyz) * 11.91234*stretch;
+			float2 newPos = getCloudUVPos(worldSpacePosition.xyz);
 
-			//return tex2D(_CloudTex, newPos);
 
-			//newPos += pos2uv(worldSpacePosition.yxz) *11.91234;
-			//	float2 newPos = IN.texcoord.xy *10;
-			//newPos.x = atan2(worldSpacePosition.y, worldSpacePosition.x);
- 			//newPos.y = acos(normalize(worldSpacePosition).z);		
- 	//		newPos = 0;
-
-			float x = getNormal(newPos, 25.73252*ls_cloudscale*0.03791, 0.005*ls_shadowscale, N, 0.05*ls_shadowscale, worldSpacePosition.y/1381.1234f + ls_time*0.0002);//getCloud(IN.uv, 1.729134);
+			float x = getNormal(newPos, ls_cloudscale, 0.005*ls_shadowscale, N, 0.05*ls_shadowscale, worldSpacePosition.y/1381.1234f + ls_time*0.0002);//getCloud(IN.uv, 1.729134);
 			float3 albedoColor = x*ls_cloudcolor;
 			float3 norm= normalize(worldSpacePosition);
 			N = normalize(N + norm);
-			float globalLight = saturate(dot(norm, lightDir));
+			float globalLight = clamp(dot(norm, lightDir)+0.25,0,1);
 			//if (IN.normal.y<0) discard;
 			float spec = pow(max(0.0, dot(
                   reflect(-lightDir, N), 
@@ -183,16 +108,11 @@
 			float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
 			float fCameraHeight = length(v3CameraPos);					// The camera's current height
 			
-			/*t = 0.5;
-			c.rgb=  (t*albedoColor + (1-t)*m.rgb*ls_cloudcolor)*NL*globalLight;
-			c.a = 0.9*clamp(5*ls_cloudthickness*pow(t*x + (1-t)*m.r,2)*dist,0,1);
-*/
-
-//			c.rgb = albedoColor * m.rgb * NL*globalLight;
 			c.rgb = albedoColor;
-			c.a = clamp(ls_cloudthickness*pow(clamp(c.r,0,1), 2), 0, 1);
-
+			c.a = getCloudIntensity(x);
 			c.rgb *= NL*globalLight;
+
+//						c.rgb = c.a*float3(1,1,1);
 
 			return c;
              }

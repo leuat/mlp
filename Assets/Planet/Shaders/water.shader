@@ -68,6 +68,7 @@ Shader "LemonSpawn/Water" {
 			float3 T: TEXCOORD7;
 			float3 B: TEXCOORD8;
 			LIGHTING_COORDS(1, 2)
+			float3 vvertex: TEXCOORD9;
 		};
 
 
@@ -95,6 +96,7 @@ Shader "LemonSpawn/Water" {
 								//	o.uv = v.texcoord;
 									o.texcoord = v.texcoord;
 									o.worldPosition = mul(modelMatrix, v.vertex);
+									o.vvertex = v.vertex;
 
 									getGroundAtmosphere(v.vertex, o.c0, o.c1);
 
@@ -213,11 +215,14 @@ Shader "LemonSpawn/Water" {
 
 //													atmosphereDensity = 1;
 //													return  float4(1.4*(2 * IN.c0 + 0.2*IN.c1) ,1);
-													c.rgb = groundColor(IN.c0, IN.c1, wc*light*attenuation, IN.worldPosition,1);
+													float clShadow= getGroundShadowFromClouds(normalize(IN.vvertex));
+
+													c.rgb = groundColor(IN.c0, IN.c1, wc*light*attenuation, IN.worldPosition,1)*clShadow;
 //													return  float4(wc*atmosphereDensity, 1);
 //													c.rgb = IN.B;
 												//	c.rgb = atmColor(IN.c0, IN.c1);
 													//c.rgb = waterColor;
+
 
 
 													return float4(c.rgb

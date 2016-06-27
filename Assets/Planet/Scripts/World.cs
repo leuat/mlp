@@ -146,6 +146,9 @@ namespace LemonSpawn {
         }
     }
 #endif
+
+
+
     public class World : MonoBehaviour {
 		
 		
@@ -260,6 +263,9 @@ namespace LemonSpawn {
         }
 
 
+        public virtual void OnGUI() {
+			GUI.Label(new Rect(0, 0, 100, 100), ""+(int)(1.0f / Time.smoothDeltaTime)); 
+        }
 
 
 
@@ -358,6 +364,8 @@ namespace LemonSpawn {
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
+			PlanetSettings.InitializePlanetTypes();
+
 			solarSystem.LoadWorld(xml, false, false, this, randomizeSeeds);
 			szWorld.IterateCamera();
 			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
@@ -630,8 +638,10 @@ namespace LemonSpawn {
 			if (Input.GetKeyUp (KeyCode.LeftControl)) 
 				ctrlModifier = false;
 
-            if (Input.GetKeyUp(KeyCode.V))
+            if (Input.GetKeyUp(KeyCode.B))
                 SolarSystem.planet.pSettings.cloudSettings.RandomizeGas(new System.Random());
+			if (Input.GetKeyUp(KeyCode.N))
+                SolarSystem.planet.pSettings.cloudSettings.RandomizeTerra(new System.Random());
 
 
             if (modifier) // && ctrlModifier)

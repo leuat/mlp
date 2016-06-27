@@ -110,54 +110,9 @@ struct VertexOutputForwardBase2
 #if UNITY_SPECCUBE_BOX_PROJECTION
 	float3 posWorld					: TEXCOORD11;
 	#endif
+	float3 posWorld2 				: TEXCOORD12;
 };
 
-
-VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
-{
-	VertexOutputForwardBase o;
-	UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase, o);
-
-	float4 posWorld = mul(_Object2World, v.vertex);
-	#if UNITY_SPECCUBE_BOX_PROJECTION
-		o.posWorld = posWorld.xyz;
-	#endif
-	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
-	o.tex = TexCoords(v);
-	o.eyeVec = NormalizePerVertexNormal(posWorld.xyz - _WorldSpaceCameraPos);
-	float3 normalWorld = UnityObjectToWorldNormal(v.normal);
-	#ifdef _TANGENT_TO_WORLD
-		float4 tangentWorld = float4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
-
-		float3x3 tangentToWorld = CreateTangentToWorldPerVertex(normalWorld, tangentWorld.xyz, tangentWorld.w);
-		o.tangentToWorldAndParallax[0].xyz = tangentToWorld[0];
-		o.tangentToWorldAndParallax[1].xyz = tangentToWorld[1];
-		o.tangentToWorldAndParallax[2].xyz = tangentToWorld[2];
-	#else
-		o.tangentToWorldAndParallax[0].xyz = 0;
-		o.tangentToWorldAndParallax[1].xyz = 0;
-		o.tangentToWorldAndParallax[2].xyz = normalWorld;
-	#endif
-		//We need this for shadow receving
-		TRANSFER_SHADOW(o);
-
-		o.ambientOrLightmapUV = VertexGIForward(v, posWorld, normalWorld);
-
-		#ifdef _PARALLAXMAP
-			TANGENT_SPACE_ROTATION;
-			half3 viewDirForParallax = mul(rotation, ObjSpaceViewDir(v.vertex));
-			o.tangentToWorldAndParallax[0].w = viewDirForParallax.x;
-			o.tangentToWorldAndParallax[1].w = viewDirForParallax.y;
-			o.tangentToWorldAndParallax[2].w = viewDirForParallax.z;
-		#endif
-
-		#if UNITY_OPTIMIZE_TEXCUBELOD
-			o.reflUVW = reflect(o.eyeVec, normalWorld);
-		#endif
-
-		UNITY_TRANSFER_FOG(o,o.pos);
-		return o;
-	}
 
 
 	float calculateWave(float2 pos, float t) {
@@ -229,6 +184,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 			#if UNITY_SPECCUBE_BOX_PROJECTION
 				o.posWorld = posWorld.xyz;
 			#endif
+			o.posWorld2 = v.vertex;
 
 			float wh = (length(o.posWorld.xyz - v3Translate) - fInnerRadius);
 
@@ -365,9 +321,9 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 								s.posWorld, occlusion, i.ambientOrLightmapUV, atten, s.oneMinusRoughness, s.normalWorld, s.eyeVec, mainLight);
 
 
-							float dd = dot(normalize(i.posWorld.xyz - v3Translate), normalize(s.normalWorld * 1 + i.n1 * 0));
+							float dd = dot(normalize(i.posWorld2.xyz), normalize(s.normalWorld * 1 + i.n1 * 0));
 
-							float tt = clamp(noise(normalize(i.posWorld.xyz - v3Translate)*3.1032)+0.2,0,1);
+							float tt = clamp(noise(normalize(i.posWorld2.xyz)*3.1032)+0.2,0,1);
 							float3 mColor = ((1 - tt)*middleColor + middleColor2*tt);
 							//	float3 bColor = ((1-tt)*basinColor + basinColor2*tt*r_noise(normalize(i.vpos.xyz),2.1032,3));
 
@@ -384,7 +340,7 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 									float wh = (length(i.posWorld.xyz - v3Translate) - fInnerRadius);
 
 //									float modulatedHillyThreshold = hillyThreshold* atan2(i.posWorld.z , i.posWorld.y);
-									float3 ppos = normalize(i.posWorld.xyz - v3Translate);
+									float3 ppos = normalize(i.posWorld2.xyz);
 //									float modulatedHillyThreshold = atan2(ppos.z, ppos.y);
 									float posY = (clamp(2 * abs(asin(ppos.y) / 3.14159), 0, 1));
 									float modulatedTopThreshold = topThreshold*(1-posY*1.1);
@@ -419,10 +375,15 @@ VertexOutputForwardBase vertForwardBaseORG(VertexInput v)
 
 												c.rgb += UNITY_BRDF_GI(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, occlusion, gi);
 												c.rgb += Emission(i.tex.xy);
-												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0);
+
+												float groundClouds = getGroundShadowFromClouds(ppos);
+
+												
+												c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0)*groundClouds;
 
 	//											c.rgb = modulatedHillyThreshold;
-
+//												c.rgb = float3(1,0,0)*modd;
+												//return float4(ppos.xyz,1);
 												return OutputForward(c, s.alpha);
 											}
 											ENDCG

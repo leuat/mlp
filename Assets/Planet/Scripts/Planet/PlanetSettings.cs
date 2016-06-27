@@ -339,8 +339,8 @@ namespace LemonSpawn {
 
 
 		public static void InitializePlanetTypes() {
-			if (planetTypes != null)
-				return;
+		//	if (planetTypes != null)
+		//		return;
 
 
 			if (!File.Exists(RenderSettings.planetTypesFilename)) {

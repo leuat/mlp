@@ -71,7 +71,7 @@
       <Name>Terra</Name>
       <color>
         <r>0.3</r>
-        <g>0.5</g>
+        <g>0.7</g>
         <b>0.2</b>
         <a>1</a>
       </color>
@@ -83,7 +83,7 @@
       </colorVariation>
       <basinColor>
         <r>0.4</r>
-        <g>0.4</g>
+        <g>0.6</g>
         <b>0.1</b>
         <a>1</a>
       </basinColor>
@@ -176,6 +176,7 @@
         <string>ATM_NORMAL</string>
       </atmosphere>
       <clouds />
+
       <atmosphereDensity>0.6</atmosphereDensity>
       <sealevel>0</sealevel>
       <delegateString>Surface.InitializeDesolate</delegateString>

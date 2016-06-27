@@ -21,6 +21,8 @@ uniform float liquidThreshold, atmosphereDensity, topThreshold, basinThreshold;
 uniform float fade = 0.2;
 uniform float time;
 uniform float metallicity;
+uniform float cloudRadius;
+
 #ifndef PI
 #define PI 3.14159265358979323846264338327
 #endif
@@ -42,6 +44,7 @@ float2 pos2uv(in float3 p) {
 	//p = normalize(p);
 	return float2(0.5 + atan2(p.z, p.x) / (2.0 * PI), 0.5 - asin(p.y)/PI);
 }
+
 
 bool intersectSphere(in float4 sp, in float3 ro, inout float3 rd, in float tm, out float t1, out float t2)
 {
@@ -401,3 +404,110 @@ float4 getSkyColor(float3 c0, float3 c1, float3 t) {
 	float a = pow(col.b, 2);
 	return float4(col, a);
 }
+
+// Cloud stuff 
+
+uniform sampler2D _CloudTex;
+uniform sampler2D _CloudTex2;
+		float ls_time;
+		float ls_cloudscale;
+		float ls_cloudscattering;
+		float ls_cloudintensity;
+		float ls_cloudsharpness;
+		float ls_shadowscale;
+		float ls_distScale;
+		float ls_cloudthickness;
+		float3 ls_cloudcolor;
+		float LS_LargeVortex;
+		float LS_SmallVortex;
+		float ls_cloudShadowStrength;
+		int hasCloudShadows = 0;
+		uniform float3 stretch;
+
+
+
+		float2 getCloudUVPos(float3 p) {
+			float3 np = normalize(p);
+			return pos2uv(np)*11.342*stretch;
+		}
+
+		float getCloud(float2 uv, float scale, float disp) {
+					float y = 0.0f;
+					// Perlin octaves
+					int NN = 7;
+//					scale = scale*(1 + LS_LargeVortex*tex2D(_CloudTex, uv*0.0441)).x;
+					float useScale = scale*(1 + pow(LS_LargeVortex*tex2D(_CloudTex2, uv*0.423421).x,0.5));
+					//scale = scale*(1 + LS_SmallVortex*tex2D(_CloudTex, uv*3.234)).x;
+					//useScale = scale;
+					float amp = 0;
+					for(int i=0;i < NN; i++) {
+						float k = useScale*pow(2,i)  + 0.11934;
+						float a = 1.0 / pow(i + 1, 2);
+						y+= a*tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
+						//y+= tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
+						amp += a;
+						if (i >= 2)
+							useScale = scale;
+					}
+					// Normalize
+				
+					y /= amp;
+	//				return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 1,0,20);
+					return clamp(pow(ls_cloudscattering * y*5, ls_cloudsharpness) - 1.0, 0, 20);
+
+				}
+			
+	 	// returns cloud value, outputs normal to N. 
+
+	 	float getCloudIntensity(float c) {
+			return clamp(ls_cloudthickness*pow(clamp(c*0.6,0,1), 1), 0, 1);
+	 	}
+
+	 	float getGroundShadowFromClouds(float3 ppos) {
+	 		if (hasCloudShadows==0)
+	 			return 1;
+	 		float2 isp = 0;
+			float3 lDir = normalize(v3LightPos);
+			if (!intersectSphere(float4(float3(0,0,0), cloudRadius), ppos*fInnerRadius , lDir, 250000, isp.x, isp.y)) {
+			}
+			float modd = 1;
+
+			if (isp.y>isp.x) {
+			float3 iPos = normalize(ppos*fInnerRadius+ isp.y*lDir);
+			float2 cloudUV = getCloudUVPos(iPos);
+
+					
+			float cloudVal = getCloud(cloudUV, ls_cloudscale,0);
+			cloudVal = getCloudIntensity(cloudVal);
+
+			modd = clamp(1-cloudVal*ls_cloudShadowStrength,0,1);
+		}
+												//modd = 1;
+			return modd;
+
+
+	 	}
+
+
+		float getNormal(float2 uv, float scale, float dst, out float3 n, float nscale, float disp) {
+					float height = getCloud(uv, scale, disp);
+					int N =4;
+					for (int i=0;i<N;i++) {
+					
+						float2 du1 = float2(dst*cos((i)*2*3.14159 / (N)), dst*sin(i*2*3.14159/(N)));
+						float2 du2 = float2(dst*cos((i+1)*2*3.14159 / (N)), dst*sin((i+1)*2*3.14159/(N)));
+						
+						float hx = getCloud(uv + du1, scale, disp);
+						float hy = getCloud(uv + du2, scale, disp);
+					
+						float3 d2 = float3(0,height*nscale,0) - float3(du1.x,hx*nscale,du1.y);
+						float3 d1 = float3(0,height*nscale,0) - float3(du2.x,hy*nscale,du2.y);
+					
+						n = n + normalize(cross(d1,d2));
+					}
+					n = normalize(n);
+					return height;
+//					return clamp(height-0.0,0,100);
+					
+		}
+				
