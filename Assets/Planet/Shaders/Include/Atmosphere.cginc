@@ -421,6 +421,7 @@ uniform sampler2D _CloudTex2;
 		float LS_LargeVortex;
 		float LS_SmallVortex;
 		float ls_cloudShadowStrength;
+		float ls_cloudSubScale;
 		int hasCloudShadows = 0;
 		uniform float3 stretch;
 
@@ -434,26 +435,26 @@ uniform sampler2D _CloudTex2;
 		float getCloud(float2 uv, float scale, float disp) {
 					float y = 0.0f;
 					// Perlin octaves
-					int NN = 7;
+					int NN = 8;
 //					scale = scale*(1 + LS_LargeVortex*tex2D(_CloudTex, uv*0.0441)).x;
-					float useScale = scale*(1 + pow(LS_LargeVortex*tex2D(_CloudTex2, uv*0.423421).x,0.5));
+					float useScale = scale*(1 + pow(LS_LargeVortex*tex2D(_CloudTex2, uv*0.423421).x,0.25));
 					//scale = scale*(1 + LS_SmallVortex*tex2D(_CloudTex, uv*3.234)).x;
 					//useScale = scale;
 					float amp = 0;
 					for(int i=0;i < NN; i++) {
-						float k = useScale*pow(2,i)  + 0.11934;
+						float k = useScale*pow(2,i)*1.032394  + 0.11934;
 						float a = 1.0 / pow(i + 1, 2);
 						y+= a*tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
 						//y+= tex2D( _CloudTex, k*uv + float2(0.1234*i*ls_time*0.015 - 0.04234*i*i*ls_time*0.015 + 0.9123559 + 0.23411*k , 0.31342  + 0.5923*i*i + disp) ).x;
 						amp += a;
-						if (i >= 2)
-							useScale = scale;
+						//if (i >= 2)
+						//	useScale = scale;
 					}
 					// Normalize
 				
 					y /= amp;
 	//				return clamp( pow(ls_cloudscattering/y, ls_cloudsharpness) - 1,0,20);
-					return clamp(pow(ls_cloudscattering * y*5, ls_cloudsharpness) - 1.0, 0, 20);
+					return clamp(pow(ls_cloudscattering * y*5, ls_cloudsharpness) - 1.0*ls_cloudSubScale, 0, 20);
 
 				}
 			
@@ -479,7 +480,11 @@ uniform sampler2D _CloudTex2;
 					
 			float cloudVal = getCloud(cloudUV, ls_cloudscale,0);
 			cloudVal = getCloudIntensity(cloudVal);
-
+			if (cloudVal > 0.5)
+				cloudVal = 1;
+			else
+				cloudVal = 0;
+			
 			modd = clamp(1-cloudVal*ls_cloudShadowStrength,0,1);
 		}
 												//modd = 1;

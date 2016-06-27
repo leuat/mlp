@@ -22,6 +22,7 @@ namespace LemonSpawn {
 	public float LS_DistScale = 10.0f;
 	public float cloudRadius;
 	public int LS_HasCloudShadows = 0;
+        public float LS_CloudSubScale = 1;
 	public float LS_CloudShadowStrength = 0.25f;
         public float LS_LargeVortex = 0.1f;
         public float LS_SmallVortex = 0.02f;
@@ -119,6 +120,7 @@ namespace LemonSpawn {
         mat.SetFloat("LS_SmallVortex", LS_SmallVortex);
         mat.SetVector("stretch", LS_Stretch);
         mat.SetFloat("ls_cloudShadowStrength",LS_CloudShadowStrength);
+            mat.SetFloat("ls_cloudSubScale", LS_CloudSubScale);
 		mat.SetInt("hasCloudShadows",LS_HasCloudShadows);
         mat.SetTexture("_CloudTex", CloudTexture1);
 		mat.SetTexture("_CloudTex2", CloudTexture2);

@@ -96,7 +96,7 @@
                   reflect(-lightDir, N), 
                   viewDirection*-1)), 50);
 //             spec = 0;
-            float  NL = clamp(0.4*ls_cloudintensity*(1 + spec + 0.25*clamp((pow((dot(-N, lightDir)),1)), -0.5, 1)),-1,1);
+            float  NL = clamp(0.4*ls_cloudintensity*(1 + spec + 0.45*clamp((pow((dot(-N, lightDir)),1)), -0.5, 1)),-1,1);
 //			NL = 1;
 			float4 m = tex2D(_MainTex, IN.uv.xy);
 
