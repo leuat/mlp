@@ -135,7 +135,7 @@ public class Atmosphere
 			m_innerRadius = radius;
 
 			if (noiseTexture == null)
-			noiseTexture = (Texture2D)Resources.Load("NoiseTexture");
+				noiseTexture = (Texture2D)Resources.Load("NoiseTexture");
 
         }
 
@@ -209,7 +209,20 @@ public class Atmosphere
         }
 
         protected float iscale = 1;
-	
+
+
+        public void DebugLog() {
+        	Debug.Log("waveLength: " + planetSettings.m_atmosphereWavelengths);
+        	Debug.Log("LightPos:" + m_sun.transform.forward);
+        	Debug.Log("OuterRadius:"  + m_outerRadius);
+			Debug.Log("InnerRadius:"  + m_innerRadius);
+			Debug.Log("ScaleDepth:"  + m_scaleDepth);
+			Debug.Log("Exp:"  + planetSettings.m_hdrExposure );
+			Debug.Log("g:"  + m_g);
+			Debug.Log("Translate:"  + planetSettings.transform.position);
+			Debug.Log("atm density:"  + planetSettings.atmosphereDensity);
+        }
+
         public virtual void InitAtmosphereMaterial(Material mat)
         {
 

@@ -15,8 +15,9 @@ public class Clouds : Atmosphere {
 		m_sun = sun;
 		m_skyMesh = m;
 		m_cloudSettings = cs;
-		m_innerRadius = planetSettings.radius;
-		m_outerRadius = planetSettings.radius*planetSettings.outerRadiusScale;
+
+		InitializeParameters(planetSettings.radius);
+    
 
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
             		m_radius = planetSettings.radius*planetSettings.cloudRadius;
@@ -33,9 +34,18 @@ public class Clouds : Atmosphere {
         cs.cloudRadius = m_radius;
 
 
+
 //		m_sky.transform.Rotate(new Vector3(90,0,0));
 	}
-	
+
+	public override void Update() {
+		//DebugLog();
+		base.Update();
+
+	}
+
+
+
 		
 }
 

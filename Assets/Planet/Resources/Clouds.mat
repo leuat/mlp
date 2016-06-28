@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Clouds
-  m_Shader: {fileID: 4800000, guid: 30db2ce71462e41dc868c83855eeddd7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3a31a365dd3bb4ddb8789fa7225771bb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 4105
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2

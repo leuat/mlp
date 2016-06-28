@@ -124,9 +124,9 @@ public class VolumetricMain : MonoBehaviour {
             if (Camera.current == null)
                 return;
 
-           /* Camera.current.transform.RotateAround(Vector3.zero, Vector3.up, 0.2f);
+            Camera.current.transform.RotateAround(Vector3.zero, Vector3.up, 0.2f);
             float l = 5 + Mathf.Cos(Time.time) * 4;
-            Camera.current.transform.position = l * Camera.current.transform.position.normalized;*/
+            Camera.current.transform.position = l * Camera.current.transform.position.normalized;
 	}
 }
 

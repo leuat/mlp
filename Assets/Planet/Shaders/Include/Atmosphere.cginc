@@ -22,6 +22,7 @@ uniform float fade = 0.2;
 uniform float time;
 uniform float metallicity;
 uniform float cloudRadius;
+uniform float3 lightDir;
 
 #ifndef PI
 #define PI 3.14159265358979323846264338327
@@ -362,7 +363,7 @@ float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScal
 
 float iqhash(float n)
 {
-	return frac(sin(n)*43758.5453);
+	return frac(sin(n)*753.5453123);
 }
 
 float noise(float3 x)
@@ -372,11 +373,18 @@ float noise(float3 x)
 	float3 f = frac(x);
 
 	f = f*f*(3.0 - 2.0*f);
-	float n = p.x + p.y*57.0 + 113.0*p.z;
-	return lerp(lerp(lerp(iqhash(n + 0.0), iqhash(n + 1.0), f.x),
+	float n = p.x + p.y*157.0 + 113.0*p.z;
+/*	return lerp(lerp(lerp(iqhash(n + 0.0), iqhash(n + 1.0), f.x),
 		lerp(iqhash(n + 57.0), iqhash(n + 58.0), f.x), f.y),
 		lerp(lerp(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
-			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);
+			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);*/
+
+	    return lerp(lerp(lerp( iqhash(n+  0.0), iqhash(n+  1.0),f.x),
+                   lerp( iqhash(n+157.0), iqhash(n+158.0),f.x),f.y),
+               lerp(lerp( iqhash(n+113.0), iqhash(n+114.0),f.x),
+                   lerp( iqhash(n+270.0), iqhash(n+271.0),f.x),f.y),f.z);
+
+
 }
 
 float noiseIQ(in float3 x)
@@ -432,7 +440,30 @@ uniform sampler2D _CloudTex2;
 			return pos2uv(np)*11.342*stretch;
 		}
 
-		float getCloud(float2 uv, float scale, float disp) {
+inline float getIQClouds(float3 pos, in int N) {
+
+		float3 p = pos*stretch;
+		float n = 0;// noise(p*3.123) * 0.2 - 0.2;;
+		float ms = 5*ls_cloudscale;// 
+		float3 shift= float3(0.123, 2.314, 0.6243);
+		float A = 0;
+		float pp = ls_cloudscattering;
+		ms = ms * (1 + LS_LargeVortex*noise(pos*3.2354 + shift) );
+		ms = ms * (1 + LS_SmallVortex*noise(pos*29.2354 + shift) );
+		for (int i = 1; i <= N; i++) {
+			float f = pow(2, i)*1.0293;
+			float amp = (2 * pow(i,pp)); 
+			n += noise(p*f*ms + shift*f) / amp;
+			A += 1/amp;
+		}
+
+		float v = clamp(n - ls_cloudSubScale*A, 0, 1);
+
+		return  pow(v,1)*10.75;
+	}
+
+
+		float getCloudTextureOld(float2 uv, float scale, float disp) {
 					float y = 0.0f;
 					// Perlin octaves
 					int NN = 8;
@@ -475,16 +506,16 @@ uniform sampler2D _CloudTex2;
 
 			if (isp.y>isp.x) {
 			float3 iPos = normalize(ppos*fInnerRadius+ isp.y*lDir);
-			float2 cloudUV = getCloudUVPos(iPos);
+//			float2 cloudUV = getCloudUVPos(iPos);
 
 					
-			float cloudVal = getCloud(cloudUV, ls_cloudscale,0);
+			float cloudVal = getIQClouds(iPos, 5);
 			cloudVal = getCloudIntensity(cloudVal);
-			if (cloudVal > 0.5)
+/*			if (cloudVal > 0.5)
 				cloudVal = 1;
 			else
 				cloudVal = 0;
-			
+*/			
 			modd = clamp(1-cloudVal*ls_cloudShadowStrength,0,1);
 		}
 												//modd = 1;
@@ -495,15 +526,15 @@ uniform sampler2D _CloudTex2;
 
 
 		float getNormal(float2 uv, float scale, float dst, out float3 n, float nscale, float disp) {
-					float height = getCloud(uv, scale, disp);
+					float height = getCloudTextureOld(uv, scale, disp);
 					int N =4;
 					for (int i=0;i<N;i++) {
 					
 						float2 du1 = float2(dst*cos((i)*2*3.14159 / (N)), dst*sin(i*2*3.14159/(N)));
 						float2 du2 = float2(dst*cos((i+1)*2*3.14159 / (N)), dst*sin((i+1)*2*3.14159/(N)));
 						
-						float hx = getCloud(uv + du1, scale, disp);
-						float hy = getCloud(uv + du2, scale, disp);
+						float hx = getCloudTextureOld(uv + du1, scale, disp);
+						float hy = getCloudTextureOld(uv + du2, scale, disp);
 					
 						float3 d2 = float3(0,height*nscale,0) - float3(du1.x,hx*nscale,du1.y);
 						float3 d1 = float3(0,height*nscale,0) - float3(du2.x,hy*nscale,du2.y);
