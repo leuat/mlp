@@ -709,12 +709,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: 0.1
+  rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
   planetTypeIndex: 0
   castShadows: 1
-  hasSea: 1
+  hasSea: 0
   ExpSurfSettings: {x: 2.5, y: 0.65, z: 1.7}
   ExpSurfSettings2: {x: -0.5, y: 0.01, z: 5}
   ExpSurfSettings3: {x: 0.3, y: 0, z: 0}
@@ -2035,6 +2035,10 @@ Prefab:
     - target: {fileID: 434292, guid: d5fec9f04f1f868459938648d85acce4, type: 2}
       propertyPath: m_LocalScale.z
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 159830, guid: d5fec9f04f1f868459938648d85acce4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5fec9f04f1f868459938648d85acce4, type: 2}

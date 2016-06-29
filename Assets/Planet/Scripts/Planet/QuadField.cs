@@ -127,7 +127,7 @@ namespace LemonSpawn {
 			Setup(rad, p1, p2, p3);
 			
 			calculateVertices(p1, ps);
-			if (RenderSettings.calculateNormals) {
+			if (!RenderSettings.GPUSurface) {
 				calculateNormalField();
 				calculateNormalVertex();
 			}
@@ -424,19 +424,25 @@ namespace LemonSpawn {
   			mesh = new LSMesh();
 			FieldToFloat(nbh);
 			mesh.createMesh();
-			if (!RenderSettings.calculateNormals)
-				mesh.mesh.RecalculateNormals();
 
             return mesh;
 //			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			
 		
 		}
-		
+
+
+
+
 		public GameObject Realise(bool castShadows) {
 			//mesh.FacesFromVertices();
 			mesh.createMesh();
-//            mesh.mesh.RecalculateNormals();
+
+			if (RenderSettings.GPUSurface) { 
+            	mesh.mesh.RecalculateNormals();
+            	mesh.mesh.bounds = new Bounds(mesh.mesh.bounds.center, mesh.mesh.bounds.size*4);
+//            	mesh.mesh.bounds.max = mesh.mesh.bounds.max*3;
+            }
             mesh.mesh.Optimize();
             if (planetSettings != null)
                 return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.properties.currentLayer, planetSettings.properties.currentTag, castShadows);

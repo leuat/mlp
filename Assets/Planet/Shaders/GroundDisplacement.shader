@@ -66,7 +66,6 @@ Shader "LemonSpawn/GroundDisplacement"
 				ZWrite[_ZWrite]
 
 
-
 				CGPROGRAM
 				#pragma target 3.0
 			// TEMPORARY: GLES2.0 temporarily disabled to prevent errors spam on devices without textureCubeLodEXT
@@ -91,6 +90,7 @@ Shader "LemonSpawn/GroundDisplacement"
 			#include "UnityStandardCore.cginc"
 			#include "Include/IQnoise.cginc"
 			#include "Include/Atmosphere.cginc"
+			#include "Include/PlanetSurface.cginc"
 
 
 struct VertexOutputForwardBase2
@@ -114,180 +114,12 @@ struct VertexOutputForwardBase2
 };
 
 
-
-	float calculateWave(float2 pos, float t) {
-		//	return cos(time + pos.x);
-			int N = 8;
-			float v = 0;
-			float w = 0.5;
-			float theta_i = 1;
-			for (int i = 1; i < N; i++) {
-				float A = 1.0 / i;
-				float k_i = i;
-				float kernel = pos.x*cos(theta_i) + pos.y*sin(theta_i) - w*t;
-				v += A*cos(k_i*kernel);
-			}
-			return v;
-
-		}
-
-		float Gerstner(float2 Position, float time, out float3 N) {
-			float h = 0;
-			h += 4 * (sin(-0.05*Position.x + 0.5*time)*0.5 + 0.5);
-		   float first = -0.100*cos(-0.05*Position.x + 0.5*time);
-
-		   h += 2 * (sin((-0.07*Position.x + 0.07*Position.y) + time*1.3)*0.5 + 0.5);
-		   float second1 = -0.070*cos(-0.07*Position.x + 0.07*Position.y + 1.3*time);
-		   float second2 = 0.070*cos(-0.07*Position.x + 0.07*Position.y + 1.3*time);
-
-			float3 prem = float3(-first,1,-first);
-		   float3 sec = normalize(float3(-second1,1,-second2));
-		   N = normalize((sec + prem)* float3(1,0.5,1));
-
-			return h;
-		}
-
-
-		/*float3 Gerstner2(float3 P, float DeltaT, out float3 N) {
-
-			float A = 20.0;	// amplitude
-			float L = 50;	// wavelength
-			float w = 2*3.1416/L;
-			float Q = 0.5;
-
-			float3 P0 = P;
-			float2 D = normalize(float2(0.5, 5));
-			float dotD = dot(P0.xz, D);
-			float C = cos(w*dotD + DeltaT/1.0);
-			float S = sin(w*dotD + DeltaT/1.0);
-
-			float3 val = float3( Q*A*C*D.x, A * S,  Q*A*C*D.y);
-
-
-			return val;
-
-		//	output.position = mul(WorldViewProj, float4(P,1));
-
-		}
-		*/
-
 		sampler2D _Mountain, _Basin, _Top, _Surface;
-
-
-		float getStandardPerlin(float3 pos, float scale, float power, float sub, int N) {
-			float n = 0;
-			float A = 0;
-			float ms = scale;
-			float3 shift= float3(0.123, 2.314, 0.6243);
-
-			for (int i = 1; i <= N; i++) {
-				float f = pow(2, i)*1.0293;
-				float amp = (2 * pow(i,power)); 
-				n += noise(pos*f*ms + shift*f) / amp;
-				A += 1/amp;
-			}
-
-			float v = clamp(n - sub*A, 0, 1);
-			return v;	
-
-		}
-
-		float getMultiFractal(in float3 p, float frequency, int octaves, float lacunarity, float offs, float gain, float initialO ) {
-
-            float value = 0.0f;
-            float weight = 1.0f;
-
-            float3 vt = p * frequency;
-            for (float octave = 0; octave < octaves; octave++)
-            {
-                 float signal = initialO + noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
-
-                // Make the ridges.
-                signal = abs(signal);
-                signal = offs - signal;
-
-
-                signal *= signal;
-
-                signal *= weight;
-                weight = signal * gain;
-                weight = clamp(weight, 0, 1);
-
-                value += (signal * 1);
-                vt = vt * lacunarity;
-                frequency *= lacunarity;
-            }
-            return value;
-        }
-
-
-
-        uniform float3 surfaceNoiseSettings;
-        uniform float3 surfaceNoiseSettings2;
-        uniform float3 surfaceNoiseSettings3;
-
-
-		float getSurfaceHeight(float3 pos, float scale) {
-
-
-			float val = getMultiFractal(pos, scale, 8, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			return clamp(val-surfaceNoiseSettings3.x, 0, 10000);
-			//return getStandardPerlin(pos, scale, 1, 0.5, 8);
-
-		}
-
-		float3 getHeightPosition(in float3 pos, in float scale, float heightScale) {
-			return pos*fInnerRadius*(1+getSurfaceHeight(pos, scale)*heightScale); 
-		}
-
-
-		float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float3x3 tangentToWorld, float normalScale) {
-			float N = 4.0;
-			float3 prev = 0;
-//			pos = normalize(pos);
-			float hs = heightScale;
-			float3 centerPos = getHeightPosition(normalize(pos), scale, hs);
-			float3 norm = normalize(centerPos);
-
-			[unroll]
-			for (float i=0;i<N;i++) {
-				float3 disp = float3(cos(i/(N+1)*2*PI), 0, sin(i/(N+1)*2*PI));
-				float3 rotDisp = mul(tangentToWorld, disp);
-
-				float3 np = normalize(pos + disp*normalScale);
-
-				float3 newPos = getHeightPosition(np, scale, hs);
-				if (length(prev)>0.1) {
-					norm += normalize(cross(newPos-centerPos, prev - centerPos));
-				}
-				prev = newPos;
-
-			}
-			return normalize(norm);
-		}
-
-
-		inline float4 getPlanetSurface(in float4 v, float3 scale, float heightScale, out float3 n, float3x3 trans) {
-
-			float4 p = mul(_Object2World, v);
-			p.xyz -=v3Translate;
-
-
-			n = getSurfaceNormal(p.xyz, scale, heightScale, trans, 0.1);
-
-
-			p.xyz = normalize(p.xyz);
-			p.xyz = getHeightPosition(p.xyz, scale, heightScale) + v3Translate;
-			return mul(_World2Object, p) ;
-		}
 
 
 		VertexOutputForwardBase2 LvertForwardBase(VertexInput v)
 		{
 			VertexOutputForwardBase2 o;
-
-			float heightScale = surfaceNoiseSettings2.y;
-			float surfaceScale = surfaceNoiseSettings2.z;
 
 
 			float3 N = normalize(v.vertex.xyz - v3Translate);
@@ -301,7 +133,7 @@ struct VertexOutputForwardBase2
 
 
 			float3 normalWorld = 0;
-			float4 groundVertex = getPlanetSurface(v.vertex, surfaceScale, heightScale, normalWorld, local2WorldTranspose);
+			float4 groundVertex = getPlanetSurface(v.vertex, surfaceNoiseSettings2.z, surfaceNoiseSettings2.y, normalWorld);
 			v.vertex = groundVertex;
 			UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 
@@ -537,7 +369,107 @@ struct VertexOutputForwardBase2
 												#pragma vertex vertShadowCaster
 												#pragma fragment fragShadowCaster
 
-												#include "UnityStandardShadow.cginc"
+#include "UnityCG.cginc"
+#include "UnityShaderVariables.cginc"
+#include "UnityStandardConfig.cginc"
+#include "Include/Atmosphere.cginc"
+#include "Include/PlanetSurface.cginc"
+
+// Do dithering for alpha blended shadows on SM3+/desktop;
+// on lesser systems do simple alpha-tested shadows
+#if defined(_ALPHABLEND_ON) || defined(_ALPHAPREMULTIPLY_ON)
+	#if !((SHADER_TARGET < 30) || defined (SHADER_API_MOBILE) || defined(SHADER_API_D3D11_9X) || defined (SHADER_API_PSP2) || defined (SHADER_API_PSM))
+	#define UNITY_STANDARD_USE_DITHER_MASK 1
+	#endif
+#endif
+
+// Need to output UVs in shadow caster, since we need to sample texture and do clip/dithering based on it
+#if defined(_ALPHATEST_ON) || defined(_ALPHABLEND_ON) || defined(_ALPHAPREMULTIPLY_ON)
+#define UNITY_STANDARD_USE_SHADOW_UVS 1
+#endif
+
+// Has a non-empty shadow caster output struct (it's an error to have empty structs on some platforms...)
+#if !defined(V2F_SHADOW_CASTER_NOPOS_IS_EMPTY) || defined(UNITY_STANDARD_USE_SHADOW_UVS)
+#define UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT 1
+#endif
+
+
+half4		_Color;
+half		_Cutoff;
+sampler2D	_MainTex;
+float4		_MainTex_ST;
+#ifdef UNITY_STANDARD_USE_DITHER_MASK
+sampler3D	_DitherMaskLOD;
+#endif
+		
+struct VertexInput
+{
+	float4 vertex	: POSITION;
+	float3 normal	: NORMAL;
+	float2 uv0		: TEXCOORD0;
+};
+
+#ifdef UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT
+struct VertexOutputShadowCaster
+{
+	V2F_SHADOW_CASTER_NOPOS
+	#if defined(UNITY_STANDARD_USE_SHADOW_UVS)
+		float2 tex : TEXCOORD1;
+	#endif
+};
+#endif
+
+
+// We have to do these dances of outputting SV_POSITION separately from the vertex shader,
+// and inputting VPOS in the pixel shader, since they both map to "POSITION" semantic on
+// some platforms, and then things don't go well.
+
+
+void vertShadowCaster (VertexInput v,
+	#ifdef UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT
+	out VertexOutputShadowCaster o,
+	#endif
+	out float4 opos : SV_POSITION)
+{
+
+	float3 normalWorld;
+	v.vertex = getPlanetSurface(v.vertex, surfaceNoiseSettings2.z, surfaceNoiseSettings2.y, normalWorld);
+
+	TRANSFER_SHADOW_CASTER_NOPOS(o,opos)
+	#if defined(UNITY_STANDARD_USE_SHADOW_UVS)
+		o.tex = TRANSFORM_TEX(v.uv0, _MainTex);
+	#endif
+}
+
+
+half4 fragShadowCaster (
+	#ifdef UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT
+	VertexOutputShadowCaster i
+	#endif
+	#ifdef UNITY_STANDARD_USE_DITHER_MASK
+	, UNITY_VPOS_TYPE vpos : VPOS
+	#endif
+	) : SV_Target
+{
+	#if defined(UNITY_STANDARD_USE_SHADOW_UVS)
+		half alpha = tex2D(_MainTex, i.tex).a * _Color.a;
+		#if defined(_ALPHATEST_ON)
+			clip (alpha - _Cutoff);
+		#endif
+		#if defined(_ALPHABLEND_ON) || defined(_ALPHAPREMULTIPLY_ON)
+			#if defined(UNITY_STANDARD_USE_DITHER_MASK)
+				// Use dither mask for alpha blended shadows, based on pixel position xy
+				// and alpha level. Our dither texture is 4x4x16.
+				half alphaRef = tex3D(_DitherMaskLOD, float3(vpos.xy*0.25,alpha*0.9375)).a;
+				clip (alphaRef - 0.01);
+			#else
+				clip (alpha - _Cutoff);
+			#endif
+		#endif
+	#endif // #if defined(UNITY_STANDARD_USE_SHADOW_UVS)
+
+	SHADOW_CASTER_FRAGMENT(i)
+}			
 
 												ENDCG
 											}

@@ -76,6 +76,25 @@ namespace LemonSpawn
 
         }
 
+		protected void GPUDebug() {
+			GPUSurface surf = new GPUSurface(planetSettings);
+
+			GameObject testObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			Vector3 pos = qb.center.P.normalized ;
+			Vector3 N;
+
+			//surfaceNoiseSettings2.z, surfaceNoiseSettings2.y
+			Vector3 hP = surf.getPlanetSurface(pos, planetSettings.ExpSurfSettings2.z, planetSettings.ExpSurfSettings2.y, out N); 
+
+//			hP = qb.centerReal.P;
+			testObject.transform.localScale = Vector3.one*25;
+			testObject.transform.position = hP + planetSettings.transform.position;
+			testObject.transform.parent = planetSettings.properties.terrainObject.transform;
+			testObject.tag = "Normal";
+			testObject.layer = 10;
+		}
+
+
         public override void PostThread()
         {
             base.PostThread();
@@ -83,6 +102,9 @@ namespace LemonSpawn
                 return;
 
             quadGO = quadField.Realise(planetSettings.castShadows);
+            //GPUDebug();
+
+
             if (RenderSettings.createTerrainColliders)
             {
                 MeshCollider c = quadGO.AddComponent<MeshCollider>();
