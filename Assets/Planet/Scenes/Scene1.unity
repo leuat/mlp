@@ -550,11 +550,11 @@ MonoBehaviour:
     sun_col_g: 1
     sun_col_b: 0.8
     sun_intensity: 0.01
-    resolutionScale: 2
+    resolutionScale: 3
     global_radius_scale: 1
     skybox: 1
     uuid: 
-    resolution: 32
+    resolution: 48
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -712,11 +712,14 @@ MonoBehaviour:
   rotation: 0.1
   Gravity: 10
   maxQuadNodeLevel: 14
-  planetTypeIndex: 1
+  planetTypeIndex: 0
   castShadows: 1
   hasSea: 1
+  ExpSurfSettings: {x: 2.5, y: 0.65, z: 1.7}
+  ExpSurfSettings2: {x: -0.5, y: 0.01, z: 5}
+  ExpSurfSettings3: {x: 0.3, y: 0, z: 0}
   seed: 1
-  atmosphereDensity: 0.9
+  atmosphereDensity: 0.85
   outerRadiusScale: 1.025
   m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
   m_hdrExposure: 2
@@ -776,7 +779,7 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 1
+  hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
   planetType:
@@ -1895,6 +1898,9 @@ MonoBehaviour:
   planetTypeIndex: 0
   castShadows: 1
   hasSea: 0
+  ExpSurfSettings: {x: 2.5, y: 1, z: 1.5}
+  ExpSurfSettings2: {x: 0.6, y: 0, z: 0}
+  ExpSurfSettings3: {x: 0, y: 0, z: 0}
   seed: 0
   atmosphereDensity: 0.9
   outerRadiusScale: 1.019

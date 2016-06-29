@@ -45,6 +45,7 @@ namespace LemonSpawn {
 		public static float RingRadiusRequirement = 4000;
 		public static int CloudTextureSize = 1024;
 		public static bool RenderMenu = true;
+		public static bool calculateNormals = false;
 		public static float version = 0.10f;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;

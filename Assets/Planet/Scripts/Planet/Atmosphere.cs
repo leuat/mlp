@@ -255,6 +255,10 @@ public class Atmosphere
             mat.SetVector("v3Translate", planetSettings.transform.position);
             mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
 
+            mat.SetVector("surfaceNoiseSettings",planetSettings.ExpSurfSettings);
+			mat.SetVector("surfaceNoiseSettings2",planetSettings.ExpSurfSettings2);
+			mat.SetVector("surfaceNoiseSettings3",planetSettings.ExpSurfSettings3);
+
 /*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
             Debug.Log("sun:" + planetSettings.m_ESun);
             Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);

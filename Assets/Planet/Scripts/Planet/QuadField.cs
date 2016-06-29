@@ -127,8 +127,10 @@ namespace LemonSpawn {
 			Setup(rad, p1, p2, p3);
 			
 			calculateVertices(p1, ps);
-			calculateNormalField();
-			calculateNormalVertex();
+			if (RenderSettings.calculateNormals) {
+				calculateNormalField();
+				calculateNormalVertex();
+			}
 			
 			FieldToFloat(nbh);
 		}
@@ -422,6 +424,9 @@ namespace LemonSpawn {
   			mesh = new LSMesh();
 			FieldToFloat(nbh);
 			mesh.createMesh();
+			if (!RenderSettings.calculateNormals)
+				mesh.mesh.RecalculateNormals();
+
             return mesh;
 //			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			

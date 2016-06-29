@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: GroundMaterial
-  m_Shader: {fileID: 4800000, guid: 157a227e4a74945edb49d9892dbfde7e, type: 3}
-  m_ShaderKeywords: _PARALLAXMAP
+  m_Shader: {fileID: 4800000, guid: 131817ec240254c9da080cd490abe763, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2

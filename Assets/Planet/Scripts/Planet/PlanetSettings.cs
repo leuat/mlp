@@ -40,7 +40,6 @@ namespace LemonSpawn {
 		public float surfaceHeightModifier = 1;
 
 
-
         public int minQuadLevel = 2;
         public Vector2 RadiusRange, TemperatureRange;
 
@@ -204,6 +203,12 @@ namespace LemonSpawn {
         public int planetTypeIndex;
         public bool castShadows = true;
         public bool hasSea = false;
+		[Header("Lacunarity, Offset, Gain")]
+		public Vector3 ExpSurfSettings = new Vector3(2.5f, 1.0f, 1.5f);
+		[Header("InitialOffset, Surface Height, Surface Scale")]
+		public Vector3 ExpSurfSettings2 = new Vector3(0.6f, 0.01f, 3.2451f);
+		[Header("Height sub, xx, xx")]
+		public Vector3 ExpSurfSettings3 = new Vector3(0.0f, 0,0);
 
         // Public stuff to be exposed
         [Header("Atmosphere settings")]
