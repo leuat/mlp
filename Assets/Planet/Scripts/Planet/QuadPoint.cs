@@ -13,6 +13,8 @@ namespace LemonSpawn {
 		public QuadPoint center = new QuadPoint();
 		public QuadPoint centerReal = new QuadPoint();
 
+        public Vector3 centerGPU;
+
 /*		public Matrix3D rotmat = new Matrix3D();
 		public Matrix3D rotmatInv = new Matrix3D();
 */		
@@ -72,21 +74,24 @@ namespace LemonSpawn {
 			//mtmp = mtmp*(radius *(1+ps.surface.GetHeight(mtmp, (int)lod)));
 			
 			centerReal.P = centerReal.P.normalized*planetSettings.getPlanetSize()*(1+ps.surface.GetHeight(centerReal.P.normalized, 0));
+            Vector3 n;
+            if (RenderSettings.GPUSurface)
+                centerGPU = planetSettings.properties.gpuSurface.getPlanetSurface(centerReal.P.normalized, out n);
 
-
+            centerGPU = centerReal.P;
 
 //			centerReal.P.mulDirect(planetSettings.getPlanetSize() + planetSettings.perlin.getHeight(centerReal.P, lod));
-			
-			
-						
-			/*rotmat.ToTangentSpace(tangent, binormal, normal);
-			rotmat.invert(rotmatInv);
-			
-			rotmatInv.toFloatBuffer3();
-			rotmat.toFloatBuffer3();
-			*/
-			
-			for (int i = 0; i < 4; i++) {
+
+
+
+                /*rotmat.ToTangentSpace(tangent, binormal, normal);
+                rotmat.invert(rotmatInv);
+
+                rotmatInv.toFloatBuffer3();
+                rotmat.toFloatBuffer3();
+                */
+
+            for (int i = 0; i < 4; i++) {
                 //				PReal[i].P = PReal[i].P.normalized * planetSettings.getPlanetSize();
                 PReal[i].P = PReal[i].P * planetSettings.getPlanetSize() * (1 + ps.surface.GetHeight(PReal[i].P.normalized, 0));
             }

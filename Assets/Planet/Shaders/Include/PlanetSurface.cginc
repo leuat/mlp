@@ -5,8 +5,9 @@
         uniform float3 surfaceNoiseSettings;
         uniform float3 surfaceNoiseSettings2;
         uniform float3 surfaceNoiseSettings3;
-
-
+		uniform float3 surfaceVortex1;
+		uniform float3 surfaceVortex2;
+		float4x4 rotMatrix;
 
 		float getStandardPerlin(float3 pos, float scale, float power, float sub, int N) {
 			float n = 0;
@@ -60,55 +61,79 @@
 		float getSurfaceHeight(float3 pos, float scale) {
 
 
-			float val = getMultiFractal(pos, scale, 8, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+			scale = scale*(1 + surfaceVortex1.y*noise(pos*surfaceVortex1.x));
+			scale = scale*(1 + surfaceVortex2.y*noise(pos*surfaceVortex2.x));
+			float val = getMultiFractal(pos, scale, surfaceNoiseSettings3.y, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			return clamp(val-surfaceNoiseSettings3.x, 0, 10000);
 			//return getStandardPerlin(pos, scale, 1, 0.5, 8);
 
 		}
 
 		float3 getHeightPosition(in float3 pos, in float scale, float heightScale) {
-			return pos*fInnerRadius*(1+getSurfaceHeight(pos, scale)*heightScale); 
+			return pos*fInnerRadius*(1+getSurfaceHeight(mul(rotMatrix, pos) , scale)*heightScale);
+			
 		}
 
 
-		float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale) {
-			float N = 4.0;
+
+		float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale, float3 tangent, float3 bn) {
+//			float3 getSurfaceNormal(float3 pos, float scale, float heightScale, float normalScale) {
+		    int N = 4;
 			float3 prev = 0;
 //			pos = normalize(pos);
 			float hs = heightScale;
 			float3 centerPos = getHeightPosition(normalize(pos), scale, hs);
-			float3 norm = normalize(centerPos);
+			float3 norm = normalize(centerPos) * 0;
+			//			[unroll]
+						for (float i=0;i<N;i++) {
+							float3 disp = float3(cos(i/(N+0)*2.0*PI), 0, sin(i/(N+0)*2.0*PI));
+							//float3 rotDisp = mul(tangentToWorld, disp);
+							//float3 np = normalize(pos + mul(tangentToWorld, disp)*normalScale);
+							//float3 np = normalize(pos + disp*normalScale);
+							float3 np = normalize(pos + (disp.x*tangent + disp.z*bn) *normalScale);
 
-			[unroll]
-			for (float i=0;i<N;i++) {
-				float3 disp = float3(cos(i/(N+1)*2*PI), 0, sin(i/(N+1)*2*PI));
-				//float3 rotDisp = mul(tangentToWorld, disp);
+							float3 newPos = getHeightPosition(np, scale, hs);
 
-				float3 np = normalize(pos + disp*normalScale);
 
-				float3 newPos = getHeightPosition(np, scale, hs);
-				if (length(prev)>0.1) {
-					norm += normalize(cross(newPos-centerPos, prev - centerPos));
-				}
-				prev = newPos;
+							if (length(prev)>0.1) {
+								float3 n = normalize(cross(newPos - centerPos, prev - centerPos));
+								float3 nn = n;
+			//					if (dot(nn, normalize(pos)) < 0.0)
+				//					nn *= -1;
 
-			}
-			return normalize(norm);
+								norm += nn;
+
+							}
+							prev = newPos;
+
+						}
+						
+
+			return normalize(norm)*-1;
 		}
 
 
-		inline float4 getPlanetSurface(in float4 v, float scale, float heightScale, out float3 n) {
+
+	//	inline float3 getPlanetSurfaceNormal(in float4 v) {
+		float3 getPlanetSurfaceNormal(in float3 v, float3 t, float3 bn, float nscale) {
+			float scale = surfaceNoiseSettings2.z;
+			float heightScale = surfaceNoiseSettings2.y;
+
+			return getSurfaceNormal(v, scale, heightScale, nscale, t,bn);
+
+		}
+
+		float4 getPlanetSurfaceOnly(in float4 v) {
 
 			float4 p = mul(_Object2World, v);
-			p.xyz -=v3Translate;
+			p.xyz -= v3Translate;
 
-
-			n = getSurfaceNormal(p.xyz, scale, heightScale, 0.1);
-
+			float scale = surfaceNoiseSettings2.z;
+			float heightScale = surfaceNoiseSettings2.y;
 
 			p.xyz = normalize(p.xyz);
 			p.xyz = getHeightPosition(p.xyz, scale, heightScale) + v3Translate;
-			return mul(_World2Object, p) ;
+			return mul(_World2Object, p);
 		}
 
 		#endif

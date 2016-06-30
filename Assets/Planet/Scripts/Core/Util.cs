@@ -322,6 +322,7 @@ namespace LemonSpawn
             {
  //               float signal = initialOffset + noise4D.raw_noise_3d(vt.x, vt.y, vt.z);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
                  float signal = initialOffset + noise4D.raw_noise_4d(vt.x, vt.y, vt.z, seed);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+//                float signal = initialOffset + GPUSurface.noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
 
                 // Make the ridges.
                 signal = Mathf.Abs(signal);

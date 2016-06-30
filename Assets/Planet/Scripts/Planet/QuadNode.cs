@@ -80,11 +80,11 @@ namespace LemonSpawn
 			GPUSurface surf = new GPUSurface(planetSettings);
 
 			GameObject testObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-			Vector3 pos = qb.center.P.normalized ;
+			Vector3 pos = qb.P[0].P.normalized ;
 			Vector3 N;
 
 			//surfaceNoiseSettings2.z, surfaceNoiseSettings2.y
-			Vector3 hP = surf.getPlanetSurface(pos, planetSettings.ExpSurfSettings2.z, planetSettings.ExpSurfSettings2.y, out N); 
+			Vector3 hP = surf.getPlanetSurface(pos,  out N); 
 
 //			hP = qb.centerReal.P;
 			testObject.transform.localScale = Vector3.one*25;
@@ -102,7 +102,7 @@ namespace LemonSpawn
                 return;
 
             quadGO = quadField.Realise(planetSettings.castShadows);
-            //GPUDebug();
+           // GPUDebug();
 
 
             if (RenderSettings.createTerrainColliders)
@@ -432,13 +432,13 @@ namespace LemonSpawn
 
         private float findMinDistance(Vector3 cam, bool nestFurther)
         {
-            float min = 10E30f;
+            Vector3 n;
+            if (RenderSettings.GPUSurface && planetSettings.properties.gpuSurface!=null)
+                return ((cam - qb.centerGPU) / planetSettings.getPlanetSize()).sqrMagnitude;
 
+            float min = 10E30f;
             mtmp = (cam - qb.centerReal.P) / planetSettings.getPlanetSize();
             min = Mathf.Min(min, mtmp.sqrMagnitude);
-
-
-            //}
             return min;
         }
 

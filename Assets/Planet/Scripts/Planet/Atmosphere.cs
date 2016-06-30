@@ -223,6 +223,8 @@ public class Atmosphere
 			Debug.Log("atm density:"  + planetSettings.atmosphereDensity);
         }
 
+        Matrix4x4 rotMat = new Matrix4x4();
+
         public virtual void InitAtmosphereMaterial(Material mat)
         {
 
@@ -230,7 +232,7 @@ public class Atmosphere
            // Debug.Log(localscale);
             //rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
             rot = Quaternion.Inverse(planetSettings.transform.rotation);
-
+            rotMat = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
     
             float ds = localscale;
 			Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.x, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.y, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.z, 4.0f));
@@ -258,11 +260,14 @@ public class Atmosphere
             mat.SetVector("surfaceNoiseSettings",planetSettings.ExpSurfSettings);
 			mat.SetVector("surfaceNoiseSettings2",planetSettings.ExpSurfSettings2);
 			mat.SetVector("surfaceNoiseSettings3",planetSettings.ExpSurfSettings3);
+            mat.SetVector("surfaceVortex1", planetSettings.SurfaceVortex1);
+            mat.SetVector("surfaceVortex2", planetSettings.SurfaceVortex2);
+            mat.SetMatrix("rotMatrix", rotMat);
 
-/*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
-            Debug.Log("sun:" + planetSettings.m_ESun);
-            Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);
-            */
+            /*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
+                        Debug.Log("sun:" + planetSettings.m_ESun);
+                        Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);
+                        */
         }
     }
 

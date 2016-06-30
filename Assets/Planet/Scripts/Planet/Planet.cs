@@ -58,8 +58,11 @@ namespace LemonSpawn
 
         public void Initialize(GameObject sun, Material ground, Material sky, Mesh sphere)
         {
+            if (RenderSettings.GPUSurface)
+                pSettings.properties.gpuSurface = new GPUSurface(pSettings);
 
             pSettings.atmosphere = new Atmosphere(sun, ground, sky, sphere, pSettings);
+
             pSettings.Initialize();
             if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
                 rings = new Rings(pSettings, sun);
@@ -146,12 +149,18 @@ namespace LemonSpawn
 
         }
 
+
         public void ConstrainCameraExterior()
         {
             Vector3 p = pSettings.properties.localCamera.normalized;
 
 
-            float h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
+            Vector3 n;
+            float h;
+            if (RenderSettings.GPUSurface)
+                h = pSettings.properties.gpuSurface.getPlanetSurface(p, out n).magnitude;
+            else
+                h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
             float ch = pSettings.properties.localCamera.magnitude;
             if (ch < h)
             {
@@ -249,6 +258,12 @@ namespace LemonSpawn
                 
             if (billboardClouds != null)
                 billboardClouds.Update();
+
+
+            // Fun
+            //pSettings.ExpSurfSettings2.y += (Mathf.PerlinNoise(Time.time, 0)-0.5f) * 0.001f;
+            pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.02521f, 0) - 0.5f) * 0.005f;
+//            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }
 

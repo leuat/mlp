@@ -131,8 +131,8 @@ namespace LemonSpawn {
 				calculateNormalField();
 				calculateNormalVertex();
 			}
-			
-			FieldToFloat(nbh);
+
+            FieldToFloat(nbh);
 		}
 		
 		private void calculateNormalField() {
@@ -463,7 +463,8 @@ namespace LemonSpawn {
 			
 				Vector3 v = getVertex(x, y);
 				Vector3 n = getNormal(x, y)*-1;
-				Vector3 t = (getVertex(x+1,y) - v).normalized;
+//                Vector3 t = (getVertex(x-1,y) - v).normalized;
+//            Debug.Log(t);
 				int idx = -1;
 				
 				if (vertexTable.ContainsKey(VecToInt(x,y)))
@@ -476,17 +477,24 @@ namespace LemonSpawn {
 
 					mesh.vertexList.Add (v);
 					mesh.normalList.Add (n);
-					mesh.tangentList.Add (t);
 					
 					
 												
 					Vector3 nn = v.normalized;
-					float phi = Mathf.Atan2(nn.x,nn.y) / (2*Mathf.PI);
-					float theta = Mathf.Acos(nn.z)/Mathf.PI;
+                float phi = Mathf.Atan2(nn.z, nn.x);
+                float theta = Mathf.Acos(nn.y);
 					float s = 10;
-				
-					mesh.uvList.Add (new Vector2(s*theta, s*phi));
-					idx = mesh.vertexList.Count-1;
+
+                mesh.uvList.Add (new Vector2(s*theta / Mathf.PI, s*phi/ (2 * Mathf.PI)));
+                    phi += 0.01f;
+
+                    Vector3 n2 = new Vector3(Mathf.Sin(theta)* Mathf.Cos(phi), Mathf.Cos(theta), Mathf.Sin(phi)*Mathf.Sin(theta));
+                Vector3 t = (nn - n2).normalized; 
+
+                    mesh.tangentList.Add(t);
+
+
+                idx = mesh.vertexList.Count-1;
 					vertexTable[VecToInt(x,y)] = idx;
 					
 				}

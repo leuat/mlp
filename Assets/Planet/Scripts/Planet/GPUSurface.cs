@@ -26,53 +26,53 @@ public class GPUSurface {
 			surfaceNoiseSettings2 = planetSettings.ExpSurfSettings2;
 			surfaceNoiseSettings3 = planetSettings.ExpSurfSettings3;
 			fInnerRadius = planetSettings.radius;
-			v3Translate = planetSettings.transform.position;
+			//v3Translate = planetSettings.transform.position;
         }
 
-		public float clamp(float a, float b, float c) {
+        static public float clamp(float a, float b, float c) {
 			return Mathf.Clamp(a,b,c);
 		}
 
-		public float pow(float a, float b) {
+        static public float pow(float a, float b) {
 			return Mathf.Pow(a,b);
 		}
 
-		public float frac(float a) {
+        static public float frac(float a) {
 			return a - Mathf.Floor(a);
 		}
 
-		public Vector3 frac(Vector3 a) {
+        static public Vector3 frac(Vector3 a) {
 			return new Vector3(a.x - Mathf.Floor(a.x),a.y - Mathf.Floor(a.y),a.z - Mathf.Floor(a.z));
 		}
 
-		public Vector3 normalize(Vector3 a) {
+        static public Vector3 normalize(Vector3 a) {
 			return a.normalized;
 		}
 
-		public Vector3 cross(Vector3 a, Vector3 b) {
+        static public Vector3 cross(Vector3 a, Vector3 b) {
 			return Vector3.Cross(a,b);
 		}
 
-		public float length(Vector3 a) {
+        static public float length(Vector3 a) {
 			return a.magnitude;
 		}
 
-		public float floor(float a) {
+        static public float floor(float a) {
 			return Mathf.Floor(a);
 		}
 
-		public Vector3 floor(Vector3 a) {
+        static public Vector3 floor(Vector3 a) {
 			return new Vector3(Mathf.Floor(a.x),Mathf.Floor(a.y),Mathf.Floor(a.z));
 		}
-		public float sin(float a) {
+        static public float sin(float a) {
 			return Mathf.Sin(a);
 		}
 
-		public float cos(float a) {
+        static public float cos(float a) {
 			return Mathf.Cos(a);
 		}
 
-		public float abs(float a) {
+        static public float abs(float a) {
 			return Mathf.Abs(a);
 		}
 
@@ -83,19 +83,19 @@ public class GPUSurface {
 		}
 
 
-		float iqhash(float n)
+        static float iqhash(float n)
 		{
 			return frac(sin(n)*753.5453123f);
 		}
 
-		float lerp(float a, float b, float w) {
+		static float lerp(float a, float b, float w) {
 			//return Mathf.Lerp(a,b,c);
 			  return a + w*(b-a);
 
 		}
 
 
-float noise(Vector3 x)
+public static float noise(Vector3 x)
 {
 	// The noise function returns a value in the range -1.0f -> 1.0f
 	Vector3 p = floor(x);
@@ -168,7 +168,7 @@ float noise(Vector3 x)
 		float getSurfaceHeight(Vector3 pos, float scale) {
 
 
-			float val = getMultiFractal(pos, scale, 8, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+			float val = getMultiFractal(pos, scale, (int)surfaceNoiseSettings3.y, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			return clamp(val-surfaceNoiseSettings3.x, 0, 10000);
 //			return getStandardPerlin(pos, scale, 1, 0.5f, 8);
 
@@ -204,14 +204,17 @@ float noise(Vector3 x)
 		}
 
 
-		public Vector3 getPlanetSurface(Vector3 p, float scale, float heightScale, out Vector3 n) {
+		public Vector3 getPlanetSurface(Vector3 p,  out Vector3 n) {
 			n = Vector3.up;
 
-			//return p.normalized*fInnerRadius;
+            float scale = surfaceNoiseSettings2.z;
+            float heightScale = surfaceNoiseSettings2.y;
 
-			//n = getSurfaceNormal(p, scale, heightScale, 0.1f);
-	
-			p = normalize(p);
+            //return p.normalized*fInnerRadius;
+
+            //n = getSurfaceNormal(p, scale, heightScale, 0.1f);
+
+            p = normalize(p);
 			p = getHeightPosition(p, scale, heightScale);
 			return p;
 		}

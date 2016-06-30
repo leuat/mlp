@@ -59,7 +59,12 @@ namespace LemonSpawn
             sphere = s;
             transform = t;
             spaceMaterial = (Material)Resources.Load("SpaceMaterial");
-            groundMaterial = (Material)Resources.Load("GroundMaterial");
+            if (!RenderSettings.GPUSurface)
+                groundMaterial = (Material)Resources.Load("GroundMaterial");
+            else
+                groundMaterial = (Material)Resources.Load("GroundMaterialGPU");
+
+
             space = new SpaceAtmosphere(spaceMaterial, sun, Color.white, 0.1f);
 
 
@@ -118,8 +123,10 @@ namespace LemonSpawn
                     go.transform.parent = transform;
                     p.pSettings.properties.parent = go;
 					p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[p.pSettings.planetTypeIndex];
+                    if (RenderSettings.GPUSurface)
+                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
-                    p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
+                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                     planets.Add(p);
                 }
             }

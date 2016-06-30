@@ -39,7 +39,7 @@
 
 
 			uniform float cloudHeight;
-			uniform float3 lightDir;
+		
 			
 				
              struct v2f

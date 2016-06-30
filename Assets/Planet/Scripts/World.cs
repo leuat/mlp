@@ -111,19 +111,6 @@ namespace LemonSpawn {
 			DrawDefaultInspector();
 			
 			PlanetSettings ps = (PlanetSettings)target;
-			if(GUILayout.Button("Build Object"))
-			{
-				//myScript.BuildObject();
-				Planet p = new Planet(ps);
-				//p.pSettings.pos.Set(go.transform.position);
-				//go.transform.parent = transform;
-				PlanetSettings.planetTypes.Initialize();
-//				p.pSettings.planetType = PlanetType.planetTypes[PlanetType.planetTypes.Count-1];
-				p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[1];
-				p.Initialize(GameObject.Find ("Sun"), (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load ("SkyMaterial"), (Mesh)Resources.Load("Sphere01"));
-				p.Update();
-				
-			}
 		}
 	}
 #endif
@@ -161,6 +148,9 @@ namespace LemonSpawn {
 		public int m_minQuadNodeLevel = 2;
 
 		public static string CurrentApp;
+
+
+        public bool GPUSurface = false;
 
 
 		public static GameObject canvas;
@@ -514,7 +504,10 @@ namespace LemonSpawn {
         public virtual void Start () {
 
 
-        CurrentApp = Verification.MCAstName;
+            CurrentApp = Verification.MCAstName;
+
+            RenderSettings.GPUSurface = GPUSurface;
+
         if (solarSystem == null)
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			SetupErrorPanel();

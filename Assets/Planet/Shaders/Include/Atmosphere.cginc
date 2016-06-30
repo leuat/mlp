@@ -430,6 +430,8 @@ uniform sampler2D _CloudTex2;
 		float LS_SmallVortex;
 		float ls_cloudShadowStrength;
 		float ls_cloudSubScale;
+	
+
 		int hasCloudShadows = 0;
 		uniform float3 stretch;
 

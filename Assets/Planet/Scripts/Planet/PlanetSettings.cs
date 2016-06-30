@@ -191,7 +191,7 @@ namespace LemonSpawn {
         public Vector3 localCamera;
         public List<Frame> Frames = new List<Frame>();
         public Plane[] cameraPlanes;
-
+        public GPUSurface gpuSurface;
     }
     // Public settings
     public class PlanetSettings : MonoBehaviour {
@@ -207,8 +207,12 @@ namespace LemonSpawn {
 		public Vector3 ExpSurfSettings = new Vector3(2.5f, 1.0f, 1.5f);
 		[Header("InitialOffset, Surface Height, Surface Scale")]
 		public Vector3 ExpSurfSettings2 = new Vector3(0.6f, 0.01f, 3.2451f);
-		[Header("Height sub, xx, xx")]
+		[Header("Height sub, octaves, xx")]
 		public Vector3 ExpSurfSettings3 = new Vector3(0.0f, 0,0);
+        [Header("Vortex #1: scale, amp")]
+        public Vector3 SurfaceVortex1 = new Vector3(0.0f, 0, 0);
+        [Header("Vortex #2: scale, amp")]
+        public Vector3 SurfaceVortex2 = new Vector3(0.0f, 0, 0);
 
         // Public stuff to be exposed
         [Header("Atmosphere settings")]
@@ -280,6 +284,9 @@ namespace LemonSpawn {
         public Surface surface;
 
         public static PlanetTypes planetTypes;
+
+
+        
 
 
         public void setLayer(int layer, string tag)
@@ -460,6 +467,7 @@ namespace LemonSpawn {
         }
         public PlanetSettings() {
 			surface = new Surface(this);
+            properties.gpuSurface = new GPUSurface(this);
 			InitializePlanetTypes();
 			
 		}

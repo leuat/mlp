@@ -168,6 +168,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 266856131}
   m_Father: {fileID: 0}
@@ -203,6 +204,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 136680540}
   m_RootOrder: 0
@@ -311,6 +313,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 75000, y: 75000, z: 75000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -338,6 +341,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1606506734}
   m_Father: {fileID: 1373287283}
@@ -366,6 +370,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1373287283}
   - {fileID: 1358885275}
@@ -397,6 +402,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1246023578}
   m_Father: {fileID: 1486160996}
@@ -542,7 +548,8 @@ MonoBehaviour:
   spaceBackground: {fileID: 0}
   sphere: {fileID: 4300000, guid: 8784879114f624946ab37aa4a373b971, type: 3}
   m_maxQuadNodeLevel: 13
-  m_minQuadNodeLevel: 2
+  m_minQuadNodeLevel: 3
+  GPUSurface: 1
   szWorld:
     Planets: []
     Cameras: []
@@ -550,11 +557,11 @@ MonoBehaviour:
     sun_col_g: 1
     sun_col_b: 0.8
     sun_intensity: 0.01
-    resolutionScale: 3
+    resolutionScale: 1.5
     global_radius_scale: 1
     skybox: 1
     uuid: 
-    resolution: 48
+    resolution: 64
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -574,6 +581,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1176257414}
   - {fileID: 1723561327}
@@ -603,6 +611,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1969987738}
   m_Father: {fileID: 1651260376}
@@ -634,6 +643,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1652409624}
   m_RootOrder: 0
@@ -714,10 +724,12 @@ MonoBehaviour:
   maxQuadNodeLevel: 14
   planetTypeIndex: 0
   castShadows: 1
-  hasSea: 0
+  hasSea: 1
   ExpSurfSettings: {x: 2.5, y: 0.65, z: 1.7}
   ExpSurfSettings2: {x: -0.5, y: 0.01, z: 5}
-  ExpSurfSettings3: {x: 0.3, y: 0, z: 0}
+  ExpSurfSettings3: {x: 0.3, y: 9, z: 0}
+  SurfaceVortex1: {x: 0, y: 0, z: 0}
+  SurfaceVortex2: {x: 0, y: 0, z: 0}
   seed: 1
   atmosphereDensity: 0.85
   outerRadiusScale: 1.025
@@ -779,7 +791,7 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 0
+  hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
   planetType:
@@ -811,6 +823,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 0
@@ -841,6 +854,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1806361536}
   m_RootOrder: 0
@@ -933,6 +947,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 520410228}
   m_RootOrder: 0
@@ -1054,6 +1069,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 100, y: 100, z: 100}
   m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1115,6 +1131,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1143,6 +1160,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1806361536}
   m_Father: {fileID: 464943366}
@@ -1201,6 +1219,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 408085090}
   m_Father: {fileID: 464943366}
@@ -1305,6 +1324,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1432,6 +1452,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9130707, y: 9.443482, z: -0.20292473}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1509,6 +1530,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 520410228}
   m_Father: {fileID: 464943366}
@@ -1626,6 +1648,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1677,6 +1700,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 408085090}
   m_RootOrder: 0
@@ -1751,6 +1775,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 920154530}
   m_Father: {fileID: 464943366}
@@ -1825,6 +1850,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2865.0469, y: 2291.5664, z: 2263.6836}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1035490327}
   - {fileID: 464943366}
@@ -1878,6 +1904,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.0005, z: 0.0005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 1
@@ -1901,6 +1928,8 @@ MonoBehaviour:
   ExpSurfSettings: {x: 2.5, y: 1, z: 1.5}
   ExpSurfSettings2: {x: 0.6, y: 0, z: 0}
   ExpSurfSettings3: {x: 0, y: 0, z: 0}
+  SurfaceVortex1: {x: 0, y: 0, z: 0}
+  SurfaceVortex2: {x: 0, y: 0, z: 0}
   seed: 0
   atmosphereDensity: 0.9
   outerRadiusScale: 1.019
@@ -2067,6 +2096,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1190114115}
   m_Father: {fileID: 1358885275}
@@ -2098,6 +2128,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 920154530}
   m_RootOrder: 0
@@ -2219,6 +2250,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 250000, y: 250000, z: 250000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
