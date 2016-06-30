@@ -34,7 +34,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 2
-  m_ReflectionIntensity: 0.227
+  m_ReflectionIntensity: 0.035
   m_CustomReflection: {fileID: 8900000, guid: b6b67171ef006ef40b2eb68d0f21a75f, type: 2}
   m_Sun: {fileID: 1286680131}
 --- !u!157 &4
@@ -756,8 +756,8 @@ MonoBehaviour:
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
   m_waterColor: {r: 0.03676468, g: 0.7608518, b: 1, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  metallicity: 0
-  specularity: 0.2
+  metallicity: 1
+  specularity: 1
   bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
   hasEnvironment: 0
   environmentDensity: 500
@@ -1894,7 +1894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1723561327
 Transform:
   m_ObjectHideFlags: 0
@@ -1922,21 +1922,21 @@ MonoBehaviour:
   rotation: 0
   Gravity: 0
   maxQuadNodeLevel: 0
-  planetTypeIndex: 0
+  planetTypeIndex: 3
   castShadows: 1
   hasSea: 0
-  ExpSurfSettings: {x: 2.5, y: 1, z: 1.5}
-  ExpSurfSettings2: {x: 0.6, y: 0, z: 0}
-  ExpSurfSettings3: {x: 0, y: 0, z: 0}
-  SurfaceVortex1: {x: 0, y: 0, z: 0}
-  SurfaceVortex2: {x: 0, y: 0, z: 0}
+  ExpSurfSettings: {x: 2.8, y: 0.7, z: 1.5}
+  ExpSurfSettings2: {x: -0.3, y: 0.015, z: 5}
+  ExpSurfSettings3: {x: 0.1, y: 10, z: 0}
+  SurfaceVortex1: {x: -2, y: 2, z: 0}
+  SurfaceVortex2: {x: 24, y: 0.1, z: 0}
   seed: 0
-  atmosphereDensity: 0.9
+  atmosphereDensity: 0.6
   outerRadiusScale: 1.019
   m_atmosphereWavelengths: {x: 0.5, y: 0.55, z: 0.7}
   m_hdrExposure: 2
   m_ESun: 10
-  radius: 20000
+  radius: 2000
   temperature: 300
   hillyThreshold: 0.99
   liquidThreshold: 0.002
@@ -1945,12 +1945,12 @@ MonoBehaviour:
   globalTerrainHeightScale: 1
   globalTerrainScale: 2
   m_surfaceColor: {r: 0.625, g: 0.32327586, b: 0, a: 0}
-  m_surfaceColor2: {r: 0.33282873, g: 0.37048087, b: 0.39705884, a: 0}
+  m_surfaceColor2: {r: 0.3369377, g: 0.49287078, b: 0.60294116, a: 0}
   m_surfaceTexture: {fileID: 0}
   m_basinColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 0}
   m_basinColor2: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_basinTexture: {fileID: 0}
-  m_topColor: {r: 0.15679067, g: 0.182872, b: 0.21323532, a: 1}
+  m_topColor: {r: 0.05676903, g: 0.17323561, b: 0.30882353, a: 1}
   m_topTexture: {fileID: 0}
   m_hillColor: {r: 0, g: 0, b: 0, a: 0}
   m_hillTexture: {fileID: 0}
