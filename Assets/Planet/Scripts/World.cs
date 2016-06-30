@@ -355,7 +355,7 @@ namespace LemonSpawn {
 			string xml = System.IO.File.ReadAllText(file);
 			//			RenderSettings.extraText += "\n" + xml;
 			//		Debug.Log (xml);
-			PlanetSettings.InitializePlanetTypes();
+			PlanetTypes.InitializePlanetTypes();
 
 			solarSystem.LoadWorld(xml, false, false, this, randomizeSeeds);
 			szWorld.IterateCamera();
@@ -514,7 +514,7 @@ namespace LemonSpawn {
 
             SzWorld = szWorld;
             Slider = slider;
-            PlanetSettings.InitializePlanetTypes();
+            PlanetTypes.InitializePlanetTypes();
             canvas = GameObject.Find ("Canvas");
             spaceBackground = GameObject.Find("SunBackgroundSphere");
             //            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
@@ -535,11 +535,10 @@ namespace LemonSpawn {
 
 
 
-
             //		CreateConfig("system1.xml");
             //		LoadWorld("system1.xml", true);
             //		szWorld.IterateCamera();
-			PlanetSettings.planetTypes.Initialize();
+            PlanetTypes.InitializePlanetTypes();
 			if (initializeFromScene)
 				solarSystem.InitializeFromScene();
 			Application.runInBackground = true;

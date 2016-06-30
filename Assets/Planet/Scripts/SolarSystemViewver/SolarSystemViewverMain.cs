@@ -116,7 +116,7 @@ namespace LemonSpawn {
 		public override void Start () { 
 			CurrentApp = Verification.MCAstName;
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
-			PlanetSettings.InitializePlanetTypes ();
+			PlanetTypes.InitializePlanetTypes ();
 			MainCamera = mainCamera.GetComponent<Camera> ();
 			PopulateFileCombobox("ComboBoxLoadFile","xml");
 			SzWorld = szWorld;

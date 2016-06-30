@@ -8,175 +8,6 @@ using System.IO;
 namespace LemonSpawn {
 
 
-	public class AtmosphereType {
-		public Vector3 values;
-		public string name;
-		public AtmosphereType(string n, Vector3 v) {
-			name = n;
-			values = v;
-		}
-	}
-
-
-
-	[System.Serializable]
-    public class PlanetType {
-        public string Name;
-        public Color color;
-        public Color colorVariation;
-        public Color basinColor;
-        public Color basinColorVariation;
-        public Color seaColor;
-        public Color topColor;
-        public string[] atmosphere;
-        public string cloudType = "";
-        public Color cloudColor;
-        public string clouds;
-        public float atmosphereDensity = 1;
-        public float sealevel;
-		public string delegateString;
-
-		public float surfaceScaleModifier = 1;
-		public float surfaceHeightModifier = 1;
-
-
-        public int minQuadLevel = 2;
-        public Vector2 RadiusRange, TemperatureRange;
-
-//		[System.NonSerialized]
-		public delegate SurfaceNode InitializeSurface(float a, float scale, PlanetSettings ps);
-
-		[XmlIgnore]		
-		public InitializeSurface Delegate;
-    	[field: System.NonSerialized] 
-		Dictionary<string, InitializeSurface> calls = new Dictionary<string, InitializeSurface>
-		{
-			{"Surface.InitializeNew",Surface.InitializeNew}, 
-			{"Surface.InitializeDesolate",Surface.InitializeDesolate}, 
-			{"Surface.InitializeMoon",Surface.InitializeMoon}, 
-			{"Surface.InitializeFlat",Surface.InitializeFlat}, 
-			{"Surface.InitializeMountain",Surface.InitializeMountain}, 
-			{"Surface.InitializeTerra2",Surface.InitializeTerra2}, 
-		};
-
-
-		public void setDelegate() {
-			Delegate = calls[delegateString];
-		}
-        public PlanetType() {
-        }
-        public PlanetType(string del, string n, Color c, Color cv, Color b, Color bv, Color topc, string cl, Vector2 rr, Vector2 tr, int mq, float atm,
-            float seal, Color seacol, string[] atmidx) {
-			delegateString = del;
-			Name = n;
-			color = c;
-			colorVariation = cv;
-			clouds = cl;
-			basinColor = b;
-			basinColorVariation = bv;
-			RadiusRange = rr;
-			atmosphereDensity = atm;
-			TemperatureRange = tr;
-			minQuadLevel = mq;
-            atmosphere = atmidx;
-            seaColor = seacol;
-            sealevel = seal;
-            topColor = topc;
-            setDelegate();
-
-		}
-        public static AtmosphereType[] AtmosphereTypes = new AtmosphereType[] {
-           new AtmosphereType("ATM_NORMAL", new Vector3(0.65f, 0.57f, 0.475f)), // CONFIRMED NORMAL
-			new AtmosphereType("ATM_BLEAK", new Vector3(0.6f, 0.6f, 0.6f)),    // BLEAK 
-			new AtmosphereType("ATM_RED",new Vector3(0.5f, 0.62f, 0.625f)), // CONFIRMED RED
-			new AtmosphereType("ATM_CYAN", new Vector3(0.65f, 0.47f, 0.435f)), // CONFIRMED CYAN
-			new AtmosphereType("ATM_GREEN",new Vector3(0.60f, 0.5f, 0.60f)),  // CONFIRMED GREEN
-			new AtmosphereType("ATM_PURPLE",new Vector3(0.65f, 0.67f, 0.475f)),   //  Confirmed PURPLE 
-			new AtmosphereType("ATM_YELLOW",new Vector3(0.5f, 0.54f, 0.635f)),   // CONFIRMED YELLOW
-			new AtmosphereType("ATM_PINK",new Vector3(0.45f, 0.72f, 0.675f)) // CONFIRMED PINK
-        };
-
-        public static Vector3 getAtmosphereValue(string n) {
-        	foreach (AtmosphereType at in AtmosphereTypes)
-        		if (at.name.ToLower() == n.ToLower())
-        			return at.values;
-
-        	return Vector3.zero;
-        }
-
-        public static int ATM_NORMAL = 0;
-        public static int ATM_BLEAK = 1;
-        public static int ATM_RED = 2;
-        public static int ATM_CYAN = 3;
-        public static int ATM_GREEN = 4;
-        public static int ATM_PURPLE = 5;
-        public static int ATM_YELLOW = 6;
-        public static int ATM_PINK = 7;
-
-
-		
-				
-	}
-
-
-	[System.Serializable]
-	public class PlanetTypes {
-		public List<PlanetType> planetTypes = new List<PlanetType>();
-
-
-		public PlanetTypes() {
-			Initialize();
-		}
-
-		public void Initialize() {
-        }
-
-
-
-        public void setDelegates() {
-        	foreach (PlanetType pt in planetTypes)
-        		pt.setDelegate();
-        }
-
-        public PlanetType getRandomPlanetType(System.Random r, float radius, float temperature) {
-			List<PlanetType> candidates = new List<PlanetType>();
-			foreach (PlanetType pt in planetTypes) {
-				if ((radius>=pt.RadiusRange.x && radius<pt.RadiusRange.y) && (temperature>=pt.TemperatureRange.x && temperature<pt.TemperatureRange.y))
-					candidates.Add (pt);
-			}
-			
-			if (candidates.Count==0)
-				return planetTypes[1];
-				
-			return candidates[r.Next()%candidates.Count];
-		}
-
-		public PlanetType getPlanetType(string s) {
-			foreach (PlanetType pt in planetTypes)
-				if (pt.Name.ToLower() == s.ToLower())
-					return pt;
-
-			return null;
-		}
-
-        public static PlanetTypes DeSerialize(string filename)
-        {
-			XmlSerializer deserializer = new XmlSerializer(typeof(PlanetTypes));
-            TextReader textReader = new StreamReader(filename);
-			PlanetTypes sz = (PlanetTypes)deserializer.Deserialize(textReader);
-            textReader.Close();
-            return sz;
-        }
-		static public void Serialize(PlanetTypes sz, string filename)
-        {
-			XmlSerializer serializer = new XmlSerializer(typeof(PlanetTypes));
-            TextWriter textWriter = new StreamWriter(filename);
-            serializer.Serialize(textWriter, sz);
-            textWriter.Close();
-        }
-
-
-	}
 
 
     // Hidden properties
@@ -278,6 +109,7 @@ namespace LemonSpawn {
         public bool hasVolumetricClouds = false;
 
         public PlanetType planetType;
+        public SettingsType pType;
         public Atmosphere atmosphere;
         public Sea sea;
         public PlanetProperties properties = new PlanetProperties();
@@ -346,35 +178,29 @@ namespace LemonSpawn {
 
 			
 			surface = new Surface(this);
+            
 			
 		}
 
 
-		public static void InitializePlanetTypes() {
-		//	if (planetTypes != null)
-		//		return;
-
-
-			if (!File.Exists(RenderSettings.planetTypesFilename)) {
-				World.FatalError("Could not find planet types file: " + RenderSettings.planetTypesFilename);
-				return;
-			}
 	
 
-			planetTypes = PlanetTypes.DeSerialize(RenderSettings.planetTypesFilename);
-			planetTypes.setDelegates();
-		}
 
+        public void Randomize(int count) {
+            System.Random r = new System.Random(seed);
+            
+        }
 
 		
-		public void Randomize(int count) {
+/*		public void RandomizeOld(int count) {
 			System.Random r = new System.Random(seed);
             temperature = (float)r.NextDouble()*500f + 100;
+
 			if (count>=2)
 				planetType = planetTypes.getRandomPlanetType(r, radius, temperature);
 			else
 				planetType = planetTypes.getPlanetType("Terra");; // First two are ALWAYS TERRA
-				
+
 			if (planetType == null)
 				return;
 
@@ -454,7 +280,7 @@ namespace LemonSpawn {
 			
 		}
 		
-		
+		*/
 		
 		public float getHeight() {
 			return properties.localCamera.magnitude - radius;
@@ -468,7 +294,6 @@ namespace LemonSpawn {
         public PlanetSettings() {
 			surface = new Surface(this);
             properties.gpuSurface = new GPUSurface(this);
-			InitializePlanetTypes();
 			
 		}
 		

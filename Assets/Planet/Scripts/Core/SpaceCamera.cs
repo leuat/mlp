@@ -15,6 +15,7 @@ public class SpaceCamera : MonoBehaviour {
 	private float totalRun = 1.0f;
 	private Vector3 P;
 	public DVector initPos = new DVector(0,0,0);
+	public DVector initDir = new DVector(0,0,0);
 	private Vector3 mouseAdd = new Vector3();
 	float rotate = 0;
 	float rotateT = 0;
@@ -24,7 +25,7 @@ public class SpaceCamera : MonoBehaviour {
 	
 	void Start() {
 //		actualCamera = new GameObject("ActualCamera");
-		SetLookCamera(initPos,Vector3.forward, Vector3.up);
+		SetLookCamera(initPos,initDir.toVectorf(), Vector3.up);
 	}
 	
 	void UpdateCam(Vector3 t) {

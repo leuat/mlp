@@ -394,7 +394,7 @@ namespace LemonSpawn
 			if (settingsPanel != null)
                 settingsPanel.SetActive(false);
 
-			PlanetSettings.InitializePlanetTypes();
+			PlanetTypes.InitializePlanetTypes();
 
 			if (settingsPanel != null)
                 settingsPanel.SetActive(true); // must be true before populating
@@ -554,7 +554,7 @@ namespace LemonSpawn
             }
             else
             {
-                AddMessage("Setting all planets to type : " + RenderSettings.ForceAllPlanetTypes +"  (" + PlanetSettings.planetTypes.planetTypes[RenderSettings.ForceAllPlanetTypes].Name + ")", 4);
+                //AddMessage("Setting all planets to type : " + RenderSettings.ForceAllPlanetTypes +"  (" + PlanetSettings.planetTypes.planetTypes[RenderSettings.ForceAllPlanetTypes].Name + ")", 4);
             }
             LoadFromXMLFile(settings.previousFile, false);
 

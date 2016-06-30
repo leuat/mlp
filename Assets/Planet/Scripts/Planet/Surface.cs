@@ -539,19 +539,17 @@ public static SurfaceFilter Continents(float a, float size, float max) {
 
         public Surface(PlanetSettings ps) {
 		planetSettings = ps;
-		if (ps.planetType!=null)
+        surfaceNode = InitializeFlat(0,0, planetSettings);
+/*		if (ps.planetType!=null)
 			surfaceNode = ps.planetType.Delegate(1f/planetSettings.radius, 1*ps.globalTerrainScale, planetSettings);
-			
+
 		else surfaceNode = InitializeFlat(0,0, planetSettings);
-/*		if (planetSettings.planetType == PlanetSettings.PlanetType.Terra)
-			surfaceNode = InitializeTerra(1f/planetSettings.radius, 1);
-		if (planetSettings.planetType == PlanetSettings.PlanetType.Gas)
-				surfaceNode =InitializeFlat(0,0);
-*/		
+        */
 	}
 	
 	
 	public float GetHeight(Vector3 p, int lod) {
+        return 0;
 		noise.seed = planetSettings.seed / 2352f; 	
 			
 		if (surfaceNode == null)

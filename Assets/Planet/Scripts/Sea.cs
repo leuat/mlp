@@ -45,7 +45,7 @@ namespace LemonSpawn {
 
 
             psOcean.radius = m_radius;
-			psOcean.planetType = PlanetSettings.planetTypes.getPlanetType("Cold gas giant");
+			//psOcean.planetType = PlanetSettings.planetTypes.getPlanetType("Cold gas giant");
             psOcean.hasSea = false;
             psOcean.Initialize();
             psOcean.maxQuadNodeLevel = RenderSettings.waterMaxQuadNodeLever; 

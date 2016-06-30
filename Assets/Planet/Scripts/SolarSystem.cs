@@ -122,9 +122,9 @@ namespace LemonSpawn
                     p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
                     p.pSettings.properties.parent = go;
-					p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[p.pSettings.planetTypeIndex];
-                    if (RenderSettings.GPUSurface)
-                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
+					//p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[p.pSettings.planetTypeIndex];
+ //                   if (RenderSettings.GPUSurface)
+///                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                     planets.Add(p);
