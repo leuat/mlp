@@ -261,8 +261,7 @@ namespace LemonSpawn
 
 
             // Fun
-            //pSettings.ExpSurfSettings2.y += (Mathf.PerlinNoise(Time.time, 0)-0.5f) * 0.001f;
-            pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.02521f, 0) - 0.5f) * 0.005f;
+         //   pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.02521f, 0) - 0.5f) * 0.005f;
 //            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }

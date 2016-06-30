@@ -109,6 +109,8 @@
 		float3 posWorld					: TEXCOORD11;
 #endif
 		float3 posWorld2 				: TEXCOORD12;
+		float3 tangent : TEXCOORD13;
+		float3 binormal: TEXCOORD14;
 	};
 
 
@@ -130,6 +132,8 @@
 #ifdef _TANGENT_TO_WORLD
 		float3 t = v.tangent.xyz;
 		float3 b = normalize(cross(normalWorld, t));
+		o.tangent = t;
+		o.binormal = b;
 		normalWorld = getPlanetSurfaceNormal(posWorld - v3Translate, t, b, 0.1);
 #endif
 #if UNITY_SPECCUBE_BOX_PROJECTION
@@ -229,6 +233,10 @@
 	half4 LfragForwardBase(VertexOutputForwardBase2 i) : SV_Target
 	{
 		FRAGMENT_SETUP(s)
+
+		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.1);
+		s.normalWorld = realN;
+
 		UnityLight mainLight = MainLight(s.normalWorld);
 	half atten = SHADOW_ATTENUATION(i);
 

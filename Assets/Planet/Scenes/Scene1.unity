@@ -548,7 +548,7 @@ MonoBehaviour:
   spaceBackground: {fileID: 0}
   sphere: {fileID: 4300000, guid: 8784879114f624946ab37aa4a373b971, type: 3}
   m_maxQuadNodeLevel: 13
-  m_minQuadNodeLevel: 3
+  m_minQuadNodeLevel: 2
   GPUSurface: 1
   szWorld:
     Planets: []
@@ -727,8 +727,8 @@ MonoBehaviour:
   hasSea: 1
   ExpSurfSettings: {x: 2.5, y: 0.65, z: 1.7}
   ExpSurfSettings2: {x: -0.5, y: 0.01, z: 5}
-  ExpSurfSettings3: {x: 0.3, y: 9, z: 0}
-  SurfaceVortex1: {x: 0, y: 0, z: 0}
+  ExpSurfSettings3: {x: 0.3, y: 11, z: 0}
+  SurfaceVortex1: {x: 5, y: 1, z: 0}
   SurfaceVortex2: {x: 0, y: 0, z: 0}
   seed: 1
   atmosphereDensity: 0.85
