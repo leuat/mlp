@@ -394,7 +394,7 @@ namespace LemonSpawn
 			if (settingsPanel != null)
                 settingsPanel.SetActive(false);
 
-			PlanetTypes.InitializePlanetTypes();
+			PlanetTypes.Initialize();
 
 			if (settingsPanel != null)
                 settingsPanel.SetActive(true); // must be true before populating

@@ -749,7 +749,6 @@ namespace LemonSpawn
 
                 if (cnt==propertyNameParts.Length-1) {
                     pi.SetValue(srcobj, Convert.ChangeType(val, pi.FieldType));
-                    UnityEngine.Debug.Log("VALUE SET");
                     return;
                     }
                     cnt++;

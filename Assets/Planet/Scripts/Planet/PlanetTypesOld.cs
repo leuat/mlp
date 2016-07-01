@@ -78,24 +78,7 @@ namespace LemonSpawn {
             setDelegate();
 
 		}
-        public static AtmosphereType[] AtmosphereTypes = new AtmosphereType[] {
-           new AtmosphereType("ATM_NORMAL", new Vector3(0.65f, 0.57f, 0.475f)), // CONFIRMED NORMAL
-			new AtmosphereType("ATM_BLEAK", new Vector3(0.6f, 0.6f, 0.6f)),    // BLEAK 
-			new AtmosphereType("ATM_RED",new Vector3(0.5f, 0.62f, 0.625f)), // CONFIRMED RED
-			new AtmosphereType("ATM_CYAN", new Vector3(0.65f, 0.47f, 0.435f)), // CONFIRMED CYAN
-			new AtmosphereType("ATM_GREEN",new Vector3(0.60f, 0.5f, 0.60f)),  // CONFIRMED GREEN
-			new AtmosphereType("ATM_PURPLE",new Vector3(0.65f, 0.67f, 0.475f)),   //  Confirmed PURPLE 
-			new AtmosphereType("ATM_YELLOW",new Vector3(0.5f, 0.54f, 0.635f)),   // CONFIRMED YELLOW
-			new AtmosphereType("ATM_PINK",new Vector3(0.45f, 0.72f, 0.675f)) // CONFIRMED PINK
-        };
-
-        public static Vector3 getAtmosphereValue(string n) {
-        	foreach (AtmosphereType at in AtmosphereTypes)
-        		if (at.name.ToLower() == n.ToLower())
-        			return at.values;
-
-        	return Vector3.zero;
-        }
+     
 
         public static int ATM_NORMAL = 0;
         public static int ATM_BLEAK = 1;

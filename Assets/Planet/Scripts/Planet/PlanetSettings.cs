@@ -53,6 +53,7 @@ namespace LemonSpawn {
         public float outerRadiusScale = 1.025f;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
 
+        public string atmosphereString ="normal";
 
 
         public float m_hdrExposure = 1.5f;
@@ -297,6 +298,18 @@ namespace LemonSpawn {
 			
 		}
 		
+
+        public void UpdateParameters(System.Random r)
+        {
+            // DO various stuff with the random parameters
+            string[] atmCandidates= atmosphereString.Split(',');
+            string atm = atmCandidates[r.Next() % atmCandidates.Length].Trim();
+            m_atmosphereWavelengths = AtmosphereType.getAtmosphereValue(atm);
+
+
+
+        }
+
 		
 		public void Update() {
 			if (properties.posInKm == null) {
