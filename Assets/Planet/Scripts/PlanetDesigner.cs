@@ -5,6 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
 using System.Xml.Serialization;
+using System.Reflection;
 
 
 #if UNITY_EDITOR
@@ -25,6 +26,7 @@ namespace LemonSpawn
         private GameObject pnlNumber;
         private GameObject pnlString;
         private GameObject pnlBool;
+        private GameObject pnlColor;
 
 
         private void HideSettingsPanels()
@@ -35,6 +37,8 @@ namespace LemonSpawn
                 pnlString.SetActive(false);
             if (pnlBool != null)
                 pnlBool.SetActive(false);
+            if (pnlColor != null)
+                pnlColor.SetActive(false);
         }
 
 
@@ -44,6 +48,7 @@ namespace LemonSpawn
             Update();
             pnlNumber = GameObject.Find("pnlGroupNumber");
             pnlString = GameObject.Find("pnlGroupString");
+            pnlColor = GameObject.Find("pnlGroupColor");
 
             RenderSettings.MoveCam = false;
 
@@ -104,18 +109,37 @@ namespace LemonSpawn
                     PopulateSettings();
                 }
             }
+            if (Input.GetKeyUp(KeyCode.F2))
+            {
+                CycleParameter(-1);
+            }
+            if (Input.GetKeyUp(KeyCode.F3))
+                CycleParameter(+1);
 
-		  }    	
+
+         
+        }
 
         public void NewPlanetType()
         {
-            PlanetTypes.currentSettings = PlanetTypes.p.NewPlanetType();
-            GameObject.Find("txtPlanetName").GetComponent<Text>().text = PlanetTypes.currentSettings.name;
+            PlanetTypes.currentSettings = PlanetTypes.p.NewPlanetType(null);
+            setInput("InputPlanetTypeName",PlanetTypes.currentSettings.name);
             PopulatePlanetTypes(1);
             SetNewPlanetType();
 
 
         }
+
+        public void CopyPlanetType()
+        {
+            PlanetTypes.currentSettings = PlanetTypes.p.NewPlanetType(PlanetTypes.currentSettings);
+            setInput("InputPlanetTypeName",PlanetTypes.currentSettings.name);
+            PopulatePlanetTypes(1);
+            SetNewPlanetType();
+
+
+        }
+
 
         public void SetNewPlanetType() {
             PlanetTypes.currentSettings.PopulateGroupsDrop("DropdownGroups");
@@ -143,6 +167,17 @@ namespace LemonSpawn
 
             PopulateSettings();
         }
+
+        public void CycleParameter(int idx)
+        {
+            if (PlanetTypes.currentSettings == null)
+                return;
+
+            settingsType = PlanetTypes.p.CycleSettings(settingsType, idx);
+            PopulateSettings();
+
+        }
+
 
         private void setText(string box, string text)
         {
@@ -255,6 +290,32 @@ namespace LemonSpawn
 
         }
 
+        public void setColor(Color org, Color var)
+        {
+            GameObject.Find("ColorPicker").GetComponent<ColorPicker>().CurrentColor = org;
+            GameObject.Find("ColorPickerVariation").GetComponent<ColorPicker>().CurrentColor = var;
+
+        }
+
+        public void getColor(out Color org, out Color var)
+        {
+            org = GameObject.Find("ColorPicker").GetComponent<ColorPicker>().CurrentColor;
+            var = GameObject.Find("ColorPickerVariation").GetComponent<ColorPicker>().CurrentColor;
+
+        }
+
+        public void SelectColor()
+        {
+            if (settingsType == null)
+                return;
+
+            getColor(out settingsType.color, out settingsType.variation);
+            settingsType.realizedColor = settingsType.color;
+            if (SolarSystem.planet!=null)
+                settingsType.setParameter(SolarSystem.planet.pSettings);
+        }
+
+
         public void PopulateSettings()
         {
             if (settingsType == null)
@@ -281,6 +342,11 @@ namespace LemonSpawn
                 pnlString.SetActive(true);
                 setInput("InputParamString", s.stringValue);
 
+            }
+            if (s.type == SettingsType.COLOR)
+            {
+                pnlColor.SetActive(true);
+                setColor(s.color, s.variation);
             }
 
 

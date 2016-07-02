@@ -91,11 +91,19 @@ Shader "LemonSpawn/Water" {
 									
 									 float4x4 modelMatrix = _Object2World;
 									float4x4 modelMatrixInverse = _World2Object;
+
+									float4 newVertex = mul(_Object2World, v.vertex);
+									newVertex.xyz -= v3Translate;
+									newVertex.xyz = normalize(newVertex.xyz)*fInnerRadius*(1 + liquidThreshold) + v3Translate;
+									v.vertex = mul(_World2Object, newVertex);
+
+									o.worldPosition = newVertex.xyz;
+
 									o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 									TRANSFER_VERTEX_TO_FRAGMENT(o);
 								//	o.uv = v.texcoord;
 									o.texcoord = v.texcoord;
-									o.worldPosition = mul(modelMatrix, v.vertex);
+//									o.worldPosition = mul(modelMatrix, v.vertex);
 									o.vvertex = v.vertex;
 
 									getGroundAtmosphere(v.vertex, o.c0, o.c1);

@@ -450,8 +450,8 @@ inline float getIQClouds(float3 pos, in int N) {
 		float3 shift= float3(0.123, 2.314, 0.6243);
 		float A = 0;
 		float pp = ls_cloudscattering;
-		ms = ms * (1 + LS_LargeVortex*noise(pos*3.2354 + shift) );
-		ms = ms * (1 + LS_SmallVortex*noise(pos*29.2354 + shift) );
+		ms = ms * (1 + LS_LargeVortex*noise(p*3.2354 + shift) );
+		ms = ms * (1 + LS_SmallVortex*noise(p*29.2354 + shift) );
 		for (int i = 1; i <= N; i++) {
 			float f = pow(2, i)*1.0293;
 			float amp = (2 * pow(i,pp)); 

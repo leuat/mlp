@@ -424,7 +424,13 @@ namespace LemonSpawn {
   			mesh = new LSMesh();
 			FieldToFloat(nbh);
 			mesh.createMesh();
-
+            if (RenderSettings.GPUSurface)
+            {
+                
+                mesh.mesh.RecalculateNormals();
+                mesh.mesh.bounds = new Bounds(mesh.mesh.bounds.center, mesh.mesh.bounds.size * 5);
+            }
+        
             return mesh;
 //			return mesh.Realize(planetSettings.gameObject.name, planetSettings.atmosphere.m_groundMaterial, planetSettings.currentLayer, planetSettings.currentTag, castShadows);
 			

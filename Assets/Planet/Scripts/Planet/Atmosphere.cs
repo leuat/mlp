@@ -125,7 +125,7 @@ namespace LemonSpawn
             m_groundMaterial.SetTexture("_Mountain", (Texture2D)Resources.Load("Textures/seamless_rock"));
             m_groundMaterial.SetTexture("_Basin", (Texture2D)Resources.Load("Textures/seamless_drough"));
             m_groundMaterial.SetTexture("_Top", (Texture2D)Resources.Load("Textures/snow"));
-            m_groundMaterial.SetTexture("_Surface", (Texture2D)Resources.Load("Textures/seamless_stone1"));
+            m_groundMaterial.SetTexture("_Surface", (Texture2D)Resources.Load("Textures/seamless_dirt"));
         }
 
 

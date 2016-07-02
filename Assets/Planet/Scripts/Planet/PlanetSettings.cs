@@ -39,7 +39,7 @@ namespace LemonSpawn {
 		[Header("InitialOffset, Surface Height, Surface Scale")]
 		public Vector3 ExpSurfSettings2 = new Vector3(0.6f, 0.01f, 3.2451f);
 		[Header("Height sub, octaves, xx")]
-		public Vector3 ExpSurfSettings3 = new Vector3(0.0f, 0,0);
+		public Vector3 ExpSurfSettings3 = new Vector3(0.3f, 10,1);
         [Header("Vortex #1: scale, amp")]
         public Vector3 SurfaceVortex1 = new Vector3(0.0f, 0, 0);
         [Header("Vortex #2: scale, amp")]
@@ -103,7 +103,7 @@ namespace LemonSpawn {
         public float bumpScale = 1.0f;
 		public float cloudRadius = 1.02f;
         public float renderedCloudRadius = 1.03f;
-        public Vector3 cloudColor = new Vector3(0.7f,0.8f,1f);
+        public Color cloudColor = new Color(0.7f,0.8f,1f);
 		public CloudSettings cloudSettings = new CloudSettings();
         public bool hasFlatClouds = false;
         public bool hasBillboardClouds = false;
@@ -302,6 +302,8 @@ namespace LemonSpawn {
         public void UpdateParameters(System.Random r)
         {
             // DO various stuff with the random parameters
+            if (atmosphereString == null)
+                atmosphereString = "normal";
             string[] atmCandidates= atmosphereString.Split(',');
             string atm = atmCandidates[r.Next() % atmCandidates.Length].Trim();
             m_atmosphereWavelengths = AtmosphereType.getAtmosphereValue(atm);

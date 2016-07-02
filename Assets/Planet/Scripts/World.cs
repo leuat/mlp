@@ -65,11 +65,11 @@ namespace LemonSpawn {
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
-        public static bool reCalculateQuads = false;
+        public static bool reCalculateQuads = true;
 
-		public static string path = Application.dataPath + "/../";
+        public static string path; 
 
-        public static string planetTypesFilename = path + "planettypes.xml";
+        public static string planetTypesFilename = "planettypes.xml";
 
         public static int ForceAllPlanetTypes = -1;
 
@@ -412,17 +412,17 @@ namespace LemonSpawn {
 		#if UNITY_STANDALONE_WIN
 		public void LoadCommandLineXML() {
 			
-			string[] cmd = System.Environment.GetCommandLineArgs ();
+/*			string[] cmd = System.Environment.GetCommandLineArgs ();
 			if (cmd.Length>1)  {
 				if (cmd[1]!="")
-                    solarSystem.LoadWorld(Application.dataPath + "/../" + cmd[1], true, true, this);
+                    solarSystem.LoadWorld(RenderSettings.path + cmd[1], true, true, this);
 			}
 			
 			//		LoadWorld("Assets/Planet/Resources/system1.xml", true);
 			szWorld.IterateCamera();
 			solarSystem.space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
             solarSystem.space.hdr = szWorld.sun_intensity;
-			
+	*/		
 		}
 		
 		#endif
@@ -503,7 +503,7 @@ namespace LemonSpawn {
 
         public virtual void Start () {
 
-
+            RenderSettings.path = Application.dataPath + "/../";
             CurrentApp = Verification.MCAstName;
 
             RenderSettings.GPUSurface = GPUSurface;
@@ -594,6 +594,7 @@ namespace LemonSpawn {
 
 
         public virtual void Update () {
+
 			UpdateWorldCamera();		
             solarSystem.Update();
             UpdateMessages();
@@ -631,10 +632,6 @@ namespace LemonSpawn {
 			if (Input.GetKeyUp (KeyCode.LeftControl)) 
 				ctrlModifier = false;
 
-            if (Input.GetKeyUp(KeyCode.B))
-                SolarSystem.planet.pSettings.cloudSettings.RandomizeGas(new System.Random());
-			if (Input.GetKeyUp(KeyCode.N))
-                SolarSystem.planet.pSettings.cloudSettings.RandomizeTerra(new System.Random());
 
 
             if (modifier) // && ctrlModifier)

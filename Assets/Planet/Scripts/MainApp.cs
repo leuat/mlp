@@ -38,7 +38,8 @@ public class MainApp : MonoBehaviour
 
 		}
         if (!ok)
-            Application.Quit();
+            //            Application.Quit();
+            SceneManager.LoadScene(3);
 
     }
 

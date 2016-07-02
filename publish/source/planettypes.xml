@@ -1,577 +1,1469 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PlanetTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <planetTypes>
-      <PlanetType>
-      <Name>Cold gas giant</Name>
-      <color>
-        <r>0.2</r>
-        <g>0.5</g>
-        <b>0.7</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.1</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.2</r>
-        <g>0.5</g>
-        <b>0.7</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.1</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_NORMAL</string>
-        <string>ATM_BLEAK</string>
-        <string>ATM_CYAN</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>1</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeFlat</delegateString>
-      <minQuadLevel>1</minQuadLevel>
-      <RadiusRange>
-        <x>12000</x>
-        <y>1000000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>0</x>
-        <y>200</y>
-      </TemperatureRange>
-    </PlanetType>
-
-    <PlanetType>
-      <Name>Terra</Name>
-      <color>
-        <r>0.3</r>
-        <g>0.5</g>
-        <b>0.2</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.3</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.4</r>
-        <g>0.4</g>
-        <b>0.1</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.5</r>
-        <g>0.5</g>
-        <b>0</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0.3</r>
-        <g>0.4</g>
-        <b>1</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>1</r>
-        <g>1</g>
-        <b>1</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_NORMAL</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.9</atmosphereDensity>
-      <sealevel>0.001</sealevel>
-      <delegateString>Surface.InitializeNew</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>3000</x>
-        <y>12000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>150</x>
-        <y>400</y>
-      </TemperatureRange>
-    </PlanetType>
-
-    <PlanetType>
-      <Name>Desert</Name>
-      <color>
-        <r>0.4</r>
-        <g>0.3</g>
-        <b>0.2</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.2</r>
-        <g>0.1</g>
-        <b>0.1</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.2</r>
-        <g>0.1</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.4</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_RED</string>
-        <string>ATM_YELLOW</string>
-        <string>ATM_BLEAK</string>
-        <string>ATM_NORMAL</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.6</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeDesolate</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>100</x>
-        <y>15000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>100</x>
-        <y>1000</y>
-      </TemperatureRange>
-    </PlanetType>
-
-    <PlanetType>
-      <Name>Moon</Name>
-      <color>
-        <r>0.4</r>
-        <g>0.4</g>
-        <b>0.4</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.05</r>
-        <g>0.0</g>
-        <b>0.02</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.05</r>
-        <g>0.02</g>
-        <b>0.02</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_RED</string>
-        <string>ATM_YELLOW</string>
-        <string>ATM_BLEAK</string>
-        <string>ATM_NORMAL</string>
-        <string>ATM_CYAN</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.07</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeMoon</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>100</x>
-        <y>3000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>0</x>
-        <y>1000</y>
-      </TemperatureRange>
-    </PlanetType>
-    <PlanetType>
-      <Name>Mountain</Name>
-      <color>
-        <r>0.9</r>
-        <g>0.5</g>
-        <b>0.2</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.1</r>
-        <g>0.4</g>
-        <b>0.1</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.5</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.1</r>
-        <g>0.3</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_RED</string>
-        <string>ATM_YELLOW</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.7</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeMountain</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>100</x>
-        <y>15000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>100</x>
-        <y>1000</y>
-      </TemperatureRange>
-  </PlanetType>
-   <PlanetType>
-      <Name>Ice</Name>
-      <color>
-        <r>0.7</r>
-        <g>0.7</g>
-        <b>0.7</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.1</r>
-        <g>0.1</g>
-        <b>0.3</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.1</r>
-        <g>0.1</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>1</r>
-        <g>1</g>
-        <b>1</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_NORMAL</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.7</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeMountain</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>100</x>
-        <y>15000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>0</x>
-        <y>250</y>
-      </TemperatureRange>
-    </PlanetType>
-
-    <PlanetType>
-      <Name>Hot gas giant</Name>
-      <color>
-        <r>0.6</r>
-        <g>0.4</g>
-        <b>0.3</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.6</r>
-        <g>0.4</g>
-        <b>0.3</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.2</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_RED</string>
-        <string>ATM_YELLOW</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>1</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeFlat</delegateString>
-      <minQuadLevel>1</minQuadLevel>
-      <RadiusRange>
-        <x>50000</x>
-        <y>5000000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>150</x>
-        <y>1000</y>
-      </TemperatureRange>
-    </PlanetType>
-    <PlanetType>
-      <Name>New</Name>
-      <color>
-        <r>0.6</r>
-        <g>0.4</g>
-        <b>0.3</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.6</r>
-        <g>0.4</g>
-        <b>0.4</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.2</r>
-        <g>0.2</g>
-        <b>0.1</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0.3</r>
-        <g>0.4</g>
-        <b>1</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>1</r>
-        <g>1</g>
-        <b>1</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_NORMAL</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.8</atmosphereDensity>
-      <sealevel>0.001</sealevel>
-      <delegateString>Surface.InitializeNew</delegateString>
-      <minQuadLevel>1</minQuadLevel>
-      <RadiusRange>
-        <x>500</x>
-        <y>5000000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>150</x>
-        <y>1000</y>
-      </TemperatureRange>
-    </PlanetType>
-    <PlanetType>
-      <Name>Terra2</Name>
-      <color>
-        <r>0.6</r>
-        <g>0.4</g>
-        <b>0.3</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.3</r>
-        <g>0.3</g>
-        <b>0.3</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.5</r>
-        <g>0.5</g>
-        <b>0.2</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.5</r>
-        <g>0.5</g>
-        <b>0.1</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0.3</r>
-        <g>0.4</g>
-        <b>1</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>1</r>
-        <g>1</g>
-        <b>1</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_NORMAL</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.8</atmosphereDensity>
-      <sealevel>0.001</sealevel>
-      <delegateString>Surface.InitializeTerra2</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>500</x>
-        <y>5000000</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>150</x>
-        <y>1000</y>
-      </TemperatureRange>
-    </PlanetType>
-
-        <PlanetType>
-      <Name>Asteroid</Name>
-      <color>
-        <r>0.6</r>
-        <g>0.6</g>
-        <b>0.6</b>
-        <a>1</a>
-      </color>
-      <colorVariation>
-        <r>0.1</r>
-        <g>0.0</g>
-        <b>0.0</b>
-        <a>1</a>
-      </colorVariation>
-      <basinColor>
-        <r>0.3</r>
-        <g>0.3</g>
-        <b>0.3</b>
-        <a>1</a>
-      </basinColor>
-      <basinColorVariation>
-        <r>0.1</r>
-        <g>0.0</g>
-        <b>0.0</b>
-        <a>1</a>
-      </basinColorVariation>
-      <seaColor>
-        <r>0</r>
-        <g>0</g>
-        <b>0</b>
-        <a>1</a>
-      </seaColor>
-      <topColor>
-        <r>0.6</r>
-        <g>0.6</g>
-        <b>0.6</b>
-        <a>1</a>
-      </topColor>
-      <atmosphere>
-        <string>ATM_CYAN</string>
-      </atmosphere>
-      <clouds />
-      <atmosphereDensity>0.00</atmosphereDensity>
-      <sealevel>0</sealevel>
-      <delegateString>Surface.InitializeMoon</delegateString>
-      <minQuadLevel>3</minQuadLevel>
-      <RadiusRange>
-        <x>100</x>
-        <y>500</y>
-      </RadiusRange>
-      <TemperatureRange>
-        <x>0</x>
-        <y>10000</y>
-      </TemperatureRange>
-      <surfaceScaleModifier>0.1235</surfaceScaleModifier>
-      <surfaceHeightModifier>100</surfaceHeightModifier> 
-
-    </PlanetType>
-
-
-
+    <SettingsTypes>
+      <name>Terra</name>
+      <settingsTypes>
+        <SettingsType>
+          <name>Atmosphere density</name>
+          <propName>atmosphereDensity</propName>
+          <index>0</index>
+          <info>1 = thick, 0 = none</info>
+          <group>Atmosphere</group>
+          <lower>0.65</lower>
+          <upper>0.75</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0.727766931</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Outer radius scale</name>
+          <propName>outerRadiusScale</propName>
+          <index>0</index>
+          <info>Best is 1.025</info>
+          <group>Atmosphere</group>
+          <lower>1.024</lower>
+          <upper>1.026</upper>
+          <minMax>
+            <x>1</x>
+            <y>1.05</y>
+            <z>1.025</z>
+          </minMax>
+          <realizedValue>1.02465618</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>HDR Exposure</name>
+          <propName>m_hdrExposure</propName>
+          <index>0</index>
+          <info>HDR exposure of atmosphere: More lets in a lot of sun</info>
+          <group>Atmosphere</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>1.42636967</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Lacunarity</name>
+          <propName>ExpSurfSettings</propName>
+          <index>0</index>
+          <info>Lacunarity defines the overall shape of the fractal, high lacunarity = lots of "lakes"</info>
+          <group>Surface</group>
+          <lower>2.45</lower>
+          <upper>2.55</upper>
+          <minMax>
+            <x>1.5</x>
+            <y>4</y>
+            <z>2.5</z>
+          </minMax>
+          <realizedValue>2.50295687</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Offset</name>
+          <propName>ExpSurfSettings</propName>
+          <index>1</index>
+          <info>Offset</info>
+          <group>Surface</group>
+          <lower>0.6</lower>
+          <upper>0.7</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>0.65</z>
+          </minMax>
+          <realizedValue>0.648150444</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Gain</name>
+          <propName>ExpSurfSettings</propName>
+          <index>2</index>
+          <info>Gain</info>
+          <group>Surface</group>
+          <lower>1.65</lower>
+          <upper>1.75</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>1.7</z>
+          </minMax>
+          <realizedValue>1.72597063</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Initial offset</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>0</index>
+          <info>Initial offset</info>
+          <group>Surface</group>
+          <lower>-0.55</lower>
+          <upper>-0.45</upper>
+          <minMax>
+            <x>-1</x>
+            <y>1</y>
+            <z>-0.5</z>
+          </minMax>
+          <realizedValue>-0.459681958</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface height</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>1</index>
+          <info>Height surface multiplier</info>
+          <group>Surface</group>
+          <lower>0.01</lower>
+          <upper>0.0127535947</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.5</y>
+            <z>0.01</z>
+          </minMax>
+          <realizedValue>0.0111575676</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface scale</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>2</index>
+          <info>Surface scale</info>
+          <group>Surface</group>
+          <lower>1.73188913</lower>
+          <upper>3.297099</upper>
+          <minMax>
+            <x>0</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>3.243436</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Atmosphere color</name>
+          <stringValue>normal</stringValue>
+          <propName>atmosphereString</propName>
+          <index>0</index>
+          <info>Variations: normal, bleak, red, cyan, green, purple, yellow, pink. Can be separated by comma, will choose one by random. </info>
+          <group>Atmosphere</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>1.55600917</realizedValue>
+          <type>0</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 scale</name>
+          <propName>SurfaceVortex1</propName>
+          <index>0</index>
+          <info>Vortex 1 scale</info>
+          <group>Surface</group>
+          <lower>-3.15941858</lower>
+          <upper>0.478255749</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>-1.5851922</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 scale</name>
+          <propName>SurfaceVortex2</propName>
+          <index>0</index>
+          <info>Vortex 2 scale</info>
+          <group>Surface</group>
+          <lower>2.65216827</lower>
+          <upper>3.3768177</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>2.975623</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 amplitude</name>
+          <propName>SurfaceVortex1</propName>
+          <index>1</index>
+          <info>Vortex 1 amplitude</info>
+          <group>Surface</group>
+          <lower>0.9</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1.05931568</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 amplitude</name>
+          <propName>SurfaceVortex2</propName>
+          <index>1</index>
+          <info>Vortex 2 amplitude</info>
+          <group>Surface</group>
+          <lower>0.9</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.9563054</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color red</name>
+          <propName>m_basinColor</propName>
+          <index>0</index>
+          <info>Basin color red</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.506121337</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color green</name>
+          <propName>m_basinColor</propName>
+          <index>1</index>
+          <info>Basin color green</info>
+          <group>Surface Color</group>
+          <lower>0.25</lower>
+          <upper>0.35</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.30673</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color blue</name>
+          <propName>m_basinColor</propName>
+          <index>2</index>
+          <info>Basin color blue</info>
+          <group>Surface Color</group>
+          <lower>0</lower>
+          <upper>0.05</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.03291995</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 red</name>
+          <propName>m_surfaceColor</propName>
+          <index>0</index>
+          <info>Surface color 1 red</info>
+          <group>Surface Color</group>
+          <lower>0.65</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.780032754</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 green</name>
+          <propName>m_surfaceColor</propName>
+          <index>1</index>
+          <info>Surface color 1 green</info>
+          <group>Surface Color</group>
+          <lower>0.35</lower>
+          <upper>0.45</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3542283</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 blue</name>
+          <propName>m_surfaceColor</propName>
+          <index>2</index>
+          <info>Surface color 1 blue</info>
+          <group>Surface Color</group>
+          <lower>0.05</lower>
+          <upper>0.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.06902685</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 red</name>
+          <propName>m_surfaceColor2</propName>
+          <index>0</index>
+          <info>Surface color 2 red</info>
+          <group>Surface Color</group>
+          <lower>0.35</lower>
+          <upper>0.4</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.364095479</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 green</name>
+          <propName>m_surfaceColor2</propName>
+          <index>1</index>
+          <info>Surface color 2 green</info>
+          <group>Surface Color</group>
+          <lower>0.65</lower>
+          <upper>0.85</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.812655568</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 blue</name>
+          <propName>m_surfaceColor2</propName>
+          <index>2</index>
+          <info>Surface color 2 blue</info>
+          <group>Surface Color</group>
+          <lower>0.05</lower>
+          <upper>0.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.06990367</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color red</name>
+          <propName>m_surfaceColor</propName>
+          <index>0</index>
+          <info>Surface1 color red</info>
+          <group>Surface Color</group>
+          <lower>0.65</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.7153968</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color green</name>
+          <propName>m_surfaceColor</propName>
+          <index>1</index>
+          <info>Surface1 color green</info>
+          <group>Surface Color</group>
+          <lower>0.35</lower>
+          <upper>0.45</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3828459</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color blue</name>
+          <propName>m_surfaceColor</propName>
+          <index>2</index>
+          <info>Surface1 color blue</info>
+          <group>Surface Color</group>
+          <lower>0</lower>
+          <upper>0.05</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0382856652</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color red</name>
+          <propName>m_surfaceColor2</propName>
+          <index>0</index>
+          <info>Surface2 color red</info>
+          <group>Surface Color</group>
+          <lower>0.25</lower>
+          <upper>0.4</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3183099</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color green</name>
+          <propName>m_surfaceColor2</propName>
+          <index>1</index>
+          <info>Surface2 color green</info>
+          <group>Surface Color</group>
+          <lower>0.4826087</lower>
+          <upper>0.660869539</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5490322</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color blue</name>
+          <propName>m_surfaceColor2</propName>
+          <index>2</index>
+          <info>Surface2 color blue</info>
+          <group>Surface Color</group>
+          <lower>0.1</lower>
+          <upper>0.2</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.134590238</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color red</name>
+          <propName>m_topColor</propName>
+          <index>0</index>
+          <info>Top color red</info>
+          <group>Surface Color</group>
+          <lower>0.75</lower>
+          <upper>0.9</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.755825</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color green</name>
+          <propName>m_topColor</propName>
+          <index>1</index>
+          <info>Top color green</info>
+          <group>Surface Color</group>
+          <lower>0.7</lower>
+          <upper>0.9</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.7374766</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color blue</name>
+          <propName>m_topColor</propName>
+          <index>2</index>
+          <info>Top color blue</info>
+          <group>Surface Color</group>
+          <lower>0.7</lower>
+          <upper>0.9</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.8521326</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color red</name>
+          <propName>m_hillColor</propName>
+          <index>0</index>
+          <info>Hill color red</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.4838698</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color green</name>
+          <propName>m_hillColor</propName>
+          <index>1</index>
+          <info>Hill color green</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5172872</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color blue</name>
+          <propName>m_hillColor</propName>
+          <index>2</index>
+          <info>Hill color blue</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.463222742</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill threshold</name>
+          <propName>hilltThreshold</propName>
+          <index>0</index>
+          <info>Hill normal threshold. 1 = Everything has hill texture (0 degrees from normal), 1 = nothing (90 degrees)</info>
+          <group>Surface thresholds</group>
+          <lower>0.9</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1.05119288</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Height subtract</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>0</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>0.2</lower>
+          <upper>0.3</upper>
+          <minMax>
+            <x>-1</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.225283027</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Octaves</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>1</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>10</lower>
+          <upper>10</upper>
+          <minMax>
+            <x>1</x>
+            <y>14</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Power</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>2</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>0.9</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>-2</x>
+            <y>4</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.913960457</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top threshold</name>
+          <propName>topThreshold</propName>
+          <index>0</index>
+          <info>Top threshold. Above this value (multiplied with the radius), all colors are top color.</info>
+          <group>Surface thresholds</group>
+          <lower>0.005</lower>
+          <upper>0.012</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.01</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.00650161644</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin threshold</name>
+          <propName>basinThreshold</propName>
+          <index>0</index>
+          <info>Basin threshold. Below this value (multiplied with the radius), all colors are basin colors.</info>
+          <group>Surface thresholds</group>
+          <lower>0.001</lower>
+          <upper>0.001</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.01</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.001</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color red</name>
+          <propName>m_waterColor</propName>
+          <index>0</index>
+          <info>Water color red</info>
+          <group>Water</group>
+          <lower>0.25</lower>
+          <upper>0.4</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3558024</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color green</name>
+          <propName>m_waterColor</propName>
+          <index>1</index>
+          <info>Water color green</info>
+          <group>Water</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5991699</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color blue</name>
+          <propName>m_waterColor</propName>
+          <index>2</index>
+          <info>Water color blue</info>
+          <group>Water</group>
+          <lower>0.75</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.7661141</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Sea level</name>
+          <propName>liquidThreshold</propName>
+          <index>0</index>
+          <info>Sea level. Below this value (multiplied with the radius), Everything is sea.</info>
+          <group>Water</group>
+          <lower>0.0003</lower>
+          <upper>0.001179712</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.02</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0003609302</realizedValue>
+          <type>1</type>
+        </SettingsType>
+      </settingsTypes>
+      <groups>
+        <string>Atmosphere</string>
+        <string>Surface</string>
+        <string>Surface Color</string>
+        <string>Surface thresholds</string>
+        <string>Water</string>
+      </groups>
+    </SettingsTypes>
+    <SettingsTypes>
+      <name>Desert</name>
+      <settingsTypes>
+        <SettingsType>
+          <name>Atmosphere density</name>
+          <propName>atmosphereDensity</propName>
+          <index>0</index>
+          <info>1 = thick, 0 = none</info>
+          <group>Atmosphere</group>
+          <lower>0.5847826</lower>
+          <upper>0.6811595</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0.6300653</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Outer radius scale</name>
+          <propName>outerRadiusScale</propName>
+          <index>0</index>
+          <info>Best is 1.025</info>
+          <group>Atmosphere</group>
+          <lower>1.024</lower>
+          <upper>1.026</upper>
+          <minMax>
+            <x>1</x>
+            <y>1.05</y>
+            <z>1.025</z>
+          </minMax>
+          <realizedValue>1.02530408</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>HDR Exposure</name>
+          <propName>m_hdrExposure</propName>
+          <index>0</index>
+          <info>HDR exposure of atmosphere: More lets in a lot of sun</info>
+          <group>Atmosphere</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>1.4211576</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Lacunarity</name>
+          <propName>ExpSurfSettings</propName>
+          <index>0</index>
+          <info>Lacunarity defines the overall shape of the fractal, high lacunarity = lots of "lakes"</info>
+          <group>Surface</group>
+          <lower>2.45</lower>
+          <upper>2.55</upper>
+          <minMax>
+            <x>1.5</x>
+            <y>4</y>
+            <z>2.5</z>
+          </minMax>
+          <realizedValue>2.51800442</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Offset</name>
+          <propName>ExpSurfSettings</propName>
+          <index>1</index>
+          <info>Offset</info>
+          <group>Surface</group>
+          <lower>0.27391398</lower>
+          <upper>0.330436</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>0.65</z>
+          </minMax>
+          <realizedValue>0.284824759</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Gain</name>
+          <propName>ExpSurfSettings</propName>
+          <index>2</index>
+          <info>Gain</info>
+          <group>Surface</group>
+          <lower>0.8021772</lower>
+          <upper>0.880435467</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>1.7</z>
+          </minMax>
+          <realizedValue>0.8262281</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Initial offset</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>0</index>
+          <info>Initial offset</info>
+          <group>Surface</group>
+          <lower>0.289130449</lower>
+          <upper>0.499275327</upper>
+          <minMax>
+            <x>-1</x>
+            <y>1</y>
+            <z>-0.5</z>
+          </minMax>
+          <realizedValue>0.3797131</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface height</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>1</index>
+          <info>Height surface multiplier</info>
+          <group>Surface</group>
+          <lower>0.01</lower>
+          <upper>0.02</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.5</y>
+            <z>0.01</z>
+          </minMax>
+          <realizedValue>0.0149006825</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface scale</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>2</index>
+          <info>Surface scale</info>
+          <group>Surface</group>
+          <lower>2.63767743</lower>
+          <upper>8.007249</upper>
+          <minMax>
+            <x>0</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>5.69916058</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Atmosphere color</name>
+          <stringValue>red, yellow</stringValue>
+          <propName>atmosphereString</propName>
+          <index>0</index>
+          <info>Variations: normal, bleak, red, cyan, green, purple, yellow, pink. Can be separated by comma, will choose one by random. </info>
+          <group>Atmosphere</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>1.41572869</realizedValue>
+          <type>0</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 scale</name>
+          <propName>SurfaceVortex1</propName>
+          <index>0</index>
+          <info>Vortex 1 scale</info>
+          <group>Surface</group>
+          <lower>3</lower>
+          <upper>7</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>6.47718859</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 scale</name>
+          <propName>SurfaceVortex2</propName>
+          <index>0</index>
+          <info>Vortex 2 scale</info>
+          <group>Surface</group>
+          <lower>3</lower>
+          <upper>7</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>6.98915625</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 amplitude</name>
+          <propName>SurfaceVortex1</propName>
+          <index>1</index>
+          <info>Vortex 1 amplitude</info>
+          <group>Surface</group>
+          <lower>0.175362617</lower>
+          <upper>0.6652175</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.345602185</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 amplitude</name>
+          <propName>SurfaceVortex2</propName>
+          <index>1</index>
+          <info>Vortex 2 amplitude</info>
+          <group>Surface</group>
+          <lower>0</lower>
+          <upper>0.411593884</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0209185928</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color red</name>
+          <propName>m_basinColor</propName>
+          <index>0</index>
+          <info>Basin color red</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.4682079</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color green</name>
+          <propName>m_basinColor</propName>
+          <index>1</index>
+          <info>Basin color green</info>
+          <group>Surface Color</group>
+          <lower>0.25</lower>
+          <upper>0.35</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3424212</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color blue</name>
+          <propName>m_basinColor</propName>
+          <index>2</index>
+          <info>Basin color blue</info>
+          <group>Surface Color</group>
+          <lower>0</lower>
+          <upper>0.05</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.03274595</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 red</name>
+          <propName>m_surfaceColor</propName>
+          <index>0</index>
+          <info>Surface color 1 red</info>
+          <group>Surface Color</group>
+          <lower>0.65</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.7973054</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 green</name>
+          <propName>m_surfaceColor</propName>
+          <index>1</index>
+          <info>Surface color 1 green</info>
+          <group>Surface Color</group>
+          <lower>0.35</lower>
+          <upper>0.45</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.4366336</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1 blue</name>
+          <propName>m_surfaceColor</propName>
+          <index>2</index>
+          <info>Surface color 1 blue</info>
+          <group>Surface Color</group>
+          <lower>0.05</lower>
+          <upper>0.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.07703824</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 red</name>
+          <propName>m_surfaceColor2</propName>
+          <index>0</index>
+          <info>Surface color 2 red</info>
+          <group>Surface Color</group>
+          <lower>0.5231885</lower>
+          <upper>0.5775363</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5682699</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 green</name>
+          <propName>m_surfaceColor2</propName>
+          <index>1</index>
+          <info>Surface color 2 green</info>
+          <group>Surface Color</group>
+          <lower>0.0485508144</lower>
+          <upper>0.273913056</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.121370859</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2 blue</name>
+          <propName>m_surfaceColor2</propName>
+          <index>2</index>
+          <info>Surface color 2 blue</info>
+          <group>Surface Color</group>
+          <lower>0.05</lower>
+          <upper>0.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0643026456</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color red</name>
+          <propName>m_surfaceColor</propName>
+          <index>0</index>
+          <info>Surface1 color red</info>
+          <group>Surface Color</group>
+          <lower>0.65</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.7498339</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color green</name>
+          <propName>m_surfaceColor</propName>
+          <index>1</index>
+          <info>Surface1 color green</info>
+          <group>Surface Color</group>
+          <lower>0.35</lower>
+          <upper>0.45</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.385842353</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface1 color blue</name>
+          <propName>m_surfaceColor</propName>
+          <index>2</index>
+          <info>Surface1 color blue</info>
+          <group>Surface Color</group>
+          <lower>0</lower>
+          <upper>0.05</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0166616682</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color red</name>
+          <propName>m_surfaceColor2</propName>
+          <index>0</index>
+          <info>Surface2 color red</info>
+          <group>Surface Color</group>
+          <lower>0.4</lower>
+          <upper>0.660869539</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.481381476</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color green</name>
+          <propName>m_surfaceColor2</propName>
+          <index>1</index>
+          <info>Surface2 color green</info>
+          <group>Surface Color</group>
+          <lower>0.189130574</lower>
+          <upper>0.468840748</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.26303193</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface2 color blue</name>
+          <propName>m_surfaceColor2</propName>
+          <index>2</index>
+          <info>Surface2 color blue</info>
+          <group>Surface Color</group>
+          <lower>0.1</lower>
+          <upper>0.2</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.14840433</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color red</name>
+          <propName>m_topColor</propName>
+          <index>0</index>
+          <info>Top color red</info>
+          <group>Surface Color</group>
+          <lower>0.5485508</lower>
+          <upper>0.581159532</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5686594</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color green</name>
+          <propName>m_topColor</propName>
+          <index>1</index>
+          <info>Top color green</info>
+          <group>Surface Color</group>
+          <lower>0.3275364</lower>
+          <upper>0.454347968</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.427054346</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color blue</name>
+          <propName>m_topColor</propName>
+          <index>2</index>
+          <info>Top color blue</info>
+          <group>Surface Color</group>
+          <lower>0.0478263535</lower>
+          <upper>0.160869569</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.09802253</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color red</name>
+          <propName>m_hillColor</propName>
+          <index>0</index>
+          <info>Hill color red</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.460549623</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color green</name>
+          <propName>m_hillColor</propName>
+          <index>1</index>
+          <info>Hill color green</info>
+          <group>Surface Color</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5745812</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color blue</name>
+          <propName>m_hillColor</propName>
+          <index>2</index>
+          <info>Hill color blue</info>
+          <group>Surface Color</group>
+          <lower>0.45869565</lower>
+          <upper>0.744927466</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.619819</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill threshold</name>
+          <propName>hilltThreshold</propName>
+          <index>0</index>
+          <info>Hill normal threshold. 1 = Everything has hill texture (0 degrees from normal), 1 = nothing (90 degrees)</info>
+          <group>Surface thresholds</group>
+          <lower>0.9</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.9374381</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Height subtract</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>0</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>0.2</lower>
+          <upper>0.3</upper>
+          <minMax>
+            <x>-1</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.233124763</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Octaves</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>1</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>10</lower>
+          <upper>10</upper>
+          <minMax>
+            <x>1</x>
+            <y>14</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10.188405</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Power</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>2</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>0.4434781</lower>
+          <upper>0.491304755</upper>
+          <minMax>
+            <x>-2</x>
+            <y>4</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.466362</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Top threshold</name>
+          <propName>topThreshold</propName>
+          <index>0</index>
+          <info>Top threshold. Above this value (multiplied with the radius), all colors are top color.</info>
+          <group>Surface thresholds</group>
+          <lower>0.005</lower>
+          <upper>0.012</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.01</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.01</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin threshold</name>
+          <propName>basinThreshold</propName>
+          <index>0</index>
+          <info>Basin threshold. Below this value (multiplied with the radius), all colors are basin colors.</info>
+          <group>Surface thresholds</group>
+          <lower>0.001</lower>
+          <upper>0.001</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.01</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.001</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color red</name>
+          <propName>m_waterColor</propName>
+          <index>0</index>
+          <info>Water color red</info>
+          <group>Water</group>
+          <lower>0.25</lower>
+          <upper>0.4</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.3</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color green</name>
+          <propName>m_waterColor</propName>
+          <index>1</index>
+          <info>Water color green</info>
+          <group>Water</group>
+          <lower>0.45</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.5</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color blue</name>
+          <propName>m_waterColor</propName>
+          <index>2</index>
+          <info>Water color blue</info>
+          <group>Water</group>
+          <lower>0.75</lower>
+          <upper>0.8</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.9</realizedValue>
+          <type>1</type>
+        </SettingsType>
+        <SettingsType>
+          <name>Sea level</name>
+          <propName>liquidThreshold</propName>
+          <index>0</index>
+          <info>Sea level. Below this value (multiplied with the radius), Everything is sea.</info>
+          <group>Water</group>
+          <lower>0.0003</lower>
+          <upper>0.0006</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.02</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0005</realizedValue>
+          <type>1</type>
+        </SettingsType>
+      </settingsTypes>
+      <groups>
+        <string>Atmosphere</string>
+        <string>Surface</string>
+        <string>Surface Color</string>
+      </groups>
+    </SettingsTypes>
   </planetTypes>
 </PlanetTypes>

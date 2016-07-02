@@ -20,6 +20,7 @@ using System.Text;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LemonSpawn
 {
@@ -164,7 +165,7 @@ namespace LemonSpawn
         public Message(string s, float t)
         {
             message = s;
-            time = t*3;
+            time = t * 3;
         }
     }
 
@@ -321,9 +322,9 @@ namespace LemonSpawn
             Vector3 vt = p * frequency;
             for (float octave = 0; octave < octaves; octave++)
             {
- //               float signal = initialOffset + noise4D.raw_noise_3d(vt.x, vt.y, vt.z);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
-                 float signal = initialOffset + noise4D.raw_noise_4d(vt.x, vt.y, vt.z, seed);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
-//                float signal = initialOffset + GPUSurface.noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+                //               float signal = initialOffset + noise4D.raw_noise_3d(vt.x, vt.y, vt.z);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+                float signal = initialOffset + noise4D.raw_noise_4d(vt.x, vt.y, vt.z, seed);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+                                                                                            //                float signal = initialOffset + GPUSurface.noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
 
                 // Make the ridges.
                 signal = Mathf.Abs(signal);
@@ -344,12 +345,13 @@ namespace LemonSpawn
         }
 
 
-        public static Color VaryColor(Color b, Color v, System.Random r) {
-        	Color c = new Color();
-			c.r = b.r + v.r*(float)r.NextDouble();
-			c.g = b.g + v.g*(float)r.NextDouble();
-			c.b = b.b + v.b*(float)r.NextDouble();
-			return c;
+        public static Color VaryColor(Color b, Color v, System.Random r)
+        {
+            Color c = new Color();
+            c.r = b.r + v.r * (float)r.NextDouble();
+            c.g = b.g + v.g * (float)r.NextDouble();
+            c.b = b.b + v.b * (float)r.NextDouble();
+            return c;
         }
 
         public static float getNoise(float x, float y, float z)
@@ -664,133 +666,101 @@ namespace LemonSpawn
 
 
         public static object GetPropertyValue(object srcobj, string propertyName)
-    {
-        if (srcobj == null)
-            return null;
-
-        object obj = srcobj;
-
-        // Split property name to parts (propertyName could be hierarchical, like obj.subobj.subobj.property
-        string[] propertyNameParts = propertyName.Split('.');
-
-        foreach (string propertyNamePart in propertyNameParts)
         {
-//            UnityEngine.Debug.Log(propertyNamePart + " : " + obj);
-            if (obj == null)    return null;
-            // propertyNamePart could contain reference to specific 
-            // element (by index) inside a collection
-            if (!propertyNamePart.Contains("["))
-            {
-                FieldInfo pi = obj.GetType().GetField(propertyNamePart);
-                if (pi == null) return null;
-                obj = pi.GetValue(obj);
-            }
-            else
-            {   // propertyNamePart is areference to specific element 
-                // (by index) inside a collection
-                // like AggregatedCollection[123]
-                //   get collection name and element index
-                int indexStart = propertyNamePart.IndexOf("[")+1;
-                string collectionFieldName = propertyNamePart.Substring(0, indexStart-1);
-                int collectionElementIndex = Int32.Parse(propertyNamePart.Substring(indexStart, propertyNamePart.Length-indexStart-1));
-                //   get collection object
-                FieldInfo pi = obj.GetType().GetField(collectionFieldName);
+            if (srcobj == null)
+                return null;
 
-                if (pi == null) return null;
-                object unknownCollection = pi.GetValue(obj);
-                //   try to process the collection as array
-                if (unknownCollection.GetType().IsArray)
+            object obj = srcobj;
+
+            // Split property name to parts (propertyName could be hierarchical, like obj.subobj.subobj.property
+            string[] propertyNameParts = propertyName.Split('.');
+
+            foreach (string propertyNamePart in propertyNameParts)
+            {
+                //            UnityEngine.Debug.Log(propertyNamePart + " : " + obj);
+                if (obj == null) return null;
+                // propertyNamePart could contain reference to specific 
+                // element (by index) inside a collection
+                if (!propertyNamePart.Contains("["))
                 {
-                    object[] collectionAsArray = unknownCollection as Array[];
-                    obj = collectionAsArray[collectionElementIndex];
+                    FieldInfo pi = obj.GetType().GetField(propertyNamePart);
+                    if (pi == null) return null;
+                    obj = pi.GetValue(obj);
                 }
                 else
-                {
-                    //   try to process the collection as IList
-                    System.Collections.IList collectionAsList = unknownCollection as System.Collections.IList;
-                    if (collectionAsList != null)
+                {   // propertyNamePart is areference to specific element 
+                    // (by index) inside a collection
+                    // like AggregatedCollection[123]
+                    //   get collection name and element index
+                    int indexStart = propertyNamePart.IndexOf("[") + 1;
+                    string collectionFieldName = propertyNamePart.Substring(0, indexStart - 1);
+                    int collectionElementIndex = Int32.Parse(propertyNamePart.Substring(indexStart, propertyNamePart.Length - indexStart - 1));
+                    //   get collection object
+                    FieldInfo pi = obj.GetType().GetField(collectionFieldName);
+
+                    if (pi == null) return null;
+                    object unknownCollection = pi.GetValue(obj);
+                    //   try to process the collection as array
+                    if (unknownCollection.GetType().IsArray)
                     {
-                        obj = collectionAsList[collectionElementIndex];
+                        object[] collectionAsArray = unknownCollection as Array[];
+                        obj = collectionAsArray[collectionElementIndex];
                     }
                     else
                     {
-                        // ??? Unsupported collection type
+                        //   try to process the collection as IList
+                        System.Collections.IList collectionAsList = unknownCollection as System.Collections.IList;
+                        if (collectionAsList != null)
+                        {
+                            obj = collectionAsList[collectionElementIndex];
+                        }
+                        else
+                        {
+                            // ??? Unsupported collection type
+                        }
                     }
                 }
             }
-        }
 
-        return obj;
-    }
+            return obj;
+        }
 
         public static void SetPropertyValue(object srcobj, string propertyName, object val)
-    {
-        if (srcobj == null)
-            return;
-
-        object obj = srcobj;
-
-        // Split property name to parts (propertyName could be hierarchical, like obj.subobj.subobj.property
-        string[] propertyNameParts = propertyName.Split('.');
-
-        int cnt = 0;
-
-        foreach (string propertyNamePart in propertyNameParts)
         {
-//            UnityEngine.Debug.Log(propertyNamePart + " : " + obj);
-            if (obj == null)    return;
-            // propertyNamePart could contain reference to specific 
-            // element (by index) inside a collection
-            if (!propertyNamePart.Contains("["))
+            if (srcobj == null)
+                return;
+
+            object obj = srcobj;
+
+            // Split property name to parts (propertyName could be hierarchical, like obj.subobj.subobj.property
+            string[] propertyNameParts = propertyName.Split('.');
+
+            int cnt = 0;
+
+            foreach (string propertyNamePart in propertyNameParts)
             {
+                if (obj == null) return;
                 FieldInfo pi = obj.GetType().GetField(propertyNamePart);
                 if (pi == null) return;
-                obj = pi.GetValue(obj);
+             //   UnityEngine.Debug.Log(" prop:" + obj + " ");
 
-                if (cnt==propertyNameParts.Length-1) {
-                    pi.SetValue(srcobj, Convert.ChangeType(val, pi.FieldType));
+                if (cnt == propertyNameParts.Length - 1)
+                {
+//                    UnityEngine.Debug.Log(" prop:" + pi +  " pi: val" + obj + " val: " +val);
+                    pi.SetValue(obj, Convert.ChangeType(val, pi.FieldType, null));
                     return;
-                    }
-                    cnt++;
-            }
-            else
-            {   // propertyNamePart is areference to specific element 
-                // (by index) inside a collection
-                // like AggregatedCollection[123]
-                //   get collection name and element index
-                int indexStart = propertyNamePart.IndexOf("[")+1;
-                string collectionFieldName = propertyNamePart.Substring(0, indexStart-1);
-                int collectionElementIndex = Int32.Parse(propertyNamePart.Substring(indexStart, propertyNamePart.Length-indexStart-1));
-                //   get collection object
-                FieldInfo pi = obj.GetType().GetField(collectionFieldName);
+                }
+                obj = pi.GetValue(obj);
+                cnt++;
 
-                if (pi == null) return;
-                object unknownCollection = pi.GetValue(obj);
-                //   try to process the collection as array
-                if (unknownCollection.GetType().IsArray)
-                {
-                    object[] collectionAsArray = unknownCollection as Array[];
-                    obj = collectionAsArray[collectionElementIndex];
-                }
-                else
-                {
-                    //   try to process the collection as IList
-                    System.Collections.IList collectionAsList = unknownCollection as System.Collections.IList;
-                    if (collectionAsList != null)
-                    {
-                        obj = collectionAsList[collectionElementIndex];
-                    }
-                    else
-                    {
-                        // ??? Unsupported collection type
-                    }
-                }
             }
-        }
+        
 
     }
 
 
-    }
+
+
+}
 
 }
