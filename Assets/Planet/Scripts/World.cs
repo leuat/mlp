@@ -643,9 +643,9 @@ namespace LemonSpawn {
 					RenderSettings.RenderText = !RenderSettings.RenderText;
 			}
 
-            if (Input.GetKeyUp(KeyCode.Tab))
+/*            if (Input.GetKeyUp(KeyCode.Tab))
                 followVehicle = !followVehicle;
-                
+  */              
 
 			if (Input.GetKeyUp (KeyCode.Tab)) {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;

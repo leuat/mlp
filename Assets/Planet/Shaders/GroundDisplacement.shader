@@ -224,7 +224,9 @@
 		//								return float3(1,1,1);
 		float3 c = tex2D(t, uv)*0.25;
 		//								c += tex2D(t, 0.5323*uv);
-		c += tex2D(t, 0.2213*uv)*0.75;
+		c += tex2D(t, 0.2213*uv)*0.33;
+
+		c += tex2D(t, 0.0513*uv)*0.33;
 
 		c /= 1;
 		return c;
@@ -291,13 +293,11 @@
 
 
 	//float4 spc =_Color;// float4(1, 1, 1, 1);// *specularity * 1;
-	float4 spc = _Color*0.25;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
-	float omr = s.oneMinusReflectivity;
-	float omr2 = s.oneMinusRoughness;
+	float4 spc = _Color*0.65;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
 	//	diff = groundColor(i.c0, i.c1, diff);
-	half4 c = UNITY_BRDF_PBS(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);
+	half4 c = UNITY_BRDF_PBS(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);
 
-	c.rgb += UNITY_BRDF_GI(diff, spc, omr, omr2, s.normalWorld, -s.eyeVec, occlusion, gi);
+	c.rgb += UNITY_BRDF_GI(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, occlusion, gi);
 	c.rgb += Emission(i.tex.xy);
 
 	float groundClouds = getGroundShadowFromClouds(ppos);

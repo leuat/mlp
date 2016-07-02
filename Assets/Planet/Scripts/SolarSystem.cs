@@ -159,6 +159,9 @@ namespace LemonSpawn
             {
                 if (planet.pSettings.atmosphere != null)
                     planet.pSettings.atmosphere.setClippingPlanes();
+
+                UnityEngine.RenderSettings.reflectionIntensity = UnityEngine.RenderSettings.reflectionIntensity * 0.99f + planet.pSettings.m_reflectionIntensity * 0.01f;
+
             }
 
         }

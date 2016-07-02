@@ -51,7 +51,10 @@ namespace LemonSpawn {
         public float atmosphereDensity = 1.0f;
 //        public float atmosphereHeight = 1.025f;
         public float outerRadiusScale = 1.025f;
+        public float m_reflectionIntensity = 0;
         public Vector3 m_atmosphereWavelengths = new Vector3(0.65f, 0.57f, 0.475f);
+        public float metallicity = 0;
+        public float specularity = 0;
 
         public string atmosphereString ="normal";
 
@@ -79,8 +82,6 @@ namespace LemonSpawn {
         public Texture2D m_hillTexture;
         public Color m_waterColor = new Color(0.6f, 0.8f, 0.9f, 1.0f);
         public Color emissionColor;
-        public float metallicity = 0;
-        public float specularity = 0;
         public Texture2D bumpMap;
 
         [Space(10)]

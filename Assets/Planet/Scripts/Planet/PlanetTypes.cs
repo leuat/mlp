@@ -228,6 +228,33 @@ namespace LemonSpawn
                 "Atmosphere"));
 
             settingsTypes.Add(
+              new SettingsType("Reflection intensity",
+              SettingsType.NUMBER,
+              "m_reflectionIntensity",
+              "Skybox reflection intensity. Good for ice and stuff.",
+              new Vector3(0, 1, 0),
+              new Vector3(0, 0, 0),
+              "Atmosphere"));
+
+            settingsTypes.Add(
+              new SettingsType("Specularity",
+              SettingsType.NUMBER,
+              "specularity",
+              "Specularity reflection",
+              new Vector3(0, 4, 0),
+              new Vector3(1, 1, 1),
+              "Atmosphere"));
+
+            settingsTypes.Add(
+              new SettingsType("Metallicity",
+              SettingsType.NUMBER,
+              "metallicity",
+              "Metallic reflection of planet",
+              new Vector3(0, 1, 0),
+              new Vector3(0, 0, 0),
+              "Atmosphere"));
+
+            settingsTypes.Add(
                 new SettingsType("Lacunarity",
                 SettingsType.NUMBER,
                 "ExpSurfSettings",
@@ -328,7 +355,7 @@ namespace LemonSpawn
              SettingsType.NUMBER,
              "ExpSurfSettings3",
              "Subtracting from height",
-             new Vector3(-1, 1, 1),
+             new Vector3(-3, 3, 1),
              new Vector3(0.2f, 0.3f, 0.25f),
              "Surface", 0));
 
@@ -532,6 +559,14 @@ namespace LemonSpawn
               new Vector3(0, 3f, 1),
               new Vector3(1f,1f, 1f),
               "Clouds", 1));
+            settingsTypes.Add(
+                  new SettingsType("Stretch Z",
+                  SettingsType.NUMBER,
+                  "cloudSettings.LS_Stretch",
+                  "Z-axis stretch component",
+                  new Vector3(0, 3f, 1),
+                  new Vector3(1f, 1f, 1f),
+                  "Clouds", 2));
 
         }
 

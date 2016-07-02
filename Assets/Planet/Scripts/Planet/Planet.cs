@@ -142,6 +142,10 @@ namespace LemonSpawn
             Instantiate();
             pSettings.Update();
             UpdateText();
+
+            UnityEngine.RenderSettings.reflectionIntensity = UnityEngine.RenderSettings.reflectionIntensity * 0.99f + pSettings.m_reflectionIntensity * 0.01f;
+
+
             if (SolarSystem.planet == this)
             {
                 Physics.gravity = pSettings.transform.position.normalized * pSettings.Gravity;

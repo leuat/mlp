@@ -126,8 +126,13 @@ namespace LemonSpawn
             setInput("InputPlanetTypeName",PlanetTypes.currentSettings.name);
             PopulatePlanetTypes(1);
             SetNewPlanetType();
+        }
 
-
+        public void DeletePlanetType()
+        {
+            PlanetTypes.p.planetTypes.Remove(PlanetTypes.currentSettings);
+            PopulatePlanetTypes(0);
+            SetNewPlanetType();
         }
 
         public void CopyPlanetType()
@@ -313,6 +318,13 @@ namespace LemonSpawn
             settingsType.realizedColor = settingsType.color;
             if (SolarSystem.planet!=null)
                 settingsType.setParameter(SolarSystem.planet.pSettings);
+        }
+
+        public void SaveScreenshot()
+        {
+
+           WriteScreenshot(RenderSettings.screenshotDir, 2048,1080);
+
         }
 
 
