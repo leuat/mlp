@@ -89,6 +89,16 @@ namespace LemonSpawn
             realizedValue = init.z;
         }
 
+        public SettingsType(string _name, string _propname, string _info, string _g, string strval)
+        {
+            name = _name;
+            type = STRING;
+            propName = _propname;
+            info = _info;
+            group = _g;
+            stringValue = strval;
+        }
+
         public SettingsType(string _name, string _propname, string _info, string _group, Color _color, Color _variation)
         {
             name = _name;
@@ -695,9 +705,20 @@ namespace LemonSpawn
             st.name = name;
             foreach (SettingsType s in settingsTypes)
             {
-                st.settingsTypes.Add(
-                    new SettingsType(s.name, s.type, s.propName, s.info, s.minMax, new Vector3(s.lower, s.upper, s.realizedValue), s.group, s.index)
+                if (s.type == SettingsType.NUMBER)
+                    st.settingsTypes.Add(
+                        new SettingsType(s.name, s.type, s.propName, s.info, s.minMax, new Vector3(s.lower, s.upper, s.realizedValue), s.group, s.index)
+                        );
+                if (s.type == SettingsType.STRING)
+                    st.settingsTypes.Add(
+                       new SettingsType(s.name, s.propName, s.info, s.group, s.stringValue)
                     );
+
+                if (s.type == SettingsType.COLOR)
+                    st.settingsTypes.Add(
+                       new SettingsType(s.name, s.propName, s.info, s.group, s.color, s.variation)
+                    );
+
             }
 
             return st;
