@@ -35,11 +35,16 @@ public class MainApp : MonoBehaviour
 				SceneManager.LoadScene (2);
 				ok = true;
 			}
+            if (cmd[1] == "pd")
+            {
+                SceneManager.LoadScene(3);
+                ok = true;
+            }
 
-		}
+        }
         if (!ok)
-            //            Application.Quit();
-            SceneManager.LoadScene(3);
+                        Application.Quit();
+//            SceneManager.LoadScene(3);
 
     }
 
