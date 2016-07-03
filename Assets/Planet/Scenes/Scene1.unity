@@ -733,7 +733,11 @@ MonoBehaviour:
   seed: 1
   atmosphereDensity: 0.65
   outerRadiusScale: 1.025
+  m_reflectionIntensity: 0
   m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
+  metallicity: 1
+  specularity: 1
+  atmosphereString: normal
   m_hdrExposure: 2
   m_ESun: 10
   radius: 50000
@@ -756,8 +760,6 @@ MonoBehaviour:
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
   m_waterColor: {r: 0.05833692, g: 0.47325638, b: 0.6102941, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  metallicity: 1
-  specularity: 1
   bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
   hasEnvironment: 0
   environmentDensity: 500
@@ -770,7 +772,7 @@ MonoBehaviour:
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {x: 0.55, y: 0.7, z: 0.9}
+  cloudColor: {r: 0.7, g: 0.8, b: 1, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
     LS_CloudScale: 1
@@ -779,15 +781,15 @@ MonoBehaviour:
     LS_CloudSharpness: 1.5
     LS_CloudThickness: 0.65
     LS_ShadowScale: 0.006
-    LS_DistScale: 10
-    cloudRadius: 0
-    LS_HasCloudShadows: 0
-    LS_CloudSubScale: 0.5
-    LS_CloudShadowStrength: 1
     LS_LargeVortex: -0.5
     LS_SmallVortex: 0.01
+    LS_CloudSubScale: 0.5
     LS_Stretch: {x: 1, y: 1, z: 1}
-    LS_CloudColor: {x: 0.6, y: 0.6, z: 0.6}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 1
+    planetSettings: {fileID: 0}
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
@@ -820,10 +822,15 @@ MonoBehaviour:
     propName: 
     index: 0
     info: 
-    meanValue: 0
+    group: 
     lower: 0
     upper: 0
     minMax: {x: 0, y: 0, z: 0}
+    realizedValue: 0
+    type: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+    variation: {r: 0, g: 0, b: 0, a: 0}
+    realizedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -1941,13 +1948,17 @@ MonoBehaviour:
   hasSea: 0
   ExpSurfSettings: {x: 2.8, y: 0.7, z: 1.5}
   ExpSurfSettings2: {x: -0.3, y: 0.015, z: 5}
-  ExpSurfSettings3: {x: 0.1, y: 10, z: 0}
+  ExpSurfSettings3: {x: 0.1, y: 10, z: 1}
   SurfaceVortex1: {x: -2, y: 2, z: 0}
   SurfaceVortex2: {x: 24, y: 0.1, z: 0}
   seed: 0
   atmosphereDensity: 0.6
   outerRadiusScale: 1.019
+  m_reflectionIntensity: 0
   m_atmosphereWavelengths: {x: 0.5, y: 0.55, z: 0.7}
+  metallicity: 0
+  specularity: 0
+  atmosphereString: normal
   m_hdrExposure: 2
   m_ESun: 10
   radius: 2000
@@ -1970,8 +1981,6 @@ MonoBehaviour:
   m_hillTexture: {fileID: 0}
   m_waterColor: {r: 0.19999999, g: 0.9, b: 0.37862056, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  metallicity: 0
-  specularity: 0
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
@@ -1984,7 +1993,7 @@ MonoBehaviour:
   bumpScale: 0
   cloudRadius: 0
   renderedCloudRadius: 1.03
-  cloudColor: {x: 1, y: 1, z: 0}
+  cloudColor: {r: 0.7, g: 0.8, b: 1, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
     LS_CloudScale: 4
@@ -1993,15 +2002,15 @@ MonoBehaviour:
     LS_CloudSharpness: 1.35
     LS_CloudThickness: 1.1
     LS_ShadowScale: 0.75
-    LS_DistScale: 10
-    cloudRadius: 0
-    LS_HasCloudShadows: 1
-    LS_CloudSubScale: 1
-    LS_CloudShadowStrength: 1
     LS_LargeVortex: 0.2
     LS_SmallVortex: 0.02
+    LS_CloudSubScale: 1
     LS_Stretch: {x: 1, y: 1, z: 1}
-    LS_CloudColor: {x: 0, y: 0, z: 0}
+    cloudRadius: 0
+    LS_HasCloudShadows: 1
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 1
+    planetSettings: {fileID: 0}
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
@@ -2034,10 +2043,15 @@ MonoBehaviour:
     propName: 
     index: 0
     info: 
-    meanValue: 0
+    group: 
     lower: 0
     upper: 0
     minMax: {x: 0, y: 0, z: 0}
+    realizedValue: 0
+    type: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+    variation: {r: 0, g: 0, b: 0, a: 0}
+    realizedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0

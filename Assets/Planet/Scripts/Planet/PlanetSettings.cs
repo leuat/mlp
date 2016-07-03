@@ -17,6 +17,7 @@ namespace LemonSpawn {
         public string currentTag = "Normal";
         public double currentDistance;
         public DVector pos = new DVector();
+        public DVector orgPos = new DVector();
         public DVector posInKm;
         public GameObject terrainObject, parent;
         public Vector3 localCamera;

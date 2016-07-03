@@ -21,7 +21,7 @@ public class SpaceCamera : MonoBehaviour {
 	float rotateT = 0;
         public Vector3 up;
 	//private GameObject actualCamera;
-	private DVector actualCamera = new DVector();
+	public DVector actualCamera = new DVector();
 	
 	void Start() {
 //		actualCamera = new GameObject("ActualCamera");

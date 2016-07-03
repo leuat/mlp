@@ -118,7 +118,7 @@ namespace LemonSpawn
                     }
 
                     Planet p = new Planet(ps);
-
+                    p.pSettings.properties.orgPos.Set(go.transform.position);
                     p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
                     p.pSettings.properties.parent = go;

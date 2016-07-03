@@ -17,7 +17,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.734133542</realizedValue>
+          <realizedValue>0.695955</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -51,7 +51,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02447832</realizedValue>
+          <realizedValue>1.024258</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -85,7 +85,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.58916891</realizedValue>
+          <realizedValue>1.44685388</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -119,7 +119,7 @@
             <y>4</y>
             <z>2.5</z>
           </minMax>
-          <realizedValue>2.54025483</realizedValue>
+          <realizedValue>2.53265142</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -187,7 +187,7 @@
             <y>3</y>
             <z>1.7</z>
           </minMax>
-          <realizedValue>1.73291337</realizedValue>
+          <realizedValue>1.70837891</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -221,7 +221,7 @@
             <y>2</y>
             <z>-0.5</z>
           </minMax>
-          <realizedValue>-0.454006553</realizedValue>
+          <realizedValue>-0.528747141</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -255,7 +255,7 @@
             <y>0.5</y>
             <z>0.01</z>
           </minMax>
-          <realizedValue>0.0122386664</realizedValue>
+          <realizedValue>0.0119145066</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -289,7 +289,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>4.27798748</realizedValue>
+          <realizedValue>3.98485613</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -358,7 +358,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-2.54926348</realizedValue>
+          <realizedValue>-1.432999</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -392,7 +392,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>2.82786727</realizedValue>
+          <realizedValue>2.99078131</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -426,7 +426,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.02624571</realizedValue>
+          <realizedValue>0.982259035</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -460,7 +460,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.927280962</realizedValue>
+          <realizedValue>1.06478357</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -494,7 +494,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9216512</realizedValue>
+          <realizedValue>0.9289688</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -528,7 +528,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0592518151</realizedValue>
+          <realizedValue>0.0501669049</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -596,7 +596,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.07174945</realizedValue>
+          <realizedValue>1.01169109</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -630,7 +630,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.01010773</realizedValue>
+          <realizedValue>0.0106282718</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -698,7 +698,7 @@
             <y>0.02</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0017462644</realizedValue>
+          <realizedValue>0.00141573185</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -732,7 +732,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.05142546</realizedValue>
+          <realizedValue>1.13850272</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -766,7 +766,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.42574012</realizedValue>
+          <realizedValue>1.50551677</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -800,7 +800,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.25522614</realizedValue>
+          <realizedValue>1.18092179</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -834,7 +834,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.5565538</realizedValue>
+          <realizedValue>0.497284442</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -902,7 +902,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.5384375</realizedValue>
+          <realizedValue>-0.5454398</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -970,7 +970,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.01758862</realizedValue>
+          <realizedValue>0.83453685</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1038,7 +1038,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6294288</realizedValue>
+          <realizedValue>0.688347042</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1087,9 +1087,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.511522651</r>
-            <g>0.33479476</g>
-            <b>0.155594736</b>
+            <r>0.517979264</r>
+            <g>0.341766417</g>
+            <b>0.146545872</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1121,9 +1121,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5272884</r>
-            <g>0.307606637</g>
-            <b>0.156457663</b>
+            <r>0.5427813</r>
+            <g>0.303465337</g>
+            <b>0.1046219</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1155,9 +1155,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.7274825</r>
-            <g>0.5592653</g>
-            <b>0.0477870144</b>
+            <r>0.762384832</r>
+            <g>0.5233684</g>
+            <b>0.06775037</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1189,9 +1189,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.393983752</r>
-            <g>0.595275342</g>
-            <b>0.184414327</b>
+            <r>0.354730725</r>
+            <g>0.650180161</g>
+            <b>0.213899449</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1223,9 +1223,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.6938236</r>
-            <g>0.404658824</g>
-            <b>0.0227009244</b>
+            <r>0.709753</r>
+            <g>0.3963377</g>
+            <b>0.02520771</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1257,9 +1257,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.410597622</r>
-            <g>0.4087896</g>
-            <b>0.417400718</b>
+            <r>0.412305266</r>
+            <g>0.4030156</g>
+            <b>0.407569647</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1291,9 +1291,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.3185355</r>
-            <g>0.502344</g>
-            <b>0.9110558</b>
+            <r>0.30780074</r>
+            <g>0.5071332</g>
+            <b>0.915797532</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1443,7 +1443,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -1476,6 +1476,20 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>250</x>
+        <y>400</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Your standard Earth-like planet. Somewhat boring and dry
+
+Test newline
+.</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Yellow Desert</name>
@@ -2919,7 +2933,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -2952,6 +2966,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>300</x>
+        <y>800</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Yellow desert planets are scorching hot!</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Ice</name>
@@ -2962,14 +2987,14 @@
           <index>0</index>
           <info>1 = thick, 0 = none</info>
           <group>Atmosphere</group>
-          <lower>0.5144929</lower>
+          <lower>0.6630436</lower>
           <upper>0.706521749</upper>
           <minMax>
             <x>0</x>
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.5759114</realizedValue>
+          <realizedValue>0.6801592</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3003,7 +3028,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02574372</realizedValue>
+          <realizedValue>1.025877</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3037,7 +3062,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.50836325</realizedValue>
+          <realizedValue>1.57265317</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3071,7 +3096,7 @@
             <y>4</y>
             <z>2.5</z>
           </minMax>
-          <realizedValue>2.50877047</realizedValue>
+          <realizedValue>2.473169</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3139,7 +3164,7 @@
             <y>3</y>
             <z>1.7</z>
           </minMax>
-          <realizedValue>0.8037501</realizedValue>
+          <realizedValue>0.8718485</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3173,7 +3198,7 @@
             <y>2</y>
             <z>-0.5</z>
           </minMax>
-          <realizedValue>0.4580279</realizedValue>
+          <realizedValue>0.461127251</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3207,7 +3232,7 @@
             <y>0.5</y>
             <z>0.01</z>
           </minMax>
-          <realizedValue>0.0170637257</realizedValue>
+          <realizedValue>0.0145133547</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3241,7 +3266,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>7.780163</realizedValue>
+          <realizedValue>6.00481939</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3310,7 +3335,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>5.74582767</realizedValue>
+          <realizedValue>4.19196367</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3344,7 +3369,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>5.622209</realizedValue>
+          <realizedValue>6.94591951</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3378,7 +3403,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.2033185</realizedValue>
+          <realizedValue>0.2694304</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3412,7 +3437,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.2005185</realizedValue>
+          <realizedValue>0.239108279</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3446,7 +3471,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9040242</realizedValue>
+          <realizedValue>0.9440515</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3480,7 +3505,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.257968843</realizedValue>
+          <realizedValue>0.266099483</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3548,7 +3573,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4556434</realizedValue>
+          <realizedValue>0.487806469</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3582,7 +3607,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0118309334</realizedValue>
+          <realizedValue>0.006210854</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3684,7 +3709,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.8913747</realizedValue>
+          <realizedValue>0.9377998</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3718,7 +3743,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.32240593</realizedValue>
+          <realizedValue>1.34622478</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3752,7 +3777,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.33170545</realizedValue>
+          <realizedValue>1.12318754</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3786,7 +3811,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.484745622</realizedValue>
+          <realizedValue>0.445257425</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3854,7 +3879,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.743988454</realizedValue>
+          <realizedValue>-0.839651346</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3922,7 +3947,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.5358481</realizedValue>
+          <realizedValue>0.57678175</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -3990,7 +4015,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.3958494</realizedValue>
+          <realizedValue>0.405876338</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -4039,9 +4064,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>1.03193009</r>
-            <g>1.03641474</g>
-            <b>1.09422362</b>
+            <r>1.07551563</r>
+            <g>1.02020431</g>
+            <b>1.03626478</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4073,9 +4098,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>1.08606458</r>
-            <g>1.025461</g>
-            <b>1.09539437</b>
+            <r>1.0303601</r>
+            <g>1.02815282</g>
+            <b>1.068865</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4107,9 +4132,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.314499974</r>
-            <g>0.6150054</g>
-            <b>0.932379961</b>
+            <r>0.3660804</r>
+            <g>0.584767759</g>
+            <b>0.9651756</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4141,9 +4166,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.944094241</r>
-            <g>1.063084</g>
-            <b>0.849732339</b>
+            <r>0.8174184</r>
+            <g>0.91798085</g>
+            <b>0.887466669</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4175,9 +4200,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.9059104</r>
-            <g>0.9022337</g>
-            <b>0.9139719</b>
+            <r>0.9080376</r>
+            <g>0.9025894</g>
+            <b>0.901027143</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4209,9 +4234,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.408891767</r>
-            <g>0.4004801</g>
-            <b>0.4197573</b>
+            <r>0.4195471</r>
+            <g>0.401634</g>
+            <b>0.404776156</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4243,9 +4268,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.305585116</r>
-            <g>0.514903367</g>
-            <b>0.9123569</b>
+            <r>0.3022393</r>
+            <g>0.5130807</g>
+            <b>0.9029153</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -4330,7 +4355,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.7794957</realizedValue>
+          <realizedValue>0.7895906</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -4395,10 +4420,10 @@
           <upper>0.6702897</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.6679794</realizedValue>
+          <realizedValue>0.667098939</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -4428,6 +4453,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>0</x>
+        <y>250</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>10000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Ice cold planets!</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Moon One</name>
@@ -5871,7 +5907,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -5904,6 +5940,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>300</x>
+        <y>500</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>info about this planet type</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Moon Two</name>
@@ -5921,7 +5968,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.07761842</realizedValue>
+          <realizedValue>0.070811294</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -5955,7 +6002,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02447557</realizedValue>
+          <realizedValue>1.02512956</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -5989,7 +6036,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.53633928</realizedValue>
+          <realizedValue>1.43957722</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6057,7 +6104,7 @@
             <y>3</y>
             <z>0.65</z>
           </minMax>
-          <realizedValue>1.40279722</realizedValue>
+          <realizedValue>1.40301967</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6193,7 +6240,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>4.87823868</realizedValue>
+          <realizedValue>4.29102468</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6262,7 +6309,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-2.425769</realizedValue>
+          <realizedValue>-2.34430718</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6296,7 +6343,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>25.410183</realizedValue>
+          <realizedValue>25.0454845</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6330,7 +6377,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.483406484</realizedValue>
+          <realizedValue>0.383120537</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6398,7 +6445,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9233027</realizedValue>
+          <realizedValue>0.94726187</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6432,7 +6479,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.386580825</realizedValue>
+          <realizedValue>0.4172466</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6636,7 +6683,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.1373632</realizedValue>
+          <realizedValue>0.995128334</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6670,7 +6717,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.47052753</realizedValue>
+          <realizedValue>1.57458007</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6704,7 +6751,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.15731454</realizedValue>
+          <realizedValue>1.10915</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6738,7 +6785,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.432514518</realizedValue>
+          <realizedValue>0.451325178</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6806,7 +6853,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.109525308</realizedValue>
+          <realizedValue>0.104885973</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -6874,7 +6921,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.893407643</realizedValue>
+          <realizedValue>0.842407465</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -7161,9 +7208,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.4144309</r>
-            <g>0.418208569</g>
-            <b>0.4063224</b>
+            <r>0.40324837</r>
+            <g>0.40971005</g>
+            <b>0.402187675</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -7195,9 +7242,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.300553232</r>
-            <g>0.5019936</g>
-            <b>0.9035049</b>
+            <r>0.316607267</r>
+            <g>0.501684</g>
+            <b>0.9101012</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -7347,7 +7394,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -7380,6 +7427,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>0</x>
+        <y>500</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>50</x>
+        <y>500</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Cold small moon</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Taggy Planet</name>
@@ -8822,7 +8880,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -8855,6 +8913,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>300</x>
+        <y>500</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>info about this planet type</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Swamp Planet</name>
@@ -8872,7 +8941,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.730518758</realizedValue>
+          <realizedValue>0.707817852</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -8906,7 +8975,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02519584</realizedValue>
+          <realizedValue>1.02430284</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -8940,7 +9009,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.504229</realizedValue>
+          <realizedValue>1.5632441</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -8974,7 +9043,7 @@
             <y>4</y>
             <z>2.5</z>
           </minMax>
-          <realizedValue>1.93614173</realizedValue>
+          <realizedValue>1.90974593</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9008,7 +9077,7 @@
             <y>3</y>
             <z>0.65</z>
           </minMax>
-          <realizedValue>0.7904697</realizedValue>
+          <realizedValue>0.798190653</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9042,7 +9111,7 @@
             <y>3</y>
             <z>1.7</z>
           </minMax>
-          <realizedValue>1.70238733</realizedValue>
+          <realizedValue>1.65704727</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9076,7 +9145,7 @@
             <y>2</y>
             <z>-0.5</z>
           </minMax>
-          <realizedValue>-0.4807313</realizedValue>
+          <realizedValue>-0.5137908</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9110,7 +9179,7 @@
             <y>0.5</y>
             <z>0.01</z>
           </minMax>
-          <realizedValue>0.013597291</realizedValue>
+          <realizedValue>0.0135666206</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9144,7 +9213,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>5.87177038</realizedValue>
+          <realizedValue>5.042667</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9213,7 +9282,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-2.08702731</realizedValue>
+          <realizedValue>0.0005183837</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9247,7 +9316,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>3.10959387</realizedValue>
+          <realizedValue>2.78262377</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9281,7 +9350,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.02357757</realizedValue>
+          <realizedValue>0.9834957</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9315,7 +9384,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.00971949</realizedValue>
+          <realizedValue>1.012445</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9349,7 +9418,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6412082</realizedValue>
+          <realizedValue>0.619899</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9383,7 +9452,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.847766161</realizedValue>
+          <realizedValue>0.87187916</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9417,7 +9486,7 @@
             <y>14</y>
             <z>1</z>
           </minMax>
-          <realizedValue>11.2085638</realizedValue>
+          <realizedValue>11.2101288</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9485,7 +9554,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.006906277</realizedValue>
+          <realizedValue>0.0108288992</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9553,7 +9622,7 @@
             <y>0.02</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.00178637821</realizedValue>
+          <realizedValue>0.000129522581</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9587,7 +9656,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.13254631</realizedValue>
+          <realizedValue>1.28667462</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9621,7 +9690,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.40499485</realizedValue>
+          <realizedValue>1.449194</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9655,7 +9724,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.25161862</realizedValue>
+          <realizedValue>1.21026444</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9723,7 +9792,7 @@
             <y>0.05</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.003494987</realizedValue>
+          <realizedValue>0.0039261193</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9757,7 +9826,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.539309859</realizedValue>
+          <realizedValue>-0.5514938</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9825,7 +9894,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.07908237</realizedValue>
+          <realizedValue>1.09544587</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -9893,7 +9962,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6013213</realizedValue>
+          <realizedValue>0.6221101</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10146,9 +10215,9 @@
             <a>0</a>
           </variation>
           <realizedColor>
-            <r>0.7467433</r>
-            <g>0.601947</g>
-            <b>0.226781562</b>
+            <r>0.8774707</r>
+            <g>0.600136638</g>
+            <b>0.187605426</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -10298,7 +10367,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -10331,6 +10400,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>300</x>
+        <y>450</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>12000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Murky swampy planet</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Red Moon</name>
@@ -10348,7 +10428,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.519604862</realizedValue>
+          <realizedValue>0.5349369</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10382,7 +10462,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.024706</realizedValue>
+          <realizedValue>1.02467346</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10416,7 +10496,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.43906641</realizedValue>
+          <realizedValue>1.43255055</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10620,7 +10700,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>11.9885893</realizedValue>
+          <realizedValue>13.1889124</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10723,7 +10803,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>20.8617878</realizedValue>
+          <realizedValue>21.8470058</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10757,7 +10837,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.50320226</realizedValue>
+          <realizedValue>0.390487343</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -10825,7 +10905,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9944368</realizedValue>
+          <realizedValue>0.9404144</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11063,7 +11143,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.09828031</realizedValue>
+          <realizedValue>1.251476</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11097,7 +11177,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.563487</realizedValue>
+          <realizedValue>1.53609776</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11131,7 +11211,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.13353741</realizedValue>
+          <realizedValue>1.15535355</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11165,7 +11245,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.5966711</realizedValue>
+          <realizedValue>0.46852538</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11233,7 +11313,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.101484425</realizedValue>
+          <realizedValue>0.07977854</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11301,7 +11381,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.953096569</realizedValue>
+          <realizedValue>0.9619373</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11486,9 +11566,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5166228</r>
-            <g>0.5291019</g>
-            <b>0.305157244</b>
+            <r>0.4801558</r>
+            <g>0.472413421</g>
+            <b>0.285095423</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -11588,9 +11668,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.405800879</r>
-            <g>0.409214884</g>
-            <b>0.40617153</b>
+            <r>0.400372028</r>
+            <g>0.4122292</g>
+            <b>0.4162524</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -11622,9 +11702,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.309635073</r>
-            <g>0.516846</g>
-            <b>0.9119794</b>
+            <r>0.301211566</r>
+            <g>0.5033734</g>
+            <b>0.90790534</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -11774,7 +11854,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -11807,9 +11887,20 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>200</x>
+        <y>500</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>500</x>
+        <y>2000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Red moon with low atmosphere</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Terra Two</name>
+      <name>Cold Terra</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -11817,14 +11908,14 @@
           <index>0</index>
           <info>1 = thick, 0 = none</info>
           <group>Atmosphere</group>
-          <lower>0.4978261</lower>
-          <upper>0.5652174</upper>
+          <lower>0.8152177</lower>
+          <upper>0.8659418</upper>
           <minMax>
             <x>0</x>
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.5235831</realizedValue>
+          <realizedValue>0.8330647</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11858,7 +11949,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02418113</realizedValue>
+          <realizedValue>1.02557456</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -11892,7 +11983,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.59667182</realizedValue>
+          <realizedValue>1.44778514</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12090,13 +12181,13 @@
           <info>Surface scale</info>
           <group>Surface</group>
           <lower>6.179637</lower>
-          <upper>6.179637</upper>
+          <upper>7.810072</upper>
           <minMax>
             <x>0</x>
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>6.179637</realizedValue>
+          <realizedValue>7.74832535</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12199,7 +12290,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>21.4614811</realizedValue>
+          <realizedValue>24.19572</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12233,7 +12324,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.312081218</realizedValue>
+          <realizedValue>0.439297527</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12301,7 +12392,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.971089542</realizedValue>
+          <realizedValue>0.9029027</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12335,7 +12426,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9005716</realizedValue>
+          <realizedValue>0.967019737</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12437,7 +12528,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0135284355</realizedValue>
+          <realizedValue>0.01226668</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12539,7 +12630,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.18475461</realizedValue>
+          <realizedValue>1.02716649</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12573,7 +12664,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.48694372</realizedValue>
+          <realizedValue>1.47471344</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12607,7 +12698,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.25625432</realizedValue>
+          <realizedValue>1.12461913</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12641,7 +12732,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.364917755</realizedValue>
+          <realizedValue>0.381198049</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12777,7 +12868,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.388030618</realizedValue>
+          <realizedValue>0.275657743</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12811,7 +12902,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>2.16036367</realizedValue>
+          <realizedValue>2.20442533</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12845,7 +12936,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.302696347</realizedValue>
+          <realizedValue>0.305232465</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -12962,9 +13053,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.694402039</r>
-            <g>0.414316148</g>
-            <b>0.237392753</b>
+            <r>0.6648297</r>
+            <g>0.447759479</g>
+            <b>0.2001537</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -13064,9 +13155,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.40776822</r>
-            <g>0.409690142</g>
-            <b>0.405529737</b>
+            <r>0.418760419</r>
+            <g>0.415744215</g>
+            <b>0.4195545</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -13098,9 +13189,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.21649991</r>
-            <g>0.52816</g>
-            <b>0.5614626</b>
+            <r>0.211538076</r>
+            <g>0.5412785</g>
+            <b>0.5527055</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -13151,7 +13242,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.365298033</realizedValue>
+          <realizedValue>0.320721328</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13250,7 +13341,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -13283,6 +13374,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>250</x>
+        <y>350</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>2000</x>
+        <y>10000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Cold terra-like planet with heavy clouds</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Cold Gas Giant</name>
@@ -13300,7 +13402,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.9635104</realizedValue>
+          <realizedValue>0.960509</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13334,7 +13436,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02503312</realizedValue>
+          <realizedValue>1.02431476</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13368,7 +13470,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.51193023</realizedValue>
+          <realizedValue>1.41682971</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13595,7 +13697,7 @@
         </SettingsType>
         <SettingsType>
           <name>Atmosphere color</name>
-          <stringValue>cyan, normal</stringValue>
+          <stringValue>cyan, normal, purple</stringValue>
           <propName>atmosphereString</propName>
           <index>0</index>
           <info>Variations: normal, bleak, red, cyan, green, purple, yellow, pink. Can be separated by comma, will choose one by random. </info>
@@ -13675,7 +13777,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>24.9595261</realizedValue>
+          <realizedValue>25.7605247</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13709,7 +13811,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.357163727</realizedValue>
+          <realizedValue>0.3201515</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13777,7 +13879,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9427606</realizedValue>
+          <realizedValue>0.994510949</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13811,7 +13913,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9107341</realizedValue>
+          <realizedValue>0.884402454</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -13913,7 +14015,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0129655926</realizedValue>
+          <realizedValue>0.0135534517</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14015,7 +14117,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.932876945</realizedValue>
+          <realizedValue>0.927323639</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14049,7 +14151,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.51726174</realizedValue>
+          <realizedValue>1.56480718</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14083,7 +14185,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.14935184</realizedValue>
+          <realizedValue>1.25892866</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14117,7 +14219,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.285806835</realizedValue>
+          <realizedValue>0.291274</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14219,7 +14321,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.08530595</realizedValue>
+          <realizedValue>-0.100786358</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14253,7 +14355,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.171674788</realizedValue>
+          <realizedValue>0.207104221</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14287,7 +14389,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>2.14223552</realizedValue>
+          <realizedValue>2.18610454</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14321,7 +14423,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.298980534</realizedValue>
+          <realizedValue>0.3062076</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14404,9 +14506,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.224208057</r>
-            <g>0.479489625</g>
-            <b>0.805093467</b>
+            <r>0.1303038</r>
+            <g>0.592172444</g>
+            <b>0.6493175</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -14438,9 +14540,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.7081912</r>
-            <g>0.4835348</g>
-            <b>0.203038216</b>
+            <r>0.6684422</r>
+            <g>0.4472239</g>
+            <b>0.222346619</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -14540,9 +14642,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.400610328</r>
-            <g>0.415769577</g>
-            <b>0.413417518</b>
+            <r>0.40450418</r>
+            <g>0.408980817</g>
+            <b>0.416287929</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -14574,9 +14676,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.203423277</r>
-            <g>0.541342258</g>
-            <b>0.552096665</b>
+            <r>0.208374649</r>
+            <g>0.532326</g>
+            <b>0.559083164</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -14608,9 +14710,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5704942</r>
-            <g>0.852564335</g>
-            <b>1.06531727</b>
+            <r>0.545664549</r>
+            <g>0.770036757</g>
+            <b>1.18368781</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -14627,7 +14729,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.177252978</realizedValue>
+          <realizedValue>0.177018508</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14726,7 +14828,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -14759,9 +14861,20 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>100</x>
+        <y>200</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>12000</x>
+        <y>50000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Cold gas planet</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>water Planet</name>
+      <name>Ocean Planet</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -14776,7 +14889,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.50703</realizedValue>
+          <realizedValue>0.502535641</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14810,7 +14923,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02549946</realizedValue>
+          <realizedValue>1.02534842</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -14844,7 +14957,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.40606236</realizedValue>
+          <realizedValue>1.55697083</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15151,7 +15264,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>25.4877052</realizedValue>
+          <realizedValue>25.960474</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15185,7 +15298,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4935325</realizedValue>
+          <realizedValue>0.338216</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15253,7 +15366,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9549026</realizedValue>
+          <realizedValue>0.9322869</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15287,7 +15400,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9285908</realizedValue>
+          <realizedValue>0.9080574</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15389,7 +15502,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0134495553</realizedValue>
+          <realizedValue>0.0128124133</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15491,7 +15604,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9000184</realizedValue>
+          <realizedValue>1.23613989</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15525,7 +15638,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.55580509</realizedValue>
+          <realizedValue>1.41906857</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15559,7 +15672,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.261412</realizedValue>
+          <realizedValue>1.28639948</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15593,7 +15706,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.405323029</realizedValue>
+          <realizedValue>0.3886242</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15729,7 +15842,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.308665365</realizedValue>
+          <realizedValue>0.2743652</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15763,7 +15876,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>2.113105</realizedValue>
+          <realizedValue>2.1520288</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15797,7 +15910,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.30765906</realizedValue>
+          <realizedValue>0.305813164</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -15846,10 +15959,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.9785551</r>
+            <g>1</g>
+            <b>0.6354168</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -15880,10 +15993,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.8115828</r>
+            <g>1</g>
+            <b>0.359375</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -15914,10 +16027,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.6544527</r>
+            <g>0.398621172</g>
+            <b>0.180074513</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -15948,10 +16061,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.684006155</r>
+            <g>0.509370446</g>
+            <b>0.1882661</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -15982,10 +16095,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.6510411</r>
+            <g>0.329907268</g>
+            <b>0.176323652</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -16016,10 +16129,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.402270824</r>
+            <g>0.4024961</g>
+            <b>0.40598017</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -16050,10 +16163,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.209131941</r>
+            <g>0.526027</g>
+            <b>0.5540088</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -16084,10 +16197,10 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
-            <a>0</a>
+            <r>0.6308589</r>
+            <g>0.7916661</g>
+            <b>0.791665554</b>
+            <a>1</a>
           </realizedColor>
         </SettingsType>
         <SettingsType>
@@ -16103,7 +16216,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.356780022</realizedValue>
+          <realizedValue>0.368357956</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16202,7 +16315,7 @@
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
           <realizedValue>0</realizedValue>
@@ -16235,6 +16348,17 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>250</x>
+        <y>400</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Ocean planet with no visible surface. </PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Metallic Moon</name>
@@ -16245,14 +16369,14 @@
           <index>0</index>
           <info>1 = thick, 0 = none</info>
           <group>Atmosphere</group>
-          <lower>0.0159421172</lower>
-          <upper>0.108695649</upper>
+          <lower>0.360144973</lower>
+          <upper>0.463768065</upper>
           <minMax>
             <x>0</x>
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.0585926175</realizedValue>
+          <realizedValue>0.3782366</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16286,7 +16410,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02562964</realizedValue>
+          <realizedValue>1.02429771</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16320,7 +16444,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.5507884</realizedValue>
+          <realizedValue>1.58731365</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16388,7 +16512,7 @@
             <y>3</y>
             <z>0.65</z>
           </minMax>
-          <realizedValue>1.41321838</realizedValue>
+          <realizedValue>1.4092896</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16483,14 +16607,14 @@
           <index>1</index>
           <info>Height surface multiplier</info>
           <group>Surface</group>
-          <lower>0.00390210352</lower>
-          <upper>0.00571365375</upper>
+          <lower>0.00209048716</lower>
+          <upper>0.00390203716</upper>
           <minMax>
             <x>0</x>
             <y>0.5</y>
             <z>0.01</z>
           </minMax>
-          <realizedValue>0.004314304</realizedValue>
+          <realizedValue>0.00258405064</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16524,7 +16648,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>4.31473637</realizedValue>
+          <realizedValue>5.090671</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16547,7 +16671,7 @@
         </SettingsType>
         <SettingsType>
           <name>Atmosphere color</name>
-          <stringValue>bleak</stringValue>
+          <stringValue>Cyan</stringValue>
           <propName>atmosphereString</propName>
           <index>0</index>
           <info>Variations: normal, bleak, red, cyan, green, purple, yellow, pink. Can be separated by comma, will choose one by random. </info>
@@ -16593,7 +16717,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-2.15756941</realizedValue>
+          <realizedValue>-2.17881227</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16627,7 +16751,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>25.6892529</realizedValue>
+          <realizedValue>21.8300743</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16661,7 +16785,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.50681597</realizedValue>
+          <realizedValue>0.487319916</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16729,7 +16853,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9697601</realizedValue>
+          <realizedValue>0.9484365</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16763,7 +16887,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.410640985</realizedValue>
+          <realizedValue>0.419629157</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16824,14 +16948,14 @@
           <index>2</index>
           <info>Subtracting from height</info>
           <group>Surface</group>
-          <lower>1.0254302</lower>
-          <upper>1.0254302</upper>
+          <lower>2.37325525</lower>
+          <upper>3.434782</upper>
           <minMax>
             <x>-2</x>
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.0254302</realizedValue>
+          <realizedValue>3.375819</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -16967,7 +17091,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.21337569</realizedValue>
+          <realizedValue>0.992897034</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17001,7 +17125,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.52856445</realizedValue>
+          <realizedValue>1.5133549</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17035,7 +17159,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.29812825</realizedValue>
+          <realizedValue>1.28363466</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17069,7 +17193,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4361465</realizedValue>
+          <realizedValue>0.483963042</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17137,7 +17261,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.10645178</realizedValue>
+          <realizedValue>0.07676493</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17205,7 +17329,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.05974734</realizedValue>
+          <realizedValue>0.8024242</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17344,9 +17468,9 @@
           <realizedValue>0</realizedValue>
           <type>3</type>
           <color>
-            <r>0.36979112</r>
-            <g>0.36979112</g>
-            <b>0.36979112</b>
+            <r>0.3032464</r>
+            <g>0.3032464</g>
+            <b>0.3032464</b>
             <a>1</a>
           </color>
           <variation>
@@ -17356,9 +17480,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.36979112</r>
-            <g>0.36979112</g>
-            <b>0.36979112</b>
+            <r>0.3032464</r>
+            <g>0.3032464</g>
+            <b>0.3032464</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -17384,15 +17508,15 @@
             <a>1</a>
           </color>
           <variation>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
+            <r>0.034560468</r>
+            <g>0.0300647821</g>
+            <b>0.412316233</b>
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.164127439</r>
-            <g>0.2575277</g>
-            <b>0.3042279</b>
+            <r>0.193494454</r>
+            <g>0.284166664</g>
+            <b>0.613397956</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -17412,21 +17536,21 @@
           <realizedValue>0</realizedValue>
           <type>3</type>
           <color>
-            <r>0.152237147</r>
-            <g>0.307613134</g>
-            <b>0.462989032</b>
+            <r>0.2617184</r>
+            <g>0.355009049</g>
+            <b>0.374999434</b>
             <a>1</a>
           </color>
           <variation>
-            <r>0</r>
-            <g>0</g>
-            <b>0</b>
+            <r>0.105468616</r>
+            <g>0.314214826</g>
+            <b>0.449999422</b>
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.152237147</r>
-            <g>0.307613134</g>
-            <b>0.462989032</b>
+            <r>0.34051016</r>
+            <g>0.3824435</g>
+            <b>0.375466228</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -17492,9 +17616,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.4049419</r>
-            <g>0.4130892</g>
-            <b>0.412904471</b>
+            <r>0.4152065</r>
+            <g>0.415576726</g>
+            <b>0.404662579</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -17526,9 +17650,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.3189111</r>
-            <g>0.504917741</g>
-            <b>0.9025425</b>
+            <r>0.304498345</r>
+            <g>0.5036024</g>
+            <b>0.913021</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -17613,7 +17737,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.408205</realizedValue>
+          <realizedValue>0.405193239</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17647,7 +17771,7 @@
             <y>4</y>
             <z>0</z>
           </minMax>
-          <realizedValue>1.14492774</realizedValue>
+          <realizedValue>1.15942013</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17678,10 +17802,10 @@
           <upper>0.7101448</upper>
           <minMax>
             <x>0</x>
-            <y>1</y>
+            <y>3</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.6086955</realizedValue>
+          <realizedValue>0.6428278</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -17711,6 +17835,1504 @@
         <string>Clouds</string>
         <string>Surface color</string>
       </groups>
+      <TemperatureRange>
+        <x>0</x>
+        <y>900</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>500</x>
+        <y>2000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>Please mine me!</PlanetInfo>
+    </SettingsTypes>
+    <SettingsTypes>
+      <name>Gold Planet</name>
+      <settingsTypes>
+        <SettingsType>
+          <name>Atmosphere density</name>
+          <propName>atmosphereDensity</propName>
+          <index>0</index>
+          <info>1 = thick, 0 = none</info>
+          <group>Atmosphere</group>
+          <lower>0.4978261</lower>
+          <upper>0.5652174</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0.5582796</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Outer radius scale</name>
+          <propName>outerRadiusScale</propName>
+          <index>0</index>
+          <info>Best is 1.025</info>
+          <group>Atmosphere</group>
+          <lower>1.024</lower>
+          <upper>1.026</upper>
+          <minMax>
+            <x>1</x>
+            <y>1.05</y>
+            <z>1.025</z>
+          </minMax>
+          <realizedValue>1.02412558</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>HDR Exposure</name>
+          <propName>m_hdrExposure</propName>
+          <index>0</index>
+          <info>HDR exposure of atmosphere: More lets in a lot of sun</info>
+          <group>Atmosphere</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>1.46160185</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Lacunarity</name>
+          <propName>ExpSurfSettings</propName>
+          <index>0</index>
+          <info>Lacunarity defines the overall shape of the fractal, high lacunarity = lots of "lakes"</info>
+          <group>Surface</group>
+          <lower>2.73276067</lower>
+          <upper>2.73276067</upper>
+          <minMax>
+            <x>1.5</x>
+            <y>4</y>
+            <z>2.5</z>
+          </minMax>
+          <realizedValue>2.73276067</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Offset</name>
+          <propName>ExpSurfSettings</propName>
+          <index>1</index>
+          <info>Offset</info>
+          <group>Surface</group>
+          <lower>1.17522991</lower>
+          <upper>1.17522991</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>0.65</z>
+          </minMax>
+          <realizedValue>1.17522991</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Gain</name>
+          <propName>ExpSurfSettings</propName>
+          <index>2</index>
+          <info>Gain</info>
+          <group>Surface</group>
+          <lower>0.408495426</lower>
+          <upper>0.408495426</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>1.7</z>
+          </minMax>
+          <realizedValue>0.408495426</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Initial offset</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>0</index>
+          <info>Initial offset</info>
+          <group>Surface</group>
+          <lower>-0.228194237</lower>
+          <upper>-0.228194237</upper>
+          <minMax>
+            <x>-2</x>
+            <y>2</y>
+            <z>-0.5</z>
+          </minMax>
+          <realizedValue>-0.228194237</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface height</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>1</index>
+          <info>Height surface multiplier</info>
+          <group>Surface</group>
+          <lower>0.00752527</lower>
+          <upper>0.00752527</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.5</y>
+            <z>0.01</z>
+          </minMax>
+          <realizedValue>0.00752527</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface scale</name>
+          <propName>ExpSurfSettings2</propName>
+          <index>2</index>
+          <info>Surface scale</info>
+          <group>Surface</group>
+          <lower>11.7955809</lower>
+          <upper>13.9695005</upper>
+          <minMax>
+            <x>0</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>12.34086</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Atmosphere color</name>
+          <stringValue>yellow</stringValue>
+          <propName>atmosphereString</propName>
+          <index>0</index>
+          <info>Variations: normal, bleak, red, cyan, green, purple, yellow, pink. Can be separated by comma, will choose one by random. </info>
+          <group>Atmosphere</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>5</y>
+            <z>1.5</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>0</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 scale</name>
+          <propName>SurfaceVortex1</propName>
+          <index>0</index>
+          <info>Vortex 1 scale</info>
+          <group>Surface</group>
+          <lower>-4.27840662</lower>
+          <upper>-4.27840662</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>-4.27840662</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 scale</name>
+          <propName>SurfaceVortex2</propName>
+          <index>0</index>
+          <info>Vortex 2 scale</info>
+          <group>Surface</group>
+          <lower>20.6670341</lower>
+          <upper>26.1338539</upper>
+          <minMax>
+            <x>-50</x>
+            <y>50</y>
+            <z>5</z>
+          </minMax>
+          <realizedValue>22.8661671</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 1 amplitude</name>
+          <propName>SurfaceVortex1</propName>
+          <index>1</index>
+          <info>Vortex 1 amplitude</info>
+          <group>Surface</group>
+          <lower>0.289855957</lower>
+          <upper>0.5072459</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.394907057</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Vortex 2 amplitude</name>
+          <propName>SurfaceVortex2</propName>
+          <index>1</index>
+          <info>Vortex 2 amplitude</info>
+          <group>Surface</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill threshold</name>
+          <propName>hillyThreshold</propName>
+          <index>0</index>
+          <info>Hill normal threshold. 1 = Everything has hill texture (0 degrees from normal), 1 = nothing (90 degrees)</info>
+          <group>Surface thresholds</group>
+          <lower>0.9</lower>
+          <upper>1</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.925248861</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Height subtract</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>0</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>-0.0315964222</lower>
+          <upper>-0.0315964222</upper>
+          <minMax>
+            <x>-3</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>-0.0315964222</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Octaves</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>1</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>10</lower>
+          <upper>10</upper>
+          <minMax>
+            <x>1</x>
+            <y>14</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Power</name>
+          <propName>ExpSurfSettings3</propName>
+          <index>2</index>
+          <info>Subtracting from height</info>
+          <group>Surface</group>
+          <lower>-0.670222044</lower>
+          <upper>-0.670222044</upper>
+          <minMax>
+            <x>-2</x>
+            <y>4</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>-0.7354394</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Top threshold</name>
+          <propName>topThreshold</propName>
+          <index>0</index>
+          <info>Top threshold. Above this value (multiplied with the radius), all colors are top color.</info>
+          <group>Surface thresholds</group>
+          <lower>0.0205072556</lower>
+          <upper>0.0205072556</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.0205072556</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin threshold</name>
+          <propName>basinThreshold</propName>
+          <index>0</index>
+          <info>Basin threshold. Below this value (multiplied with the radius), all colors are basin colors.</info>
+          <group>Surface thresholds</group>
+          <lower>0.001</lower>
+          <upper>0.001</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.01</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.001</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Sea level</name>
+          <propName>liquidThreshold</propName>
+          <index>0</index>
+          <info>Sea level. Below this value (multiplied with the radius), Everything is sea.</info>
+          <group>Water</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.02</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud scale</name>
+          <propName>cloudSettings.LS_CloudScale</propName>
+          <index>0</index>
+          <info>Size of cloud fluctuations.</info>
+          <group>Clouds</group>
+          <lower>0.9</lower>
+          <upper>1.3</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1.29608285</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud scattering</name>
+          <propName>cloudSettings.LS_CloudScattering</propName>
+          <index>0</index>
+          <info>Cloud noise amplitude falloff frequency. Large value = small scale perturbations, low value = large scale.</info>
+          <group>Clouds</group>
+          <lower>1.4</lower>
+          <upper>1.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1.54796124</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud intensity</name>
+          <propName>cloudSettings.LS_CloudIntensity</propName>
+          <index>0</index>
+          <info>Colour intensity of the clouds.</info>
+          <group>Clouds</group>
+          <lower>1.1</lower>
+          <upper>1.3</upper>
+          <minMax>
+            <x>0</x>
+            <y>10</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1.17422771</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud subtract value</name>
+          <propName>cloudSettings.LS_CloudSubScale</propName>
+          <index>0</index>
+          <info>Value to subtract from cloud, higher value yields scattered clouds.</info>
+          <group>Clouds</group>
+          <lower>0.4</lower>
+          <upper>0.6</upper>
+          <minMax>
+            <x>0</x>
+            <y>4</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.454770863</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud shadow scale</name>
+          <propName>cloudSettings.LS_ShadowScale</propName>
+          <index>0</index>
+          <info>Length of internal cloud shadoes</info>
+          <group>Clouds</group>
+          <lower>0.006</lower>
+          <upper>0.006</upper>
+          <minMax>
+            <x>0</x>
+            <y>0.05</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.006</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Large vortex amplitude</name>
+          <propName>cloudSettings.LS_LargeVortex</propName>
+          <index>0</index>
+          <info>Large vortex amplitude</info>
+          <group>Clouds</group>
+          <lower>0.07</lower>
+          <upper>0.11</upper>
+          <minMax>
+            <x>-2</x>
+            <y>2</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.08792749</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Small vortex amplitude</name>
+          <propName>cloudSettings.LS_SmallVortex</propName>
+          <index>0</index>
+          <info>Small vortex amplitude</info>
+          <group>Clouds</group>
+          <lower>0.02</lower>
+          <upper>0.02</upper>
+          <minMax>
+            <x>-1</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.02</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Stretch X</name>
+          <propName>cloudSettings.LS_Stretch</propName>
+          <index>0</index>
+          <info>X-axis stretch component</info>
+          <group>Clouds</group>
+          <lower>0.8</lower>
+          <upper>1.1</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0.8623188</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Stretch Y</name>
+          <propName>cloudSettings.LS_Stretch</propName>
+          <index>1</index>
+          <info>Y-axis stretch component</info>
+          <group>Clouds</group>
+          <lower>1</lower>
+          <upper>1</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud thickness</name>
+          <propName>cloudSettings.LS_CloudThickness</propName>
+          <index>0</index>
+          <info>Alpha value of clouds. Set to 0 to remove clouds completely.</info>
+          <group>Clouds</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Basin color</name>
+          <propName>m_basinColor</propName>
+          <index>0</index>
+          <info>Basin color (lake shores)</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.159067437</r>
+            <g>0.124972463</g>
+            <b>0.124972463</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.159067437</r>
+            <g>0.124972463</g>
+            <b>0.124972463</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Floor color</name>
+          <propName>m_basinColor2</propName>
+          <index>0</index>
+          <info>Floor color (below basin, below lakes)</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.7968744</r>
+            <g>0.7602514</g>
+            <b>0.174316272</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.7968744</r>
+            <g>0.7602514</g>
+            <b>0.174316272</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 1</name>
+          <propName>m_surfaceColor</propName>
+          <index>0</index>
+          <info>Surface color 1</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>1</r>
+            <g>0.7843138</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0.123957254</r>
+            <g>0.111045025</g>
+            <b>0.111045025</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>1.05733478</r>
+            <g>0.8130152</g>
+            <b>0.0430906154</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Surface color 2</name>
+          <propName>m_surfaceColor2</propName>
+          <index>0</index>
+          <info>Surface color 2</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>1</r>
+            <g>0.924999952</g>
+            <b>0.359375</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>1</r>
+            <g>0.924999952</g>
+            <b>0.359375</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Top color</name>
+          <propName>m_topColor</propName>
+          <index>0</index>
+          <info>Top color (everything aboce top threshold)</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>1</r>
+            <g>0.809147835</g>
+            <b>0.188889027</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>1</r>
+            <g>0.809147835</g>
+            <b>0.188889027</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Hill color</name>
+          <propName>m_hillColor</propName>
+          <index>0</index>
+          <info>Hill color (everything below hill threshold)</info>
+          <group>Surface color</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.7656244</r>
+            <g>0.405328482</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0.02</r>
+            <g>0.02</g>
+            <b>0.02</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.776397943</r>
+            <g>0.419473559</g>
+            <b>0.009235503</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Water color</name>
+          <propName>m_waterColor</propName>
+          <index>0</index>
+          <info>Water color</info>
+          <group>Water</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.3</r>
+            <g>0.5</g>
+            <b>0.9</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0.02</r>
+            <g>0.02</g>
+            <b>0.02</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.302538723</r>
+            <g>0.5115876</g>
+            <b>0.9190607</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Cloud color</name>
+          <propName>cloudColor</propName>
+          <index>0</index>
+          <info>Cloud color</info>
+          <group>Clouds</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.65</r>
+            <g>0.7</g>
+            <b>0.9</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.65</r>
+            <g>0.7</g>
+            <b>0.9</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Stretch Z</name>
+          <propName>cloudSettings.LS_Stretch</propName>
+          <index>2</index>
+          <info>Z-axis stretch component</info>
+          <group>Clouds</group>
+          <lower>1</lower>
+          <upper>1</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>1</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Reflection intensity</name>
+          <propName>m_reflectionIntensity</propName>
+          <index>0</index>
+          <info>Skybox reflection intensity. Good for ice and stuff.</info>
+          <group>Atmosphere</group>
+          <lower>0.340579748</lower>
+          <upper>0.340579748</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0.340579748</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Specularity</name>
+          <propName>specularity</propName>
+          <index>0</index>
+          <info>Specularity reflection</info>
+          <group>Atmosphere</group>
+          <lower>1.15942061</lower>
+          <upper>1.188406</upper>
+          <minMax>
+            <x>0</x>
+            <y>4</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>1.15983152</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Metallicity</name>
+          <propName>metallicity</propName>
+          <index>0</index>
+          <info>Metallic reflection of planet</info>
+          <group>Atmosphere</group>
+          <lower>0.815217257</lower>
+          <upper>0.8586956</upper>
+          <minMax>
+            <x>0</x>
+            <y>3</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0.8324402</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+      </settingsTypes>
+      <groups>
+        <string>Atmosphere</string>
+        <string>Surface</string>
+        <string>Surface thresholds</string>
+        <string>Water</string>
+        <string>Clouds</string>
+        <string>Surface color</string>
+      </groups>
+      <TemperatureRange>
+        <x>300</x>
+        <y>500</y>
+        <z>0</z>
+      </TemperatureRange>
+      <RadiusRange>
+        <x>1000</x>
+        <y>7000</y>
+        <z>0</z>
+      </RadiusRange>
+      <PlanetInfo>info about this planet type</PlanetInfo>
     </SettingsTypes>
   </planetTypes>
 </PlanetTypes>

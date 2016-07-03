@@ -90,10 +90,23 @@ namespace LemonSpawn
         {
             int idx = GameObject.Find("DropDownPlanetType").GetComponent<Dropdown>().value;
             PlanetTypes.currentSettings = PlanetTypes.p.FindPlanetType(idx);
-            setInput("InputPlanetTypeName", PlanetTypes.currentSettings.name);
+            PopulatePlanetGUI();
             SetNewPlanetType();
 
         }
+
+        public void PopulatePlanetGUI()
+        {
+            setInput("InputPlanetTypeName", PlanetTypes.currentSettings.name);
+            setInput("InputRadiusRange1", "" + PlanetTypes.currentSettings.RadiusRange.x);
+            setInput("InputRadiusRange2", "" + PlanetTypes.currentSettings.RadiusRange.y);
+            setInput("InputTempRange1", "" + PlanetTypes.currentSettings.TemperatureRange.x);
+            setInput("InputTempRange2", "" + PlanetTypes.currentSettings.TemperatureRange.y);
+            setInput("InputPlanetInfo", PlanetTypes.currentSettings.PlanetInfo);
+        }
+
+        
+
 
 
         public override void Update() {
@@ -117,13 +130,51 @@ namespace LemonSpawn
                 CycleParameter(+1);
 
 
+            if (!RenderSettings.MoveCam)
+                RotateCamera();
          
         }
+        private Vector3 mouseAccel = new Vector3();
+        private DVector focusPoint = new DVector();
+        private DVector focusPointCur = new DVector();
+        private void RotateCamera()
+        {
+            float s = 1.0f;
+            float theta = 0.0f;
+            float phi = 0.0f;
+
+            if (Input.GetMouseButton(0))
+            {
+                theta = s * Input.GetAxis("Mouse X");
+                phi = s * Input.GetAxis("Mouse Y") * -1.0f;
+            }
+            focusPointCur = SolarSystem.planet.pSettings.properties.orgPos;
+//            focusPointCur *= (float)((1.0f / RenderSettings.AU));
+            mouseAccel += new Vector3(theta, phi, 0);
+            //            focusPointCur += (focusPoint - focusPointCur) * 0.1f;
+            //SpaceCamera.transform.RotateAround(focusPointCur, Vector3.up, mouseAccel.x);
+            //SpaceCamera.transform.RotateAround(focusPointCur, mainCamera.transform.right, mouseAccel.y);
+            //SpaceCamera.transform.LookAt(focusPointCur);
+
+
+            double scale = 10000;
+            Quaternion q = Quaternion.AngleAxis(mouseAccel.x, SpaceCamera.transform.up);
+            Vector3 p = q* (((SpaceCamera.getPos()/RenderSettings.AU) - focusPointCur)*scale).toVectorf();
+
+            q = Quaternion.AngleAxis(mouseAccel.y, SpaceCamera.transform.right);
+            p = q * p; 
+
+//            p += focusPointCur.toVectorf();
+            SpaceCamera.SetLookCamera(new DVector(p)/scale + focusPointCur, (p)*-1, Vector3.up);
+
+            mouseAccel *= 0.9f;
+        }
+
 
         public void NewPlanetType()
         {
             PlanetTypes.currentSettings = PlanetTypes.p.NewPlanetType(null);
-            setInput("InputPlanetTypeName",PlanetTypes.currentSettings.name);
+            PopulatePlanetGUI();
             PopulatePlanetTypes(1);
             SetNewPlanetType();
         }
@@ -138,7 +189,7 @@ namespace LemonSpawn
         public void CopyPlanetType()
         {
             PlanetTypes.currentSettings = PlanetTypes.p.NewPlanetType(PlanetTypes.currentSettings);
-            setInput("InputPlanetTypeName",PlanetTypes.currentSettings.name);
+            PopulatePlanetGUI();
             PopulatePlanetTypes(1);
             SetNewPlanetType();
 
@@ -146,10 +197,16 @@ namespace LemonSpawn
         }
 
 
+        public void ToggleFlyCam()
+        {
+            RenderSettings.MoveCam = !RenderSettings.MoveCam;
+        }
+
         public void SetNewPlanetType() {
             PlanetTypes.currentSettings.PopulateGroupsDrop("DropdownGroups");
             //            PlanetTypes.currentSettings.Realize(new System.Random());
             SelectGroup();
+            PlanetTypes.currentSettings.setParameters(SolarSystem.planet.pSettings, new System.Random());
         }
 
 
@@ -192,7 +249,7 @@ namespace LemonSpawn
 
         private void setInput(string box, string text)
         {
-           
+//            Debug.Log(box);
             InputField f = GameObject.Find(box).GetComponent<InputField>();
             if (f==null)
             {
@@ -227,6 +284,13 @@ namespace LemonSpawn
                 return;
 
             PlanetTypes.currentSettings.name = getInput("InputPlanetTypeName");
+            PlanetTypes.currentSettings.RadiusRange.x = (int)float.Parse(getInput("InputRadiusRange1"));
+            PlanetTypes.currentSettings.RadiusRange.y = (int)float.Parse(getInput("InputRadiusRange2"));
+            PlanetTypes.currentSettings.TemperatureRange.x = (int)float.Parse(getInput("InputTempRange1"));
+            PlanetTypes.currentSettings.TemperatureRange.y = (int)float.Parse(getInput("InputTempRange2"));
+            PlanetTypes.currentSettings.PlanetInfo = getInput("InputPlanetInfo");
+
+
             PopulatePlanetTypes(2);
 
 
@@ -326,6 +390,9 @@ namespace LemonSpawn
            WriteScreenshot(RenderSettings.screenshotDir, 2048,1080);
 
         }
+
+        
+
 
 
         public void PopulateSettings()

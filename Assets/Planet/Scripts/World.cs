@@ -647,7 +647,7 @@ namespace LemonSpawn {
                 followVehicle = !followVehicle;
   */              
 
-			if (Input.GetKeyUp (KeyCode.Tab)) {
+			if (Input.GetKeyUp (KeyCode.F12)) {
 				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
 				canvas.SetActive(RenderSettings.RenderMenu);
 			}
