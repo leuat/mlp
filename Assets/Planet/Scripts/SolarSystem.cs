@@ -229,7 +229,7 @@ namespace LemonSpawn
 				PlanetSettings ps = sp.DeSerialize(go, cnt++, sz.global_radius_scale);
 				if (randomizeSeeds) {
 					ps.seed = (int)(Random.value * 10000f);
-					ps.Randomize(0);
+					ps.Randomize(0, sp.planetType);
 				}
 
                 Planet p = new Planet(ps);

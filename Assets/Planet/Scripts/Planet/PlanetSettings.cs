@@ -29,6 +29,7 @@ namespace LemonSpawn {
     public class PlanetSettings : MonoBehaviour {
 
         [Header("Planet settings")]
+        public int seed;
         public double rotation;
         public float Gravity;
         public int maxQuadNodeLevel;
@@ -48,7 +49,6 @@ namespace LemonSpawn {
 
         // Public stuff to be exposed
         [Header("Atmosphere settings")]
-        public int seed;
         public float atmosphereDensity = 1.0f;
 //        public float atmosphereHeight = 1.025f;
         public float outerRadiusScale = 1.025f;
@@ -111,7 +111,10 @@ namespace LemonSpawn {
         public bool hasBillboardClouds = false;
         public bool hasVolumetricClouds = false;
 
+        [System.NonSerialized]
         public SettingsTypes planetType;
+//        [System.NonSerialized]
+        public string planetTypeName = "";
         public Atmosphere atmosphere;
         public Sea sea;
         public PlanetProperties properties = new PlanetProperties();
@@ -188,19 +191,25 @@ namespace LemonSpawn {
 	
 
 
-        public void Randomize(int count) {
+        public void Randomize(int count, string forcedPlanetType) {
             System.Random r = new System.Random(seed);
 
             sea = new Sea();
             hasFlatClouds = true;
-            planetType = PlanetTypes.p.getRandomPlanetType(r, radius, temperature);
+            if (forcedPlanetType != null)
+                planetType = PlanetTypes.p.FindPlanetType(forcedPlanetType);
+
+            // Or else find a random one
+            if (planetType == null)
+                planetType = PlanetTypes.p.getRandomPlanetType(r, radius, temperature);
+            planetTypeName = planetType.name;
             planetType.Realize(r);
             planetType.setParameters(this, r);
             //Debug.Log(atmosphereDensity);
-            Debug.Log("Found candidate: " + planetType.name);
         }
 
-		
+
+
 /*		public void RandomizeOld(int count) {
 			System.Random r = new System.Random(seed);
             temperature = (float)r.NextDouble()*500f + 100;
@@ -290,8 +299,8 @@ namespace LemonSpawn {
 		}
 		
 		*/
-		
-		public float getHeight() {
+
+        public float getHeight() {
 			return properties.localCamera.magnitude - radius;
 		}
 		public float getScaledHeight() {

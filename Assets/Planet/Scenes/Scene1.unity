@@ -85,6 +85,80 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &67054040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 67054041}
+  - 222: {fileID: 67054043}
+  - 114: {fileID: 67054042}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &67054041
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67054040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1706478056}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &67054042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67054040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Save world
+--- !u!222 &67054043
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67054040}
 --- !u!1 &136680536
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 266856131}
+  - {fileID: 1706478056}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -178,6 +253,123 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &226504889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 226504890}
+  - 114: {fileID: 226504891}
+  m_Layer: 0
+  m_Name: MetalMoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &226504890
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 226504889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.001, y: -0.0005, z: -0.0003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 757101968}
+  m_RootOrder: 3
+--- !u!114 &226504891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 226504889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  castShadows: 1
+  hasSea: 0
+  ExpSurfSettings: {x: 2.080587, y: 1.3952712, z: 0.34327805}
+  ExpSurfSettings2: {x: -0.8079051, y: 0.003343174, z: 4.9363713}
+  ExpSurfSettings3: {x: 0.40834966, y: 10, z: 3.301895}
+  SurfaceVortex1: {x: -2.0213587, y: 0.39214638, z: 0}
+  SurfaceVortex2: {x: 25.50022, y: 0, z: 0}
+  atmosphereDensity: 0.4555263
+  outerRadiusScale: 1.0245134
+  m_reflectionIntensity: 0.40841764
+  m_atmosphereWavelengths: {x: 0.65, y: 0.47, z: 0.435}
+  metallicity: 0.6086956
+  specularity: 2.9997256
+  atmosphereString: Cyan
+  m_hdrExposure: 1.5998574
+  m_ESun: 10
+  radius: 5000
+  temperature: 300
+  hillyThreshold: 0.96394485
+  liquidThreshold: 0
+  topThreshold: 0.01
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 2
+  globalTerrainScale: 4
+  m_surfaceColor: {r: 0.18875346, g: 0.26653865, b: 0.4068184, a: 1}
+  m_surfaceColor2: {r: 0.33105087, g: 0.5235354, b: 0.70917106, a: 1}
+  m_surfaceTexture: {fileID: 0}
+  m_basinColor: {r: 0.15398283, g: 0.15398283, b: 0.15398283, a: 1}
+  m_basinColor2: {r: 0.3032464, g: 0.3032464, b: 0.3032464, a: 1}
+  m_basinTexture: {fileID: 0}
+  m_topColor: {r: 0.26850024, g: 0.474841, b: 0.51041615, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0.41229066, g: 0.40466642, b: 0.41413826, a: 1}
+  m_hillTexture: {fileID: 0}
+  m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
+  emissionColor: {r: 0, g: 0, b: 0, a: 0}
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 5.665586
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
+  clouds: {fileID: 0}
+  bumpScale: 1
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 1.0043937
+    LS_CloudScattering: 1.5295095
+    LS_CloudIntensity: 1.2472997
+    LS_CloudSharpness: 1.5
+    LS_CloudThickness: 0
+    LS_ShadowScale: 0.006
+    LS_LargeVortex: 0.07957807
+    LS_SmallVortex: 0.02
+    LS_CloudSubScale: 0.44396162
+    LS_Stretch: {x: 0.9996062, y: 1, z: 1}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 0.25
+    planetSettings: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
+  planetTypeName: Metallic Moon
 --- !u!1 &266856130
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +777,11 @@ Transform:
   m_Children:
   - {fileID: 1176257414}
   - {fileID: 1723561327}
+  - {fileID: 942512087}
+  - {fileID: 226504890}
+  - {fileID: 1218263865}
+  - {fileID: 1463466346}
+  - {fileID: 1868725502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &920154529
@@ -616,6 +813,123 @@ Transform:
   - {fileID: 1969987738}
   m_Father: {fileID: 1651260376}
   m_RootOrder: 0
+--- !u!1 &942512086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 942512087}
+  - 114: {fileID: 942512088}
+  m_Layer: 0
+  m_Name: RockyMoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &942512087
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942512086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0.0003, z: 0.0005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 757101968}
+  m_RootOrder: 2
+--- !u!114 &942512088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942512086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 12
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  castShadows: 1
+  hasSea: 0
+  ExpSurfSettings: {x: 2.080587, y: 1.4045546, z: 0.34327805}
+  ExpSurfSettings2: {x: -0.8079051, y: 0.012960052, z: 4.334663}
+  ExpSurfSettings3: {x: 0.45353547, y: 10, z: 1.0254302}
+  SurfaceVortex1: {x: -1.9545695, y: 0.3779903, z: 0}
+  SurfaceVortex2: {x: 23.824553, y: 0, z: 0}
+  atmosphereDensity: 0.041648943
+  outerRadiusScale: 1.0253441
+  m_reflectionIntensity: 0.06537037
+  m_atmosphereWavelengths: {x: 0.6, y: 0.6, z: 0.6}
+  metallicity: 0.14286949
+  specularity: 2.4040666
+  atmosphereString: bleak
+  m_hdrExposure: 1.4897683
+  m_ESun: 10
+  radius: 3000
+  temperature: 300
+  hillyThreshold: 0.91741604
+  liquidThreshold: 0
+  topThreshold: 0.01
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 2
+  globalTerrainScale: 4
+  m_surfaceColor: {r: 0.18381001, g: 0.20657158, b: 0.21795237, a: 1}
+  m_surfaceColor2: {r: 0.43750545, g: 0.45612967, b: 0.47573408, a: 1}
+  m_surfaceTexture: {fileID: 0}
+  m_basinColor: {r: 0.15398283, g: 0.15398283, b: 0.15398283, a: 1}
+  m_basinColor2: {r: 0.11623669, g: 0.11623669, b: 0.11623669, a: 1}
+  m_basinTexture: {fileID: 0}
+  m_topColor: {r: 0.3636545, g: 0.3636545, b: 0.3636545, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0.23134287, g: 0.2422071, b: 0.24080491, a: 1}
+  m_hillTexture: {fileID: 0}
+  m_waterColor: {r: 0.31807545, g: 0.5091529, b: 0.91101545, a: 1}
+  emissionColor: {r: 0, g: 0, b: 0, a: 0}
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 5.5690093
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
+  clouds: {fileID: 0}
+  bumpScale: 1
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 1.0444529
+    LS_CloudScattering: 1.5792028
+    LS_CloudIntensity: 1.1912715
+    LS_CloudSharpness: 1.5
+    LS_CloudThickness: 0
+    LS_ShadowScale: 0.006
+    LS_LargeVortex: 0.10497284
+    LS_SmallVortex: 0.02
+    LS_CloudSubScale: 0.51647085
+    LS_Stretch: {x: 0.9374742, y: 1, z: 1}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 0.25
+    planetSettings: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
+  planetTypeName: Moon Two
 --- !u!1 &1035490326
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,72 +1033,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 1
   rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
-  planetTypeIndex: 1
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.5, y: 0.65, z: 1.7}
-  ExpSurfSettings2: {x: -0.5, y: 0.01, z: 5}
-  ExpSurfSettings3: {x: 0.3, y: 11, z: 0}
-  SurfaceVortex1: {x: 5, y: 1, z: 0}
-  SurfaceVortex2: {x: 0, y: 0, z: 0}
-  seed: 1
-  atmosphereDensity: 0.65
-  outerRadiusScale: 1.025
+  ExpSurfSettings: {x: 2.4752443, y: -0.27888554, z: 0.93571544}
+  ExpSurfSettings2: {x: -0.16014433, y: 0.011661381, z: 5.014322}
+  ExpSurfSettings3: {x: 0.487176, y: 10, z: 0.52732915}
+  SurfaceVortex1: {x: -1.8621415, y: 1.0096891, z: 0}
+  SurfaceVortex2: {x: 3.2743173, y: 1.029915, z: 0}
+  atmosphereDensity: 0.68668544
+  outerRadiusScale: 1.024416
   m_reflectionIntensity: 0
-  m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
-  metallicity: 1
+  m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
+  metallicity: 0
   specularity: 1
   atmosphereString: normal
-  m_hdrExposure: 2
+  m_hdrExposure: 1.5906833
   m_ESun: 10
   radius: 50000
   temperature: 300
-  hillyThreshold: 0.98
-  liquidThreshold: 0.0005
-  topThreshold: 0.01
+  hillyThreshold: 0.9767341
+  liquidThreshold: 0.0014416698
+  topThreshold: 0.0110243205
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
   globalTerrainScale: 7
-  m_surfaceColor: {r: 0.71323526, g: 0.34489915, b: 0.010488763, a: 0}
-  m_surfaceColor2: {r: 0.18490486, g: 0.5588235, b: 0.29579097, a: 0}
+  m_surfaceColor: {r: 0.76761794, g: 0.5066766, b: 0.07461786, a: 1}
+  m_surfaceColor2: {r: 0.401466, g: 0.65456253, b: 0.17314994, a: 1}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
-  m_basinColor: {r: 0.6102941, g: 0.41668355, b: 0, a: 0}
-  m_basinColor2: {r: 1, g: 0.9849898, b: 0.45588237, a: 0}
+  m_basinColor: {r: 0.558723, g: 0.30821118, b: 0.12541105, a: 1}
+  m_basinColor2: {r: 0.50019133, g: 0.31909966, b: 0.13685998, a: 1}
   m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
-  m_topColor: {r: 1, g: 1, b: 1, a: 1}
+  m_topColor: {r: 1.002769, g: 1.0101869, b: 1.0072062, a: 1}
   m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
-  m_hillColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+  m_hillColor: {r: 0.4017703, g: 0.4040201, b: 0.41925243, a: 1}
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
-  m_waterColor: {r: 0.05833692, g: 0.47325638, b: 0.6102941, a: 1}
+  m_waterColor: {r: 0.3114423, g: 0.50098693, b: 0.9101194, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
   hasEnvironment: 0
   environmentDensity: 500
   hasRings: 1
-  ringColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 1}
-  ringScale: 5
-  ringAmplitude: 1
-  ringRadius: {x: 0.15, y: 0.35}
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 6.481795
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
   clouds: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {r: 0.7, g: 0.8, b: 1, a: 1}
+  cloudColor: {r: 0.5112844, g: 0.65972257, b: 0.7916661, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 1
-    LS_CloudScattering: 1.5
-    LS_CloudIntensity: 1.2
+    LS_CloudScale: 1.2950191
+    LS_CloudScattering: 1.566984
+    LS_CloudIntensity: 1.2592973
     LS_CloudSharpness: 1.5
-    LS_CloudThickness: 0.65
+    LS_CloudThickness: 0.63319975
     LS_ShadowScale: 0.006
-    LS_LargeVortex: -0.5
-    LS_SmallVortex: 0.01
-    LS_CloudSubScale: 0.5
-    LS_Stretch: {x: 1, y: 1, z: 1}
+    LS_LargeVortex: -0.5429516
+    LS_SmallVortex: 0.012753725
+    LS_CloudSubScale: 0.6138731
+    LS_Stretch: {x: 0.4908571, y: 1, z: 0.46924236}
     cloudRadius: 0
     LS_HasCloudShadows: 0
     LS_DistScale: 10
@@ -793,44 +1106,10 @@ MonoBehaviour:
     rot: {x: 0, y: 0, z: 0, w: 1}
     material: {fileID: 0}
     m_sun: {fileID: 0}
-  hasFlatClouds: 0
+  hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetType:
-    Name: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-    colorVariation: {r: 0, g: 0, b: 0, a: 0}
-    basinColor: {r: 0, g: 0, b: 0, a: 0}
-    basinColorVariation: {r: 0, g: 0, b: 0, a: 0}
-    seaColor: {r: 0, g: 0, b: 0, a: 0}
-    topColor: {r: 0, g: 0, b: 0, a: 0}
-    atmosphere: []
-    cloudType: 
-    cloudColor: {r: 0, g: 0, b: 0, a: 0}
-    clouds: 
-    atmosphereDensity: 1
-    sealevel: 0
-    delegateString: 
-    surfaceScaleModifier: 1
-    surfaceHeightModifier: 1
-    minQuadLevel: 2
-    RadiusRange: {x: 0, y: 0}
-    TemperatureRange: {x: 0, y: 0}
-  pType:
-    name: 
-    stringValue: 
-    propName: 
-    index: 0
-    info: 
-    group: 
-    lower: 0
-    upper: 0
-    minMax: {x: 0, y: 0, z: 0}
-    realizedValue: 0
-    type: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-    variation: {r: 0, g: 0, b: 0, a: 0}
-    realizedColor: {r: 0, g: 0, b: 0, a: 0}
+  planetTypeName: Terra
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -937,6 +1216,123 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 0}
+--- !u!1 &1218263864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1218263865}
+  - 114: {fileID: 1218263866}
+  m_Layer: 0
+  m_Name: DesertMoon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1218263865
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218263864}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0009, y: 0.0005, z: -0.0003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 757101968}
+  m_RootOrder: 4
+--- !u!114 &1218263866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218263864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  castShadows: 1
+  hasSea: 0
+  ExpSurfSettings: {x: 2.7327607, y: 1.1752299, z: 0.40849543}
+  ExpSurfSettings2: {x: -0.22819424, y: 0.00752527, z: 13.566811}
+  ExpSurfSettings3: {x: -0.031596422, y: 10, z: 1.0254302}
+  SurfaceVortex1: {x: -4.2784066, y: 0.39214638, z: 0}
+  SurfaceVortex2: {x: 25.50022, y: 0, z: 0}
+  atmosphereDensity: 0.5598573
+  outerRadiusScale: 1.0245134
+  m_reflectionIntensity: 0
+  m_atmosphereWavelengths: {x: 0.5, y: 0.62, z: 0.625}
+  metallicity: 0
+  specularity: 1
+  atmosphereString: red
+  m_hdrExposure: 1.5998574
+  m_ESun: 10
+  radius: 4000
+  temperature: 300
+  hillyThreshold: 0.96394485
+  liquidThreshold: 0
+  topThreshold: 0.020507256
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 2
+  globalTerrainScale: 4
+  m_surfaceColor: {r: 0.5674917, g: 0.46774593, b: 0.28967366, a: 1}
+  m_surfaceColor2: {r: 0.5624994, g: 0.44048572, b: 0.21679673, a: 1}
+  m_surfaceTexture: {fileID: 0}
+  m_basinColor: {r: 0, g: 0, b: 0, a: 1}
+  m_basinColor2: {r: 0.11623669, g: 0.11623669, b: 0.11623669, a: 1}
+  m_basinTexture: {fileID: 0}
+  m_topColor: {r: 0.098957255, g: 0.098957255, b: 0.098957255, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0.41229066, g: 0.40466642, b: 0.41413826, a: 1}
+  m_hillTexture: {fileID: 0}
+  m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
+  emissionColor: {r: 0, g: 0, b: 0, a: 0}
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 5.665586
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
+  clouds: {fileID: 0}
+  bumpScale: 1
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 1.0043937
+    LS_CloudScattering: 1.5295095
+    LS_CloudIntensity: 1.2472997
+    LS_CloudSharpness: 1.5
+    LS_CloudThickness: 0
+    LS_ShadowScale: 0.006
+    LS_LargeVortex: 0.07957807
+    LS_SmallVortex: 0.02
+    LS_CloudSubScale: 0.44396162
+    LS_Stretch: {x: 0.9996062, y: 1, z: 1}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 0.25
+    planetSettings: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
+  planetTypeName: Red Moon
 --- !u!1 &1246023577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1918,123 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!1 &1463466345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1463466346}
+  - 114: {fileID: 1463466347}
+  m_Layer: 0
+  m_Name: Ice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1463466346
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1463466345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0015, y: -0.0005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 757101968}
+  m_RootOrder: 5
+--- !u!114 &1463466347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1463466345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  castShadows: 1
+  hasSea: 0
+  ExpSurfSettings: {x: 2.4651244, y: 0.27391398, z: 0.8507918}
+  ExpSurfSettings2: {x: 0.47259986, y: 0.016915, z: 7.0126066}
+  ExpSurfSettings3: {x: 0.23003599, y: 10, z: 0.4853176}
+  SurfaceVortex1: {x: 6.0549865, y: 0.40585843, z: 0}
+  SurfaceVortex2: {x: 6.536378, y: 0.03534285, z: 0}
+  atmosphereDensity: 0.70306367
+  outerRadiusScale: 1.0245134
+  m_reflectionIntensity: 0.78634554
+  m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
+  metallicity: 0.6685699
+  specularity: 1.2608696
+  atmosphereString: Normal
+  m_hdrExposure: 1.5998574
+  m_ESun: 10
+  radius: 10000
+  temperature: 300
+  hillyThreshold: 0.96394485
+  liquidThreshold: 0
+  topThreshold: 0.00790882
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 2
+  globalTerrainScale: 4
+  m_surfaceColor: {r: 0.3856807, g: 0.6032002, b: 0.9259225, a: 1}
+  m_surfaceColor2: {r: 0.9372759, g: 0.96211857, b: 1.0407653, a: 1}
+  m_surfaceTexture: {fileID: 0}
+  m_basinColor: {r: 1.0117741, g: 1.002942, b: 1.0284969, a: 1}
+  m_basinColor2: {r: 1.0236619, g: 1.0242423, b: 1.010975, a: 1}
+  m_basinTexture: {fileID: 0}
+  m_topColor: {r: 0.90309334, g: 0.901877, b: 0.91876036, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0.41229066, g: 0.40466642, b: 0.41413826, a: 1}
+  m_hillTexture: {fileID: 0}
+  m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
+  emissionColor: {r: 0, g: 0, b: 0, a: 0}
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
+  ringColor: {r: 0.72026646, g: 0.8678478, b: 0.9177238, a: 1}
+  ringScale: 5.665586
+  ringAmplitude: 0.35980588
+  ringRadius: {x: 0.20551756, y: 0.2202637, z: 0}
+  clouds: {fileID: 0}
+  bumpScale: 1
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
+  cloudColor: {r: 0.72157073, g: 0.872364, b: 0.9114577, a: 1}
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 0.84586626
+    LS_CloudScattering: 1.3696737
+    LS_CloudIntensity: 1.1231875
+    LS_CloudSharpness: 1.5
+    LS_CloudThickness: 0.40361255
+    LS_ShadowScale: 0.0056376765
+    LS_LargeVortex: -0.8469338
+    LS_SmallVortex: -0.074202776
+    LS_CloudSubScale: 0.46287918
+    LS_Stretch: {x: 0.5890022, y: 1, z: 1}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 0.25
+    planetSettings: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
+  hasFlatClouds: 1
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
+  planetTypeName: Ice
 --- !u!1 &1486160995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,9 +2194,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSpeed: 25
-  shiftAdd: 200
-  maxShift: 5000
+  shiftAdd: 120
+  maxShift: 250
   camSens: 0.2
+  curDir: {x: 0, y: 0, z: 0}
   initPos:
     x: -1
     y: 0.0004
@@ -1693,7 +2207,10 @@ MonoBehaviour:
     y: 0
     z: 0
   up: {x: 0, y: 0, z: 0}
-  curDir: {x: 0, y: 0, z: 0}
+  actualCamera:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &1606506733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +2417,128 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 900
   maxSteeringAngle: 30
+--- !u!1 &1706478055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1706478056}
+  - 222: {fileID: 1706478059}
+  - 114: {fileID: 1706478058}
+  - 114: {fileID: 1706478057}
+  m_Layer: 5
+  m_Name: SaveWorld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1706478056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706478055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 67054041}
+  m_Father: {fileID: 136680540}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -689, y: -337}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1706478057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706478055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.12262111, g: 0.32892254, b: 0.39705884, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1706478058}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 757101967}
+        m_MethodName: SaveWorld
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1706478058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706478055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1706478059
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706478055}
 --- !u!1 &1723561326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,7 +2554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723561327
 Transform:
   m_ObjectHideFlags: 0
@@ -1940,10 +2579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
   rotation: 0
   Gravity: 0
   maxQuadNodeLevel: 0
-  planetTypeIndex: 3
   castShadows: 1
   hasSea: 0
   ExpSurfSettings: {x: 2.8, y: 0.7, z: 1.5}
@@ -1951,7 +2590,6 @@ MonoBehaviour:
   ExpSurfSettings3: {x: 0.1, y: 10, z: 1}
   SurfaceVortex1: {x: -2, y: 2, z: 0}
   SurfaceVortex2: {x: 24, y: 0.1, z: 0}
-  seed: 0
   atmosphereDensity: 0.6
   outerRadiusScale: 1.019
   m_reflectionIntensity: 0
@@ -1988,7 +2626,7 @@ MonoBehaviour:
   ringColor: {r: 1, g: 1, b: 1, a: 1}
   ringScale: 1
   ringAmplitude: 1
-  ringRadius: {x: 0.2, y: 0.45}
+  ringRadius: {x: 0.2, y: 0.45, z: 0}
   clouds: {fileID: 0}
   bumpScale: 0
   cloudRadius: 0
@@ -2017,41 +2655,7 @@ MonoBehaviour:
   hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetType:
-    Name: 
-    color: {r: 0, g: 0, b: 0, a: 0}
-    colorVariation: {r: 0, g: 0, b: 0, a: 0}
-    basinColor: {r: 0, g: 0, b: 0, a: 0}
-    basinColorVariation: {r: 0, g: 0, b: 0, a: 0}
-    seaColor: {r: 0, g: 0, b: 0, a: 0}
-    topColor: {r: 0, g: 0, b: 0, a: 0}
-    atmosphere: []
-    cloudType: 
-    cloudColor: {r: 0, g: 0, b: 0, a: 0}
-    clouds: 
-    atmosphereDensity: 1
-    sealevel: 0
-    delegateString: 
-    surfaceScaleModifier: 1
-    surfaceHeightModifier: 1
-    minQuadLevel: 2
-    RadiusRange: {x: 0, y: 0}
-    TemperatureRange: {x: 0, y: 0}
-  pType:
-    name: 
-    stringValue: 
-    propName: 
-    index: 0
-    info: 
-    group: 
-    lower: 0
-    upper: 0
-    minMax: {x: 0, y: 0, z: 0}
-    realizedValue: 0
-    type: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-    variation: {r: 0, g: 0, b: 0, a: 0}
-    realizedColor: {r: 0, g: 0, b: 0, a: 0}
+  planetTypeName: 
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0
@@ -2139,6 +2743,123 @@ Transform:
   - {fileID: 1190114115}
   m_Father: {fileID: 1358885275}
   m_RootOrder: 0
+--- !u!1 &1868725501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1868725502}
+  - 114: {fileID: 1868725503}
+  m_Layer: 0
+  m_Name: Asteroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1868725502
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868725501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0003, y: -0.0005, z: 0.0002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 757101968}
+  m_RootOrder: 6
+--- !u!114 &1868725503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868725501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  rotation: 0
+  Gravity: 0
+  maxQuadNodeLevel: 0
+  castShadows: 1
+  hasSea: 0
+  ExpSurfSettings: {x: 2.080587, y: 1.3952712, z: 0.34327805}
+  ExpSurfSettings2: {x: -0.8079051, y: 0.098749325, z: 1.7278566}
+  ExpSurfSettings3: {x: 0.40834966, y: 10, z: 1.0254302}
+  SurfaceVortex1: {x: -2.0213587, y: 0.39214638, z: 0}
+  SurfaceVortex2: {x: 25.50022, y: 0, z: 0}
+  atmosphereDensity: 0.1013184
+  outerRadiusScale: 1.0245134
+  m_reflectionIntensity: 0.38822797
+  m_atmosphereWavelengths: {x: 0.6, y: 0.6, z: 0.6}
+  metallicity: 0
+  specularity: 2.687757
+  atmosphereString: bleak
+  m_hdrExposure: 1.5998574
+  m_ESun: 10
+  radius: 500
+  temperature: 300
+  hillyThreshold: 0.9159175
+  liquidThreshold: 0
+  topThreshold: 0.1
+  basinThreshold: 0.001
+  globalTerrainHeightScale: 2
+  globalTerrainScale: 4
+  m_surfaceColor: {r: 0.14007714, g: 0.23016566, b: 0.27520996, a: 1}
+  m_surfaceColor2: {r: 0.68475026, g: 0.73121417, b: 0.777678, a: 1}
+  m_surfaceTexture: {fileID: 0}
+  m_basinColor: {r: 0.15398283, g: 0.15398283, b: 0.15398283, a: 1}
+  m_basinColor2: {r: 0.11623669, g: 0.11623669, b: 0.11623669, a: 1}
+  m_basinTexture: {fileID: 0}
+  m_topColor: {r: 0.31578803, g: 0.36143985, b: 0.3859759, a: 1}
+  m_topTexture: {fileID: 0}
+  m_hillColor: {r: 0.34502664, g: 0.40188703, b: 0.43467334, a: 1}
+  m_hillTexture: {fileID: 0}
+  m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
+  emissionColor: {r: 0, g: 0, b: 0, a: 0}
+  bumpMap: {fileID: 0}
+  hasEnvironment: 0
+  environmentDensity: 0
+  hasRings: 0
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 6.46057
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
+  clouds: {fileID: 0}
+  bumpScale: 1
+  cloudRadius: 1.02
+  renderedCloudRadius: 1.03
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudSettings:
+    LS_CloudTimeScale: 5
+    LS_CloudScale: 1.0043937
+    LS_CloudScattering: 1.5295095
+    LS_CloudIntensity: 1.2472997
+    LS_CloudSharpness: 1.5
+    LS_CloudThickness: 0
+    LS_ShadowScale: 0.006
+    LS_LargeVortex: 0.07957807
+    LS_SmallVortex: 0.02
+    LS_CloudSubScale: 0.44396162
+    LS_Stretch: {x: 0.9996062, y: 1, z: 1}
+    cloudRadius: 0
+    LS_HasCloudShadows: 0
+    LS_DistScale: 10
+    LS_CloudShadowStrength: 0.25
+    planetSettings: {fileID: 0}
+    rot: {x: 0, y: 0, z: 0, w: 1}
+    material: {fileID: 0}
+    m_sun: {fileID: 0}
+  hasFlatClouds: 0
+  hasBillboardClouds: 0
+  hasVolumetricClouds: 0
+  planetTypeName: Asteroid
 --- !u!1 &1969987737
 GameObject:
   m_ObjectHideFlags: 0

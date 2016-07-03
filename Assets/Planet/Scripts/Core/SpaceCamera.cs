@@ -14,7 +14,8 @@ public class SpaceCamera : MonoBehaviour {
 	private Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
 	private float totalRun = 1.0f;
 	private Vector3 P;
-	public DVector initPos = new DVector(0,0,0);
+    public Vector3 curDir;
+    public DVector initPos = new DVector(0,0,0);
 	public DVector initDir = new DVector(0,0,0);
 	private Vector3 mouseAdd = new Vector3();
 	float rotate = 0;
@@ -34,7 +35,25 @@ public class SpaceCamera : MonoBehaviour {
 //		actualCamera.transform.Translate( t );
 	}
 	
-	public DVector getPos() {
+    public SerializedCamera getSZCamera()
+        {
+            SerializedCamera sz = new SerializedCamera();
+            sz.cam_x = actualCamera.x/RenderSettings.AU;
+            sz.cam_y = actualCamera.y / RenderSettings.AU;
+            sz.cam_z = actualCamera.z / RenderSettings.AU;
+            curDir = transform.forward;
+            sz.dir_x = curDir.x;
+            sz.dir_y = curDir.y;
+            sz.dir_z = curDir.z;
+            sz.up_x = up.x;
+            sz.up_y = up.y;
+            sz.up_z = up.z;
+            return sz;
+
+
+        }
+
+        public DVector getPos() {
 		return actualCamera;
 //		return actualCamera.transform.position;
 	}
@@ -51,9 +70,8 @@ public class SpaceCamera : MonoBehaviour {
 		actualCamera = p*RenderSettings.AU;
         World.WorldCamera = p * RenderSettings.AU;
 
-            curDir = dir;
 		SetLookCamera(dir, u);
-            up = u;
+         up = u;
 	}
 	
 	public void MoveCamera(Vector3 dp) {
@@ -74,20 +92,16 @@ public class SpaceCamera : MonoBehaviour {
         }
 
 
-        public Vector3 curDir;
 
         public void SetLookCamera(Vector3 dir, Vector3 up) {
-			//		transform.rotation  = rot;
-			
-			
-			
-			//Vector3 dir = new Vector3(Mathf.Sin (theta)*Mathf.Cos (phi), Mathf.Sin (theta)*Mathf.Sin (phi), Mathf.Cos (theta));
+		
 			Quaternion q = new Quaternion();
 						
 			q.SetLookRotation(dir, up);
             curDir = dir;
-			transform.rotation = q;
-			//transform.rotation = Quaternion.AngleAxis(roll, dir);									
+
+            transform.rotation = q;
+								
 		}
 		
 	
@@ -95,7 +109,8 @@ public class SpaceCamera : MonoBehaviour {
 //		transform.position = p;
 		transform.rotation = rot;
 		actualCamera.Set(p*(float)RenderSettings.AU);
-		World.WorldCamera.Set (p*(float)RenderSettings.AU);
+            World.WorldCamera.Set (p*(float)RenderSettings.AU);
+      
 //		actualCamera.transform.rotation = rot;
 	}	
 	

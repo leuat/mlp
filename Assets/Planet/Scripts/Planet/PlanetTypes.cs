@@ -832,7 +832,14 @@ namespace LemonSpawn
       
         public List<SettingsTypes> planetTypes = new List<SettingsTypes>();
        
-   
+        public string[] getStringList()
+        {
+            string[] lst = new string[planetTypes.Count];
+            int i = 0;
+            foreach (SettingsTypes st in planetTypes)
+                lst[i++] = st.name;
+            return lst;
+        }
 
 
         public SettingsTypes NewPlanetType(SettingsTypes copy)
@@ -882,6 +889,15 @@ namespace LemonSpawn
         public SettingsTypes FindPlanetType(int idx)
         {
             return planetTypes[idx];
+        }
+
+        public SettingsTypes FindPlanetType(string name)
+        {
+            foreach (SettingsTypes st in planetTypes)
+                if (st.name == name)
+                    return st;
+
+            return null;
         }
 
 

@@ -72,6 +72,10 @@ namespace LemonSpawn
         {
             return new DVector(c1.x * s, c1.y * s, c1.z * s);
         }
+        public static DVector operator *(double s, DVector c1)
+        {
+            return new DVector(c1.x * s, c1.y * s, c1.z * s);
+        }
         public static DVector operator /(DVector c1, double s)
         {
             return new DVector(c1.x / s, c1.y / s, c1.z / s);
@@ -725,6 +729,30 @@ namespace LemonSpawn
             return obj;
         }
 
+        public static Vector3 CatmullRom(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+        {
+            Vector3 a = 0.5f * (2f * p1);
+            Vector3 b = 0.5f * (p2 - p0);
+            Vector3 c = 0.5f * (2f * p0 - 5f * p1 + 4f * p2 - p3);
+            Vector3 d = 0.5f * (-p0 + 3f * p1 - 3f * p2 + p3);
+
+            Vector3 pos = a + (b * t) + (c * t * t) + (d * t * t * t);
+
+            return pos;
+        }
+        public static DVector CatmullRom(double t, DVector p0, DVector p1, DVector p2, DVector p3)
+        {
+            DVector a = 0.5 * (2 *p1*2);
+            DVector b = 0.5 * (p2 - p0);
+            DVector c = 0.5 * (2 * p0 - 5 * p1 + 4 * p2 - p3);
+            DVector d = 0.5 * (p0*-1 + 3f * p1 - 3 * p2 + p3);
+
+            DVector pos = a + (b * t) + (c * t * t) + (d * t * t * t);
+
+            return pos;
+        }
+
+
         public static void SetPropertyValue(object srcobj, string propertyName, object val)
         {
             if (srcobj == null)
@@ -754,7 +782,7 @@ namespace LemonSpawn
                 cnt++;
 
             }
-        
+
 
     }
 

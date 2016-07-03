@@ -22,7 +22,10 @@ public class Clouds : Atmosphere {
             //		m_radius = m_outerRadius;//planetSettings.radius*planetSettings.cloudRadius;	
             		m_radius = planetSettings.radius*planetSettings.cloudRadius;
             //m_radius = m_outerRadius*0.999f;
-		cs.Initialize((Material)Resources.Load ("Clouds"), ps, sun);
+            Material mat = new Material((Material)Resources.Load("Clouds"));
+
+
+        cs.Initialize(mat, ps, sun);
 		cs.addMaterial(ps.atmosphere.m_groundMaterial);
 		//InitializeMesh();
 //		m_sky = m_cloudObject;

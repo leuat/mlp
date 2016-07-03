@@ -98,7 +98,12 @@ namespace LemonSpawn
                 return (int)d + " Km";
 
         }
-
+        /* Earth psettings 
+          * 2.5 0.65 1.7
+         *  -0.5 0.01 5
+         *  0.3 11 1
+         * 
+        */ 
         public void UpdateText()
         {
             if (infoTextGO == null)
@@ -115,6 +120,10 @@ namespace LemonSpawn
             infoTextGO.transform.position = pSettings.properties.localCamera.normalized * -250;
             infoTextGO.transform.rotation = World.MainCameraObject.transform.rotation;
             infoText.color = color;
+            if (pSettings == null)
+                return;
+            if (pSettings.planetType == null)
+                return;
             infoText.text = pSettings.name + "\n" + getDistance() + "\nType:" + pSettings.planetType.name;
 
 

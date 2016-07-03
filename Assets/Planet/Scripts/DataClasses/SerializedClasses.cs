@@ -28,11 +28,15 @@ namespace LemonSpawn
         public int seed = 0;
         public double pos_x, pos_y, pos_z;
         public string name;
+        public string planetType;
+
         public double rotation = 0;
         public float temperature = 200;
         public List<Frame> Frames = new List<Frame>();
         public float atmosphereDensity = 1;
         // 		public float atmosphereHeight = 1;
+
+
         public PlanetSettings DeSerialize(GameObject g, int count, float radiusScale)
         {
             PlanetSettings ps = g.AddComponent<PlanetSettings>();
@@ -50,7 +54,7 @@ namespace LemonSpawn
             //	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation % (2.0 * Mathf.PI);
-            ps.Randomize(count);
+            ps.Randomize(count, planetType);
 
             return ps;
         }
@@ -64,14 +68,18 @@ namespace LemonSpawn
         {
             outerRadiusScale = ps.outerRadiusScale;
             radius = ps.radius;
-            pos_x = ps.transform.position.x;
-            pos_y = ps.transform.position.y;
-            pos_z = ps.transform.position.z;
+            pos_x = ps.properties.pos.x;
+            pos_y = ps.properties.pos.y;
+            pos_z = ps.properties.pos.z;
             temperature = ps.temperature;
             rotation = ps.rotation;
             seed = ps.seed;
-            //			atmosphereHeight = ps.atmosphereHeight;
             atmosphereDensity = ps.atmosphereDensity;
+            Frames = ps.properties.Frames;
+            planetType = ps.planetTypeName;
+
+
+
         }
 
 
@@ -136,6 +144,18 @@ namespace LemonSpawn
             return false;
         }
 
+        public void SaveSerializedWorld(string filename, SolarSystem s, string _uuid)
+        {
+            Planets.Clear();
+            foreach (Planet p in s.planets)
+            {
+                Planets.Add(new SerializedPlanet(p.pSettings));
+            }
+            uuid = _uuid;
+            Serialize(this, filename);
+        }
+
+
         public SerializedCamera getCamera(int i)
         {
             if (i >= 0 && i < Cameras.Count)
@@ -159,7 +179,7 @@ namespace LemonSpawn
             return null;
         }
 
-        public void getInterpolatedCamera(double t, List<Planet> planets)
+        public void getInterpolatedCameraLerp(double t, List<Planet> planets)
         {
             // t in [0,1]
             if (Cameras.Count <= 1)
@@ -173,9 +193,57 @@ namespace LemonSpawn
             double time = t * maxTime;
 
             //			SerializedCamera a = getCamera(n-1);
+            SerializedCamera p0 = getCamera((int)time, -1);
+            SerializedCamera p1 = getCamera((int)time, 0);
+            SerializedCamera p2 = getCamera((int)time, 1);
+            SerializedCamera p3 = getCamera((int)time, 2);
+
+            if (p0 == null)
+                p0 = p1;
+
+            if (p2 == null)
+                p2 = p1;
+
+            if (p3 == null)
+                p3 = p2;
+
+
+
+
+            double dt = 1.0 / (p2.time - p1.time) * (time - p1.time);
+
+            pos = Util.CatmullRom(dt, p0.getPos(), p1.getPos(), p2.getPos(), p3.getPos());
+            up = Util.CatmullRom(dt, p0.getUp(), p1.getUp(), p2.getUp(), p3.getUp());
+            DVector dir = Util.CatmullRom(dt, p0.getDir(), p1.getDir(), p2.getDir(), p3.getDir());
+
+
+
+            foreach (Planet p in planets)
+            {
+                p.InterpolatePositions(p0.frame, dt);
+            }
+
+            World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
+
+        }
+
+
+
+        public void getInterpolatedCamera(double t, List<Planet> planets)
+        {
+            // t in [0,1]
+            if (Cameras.Count <= 1)
+                return;
+            DVector pos, up;
+            up = new DVector(Vector3.up);
+
+
+            double maxTime = Cameras[Cameras.Count - 1].time;
+            double time = t * maxTime;
+
             SerializedCamera b = getCamera((int)time, 0);
             SerializedCamera c = getCamera((int)time, 1);
-            if (/*a==null || */c == null)
+            if (c == null)
                 return;
 
             double dt = 1.0 / (c.time - b.time) * (time - b.time);
@@ -186,8 +254,6 @@ namespace LemonSpawn
 
             DVector dir = b.getDir() + (c.getDir() - b.getDir()) * dt;
 
-            //			float theta = b.cam_theta + (c.cam_theta - b.cam_theta)*dt;
-            //			float phi = b.cam_phi + (c.cam_phi - b.cam_phi)*dt;
 
             foreach (Planet p in planets)
             {

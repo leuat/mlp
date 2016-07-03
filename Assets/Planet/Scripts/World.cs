@@ -75,6 +75,8 @@ namespace LemonSpawn {
 
         public static float maxAtmosphereDensity = 0.9f;
 
+        public static bool RecordingVideo = false;
+
 #if UNITY_STANDALONE_OSX
         public static string fileDelimiter = "/";
 #endif 
@@ -103,7 +105,8 @@ namespace LemonSpawn {
 
 
 #if UNITY_EDITOR
-    [CustomEditor(typeof(PlanetSettings))]
+/*    [CustomEditor(typeof(PlanetSettings))]
+
 	public class ObjectBuilderEditor : Editor
 	{
 		public override void OnInspectorGUI()
@@ -113,25 +116,62 @@ namespace LemonSpawn {
 			PlanetSettings ps = (PlanetSettings)target;
 		}
 	}
-#endif
 
-
-
-#if UNITY_EDITOR
+    */
+/*
     [CustomEditor(typeof(PlanetSettings))]
-    public class AddCloudSettings : Editor
+    public class PlanetTypeSetter : Editor
     {
         public override void OnInspectorGUI()
         {
+            GUILayout.Label("This is a Label in a Custom Editor");
             DrawDefaultInspector();
-
             PlanetSettings ps = (PlanetSettings)target;
-            if (GUILayout.Button("Add Clouds"))
+        }
+    }
+    */
+    [CustomEditor(typeof(PlanetSettings))]
+    public class SetPlanetType : Editor
+    {
+
+        string[] pList;
+        int selectedPlanetType = 0;
+
+        public SetPlanetType()
+        {
+            PlanetTypes.Initialize();
+            pList = PlanetTypes.p.getStringList();
+
+        }
+
+        public override void OnInspectorGUI()
+        {
+            selectedPlanetType = EditorGUILayout.Popup("Set planet type:", selectedPlanetType, pList);
+            PlanetSettings ps = (PlanetSettings)target;
+
+            ps.planetType = PlanetTypes.p.planetTypes[selectedPlanetType];
+
+            //          System.Random r = new System.Random(ps.seed);
+            //            ps.planetType.setParameters(ps, r);
+
+
+            if (GUILayout.Button("Randomize from seed"))
             {
-               // ps.cloudSettings = ps.gameObject.AddComponent<CloudSettings>();
+                System.Random r = new System.Random(ps.seed);
+                ps.planetType.Realize(r);
+                ps.planetType.setParameters(ps, r);
+                ps.planetTypeName = ps.planetType.name;
 
             }
+
+            DrawDefaultInspector();
+
+
+            EditorUtility.SetDirty(target);
         }
+
+
+
     }
 #endif
 
@@ -605,7 +645,21 @@ namespace LemonSpawn {
 			
 			//Debug.Log (planet.pSettings.name);
 
-			if (Input.GetKey(KeyCode.Escape)) {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                AddCurrentCameraPos();
+                Debug.Log("Added current camera pos: " + currentTime);
+            }
+
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+//                if (!RenderSettings.RecordingVideo)
+  //                  szWorld.Cameras.Clear();
+                RenderSettings.RecordingVideo = !RenderSettings.RecordingVideo;
+            }
+
+
+            if (Input.GetKey(KeyCode.Escape)) {
 				FatalQuit();
 			}
 			float s = 0.35f;
@@ -670,8 +724,24 @@ namespace LemonSpawn {
 
             if (followVehicle)
                 FollowVehicle("car_root");
-			
+
+
+            if (RenderSettings.RecordingVideo)
+                RecordFrames();
 		}
+
+        int maxFrames = 3;
+        int curFrames = 0;
+
+        private void RecordFrames()
+        {
+            if (curFrames--<=0)
+            {
+                curFrames = maxFrames;
+                AddCurrentCameraPos();
+            }
+        }
+
 
         protected void FocusOnPlanet(string n)
         {
@@ -722,7 +792,18 @@ namespace LemonSpawn {
 
         }
 
+        float currentTime = 0;
 
+        public void AddCurrentCameraPos()
+        {
+            SerializedCamera sc = SpaceCamera.getSZCamera();
+            sc.fov = MainCamera.fieldOfView;
+            sc.time = currentTime;
+            sc.frame = (int)currentTime;
+            currentTime++;
+            szWorld.Cameras.Add(sc);
+
+        }
 
         public void PopulateFileCombobox(string box, string fileType) {
 				Dropdown cbx = GameObject.Find (box).GetComponent<Dropdown>();
@@ -765,6 +846,12 @@ namespace LemonSpawn {
  
         }
 
+
+        public void SaveWorld()
+        {
+            string uuid = Verification.IDValues[0].ID;
+            szWorld.SaveSerializedWorld(RenderSettings.path + RenderSettings.dataDir + "example.xml", solarSystem, uuid);
+        }
 
 
 
