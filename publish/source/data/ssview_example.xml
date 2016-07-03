@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SerializedWorld xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<sun_col_r>0.928</sun_col_r>
+<sun_col_g>0.936</sun_col_g>
+<sun_col_b>1.000</sun_col_b>
+<uuid>5acbd644-37c7-11e6-ac61-9e71128cae77</uuid>
+<sun_intensity>0.100</sun_intensity>
+<screenshot_width>900</screenshot_width>
+<screenshot_height>900</screenshot_height>
+<global_radius_scale>0.700</global_radius_scale>
+<resolution>032</resolution>
+<skybox>000</skybox>
+<Planets>
+  <SerializedPlanet>
+    <pos_x>0.315359735718</pos_x>
+    <pos_z>-2.14323893703</pos_z>
+    <pos_y>0</pos_y>
+    <rotation>7852.62131555</rotation>
+    <radius>14545.8249019</radius>
+    <temperature>288.852152915</temperature>
+    <seed>2534001</seed>
+    <atmosphereDensity>7.545</atmosphereDensity>
+    <atmosphereHeight>1.019</atmosphereHeight>
+    <outerRadiusScale>1.025</outerRadiusScale>
+    <name>Planet 1</name>
+  </SerializedPlanet>
+
+    <SerializedPlanet>
+    <pos_x>-0.515359735718</pos_x>
+    <pos_z>-0.64323893703</pos_z>
+    <pos_y>0</pos_y>
+    <rotation>752.62131555</rotation>
+    <radius>4545.8249019</radius>
+    <temperature>488.852152915</temperature>
+    <seed>25344</seed>
+    <atmosphereDensity>7.545</atmosphereDensity>
+    <atmosphereHeight>1.019</atmosphereHeight>
+    <outerRadiusScale>1.025</outerRadiusScale>
+    <name>Planet 2</name>
+  </SerializedPlanet>
+
+   <SerializedPlanet>
+    <pos_x>3.515359735718</pos_x>
+    <pos_z>3.14323893703</pos_z>
+    <pos_y>0</pos_y>
+    <rotation>752.62131555</rotation>
+    <radius>2545.8249019</radius>
+    <temperature>388.852152915</temperature>
+    <seed>2534</seed>
+    <atmosphereDensity>7.545</atmosphereDensity>
+    <atmosphereHeight>1.019</atmosphereHeight>
+    <outerRadiusScale>1.025</outerRadiusScale>
+    <name>Planet 3</name>
+  </SerializedPlanet>
+
+     <SerializedPlanet>
+    <pos_x>7.515359735718</pos_x>
+    <pos_z>-2.14323893703</pos_z>
+    <pos_y>0</pos_y>
+    <rotation>722.62131555</rotation>
+    <radius>23545.8249019</radius>
+    <temperature>183.852152915</temperature>
+    <seed>25341</seed>
+    <atmosphereDensity>7.545</atmosphereDensity>
+    <atmosphereHeight>1.019</atmosphereHeight>
+    <outerRadiusScale>1.025</outerRadiusScale>
+    <name>Planet 4</name>
+  </SerializedPlanet>
+
+
+</Planets>
+<Cameras>
+  <SerializedCamera>
+    <cam_x>0.315516132065</cam_x>
+    <cam_z>-2.14301755955</cam_z>
+    <cam_y>-1.9369356438e-05</cam_y>
+    <dir_x>-0.0</dir_x>
+    <dir_z>-0.0</dir_z>
+    <dir_y>1.0</dir_y>
+    <up_x>0.0</up_x>
+    <up_z>0.0</up_z>
+    <up_y>1.0</up_y>
+    <fov>70</fov>
+    <time>0.0</time>
+    <frame>0</frame>
+  </SerializedCamera>
+  <SerializedCamera>
+    <cam_x>0.31786521032</cam_x>
+    <cam_z>-2.14284074331</cam_z>
+    <cam_y>-2.09287134647e-05</cam_y>
+    <dir_x>0.999999682932</dir_x>
+    <dir_z>0.0</dir_z>
+    <dir_y>0.000796326710733</dir_y>
+    <up_x>0.0</up_x>
+    <up_z>1.0</up_z>
+    <up_y>0.0</up_y>
+    <fov>70</fov>
+    <time>0.000504090563165</time>
+    <frame>1</frame>
+  </SerializedCamera>
+</Cameras>
+</SerializedWorld>

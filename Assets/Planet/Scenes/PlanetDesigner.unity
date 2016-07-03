@@ -7293,6 +7293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 1
   rotation: 3.14
   Gravity: 10
   maxQuadNodeLevel: 14
@@ -7303,7 +7304,6 @@ MonoBehaviour:
   ExpSurfSettings3: {x: 0.3, y: 11, z: 1}
   SurfaceVortex1: {x: 5, y: 1, z: 0}
   SurfaceVortex2: {x: 0, y: 0, z: 0}
-  seed: 1
   atmosphereDensity: 0.65
   outerRadiusScale: 1.025
   m_reflectionIntensity: 0
@@ -7369,13 +7369,7 @@ MonoBehaviour:
   hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetType:
-    name: New planet
-    settingsTypes: []
-    groups: []
-    TemperatureRange: {x: 0, y: 0, z: 0}
-    RadiusRange: {x: 0, y: 0, z: 0}
-    PlanetInfo: info about this planet type
+  planetTypeName: 
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -7383,7 +7377,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1176257412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -9061,6 +9055,7 @@ MonoBehaviour:
   shiftAdd: 200
   maxShift: 5000
   camSens: 0.2
+  curDir: {x: 1, y: 0, z: 0}
   initPos:
     x: -0.9997
     y: 0.0004
@@ -9074,7 +9069,6 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  curDir: {x: 1, y: 0, z: 0}
 --- !u!1 &1533662991
 GameObject:
   m_ObjectHideFlags: 0
@@ -10341,6 +10335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
   rotation: 0
   Gravity: 0
   maxQuadNodeLevel: 0
@@ -10351,7 +10346,6 @@ MonoBehaviour:
   ExpSurfSettings3: {x: 0.1, y: 10, z: 0}
   SurfaceVortex1: {x: -2, y: 2, z: 0}
   SurfaceVortex2: {x: 24, y: 0.1, z: 0}
-  seed: 0
   atmosphereDensity: 0.6
   outerRadiusScale: 1.019
   m_reflectionIntensity: 0
@@ -10417,13 +10411,7 @@ MonoBehaviour:
   hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetType:
-    name: New planet
-    settingsTypes: []
-    groups: []
-    TemperatureRange: {x: 0, y: 0, z: 0}
-    RadiusRange: {x: 0, y: 0, z: 0}
-    PlanetInfo: info about this planet type
+  planetTypeName: 
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0
