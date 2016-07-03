@@ -134,12 +134,12 @@
 		float3 b = normalize(cross(normalWorld, t));
 		o.tangent = t;
 		o.binormal = b;
+		o.posWorld2 = normalWorld;
 		normalWorld = getPlanetSurfaceNormal(posWorld - v3Translate, t, b, 0.1);
 #endif
 #if UNITY_SPECCUBE_BOX_PROJECTION
 		o.posWorld = posWorld.xyz;
 #endif
-		o.posWorld2 = groundVertex;
 
 		float wh = (length(o.posWorld.xyz - v3Translate) - fInnerRadius);
 
@@ -210,7 +210,6 @@
 
 		getGroundAtmosphere(groundVertex, o.c0, o.c1);
 
-
 		return o;
 	}
 
@@ -236,6 +235,7 @@
 	{
 		FRAGMENT_SETUP(s)
 
+
 		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.1);
 		s.normalWorld = realN;
 
@@ -246,7 +246,7 @@
 	UnityGI gi = FragmentGI(
 		s.posWorld, occlusion, i.ambientOrLightmapUV, atten, s.oneMinusRoughness, s.normalWorld, s.eyeVec, mainLight);
 
-
+//	float dd = dot(normalize(mul(rotMatrixInv, i.posWorld2.xyz)), normalize(s.normalWorld * 1 + i.n1 * 0));
 	float dd = dot(normalize(i.posWorld2.xyz), normalize(s.normalWorld * 1 + i.n1 * 0));
 
 	float tt = pow(clamp(noise(normalize(i.posWorld2.xyz)*3.1032) + 0.3,0,1),2);
@@ -278,23 +278,15 @@
 	hColor = mixHeight(hColor, basinColor2*getTex(_Basin, i.tex.xy), 3000, liquidThreshold, h);
 	hColor = mixHeight(topColor*getTex(_Top, i.tex.xy), hColor, 1000, modulatedTopThreshold, h);
 	hColor = mixHeight(hColor, hillColor*getTex(_Mountain, i.tex.xy), 250, modulatedHillyThreshold, dd);
-	//									hColor = mixHeight(topColor, hColor, 4000, topThreshold, h);
+	
 
 
-
-	//	float3 diff = hColor*(i.c0*3 + i.c1)*1;//0.35*(hColor*1 + 1.25*cc + hColor*cc);
+	
 	float3 diff = hColor;
-	//float3 diff = 0.35*(hColor*0 + 1.00*i.c0 + i.c1);
-	float d = 0.05;
-	//	diff -=float3(d,d,d);
 
-
-
-
-
-	//float4 spc =_Color;// float4(1, 1, 1, 1);// *specularity * 1;
+	
 	float4 spc = _Color*0.65;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
-	//	diff = groundColor(i.c0, i.c1, diff);
+	
 	half4 c = UNITY_BRDF_PBS(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);
 
 	c.rgb += UNITY_BRDF_GI(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, occlusion, gi);

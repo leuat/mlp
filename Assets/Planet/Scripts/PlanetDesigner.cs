@@ -387,7 +387,7 @@ namespace LemonSpawn
         public void SaveScreenshot()
         {
 
-           WriteScreenshot(RenderSettings.screenshotDir, 2048,1080);
+           WriteScreenshot(RenderSettings.screenshotDir, 2048/2,1080/2);
 
         }
 

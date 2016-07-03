@@ -115,7 +115,7 @@ namespace LemonSpawn
             infoTextGO.transform.position = pSettings.properties.localCamera.normalized * -250;
             infoTextGO.transform.rotation = World.MainCameraObject.transform.rotation;
             infoText.color = color;
-            infoText.text = pSettings.name + "\n" + getDistance() + "\nType:" + pSettings.planetType.Name;
+            infoText.text = pSettings.name + "\n" + getDistance() + "\nType:" + pSettings.planetType.name;
 
 
         }

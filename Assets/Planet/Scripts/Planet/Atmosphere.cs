@@ -160,7 +160,6 @@ namespace LemonSpawn
             m_groundMaterial = new Material(ground.shader);
             m_groundMaterial.CopyPropertiesFromMaterial(ground);
             initGroundMaterial(true);
-            InitializeDefaultTextures(m_groundMaterial);
 
 
 
@@ -172,6 +171,7 @@ namespace LemonSpawn
             InitAtmosphereMaterial(m_skyMaterial);
             InitializeSkyMesh(m_outerRadius);
 
+            InitializeDefaultTextures(m_groundMaterial);
 
             if (m_sky != null)
                 localscale = m_sky.transform.parent.localScale.x;
@@ -235,6 +235,7 @@ namespace LemonSpawn
         }
 
         Matrix4x4 rotMat = new Matrix4x4();
+        Matrix4x4 rotMatInv = new Matrix4x4();
 
         public virtual void InitAtmosphereMaterial(Material mat)
         {
@@ -244,6 +245,7 @@ namespace LemonSpawn
             //rot = Quaternion.Inverse(m_sky.transform.parent.localRotation);
             rot = Quaternion.Inverse(planetSettings.transform.rotation);
             rotMat = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
+           
 
             float ds = localscale;
             Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.x, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.y, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.z, 4.0f));
@@ -274,8 +276,7 @@ namespace LemonSpawn
             mat.SetVector("surfaceVortex1", planetSettings.SurfaceVortex1);
             mat.SetVector("surfaceVortex2", planetSettings.SurfaceVortex2);
             mat.SetMatrix("rotMatrix", rotMat);
-
-            /*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
+           /*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
                         Debug.Log("sun:" + planetSettings.m_ESun);
                         Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);
                         */

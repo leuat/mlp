@@ -941,6 +941,22 @@ namespace LemonSpawn
             Serialize(p, fname);
         }
 
+        public SettingsTypes getRandomPlanetType(System.Random r, float radius, float temperature)
+        {
+            List<SettingsTypes> candidates = new List<SettingsTypes>();
+            foreach (SettingsTypes pt in planetTypes)
+            {
+                if ((radius >= pt.RadiusRange.x && radius < pt.RadiusRange.y) && (temperature >= pt.TemperatureRange.x && temperature < pt.TemperatureRange.y))
+                {
+                    candidates.Add(pt);
+                }
+            }
+
+            if (candidates.Count == 0)
+                return planetTypes[0];
+
+            return candidates[r.Next() % candidates.Count];
+        }
 
     }
 

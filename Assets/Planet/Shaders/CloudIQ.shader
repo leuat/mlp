@@ -121,7 +121,7 @@
 			float3 pos = normalize(worldSpacePosition);
 			float4 c;
 
-			int N = 5;
+			int N = 6;
 
 			float val = getIQClouds(pos,N);
 

@@ -32,7 +32,7 @@ namespace LemonSpawn {
         public double rotation;
         public float Gravity;
         public int maxQuadNodeLevel;
-        public int planetTypeIndex;
+ //       public int planetTypeIndex;
         public bool castShadows = true;
         public bool hasSea = false;
 		[Header("Lacunarity, Offset, Gain")]
@@ -111,8 +111,7 @@ namespace LemonSpawn {
         public bool hasBillboardClouds = false;
         public bool hasVolumetricClouds = false;
 
-        public PlanetType planetType;
-        public SettingsType pType;
+        public SettingsTypes planetType;
         public Atmosphere atmosphere;
         public Sea sea;
         public PlanetProperties properties = new PlanetProperties();
@@ -191,7 +190,14 @@ namespace LemonSpawn {
 
         public void Randomize(int count) {
             System.Random r = new System.Random(seed);
-            
+
+            sea = new Sea();
+            hasFlatClouds = true;
+            planetType = PlanetTypes.p.getRandomPlanetType(r, radius, temperature);
+            planetType.Realize(r);
+            planetType.setParameters(this, r);
+            //Debug.Log(atmosphereDensity);
+            Debug.Log("Found candidate: " + planetType.name);
         }
 
 		

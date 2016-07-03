@@ -46,7 +46,7 @@ namespace LemonSpawn
             ps.seed = seed;
             ps.properties.Frames = Frames;
             ps.radius = radius * radiusScale;
-            ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, RenderSettings.maxAtmosphereDensity);
+//            ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, RenderSettings.maxAtmosphereDensity);
             //	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation % (2.0 * Mathf.PI);

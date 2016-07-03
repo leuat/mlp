@@ -235,7 +235,7 @@ namespace LemonSpawn
                 Planet p = new Planet(ps);
 				p.pSettings.properties.parent = go;
 
-                p.Initialize(sun, (Material)Resources.Load("GroundMaterial"), (Material)Resources.Load("SkyMaterial"), sphere);
+                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);
             }
 			world.setWorld(sz);

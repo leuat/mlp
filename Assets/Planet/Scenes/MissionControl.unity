@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1f311c00013994f43969a09c4c5ffb04, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0e8dd0e30d8ef4371a9f122ff598bfda, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -8050,6 +8050,7 @@ MonoBehaviour:
   sphere: {fileID: 4300000, guid: 8784879114f624946ab37aa4a373b971, type: 3}
   m_maxQuadNodeLevel: 13
   m_minQuadNodeLevel: 2
+  GPUSurface: 1
   szWorld:
     Planets: []
     Cameras: []
@@ -8057,11 +8058,11 @@ MonoBehaviour:
     sun_col_g: 1
     sun_col_b: 1
     sun_intensity: 1
-    resolutionScale: 3
+    resolutionScale: 1.7
     global_radius_scale: 1
     skybox: 0
     uuid: 
-    resolution: 48
+    resolution: 32
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -9031,7 +9032,15 @@ MonoBehaviour:
     x: 1
     y: 1.01
     z: 0
+  initDir:
+    x: 0
+    y: 0
+    z: 0
   up: {x: 0, y: 1, z: 0}
+  actualCamera:
+    x: 0
+    y: 0
+    z: 0
   curDir: {x: 0, y: 0, z: 0}
 --- !u!1 &1563547123
 GameObject:

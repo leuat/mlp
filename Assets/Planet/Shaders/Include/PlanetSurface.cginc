@@ -8,6 +8,7 @@
 		uniform float3 surfaceVortex1;
 		uniform float3 surfaceVortex2;
 		float4x4 rotMatrix;
+	
 
 		float getStandardPerlin(float3 pos, float scale, float power, float sub, int N) {
 			float n = 0;
@@ -70,7 +71,8 @@
 		}
 
 		float3 getHeightPosition(in float3 pos, in float scale, float heightScale, float octaves) {
-			return pos*fInnerRadius*(1+getSurfaceHeight(mul(rotMatrix, pos) , scale, octaves)*heightScale);
+			return pos*fInnerRadius*(1 + getSurfaceHeight(mul(rotMatrix, pos), scale, octaves)*heightScale);
+//			return pos*fInnerRadius*(1+getSurfaceHeight(mul(rotMatrix, pos) , scale, octaves)*heightScale);
 			
 		}
 
