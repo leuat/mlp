@@ -85,7 +85,7 @@
 	  //     c.a = 1;
 	  	float4 col = _Color;
 	  	float val = pow(c.x,2)-0.0;
-	  	col.a = val*1.5 + 0.3;
+	  	col.a = amplitude*(val*1.5 + 0.3);
 	  	
 	  	
 	  	if (rayIntersectSphere(lightDir, i.opos.xyz*planetRadius, planetRadius*0.7))

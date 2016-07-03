@@ -97,7 +97,7 @@ namespace LemonSpawn {
         public Color ringColor = Color.white;
         public float ringScale = 1;
         public float ringAmplitude = 1;
-        public Vector2 ringRadius = new Vector2(0.2f, 0.45f);
+        public Vector3 ringRadius = new Vector3(0.2f, 0.45f,0);
 
         [Space(10)]
         [Header("Cloud settings")]

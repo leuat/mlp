@@ -135,6 +135,7 @@ namespace LemonSpawn
          
         }
         private Vector3 mouseAccel = new Vector3();
+        private float scrollWheelAccel = 0, scrollWheel;
         private DVector focusPoint = new DVector();
         private DVector focusPointCur = new DVector();
         private void RotateCamera()
@@ -143,7 +144,7 @@ namespace LemonSpawn
             float theta = 0.0f;
             float phi = 0.0f;
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
                 theta = s * Input.GetAxis("Mouse X");
                 phi = s * Input.GetAxis("Mouse Y") * -1.0f;
@@ -151,15 +152,14 @@ namespace LemonSpawn
             focusPointCur = SolarSystem.planet.pSettings.properties.orgPos;
 //            focusPointCur *= (float)((1.0f / RenderSettings.AU));
             mouseAccel += new Vector3(theta, phi, 0);
-            //            focusPointCur += (focusPoint - focusPointCur) * 0.1f;
-            //SpaceCamera.transform.RotateAround(focusPointCur, Vector3.up, mouseAccel.x);
-            //SpaceCamera.transform.RotateAround(focusPointCur, mainCamera.transform.right, mouseAccel.y);
-            //SpaceCamera.transform.LookAt(focusPointCur);
 
+            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel");
+            scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
 
             double scale = 10000;
             Quaternion q = Quaternion.AngleAxis(mouseAccel.x, SpaceCamera.transform.up);
             Vector3 p = q* (((SpaceCamera.getPos()/RenderSettings.AU) - focusPointCur)*scale).toVectorf();
+            p *= (-scrollWheel*0.25f + 1);
 
             q = Quaternion.AngleAxis(mouseAccel.y, SpaceCamera.transform.right);
             p = q * p; 

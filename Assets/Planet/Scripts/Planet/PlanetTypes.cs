@@ -570,6 +570,45 @@ namespace LemonSpawn
                   new Vector3(1f, 1f, 1f),
                   "Clouds", 2));
 
+
+            settingsTypes.Add(
+                 new SettingsType("Ring scale",
+                 SettingsType.NUMBER,
+                 "ringScale",
+                 "Ring noise scale",
+                 new Vector3(0, 20f, 1),
+                 new Vector3(3f, 7f, 5f),
+                 "Rings", 0));
+            settingsTypes.Add(
+                 new SettingsType("Ring Amplitude",
+                 SettingsType.NUMBER,
+                 "ringAmplitude",
+                 "Ring noise amplitude. Set to zero to remove rings.",
+                 new Vector3(0, 2f, 1),
+                 new Vector3(1f, 1f, 1f),
+                 "Rings", 0));
+            settingsTypes.Add(
+                 new SettingsType("Ring Radius Start",
+                 SettingsType.NUMBER,
+                 "ringRadius",
+                 "Ring radius start",
+                 new Vector3(0, 1f, 1),
+                 new Vector3(0.15f, 0.15f, 0.15f),
+                 "Rings", 0));
+            settingsTypes.Add(
+                 new SettingsType("Ring Radius End",
+                 SettingsType.NUMBER,
+                 "ringRadius",
+                 "Ring radius end",
+                 new Vector3(0, 1f, 1),
+                 new Vector3(0.35f, 0.35f, 0.35f),
+                 "Rings", 1));
+
+            settingsTypes.Add(new SettingsType("Ring Color", "ringColor", "Ring base color", "Rings",
+                  new Color(0.85f, 0.85f, 0.85f),
+                  new Color(0.00f, 0.00f, 0.00f)
+              ));
+
         }
 
 

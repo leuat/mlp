@@ -33,6 +33,13 @@ namespace LemonSpawn {
 			if (mat==null)
 				return;
 			
+            if (planetSettings.ringAmplitude<=0)
+            {
+                GO.SetActive(false);
+                return;
+            }
+            GO.SetActive(true);
+
 			mat.SetColor("_Color", planetSettings.ringColor);		
 			mat.SetFloat("amplitude", planetSettings.ringAmplitude);		
 			mat.SetFloat("scale", planetSettings.ringScale);		

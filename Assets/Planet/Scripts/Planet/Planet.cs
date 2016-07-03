@@ -64,8 +64,10 @@ namespace LemonSpawn
             pSettings.atmosphere = new Atmosphere(sun, ground, sky, sphere, pSettings);
 
             pSettings.Initialize();
-            if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
-                rings = new Rings(pSettings, sun);
+//            if (pSettings.radius > RenderSettings.RingRadiusRequirement && pSettings.hasRings)
+
+            rings = new Rings(pSettings, sun);
+
             if (pSettings.sea != null)
                 pSettings.sea.Initialize(sun, sphere, pSettings);
 
@@ -143,7 +145,6 @@ namespace LemonSpawn
             pSettings.Update();
             UpdateText();
 
-            UnityEngine.RenderSettings.reflectionIntensity = UnityEngine.RenderSettings.reflectionIntensity * 0.99f + pSettings.m_reflectionIntensity * 0.01f;
 
 
             if (SolarSystem.planet == this)
