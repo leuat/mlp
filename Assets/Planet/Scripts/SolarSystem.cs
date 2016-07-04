@@ -116,7 +116,6 @@ namespace LemonSpawn
                         cameraObjects.Add(go);
                         continue;
                     }
-
                     Planet p = new Planet(ps);
                     p.pSettings.properties.orgPos.Set(go.transform.position);
                     p.pSettings.properties.pos.Set(go.transform.position);
@@ -128,6 +127,7 @@ namespace LemonSpawn
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                     planets.Add(p);
+
                 }
             }
 

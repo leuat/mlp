@@ -169,10 +169,9 @@ namespace LemonSpawn
             Vector3 p = pSettings.properties.localCamera.normalized;
 
 
-            Vector3 n;
             float h;
-            if (RenderSettings.GPUSurface)
-                h = pSettings.properties.gpuSurface.getPlanetSurface(p, out n).magnitude;
+            if (RenderSettings.GPUSurface && pSettings.properties.gpuSurface!=null)
+                h = pSettings.properties.gpuSurface.getPlanetSurfaceOnly(p).magnitude;
             else
                 h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
             float ch = pSettings.properties.localCamera.magnitude;
@@ -276,7 +275,7 @@ namespace LemonSpawn
 
             // Fun
 
-//           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.01f;
+           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.01f;
 //            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }

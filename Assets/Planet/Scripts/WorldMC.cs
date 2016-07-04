@@ -443,8 +443,11 @@ namespace LemonSpawn
 
     public override void Start()
         {
+            RenderSettings.path = Application.dataPath + "/../";
+            CurrentApp = Verification.MCAstName;
+
 			if (solarSystem == null)
-			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+    			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 
             SetupGUI();
 			base.Start();
@@ -624,6 +627,8 @@ namespace LemonSpawn
             foreach (Message m in messages)
                 s += m.message + "\n";
 
+
+            s+=RenderSettings.path;
             GameObject info = GameObject.Find("Logging");
             if (info != null)
                 info.GetComponent<Text>().text = s;

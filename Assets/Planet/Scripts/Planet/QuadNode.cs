@@ -81,10 +81,9 @@ namespace LemonSpawn
 
 			GameObject testObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 			Vector3 pos = qb.P[0].P.normalized ;
-			Vector3 N;
 
 			//surfaceNoiseSettings2.z, surfaceNoiseSettings2.y
-			Vector3 hP = surf.getPlanetSurface(pos,  out N); 
+			Vector3 hP = surf.getPlanetSurfaceOnly(pos); 
 
 //			hP = qb.centerReal.P;
 			testObject.transform.localScale = Vector3.one*25;

@@ -234,7 +234,7 @@ namespace LemonSpawn
             Debug.Log("atm density:" + planetSettings.atmosphereDensity);
         }
 
-        Matrix4x4 rotMat = new Matrix4x4();
+        public Matrix4x4 rotMat = new Matrix4x4();
         Matrix4x4 rotMatInv = new Matrix4x4();
 
         public virtual void InitAtmosphereMaterial(Material mat)

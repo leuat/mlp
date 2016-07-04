@@ -188,9 +188,14 @@ namespace LemonSpawn {
 				
 				if (RenderSettings.assProjection)
 					mtmp = mtmp.normalized;
-				
-				mtmp = mtmp*radius*(1+ps.surface.GetHeight(mtmp, (int)lod));
-				putVertex(mtmp, i, j);
+                // Old type          				
+                if (!RenderSettings.GPUSurface) {
+                    mtmp = ps.properties.gpuSurface.getPlanetSurfaceOnly(mtmp);
+                    }
+                else
+                  mtmp = mtmp*radius;
+
+    			putVertex(mtmp, i, j);
 			}
 			
 		}

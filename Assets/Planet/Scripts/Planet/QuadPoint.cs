@@ -74,9 +74,8 @@ namespace LemonSpawn {
 			//mtmp = mtmp*(radius *(1+ps.surface.GetHeight(mtmp, (int)lod)));
 			
 			centerReal.P = centerReal.P.normalized*planetSettings.getPlanetSize()*(1+ps.surface.GetHeight(centerReal.P.normalized, 0));
-            Vector3 n;
-            if (RenderSettings.GPUSurface)
-                centerGPU = planetSettings.properties.gpuSurface.getPlanetSurface(centerReal.P.normalized, out n);
+            //if (RenderSettings.GPUSurface)
+             //   centerGPU = planetSettings.properties.gpuSurface.getPlanetSurfaceOnly(centerReal.P.normalized);
 
             centerGPU = centerReal.P;
 

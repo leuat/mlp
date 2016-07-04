@@ -17,6 +17,11 @@ public class GPUSurface {
         Vector3 surfaceNoiseSettings2;
         Vector3 surfaceNoiseSettings3;
         Vector3 v3Translate;
+        Vector3 surfaceVortex1;
+        Vector3 surfaceVortex2;
+        Matrix4x4 rotMatrix;
+
+
         float fInnerRadius;
 
         public void Update() {
@@ -25,7 +30,11 @@ public class GPUSurface {
 	        surfaceNoiseSettings = planetSettings.ExpSurfSettings;
 			surfaceNoiseSettings2 = planetSettings.ExpSurfSettings2;
 			surfaceNoiseSettings3 = planetSettings.ExpSurfSettings3;
+            surfaceVortex1 = planetSettings.SurfaceVortex1;
+            surfaceVortex2 = planetSettings.SurfaceVortex2;
 			fInnerRadius = planetSettings.radius;
+            if (planetSettings.atmosphere!=null)
+            rotMatrix = planetSettings.atmosphere.rotMat;
 			//v3Translate = planetSettings.transform.position;
         }
 
@@ -42,7 +51,7 @@ public class GPUSurface {
 		}
 
         static public Vector3 frac(Vector3 a) {
-			return new Vector3(a.x - Mathf.Floor(a.x),a.y - Mathf.Floor(a.y),a.z - Mathf.Floor(a.z));
+			return new Vector3(a.x - Mathf.Floor(a.x),a.y - Mathf.Floor(a.y), a.z - Mathf.Floor(a.z));
 		}
 
         static public Vector3 normalize(Vector3 a) {
@@ -165,60 +174,97 @@ public static float noise(Vector3 x)
 
 
 
-		float getSurfaceHeight(Vector3 pos, float scale) {
+        float getSurfaceHeight(Vector3 pos, float scale, float octaves) {
 
 
-			float val = getMultiFractal(pos, scale, (int)surfaceNoiseSettings3.y, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			return clamp(val-surfaceNoiseSettings3.x, 0, 10000);
-//			return getStandardPerlin(pos, scale, 1, 0.5f, 8);
+            scale = scale*(1 + surfaceVortex1.y*noise(pos*surfaceVortex1.x));
+            scale = scale*(1 + surfaceVortex2.y*noise(pos*surfaceVortex2.x));
+            float val = getMultiFractal(pos, scale, (int)octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+            val = pow(val, surfaceNoiseSettings3.z);
+            return clamp(val-surfaceNoiseSettings3.x, 0, 10);
+            //return getStandardPerlin(pos, scale, 1, 0.5, 8);
 
-		}
+        }
 
-		Vector3 getHeightPosition(Vector3 pos,  float scale, float heightScale) {
-			return pos*fInnerRadius*(1+getSurfaceHeight(pos, scale)*heightScale); 
-		}
-
-
-		Vector3 getSurfaceNormal(Vector3 pos, float scale,  float heightScale, float normalScale) {
-			float N = 4.0f;
-			Vector3 prev = Vector3.zero;
-//			pos = normalize(pos);
-			float hs = heightScale;
-			Vector3 centerPos = getHeightPosition(normalize(pos), scale, hs);
-			Vector3 norm = normalize(centerPos);
-
-			for (float i=0;i<N;i++) {
-				Vector3 disp = new Vector3(cos(i/(N+1)*2*PI), 0, sin(i/(N+1)*2*PI));
-				//Vector3 rotDisp = mul(tangentToWorld, disp);
-
-				Vector3 np = normalize(pos + disp*normalScale);
-
-				Vector3 newPos = getHeightPosition(np, scale, hs);
-				if (length(prev)>0.1f) {
-					norm += normalize(cross(newPos-centerPos, prev - centerPos));
-				}
-				prev = newPos;
-
-			}
-			return normalize(norm);
-		}
+        Vector3 getHeightPosition(Vector3 pos, float scale, float heightScale, float octaves) {
+            return pos*fInnerRadius*(1 + getSurfaceHeight(rotMatrix*pos, scale, octaves)*heightScale);
+//          return pos*fInnerRadius*(1+getSurfaceHeight(mul(rotMatrix, pos) , scale, octaves)*heightScale);
+            
+        }
 
 
-		public Vector3 getPlanetSurface(Vector3 p,  out Vector3 n) {
-			n = Vector3.up;
+
+/*        float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale, float3 tangent, float3 bn, float octaves) {
+//          float3 getSurfaceNormal(float3 pos, float scale, float heightScale, float normalScale) {
+            int N = 4;
+            float3 prev = 0;
+//          pos = normalize(pos);
+            float hs = heightScale;
+            float3 centerPos = getHeightPosition(normalize(pos), scale, hs, octaves);
+            float3 norm = normalize(centerPos) * 0;
+            //          [unroll]
+                        for (float i=0;i<N;i++) {
+                            float3 disp = float3(cos(i/(N+0)*2.0*PI), 0, sin(i/(N+0)*2.0*PI));
+                            //float3 rotDisp = mul(tangentToWorld, disp);
+                            //float3 np = normalize(pos + mul(tangentToWorld, disp)*normalScale);
+                            //float3 np = normalize(pos + disp*normalScale);
+                            float3 np = normalize(pos + (disp.x*tangent + disp.z*bn) *normalScale);
+
+                            float3 newPos = getHeightPosition(np, scale, hs, octaves);
+
+
+                            if (length(prev)>0.1) {
+                                float3 n = normalize(cross(newPos - centerPos, prev - centerPos));
+                                float3 nn = n;
+            //                  if (dot(nn, normalize(pos)) < 0.0)
+                //                  nn *= -1;
+
+                                norm += nn;
+
+                            }
+                            prev = newPos;
+
+                        }
+                        
+
+            return normalize(norm)*-1;
+        }
+
+        */
+        float LodSurface(Vector3 p) {
+            return surfaceNoiseSettings3.y;
+//          return clamp(5000.0 / (length(p.xyz +v3Translate - _WorldSpaceCameraPos.xyz)), 4, surfaceNoiseSettings3.y);
+
+        }
+
+/*    //  inline float3 getPlanetSurfaceNormal(in float4 v) {
+        Vector3 getPlanetSurfaceNormal(Vector3 v, Vector3 t, Vector3 bn, float nscale) {
+            float scale = surfaceNoiseSettings2.z;
+            float heightScale = surfaceNoiseSettings2.y;
+
+            float octaves = LodSurface(v);
+
+            return getSurfaceNormal(v, scale, heightScale, nscale, t,bn, octaves);
+
+        }
+        */
+
+        public Vector3 getPlanetSurfaceOnly(Vector3 v) {
+
+/*            float4 p = mul(_Object2World, v);
+            p.xyz -= v3Translate;
+            */
+            float octaves = surfaceNoiseSettings3.y;
 
             float scale = surfaceNoiseSettings2.z;
             float heightScale = surfaceNoiseSettings2.y;
 
-            //return p.normalized*fInnerRadius;
-
-            //n = getSurfaceNormal(p, scale, heightScale, 0.1f);
+            Vector3 p = v;
 
             p = normalize(p);
-			p = getHeightPosition(p, scale, heightScale);
-			return p;
-		}
-
+            p = getHeightPosition(p, scale, heightScale, octaves);// + v3Translate;
+            return p;
+        }
 
 		}
 }

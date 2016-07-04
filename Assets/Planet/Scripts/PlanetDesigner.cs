@@ -44,6 +44,9 @@ namespace LemonSpawn
 
         public override void Start() {
 
+            RenderSettings.path = Application.dataPath + "/../";
+            CurrentApp = Verification.MCAstName;
+ 
     		base.Start();
             Update();
             pnlNumber = GameObject.Find("pnlGroupNumber");

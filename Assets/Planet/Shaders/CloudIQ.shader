@@ -90,7 +90,7 @@
 			float3 p = start;
 
 			float val = 0;
-			[uroll]
+//			[uroll]
 			for (int i=0;i<N;i++){
 				float v = getIQClouds(p, CloudLOD);
 				float h = abs(length(p)-1);
