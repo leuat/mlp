@@ -191,6 +191,8 @@ namespace LemonSpawn {
                 // Old type          				
                 if (!RenderSettings.GPUSurface) {
                     mtmp = ps.properties.gpuSurface.getPlanetSurfaceOnly(mtmp);
+                     //   if (Util.rnd.NextDouble() > 0.99)
+                     //       Debug.Log(mtmp);
                     }
                 else
                   mtmp = mtmp*radius;

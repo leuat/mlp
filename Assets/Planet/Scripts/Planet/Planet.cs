@@ -58,8 +58,9 @@ namespace LemonSpawn
 
         public void Initialize(GameObject sun, Material ground, Material sky, Mesh sphere)
         {
-            if (RenderSettings.GPUSurface)
-                pSettings.properties.gpuSurface = new GPUSurface(pSettings);
+//            if (RenderSettings.GPUSurface)
+  //              pSettings.properties.gpuSurface = new GPUSurface(pSettings);
+
 
             pSettings.atmosphere = new Atmosphere(sun, ground, sky, sphere, pSettings);
 
@@ -146,6 +147,8 @@ namespace LemonSpawn
                 pSettings.properties.terrainObject.transform.parent = pSettings.gameObject.transform;
                 pSettings.properties.terrainObject.transform.localPosition = Vector3.zero;
                 pSettings.properties.terrainObject.transform.localScale = Vector3.one;
+                pSettings.properties.terrainObject.transform.localRotation = Quaternion.identity;
+
                 cube = new CubeSphere(pSettings, false);
                 if (impostor != null)
                     GameObject.Destroy(impostor);
@@ -168,16 +171,16 @@ namespace LemonSpawn
         {
             Vector3 p = pSettings.properties.localCamera.normalized;
 
-
+            float dh = 10;
             float h;
-            if (RenderSettings.GPUSurface && pSettings.properties.gpuSurface!=null)
-                h = pSettings.properties.gpuSurface.getPlanetSurfaceOnly(p).magnitude;
-            else
-                h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
+//            if (RenderSettings.GPUSurface && pSettings.properties.gpuSurface!=null)
+                h = pSettings.properties.gpuSurface.getPlanetSurfaceOnly(p).magnitude + dh;
+  //          else
+    //            h = pSettings.getPlanetSize() * (1 + pSettings.surface.GetHeight(p, 0)) + RenderSettings.MinCameraHeight;
             float ch = pSettings.properties.localCamera.magnitude;
             if (ch < h)
             {
-                World.MoveCamera(p * (h - ch));
+                World.MoveCamera(p * (h - ch ));
             }
 
         }
@@ -244,10 +247,11 @@ namespace LemonSpawn
             MaintainPlanet();
             float rot = (float)(pSettings.rotation / (2 * Mathf.PI) * 360f);
 
+//            Debug.Log(pSettings.radius);
 
-       //     Debug.Log(pSettings.getHeight());
+            //     Debug.Log(pSettings.getHeight());
 
-//             rot = 0;
+            //             rot = 0;
             pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
 
             if (pSettings.atmosphere != null)
@@ -275,7 +279,7 @@ namespace LemonSpawn
 
             // Fun
 
-           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.01f;
+//           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.01f;
 //            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }

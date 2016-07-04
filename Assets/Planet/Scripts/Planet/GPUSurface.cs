@@ -16,6 +16,7 @@ public class GPUSurface {
 		Vector3 surfaceNoiseSettings;
         Vector3 surfaceNoiseSettings2;
         Vector3 surfaceNoiseSettings3;
+        Vector3 surfaceNoiseSettings4;
         Vector3 v3Translate;
         Vector3 surfaceVortex1;
         Vector3 surfaceVortex2;
@@ -30,6 +31,7 @@ public class GPUSurface {
 	        surfaceNoiseSettings = planetSettings.ExpSurfSettings;
 			surfaceNoiseSettings2 = planetSettings.ExpSurfSettings2;
 			surfaceNoiseSettings3 = planetSettings.ExpSurfSettings3;
+            surfaceNoiseSettings4 = planetSettings.ExpSurfSettings4;
             surfaceVortex1 = planetSettings.SurfaceVortex1;
             surfaceVortex2 = planetSettings.SurfaceVortex2;
 			fInnerRadius = planetSettings.radius;
@@ -50,6 +52,11 @@ public class GPUSurface {
 			return a - Mathf.Floor(a);
 		}
 
+      /*  static public double frac(double a)
+        {
+            return a - System.Math.Floor(a);
+        }
+        */
         static public Vector3 frac(Vector3 a) {
 			return new Vector3(a.x - Mathf.Floor(a.x),a.y - Mathf.Floor(a.y), a.z - Mathf.Floor(a.z));
 		}
@@ -88,23 +95,24 @@ public class GPUSurface {
 
 		public GPUSurface(PlanetSettings ps) {
 			planetSettings = ps;
-			Update();
+			//Update();
 		}
 
 
-        static float iqhash(float n)
+        float iqhash(float n)
 		{
-			return frac(sin(n)*753.5453123f);
-		}
+//			return (float)frac((double)System.Math.Sin(n)*753.5453123);
+            return frac(sin(n) * surfaceNoiseSettings4.x * 0.7535453123f);
+        }
 
-		static float lerp(float a, float b, float w) {
+        static float lerp(float a, float b, float w) {
 			//return Mathf.Lerp(a,b,c);
 			  return a + w*(b-a);
 
 		}
 
 
-public static float noise(Vector3 x)
+public float noise(Vector3 x)
 {
 	// The noise function returns a value in the range -1.0f -> 1.0f
 	Vector3 p = floor(x);
@@ -115,8 +123,7 @@ public static float noise(Vector3 x)
 	f.z = f.z*f.z*(3.0f - 2.0f*f.z);
 
 
-
-	float n = p.x + p.y*157.0f + 113.0f*p.z;
+            float n = (p.x + p.y * 157.0f + 113.0f * p.z);
 
 	    return lerp(lerp(lerp( iqhash(n+  0.0f), iqhash(n+  1.0f),f.x),
                    lerp( iqhash(n+157.0f), iqhash(n+158.0f),f.x),f.y),
@@ -176,7 +183,7 @@ public static float noise(Vector3 x)
 
         float getSurfaceHeight(Vector3 pos, float scale, float octaves) {
 
-
+           // return noise(pos * 10) * 5;
             scale = scale*(1 + surfaceVortex1.y*noise(pos*surfaceVortex1.x));
             scale = scale*(1 + surfaceVortex2.y*noise(pos*surfaceVortex2.x));
             float val = getMultiFractal(pos, scale, (int)octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
@@ -187,7 +194,7 @@ public static float noise(Vector3 x)
         }
 
         Vector3 getHeightPosition(Vector3 pos, float scale, float heightScale, float octaves) {
-            return pos*fInnerRadius*(1 + getSurfaceHeight(rotMatrix*pos, scale, octaves)*heightScale);
+            return pos*fInnerRadius*(1 + getSurfaceHeight(pos, scale, octaves)*heightScale);
 //          return pos*fInnerRadius*(1+getSurfaceHeight(mul(rotMatrix, pos) , scale, octaves)*heightScale);
             
         }

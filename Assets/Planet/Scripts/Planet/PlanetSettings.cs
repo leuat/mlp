@@ -40,8 +40,10 @@ namespace LemonSpawn {
 		public Vector3 ExpSurfSettings = new Vector3(2.5f, 1.0f, 1.5f);
 		[Header("InitialOffset, Surface Height, Surface Scale")]
 		public Vector3 ExpSurfSettings2 = new Vector3(0.6f, 0.01f, 3.2451f);
-		[Header("Height sub, octaves, xx")]
+		[Header("Height sub, octaves, power")]
 		public Vector3 ExpSurfSettings3 = new Vector3(0.3f, 10,1);
+        [Header("Noise Perturb, xx, xx")]
+        public Vector3 ExpSurfSettings4 = new Vector3(1000, 0, 0);
         [Header("Vortex #1: scale, amp")]
         public Vector3 SurfaceVortex1 = new Vector3(0.0f, 0, 0);
         [Header("Vortex #2: scale, amp")]
@@ -335,6 +337,8 @@ namespace LemonSpawn {
                 properties.posInKm = new DVector();
 			}
 
+            if (properties.gpuSurface != null)
+                properties.gpuSurface.Update();
 
             properties.posInKm.x = properties.pos.x;
             properties.posInKm.y = properties.pos.y;
@@ -345,6 +349,8 @@ namespace LemonSpawn {
             properties.localCamera = World.WorldCamera.Sub (properties.posInKm).toVectorf();// - transform.position;
 			Quaternion q = 	Quaternion.Euler(new Vector3(0, -(float)(rotation/(2*Mathf.PI)*360f),0));
             properties.localCamera = q* properties.localCamera;
+
+//            ExpSurfSettings4.x = (int)ExpSurfSettings4.x;
 
 			if (World.CloseCamera != null)
                 properties.cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);

@@ -60,7 +60,7 @@ namespace LemonSpawn {
                 ocean.Start(planetSettings.gameObject.transform, m_radius, psOcean.properties.terrainObject, m_sun, m_groundMaterial);
 
 
-            initGroundMaterial(false);
+            initGroundMaterial(false, m_groundMaterial);
             InitAtmosphereMaterial(m_groundMaterial);
             
             m_groundMaterial.SetVector("waterColor", planetSettings.m_waterColor);
@@ -114,7 +114,7 @@ namespace LemonSpawn {
             //base.Update();
             MaintainSea();
             InitAtmosphereMaterial(m_groundMaterial);
-            initGroundMaterial(true);
+            initGroundMaterial(true, m_groundMaterial);
             /*			Debug.Log(planetSettings.m_atmosphereWavelengths);
                         Debug.Log(planetSettings.outerRadiusScale);
                         Debug.Log(planetSettings.radius);*/

@@ -236,7 +236,7 @@
 		FRAGMENT_SETUP(s)
 
 
-		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.1);
+		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2);
 		s.normalWorld = realN;
 
 		UnityLight mainLight = MainLight(s.normalWorld);

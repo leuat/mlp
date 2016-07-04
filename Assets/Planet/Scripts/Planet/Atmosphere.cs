@@ -74,48 +74,48 @@ namespace LemonSpawn
         {
         }
 
-        public void initGroundMaterial(bool bump)
+        public void initGroundMaterial(bool bump, Material mat)
         {
-            m_groundMaterial.SetColor("hillColor", planetSettings.m_hillColor);
-            m_groundMaterial.SetColor("middleColor", planetSettings.m_surfaceColor);
-            m_groundMaterial.SetColor("middleColor2", planetSettings.m_surfaceColor2);
-            m_groundMaterial.SetColor("basinColor", planetSettings.m_basinColor);
+            mat.SetColor("hillColor", planetSettings.m_hillColor);
+            mat.SetColor("middleColor", planetSettings.m_surfaceColor);
+            mat.SetColor("middleColor2", planetSettings.m_surfaceColor2);
+            mat.SetColor("basinColor", planetSettings.m_basinColor);
             //            Debug.Log(planetSettings.m_basinColor);
-            m_groundMaterial.SetColor("basinColor2", planetSettings.m_basinColor2);
-            m_groundMaterial.SetColor("waterColor", planetSettings.m_waterColor);
-            m_groundMaterial.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
-            m_groundMaterial.SetColor("topColor", planetSettings.m_topColor);
+            mat.SetColor("basinColor2", planetSettings.m_basinColor2);
+            mat.SetColor("waterColor", planetSettings.m_waterColor);
+            mat.SetFloat("atmosphereDensity", planetSettings.atmosphereDensity);
+            mat.SetColor("topColor", planetSettings.m_topColor);
             if (bump)
-                m_groundMaterial.SetTexture("_BumpMap", planetSettings.bumpMap);
-            m_groundMaterial.SetFloat("metallicity", planetSettings.metallicity);
-            m_groundMaterial.SetFloat("_Metallic", planetSettings.metallicity);
-            m_groundMaterial.SetFloat("hillyThreshold", planetSettings.hillyThreshold);
-            m_groundMaterial.SetFloat("_BumpScale", planetSettings.bumpScale);
-            m_groundMaterial.SetColor("_EmissionColor", planetSettings.emissionColor);
-            m_groundMaterial.SetFloat("_EmissionScaleUI", 0.2f);
-            m_groundMaterial.SetFloat("_Glossiness", planetSettings.specularity);
+                mat.SetTexture("_BumpMap", planetSettings.bumpMap);
+            mat.SetFloat("metallicity", planetSettings.metallicity);
+            mat.SetFloat("_Metallic", planetSettings.metallicity);
+            mat.SetFloat("hillyThreshold", planetSettings.hillyThreshold);
+            mat.SetFloat("_BumpScale", planetSettings.bumpScale);
+            mat.SetColor("_EmissionColor", planetSettings.emissionColor);
+            mat.SetFloat("_EmissionScaleUI", 0.2f);
+            mat.SetFloat("_Glossiness", planetSettings.specularity);
 
-            m_groundMaterial.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
-            m_groundMaterial.SetFloat("topThreshold", planetSettings.topThreshold);
-            m_groundMaterial.SetFloat("basinThreshold", planetSettings.basinThreshold);
-            m_groundMaterial.SetTexture("_Noise", noiseTexture);
-            //	m_groundMaterial.SetTexture ("_DetailNormalMap", planetSettings.bumpMap);
-            //	m_groundMaterial.SetFloat ("_DetailNormalMapScale", planetSettings.bumpScale);	
-            m_groundMaterial.shaderKeywords = new string[3] { "_DETAIL_MULX2", "_NORMALMAP", "_EMISSION" };
-            //	m_groundMaterial.mainTextureScale.Set (1350,1350);
+            mat.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
+            mat.SetFloat("topThreshold", planetSettings.topThreshold);
+            mat.SetFloat("basinThreshold", planetSettings.basinThreshold);
+            mat.SetTexture("_Noise", noiseTexture);
+            //	mat.SetTexture ("_DetailNormalMap", planetSettings.bumpMap);
+            //	mat.SetFloat ("_DetailNormalMapScale", planetSettings.bumpScale);	
+            mat.shaderKeywords = new string[3] { "_DETAIL_MULX2", "_NORMALMAP", "_EMISSION" };
+            //	mat.mainTextureScale.Set (1350,1350);
             if (bump)
             {
-                m_groundMaterial.SetTextureScale("_BumpMap", new Vector2(0.1f, 0.1f));
-                m_groundMaterial.SetTextureOffset("_BumpMap", new Vector2(1, 1));
+                mat.SetTextureScale("_BumpMap", new Vector2(0.1f, 0.1f));
+                mat.SetTextureOffset("_BumpMap", new Vector2(1, 1));
             }
             if (planetSettings.m_hillTexture != null)
-                m_groundMaterial.SetTexture("_Mountain", planetSettings.m_hillTexture);
+                mat.SetTexture("_Mountain", planetSettings.m_hillTexture);
             if (planetSettings.m_basinTexture != null)
-                m_groundMaterial.SetTexture("_Basin", planetSettings.m_basinTexture);
+                mat.SetTexture("_Basin", planetSettings.m_basinTexture);
             if (planetSettings.m_topTexture != null)
-                m_groundMaterial.SetTexture("_Top", planetSettings.m_topTexture);
+                mat.SetTexture("_Top", planetSettings.m_topTexture);
             if (planetSettings.m_surfaceTexture != null)
-                m_groundMaterial.SetTexture("_Surface", planetSettings.m_surfaceTexture);
+                mat.SetTexture("_Surface", planetSettings.m_surfaceTexture);
 
         }
 
@@ -144,6 +144,16 @@ namespace LemonSpawn
         }
 
 
+        public void ReinitializeGroundMaterial(Material ground)
+        {
+            m_groundMaterial = new Material(ground.shader);
+            m_groundMaterial.CopyPropertiesFromMaterial(ground);
+            initGroundMaterial(true, m_groundMaterial);
+            InitAtmosphereMaterial(m_groundMaterial);
+            InitializeDefaultTextures(m_groundMaterial);
+
+        }
+
 
         public Atmosphere(GameObject sun, Material ground, Material sky, Mesh sphere, PlanetSettings pSettings)
         {
@@ -159,7 +169,7 @@ namespace LemonSpawn
             m_sun = sun;
             m_groundMaterial = new Material(ground.shader);
             m_groundMaterial.CopyPropertiesFromMaterial(ground);
-            initGroundMaterial(true);
+            initGroundMaterial(true, m_groundMaterial);
 
 
 
@@ -195,7 +205,7 @@ namespace LemonSpawn
             if (m_groundMaterial != null)
             {
                 InitAtmosphereMaterial(m_groundMaterial);
-                initGroundMaterial(true);
+                initGroundMaterial(true, m_groundMaterial);
 
             }
             iscale = 1;
@@ -273,6 +283,7 @@ namespace LemonSpawn
             mat.SetVector("surfaceNoiseSettings", planetSettings.ExpSurfSettings);
             mat.SetVector("surfaceNoiseSettings2", planetSettings.ExpSurfSettings2);
             mat.SetVector("surfaceNoiseSettings3", planetSettings.ExpSurfSettings3);
+            mat.SetVector("surfaceNoiseSettings4", planetSettings.ExpSurfSettings4);
             mat.SetVector("surfaceVortex1", planetSettings.SurfaceVortex1);
             mat.SetVector("surfaceVortex2", planetSettings.SurfaceVortex2);
             mat.SetMatrix("rotMatrix", rotMat);

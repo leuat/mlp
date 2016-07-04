@@ -19,7 +19,7 @@
 			for (int i = 1; i <= N; i++) {
 				float f = pow(2, i)*1.0293;
 				float amp = (2 * pow(i,power)); 
-				n += noise(pos*f*ms + shift*f) / amp;
+				n += noisePerturbed(pos*f*ms + shift*f) / amp;
 				A += 1/amp;
 			}
 
@@ -36,7 +36,7 @@
             float3 vt = p * frequency;
             for (float octave = 0; octave < octaves; octave++)
             {
-                 float signal = initialO + noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+                 float signal = initialO + noisePerturbed(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
 
                 // Make the ridges.
                 signal = abs(signal);
@@ -60,9 +60,11 @@
 
 		float getSurfaceHeight(float3 pos, float scale, float octaves) {
 
+			//return noise(pos * 10)*5;
 
-			scale = scale*(1 + surfaceVortex1.y*noise(pos*surfaceVortex1.x));
-			scale = scale*(1 + surfaceVortex2.y*noise(pos*surfaceVortex2.x));
+
+			scale = scale*(1 + surfaceVortex1.y*noisePerturbed(pos*surfaceVortex1.x));
+			scale = scale*(1 + surfaceVortex2.y*noisePerturbed(pos*surfaceVortex2.x));
 			float val = getMultiFractal(pos, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			val = pow(val, surfaceNoiseSettings3.z);
 			return clamp(val-surfaceNoiseSettings3.x, 0, 10);

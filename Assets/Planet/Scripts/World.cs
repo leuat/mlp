@@ -687,13 +687,18 @@ namespace LemonSpawn {
 				ctrlModifier = false;
 
 
+            if (Input.GetKeyUp(KeyCode.T))
+                solarSystem.toggleGPUSurface();
 
             if (modifier) // && ctrlModifier)
 			{
 				if (Input.GetKeyUp(KeyCode.K))
 					RenderSettings.MoveCam = !RenderSettings.MoveCam;
-				
-				if (Input.GetKeyUp(KeyCode.Alpha2))
+
+
+
+
+                if (Input.GetKeyUp(KeyCode.Alpha2))
 					RenderSettings.RenderText = !RenderSettings.RenderText;
 			}
 

@@ -379,6 +379,15 @@ namespace LemonSpawn
             new Vector3(0.9f, 1.1f, 1),
             "Surface", 2));
 
+        settingsTypes.Add(
+            new SettingsType("Noise Perturb",
+            SettingsType.NUMBER,
+            "ExpSurfSettings4",
+            "Noise perturb: Must be low for GPU to fit CPU! <9",
+            new Vector3(0, 20, 1),
+            new Vector3(20, 20, 20),
+            "Surface", 0));
+
 
             settingsTypes.Add(new SettingsType("Basin color", "m_basinColor", "Basin color (lake shores)", "Surface color",
                 new Color(0.5f, 0.3f, 0.1f),

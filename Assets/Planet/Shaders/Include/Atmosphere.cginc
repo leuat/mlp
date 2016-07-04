@@ -361,43 +361,55 @@ float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScal
 
 
 
-float iqhash(float n)
+inline float iqhash(float n)
 {
 	return frac(sin(n)*753.5453123);
+	
 }
 
 float noise(float3 x)
 {
-	// The noise function returns a value in the range -1.0f -> 1.0f
+
 	float3 p = floor(x);
 	float3 f = frac(x);
 
 	f = f*f*(3.0 - 2.0*f);
 	float n = p.x + p.y*157.0 + 113.0*p.z;
-/*	return lerp(lerp(lerp(iqhash(n + 0.0), iqhash(n + 1.0), f.x),
-		lerp(iqhash(n + 57.0), iqhash(n + 58.0), f.x), f.y),
-		lerp(lerp(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
-			lerp(iqhash(n + 170.0), iqhash(n + 171.0), f.x), f.y), f.z);*/
 
-	    return lerp(lerp(lerp( iqhash(n+  0.0), iqhash(n+  1.0),f.x),
-                   lerp( iqhash(n+157.0), iqhash(n+158.0),f.x),f.y),
-               lerp(lerp( iqhash(n+113.0), iqhash(n+114.0),f.x),
-                   lerp( iqhash(n+270.0), iqhash(n+271.0),f.x),f.y),f.z);
+	return lerp(lerp(lerp(iqhash(n + 0.0), iqhash(n + 1.0), f.x),
+		lerp(iqhash(n + 157.0), iqhash(n + 158.0), f.x), f.y),
+		lerp(lerp(iqhash(n + 113.0), iqhash(n + 114.0), f.x),
+			lerp(iqhash(n + 270.0), iqhash(n + 271.0), f.x), f.y), f.z);
 
 
 }
+uniform float3 surfaceNoiseSettings4;
 
-float noiseIQ(in float3 x)
+inline float iqhashP(float n)
 {
+	//	n = n % 2 * PI;
+	return frac(sin(n)*surfaceNoiseSettings4.x*0.7535453123);
+
+}
+
+float noisePerturbed(float3 x)
+{
+
 	float3 p = floor(x);
 	float3 f = frac(x);
-	f = f*f*(3.0 - 2.0*f);
 
-	float2 uv = (p.xy + float2(37.0, 17.0)*p.z) + f.xy;
-//	float2 rg = tex2D(_IQ, (uv + 0.5) / 256.0, -100.0).yx;
-	float2 rg = float2(0, 0);
-	return lerp(rg.x, rg.y, f.z);
+	f = f*f*(3.0 - 2.0*f);
+	float n = p.x + p.y*157.0 + 113.0*p.z;
+
+	return lerp(lerp(lerp(iqhashP(n + 0.0), iqhashP(n + 1.0), f.x),
+		lerp(iqhashP(n + 157.0), iqhashP(n + 158.0), f.x), f.y),
+		lerp(lerp(iqhashP(n + 113.0), iqhashP(n + 114.0), f.x),
+			lerp(iqhashP(n + 270.0), iqhashP(n + 271.0), f.x), f.y), f.z);
+
+
 }
+
+
 
 
 float4 getSkyColor(float3 c0, float3 c1, float3 t) {

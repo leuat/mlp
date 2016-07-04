@@ -4,7 +4,6 @@ Shader "LemonSpawn/Ground"
 {
 	Properties
 	{
-
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Albedo map", 2D) = "white" {}
 		_Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5

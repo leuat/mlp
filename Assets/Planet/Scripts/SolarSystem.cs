@@ -53,17 +53,22 @@ namespace LemonSpawn
 
         // Use this for initialization
 
+        private void InitializeSurfaces()
+        {
+            if (!RenderSettings.GPUSurface)
+                groundMaterial = (Material)Resources.Load("GroundMaterial");
+            else
+                groundMaterial = (Material)Resources.Load("GroundMaterialGPU");
+
+        }
+
         public SolarSystem(GameObject pSun, Mesh s, Transform t, int skybox)
         {
             sun = pSun;
             sphere = s;
             transform = t;
             spaceMaterial = (Material)Resources.Load("SpaceMaterial");
-            if (!RenderSettings.GPUSurface)
-                groundMaterial = (Material)Resources.Load("GroundMaterial");
-            else
-                groundMaterial = (Material)Resources.Load("GroundMaterialGPU");
-
+            InitializeSurfaces();
 
             space = new SpaceAtmosphere(spaceMaterial, sun, Color.white, 0.1f);
 
@@ -79,6 +84,37 @@ namespace LemonSpawn
                 return;
             sun.transform.rotation = Quaternion.FromToRotation(Vector3.forward, World.WorldCamera.toVectorf().normalized);
             sun.GetComponent<Light>().color = space.color;
+        }
+
+
+        public void ReplaceMaterial(GameObject g, Material mat, PlanetSettings ps)
+        {
+            Renderer r = g.GetComponent<Renderer>();
+            if (r != null)
+                r.material = mat;
+
+            ps.atmosphere.InitAtmosphereMaterial(mat);
+            ps.atmosphere.initGroundMaterial(true,mat);
+
+
+            foreach (Transform child in g.transform)
+            {
+                ReplaceMaterial(child.gameObject, mat, ps);
+            }
+        }
+
+        public void toggleGPUSurface()
+        {
+            RenderSettings.GPUSurface = !RenderSettings.GPUSurface;
+            InitializeSurfaces();
+            foreach (Planet p in planets)
+            {
+                p.pSettings.atmosphere.ReinitializeGroundMaterial(groundMaterial);
+//                ReplaceMaterial(p.pSettings.properties.terrainObject, groundMaterial, p.pSettings);
+                GameObject.DestroyImmediate(p.pSettings.properties.terrainObject);
+            }
+
+
         }
 
         public void findClosestPlanet()
