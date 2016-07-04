@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
+using UnityEngine.UI;
 
 namespace LemonSpawn
 {
@@ -160,6 +161,10 @@ namespace LemonSpawn
         {
             if (i >= 0 && i < Cameras.Count)
                 return Cameras[i];
+            if (i < 0)
+                return Cameras[0];
+            if (i >= Cameras.Count)
+                return Cameras[Cameras.Count - 1];
             return null;
         }
 
@@ -167,19 +172,24 @@ namespace LemonSpawn
         public SerializedCamera getCamera(double t, int add)
         {
 
-            double ct = 0;
-            for (int i = 0; i < Cameras.Count; i++)
+           
+            for (int i = 0; i < Cameras.Count-1; i++)
             {
-                if (t >= ct && t < Cameras[i].time)
-                {
-                    return getCamera(i + add - 1);
-                }
-                ct = Cameras[i].time;
+                if (t>=Cameras[i].time && t<Cameras[i+1].time)
+                    return getCamera(i + add );
             }
             return null;
         }
+        public float getCameraIndex(double t, int add) {
+            for (int i = 0; i < Cameras.Count - 1; i++)
+            {
+                if (t >= Cameras[i].time && t < Cameras[i + 1].time)
+                    return i + add;
+            }
+            return 0;
+                }
 
-        public void getInterpolatedCameraLerp(double t, List<Planet> planets)
+        public void getInterpolatedCamera(double t, List<Planet> planets)
         {
             // t in [0,1]
             if (Cameras.Count <= 1)
@@ -193,34 +203,27 @@ namespace LemonSpawn
             double time = t * maxTime;
 
             //			SerializedCamera a = getCamera(n-1);
-            SerializedCamera p0 = getCamera((int)time, -1);
-            SerializedCamera p1 = getCamera((int)time, 0);
-            SerializedCamera p2 = getCamera((int)time, 1);
-            SerializedCamera p3 = getCamera((int)time, 2);
-
-            if (p0 == null)
-                p0 = p1;
-
-            if (p2 == null)
-                p2 = p1;
-
-            if (p3 == null)
-                p3 = p2;
-
-
-
+            SerializedCamera p0 = getCamera(time, -1);
+            SerializedCamera p1 = getCamera(time, 0);
+            SerializedCamera p2 = getCamera(time, 1);
+            SerializedCamera p3 = getCamera(time, 2);
 
             double dt = 1.0 / (p2.time - p1.time) * (time - p1.time);
+           
+       
 
             pos = Util.CatmullRom(dt, p0.getPos(), p1.getPos(), p2.getPos(), p3.getPos());
             up = Util.CatmullRom(dt, p0.getUp(), p1.getUp(), p2.getUp(), p3.getUp());
             DVector dir = Util.CatmullRom(dt, p0.getDir(), p1.getDir(), p2.getDir(), p3.getDir());
 
-
+          /*  pos = p1.getPos() + (p2.getPos() - p1.getPos()) * dt;
+            up = p1.getUp() + (p2.getUp() - p1.getUp()) * dt;
+            dir = p1.getDir() + (p2.getDir() - p1.getDir()) * dt;
+            */
 
             foreach (Planet p in planets)
             {
-                p.InterpolatePositions(p0.frame, dt);
+                p.InterpolatePositions(p1.frame, dt);
             }
 
             World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
@@ -229,7 +232,7 @@ namespace LemonSpawn
 
 
 
-        public void getInterpolatedCamera(double t, List<Planet> planets)
+        public void getInterpolatedCameraLerp(double t, List<Planet> planets)
         {
             // t in [0,1]
             if (Cameras.Count <= 1)

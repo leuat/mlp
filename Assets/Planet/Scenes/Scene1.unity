@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &226504890
 Transform:
   m_ObjectHideFlags: 0
@@ -829,7 +829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &942512087
 Transform:
   m_ObjectHideFlags: 0
@@ -1041,36 +1041,36 @@ MonoBehaviour:
   maxQuadNodeLevel: 14
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.4752443, y: 0.32520387, z: 0.83062047}
-  ExpSurfSettings2: {x: 0.4475474, y: 0.0160335, z: 7.1410136}
-  ExpSurfSettings3: {x: 0.26757342, y: 10, z: 0.47476605}
-  ExpSurfSettings4: {x: 10, y: 0, z: 0}
-  SurfaceVortex1: {x: 4.426491, y: 0.44402146, z: 0}
-  SurfaceVortex2: {x: 6.434206, y: 0.2673611, z: 0}
-  atmosphereDensity: 0.6201389
+  ExpSurfSettings: {x: 2.4752443, y: -0.27888554, z: 0.93571544}
+  ExpSurfSettings2: {x: -0.16014433, y: 0.011661381, z: 5.014322}
+  ExpSurfSettings3: {x: 0.487176, y: 10, z: 0.52732915}
+  ExpSurfSettings4: {x: 20, y: 0, z: 0}
+  SurfaceVortex1: {x: -1.8621415, y: 1.0096891, z: 0}
+  SurfaceVortex2: {x: 3.2743173, y: 1.029915, z: 0}
+  atmosphereDensity: 0.68668544
   outerRadiusScale: 1.024416
   m_reflectionIntensity: 0
-  m_atmosphereWavelengths: {x: 0.5, y: 0.54, z: 0.635}
+  m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
   metallicity: 0
   specularity: 1
-  atmosphereString: yellow
+  atmosphereString: normal
   m_hdrExposure: 1.5906833
   m_ESun: 10
   radius: 50000
   temperature: 300
   hillyThreshold: 0.9767341
-  liquidThreshold: 0
+  liquidThreshold: 0.0014416698
   topThreshold: 0.0110243205
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
   globalTerrainScale: 7
-  m_surfaceColor: {r: 0.69160503, g: 0.5678194, b: 0.30893645, a: 1}
-  m_surfaceColor2: {r: 0.28713253, g: 0.2587398, b: 0.10548906, a: 1}
+  m_surfaceColor: {r: 0.76761794, g: 0.5066766, b: 0.07461786, a: 1}
+  m_surfaceColor2: {r: 0.401466, g: 0.65456253, b: 0.17314994, a: 1}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
-  m_basinColor: {r: 0.14617367, g: 0.12723166, b: 0.121581376, a: 1}
-  m_basinColor2: {r: 0.17476125, g: 0.170757, b: 0.16639484, a: 1}
+  m_basinColor: {r: 0.558723, g: 0.30821118, b: 0.12541105, a: 1}
+  m_basinColor2: {r: 0.50019133, g: 0.31909966, b: 0.13685998, a: 1}
   m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
-  m_topColor: {r: 0.5392267, g: 0.3767814, b: 0.09940982, a: 1}
+  m_topColor: {r: 1.002769, g: 1.0101869, b: 1.0072062, a: 1}
   m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
   m_hillColor: {r: 0.4017703, g: 0.4040201, b: 0.41925243, a: 1}
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
@@ -1088,19 +1088,19 @@ MonoBehaviour:
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudColor: {r: 0.5112844, g: 0.65972257, b: 0.7916661, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 0.9410653
+    LS_CloudScale: 1.2950191
     LS_CloudScattering: 1.566984
     LS_CloudIntensity: 1.2592973
     LS_CloudSharpness: 1.5
-    LS_CloudThickness: 0
+    LS_CloudThickness: 0.63319975
     LS_ShadowScale: 0.006
-    LS_LargeVortex: 0.10836097
-    LS_SmallVortex: 0.02
-    LS_CloudSubScale: 0.50000405
-    LS_Stretch: {x: 1.0944285, y: 1, z: 1}
+    LS_LargeVortex: -0.5429516
+    LS_SmallVortex: 0.012753725
+    LS_CloudSubScale: 0.6138731
+    LS_Stretch: {x: 0.4908571, y: 1, z: 0.46924236}
     cloudRadius: 0
     LS_HasCloudShadows: 0
     LS_DistScale: 10
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetTypeName: Yellow Desert
+  planetTypeName: Terra
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1218263865
 Transform:
   m_ObjectHideFlags: 0
@@ -1937,7 +1937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1463466346
 Transform:
   m_ObjectHideFlags: 0
@@ -2199,7 +2199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSpeed: 25
-  shiftAdd: 120
+  shiftAdd: 60
   maxShift: 2000
   camSens: 0.2
   curDir: {x: 0, y: 0, z: 0}
@@ -2559,7 +2559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1723561327
 Transform:
   m_ObjectHideFlags: 0
@@ -2764,7 +2764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1868725502
 Transform:
   m_ObjectHideFlags: 0

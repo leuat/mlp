@@ -740,12 +740,13 @@ namespace LemonSpawn
 
             return pos;
         }
+
         public static DVector CatmullRom(double t, DVector p0, DVector p1, DVector p2, DVector p3)
         {
-            DVector a = 0.5 * (2 *p1*2);
+            DVector a = 0.5 * (2f *p1);
             DVector b = 0.5 * (p2 - p0);
             DVector c = 0.5 * (2 * p0 - 5 * p1 + 4 * p2 - p3);
-            DVector d = 0.5 * (p0*-1 + 3f * p1 - 3 * p2 + p3);
+            DVector d = 0.5 * (3f * p1 - 3 * p2 + p3 -p0);
 
             DVector pos = a + (b * t) + (c * t * t) + (d * t * t * t);
 

@@ -653,9 +653,10 @@ namespace LemonSpawn {
 
             if (Input.GetKeyUp(KeyCode.R))
             {
-//                if (!RenderSettings.RecordingVideo)
-  //                  szWorld.Cameras.Clear();
+                //                if (!RenderSettings.RecordingVideo)
+                //                  szWorld.Cameras.Clear();
                 RenderSettings.RecordingVideo = !RenderSettings.RecordingVideo;
+                Debug.Log("Rendering Frames: " + RenderSettings.RecordingVideo);
             }
 
 
@@ -735,14 +736,16 @@ namespace LemonSpawn {
                 RecordFrames();
 		}
 
-        int maxFrames = 3;
-        int curFrames = 0;
+        float maxFrames = 1;
+        float curFrames = 0;
 
         private void RecordFrames()
         {
-            if (curFrames--<=0)
+            curFrames -= Time.smoothDeltaTime * timeScale * 2f;
+            if (curFrames<=0)
             {
                 curFrames = maxFrames;
+                Debug.Log("Adding frame:" + currentFrame);
                 AddCurrentCameraPos();
             }
         }
@@ -798,15 +801,19 @@ namespace LemonSpawn {
         }
 
         float currentTime = 0;
+        int currentFrame = 0;
+        float timeScale = 1;
 
         public void AddCurrentCameraPos()
         {
             SerializedCamera sc = SpaceCamera.getSZCamera();
             sc.fov = MainCamera.fieldOfView;
             sc.time = currentTime;
-            sc.frame = (int)currentTime;
-            currentTime++;
+            sc.frame = currentFrame;
+            currentTime += currentFrame;// Time.deltaTime * timeScale*20f; 
             szWorld.Cameras.Add(sc);
+           
+            currentFrame++;
 
         }
 

@@ -3854,7 +3854,7 @@ MonoBehaviour:
     global_radius_scale: 1
     skybox: 1
     uuid: 
-    resolution: 32
+    resolution: 64
     overview_distance: 4
     screenshot_width: 1024
     screenshot_height: 1024
