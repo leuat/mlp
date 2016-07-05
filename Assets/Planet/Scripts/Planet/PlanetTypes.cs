@@ -311,7 +311,7 @@ namespace LemonSpawn
                 SettingsType.NUMBER,
                 "ExpSurfSettings2",
                 "Surface scale",
-                new Vector3(0, 50, 5),
+                new Vector3(0, 25, 5),
                 new Vector3(3f, 10f, 5f),
                 "Surface", 2));
 
@@ -388,6 +388,23 @@ namespace LemonSpawn
             new Vector3(20, 20, 20),
             "Surface", 0));
 
+            settingsTypes.Add(
+                new SettingsType("Sub surface amplitude",
+                SettingsType.NUMBER,
+                "ExpSurfSettings4",
+                "Second surface amplitude (0 to remove)",
+                new Vector3(0, 0.5f, 1),
+                new Vector3(0, 0, 0),
+                "Surface", 1));
+
+            settingsTypes.Add(
+                new SettingsType("Sub surface scale",
+                SettingsType.NUMBER,
+                "ExpSurfSettings4",
+                "Second surface scale",
+                new Vector3(0, 40, 1),
+                new Vector3(20, 20, 20),
+                "Surface", 2));
 
             settingsTypes.Add(new SettingsType("Basin color", "m_basinColor", "Basin color (lake shores)", "Surface color",
                 new Color(0.5f, 0.3f, 0.1f),

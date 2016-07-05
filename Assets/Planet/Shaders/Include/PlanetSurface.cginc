@@ -66,6 +66,8 @@
 			scale = scale*(1 + surfaceVortex1.y*noisePerturbed(pos*surfaceVortex1.x));
 			scale = scale*(1 + surfaceVortex2.y*noisePerturbed(pos*surfaceVortex2.x));
 			float val = getMultiFractal(pos, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+			if (surfaceNoiseSettings4.y>0)
+	    		val+= surfaceNoiseSettings4.y*getMultiFractal(pos*surfaceNoiseSettings4.z, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			val = pow(val, surfaceNoiseSettings3.z);
 			return clamp(val-surfaceNoiseSettings3.x, 0, 10);
 			//return getStandardPerlin(pos, scale, 1, 0.5, 8);

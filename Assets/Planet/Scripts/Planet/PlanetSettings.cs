@@ -42,7 +42,7 @@ namespace LemonSpawn {
 		public Vector3 ExpSurfSettings2 = new Vector3(0.6f, 0.01f, 3.2451f);
 		[Header("Height sub, octaves, power")]
 		public Vector3 ExpSurfSettings3 = new Vector3(0.3f, 10,1);
-        [Header("Noise Perturb, xx, xx")]
+        [Header("Noise Perturb, Sub Surface Amplitude, Sub Surface Scale")]
         public Vector3 ExpSurfSettings4 = new Vector3(1000, 0, 0);
         [Header("Vortex #1: scale, amp")]
         public Vector3 SurfaceVortex1 = new Vector3(0.0f, 0, 0);
