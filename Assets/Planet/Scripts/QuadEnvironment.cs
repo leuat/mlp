@@ -35,8 +35,9 @@ namespace LemonSpawn
                 float d2 = (float)r.NextDouble();
                 points[i] = (P + D1*d1 + D2*d2).normalized*quad.planetSettings.getPlanetSize();
                 indexes[i] = i;
-                float fadeColor = (float)r.NextDouble()*0.2f;
-                colors[i] = new Color(1f,1f -fadeColor,1f - fadeColor*1.5f,1f);
+                float fadeColor = (float)r.NextDouble()*0.4f;
+                float fadeColorR = (float)r.NextDouble() * 0.4f;
+                colors[i] = new Color(1f - fadeColorR,1f -fadeColor,1f - fadeColor*1.5f,1f);
          }
          
          mesh.vertices = points;

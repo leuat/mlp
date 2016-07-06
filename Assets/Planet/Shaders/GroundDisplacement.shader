@@ -298,7 +298,8 @@
 	//											c.rgb = modulatedHillyThreshold;
 	//												c.rgb = float3(1,0,0)*modd;
 	//return float4(ppos.xyz,1);
-	return OutputForward(c, s.alpha);
+	//s.alpha = 1;
+	return OutputForward(c, s.alpha); 
 	}
 		ENDCG
 	}
