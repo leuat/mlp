@@ -541,6 +541,36 @@ namespace LemonSpawn {
 
         }
 
+
+        void CreateTestMesh( int startRange, int endRange, Mesh currMesh, int maxPointsPerMesh) {
+         Vector3[] points = new Vector3[maxPointsPerMesh];
+         int[] indexes = new int[maxPointsPerMesh];
+         Color[] colors = new Color[maxPointsPerMesh];
+         for(int i=0;i<points.Length;++i) {
+             points[i] = new Vector3(Random.Range(startRange,endRange), Random.Range (startRange,endRange), Random.Range (startRange,endRange));
+             indexes[i] = i;
+             colors[i] = new Color(Random.Range(0.0f,1.0f),Random.Range (0.0f,1.0f),Random.Range(0.0f,1.0f),1.0f);
+         }
+         
+         currMesh.vertices = points;
+         currMesh.colors = colors;
+         currMesh.SetIndices(indexes, MeshTopology.Points,0);
+
+         
+     }
+
+     public void CreateTestObject() {
+/*        GameObject go = new GameObject("Tree test mesh");
+        MeshRenderer mr = go.AddComponent<MeshRenderer>();
+        MeshFilter mf = go.AddComponent<MeshFilter>();
+        Mesh m = new Mesh();
+        CreateTestMesh(-100, 100, m, 100);
+        mf.mesh = m;
+        mr.material = (Material)Resources.Load("TreeTest");
+        go.tag = "Normal";
+        go.layer = 10;*/
+     }
+
         public virtual void Start () {
 
             RenderSettings.path = Application.dataPath + "/../";
@@ -582,7 +612,8 @@ namespace LemonSpawn {
 			if (initializeFromScene)
 				solarSystem.InitializeFromScene();
 			Application.runInBackground = true;
-			
+			CreateTestObject();
+           
 		}
 		
 		#if UNITY_EDITOR

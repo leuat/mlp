@@ -148,10 +148,10 @@ public class SpaceCamera : MonoBehaviour {
 		}
 		
 		if (Input.GetKey(KeyCode.Z)) {
-			rotateT = Mathf.Min(rotateT+0.01f, 0.05f)*0.7f;
+			rotateT = Mathf.Min(rotateT+0.01f, 0.05f)*0.9f;
 		}
 		if (Input.GetKey(KeyCode.C)) {
-			rotateT = Mathf.Max(rotateT-0.01f, -0.05f)*0.7f;;
+			rotateT = Mathf.Max(rotateT-0.01f, -0.05f)*0.9f;;
 		}
 		rotate = rotate*0.9f +  rotateT*0.1f;
 		rotateT*=0.9f;

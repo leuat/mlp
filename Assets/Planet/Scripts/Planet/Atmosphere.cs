@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace LemonSpawn
@@ -30,6 +31,23 @@ namespace LemonSpawn
         public static float sunScale = 1;
         protected Quaternion rot = Quaternion.identity;
         protected Texture2D noiseTexture = null;
+
+        protected List<Material> affectedMaterials = new List<Material>();
+
+
+        public void addAffectedMaterial(Material mat) {
+            affectedMaterials.Add(mat);
+        }
+        public void removeAffectedMaterial(Material mat) {
+            affectedMaterials.Remove(mat);
+        }
+
+        public void UpdateAffectedMaterials() {
+            foreach (Material mat in affectedMaterials)
+                InitAtmosphereMaterial(mat);
+        }
+
+
         protected void InitializeSkyMeshSphere(float radius)
         {
             m_sky = new GameObject("Atmosphere");
@@ -211,6 +229,8 @@ namespace LemonSpawn
             iscale = 1;
             if (m_skyMaterial != null)
                 InitAtmosphereMaterial(m_skyMaterial);
+
+            UpdateAffectedMaterials();
 
         }
 

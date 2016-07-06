@@ -66,8 +66,8 @@
 			scale = scale*(1 + surfaceVortex1.y*noisePerturbed(pos*surfaceVortex1.x));
 			scale = scale*(1 + surfaceVortex2.y*noisePerturbed(pos*surfaceVortex2.x));
 			float val = getMultiFractal(pos, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			if (surfaceNoiseSettings4.y>0)
-	    		val+= surfaceNoiseSettings4.y*getMultiFractal(pos*surfaceNoiseSettings4.z, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+		//	if (surfaceNoiseSettings4.y>0)
+	   // 		val+= surfaceNoiseSettings4.y*getMultiFractal(pos*surfaceNoiseSettings4.z, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			val = pow(val, surfaceNoiseSettings3.z);
 			return clamp(val-surfaceNoiseSettings3.x, 0, 10);
 			//return getStandardPerlin(pos, scale, 1, 0.5, 8);
@@ -82,9 +82,8 @@
 
 
 
-		float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale, float3 tangent, float3 bn, float octaves) {
+		float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale, float3 tangent, float3 bn, float octaves, int N) {
 //			float3 getSurfaceNormal(float3 pos, float scale, float heightScale, float normalScale) {
-		    int N = 4;
 			float3 prev = 0;
 //			pos = normalize(pos);
 			float hs = heightScale;
@@ -126,14 +125,13 @@
 		}
 
 	//	inline float3 getPlanetSurfaceNormal(in float4 v) {
-		float3 getPlanetSurfaceNormal(in float3 v, float3 t, float3 bn, float nscale) {
+		float3 getPlanetSurfaceNormal(in float3 v, float3 t, float3 bn, float nscale, int N) {
 			float scale = surfaceNoiseSettings2.z;
 			float heightScale = surfaceNoiseSettings2.y;
 
 			float octaves = LodSurface(v.xyz);
 
-			return getSurfaceNormal(v, scale, heightScale, nscale, t,bn, octaves);
-
+			return getSurfaceNormal(v, scale, heightScale, nscale, t,bn, octaves, N);
 		}
 
 
@@ -149,6 +147,20 @@
 
 			p.xyz = normalize(p.xyz);
 			p.xyz = getHeightPosition(p.xyz, scale, heightScale, octaves) + v3Translate;
+			return mul(_World2Object, p);
+		}
+
+		float4 getPlanetSurfaceOnlyNoTranslate(in float4 v) {
+
+			float4 p = mul(_Object2World, v);
+
+			float octaves = surfaceNoiseSettings3.y;
+
+			float scale = surfaceNoiseSettings2.z;
+			float heightScale = surfaceNoiseSettings2.y;
+
+			p.xyz = normalize(p.xyz);
+			p.xyz = getHeightPosition(p.xyz, scale, heightScale, octaves);
 			return mul(_World2Object, p);
 		}
 

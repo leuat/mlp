@@ -135,7 +135,7 @@
 		o.tangent = t;
 		o.binormal = b;
 		o.posWorld2 = normalWorld;
-		normalWorld = getPlanetSurfaceNormal(posWorld - v3Translate, t, b, 0.1);
+		normalWorld = normalWorld;//getPlanetSurfaceNormal(posWorld - v3Translate, t, b, 0.1);
 #endif
 #if UNITY_SPECCUBE_BOX_PROJECTION
 		o.posWorld = posWorld.xyz;
@@ -234,9 +234,7 @@
 	half4 LfragForwardBase(VertexOutputForwardBase2 i) : SV_Target
 	{
 		FRAGMENT_SETUP(s)
-
-
-		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2);
+		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2,4);
 		s.normalWorld = realN;
 
 		UnityLight mainLight = MainLight(s.normalWorld);

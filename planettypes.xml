@@ -26452,7 +26452,7 @@ Test newline
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.02508569</realizedValue>
+          <realizedValue>1.02427828</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26486,7 +26486,7 @@ Test newline
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.498645</realizedValue>
+          <realizedValue>1.59370267</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26520,7 +26520,7 @@ Test newline
             <y>4</y>
             <z>2.5</z>
           </minMax>
-          <realizedValue>2.48643351</realizedValue>
+          <realizedValue>2.46142435</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26690,7 +26690,7 @@ Test newline
             <y>25</y>
             <z>5</z>
           </minMax>
-          <realizedValue>4.719848</realizedValue>
+          <realizedValue>4.26692343</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26722,8 +26722,8 @@ Test newline
           <upper>0</upper>
           <minMax>
             <x>0</x>
-            <y>0</y>
-            <z>0</z>
+            <y>5</y>
+            <z>1.5</z>
           </minMax>
           <realizedValue>0</realizedValue>
           <type>0</type>
@@ -26759,7 +26759,7 @@ Test newline
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-2.99759126</realizedValue>
+          <realizedValue>-2.01164913</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26793,7 +26793,7 @@ Test newline
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>2.663379</realizedValue>
+          <realizedValue>2.91193557</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26827,7 +26827,7 @@ Test newline
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.01519942</realizedValue>
+          <realizedValue>0.9825444</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26861,7 +26861,7 @@ Test newline
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.962020934</realizedValue>
+          <realizedValue>1.03959012</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26895,7 +26895,7 @@ Test newline
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9866577</realizedValue>
+          <realizedValue>0.936158657</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26929,7 +26929,7 @@ Test newline
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.498912156</realizedValue>
+          <realizedValue>0.513950646</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -26997,7 +26997,7 @@ Test newline
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.354052722</realizedValue>
+          <realizedValue>0.397929817</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27031,7 +27031,7 @@ Test newline
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.008135116</realizedValue>
+          <realizedValue>0.005628597</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27092,14 +27092,14 @@ Test newline
           <index>0</index>
           <info>Sea level. Below this value (multiplied with the radius), Everything is sea.</info>
           <group>Water</group>
-          <lower>0.00349854375</lower>
-          <upper>0.00349854375</upper>
+          <lower>0</lower>
+          <upper>0</upper>
           <minMax>
             <x>0</x>
             <y>0.02</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.00349854375</realizedValue>
+          <realizedValue>0</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27133,7 +27133,7 @@ Test newline
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.43248308</realizedValue>
+          <realizedValue>1.365849</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27167,7 +27167,7 @@ Test newline
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.491987</realizedValue>
+          <realizedValue>1.40521967</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27201,7 +27201,7 @@ Test newline
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.287122</realizedValue>
+          <realizedValue>1.27718377</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27235,7 +27235,7 @@ Test newline
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6258426</realizedValue>
+          <realizedValue>0.623973131</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27303,7 +27303,7 @@ Test newline
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.688369334</realizedValue>
+          <realizedValue>-0.777086854</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27371,7 +27371,7 @@ Test newline
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.376318455</realizedValue>
+          <realizedValue>0.374471754</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27439,7 +27439,7 @@ Test newline
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6756885</realizedValue>
+          <realizedValue>0.6572929</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27488,9 +27488,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5453189</r>
-            <g>0.306015879</g>
-            <b>0.197058737</b>
+            <r>0.5256803</r>
+            <g>0.343686581</g>
+            <b>0.197079077</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27522,9 +27522,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.513238132</r>
-            <g>0.308379471</g>
-            <b>0.127171874</b>
+            <r>0.589155734</r>
+            <g>0.307806253</g>
+            <b>0.1572911</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27556,9 +27556,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.7980904</r>
-            <g>0.5008506</g>
-            <b>0.07142137</b>
+            <r>0.748493135</r>
+            <g>0.5726754</g>
+            <b>0.07719801</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27590,9 +27590,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.3636459</r>
-            <g>0.5983646</g>
-            <b>0.254302055</b>
+            <r>0.35976553</r>
+            <g>0.589239836</g>
+            <b>0.2520748</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27624,9 +27624,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>1.01172459</r>
-            <g>1.00399959</g>
-            <b>1.00065672</b>
+            <r>1.01226592</r>
+            <g>1.00540614</g>
+            <b>1.01483262</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27658,9 +27658,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.416513771</r>
-            <g>0.4165188</g>
-            <b>0.405791819</b>
+            <r>0.407473058</r>
+            <g>0.400966227</g>
+            <b>0.418634146</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27692,9 +27692,9 @@ Test newline
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.312800854</r>
-            <g>0.501301169</g>
-            <b>0.9155085</b>
+            <r>0.300321877</r>
+            <g>0.51751703</g>
+            <b>0.90994966</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -27745,7 +27745,7 @@ Test newline
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4430424</realizedValue>
+          <realizedValue>0.384929359</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -27881,7 +27881,7 @@ Test newline
             <y>20</y>
             <z>1</z>
           </minMax>
-          <realizedValue>3.78698444</realizedValue>
+          <realizedValue>6.83247328</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -28085,7 +28085,7 @@ Test newline
             <y>0.5</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.0799099</realizedValue>
+          <realizedValue>0.07399875</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -28119,7 +28119,7 @@ Test newline
             <y>40</y>
             <z>1</z>
           </minMax>
-          <realizedValue>19.5031052</realizedValue>
+          <realizedValue>20</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>

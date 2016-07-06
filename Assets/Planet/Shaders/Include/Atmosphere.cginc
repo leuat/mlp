@@ -351,13 +351,12 @@ float3 atmColor(float3 c0, float3 c1) {
 
 float3 groundColor(float3 c0, float3 c1, float3 color, float3 wp, float distScale = 1) {
 	//return  (atmosphereDensity*2*c0 + (1.0*color*clamp(1-atmosphereDensity,0,1) + atmosphereDensity*0.1*c1);
-
-
 	float dist = length(_WorldSpaceCameraPos - wp);
 	float scale = clamp(sqrt(dist/fInnerRadius*35.0*distScale), 0, 1);
 	return lerp(1.6 * color, atmColor(c0,c1), atmosphereDensity*scale);
 
 }
+
 
 
 
@@ -418,10 +417,20 @@ float4 getSkyColor(float3 c0, float3 c1, float3 t) {
 	float3 col = getRayleighPhase(fCos2) * c0 + getMiePhase(fCos, fCos2, g, g2)*c1;
 	//Adjust color from HDR
 	//				col = IN.c0;
-	float d = 0.1;
-	col = pow(col, 0.5) - float3(d, d, d);
-	col = 1.0 - exp(col * -fHdrExposure);
-	float a = pow(col.b, 2);
+	float d = 0.4;
+
+	float3 v3CameraPos = _WorldSpaceCameraPos - v3Translate;	// The camera's current position
+	float fCameraHeight = length(v3CameraPos);					// The camera's current height
+	float p = 1;
+	float dist = fOuterRadius - fInnerRadius;
+	if (fCameraHeight < fOuterRadius)
+		p = clamp((fCameraHeight - fInnerRadius)/dist, 0.35, 1);//fInnerRadius;
+
+
+
+	col = pow(col, p);// - float3(d, d, d);
+	col = 1.0 - exp(col * -fHdrExposure*2);
+	float a = pow(col.b, p);
 	return float4(col, a);
 }
 

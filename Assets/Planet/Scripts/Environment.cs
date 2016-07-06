@@ -210,6 +210,7 @@ public class EnvironmentType
             for (int i = 0; i < N; i++)
             {
                 EnvironmentType et = environmentTypes[Util.rnd.Next() % environmentTypes.Count];
+                //Debug.Log((planetSettings.properties.localCamera - camSurface).normalized);
 
                 float w = 2 * et.maxDist;
 
@@ -218,31 +219,35 @@ public class EnvironmentType
 
                 pos = planetSettings.properties.localCamera + sphere;
                 pos = pos.normalized;
-                float height = planetSettings.surface.GetHeight(pos, 0);
-                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f) * height);
+  //              float height = planetSettings.surface.GetHeight(pos, 0);
+//                Vector3 realP = pos * planetSettings.getPlanetSize() * (1 + (1.0f) * height);
+                Vector3 realP = planetSettings.properties.gpuSurface.getPlanetSurfaceOnly(pos);
+                float height = (realP - pos*planetSettings.getPlanetSize()).magnitude;
+                Debug.Log(height);
 
-
+                
                 float dist = (planetSettings.properties.localCamera - realP).magnitude;
                 //                if (dist < maxDist)
                 {
-                    Vector3 normal = planetSettings.surface.GetNormal(pos, 0, planetSettings.getPlanetSize());
+/*                    Vector3 normal = planetSettings.surface.GetNormal(pos, 0, planetSettings.getPlanetSize());
                     if (Vector3.Dot(normal, pos) < et.normalThreshold)
-                        continue;
+                        continue;*/
+
 
                     float hadd = et.heightAdd / planetSettings.radius;
                     float h = (float)(hadd * 0.75 + Util.rnd.NextDouble() * 0.5 * hadd);
 
-                    realP = pos * planetSettings.getPlanetSize() * (1+ h + (et.heightMul) * height);
-
+                    //realP = pos * planetSettings.getPlanetSize() * (1+ h + (et.heightMul) * height);
 
 
                     GameObject go = (GameObject)GameObject.Instantiate(et.prefab, realP - planetSettings.properties.localCamera, Quaternion.FromToRotation(Vector3.up, pos));
                     //                go.transform.rotation = Quaternion.FromToRotation(Vector3.up, pos) * go.transform.rotation;
                     go.transform.RotateAround(pos, Util.rnd.Next() % 360);
                     GameObject.Destroy(go.GetComponent<Rigidbody>());
-                    go.transform.localScale = Vector3.one * (float)(0.8 + (Util.rnd.NextDouble() * 0.4))*et.scale;
+                    go.transform.localScale = Vector3.one * (float)(0.8 + (Util.rnd.NextDouble() * 0.4))*et.scale*5;
                     go.transform.parent = planetSettings.transform;
                     Util.tagAll(go, "Normal", 10);
+                    Debug.Log("ADDING");
 
                     EnvironmentObject eo = new EnvironmentObject(go, et);
                     Renderer rr = go.GetComponent<Renderer>();

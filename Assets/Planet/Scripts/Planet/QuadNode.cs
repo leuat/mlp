@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Threading;
+using System.Collections.Generic;
 
 
 namespace LemonSpawn
@@ -25,7 +26,7 @@ namespace LemonSpawn
 
         public QuadNode father;
 
-        QuadBlock qb = null;
+        public QuadBlock qb = null;
 
         int[] neighbourLOD = new int[4];
 
@@ -54,6 +55,9 @@ namespace LemonSpawn
         public bool useChildren = false;
 
         public GameObject quadGO = null;
+
+        public List<QuadEnvironment> environment = new List<QuadEnvironment>();
+
 
         private void setGOproperties()
         {
@@ -111,7 +115,11 @@ namespace LemonSpawn
                 c.material = (PhysicMaterial)Resources.Load("PhysicsMaterial/surface");
             }
 //            c.fri
-            
+
+            if (planetSettings.hasEnvironment && currentLevel == World.SzWorld.EnvQuadLevel && environment.Count == 0) {
+                QuadEnvironment qn = new QuadEnvironment(this, null, planetSettings.environmentDensity);
+                environment.Add(qn);
+            } 
 
 
             //            if (currentLevel == max)
@@ -404,6 +412,17 @@ namespace LemonSpawn
         }
 
 
+        public void Destroy() {
+            if (quadGO!=null)
+                GameObject.Destroy(quadGO);
+
+            foreach (QuadEnvironment qe in environment) {
+                qe.Destroy();
+            }
+
+        }
+
+
 
         public void deleteChildren()
         {
@@ -414,8 +433,8 @@ namespace LemonSpawn
 
                 for (int i = 0; i < children.Length; i++)
                 {
-                    if (children[i].quadGO != null)
-                        GameObject.Destroy(children[i].quadGO);
+                    if (children[i].quadGO != null) 
+                        children[i].Destroy();
                     if (children[i].thread != null)
                     {
                         ThreadQueue.Remove(children[i].thread);

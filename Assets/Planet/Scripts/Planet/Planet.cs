@@ -77,9 +77,9 @@ namespace LemonSpawn
             if (pSettings.hasFlatClouds)
                    clouds = new Clouds(sun, sphere, pSettings, pSettings.cloudSettings);
 
-
-            if (pSettings.hasEnvironment)
-                environment = new Environment(pSettings);
+            // Ignore old environment type
+//            if (pSettings.hasEnvironment)
+  //              environment = new Environment(pSettings);
             if (pSettings.hasBillboardClouds)
                 billboardClouds = new BillboardClouds(pSettings); 
 
@@ -279,7 +279,7 @@ namespace LemonSpawn
 
             // Fun
 
-//           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.01f;
+//           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.04f;
 //            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }
