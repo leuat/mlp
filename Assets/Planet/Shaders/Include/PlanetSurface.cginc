@@ -88,8 +88,8 @@
 //			pos = normalize(pos);
 			float hs = heightScale;
 			float3 centerPos = getHeightPosition(normalize(pos), scale, hs, octaves);
-			float3 norm = normalize(centerPos) * 0;
-			//			[unroll]
+			float3 norm = 0;
+						[unroll]
 						for (float i=0;i<N;i++) {
 							float3 disp = float3(cos(i/(N+0)*2.0*PI), 0, sin(i/(N+0)*2.0*PI));
 							//float3 rotDisp = mul(tangentToWorld, disp);
@@ -100,7 +100,8 @@
 							float3 newPos = getHeightPosition(np, scale, hs, octaves);
 
 
-							if (length(prev)>0.1) {
+							if (length(prev)>0.1)
+							{
 								float3 n = normalize(cross(newPos - centerPos, prev - centerPos));
 								float3 nn = n;
 			//					if (dot(nn, normalize(pos)) < 0.0)
@@ -132,6 +133,14 @@
 			float octaves = LodSurface(v.xyz);
 
 			return getSurfaceNormal(v, scale, heightScale, nscale, t,bn, octaves, N);
+		}
+
+		float3 getPlanetSurfaceNormalOctaves(in float3 v, float3 t, float3 bn, float nscale, int N, int octaves) {
+			float scale = surfaceNoiseSettings2.z;
+			float heightScale = surfaceNoiseSettings2.y;
+
+
+			return getSurfaceNormal(v, scale, heightScale, nscale, t, bn, octaves, N);
 		}
 
 

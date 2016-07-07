@@ -19,8 +19,8 @@ public class MainApp : MonoBehaviour
 
 	void Start ()
 	{
-
-		bool ok = false;
+       // SceneManager.LoadScene(4);
+        bool ok = false;
 
 		string[] cmd = System.Environment.GetCommandLineArgs();
 		//Text text = GameObject.Find ("Text").GetComponent<Text> ();

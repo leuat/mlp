@@ -117,6 +117,7 @@
 	sampler2D _Mountain, _Basin, _Top, _Surface;
 
 
+
 	VertexOutputForwardBase2 LvertForwardBase(VertexInput v)
 	{
 		VertexOutputForwardBase2 o;
@@ -140,6 +141,8 @@
 #if UNITY_SPECCUBE_BOX_PROJECTION
 		o.posWorld = posWorld.xyz;
 #endif
+
+
 
 		float wh = (length(o.posWorld.xyz - v3Translate) - fInnerRadius);
 

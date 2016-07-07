@@ -1043,12 +1043,12 @@ MonoBehaviour:
   castShadows: 1
   hasSea: 1
   ExpSurfSettings: {x: 2.4752443, y: -0.27888554, z: 0.93571544}
-  ExpSurfSettings2: {x: -0.16014433, y: 0.011, z: 5.014322}
+  ExpSurfSettings2: {x: -0.16014433, y: 0.011661381, z: 5.014322}
   ExpSurfSettings3: {x: 0.487176, y: 10, z: 0.52732915}
   ExpSurfSettings4: {x: 20, y: 0, z: 20}
   SurfaceVortex1: {x: -1.8621415, y: 1.0096891, z: 0}
   SurfaceVortex2: {x: 3.2743173, y: 1.029915, z: 0}
-  atmosphereDensity: 0.75
+  atmosphereDensity: 0.68668544
   outerRadiusScale: 1.024416
   m_reflectionIntensity: 0
   m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
@@ -1929,8 +1929,8 @@ MonoBehaviour:
   m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 0}
-  hasEnvironment: 0
-  environmentDensity: 0
+  hasEnvironment: 1
+  environmentDensity: 50000
   hasRings: 0
   ringColor: {r: 0.72026646, g: 0.8678478, b: 0.9177238, a: 1}
   ringScale: 5.665586

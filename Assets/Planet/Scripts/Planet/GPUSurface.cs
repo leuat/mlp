@@ -201,60 +201,12 @@ public float noise(Vector3 x)
 
 
 
-/*        float3 getSurfaceNormal(float3 pos, float scale,  float heightScale, float normalScale, float3 tangent, float3 bn, float octaves) {
-//          float3 getSurfaceNormal(float3 pos, float scale, float heightScale, float normalScale) {
-            int N = 4;
-            float3 prev = 0;
-//          pos = normalize(pos);
-            float hs = heightScale;
-            float3 centerPos = getHeightPosition(normalize(pos), scale, hs, octaves);
-            float3 norm = normalize(centerPos) * 0;
-            //          [unroll]
-                        for (float i=0;i<N;i++) {
-                            float3 disp = float3(cos(i/(N+0)*2.0*PI), 0, sin(i/(N+0)*2.0*PI));
-                            //float3 rotDisp = mul(tangentToWorld, disp);
-                            //float3 np = normalize(pos + mul(tangentToWorld, disp)*normalScale);
-                            //float3 np = normalize(pos + disp*normalScale);
-                            float3 np = normalize(pos + (disp.x*tangent + disp.z*bn) *normalScale);
-
-                            float3 newPos = getHeightPosition(np, scale, hs, octaves);
-
-
-                            if (length(prev)>0.1) {
-                                float3 n = normalize(cross(newPos - centerPos, prev - centerPos));
-                                float3 nn = n;
-            //                  if (dot(nn, normalize(pos)) < 0.0)
-                //                  nn *= -1;
-
-                                norm += nn;
-
-                            }
-                            prev = newPos;
-
-                        }
-                        
-
-            return normalize(norm)*-1;
-        }
-
-        */
         float LodSurface(Vector3 p) {
             return surfaceNoiseSettings3.y;
 //          return clamp(5000.0 / (length(p.xyz +v3Translate - _WorldSpaceCameraPos.xyz)), 4, surfaceNoiseSettings3.y);
 
         }
 
-/*    //  inline float3 getPlanetSurfaceNormal(in float4 v) {
-        Vector3 getPlanetSurfaceNormal(Vector3 v, Vector3 t, Vector3 bn, float nscale) {
-            float scale = surfaceNoiseSettings2.z;
-            float heightScale = surfaceNoiseSettings2.y;
-
-            float octaves = LodSurface(v);
-
-            return getSurfaceNormal(v, scale, heightScale, nscale, t,bn, octaves);
-
-        }
-        */
 
         public Vector3 getPlanetSurfaceOnly(Vector3 v) {
 
@@ -273,5 +225,58 @@ public float noise(Vector3 x)
             return p;
         }
 
-		}
+        Vector3 getSurfaceNormal(Vector3 pos, float scale, float heightScale, float normalScale, Vector3 tangent, Vector3 bn, float octaves, int N)
+        {
+            //			Vector3 getSurfaceNormal(Vector3 pos, float scale, float heightScale, float normalScale) {
+            Vector3 prev = Vector3.zero;
+            //			pos = normalize(pos);
+            float hs = heightScale;
+            Vector3 centerPos = getHeightPosition(normalize(pos), scale, hs, octaves);
+            Vector3 norm = Vector3.zero;
+            //			[unroll]
+            for (float i = 0; i < N; i++)
+            {
+                Vector3 disp = new Vector3(cos(i / (N + 0f) * 2.0f * PI), 0, sin(i / (N + 0) * 2.0f * PI));
+                //Vector3 rotDisp = mul(tangentToWorld, disp);
+                //Vector3 np = normalize(pos + mul(tangentToWorld, disp)*normalScale);
+                //Vector3 np = normalize(pos + disp*normalScale);
+                Vector3 np = normalize(pos + (disp.x * tangent + disp.z * bn) * normalScale);
+
+                Vector3 newPos = getHeightPosition(np, scale, hs, octaves);
+
+
+                if (length(prev) > 0.1)
+                {
+                    Vector3 n = normalize(cross(newPos - centerPos, prev - centerPos));
+                    Vector3 nn = n;
+                    //					if (dot(nn, normalize(pos)) < 0.0)
+                    //					nn *= -1;
+
+                    norm += nn;
+
+                }
+                prev = newPos;
+
+            }
+
+
+            return normalize(norm) * -1;
+        }
+
+
+ 
+        //	inline Vector3 getPlanetSurfaceNormal(in float4 v) {
+        public Vector3 getPlanetSurfaceNormal(Vector3 v, Vector3 t, Vector3 bn, float nscale, int N, int octaves)
+        {
+            float scale = surfaceNoiseSettings2.z;
+            float heightScale = surfaceNoiseSettings2.y;
+
+//            float octaves = LodSurface(v);
+
+            return getSurfaceNormal(v, scale, heightScale, nscale, t, bn, octaves, N);
+        }
+
+
+
+    }
 }

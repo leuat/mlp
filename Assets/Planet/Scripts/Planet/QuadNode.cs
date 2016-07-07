@@ -15,6 +15,7 @@ namespace LemonSpawn
         private bool isEnvironment = false;
         public Vector3 currentPos;
 
+        TQueue thread = null;
 
         private bool recalculate = false;
         private Bounds bounds = new Bounds();
@@ -117,8 +118,12 @@ namespace LemonSpawn
 //            c.fri
 
             if (planetSettings.hasEnvironment && currentLevel == World.SzWorld.EnvQuadLevel && environment.Count == 0) {
-                QuadEnvironment qn = new QuadEnvironment(this, null, planetSettings.environmentDensity);
-                environment.Add(qn);
+                int split = 1;
+                for (int i = 0; i < split; i++)
+                {
+                    QuadEnvironment qn = new QuadEnvironment(this, null, planetSettings.environmentDensity/split);
+                    environment.Add(qn);
+                }
             } 
 
 
@@ -140,7 +145,6 @@ namespace LemonSpawn
             threadDone = true;
         }
 
-        TQueue thread = null;
 
 
 
