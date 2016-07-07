@@ -61,7 +61,7 @@
 		   float4 frag(v2f IN) : COLOR
 		   {
 			   //return float4(1.0,0.0,0.0,1.0);
-			   float4 v = tex2D(_MainTex, IN.uv_MainTex);
+			   float4 v = getBlendedTexture(IN.params, IN.uv_MainTex);
 			   v.xyz *= IN.col.xyz;
 			   float attenuation = clamp(LIGHT_ATTENUATION(IN), 0.1, 1);
 
@@ -185,6 +185,7 @@ struct v2f_sc
 				 {
 					 float2 uv_MainTex : TEXCOORD1;
 					 float3 posWorld : TEXCOORD2;
+					 float3 params: TEXCOORD3;
 
 					 V2F_SHADOW_CASTER;
 				 };
@@ -203,7 +204,7 @@ struct v2f_sc
 				 // ----------------------------------------------------
 				 float4 frag(v2f_scast IN) : COLOR
 				 {
-					 float4 v = tex2D(_MainTex, IN.uv_MainTex);
+					 float4 v = getBlendedTexture(IN.params, IN.uv_MainTex);
 					 float dist = length(_WorldSpaceCameraPos - IN.posWorld);
 					 float scale = 1 - clamp(sqrt(dist / fInnerRadius*2.5), 0, 1);
 

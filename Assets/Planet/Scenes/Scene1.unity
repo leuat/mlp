@@ -111,7 +111,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1706478056}
   m_RootOrder: 0
@@ -242,7 +241,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 266856131}
   - {fileID: 1706478056}
@@ -278,7 +276,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.001, y: -0.0005, z: -0.0003}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 3
@@ -337,6 +334,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 5.665586
@@ -397,7 +409,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 136680540}
   m_RootOrder: 0
@@ -506,7 +517,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 75000, y: 75000, z: 75000}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -534,7 +544,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1606506734}
   m_Father: {fileID: 1373287283}
@@ -563,7 +572,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1373287283}
   - {fileID: 1358885275}
@@ -595,7 +603,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1246023578}
   m_Father: {fileID: 1486160996}
@@ -754,7 +761,7 @@ MonoBehaviour:
     global_radius_scale: 1
     skybox: 1
     uuid: 
-    EnvQuadLevel: 4
+    EnvQuadLevel: 5
     resolution: 32
     overview_distance: 10
     screenshot_width: 1024
@@ -775,7 +782,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1176257414}
   - {fileID: 1723561327}
@@ -810,7 +816,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1969987738}
   m_Father: {fileID: 1651260376}
@@ -840,7 +845,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.0003, z: 0.0005}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 2
@@ -899,6 +903,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 5.5690093
@@ -960,7 +979,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 3}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1652409624}
   m_RootOrder: 0
@@ -1079,7 +1097,22 @@ MonoBehaviour:
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
   hasEnvironment: 1
-  environmentDensity: 50000
+  environmentDensity: 10000
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 56.2341, y: 112.124, z: 324.323}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 1, g: 0.558215, b: 0.27205884, a: 6e-45}
+    - {r: 0.35801217, g: 0.5, b: 0.24264705, a: 6e-45}
+    - {r: 0.7806616, g: 0.8014706, b: 0.42430794, a: 6e-45}
+    spreadColors:
+    - {r: 0.625, g: 0.625, b: 0, a: 6e-45}
+    - {r: 0.4852941, g: 0.4852941, b: 0.05709342, a: 6e-45}
+    - {r: 0.5808823, g: 0.39660242, b: 0, a: 6e-45}
   hasRings: 1
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 6.481795
@@ -1123,7 +1156,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 0
@@ -1154,7 +1186,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1806361536}
   m_RootOrder: 0
@@ -1245,7 +1276,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0009, y: 0.0005, z: -0.0003}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 4
@@ -1304,6 +1334,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 5.665586
@@ -1365,7 +1410,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 520410228}
   m_RootOrder: 0
@@ -1473,7 +1517,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1502,7 +1545,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1806361536}
   m_Father: {fileID: 464943366}
@@ -1561,7 +1603,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 408085090}
   m_Father: {fileID: 464943366}
@@ -1666,7 +1707,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1794,7 +1834,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9130707, y: 9.443482, z: -0.20292473}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -1872,7 +1911,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0015, y: -0.0005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 5
@@ -1931,6 +1969,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 1
   environmentDensity: 50000
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 0.72026646, g: 0.8678478, b: 0.9177238, a: 1}
   ringScale: 5.665586
@@ -1990,7 +2043,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 520410228}
   m_Father: {fileID: 464943366}
@@ -2108,7 +2160,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2168,7 +2219,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 408085090}
   m_RootOrder: 0
@@ -2243,7 +2293,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 920154530}
   m_Father: {fileID: 464943366}
@@ -2318,7 +2367,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2865.0469, y: 2291.5664, z: 2263.6836}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1035490327}
   - {fileID: 464943366}
@@ -2374,7 +2422,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 67054041}
   m_Father: {fileID: 136680540}
@@ -2494,7 +2541,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.0005, z: 0.0005}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 1
@@ -2553,6 +2599,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 1, g: 1, b: 1, a: 1}
   ringScale: 1
@@ -2669,7 +2730,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1190114115}
   m_Father: {fileID: 1358885275}
@@ -2699,7 +2759,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0003, y: -0.0005, z: 0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 6
@@ -2758,6 +2817,21 @@ MonoBehaviour:
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
+  quadEnvironmentType:
+    Textures:
+    - Tree1
+    - Tree2
+    - Tree3
+    noiseValues: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0}
+    baseColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    spreadColors:
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
   hasRings: 0
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 6.46057
@@ -2819,7 +2893,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 920154530}
   m_RootOrder: 0
@@ -2941,7 +3014,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 250000, y: 250000, z: 250000}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

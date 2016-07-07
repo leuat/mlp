@@ -17,12 +17,15 @@ float4x4 worldRotMat;
 float3 b_tangent;
 float3 b_binormal;
 float4       _MainTex_ST;
-sampler2D _MainTex;
+sampler2D _MainTex1;
+sampler2D _MainTex2;
+sampler2D _MainTex3;
 float     _PointSize;
 
 struct gIn // OUT vertex shader, IN geometry shader
 {
 	float4 vertex : SV_POSITION;
+	float3 norm: NORMAL;
 	float4 col : COLOR0;
 
 };
@@ -36,9 +39,11 @@ struct v2f // OUT geometry shader, IN fragment shader
 	float3 c1 : TEXCOORD2;
 	float3 posWorld : TEXCOORD3;
 	float3 n: NORMAL;
+	float3 params : TEXCOORD4;
 #ifdef L_FRAG_PASS
-	LIGHTING_COORDS(5, 6)
+	LIGHTING_COORDS(7, 8)
 #endif
+	
 };
 
 gIn vert(appdata_full v)
@@ -46,6 +51,7 @@ gIn vert(appdata_full v)
 	gIn o;
 //	o.vertex = v.vertex;
 	o.vertex = getPlanetSurfaceOnly(v.vertex);
+	o.norm = v.normal;
 	o.col = v.color;
 
 	return o;
@@ -194,9 +200,23 @@ void setupCross(point gIn vert[1], inout TriangleStream<v2f_scast> triStream)
 		outV[i].col = vert[0].col;
 		outV[i].n = realN;
 		outV[i].posWorld = posWorld;
+		// Additional params used from normals
+		if (vert[0].norm.x==0)
+    		outV[i].params = float3(1,0,0);
+		if (vert[0].norm.x==1)
+    		outV[i].params = float3(0,1,0);
+		if (vert[0].norm.x==2)
+    		outV[i].params = float3(0,0,1);
 #endif
 #ifdef L_SCAST_PASS
 		outV[i].posWorld = posWorld;
+		if (vert[0].norm.x==0)
+    		outV[i].params = float3(1,0,0);
+		if (vert[0].norm.x==1)
+    		outV[i].params = float3(0,1,0);
+		if (vert[0].norm.x==2)
+    		outV[i].params = float3(0,0,1);
+
 #endif
 
 		
@@ -255,6 +275,10 @@ void setupCross(point gIn vert[1], inout TriangleStream<v2f_scast> triStream)
 }
 
 
+
+inline float4 getBlendedTexture(float3 scale, float2 uv) {
+	return tex2D(_MainTex1, uv)*scale.x + tex2D(_MainTex2, uv)*scale.y + tex2D(_MainTex3, uv)*scale.z;
+}
 
 
 

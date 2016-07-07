@@ -105,6 +105,12 @@ public class GPUSurface {
             return frac(sin(n) * surfaceNoiseSettings4.x * 0.7535453123f);
         }
 
+        static float iqhashStatic(float n)
+        {
+          return (float)frac(Mathf.Sin(n)*753.5453123f); 
+        }
+
+
         static float lerp(float a, float b, float w) {
 			//return Mathf.Lerp(a,b,c);
 			  return a + w*(b-a);
@@ -132,6 +138,28 @@ public float noise(Vector3 x)
 
 
 }
+
+public static float noiseStatic(Vector3 x)
+{
+    // The noise function returns a value in the range -1.0f -> 1.0f
+    Vector3 p = floor(x);
+    Vector3 f = frac(x);
+
+    f.x = f.x*f.x*(3.0f - 2.0f*f.x);
+    f.y = f.y*f.y*(3.0f - 2.0f*f.y);
+    f.z = f.z*f.z*(3.0f - 2.0f*f.z);
+
+
+            float n = (p.x + p.y * 157.0f + 113.0f * p.z);
+
+            return lerp(lerp(lerp( iqhashStatic(n+  0.0f), iqhashStatic(n+  1.0f),f.x),
+                lerp( iqhashStatic(n+157.0f), iqhashStatic(n+158.0f),f.x),f.y),
+                lerp(lerp( iqhashStatic(n+113.0f), iqhashStatic(n+114.0f),f.x),
+                    lerp( iqhashStatic(n+270.0f), iqhashStatic(n+271.0f),f.x),f.y),f.z);
+
+
+}
+
 
 		float getStandardPerlin(Vector3 pos, float scale, float power, float sub, int N) {
 			float n = 0;

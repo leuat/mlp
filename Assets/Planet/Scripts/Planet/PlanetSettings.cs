@@ -91,6 +91,7 @@ namespace LemonSpawn {
         [Header("Environment settings")]
         public bool hasEnvironment = false;
         public int environmentDensity = 0;
+        public QuadEnvironmentType quadEnvironmentType;
 
 
         [Space(10)]
