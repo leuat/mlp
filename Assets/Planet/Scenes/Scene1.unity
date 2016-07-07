@@ -747,7 +747,7 @@ MonoBehaviour:
   sun: {fileID: 1286680130}
   spaceBackground: {fileID: 0}
   sphere: {fileID: 4300000, guid: 8784879114f624946ab37aa4a373b971, type: 3}
-  m_maxQuadNodeLevel: 12
+  m_maxQuadNodeLevel: 13
   m_minQuadNodeLevel: 2
   GPUSurface: 1
   szWorld:
@@ -1060,59 +1060,59 @@ MonoBehaviour:
   maxQuadNodeLevel: 14
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.4752443, y: -0.27888554, z: 0.93571544}
-  ExpSurfSettings2: {x: -0.16014433, y: 0.011661381, z: 5.014322}
-  ExpSurfSettings3: {x: 0.487176, y: 10, z: 0.52732915}
+  ExpSurfSettings: {x: 2.7327607, y: 1.1752299, z: 0.40849543}
+  ExpSurfSettings2: {x: -0.22819424, y: 0.00752527, z: 13.618797}
+  ExpSurfSettings3: {x: -0.031596422, y: 10, z: 1.0254302}
   ExpSurfSettings4: {x: 20, y: 0, z: 20}
-  SurfaceVortex1: {x: -1.8621415, y: 1.0096891, z: 0}
-  SurfaceVortex2: {x: 3.2743173, y: 1.029915, z: 0}
-  atmosphereDensity: 0.68668544
-  outerRadiusScale: 1.024416
+  SurfaceVortex1: {x: -4.2784066, y: 0.40908253, z: 0}
+  SurfaceVortex2: {x: 25.36058, y: 0, z: 0}
+  atmosphereDensity: 0.8
+  outerRadiusScale: 1.05416
   m_reflectionIntensity: 0
-  m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
+  m_atmosphereWavelengths: {x: 0.5, y: 0.62, z: 0.625}
   metallicity: 0
   specularity: 1
-  atmosphereString: normal
+  atmosphereString: red
   m_hdrExposure: 1.5906833
   m_ESun: 10
   radius: 50000
   temperature: 300
   hillyThreshold: 0.9767341
-  liquidThreshold: 0.0014416698
-  topThreshold: 0.0110243205
+  liquidThreshold: 0
+  topThreshold: 0.020507256
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
   globalTerrainScale: 7
-  m_surfaceColor: {r: 0.76761794, g: 0.5066766, b: 0.07461786, a: 1}
-  m_surfaceColor2: {r: 0.401466, g: 0.65456253, b: 0.17314994, a: 1}
+  m_surfaceColor: {r: 0.56298345, g: 0.44187787, b: 0.31714216, a: 1}
+  m_surfaceColor2: {r: 0.5624994, g: 0.44048572, b: 0.21679673, a: 1}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
-  m_basinColor: {r: 0.558723, g: 0.30821118, b: 0.12541105, a: 1}
-  m_basinColor2: {r: 0.50019133, g: 0.31909966, b: 0.13685998, a: 1}
+  m_basinColor: {r: 0, g: 0, b: 0, a: 1}
+  m_basinColor2: {r: 0.11623669, g: 0.11623669, b: 0.11623669, a: 1}
   m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
-  m_topColor: {r: 1.002769, g: 1.0101869, b: 1.0072062, a: 1}
+  m_topColor: {r: 0.098957255, g: 0.098957255, b: 0.098957255, a: 1}
   m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
   m_hillColor: {r: 0.4017703, g: 0.4040201, b: 0.41925243, a: 1}
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
   m_waterColor: {r: 0.3114423, g: 0.50098693, b: 0.9101194, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
-  bumpMap: {fileID: 2800000, guid: b585ed2d092f14dcaa22b21585e12187, type: 3}
+  bumpMap: {fileID: 2800000, guid: a8b809fd30fd646cd863a437530c5c48, type: 3}
   hasEnvironment: 1
   environmentDensity: 10000
   quadEnvironmentType:
     Textures:
     - Tree1
     - Tree2
-    - Tree3
+    - DeadTree1
     noiseValues: {x: 56.2341, y: 112.124, z: 324.323}
-    noiseThresholds: {x: 0, y: 0, z: 0}
+    noiseThresholds: {x: 0, y: 0, z: 0.4}
     baseColors:
     - {r: 1, g: 0.558215, b: 0.27205884, a: 6e-45}
     - {r: 0.35801217, g: 0.5, b: 0.24264705, a: 6e-45}
-    - {r: 0.7806616, g: 0.8014706, b: 0.42430794, a: 6e-45}
+    - {r: 0.8014706, g: 0.8014706, b: 0.8014706, a: 6e-45}
     spreadColors:
     - {r: 0.625, g: 0.625, b: 0, a: 6e-45}
     - {r: 0.4852941, g: 0.4852941, b: 0.05709342, a: 6e-45}
-    - {r: 0.5808823, g: 0.39660242, b: 0, a: 6e-45}
+    - {r: 0.20588237, g: 0, b: 0, a: 6e-45}
   hasRings: 1
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
   ringScale: 6.481795
@@ -1122,19 +1122,19 @@ MonoBehaviour:
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {r: 0.5112844, g: 0.65972257, b: 0.7916661, a: 1}
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 1.2950191
+    LS_CloudScale: 0.9410653
     LS_CloudScattering: 1.566984
     LS_CloudIntensity: 1.2592973
     LS_CloudSharpness: 1.5
-    LS_CloudThickness: 0.63319975
+    LS_CloudThickness: 0
     LS_ShadowScale: 0.006
-    LS_LargeVortex: -0.5429516
-    LS_SmallVortex: 0.012753725
-    LS_CloudSubScale: 0.6138731
-    LS_Stretch: {x: 0.4908571, y: 1, z: 0.46924236}
+    LS_LargeVortex: 0.10836097
+    LS_SmallVortex: 0.02
+    LS_CloudSubScale: 0.50000405
+    LS_Stretch: {x: 1.0944285, y: 1, z: 1}
     cloudRadius: 0
     LS_HasCloudShadows: 0
     LS_DistScale: 10
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetTypeName: Terra
+  planetTypeName: Red Moon
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -1901,7 +1901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1463466346
 Transform:
   m_ObjectHideFlags: 0

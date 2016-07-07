@@ -237,8 +237,15 @@
 	half4 LfragForwardBase(VertexOutputForwardBase2 i) : SV_Target
 	{
 		FRAGMENT_SETUP(s)
-		float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2,3);
-		s.normalWorld = realN;
+
+   	    float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
+  	    if (h>liquidThreshold) {
+			float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2,3);
+			s.normalWorld = realN;
+   	    }
+//   	    else
+  // 	    	discard;
+
 
 		UnityLight mainLight = MainLight(s.normalWorld);
 	half atten = SHADOW_ATTENUATION(i);
@@ -263,7 +270,6 @@
 
 	float fCameraHeight = length(v3CameraPos);
 	float camH = clamp(fCameraHeight - fInnerRadius, 0, 1);
-	float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
 	float wh = (length(i.posWorld.xyz - v3Translate) - fInnerRadius);
 
 	//									float modulatedHillyThreshold = hillyThreshold* atan2(i.posWorld.z , i.posWorld.y);

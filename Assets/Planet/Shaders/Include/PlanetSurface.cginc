@@ -23,7 +23,7 @@
 				A += 1/amp;
 			}
 
-			float v = clamp(n - sub*A, 0, 1);
+			float v = clamp(n - sub*A, -1, 1);
 			return v;	
 
 		}
@@ -69,7 +69,7 @@
 		//	if (surfaceNoiseSettings4.y>0)
 	   // 		val+= surfaceNoiseSettings4.y*getMultiFractal(pos*surfaceNoiseSettings4.z, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			val = pow(val, surfaceNoiseSettings3.z);
-			return clamp(val-surfaceNoiseSettings3.x, 0, 10);
+			return clamp(val-surfaceNoiseSettings3.x, -10, 10);
 			//return getStandardPerlin(pos, scale, 1, 0.5, 8);
 
 		}

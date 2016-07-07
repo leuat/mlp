@@ -424,13 +424,15 @@ float4 getSkyColor(float3 c0, float3 c1, float3 t) {
 	float p = 1;
 	float dist = fOuterRadius - fInnerRadius;
 	if (fCameraHeight < fOuterRadius)
-		p = clamp((fCameraHeight - fInnerRadius)/dist, 0.35, 1);//fInnerRadius;
+		p = clamp((fCameraHeight - fInnerRadius)/dist, 0.4, 1);//fInnerRadius;
 
 
 
 	col = pow(col, p);// - float3(d, d, d);
 	col = 1.0 - exp(col * -fHdrExposure*2);
-	float a = pow(col.b, p);
+	float alpha = max(col.r, col.g);
+	alpha = max(alpha, col.b);
+	float a = pow(alpha, p);
 	return float4(col, a);
 }
 
