@@ -233,7 +233,11 @@ namespace LemonSpawn
             }
 
 
-            if (children != null)
+            foreach (QuadEnvironment qe in environment)
+                qe.Update();
+
+
+                if (children != null)
             {
                 /*if (thread!=null) {
 					
@@ -513,6 +517,8 @@ namespace LemonSpawn
                 return;
             }
             //
+
+
 
             currentLevel = level;
 

@@ -131,7 +131,7 @@ namespace LemonSpawn
             }
             Cursor.lockState = CursorLockMode.Locked;
 		
-            lastMouse = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"))*15f;// - lastMouse;
+            lastMouse = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")*-1)*15f;// - lastMouse;
             lastMouse = new Vector3(-lastMouse.y * camSens, lastMouse.x * camSens, 0);
             mouseAdd += 0.1f * lastMouse;
             mouseAdd *= 0.9f;

@@ -17,7 +17,7 @@
             <y>1</y>
             <z>0</z>
           </minMax>
-          <realizedValue>0.719643354</realizedValue>
+          <realizedValue>0.7129224</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -51,7 +51,7 @@
             <y>1.05</y>
             <z>1.025</z>
           </minMax>
-          <realizedValue>1.025066</realizedValue>
+          <realizedValue>1.02579033</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -85,7 +85,7 @@
             <y>5</y>
             <z>1.5</z>
           </minMax>
-          <realizedValue>1.47917259</realizedValue>
+          <realizedValue>1.47909689</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -119,7 +119,7 @@
             <y>4</y>
             <z>2.5</z>
           </minMax>
-          <realizedValue>2.45257</realizedValue>
+          <realizedValue>2.53421545</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -255,7 +255,7 @@
             <y>0.5</y>
             <z>0.01</z>
           </minMax>
-          <realizedValue>0.0110944975</realizedValue>
+          <realizedValue>0.0105096875</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -289,7 +289,7 @@
             <y>25</y>
             <z>5</z>
           </minMax>
-          <realizedValue>4.294872</realizedValue>
+          <realizedValue>5.08041573</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -358,7 +358,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>-0.9980646</realizedValue>
+          <realizedValue>0.20734705</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -392,7 +392,7 @@
             <y>50</y>
             <z>5</z>
           </minMax>
-          <realizedValue>3.27346778</realizedValue>
+          <realizedValue>3.15088868</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -426,7 +426,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.01493275</realizedValue>
+          <realizedValue>1.00810421</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -460,7 +460,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.9644979</realizedValue>
+          <realizedValue>0.94290185</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -494,7 +494,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.971333265</realizedValue>
+          <realizedValue>0.92887634</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -528,7 +528,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.5137366</realizedValue>
+          <realizedValue>0.4661732</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -630,7 +630,7 @@
             <y>0.1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.005189752</realizedValue>
+          <realizedValue>0.01195132</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -698,7 +698,7 @@
             <y>0.02</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.00189320266</realizedValue>
+          <realizedValue>0.000276290724</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -732,7 +732,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.32942164</realizedValue>
+          <realizedValue>1.28407931</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -766,7 +766,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.42208111</realizedValue>
+          <realizedValue>1.50825822</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -800,7 +800,7 @@
             <y>10</y>
             <z>1</z>
           </minMax>
-          <realizedValue>1.17873418</realizedValue>
+          <realizedValue>1.23311186</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -834,7 +834,7 @@
             <y>4</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.5987963</realizedValue>
+          <realizedValue>0.5992135</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -902,7 +902,7 @@
             <y>2</y>
             <z>1</z>
           </minMax>
-          <realizedValue>-0.869646847</realizedValue>
+          <realizedValue>-0.63491863</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -970,7 +970,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4079197</realizedValue>
+          <realizedValue>0.3351554</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1038,7 +1038,7 @@
             <y>1</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.6893995</realizedValue>
+          <realizedValue>0.65108</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1087,9 +1087,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5804839</r>
-            <g>0.326166838</g>
-            <b>0.120482422</b>
+            <r>0.5333139</r>
+            <g>0.3168637</g>
+            <b>0.105348647</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1121,9 +1121,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.5654702</r>
-            <g>0.3348864</g>
-            <b>0.106726237</b>
+            <r>0.5933118</r>
+            <g>0.327588379</g>
+            <b>0.130979612</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1155,9 +1155,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.764408052</r>
-            <g>0.5502104</g>
-            <b>0.0683511049</b>
+            <r>0.7127318</r>
+            <g>0.5623639</g>
+            <b>0.102178738</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1189,9 +1189,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.332646728</r>
-            <g>0.611281</g>
-            <b>0.207635731</b>
+            <r>0.385703</r>
+            <g>0.5632973</g>
+            <b>0.169135958</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1223,9 +1223,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>1.01957536</r>
-            <g>1.01014555</g>
-            <b>1.01860416</b>
+            <r>1.00560093</r>
+            <g>1.00842333</g>
+            <b>1.0180769</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1257,9 +1257,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.4167309</r>
-            <g>0.41400072</g>
-            <b>0.419989258</b>
+            <r>0.409646422</r>
+            <g>0.410366982</g>
+            <b>0.41451025</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1291,9 +1291,9 @@
             <a>1</a>
           </variation>
           <realizedColor>
-            <r>0.31327346</r>
-            <g>0.5184564</g>
-            <b>0.9013392</b>
+            <r>0.312954</r>
+            <g>0.5062475</g>
+            <b>0.9185364</b>
             <a>1</a>
           </realizedColor>
         </SettingsType>
@@ -1344,7 +1344,7 @@
             <y>3</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.4820053</realizedValue>
+          <realizedValue>0.427567363</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1480,7 +1480,7 @@
             <y>20</y>
             <z>1</z>
           </minMax>
-          <realizedValue>4.311882</realizedValue>
+          <realizedValue>4.16155</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1684,7 +1684,7 @@
             <y>0.5</y>
             <z>1</z>
           </minMax>
-          <realizedValue>0.09834376</realizedValue>
+          <realizedValue>0</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1718,7 +1718,7 @@
             <y>40</y>
             <z>1</z>
           </minMax>
-          <realizedValue>9.565216</realizedValue>
+          <realizedValue>20</realizedValue>
           <type>1</type>
           <color>
             <r>0</r>
@@ -1739,6 +1739,349 @@
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>31221.51</lower>
+          <upper>41055.9023</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>35006.95</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue>Tree1</stringValue>
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue>Tree3</stringValue>
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue>DeadTree1</stringValue>
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.480058968</r>
+            <g>0.16618897</g>
+            <b>0.0155020114</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.480058968</r>
+            <g>0.16618897</g>
+            <b>0.0155020114</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.2968681</r>
+            <g>0.695832849</g>
+            <b>0.2968681</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.2968681</r>
+            <g>0.695832849</g>
+            <b>0.2968681</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.6883923</r>
+            <g>0.6883923</g>
+            <b>0.6883923</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.6883923</r>
+            <g>0.6883923</g>
+            <b>0.6883923</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>1</r>
+            <g>0.996635556</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>1</r>
+            <g>0.996635556</g>
+            <b>0</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -1748,6 +2091,7 @@
         <string>Clouds</string>
         <string>Surface color</string>
         <string>Rings</string>
+        <string>Environment</string>
       </groups>
       <TemperatureRange>
         <x>250</x>
@@ -3494,6 +3838,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -5262,6 +5949,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -7014,6 +8044,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -8782,6 +10155,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -10541,6 +12257,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -12292,6 +14351,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -14060,6 +16462,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -15812,6 +18557,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -17580,6 +20668,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -19332,6 +22763,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -21100,6 +24874,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -22852,6 +26969,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>
@@ -24620,6 +29080,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -26380,6 +31183,349 @@ Test newline
             <a>0</a>
           </realizedColor>
         </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
       </settingsTypes>
       <groups>
         <string>Atmosphere</string>
@@ -28132,6 +33278,349 @@ Test newline
             <g>0</g>
             <b>0</b>
             <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment density</name>
+          <propName>environmentDensity</propName>
+          <index>0</index>
+          <info>Amount of environment per quad.</info>
+          <group>Environment</group>
+          <lower>10000</lower>
+          <upper>10000</upper>
+          <minMax>
+            <x>0</x>
+            <y>100000</y>
+            <z>1</z>
+          </minMax>
+          <realizedValue>10000</realizedValue>
+          <type>1</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 1</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>0</index>
+          <info>Texture 1</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 2</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>1</index>
+          <info>Texture 2</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment texture 3</name>
+          <stringValue />
+          <propName>quadEnvironmentType.Textures</propName>
+          <index>2</index>
+          <info>Texture 3</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>0</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>4</type>
+          <color>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>0</index>
+          <info>Environment 1 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>1</index>
+          <info>Environment 2 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Base colour</name>
+          <propName>quadEnvironmentType.baseColors</propName>
+          <index>2</index>
+          <info>Environment 3 base color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0.5</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 1 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>0</index>
+          <info>Environment 1 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 2 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>1</index>
+          <info>Environment 2 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
+          </variation>
+          <realizedColor>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>0</a>
+          </realizedColor>
+        </SettingsType>
+        <SettingsType>
+          <name>Environment 3 Spread colour</name>
+          <propName>quadEnvironmentType.spreadColors</propName>
+          <index>2</index>
+          <info>Environment 3 spread color</info>
+          <group>Environment</group>
+          <lower>0</lower>
+          <upper>0</upper>
+          <minMax>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+          </minMax>
+          <realizedValue>0</realizedValue>
+          <type>3</type>
+          <color>
+            <r>0.5</r>
+            <g>1</g>
+            <b>0</b>
+            <a>1</a>
+          </color>
+          <variation>
+            <r>0</r>
+            <g>0</g>
+            <b>0</b>
+            <a>1</a>
           </variation>
           <realizedColor>
             <r>0</r>

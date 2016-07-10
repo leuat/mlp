@@ -35,6 +35,7 @@ namespace LemonSpawn
         List<int> indexes = new List<int>();
         List<Color> colors = new List<Color>();
         QuadEnvironmentType qet;
+        
 
         private bool VerifyPosition(Vector3 pos, out Vector3 newPos)
         {
@@ -91,27 +92,35 @@ namespace LemonSpawn
                 Vector3 realPos = proposedPos;
                 //isOk = VerifyPosition(proposedPos, out realPos);
 
-              
+
+                              
 
                 if (isOk)
                 {
-                    points.Add(realPos);
-                    indexes.Add(cur);
                     // 
 
-                    vals.x = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.x);
-                    vals.y = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.y);
-                    vals.z = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.z);
+                    vals.x = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.x) - qet.noiseThresholds.x;
+                    vals.y = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.y) - qet.noiseThresholds.y;
+                    vals.z = GPUSurface.noiseStatic(realPos.normalized*qet.noiseValues.z) - qet.noiseThresholds.z;
 
                     int val = 0;
                     if (vals.y>vals.x) val = 1;
                     if (vals.z>vals.y) val = 2;
 
+                    // Check that texture is not null
+
+                    if (qet.Textures[val] == "")
+                        continue;
+
+                    points.Add(realPos);
+                    indexes.Add(cur);
+
+
                     c.r = qet.baseColors[val].r + (float)r.NextDouble()*qet.spreadColors[val].r;
                     c.g = qet.baseColors[val].g + (float)r.NextDouble()*qet.spreadColors[val].g;
                     c.b = qet.baseColors[val].b + (float)r.NextDouble()*qet.spreadColors[val].b;
 
-                    normals.Add(new Vector3(val,0,0));
+                    normals.Add(new Vector3(val,(float)r.NextDouble()*360f,0));
 
                     colors.Add(c);
                     cur++;
@@ -144,7 +153,7 @@ namespace LemonSpawn
             QuadNode qn = quad;
 
             go = new GameObject("Environment");
-            go.transform.parent = qn.planetSettings.transform;
+            go.transform.parent = qn.planetSettings.properties.environmentObject.transform;
             go.transform.localScale = Vector3.one;
             go.transform.position = Vector3.zero;
             go.transform.localPosition = Vector3.zero;
@@ -174,13 +183,37 @@ namespace LemonSpawn
             mat.SetVector("b_binormal", binormal);
 
 
-            int i =1;
 
-            foreach (string s in qet.Textures) {
-                Texture2D tex = (Texture2D)Resources.Load("Textures/EnvironmentBillboards/" + s); 
-                mat.SetTexture("_MainTex" + i++, tex);
+
+        }
+
+        private Texture2D[] textures = new Texture2D[3];
+
+        public void SetTextures()
+        {
+            int i = 0;
+            if (mat == null)
+                return;
+            foreach (string s in qet.Textures)
+            {
+                if (s == "")
+                    continue;
+                if (textures[i] == null)
+                {
+                    textures[i] = (Texture2D)Resources.Load(RenderSettings.textureLocation + s);
+ 
+                }
+                if (textures[i] == null)
+                    continue;
+                if (textures[i].name != s)
+                {
+                    textures[i] = (Texture2D)Resources.Load(RenderSettings.textureLocation + s);
+
+                }
+                if (textures[i]!=null)
+                   mat.SetTexture("_MainTex" + (i+1), textures[i]);
+                i++;
             }
-
 
         }
 
@@ -220,6 +253,7 @@ namespace LemonSpawn
 
         public void Update()
         {
+            SetTextures();
         }
 
 

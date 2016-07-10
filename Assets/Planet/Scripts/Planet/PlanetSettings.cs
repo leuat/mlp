@@ -19,7 +19,7 @@ namespace LemonSpawn {
         public DVector pos = new DVector();
         public DVector orgPos = new DVector();
         public DVector posInKm;
-        public GameObject terrainObject, parent;
+        public GameObject terrainObject, parent, environmentObject;
         public Vector3 localCamera;
         public List<Frame> Frames = new List<Frame>();
         public Plane[] cameraPlanes;
@@ -104,7 +104,6 @@ namespace LemonSpawn {
 
         [Space(10)]
         [Header("Cloud settings")]
-        public Texture2D clouds;
         public float bumpScale = 1.0f;
 		public float cloudRadius = 1.02f;
         public float renderedCloudRadius = 1.03f;
@@ -355,6 +354,8 @@ namespace LemonSpawn {
 
 			if (World.CloseCamera != null)
                 properties.cameraPlanes = GeometryUtility.CalculateFrustumPlanes(World.CloseCamera);
+
+
         }
 		
 	}

@@ -65,6 +65,8 @@ namespace LemonSpawn {
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
 
+        public static string textureLocation = "Textures/EnvironmentBillboards/";
+
         public static bool reCalculateQuads = true;
 
         public static string path; 

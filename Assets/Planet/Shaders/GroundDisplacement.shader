@@ -299,10 +299,10 @@
 	c.rgb += UNITY_BRDF_GI(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, occlusion, gi);
 	c.rgb += Emission(i.tex.xy);
 
-	float groundClouds = getGroundShadowFromClouds(ppos);
+	//float groundClouds = getGroundShadowFromClouds(ppos);
 
 
-	c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0)*groundClouds;
+	c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0);// *groundClouds;
 
 	//											c.rgb = modulatedHillyThreshold;
 	//												c.rgb = float3(1,0,0)*modd;

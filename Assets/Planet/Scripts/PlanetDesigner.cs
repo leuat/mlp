@@ -27,6 +27,7 @@ namespace LemonSpawn
         private GameObject pnlString;
         private GameObject pnlBool;
         private GameObject pnlColor;
+        private GameObject pnlTexture;
 
 
         private void HideSettingsPanels()
@@ -39,6 +40,8 @@ namespace LemonSpawn
                 pnlBool.SetActive(false);
             if (pnlColor != null)
                 pnlColor.SetActive(false);
+            if (pnlTexture != null)
+                pnlTexture.SetActive(false);
         }
 
 
@@ -52,6 +55,7 @@ namespace LemonSpawn
             pnlNumber = GameObject.Find("pnlGroupNumber");
             pnlString = GameObject.Find("pnlGroupString");
             pnlColor = GameObject.Find("pnlGroupColor");
+            pnlTexture = GameObject.Find("pnlGroupTexture");
 
             RenderSettings.MoveCam = false;
 
@@ -123,6 +127,7 @@ namespace LemonSpawn
                     PlanetTypes.currentSettings.Realize(r);
                     PlanetTypes.currentSettings.setParameters(SolarSystem.planet.pSettings,r);
                     PopulateSettings();
+                    SolarSystem.planet.Reset();
                 }
             }
             if (Input.GetKeyUp(KeyCode.F2))
@@ -149,14 +154,18 @@ namespace LemonSpawn
 
             if (Input.GetMouseButton(1))
             {
-                theta = s * Input.GetAxis("Mouse X");
-                phi = s * Input.GetAxis("Mouse Y") * -1.0f;
+                float mscale = SolarSystem.planet.pSettings.properties.localCamera.magnitude / SolarSystem.planet.pSettings.getPlanetSize()/10f;
+                theta = s * Input.GetAxis("Mouse X")*mscale;
+                phi = s * Input.GetAxis("Mouse Y") * -1.0f*mscale;
+
+
+                
             }
             focusPointCur = SolarSystem.planet.pSettings.properties.orgPos;
 //            focusPointCur *= (float)((1.0f / RenderSettings.AU));
             mouseAccel += new Vector3(theta, phi, 0);
 
-            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel");
+            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f;
             scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
 
             double scale = 10000;
@@ -394,7 +403,21 @@ namespace LemonSpawn
 
         }
 
-        
+        private void SetTexture()
+        {
+            RawImage img = GameObject.Find("TextureImage").GetComponent<RawImage>();
+           img.texture = (Texture2D)Resources.Load(RenderSettings.textureLocation + settingsType.stringValue);
+
+        }
+
+        public void SelectTexture()
+        {
+            settingsType.stringValue = PlanetTypes.textures[GameObject.Find("DropDownTextures").GetComponent<Dropdown>().value];
+            SetTexture();
+            settingsType.setParameter(SolarSystem.planet.pSettings);
+                
+
+        }
 
 
 
@@ -430,7 +453,14 @@ namespace LemonSpawn
                 pnlColor.SetActive(true);
                 setColor(s.color, s.variation);
             }
+            if (s.type == SettingsType.TEXTURE)
+            {
+                pnlTexture.SetActive(true);
+                PlanetTypes.p.PopulateTexturesDrop("DropDownTextures", s.stringValue);
+                SetTexture();
+                   
 
+            }
 
 
         }

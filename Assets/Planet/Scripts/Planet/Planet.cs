@@ -36,6 +36,7 @@ namespace LemonSpawn
         public void Reset()
         {
             GameObject.Destroy(pSettings.properties.terrainObject);
+            GameObject.Destroy(pSettings.properties.environmentObject);
         }
 
 
@@ -148,6 +149,12 @@ namespace LemonSpawn
                 pSettings.properties.terrainObject.transform.localPosition = Vector3.zero;
                 pSettings.properties.terrainObject.transform.localScale = Vector3.one;
                 pSettings.properties.terrainObject.transform.localRotation = Quaternion.identity;
+
+                pSettings.properties.environmentObject = new GameObject("environment");
+                pSettings.properties.environmentObject.transform.parent = pSettings.gameObject.transform;
+                pSettings.properties.environmentObject.transform.localPosition = Vector3.zero;
+                pSettings.properties.environmentObject.transform.localScale = Vector3.one;
+                pSettings.properties.environmentObject.transform.localRotation = Quaternion.identity;
 
                 cube = new CubeSphere(pSettings, false);
                 if (impostor != null)

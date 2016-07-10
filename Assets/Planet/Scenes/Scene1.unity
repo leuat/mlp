@@ -111,6 +111,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1706478056}
   m_RootOrder: 0
@@ -241,11 +242,12 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 266856131}
   - {fileID: 1706478056}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -276,6 +278,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.001, y: -0.0005, z: -0.0003}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 3
@@ -354,7 +357,6 @@ MonoBehaviour:
   ringScale: 5.665586
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 1
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
@@ -409,6 +411,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 136680540}
   m_RootOrder: 0
@@ -517,9 +520,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 75000, y: 75000, z: 75000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &408085089
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +548,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1606506734}
   m_Father: {fileID: 1373287283}
@@ -572,6 +577,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1373287283}
   - {fileID: 1358885275}
@@ -603,6 +609,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1246023578}
   m_Father: {fileID: 1486160996}
@@ -762,7 +769,7 @@ MonoBehaviour:
     skybox: 1
     uuid: 
     EnvQuadLevel: 5
-    resolution: 32
+    resolution: 48
     overview_distance: 10
     screenshot_width: 1024
     screenshot_height: 1024
@@ -782,6 +789,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1176257414}
   - {fileID: 1723561327}
@@ -816,6 +824,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1969987738}
   m_Father: {fileID: 1651260376}
@@ -845,6 +854,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.0003, z: 0.0005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 2
@@ -923,7 +933,6 @@ MonoBehaviour:
   ringScale: 5.5690093
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 1
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
@@ -979,6 +988,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1652409624}
   m_RootOrder: 0
@@ -1060,36 +1070,36 @@ MonoBehaviour:
   maxQuadNodeLevel: 14
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.7327607, y: 1.1752299, z: 0.40849543}
-  ExpSurfSettings2: {x: -0.22819424, y: 0.00752527, z: 13.618797}
-  ExpSurfSettings3: {x: -0.031596422, y: 10, z: 1.0254302}
+  ExpSurfSettings: {x: 2.4752443, y: -0.27888554, z: 0.93571544}
+  ExpSurfSettings2: {x: -0.16014433, y: 0.011661381, z: 5.014322}
+  ExpSurfSettings3: {x: 0.487176, y: 11, z: 0.52732915}
   ExpSurfSettings4: {x: 20, y: 0, z: 20}
-  SurfaceVortex1: {x: -4.2784066, y: 0.40908253, z: 0}
-  SurfaceVortex2: {x: 25.36058, y: 0, z: 0}
-  atmosphereDensity: 0.8
-  outerRadiusScale: 1.05416
+  SurfaceVortex1: {x: -1.8621415, y: 1.0096891, z: 0}
+  SurfaceVortex2: {x: 3.2743173, y: 1.029915, z: 0}
+  atmosphereDensity: 0.85
+  outerRadiusScale: 1.024416
   m_reflectionIntensity: 0
-  m_atmosphereWavelengths: {x: 0.5, y: 0.62, z: 0.625}
+  m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
   metallicity: 0
   specularity: 1
-  atmosphereString: red
+  atmosphereString: normal
   m_hdrExposure: 1.5906833
   m_ESun: 10
   radius: 50000
   temperature: 300
   hillyThreshold: 0.9767341
-  liquidThreshold: 0
-  topThreshold: 0.020507256
+  liquidThreshold: 0.0014416698
+  topThreshold: 0.0110243205
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
   globalTerrainScale: 7
-  m_surfaceColor: {r: 0.56298345, g: 0.44187787, b: 0.31714216, a: 1}
-  m_surfaceColor2: {r: 0.5624994, g: 0.44048572, b: 0.21679673, a: 1}
+  m_surfaceColor: {r: 0.76761794, g: 0.5066766, b: 0.07461786, a: 1}
+  m_surfaceColor2: {r: 0.401466, g: 0.65456253, b: 0.17314994, a: 1}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
-  m_basinColor: {r: 0, g: 0, b: 0, a: 1}
-  m_basinColor2: {r: 0.11623669, g: 0.11623669, b: 0.11623669, a: 1}
+  m_basinColor: {r: 0.558723, g: 0.30821118, b: 0.12541105, a: 1}
+  m_basinColor2: {r: 0.50019133, g: 0.31909966, b: 0.13685998, a: 1}
   m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
-  m_topColor: {r: 0.098957255, g: 0.098957255, b: 0.098957255, a: 1}
+  m_topColor: {r: 1.002769, g: 1.0101869, b: 1.0072062, a: 1}
   m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
   m_hillColor: {r: 0.4017703, g: 0.4040201, b: 0.41925243, a: 1}
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
@@ -1097,14 +1107,14 @@ MonoBehaviour:
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 2800000, guid: a8b809fd30fd646cd863a437530c5c48, type: 3}
   hasEnvironment: 1
-  environmentDensity: 10000
+  environmentDensity: 30000
   quadEnvironmentType:
     Textures:
     - Tree1
-    - Tree2
+    - 
     - DeadTree1
     noiseValues: {x: 56.2341, y: 112.124, z: 324.323}
-    noiseThresholds: {x: 0, y: 0, z: 0.4}
+    noiseThresholds: {x: -0.4, y: 0, z: 0.4}
     baseColors:
     - {r: 1, g: 0.558215, b: 0.27205884, a: 6e-45}
     - {r: 0.35801217, g: 0.5, b: 0.24264705, a: 6e-45}
@@ -1118,23 +1128,22 @@ MonoBehaviour:
   ringScale: 6.481795
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
-  clouds: {fileID: 2800000, guid: 3b15afd8993e54a7fafe69b57f2b68a5, type: 3}
   bumpScale: 0.4
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
-  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
+  cloudColor: {r: 0.5112844, g: 0.65972257, b: 0.7916661, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 0.9410653
+    LS_CloudScale: 3
     LS_CloudScattering: 1.566984
     LS_CloudIntensity: 1.2592973
     LS_CloudSharpness: 1.5
-    LS_CloudThickness: 0
+    LS_CloudThickness: 0.63319975
     LS_ShadowScale: 0.006
-    LS_LargeVortex: 0.10836097
-    LS_SmallVortex: 0.02
-    LS_CloudSubScale: 0.50000405
-    LS_Stretch: {x: 1.0944285, y: 1, z: 1}
+    LS_LargeVortex: -0.5429516
+    LS_SmallVortex: 0.012753725
+    LS_CloudSubScale: 0.5838731
+    LS_Stretch: {x: 0.4908571, y: 1, z: 0.46924236}
     cloudRadius: 0
     LS_HasCloudShadows: 0
     LS_DistScale: 10
@@ -1146,7 +1155,7 @@ MonoBehaviour:
   hasFlatClouds: 1
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetTypeName: Red Moon
+  planetTypeName: Terra
 --- !u!4 &1176257414
 Transform:
   m_ObjectHideFlags: 0
@@ -1156,6 +1165,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 0
@@ -1186,6 +1196,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1806361536}
   m_RootOrder: 0
@@ -1276,6 +1287,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0009, y: 0.0005, z: -0.0003}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 4
@@ -1354,7 +1366,6 @@ MonoBehaviour:
   ringScale: 5.665586
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 1
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
@@ -1410,6 +1421,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 520410228}
   m_RootOrder: 0
@@ -1514,12 +1526,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1286680130}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 2.66347e-14, y: 1, z: 0.00000023837092, w: -0.00000011173637}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 9
 --- !u!1 &1358885274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1558,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1806361536}
   m_Father: {fileID: 464943366}
@@ -1603,6 +1617,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 408085090}
   m_Father: {fileID: 464943366}
@@ -1707,9 +1722,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1418534933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,6 +1741,7 @@ GameObject:
   - 114: {fileID: 1418534934}
   - 114: {fileID: 1418534940}
   - 114: {fileID: 1418534941}
+  - 114: {fileID: 1418534942}
   m_Layer: 0
   m_Name: EffectsCamera
   m_TagString: Untagged
@@ -1834,9 +1851,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9130707, y: 9.443482, z: -0.20292473}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &1418534940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,6 +1904,29 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!114 &1418534942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1418534933}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 1
+  screenBlendMode: 0
+  sunTransform: {fileID: 1286680132}
+  radialBlurIterations: 2
+  sunColor: {r: 1, g: 0.98630834, b: 0.8014706, a: 1}
+  sunThreshold: {r: 0.87, g: 0.74, b: 0.65, a: 1}
+  sunShaftBlurRadius: 2.5
+  sunShaftIntensity: 1.35
+  maxRadius: 0.75
+  useDepthTexture: 1
+  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
+  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
 --- !u!1 &1463466345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1952,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0015, y: -0.0005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 5
@@ -1989,7 +2031,6 @@ MonoBehaviour:
   ringScale: 5.665586
   ringAmplitude: 0.35980588
   ringRadius: {x: 0.20551756, y: 0.2202637, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 1
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
@@ -2043,6 +2084,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 520410228}
   m_Father: {fileID: 464943366}
@@ -2160,9 +2202,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &1531119434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,6 +2262,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 408085090}
   m_RootOrder: 0
@@ -2293,6 +2337,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 1.2, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 920154530}
   m_Father: {fileID: 464943366}
@@ -2367,12 +2412,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2865.0469, y: 2291.5664, z: 2263.6836}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1035490327}
   - {fileID: 464943366}
   - {fileID: 588093826}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &1652409625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2422,6 +2468,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 67054041}
   m_Father: {fileID: 136680540}
@@ -2541,6 +2588,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0.0005, z: 0.0005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 1
@@ -2619,7 +2667,6 @@ MonoBehaviour:
   ringScale: 1
   ringAmplitude: 1
   ringRadius: {x: 0.2, y: 0.45, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 0
   cloudRadius: 0
   renderedCloudRadius: 1.03
@@ -2730,6 +2777,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1190114115}
   m_Father: {fileID: 1358885275}
@@ -2759,6 +2807,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0003, y: -0.0005, z: 0.0002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 757101968}
   m_RootOrder: 6
@@ -2837,7 +2886,6 @@ MonoBehaviour:
   ringScale: 6.46057
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
-  clouds: {fileID: 0}
   bumpScale: 1
   cloudRadius: 1.02
   renderedCloudRadius: 1.03
@@ -2893,6 +2941,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
   m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 0.2, z: 1.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 920154530}
   m_RootOrder: 0
@@ -3014,6 +3063,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 250000, y: 250000, z: 250000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3

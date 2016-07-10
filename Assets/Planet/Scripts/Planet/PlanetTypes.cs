@@ -67,12 +67,26 @@ namespace LemonSpawn
         public static int NUMBER = 1;
         public static int BOOL = 2;
         public static int COLOR = 3;
+        public static int TEXTURE = 4;
 
 
         public SettingsType()
         {
 
         }
+        // Texture
+        public SettingsType(string _name, string _propname, string _info, string _group, int _index)
+        {
+            name = _name;
+            stringValue = "";
+            group = _group;
+            type = TEXTURE;
+            propName = _propname;
+            info = _info;
+            index = _index;
+
+        }
+
 
         public SettingsType(string _name, int _type, string _propname, string _info, Vector3 _minMax, Vector3 init, string _group, int _index = 0)
         {
@@ -99,7 +113,7 @@ namespace LemonSpawn
             stringValue = strval;
         }
 
-        public SettingsType(string _name, string _propname, string _info, string _group, Color _color, Color _variation)
+        public SettingsType(string _name, string _propname, string _info, string _group, Color _color, Color _variation, int _index = 0)
         {
             name = _name;
             type = COLOR;
@@ -107,6 +121,7 @@ namespace LemonSpawn
             minMax = new Vector3(0,1,0);
             info = _info;
             group = _group;
+            index = _index;
 
             color = _color;
             variation = _variation;
@@ -150,6 +165,14 @@ namespace LemonSpawn
                 //Util.SetPropertyValue(ps, propName, v);
                 Util.SetPropertyValue(ps, propName, realizedColor);
             }
+            if (o is Color[])
+            {
+                Color[] v =((Color[])o);
+                //v[index] = realizedValue;
+                //Util.SetPropertyValue(ps, propName, v);
+                v[index] = realizedColor;
+                Util.SetPropertyValue(ps, propName, v);
+            }
             if (o is Vector3)
             {
                 Vector3 v = (Vector3)o;
@@ -172,6 +195,12 @@ namespace LemonSpawn
             if (o is string)
             {
                 Util.SetPropertyValue(ps, propName, stringValue);
+            }
+            if (o is string[])
+            {
+                string[] vals = (string[])o;
+                vals[index] = stringValue;
+                Util.SetPropertyValue(ps, propName, vals);
             }
         }
 
@@ -635,6 +664,63 @@ namespace LemonSpawn
                   new Color(0.00f, 0.00f, 0.00f)
               ));
 
+
+            settingsTypes.Add(
+                 new SettingsType("Environment density",
+                 SettingsType.NUMBER,
+                 "environmentDensity",
+                 "Amount of environment per quad.",
+                 new Vector3(0, 100000f, 1),
+                 new Vector3(0000, 0000, 0000f),
+                 "Environment", 0));
+
+            settingsTypes.Add(
+                 new SettingsType("Environment texture 1",
+                 "quadEnvironmentType.Textures",
+                 "Texture 1",
+                 "Environment",0));
+
+            settingsTypes.Add(
+                new SettingsType("Environment texture 2",
+                "quadEnvironmentType.Textures",
+                "Texture 2",
+                "Environment", 1));
+
+            settingsTypes.Add(
+                new SettingsType("Environment texture 3",
+                "quadEnvironmentType.Textures",
+                "Texture 3",
+                "Environment", 2));
+
+            settingsTypes.Add(new SettingsType("Environment 1 Base colour", "quadEnvironmentType.baseColors", "Environment 1 base color", "Environment",
+                  new Color(0.5f, 1, 0.5f),
+                  new Color(0.00f, 0.00f, 0.00f),0
+              ));
+
+             settingsTypes.Add(new SettingsType("Environment 2 Base colour", "quadEnvironmentType.baseColors", "Environment 2 base color", "Environment",
+                  new Color(0.5f, 1, 0.5f),
+                  new Color(0.00f, 0.00f, 0.00f),1
+              ));
+
+              settingsTypes.Add(new SettingsType("Environment 3 Base colour", "quadEnvironmentType.baseColors", "Environment 3 base color", "Environment",
+                  new Color(0.5f, 1, 0.5f),
+                  new Color(0.00f, 0.00f, 0.00f),2
+              ));
+
+            settingsTypes.Add(new SettingsType("Environment 1 Spread colour", "quadEnvironmentType.spreadColors", "Environment 1 spread color", "Environment",
+                 new Color(0.5f, 1, 0.0f),
+                 new Color(0.00f, 0.00f, 0.00f), 0
+             ));
+
+            settingsTypes.Add(new SettingsType("Environment 2 Spread colour", "quadEnvironmentType.spreadColors", "Environment 2 spread color", "Environment",
+                 new Color(0.5f, 1, 0.0f),
+                 new Color(0.00f, 0.00f, 0.00f), 1
+             ));
+
+            settingsTypes.Add(new SettingsType("Environment 3 Spread colour", "quadEnvironmentType.spreadColors", "Environment 3 spread color", "Environment",
+                 new Color(0.5f, 1, 0.0f),
+                 new Color(0.00f, 0.00f, 0.00f), 2
+             ));
         }
 
 
@@ -821,6 +907,10 @@ namespace LemonSpawn
                        new SettingsType(s.name, s.propName, s.info, s.group, s.color, s.variation)
                     );
 
+                if (s.type == SettingsType.TEXTURE)
+                    st.settingsTypes.Add(
+                       new SettingsType(s.name, s.propName, s.info, s.group, s.index)
+                    );
             }
 
             return st;
@@ -857,7 +947,12 @@ namespace LemonSpawn
 
       
         public List<SettingsTypes> planetTypes = new List<SettingsTypes>();
-       
+
+        public static string[] textures = new string[]
+        {
+            "Tree1", "Tree2", "Tree3", "Tree4", "Tree5", "DeadTree1"
+        };
+
         public string[] getStringList()
         {
             string[] lst = new string[planetTypes.Count];
@@ -909,6 +1004,31 @@ namespace LemonSpawn
                 cbx.value = 0;
             if (type == 1)
                 cbx.value = l.Count - 1;
+
+        }
+
+        public void PopulateTexturesDrop(string box, string selected)
+        {
+            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+
+            cbx.ClearOptions();
+            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
+
+            int i = 0;
+            int select = 0;
+            foreach (string s in textures)
+            {
+                ComboBoxItem ci = new ComboBoxItem();
+                l.Add(new Dropdown.OptionData(s));
+                if (selected == s)
+                {
+                    Debug.Log(selected + " set");
+                    select = i;
+                }
+                i++;
+            }
+            cbx.options = l;
+            cbx.value = select;
 
         }
 

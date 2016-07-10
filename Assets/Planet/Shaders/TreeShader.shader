@@ -123,7 +123,9 @@
 
 #define L_SC_PASS			
 
+
 #include "Include/GeometryShaderExtra.cginc"
+
 
 
 struct v2f_sc

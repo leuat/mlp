@@ -707,8 +707,10 @@ namespace LemonSpawn
                     //   try to process the collection as array
                     if (unknownCollection.GetType().IsArray)
                     {
-                        object[] collectionAsArray = unknownCollection as Array[];
+                        object[] collectionAsArray = (object[])unknownCollection;//unknownCollection as Array[];
+                      
                         obj = collectionAsArray[collectionElementIndex];
+                        
                     }
                     else
                     {
@@ -743,14 +745,87 @@ namespace LemonSpawn
 
         public static DVector CatmullRom(double t, DVector p0, DVector p1, DVector p2, DVector p3)
         {
-            DVector a = 0.5 * (2f *p1);
+            DVector a = 0.5 * (2f * p1);
             DVector b = 0.5 * (p2 - p0);
             DVector c = 0.5 * (2 * p0 - 5 * p1 + 4 * p2 - p3);
-            DVector d = 0.5 * (3f * p1 - 3 * p2 + p3 -p0);
+            DVector d = 0.5 * (3f * p1 - 3 * p2 + p3 - p0);
 
             DVector pos = a + (b * t) + (c * t * t) + (d * t * t * t);
 
             return pos;
+        }
+
+
+        public static void SetPropertyValueOld(object srcobj, string propertyName, object val)
+        {
+            if (srcobj == null)
+                return;
+
+            object obj = srcobj;
+
+            string prop = "";
+            // Split property name to parts (propertyName could be hierarchical, like obj.subobj.subobj.property
+            string[] propertyNameParts = propertyName.Split('.');
+            FieldInfo pi = null;
+            foreach (string propertyNamePart in propertyNameParts)
+            {
+                //            UnityEngine.Debug.Log(propertyNamePart + " : " + obj);
+                if (obj == null) return;
+                // propertyNamePart could contain reference to specific 
+                // element (by index) inside a collection
+                if (!propertyNamePart.Contains("["))
+                {
+                    //UnityEngine.Debug.Log("Part: " + propertyNamePart);
+                    pi = obj.GetType().GetField(propertyNamePart);
+                    if (pi == null) return;
+                    obj = pi.GetValue(obj);
+                    prop = propertyNamePart;
+                }
+                else
+                {   // propertyNamePart is areference to specific element 
+                    // (by index) inside a collection
+                    // like AggregatedCollection[123]
+                    //   get collection name and element index
+                    int indexStart = propertyNamePart.IndexOf("[") + 1;
+                    string collectionFieldName = propertyNamePart.Substring(0, indexStart - 1);
+                    int collectionElementIndex = Int32.Parse(propertyNamePart.Substring(indexStart, propertyNamePart.Length - indexStart - 1));
+                    //   get collection object
+                    pi = obj.GetType().GetField(collectionFieldName);
+                    prop = collectionFieldName;
+                    if (pi == null) return;
+                    object unknownCollection = pi.GetValue(obj);
+                    //   try to process the collection as array
+                    if (unknownCollection.GetType().IsArray)
+                    {
+                        object[] collectionAsArray = (object[])unknownCollection; 
+                        obj = collectionAsArray[collectionElementIndex];
+                    }
+                    else
+                    {
+                        //   try to process the collection as IList
+                        System.Collections.IList collectionAsList = unknownCollection as System.Collections.IList;
+                        if (collectionAsList != null)
+                        {
+                            obj = collectionAsList[collectionElementIndex];
+                        }
+                        else
+                        {
+                            // ??? Unsupported collection type
+                        }
+                    }
+                }
+
+            }
+            if (obj == null)
+                return;
+            pi = obj.GetType().GetField(prop);
+            UnityEngine.Debug.Log(pi);
+            if (pi == null)
+                return;
+            UnityEngine.Debug.Log("Setting vaL: " + val + "   " + propertyName);
+            pi.SetValue(obj, Convert.ChangeType(val, pi.FieldType, null));
+
+
         }
 
 
@@ -771,11 +846,11 @@ namespace LemonSpawn
                 if (obj == null) return;
                 FieldInfo pi = obj.GetType().GetField(propertyNamePart);
                 if (pi == null) return;
-             //   UnityEngine.Debug.Log(" prop:" + obj + " ");
+                //   UnityEngine.Debug.Log(" prop:" + obj + " ");
 
                 if (cnt == propertyNameParts.Length - 1)
                 {
-//                    UnityEngine.Debug.Log(" prop:" + pi +  " pi: val" + obj + " val: " +val);
+                    //                    UnityEngine.Debug.Log(" prop:" + pi +  " pi: val" + obj + " val: " +val);
                     pi.SetValue(obj, Convert.ChangeType(val, pi.FieldType, null));
                     return;
                 }
@@ -785,11 +860,11 @@ namespace LemonSpawn
             }
 
 
+        }
+
+
+
+
     }
-
-
-
-
-}
 
 }

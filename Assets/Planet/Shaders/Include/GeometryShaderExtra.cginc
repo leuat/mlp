@@ -192,9 +192,22 @@ void setupCross(point gIn vert[1], inout TriangleStream<v2f_scast> triStream)
 
 	if (discardThis)
 		return;
-		
+
+	// Rotate random
+	float rot = vert[0].norm.y;
+	float sinX = sin(rot);
+	float cosX = cos(rot);
+	float2x2 rot2 = float2x2(cosX, -sinX, sinX, cosX);
+
+
+
+
 	for (i = 0; i < TAM; i++) {
-		outV[i].pos = pos + mul(worldRotMat, vc[i] + float3(0, h, 0))*scale;
+		float3 disp0 = vc[i] + float3(0, h, 0);
+		disp0.xz = mul(rot2, disp0.xz);
+		float3 disp = mul(worldRotMat, disp0)*scale;
+
+		outV[i].pos = pos + float4(disp,0);
 		
 #ifdef L_FRAG_PASS
 		outV[i].col = vert[0].col;

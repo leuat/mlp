@@ -120,7 +120,7 @@ public class Clouds : Atmosphere {
 
             //            m_skyMaterial.SetFloat("sradius", m_radius);
 
-            m_sky.GetComponent<MeshRenderer>().enabled = RenderSettings.toggleClouds;
+            //m_sky.GetComponent<MeshRenderer>().enabled = RenderSettings.toggleClouds;
 
         }
 
