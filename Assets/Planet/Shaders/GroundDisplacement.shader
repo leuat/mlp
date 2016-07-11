@@ -239,15 +239,15 @@
 		FRAGMENT_SETUP(s)
 
    	    float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
-  	    if (h>liquidThreshold) {
+  	    //if (h>liquidThreshold) {
 			float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2,3);
 			s.normalWorld = realN;
-   	    }
+   	    //}
 //   	    else
   // 	    	discard;
 
-
-		UnityLight mainLight = MainLight(s.normalWorld);
+	UnityLight mainLight = MainLight(s.normalWorld);
+	mainLight.dir = v3LightPos;
 	half atten = SHADOW_ATTENUATION(i);
 
 	half occlusion = Occlusion(i.tex.xy);
@@ -293,13 +293,10 @@
 
 	
 	float4 spc = _Color*0.65;// float4(1, 1, 1, 1);// *metallicity;// *specularity * 1;
-	
 	half4 c = UNITY_BRDF_PBS(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, gi.light, gi.indirect);
-
 	c.rgb += UNITY_BRDF_GI(diff, s.specColor, s.oneMinusReflectivity, s.oneMinusRoughness, s.normalWorld, -s.eyeVec, occlusion, gi);
 	c.rgb += Emission(i.tex.xy);
 
-	//float groundClouds = getGroundShadowFromClouds(ppos);
 
 
 	c.rgb = groundColor(i.c0, i.c1, c.rgb, s.posWorld, 1.0);// *groundClouds;

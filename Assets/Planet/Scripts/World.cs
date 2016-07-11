@@ -65,8 +65,10 @@ namespace LemonSpawn {
         public static bool toggleProgressbar = false;
         public static bool displayDebugLines = false;
         public static bool sortInverse = false;
-
+        public static float GlobalRadiusScale = 1;
         public static string textureLocation = "Textures/EnvironmentBillboards/";
+
+        public static bool usePointLightSource = false;
 
         public static bool reCalculateQuads = true;
 
@@ -245,7 +247,9 @@ namespace LemonSpawn {
 
 
         public static void MoveCamera(Vector3 dp) {
-            SpaceCamera.MoveCamera(dp);
+            if (World.SzWorld.useSpaceCamera)
+                SpaceCamera.MoveCamera(dp);
+
 			
 		}
 
@@ -334,8 +338,11 @@ namespace LemonSpawn {
 		}
 
 		public void setFieldOfView(float fov) {
+            if (CloseCamera!=null)
 			CloseCamera.fieldOfView = fov;
+            if (MainCamera!=null)
 			MainCamera.fieldOfView = fov;
+            if (effectCamera!=null)
 			effectCamera.GetComponent<Camera>().fieldOfView = fov; 
 
 		}
@@ -496,10 +503,14 @@ namespace LemonSpawn {
 
 		
 
-        void SetupCloseCamera()
+        protected void SetupCloseCamera()
         {
             MainCamera = mainCamera.GetComponent<Camera>();
             MainCameraObject = mainCamera;
+            setFieldOfView(MainCamera.fieldOfView);
+
+            if (!szWorld.useSpaceCamera)
+                return;
             SpaceCamera = mainCamera.GetComponent<SpaceCamera>();
             closeCamera = new GameObject("CloseCamera");
             CloseCamera = closeCamera.AddComponent<Camera>();
@@ -507,8 +518,7 @@ namespace LemonSpawn {
             CloseCamera.nearClipPlane = 2;
             CloseCamera.farClipPlane = 220000;
             CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
-			setFieldOfView(MainCamera.fieldOfView);
-
+			         
             MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance * 1.1f;
             MainCamera.depthTextureMode = DepthTextureMode.Depth;
             CloseCamera.depthTextureMode = DepthTextureMode.Depth;

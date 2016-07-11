@@ -229,6 +229,8 @@ namespace LemonSpawn
             else
                 sz = SerializedWorld.DeSerializeString(data);
 
+
+            sz.global_radius_scale*=RenderSettings.GlobalRadiusScale;
             RenderSettings.ExitSaveOnRendered = ExitOnSave;
             RenderSettings.extraText = "";
             SetSkybox((int)sz.skybox);

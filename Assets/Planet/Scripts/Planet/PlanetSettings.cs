@@ -350,6 +350,14 @@ namespace LemonSpawn {
 			Quaternion q = 	Quaternion.Euler(new Vector3(0, -(float)(rotation/(2*Mathf.PI)*360f),0));
             properties.localCamera = q* properties.localCamera;
 
+
+            if (!World.SzWorld.useSpaceCamera && World.MainCameraObject!=null)
+                {
+                properties.localCamera = World.MainCameraObject.transform.position;// - gameObject.transform.position;
+                //Debug.Log(properties.localCamera);
+               // Debug.Log(properties.localCamera);
+                }
+
 //            ExpSurfSettings4.x = (int)ExpSurfSettings4.x;
 
 			if (World.CloseCamera != null)

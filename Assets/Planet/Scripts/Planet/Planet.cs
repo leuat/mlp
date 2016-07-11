@@ -119,8 +119,9 @@ namespace LemonSpawn
             infoTextGO.SetActive(RenderSettings.RenderText);
 
             infoText.fontSize = 40;
-            infoTextGO.transform.position = pSettings.properties.localCamera.normalized * -250;
-            infoTextGO.transform.rotation = World.MainCameraObject.transform.rotation;
+            if (World.SzWorld.useSpaceCamera) {
+                infoTextGO.transform.position = pSettings.properties.localCamera.normalized * -250;
+                infoTextGO.transform.rotation = World.MainCameraObject.transform.rotation;
             infoText.color = color;
             if (pSettings == null)
                 return;
@@ -128,6 +129,7 @@ namespace LemonSpawn
                 return;
             infoText.text = pSettings.name + "\n" + getDistance() + "\nType:" + pSettings.planetType.name;
 
+            }
 
         }
 
@@ -155,7 +157,6 @@ namespace LemonSpawn
                 pSettings.properties.environmentObject.transform.localPosition = Vector3.zero;
                 pSettings.properties.environmentObject.transform.localScale = Vector3.one;
                 pSettings.properties.environmentObject.transform.localRotation = Quaternion.identity;
-
                 cube = new CubeSphere(pSettings, false);
                 if (impostor != null)
                     GameObject.Destroy(impostor);
@@ -195,11 +196,7 @@ namespace LemonSpawn
 
 
 
-
-
-
-        private void cameraAndPosition()
-        {
+        private void UpdateSpaceCameraPlanetPosition() {
             DVector cam = new DVector(World.WorldCamera.x, World.WorldCamera.y, World.WorldCamera.z);
             cam.Scale(1.0 / RenderSettings.AU);
             DVector d = cam.Sub(pSettings.properties.pos);
@@ -212,7 +209,7 @@ namespace LemonSpawn
 
             Vector3 pos = d.toVectorf();
             double ds = dist / RenderSettings.LOD_Distance;
-            //			Debug.Log(ds);
+            //          Debug.Log(ds);
             if (ds < 1 && SolarSystem.planet == this)
             {
                 Util.tagAll(pSettings.properties.parent, "Normal", 10);
@@ -244,9 +241,31 @@ namespace LemonSpawn
         }
 
 
+
+
+        private void cameraAndPosition()
+        {
+            if (World.SzWorld.useSpaceCamera)
+                UpdateSpaceCameraPlanetPosition();
+            else {
+                //pSettings.gameObject.transform.position
+
+            }            
+
+
+
+        }
+
+
         public void Update()
         {
             cameraAndPosition();
+
+
+            if (this == SolarSystem.planet) {
+                float ch = (World.MainCameraObject.transform.position - pSettings.transform.position).magnitude;
+//                Debug.Log(ch);
+            }
 
             if (rings != null)
                 rings.Update();

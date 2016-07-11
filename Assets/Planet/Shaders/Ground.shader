@@ -319,7 +319,6 @@ struct VertexOutputForwardBase2
 							UnityGI gi = FragmentGI(
 								s.posWorld, occlusion, i.ambientOrLightmapUV, atten, s.oneMinusRoughness, s.normalWorld, s.eyeVec, mainLight);
 
-
 							float dd = dot(normalize(i.posWorld2.xyz), normalize(s.normalWorld * 1 + i.n1 * 0));
 
 							float tt = clamp(noise(normalize(i.posWorld2.xyz)*3.1032)+0.2,0,1);

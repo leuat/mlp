@@ -6,10 +6,10 @@ using UnityEngine.UI;
 namespace LemonSpawn {
 
 	public class SSVSettings {
-		public static float SolarSystemScale = 5.0f;
-		public static float PlanetSizeScale = 1.0f / 5000.0f;
+		public static float SolarSystemScale = 500.0f;
+		public static float PlanetSizeScale = 1.0f / 100.0f;
 		public static int OrbitalLineSegments = 100;
-		public static Vector2 OrbitalLineWidth = new Vector2 (0.03f, 0.03f);
+		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
 	}
 
 	public class DisplayPlanet {
@@ -100,14 +100,27 @@ namespace LemonSpawn {
 		private void PopulateWorld() {
 			DestroyAllGameObjects();
 			dPlanets.Clear ();
+
+            //solarSystem.InitializeFromScene();
+
+
+
 			foreach (Planet p in solarSystem.planets) {
-				GameObject go = GameObject.CreatePrimitive (PrimitiveType.Sphere);
-				go.GetComponent<MeshRenderer> ().material = (Material)Resources.Load ("TempPlanetMaterial");
+
+                GameObject go = p.pSettings.gameObject;
+
 				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.y, (float)p.pSettings.properties.pos.z);
 				go.transform.position = coolpos * SSVSettings.SolarSystemScale;
-				go.transform.localScale = Vector3.one * SSVSettings.PlanetSizeScale * p.pSettings.radius;
-			
-				dPlanets.Add (new DisplayPlanet (go, p));
+                p.pSettings.properties.pos = new DVector(coolpos);
+				//go.transform.localScale = Vector3.one * SSVSettings.PlanetSizeScale * p.pSettings.radius;
+               //p.pSettings.atmosphereDensity = 0;
+
+                GameObject hidden = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                hidden.transform.position = coolpos * SSVSettings.SolarSystemScale;
+                hidden.transform.localScale = Vector3.one * p.pSettings.radius;
+                //Destroy(hidden.GetComponent<MeshRenderer>());
+
+				dPlanets.Add (new DisplayPlanet (hidden, p));
 			}
 		}
 
@@ -115,8 +128,18 @@ namespace LemonSpawn {
 
 		public override void Start () { 
 			CurrentApp = Verification.MCAstName;
+            RenderSettings.UseThreading = true;
+            RenderSettings.reCalculateQuads = false;
+            RenderSettings.GlobalRadiusScale = SSVSettings.PlanetSizeScale;
+            RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
+            RenderSettings.sizeVBO = szWorld.resolution;
+            RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
+            RenderSettings.MoveCam = false;
+            RenderSettings.ResolutionScale = szWorld.resolutionScale;
+            RenderSettings.usePointLightSource = true;
 			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			PlanetTypes.Initialize ();
+            SetupCloseCamera();
 			MainCamera = mainCamera.GetComponent<Camera> ();
 			PopulateFileCombobox("ComboBoxLoadFile","xml");
 			SzWorld = szWorld;
@@ -126,6 +149,10 @@ namespace LemonSpawn {
 		public override void Update () {
 			UpdateFocus ();
 			UpdateCamera ();
+            solarSystem.Update();
+            if (RenderSettings.UseThreading) 
+                ThreadQueue.MaintainThreadQueue();
+
 		}
 
 		protected void OnGUI() {
@@ -138,8 +165,9 @@ namespace LemonSpawn {
            	if (name=="-")
            		return;
 			name =RenderSettings.dataDir + name + ".xml";
-
+            
             LoadFromXMLFile(name);
+            szWorld.useSpaceCamera = false;
 	        PopulateOverviewList("Overview");
 			PopulateWorld ();
  

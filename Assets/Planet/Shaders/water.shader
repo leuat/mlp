@@ -145,7 +145,7 @@ Shader "LemonSpawn/Water" {
 										float3 specularReflection;
 
 											float3 lightDirection =
-												normalize(_WorldSpaceLightPos0.xyz);
+												normalize(v3LightPos);
 
 											float3 viewDirection = normalize(
 												_WorldSpaceCameraPos - IN.worldPosition.xyz);

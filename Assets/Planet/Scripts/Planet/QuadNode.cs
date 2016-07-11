@@ -102,8 +102,9 @@ namespace LemonSpawn
         public override void PostThread()
         {
             base.PostThread();
-            if (thread == null)
+            if (quadField == null)
                 return;
+
 
             quadGO = quadField.Realise(planetSettings.castShadows);
            // GPUDebug();
@@ -150,14 +151,9 @@ namespace LemonSpawn
 
         public void RealiseDirect()
         {
-            if (quadField == null)
-            {
-                quadField = new QuadField();
-                quadField.Init(RenderSettings.sizeVBO);
-            }
-            decideNeighbors();
-            quadField.Calculate(planetSettings.radius, qb.P[0].P, qb.P[1].P, qb.P[3].P, planetSettings, neighbourLOD);
-            quadGO = quadField.Realise(planetSettings.castShadows);
+            ThreadedGenerateSurface();
+            PostThread();
+/*            quadGO = quadField.Realise(planetSettings.castShadows);
             quadGO.GetComponent<Renderer>().enabled = false;
 
 
@@ -168,7 +164,7 @@ namespace LemonSpawn
 
             quadGO.transform.localScale = Vector3.one;
             quadGO.transform.position = Vector3.zero;
-            quadGO.transform.localPosition = Vector3.zero;
+            quadGO.transform.localPosition = Vector3.zero;*/
         }
 
         public override bool isCancelable()
@@ -212,6 +208,7 @@ namespace LemonSpawn
                     thread.thread = new Thread(new ThreadStart(ThreadedGenerateSurface));
                     thread.gt = this;
                     AddThread(thread);
+
                 }
                 else
                 {
@@ -520,14 +517,18 @@ namespace LemonSpawn
 
 
 
+
             currentLevel = level;
+
+
 
             int modifier = 0;
             if (!isEnvironment)
             {
 //                modifier = 	(int) (Settings.settings.globalVariables.currentSpeed * 0.8);
             }
-            if (level > planetSettings.maxQuadNodeLevel - modifier)
+//            if (level > planetSettings.maxQuadNodeLevel - modifier)
+            if (currentLevel >= RenderSettings.maxQuadNodeLevel)
             {
                 deleteChildren();
                 return;
@@ -559,7 +560,6 @@ namespace LemonSpawn
             if (children == null)
             {
                 children = new QuadNode[4];
-
                 QuadPoint[] tmp = new QuadPoint[4];
                 for (int i = 0; i < tmp.Length; i++)
                     tmp[i] = new QuadPoint();

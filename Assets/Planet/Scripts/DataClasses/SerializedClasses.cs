@@ -136,6 +136,7 @@ namespace LemonSpawn
         public string uuid;
         public int EnvQuadLevel = 5;
         public int resolution = 64;
+        public bool useSpaceCamera = true;
         public float overview_distance = 4;
         public int screenshot_width = 1024;
         public int screenshot_height = 1024;

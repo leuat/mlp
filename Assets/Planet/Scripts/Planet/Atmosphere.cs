@@ -94,6 +94,9 @@ namespace LemonSpawn
 
         public void initGroundMaterial(bool bump, Material mat)
         {
+            
+
+
             mat.SetColor("hillColor", planetSettings.m_hillColor);
             mat.SetColor("middleColor", planetSettings.m_surfaceColor);
             mat.SetColor("middleColor2", planetSettings.m_surfaceColor2);
@@ -116,7 +119,7 @@ namespace LemonSpawn
             mat.SetFloat("liquidThreshold", planetSettings.liquidThreshold);
             mat.SetFloat("topThreshold", planetSettings.topThreshold);
             mat.SetFloat("basinThreshold", planetSettings.basinThreshold);
-            mat.SetTexture("_Noise", noiseTexture);
+//            mat.SetTexture("_Noise", noiseTexture);
             //	mat.SetTexture ("_DetailNormalMap", planetSettings.bumpMap);
             //	mat.SetFloat ("_DetailNormalMapScale", planetSettings.bumpScale);	
             mat.shaderKeywords = new string[3] { "_DETAIL_MULX2", "_NORMALMAP", "_EMISSION" };
@@ -218,7 +221,6 @@ namespace LemonSpawn
                 m_groundMaterial.SetFloat("time", Time.time);
 
 
-
             iscale = 1f;
             if (m_groundMaterial != null)
             {
@@ -236,14 +238,17 @@ namespace LemonSpawn
 
         public void setClippingPlanes()
         {
+            if (!World.SzWorld.useSpaceCamera)
+                return;
             float h = planetSettings.properties.localCamera.magnitude - m_innerRadius;
             float np = Mathf.Max(Mathf.Min(h * 0.01f, 50), 0.1f);
             float fp = Mathf.Min(Mathf.Max(h * 150, 100000), 200000);
             //		Debug.Log (np);
             //		np = 10f;
-            if (World.CloseCamera != null)
+            if (World.CloseCamera != null) {
                 World.CloseCamera.nearClipPlane = np;
-            World.CloseCamera.farClipPlane = fp;
+                World.CloseCamera.farClipPlane = fp;
+            }
             //		Debug.Log (np);
 
         }
@@ -280,8 +285,15 @@ namespace LemonSpawn
             float ds = localscale;
             Vector3 invWaveLength4 = new Vector3(1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.x, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.y, 4.0f), 1.0f / Mathf.Pow(planetSettings.m_atmosphereWavelengths.z, 4.0f));
             float scale = 1.0f / (m_outerRadius - m_innerRadius);
-            mat.SetVector("v3LightPos", (m_sun.transform.forward * -1.0f));
-            mat.SetVector("lightDir", rot * (m_sun.transform.forward * -1.0f));
+
+            Vector3 lightDir = (m_sun.transform.forward * -1.0f);
+
+            if (RenderSettings.usePointLightSource)
+                lightDir =  (m_sun.transform.position - planetSettings.gameObject.transform.position).normalized;
+
+            mat.SetVector("v3LightPos", lightDir);
+
+            mat.SetVector("lightDir", rot * lightDir);
             mat.SetVector("v3InvWavelength", invWaveLength4);
             mat.SetFloat("fOuterRadius", m_outerRadius * ds);
             mat.SetFloat("fOuterRadius2", m_outerRadius * m_outerRadius * ds * ds);
@@ -307,6 +319,8 @@ namespace LemonSpawn
             mat.SetVector("surfaceVortex1", planetSettings.SurfaceVortex1);
             mat.SetVector("surfaceVortex2", planetSettings.SurfaceVortex2);
             mat.SetMatrix("rotMatrix", rotMat);
+
+
            /*            Debug.Log("exposure:" + planetSettings.m_hdrExposure);
                         Debug.Log("sun:" + planetSettings.m_ESun);
                         Debug.Log("l:" + planetSettings.m_atmosphereWavelengths);

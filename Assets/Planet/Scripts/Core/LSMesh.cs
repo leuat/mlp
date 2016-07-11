@@ -245,8 +245,10 @@ namespace LemonSpawn {
 			if (m==null)
 				return null;
 			GameObject go = new GameObject(name);
-            go.tag = tag;
-            go.layer = layer;
+            if (World.SzWorld.useSpaceCamera) {
+                go.tag = tag;
+                go.layer = layer;
+            }
 			if (LMesh.parent != null)
 				go.transform.parent = LMesh.parent.transform;
 			go.AddComponent<MeshFilter>();   
