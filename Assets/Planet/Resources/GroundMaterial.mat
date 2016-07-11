@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: GroundMaterial
   m_Shader: {fileID: 4800000, guid: 157a227e4a74945edb49d9892dbfde7e, type: 3}
-  m_ShaderKeywords: _NORMALMAP
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_CustomRenderQueue: 2000
   stringTagMap: {}

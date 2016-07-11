@@ -10,14 +10,16 @@ namespace LemonSpawn {
 		public static float PlanetSizeScale = 1.0f / 100.0f;
 		public static int OrbitalLineSegments = 100;
 		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
+        public static float currentFrame = 0;
 	}
 
 	public class DisplayPlanet {
 		public Planet planet;
+        public SerializedPlanet serializedPlanet;
 		public GameObject go;
 		public List<GameObject> orbitLines = new List<GameObject>();
 
-		private void CreateOrbit() {
+/*		private void CreateOrbitCircles() {
 			float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
 			for (int i = 0; i < SSVSettings.OrbitalLineSegments; i++) {
 				float t0 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)i;
@@ -26,7 +28,7 @@ namespace LemonSpawn {
 				Vector3 to = new Vector3 (Mathf.Cos (t1), 0, Mathf.Sin (t1)) * radius;
 			
 				GameObject g = new GameObject ();
-//				g.transform.parent = go.transform;
+				g.transform.parent = SolarSystemViewverMain.linesObject.transform;
 				LineRenderer lr = g.AddComponent<LineRenderer> ();
 				lr.material = (Material)Resources.Load ("LineMaterial");
 				lr.SetWidth (SSVSettings.OrbitalLineWidth.x, SSVSettings.OrbitalLineWidth.y);
@@ -35,13 +37,64 @@ namespace LemonSpawn {
 				orbitLines.Add (g);
 			}
 		}
+*/
 
-		public DisplayPlanet(GameObject g, Planet p) {
+        public void MaintainOrbits() {
+            int maxFrames = serializedPlanet.Frames.Count;
+            int currentFrame = (int)(SSVSettings.currentFrame*maxFrames);
+            Color c = new Color(0.3f, 0.7f, 1.0f,1.0f);
+            for (int i=0;i<orbitLines.Count;i++) {
+                int f = Mathf.Clamp(i - orbitLines.Count/2 + currentFrame,0,maxFrames);
+                LineRenderer lr = orbitLines[i].GetComponent<LineRenderer>();
+                Frame sp = serializedPlanet.Frames[f];
+                Frame sp2 = serializedPlanet.Frames[f+1];
+                DVector from = new DVector (sp.pos_x, sp.pos_y,sp.pos_z) * SSVSettings.SolarSystemScale;
+                DVector to = new DVector (sp2.pos_x, sp2.pos_y,sp2.pos_z) * SSVSettings.SolarSystemScale;
+
+
+                lr.SetPosition (0, from.toVectorf());
+                lr.SetPosition (1, to.toVectorf());
+
+                float colorScale = Mathf.Abs(i-orbitLines.Count/2)/(float)orbitLines.Count*2;
+                Color col = c*(1-colorScale);
+                col.a = 1;
+                lr.SetColors(col,col);
+            }
+        }
+
+        public void CreateOrbitFromFrames(int maxLines) {
+            for (int i = 0; i < maxLines; i++) {
+                Frame sp = serializedPlanet.Frames[i];
+                Frame sp2 = serializedPlanet.Frames[i+1];
+                DVector from = new DVector (sp.pos_x, sp.pos_y,sp.pos_z) * SSVSettings.SolarSystemScale;
+                DVector to = new DVector (sp2.pos_x, sp2.pos_y,sp2.pos_z) * SSVSettings.SolarSystemScale;
+            
+                GameObject g = new GameObject ();
+                g.transform.parent = SolarSystemViewverMain.linesObject.transform;
+                LineRenderer lr = g.AddComponent<LineRenderer> ();
+                lr.material = new Material(Shader.Find("Particles/Additive"));//(Material)Resources.Load ("LineMaterial");
+                lr.SetWidth (SSVSettings.OrbitalLineWidth.x, SSVSettings.OrbitalLineWidth.y);
+                lr.SetPosition (0, from.toVectorf());
+                lr.SetPosition (1, to.toVectorf());
+                orbitLines.Add (g);
+            }
+        }
+
+		public DisplayPlanet(GameObject g, Planet p, SerializedPlanet sp) {
 			go = g;
 			planet = p;
+            serializedPlanet = sp;
 
-			CreateOrbit ();
+			//CreateOrbitFromFrames ();
 		}
+
+        public void UpdatePosition() {
+            planet.pSettings.properties.pos*=SSVSettings.SolarSystemScale;
+            planet.pSettings.transform.position = planet.pSettings.properties.pos.toVectorf();
+            go.transform.position = planet.pSettings.properties.pos.toVectorf();
+            MaintainOrbits();
+        }
+
 	}
 
 	public class SolarSystemViewverMain : World {
@@ -50,6 +103,8 @@ namespace LemonSpawn {
 		private Vector3 focusPoint = Vector3.zero;
 		private Vector3 focusPointCur = Vector3.zero;
 		private DisplayPlanet selected = null;
+        public static GameObject linesObject = null;
+        private float m_playSpeed = 0;
 
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
@@ -66,6 +121,10 @@ namespace LemonSpawn {
 							SelectPlanet(dp);
 					}
 				}
+                else {
+                    //selected = null;
+                    //focusPoint = Vector3.zero;
+                }
 			}
 		}
 
@@ -86,16 +145,6 @@ namespace LemonSpawn {
 			mouseAccel *= 0.9f;
 		}
 
-		private void LoadData() {
-			string file = RenderSettings.path + RenderSettings.dataDir + "system2.xml";
-			if (!System.IO.File.Exists(file)) {
-				Debug.Log("ERROR: Could not find file :'" + file + "'");
-				return;
-			}
-			string xml = System.IO.File.ReadAllText(file);
-
-			solarSystem.LoadWorld (xml, false, false, this);
-		}
 
 		private void PopulateWorld() {
 			DestroyAllGameObjects();
@@ -104,7 +153,7 @@ namespace LemonSpawn {
             //solarSystem.InitializeFromScene();
 
 
-
+            int i=0;
 			foreach (Planet p in solarSystem.planets) {
 
                 GameObject go = p.pSettings.gameObject;
@@ -120,10 +169,35 @@ namespace LemonSpawn {
                 hidden.transform.localScale = Vector3.one * p.pSettings.radius;
                 //Destroy(hidden.GetComponent<MeshRenderer>());
 
-				dPlanets.Add (new DisplayPlanet (hidden, p));
+				dPlanets.Add (new DisplayPlanet (hidden, p,szWorld.Planets[i++]));
 			}
 		}
 
+
+        public void CreateFakeOrbits(int steps, float stepLength) {
+            foreach (SerializedPlanet sp in szWorld.Planets) {
+                int frame = 0;
+
+                float t0 = Random.value*2*Mathf.PI;
+                float radius = new Vector3((float)sp.pos_x,(float)sp.pos_y, (float)sp.pos_z).magnitude;
+                float modifiedStepLength = stepLength / Mathf.Sqrt(radius);
+                float rot = Random.value*30f + 10f;
+                    for (int i = 0;i<steps;i++) {
+                        float perturb = Mathf.Cos(i/(float)steps*30.234f);
+                        float rad = radius*(0.2f*perturb +1);
+                        Vector3 pos = new Vector3 (Mathf.Cos (t0), 0, Mathf.Sin (t0)) * rad;
+                        Frame f = new Frame();
+                        f.pos_x = pos.x;
+                        f.pos_y = pos.y;
+                        f.pos_z = pos.z;
+                        f.rotation = frame/rot;
+                        f.id = frame;
+                        sp.Frames.Add(f);
+                        frame++;
+                        t0+=modifiedStepLength;
+                   }
+            }
+        }
 
 
 		public override void Start () { 
@@ -143,6 +217,10 @@ namespace LemonSpawn {
 			MainCamera = mainCamera.GetComponent<Camera> ();
 			PopulateFileCombobox("ComboBoxLoadFile","xml");
 			SzWorld = szWorld;
+            slider = GameObject.Find ("Slider");
+
+            linesObject = new GameObject("Lines");
+
 //			LoadData ();
 		}
 	
@@ -153,6 +231,12 @@ namespace LemonSpawn {
             if (RenderSettings.UseThreading) 
                 ThreadQueue.MaintainThreadQueue();
 
+            // Always point to selected planet
+            if (selected!=null)
+                SelectPlanet(selected);
+
+            UpdatePlay();
+            
 		}
 
 		protected void OnGUI() {
@@ -167,10 +251,16 @@ namespace LemonSpawn {
 			name =RenderSettings.dataDir + name + ".xml";
             
             LoadFromXMLFile(name);
+            CreateFakeOrbits(2000, 0.05f);
+
+
             szWorld.useSpaceCamera = false;
 	        PopulateOverviewList("Overview");
 			PopulateWorld ();
- 
+            foreach (DisplayPlanet dp in dPlanets)
+                dp.CreateOrbitFromFrames(100);
+
+            Slide();
         }
 
         private void DestroyAllGameObjects() {
@@ -179,6 +269,61 @@ namespace LemonSpawn {
         }
 
 
+        public void Slide()
+        {
+            float v = slider.GetComponent<Slider>().value;
+            SSVSettings.currentFrame = v;
+            szWorld.InterpolatePlanetFrames(v, solarSystem.planets);
+            foreach (DisplayPlanet dp in dPlanets) {
+                dp.UpdatePosition();
+            }
+
+        }
+
+
+        private void setPlaySpeed(float v)
+        {
+            if (m_playSpeed == v)
+            {
+                m_playSpeed = 0;
+            }
+            else
+            {
+                m_playSpeed = v;
+            }
+
+        }
+
+        public void playNormal()
+        {
+            setPlaySpeed(0.000025f);
+
+        }
+
+        public void playFast()
+        {
+            setPlaySpeed(0.0001f);
+        }
+
+        protected void UpdatePlay()
+        {
+  //          Debug.Log(Time.time + " " + m_playSpeed);
+            if (m_playSpeed > 0 && solarSystem.planets.Count!=0)
+            {
+                float v = slider.GetComponent<Slider>().value;
+                v += m_playSpeed;
+                if (v >= 1)
+                {
+                    m_playSpeed = 0;
+                    v = 0;
+                }
+//                Debug.Log("Playspeed after: " + m_playSpeed + " " + Time.time);
+                slider.GetComponent<Slider>().value = v;
+
+                Slide();
+            }
+
+        }
 	}
 
 }

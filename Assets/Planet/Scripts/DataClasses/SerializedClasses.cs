@@ -232,6 +232,25 @@ namespace LemonSpawn
 
         }
 
+        public void InterpolatePlanetFrames(double t, List<Planet> pl)
+        {
+
+            int totalFrames = Planets[0].Frames.Count;
+
+            int frame = (int)(totalFrames*t);
+
+
+            double dt = (totalFrames*t - frame);
+               
+
+            foreach (Planet p in pl)
+            {
+                p.InterpolatePositions(frame, dt);
+            }
+
+
+        }
+
 
 
         public void getInterpolatedCameraLerp(double t, List<Planet> planets)
