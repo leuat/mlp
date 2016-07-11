@@ -63,6 +63,12 @@ namespace LemonSpawn {
         }
 
         public void CreateOrbitFromFrames(int maxLines) {
+            foreach (GameObject go in orbitLines)
+                GameObject.Destroy(go);
+
+            orbitLines.Clear();
+            if (serializedPlanet.Frames.Count<2)
+                return;             
             for (int i = 0; i < maxLines; i++) {
                 Frame sp = serializedPlanet.Frames[i];
                 Frame sp2 = serializedPlanet.Frames[i+1];
@@ -188,6 +194,15 @@ namespace LemonSpawn {
 		}
 
 
+        public void CreateFakeOrbitsFromMenu() {
+            CreateFakeOrbits(2000, 0.05f);
+
+            foreach (DisplayPlanet dp in dPlanets)
+                dp.CreateOrbitFromFrames(100);
+
+            Slide();
+        }
+
         public void CreateFakeOrbits(int steps, float stepLength) {
             foreach (SerializedPlanet sp in szWorld.Planets) {
                 int frame = 0;
@@ -196,6 +211,7 @@ namespace LemonSpawn {
                 float radius = new Vector3((float)sp.pos_x,(float)sp.pos_y, (float)sp.pos_z).magnitude;
                 float modifiedStepLength = stepLength / Mathf.Sqrt(radius);
                 float rot = Random.value*30f + 10f;
+                sp.Frames.Clear();
                     for (int i = 0;i<steps;i++) {
                         float perturb = Mathf.Cos(i/(float)steps*30.234f);
                         float rad = radius*(0.2f*perturb +1);
@@ -315,7 +331,6 @@ namespace LemonSpawn {
 			name =RenderSettings.dataDir + name + ".xml";
             
             LoadFromXMLFile(name);
-            CreateFakeOrbits(2000, 0.05f);
 
 
             szWorld.useSpaceCamera = false;
@@ -335,6 +350,8 @@ namespace LemonSpawn {
 
         public void Slide()
         {
+            if (szWorld.Planets[0].Frames.Count<2)
+                return;
             float v = slider.GetComponent<Slider>().value;
             SSVSettings.currentFrame = v;
             szWorld.InterpolatePlanetFrames(v, solarSystem.planets);

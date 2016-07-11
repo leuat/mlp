@@ -236,7 +236,8 @@ namespace LemonSpawn
         {
 
             int totalFrames = Planets[0].Frames.Count;
-
+            if (totalFrames<2)
+                return;
             int frame = (int)(totalFrames*t);
 
 
