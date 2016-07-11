@@ -102,13 +102,27 @@ namespace LemonSpawn {
 		private Vector3 mouseAccel = new Vector3();
 		private Vector3 focusPoint = Vector3.zero;
 		private Vector3 focusPointCur = Vector3.zero;
+        private float scrollWheel, scrollWheelAccel;
 		private DisplayPlanet selected = null;
         public static GameObject linesObject = null;
         private float m_playSpeed = 0;
-
+        private GameObject pnlInfo = null;
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
+            pnlInfo.SetActive(true);
+            setText("txtPlanetType",dp.planet.pSettings.planetType.name);
+
+            string infoText = "";
+            int radius = (int)(dp.planet.pSettings.radius/(float)SSVSettings.PlanetSizeScale);
+            float orbit = (dp.planet.pSettings.properties.pos.toVectorf().magnitude/(float)SSVSettings.SolarSystemScale);
+            infoText += "Radius           : " +radius+ "km\n";
+            infoText += "Temperature      : " +(int)dp.planet.pSettings.temperature+ "K\n";
+            infoText += "Orbital distance : " +orbit+ "Au\n";
+
+            setText("txtPlanetInfo", infoText);
+
+
 		}
 
 		private void UpdateFocus() {
@@ -200,6 +214,35 @@ namespace LemonSpawn {
         }
 
 
+        private void CreateLine(Vector3 f, Vector3 t, float c1, float c2, float w) {
+
+            Color c = new Color(0.3f, 0.4f, 1.0f,1.0f);
+            GameObject g = new GameObject ();
+            LineRenderer lr = g.AddComponent<LineRenderer> ();
+            lr.material = new Material(Shader.Find("Particles/Additive"));//(Material)Resources.Load ("LineMaterial");
+            lr.SetWidth (w, w);
+            lr.SetPosition (0, f);
+            lr.SetPosition (1, t);
+            Color cc1 = c*c1;
+            Color cc2 = c*c2;
+            cc1.a = 0.4f;
+            cc2.a = 0.4f;
+            lr.SetColors(cc1,cc2);
+        }
+
+        private void CreateAxis() {
+            float w = 10000;
+
+            CreateLine(Vector3.zero, Vector3.up*w, 1, 0.2f, 5);
+            CreateLine(Vector3.zero, Vector3.up*w*-1, 1, 0.2f, 5);
+            CreateLine(Vector3.zero, Vector3.right*w, 1, 0.2f, 5);
+            CreateLine(Vector3.zero, Vector3.right*w*-1, 1, 0.2f, 5);
+            CreateLine(Vector3.zero, Vector3.forward*w, 1, 0.2f, 5);
+            CreateLine(Vector3.zero, Vector3.forward*w*-1, 1, 0.2f, 5);
+
+        }
+
+
 		public override void Start () { 
 			CurrentApp = Verification.MCAstName;
             RenderSettings.UseThreading = true;
@@ -211,7 +254,10 @@ namespace LemonSpawn {
             RenderSettings.MoveCam = false;
             RenderSettings.ResolutionScale = szWorld.resolutionScale;
             RenderSettings.usePointLightSource = true;
-			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+
+            pnlInfo = GameObject.Find("pnlInfo");
+            pnlInfo.SetActive(false);
+            solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 			PlanetTypes.Initialize ();
             SetupCloseCamera();
 			MainCamera = mainCamera.GetComponent<Camera> ();
@@ -220,13 +266,31 @@ namespace LemonSpawn {
             slider = GameObject.Find ("Slider");
 
             linesObject = new GameObject("Lines");
-
+            CreateAxis();
 //			LoadData ();
 		}
-	
+
+
+        private void UpdateZoom() {
+            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f;
+            scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
+//            Debug.Log(ScrollWheel);
+
+            Vector3 pos = MainCamera.transform.position;
+            if (selected!=null) {
+                pos-=selected.go.transform.position;
+                MainCamera.transform.position = pos*(1+scrollWheel) + selected.go.transform.position;
+            }
+            else
+                MainCamera.transform.position = pos*(1+scrollWheel);
+
+        }
+
+
 		public override void Update () {
 			UpdateFocus ();
 			UpdateCamera ();
+            UpdateZoom();
             solarSystem.Update();
             if (RenderSettings.UseThreading) 
                 ThreadQueue.MaintainThreadQueue();

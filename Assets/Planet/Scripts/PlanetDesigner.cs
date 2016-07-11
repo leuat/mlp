@@ -253,12 +253,6 @@ namespace LemonSpawn
         }
 
 
-        private void setText(string box, string text)
-        {
-          //  Debug.Log(box);
-            GameObject.Find(box).GetComponent<Text>().text = text;
-        }
-
         private void setInput(string box, string text)
         {
 //            Debug.Log(box);

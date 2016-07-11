@@ -681,6 +681,12 @@ namespace LemonSpawn {
 
 
 
+        protected void setText(string box, string text)
+        {
+          //  Debug.Log(box);
+            GameObject.Find(box).GetComponent<Text>().text = text;
+        }
+
 
         public virtual void Update () {
 
