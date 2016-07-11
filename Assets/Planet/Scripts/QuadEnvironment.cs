@@ -9,7 +9,7 @@ namespace LemonSpawn
 
     [System.Serializable]
     public class QuadEnvironmentType {
-        public string[] Textures = new string[3] {"Tree1","Tree2", "Tree3"};
+        public string[] Textures = new string[3] {"Tree1","", "Tree3"};
         public Vector3 noiseValues = new Vector3(1,2,3);
         public Vector3 noiseThresholds = new Vector3(0,0,0.2f);
         public Color[] baseColors = new Color[] { new Color(1,1,1),new Color(1,1,1),new Color(1,1,1)};
@@ -109,8 +109,10 @@ namespace LemonSpawn
 
                     // Check that texture is not null
 
-                    if (qet.Textures[val] == "")
+                    if (qet.Textures[val].Trim() == "" || qet.Textures[val] == null)
+                    {
                         continue;
+                    }
 
                     points.Add(realPos);
                     indexes.Add(cur);
@@ -174,15 +176,14 @@ namespace LemonSpawn
             qn.planetSettings.atmosphere.addAffectedMaterial(mr.material);
 
             // mesh.bounds = new Bounds(mesh.bounds.center, mesh.bounds.size * 100);
-
-
+            
             Quaternion q = Quaternion.FromToRotation(Vector3.up, quad.qb.center.P);
             Matrix4x4 rotMat = Matrix4x4.TRS(Vector3.zero, q, Vector3.one);
             mat.SetMatrix("worldRotMat", rotMat);
             mat.SetVector("b_tangent", tangent);
             mat.SetVector("b_binormal", binormal);
 
-
+            
 
 
         }
@@ -196,8 +197,11 @@ namespace LemonSpawn
                 return;
             foreach (string s in qet.Textures)
             {
-                if (s == "")
+                if (s == "" || s == null)
+                {
+                    i++;
                     continue;
+                }
                 if (textures[i] == null)
                 {
                     textures[i] = (Texture2D)Resources.Load(RenderSettings.textureLocation + s);
@@ -222,14 +226,18 @@ namespace LemonSpawn
             quad = qn;
             qet = qn.planetSettings.quadEnvironmentType;
             density = Count;
+
+            if (density == 0)
+                return;
+
             mesh = new Mesh();
             thread = new TQueue();
             thread.thread = new Thread(new ThreadStart(ThreadedCreateMesh));
             thread.gt = this;
             AddThread(thread);
-
+//            foreach (string s in qet.Textures)
+  //             UnityEngine.Debug.Log(s);
         }
-
         public void ThreadedCreateMesh()
         {
             threadDone = false;

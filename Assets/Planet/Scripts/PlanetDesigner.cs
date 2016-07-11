@@ -156,7 +156,7 @@ namespace LemonSpawn
             {
                 float mscale = SolarSystem.planet.pSettings.properties.localCamera.magnitude / SolarSystem.planet.pSettings.getPlanetSize()/10f;
                 theta = s * Input.GetAxis("Mouse X")*mscale;
-                phi = s * Input.GetAxis("Mouse Y") * -1.0f*mscale;
+                phi = s * Input.GetAxis("Mouse Y") * 1.0f*mscale;
 
 
                 
@@ -406,13 +406,17 @@ namespace LemonSpawn
         private void SetTexture()
         {
             RawImage img = GameObject.Find("TextureImage").GetComponent<RawImage>();
-           img.texture = (Texture2D)Resources.Load(RenderSettings.textureLocation + settingsType.stringValue);
-
+            if (settingsType.stringValue != "")
+                img.texture = (Texture2D)Resources.Load(RenderSettings.textureLocation + settingsType.stringValue);
+            else
+                img.texture = null;
         }
 
         public void SelectTexture()
         {
             settingsType.stringValue = PlanetTypes.textures[GameObject.Find("DropDownTextures").GetComponent<Dropdown>().value];
+            if (settingsType.stringValue.ToLower() == "none")
+                settingsType.stringValue = "";
             SetTexture();
             settingsType.setParameter(SolarSystem.planet.pSettings);
                 

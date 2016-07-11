@@ -11,7 +11,7 @@ Shader "LemonSpawn/Sky"
 			Cull Front
 			Zwrite off
 						Blend SrcAlpha OneMinusSrcAlpha
-			//			Blend One One
+				//		Blend One One
 						CGPROGRAM
 						#include "UnityCG.cginc"
 						#include "Include/Atmosphere.cginc"

@@ -4107,7 +4107,7 @@ MonoBehaviour:
     skybox: 1
     uuid: 
     EnvQuadLevel: 5
-    resolution: 64
+    resolution: 32
     overview_distance: 4
     screenshot_width: 1024
     screenshot_height: 1024
@@ -7799,7 +7799,7 @@ MonoBehaviour:
   SurfaceVortex1: {x: 5, y: 1, z: 0}
   SurfaceVortex2: {x: 0, y: 0, z: 0}
   atmosphereDensity: 0.65
-  outerRadiusScale: 1.025
+  outerRadiusScale: 1.03
   m_reflectionIntensity: 0
   m_atmosphereWavelengths: {x: 0.67, y: 0.57, z: 0.475}
   metallicity: 1
@@ -9097,6 +9097,7 @@ GameObject:
   - 114: {fileID: 1418534934}
   - 114: {fileID: 1418534940}
   - 114: {fileID: 1418534941}
+  - 114: {fileID: 1418534942}
   m_Layer: 0
   m_Name: EffectsCamera
   m_TagString: Untagged
@@ -9204,7 +9205,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418534933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9130707, y: 22, z: -0.20292473}
+  m_LocalPosition: {x: -100, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -9259,6 +9260,29 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!114 &1418534942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1418534933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 1
+  screenBlendMode: 0
+  sunTransform: {fileID: 1286680132}
+  radialBlurIterations: 2
+  sunColor: {r: 1, g: 0.97616637, b: 0.6544118, a: 1}
+  sunThreshold: {r: 0.87, g: 0.74, b: 0.65, a: 1}
+  sunShaftBlurRadius: 4.98
+  sunShaftIntensity: 1.5
+  maxRadius: 0.777
+  useDepthTexture: 1
+  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
+  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
 --- !u!1 &1435366083
 GameObject:
   m_ObjectHideFlags: 0

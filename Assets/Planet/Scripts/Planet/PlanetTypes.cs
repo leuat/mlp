@@ -721,6 +721,34 @@ namespace LemonSpawn
                  new Color(0.5f, 1, 0.0f),
                  new Color(0.00f, 0.00f, 0.00f), 2
              ));
+
+
+            settingsTypes.Add(
+                 new SettingsType("Environment type 1 noise scale",
+                 SettingsType.NUMBER,
+                 "quadEnvironmentType.noiseValues",
+                 "Amount of environment per quad.",
+                 new Vector3(0, 500f, 1),
+                 new Vector3(11.2314f, 13.1233f, 12.5123f),
+                 "Environment", 0));
+            settingsTypes.Add(
+                 new SettingsType("Environment type 2 noise scale",
+                 SettingsType.NUMBER,
+                 "quadEnvironmentType.noiseValues",
+                 "Amount of environment per quad.",
+                 new Vector3(0, 500f, 1),
+                 new Vector3(31.2314f, 33.1233f, 32.5123f),
+                 "Environment", 1));
+            settingsTypes.Add(
+                 new SettingsType("Environment type 3 noise scale",
+                 SettingsType.NUMBER,
+                 "quadEnvironmentType.noiseValues",
+                 "Amount of environment per quad.",
+                 new Vector3(0, 500f, 1),
+                 new Vector3(111.2314f, 113.1233f, 112.5123f),
+                 "Environment", 2));
+
+
         }
 
 
@@ -950,7 +978,7 @@ namespace LemonSpawn
 
         public static string[] textures = new string[]
         {
-            "Tree1", "Tree2", "Tree3", "Tree4", "Tree5", "DeadTree1"
+            "None", "Tree1", "Tree2", "Tree3", "Tree4", "Tree5", "DeadTree1", "Palm1"
         };
 
         public string[] getStringList()
@@ -1022,7 +1050,7 @@ namespace LemonSpawn
                 l.Add(new Dropdown.OptionData(s));
                 if (selected == s)
                 {
-                    Debug.Log(selected + " set");
+
                     select = i;
                 }
                 i++;

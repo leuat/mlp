@@ -12,15 +12,15 @@ Shader "LemonSpawn/Water" {
 
 
 		SubShader{
+//			Tags{ "LightMode" = "ForwardBase" }
 	//		Tags{ "Queue" = "Transparent+11000" "RenderType" = "Transparent" }
-			Tags{ "LightMode" = "ForwardBase" }
-//			LOD 400
+			LOD 400
 
 			Lighting on
 			Cull back
 			ZWrite on
 			ZTest on
-//			Blend SrcAlpha OneMinusSrcAlpha
+		//	Blend SrcAlpha OneMinusSrcAlpha
 			Pass
 		{
 

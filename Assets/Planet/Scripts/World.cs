@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
+using UnityStandardAssets.ImageEffects;
 
 
 #if UNITY_EDITOR
@@ -512,6 +513,11 @@ namespace LemonSpawn {
             MainCamera.depthTextureMode = DepthTextureMode.Depth;
             CloseCamera.depthTextureMode = DepthTextureMode.Depth;
 
+
+         //   SunShafts ss = closeCamera.AddComponent<SunShafts>();
+            //ss.sunShaftsShader = Shader.Find("SunShaftsShader");
+            //            ss.CheckResources();
+           // ss.sunShaftsShader = Shader.Find("SunShaftsComposite");
         }
 
 
