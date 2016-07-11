@@ -338,12 +338,13 @@ namespace LemonSpawn {
 		}
 
 		public void setFieldOfView(float fov) {
+
             if (CloseCamera!=null)
-			CloseCamera.fieldOfView = fov;
+			    CloseCamera.fieldOfView = fov;
             if (MainCamera!=null)
-			MainCamera.fieldOfView = fov;
+			    MainCamera.fieldOfView = fov;
             if (effectCamera!=null)
-			effectCamera.GetComponent<Camera>().fieldOfView = fov; 
+			    effectCamera.GetComponent<Camera>().fieldOfView = fov; 
 
 		}
 
@@ -523,11 +524,12 @@ namespace LemonSpawn {
             MainCamera.depthTextureMode = DepthTextureMode.Depth;
             CloseCamera.depthTextureMode = DepthTextureMode.Depth;
 
+            setFieldOfView(MainCamera.fieldOfView);
 
-         //   SunShafts ss = closeCamera.AddComponent<SunShafts>();
+            //   SunShafts ss = closeCamera.AddComponent<SunShafts>();
             //ss.sunShaftsShader = Shader.Find("SunShaftsShader");
             //            ss.CheckResources();
-           // ss.sunShaftsShader = Shader.Find("SunShaftsComposite");
+            // ss.sunShaftsShader = Shader.Find("SunShaftsComposite");
         }
 
 
