@@ -322,10 +322,16 @@ namespace LemonSpawn {
                 SelectPlanet(selected);
 
             UpdatePlay();
-            
-		}
 
-		protected void OnGUI() {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
+
+        }
+
+        protected void OnGUI() {
 		}
 
 		public void LoadFileFromMenu()

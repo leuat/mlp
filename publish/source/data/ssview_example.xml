@@ -8,7 +8,7 @@
 <sun_intensity>0.100</sun_intensity>
 <screenshot_width>900</screenshot_width>
 <screenshot_height>900</screenshot_height>
-<global_radius_scale>0.700</global_radius_scale>
+<global_radius_scale>1</global_radius_scale>
 <resolution>032</resolution>
 <skybox>000</skybox>
 <Planets>
@@ -24,6 +24,7 @@
     <atmosphereHeight>1.019</atmosphereHeight>
     <outerRadiusScale>1.025</outerRadiusScale>
     <name>Planet 1</name>
+    <planetType>Terra</planetType>
   </SerializedPlanet>
 
     <SerializedPlanet>
@@ -38,6 +39,8 @@
     <atmosphereHeight>1.019</atmosphereHeight>
     <outerRadiusScale>1.025</outerRadiusScale>
     <name>Planet 2</name>
+     <planetType>Swamp Planet</planetType>
+
   </SerializedPlanet>
 
    <SerializedPlanet>
@@ -45,13 +48,14 @@
     <pos_z>3.14323893703</pos_z>
     <pos_y>0</pos_y>
     <rotation>752.62131555</rotation>
-    <radius>2545.8249019</radius>
+    <radius>5545.8249019</radius>
     <temperature>388.852152915</temperature>
     <seed>2534</seed>
     <atmosphereDensity>7.545</atmosphereDensity>
     <atmosphereHeight>1.019</atmosphereHeight>
     <outerRadiusScale>1.025</outerRadiusScale>
     <name>Planet 3</name>
+     <planetType>Red Moon</planetType>
   </SerializedPlanet>
 
      <SerializedPlanet>
@@ -66,6 +70,7 @@
     <atmosphereHeight>1.019</atmosphereHeight>
     <outerRadiusScale>1.025</outerRadiusScale>
     <name>Planet 4</name>
+     <planetType>Ice</planetType>
   </SerializedPlanet>
 
 
