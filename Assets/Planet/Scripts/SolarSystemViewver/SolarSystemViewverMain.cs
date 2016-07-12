@@ -67,7 +67,7 @@ namespace LemonSpawn {
                 GameObject.Destroy(go);
 
             orbitLines.Clear();
-            if (serializedPlanet.Frames.Count<2)
+            if (serializedPlanet.Frames.Count<=2)
                 return;             
             for (int i = 0; i < maxLines; i++) {
                 Frame sp = serializedPlanet.Frames[i];
@@ -271,6 +271,9 @@ namespace LemonSpawn {
             RenderSettings.ResolutionScale = szWorld.resolutionScale;
             RenderSettings.usePointLightSource = true;
 
+
+
+
             pnlInfo = GameObject.Find("pnlInfo");
             pnlInfo.SetActive(false);
             solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
@@ -280,6 +283,9 @@ namespace LemonSpawn {
 			PopulateFileCombobox("ComboBoxLoadFile","xml");
 			SzWorld = szWorld;
             slider = GameObject.Find ("Slider");
+
+            setText("TextVersion", "Version: " + RenderSettings.version.ToString("0.00"));
+
 
             linesObject = new GameObject("Lines");
             CreateAxis();
@@ -350,7 +356,7 @@ namespace LemonSpawn {
 
         public void Slide()
         {
-            if (szWorld.Planets[0].Frames.Count<2)
+            if (szWorld.Planets[0].Frames.Count<=2)
                 return;
             float v = slider.GetComponent<Slider>().value;
             SSVSettings.currentFrame = v;
