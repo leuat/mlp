@@ -89,7 +89,7 @@
 			float hs = heightScale;
 			float3 centerPos = getHeightPosition(normalize(pos), scale, hs, octaves);
 			float3 norm = 0;
-						[unroll]
+
 						for (float i=0;i<N;i++) {
 							float3 disp = float3(cos(i/(N+0)*2.0*PI), 0, sin(i/(N+0)*2.0*PI));
 							//float3 rotDisp = mul(tangentToWorld, disp);

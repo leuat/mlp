@@ -181,11 +181,11 @@ namespace LemonSpawn {
 				go.transform.position = coolpos * SSVSettings.SolarSystemScale;
                 p.pSettings.properties.pos = new DVector(coolpos);
 				//go.transform.localScale = Vector3.one * SSVSettings.PlanetSizeScale * p.pSettings.radius;
-               //p.pSettings.atmosphereDensity = 0;
+               //p.pSettings.atmoDensity = 0;
 
                 GameObject hidden = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 hidden.transform.position = coolpos * SSVSettings.SolarSystemScale;
-                hidden.transform.localScale = Vector3.one * p.pSettings.radius;
+                hidden.transform.localScale = Vector3.one * p.pSettings.radius*1.5f;
                 //Destroy(hidden.GetComponent<MeshRenderer>());
 
 				dPlanets.Add (new DisplayPlanet (hidden, p,szWorld.Planets[i++]));
