@@ -7,7 +7,7 @@ namespace LemonSpawn {
 
 	public class SSVSettings {
 		public static float SolarSystemScale = 500.0f;
-		public static float PlanetSizeScale = 1.0f / 100.0f;
+		public static float PlanetSizeScale = 1.0f / 200.0f;
 		public static int OrbitalLineSegments = 100;
 		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
         public static float currentFrame = 0;
@@ -103,7 +103,7 @@ namespace LemonSpawn {
 
 	}
 
-	public class SolarSystemViewverMain : World {
+	public class SolarSystemViewverMain : WorldMC {
 		private List<DisplayPlanet> dPlanets = new List<DisplayPlanet>();
 		private Vector3 mouseAccel = new Vector3();
 		private Vector3 focusPoint = Vector3.zero;
@@ -111,7 +111,6 @@ namespace LemonSpawn {
         private float scrollWheel, scrollWheelAccel;
 		private DisplayPlanet selected = null;
         public static GameObject linesObject = null;
-        private float m_playSpeed = 0;
         private GameObject pnlInfo = null;
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
@@ -261,6 +260,8 @@ namespace LemonSpawn {
 
 		public override void Start () { 
 			CurrentApp = Verification.MCAstName;
+            RenderSettings.path = Application.dataPath + "/../";
+
             RenderSettings.UseThreading = true;
             RenderSettings.reCalculateQuads = false;
             RenderSettings.GlobalRadiusScale = SSVSettings.PlanetSizeScale;
@@ -340,7 +341,7 @@ namespace LemonSpawn {
             string name = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text;
            	if (name=="-")
            		return;
-			name =RenderSettings.dataDir + name + ".xml";
+			name = RenderSettings.dataDir + name + ".xml";
             
             LoadFromXMLFile(name);
 
@@ -397,6 +398,7 @@ namespace LemonSpawn {
         {
             setPlaySpeed(0.0001f);
         }
+
 
         protected void UpdatePlay()
         {

@@ -862,7 +862,35 @@ namespace LemonSpawn
 
         }
 
+        public static double LerpDegrees(double start, double end, double amount)
+    {
+        double difference = Math.Abs(end - start);
+        if (difference > Mathf.PI)
+        {
+            // We need to add on to one of the values.
+            if (end > start)
+            {
+                // We'll add it on to start...
+                    start += 2*Mathf.PI;
+            }
+            else
+            {
+                // Add it on to end.
+                    end += 2*Mathf.PI;
+            }
+        }
 
+        // Interpolate it.
+        double value = (start + ((end - start) * amount));
+
+        // Wrap it..
+            double rangeZero = 2*Mathf.PI;
+
+            if (value >= 0 && value <= 2*Mathf.PI)
+            return value;
+
+        return (value % rangeZero);
+    }
 
 
     }

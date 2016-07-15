@@ -230,7 +230,6 @@ namespace LemonSpawn
                 sz = SerializedWorld.DeSerializeString(data);
 
 
-            sz.global_radius_scale*=RenderSettings.GlobalRadiusScale;
             RenderSettings.ExitSaveOnRendered = ExitOnSave;
             RenderSettings.extraText = "";
             SetSkybox((int)sz.skybox);
@@ -256,14 +255,13 @@ namespace LemonSpawn
 
 
             //		RenderSettings.isVideo = false;
-            if (World.Slider!=null)	
-	            World.Slider.SetActive(RenderSettings.isVideo);
+            if (WorldMC.Slider!=null)	
+	            WorldMC.Slider.SetActive(RenderSettings.isVideo);
 
             foreach (SerializedPlanet sp in sz.Planets)
             {
                 GameObject go = new GameObject(sp.name);
                 go.transform.parent = transform;
-
 				PlanetSettings ps = sp.DeSerialize(go, cnt++, sz.global_radius_scale);
 				if (randomizeSeeds) {
 					ps.seed = (int)(Random.value * 10000f);

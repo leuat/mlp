@@ -105,7 +105,8 @@ namespace LemonSpawn
         {
 		
             Quaternion q = new Quaternion();
-						
+            if (dir.magnitude==0)
+                return;						
             q.SetLookRotation(dir, up);
             curDir = dir;
 

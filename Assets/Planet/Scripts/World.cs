@@ -110,31 +110,6 @@ namespace LemonSpawn {
 
 
 #if UNITY_EDITOR
-/*    [CustomEditor(typeof(PlanetSettings))]
-
-	public class ObjectBuilderEditor : Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			DrawDefaultInspector();
-			
-			PlanetSettings ps = (PlanetSettings)target;
-		}
-	}
-
-    */
-/*
-    [CustomEditor(typeof(PlanetSettings))]
-    public class PlanetTypeSetter : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            GUILayout.Label("This is a Label in a Custom Editor");
-            DrawDefaultInspector();
-            PlanetSettings ps = (PlanetSettings)target;
-        }
-    }
-    */
     [CustomEditor(typeof(PlanetSettings))]
     public class SetPlanetType : Editor
     {
@@ -175,10 +150,21 @@ namespace LemonSpawn {
             EditorUtility.SetDirty(target);
         }
 
+        [MenuItem("GameObject/LemonSpawn/Planet")]      
+        static void CreatePlanet () {
+            GameObject p = new GameObject("Planet");
+            if (Selection.activeGameObject != null)
+                p.transform.parent = Selection.activeGameObject.transform;
+            PlanetSettings ps = p.AddComponent<PlanetSettings>();
+            
+     //       ps.cloudSettings = p.AddComponent<CloudSettings>();
+            //      p.AddComponent<CloudSettings>();        
+        }
 
 
     }
 #endif
+
 
 
 
@@ -194,11 +180,8 @@ namespace LemonSpawn {
 
 		public static string CurrentApp;
 
-
         public bool GPUSurface = false;
 
-
-		public static GameObject canvas;
 		public SerializedWorld szWorld;
         public GameObject mainCamera;
         public GameObject effectCamera;
@@ -210,41 +193,18 @@ namespace LemonSpawn {
         public static Camera CloseCamera;
         public static Stats stats = new Stats();
         public static GameObject MainCameraObject;
-        public GameObject slider;
-        public static GameObject Slider;
         public static SpaceCamera SpaceCamera;
         public static bool hasScene = false;
         public static SerializedWorld SzWorld;
 
-
-
         public bool followVehicle = false;
 		protected int extraTimer = 10;
-
-
+        
         public Vector3 vehiclePos, vehicleDir;
 
         protected SolarSystem solarSystem;
 		protected bool modifier = false;
 		protected bool ctrlModifier = false;
-		
-        protected List<Message> messages = new List<Message>();
-
-
-
-
-       protected void UpdateMessages()
-        {
-            foreach (Message m in messages)
-                if (m.time--<0)
-                {
-                    messages.Remove(m);
-                    return;
-                }
-
-
-        }
-
 
         public static void MoveCamera(Vector3 dp) {
             if (World.SzWorld.useSpaceCamera)
@@ -253,59 +213,9 @@ namespace LemonSpawn {
 			
 		}
 
-        protected void ClearMovieDirectory()
-        {
-			System.IO.DirectoryInfo di = new DirectoryInfo(RenderSettings.path + RenderSettings.movieDir);
-			if (!di.Exists) {
-				FatalError("Could not find movie directory : " + RenderSettings.movieDir);
-				return;
-			}
-            foreach (System.IO.FileInfo file in di.GetFiles()) file.Delete();
-        }
-
-      
-        public static void addBall()
-        {
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            go.transform.parent = SolarSystem.planet.pSettings.transform;
-            go.transform.localPosition = SolarSystem.planet.pSettings.properties.localCamera + World.MainCamera.transform.forward * 2;
-            SolarSystem.planet.pSettings.tagGameObject(go);
-            go.AddComponent<Rigidbody>();
-            Material ball = (Material)Resources.Load("BallMaterial");
-            go.GetComponent<MeshRenderer>().material = ball;
-            SolarSystem.planet.pSettings.atmosphere.InitAtmosphereMaterial(ball);
-        }
-
-        public static void addWheels()
-        {
-            
-            GameObject go = GameObject.Find("car_root");
-            GameObject gorb = GameObject.Find("car_root");
-            if (go == null)
-                return;
-            go.transform.parent = SolarSystem.planet.pSettings.transform;
-            go.transform.localPosition = SolarSystem.planet.pSettings.properties.localCamera + World.MainCamera.transform.forward * 2;
-            go.transform.rotation = Quaternion.FromToRotation(Vector3.up, SolarSystem.planet.pSettings.transform.position*-1);
-
-
-            SolarSystem.planet.pSettings.tagGameObjectAll(go);
-            SolarSystem.planet.pSettings.InitializeAtmosphereMaterials(go);
-            Rigidbody rb = gorb.GetComponent<Rigidbody>();
-            rb.velocity.Set(0, 0, 0);
-            rb.angularVelocity.Set(0, 0, 0);
-            rb.Sleep();
-            /*            go.AddComponent<Rigidbody>();
-                        Material ball = (Material)Resources.Load("BallMaterial");
-                        go.GetComponent<MeshRenderer>().material = ball;
-                        SolarSystem.planet.pSettings.atmosphere.InitAtmosphereMaterial(ball);*/
-        }
-
-
         public virtual void OnGUI() {
 			GUI.Label(new Rect(0, 0, 100, 100), "FPS: "+(int)(1.0f / Time.smoothDeltaTime)); 
         }
-
-
 
         private string GetScreenshotFilename(string dir, out string pureFile) {
 			string OutputDir = RenderSettings.path + dir;
@@ -393,19 +303,13 @@ namespace LemonSpawn {
 		public virtual void LoadFromXMLFile(string filename, bool randomizeSeeds = false) {
 
             ThreadQueue.AbortAll();
-			//string xml =  ((TextAsset)Resources.Load ("system1")).text;// //System.IO.File.ReadAllText("system1.xml");
-//			string file = Application.dataPath + "/../" + GameObject.Find("InputFile").GetComponent<InputField>().text.Trim();
 			string file = RenderSettings.path + filename;
-			//		RenderSettings.extraText = file;
 			if (!System.IO.File.Exists(file)) {
-				//RenderSettings.extraText = ("ERROR: Could not find file :'" + file + "'");
 				FatalError("Could not open file: " + file);
 				return;
 			}
 
 			string xml = System.IO.File.ReadAllText(file);
-			//			RenderSettings.extraText += "\n" + xml;
-			//		Debug.Log (xml);
 			PlanetTypes.Initialize();
 
 			solarSystem.LoadWorld(xml, false, false, this, randomizeSeeds);
@@ -417,7 +321,7 @@ namespace LemonSpawn {
         }
 
         //	#endif	
-        void CreateConfig(string fname) {
+/*        void CreateConfig(string fname) {
 			
 			SerializedPlanet p = new SerializedPlanet();
 			SerializedWorld sz = new SerializedWorld();
@@ -427,9 +331,6 @@ namespace LemonSpawn {
 			c.cam_x = 0;
 			c.cam_y = 0;
 			c.cam_z = -20000;
-			/*		c.rot_x = 0;
-		c.rot_y = 0;
-		c.rot_z = 0;*/
 			c.fov = 60;
 			
 			sz.Cameras.Add (c);
@@ -437,19 +338,8 @@ namespace LemonSpawn {
 			
 			SerializedWorld.Serialize(sz, fname);		
 		}
-		
-		/*	public void LoadDirectXml() {
-		string xml = GameObject.Find ("XMLText").GetComponent<Text>().text;
-		
-		GameObject.Find ("XMLText").GetComponent<Text>().text = " ";
-//		Debug.Log (xml);
-		LoadWorld(xml, false);
-		szWorld.IterateCamera();
-		space.color = new Color(szWorld.sun_col_r,szWorld.sun_col_g,szWorld.sun_col_b);
-		space.hdr = szWorld.sun_intensity;
-	}
-*/	
-		
+		*/
+
 		#if UNITY_STANDALONE
 		
 /*		public void LoadXmlFile(string filename) {
@@ -532,80 +422,23 @@ namespace LemonSpawn {
             // ss.sunShaftsShader = Shader.Find("SunShaftsComposite");
         }
 
-
         public static void FatalError(string errorMessage) {
-        	if (FatalErrorPanel == null) {
-        		Application.Quit();
-        		return;
-        		}
-        	FatalErrorPanel.SetActive(true);
-
-/*        	string p = Application.dataPath.Replace("/Contents","");
-
-        	string s = " files: ";
-			DirectoryInfo info = new DirectoryInfo(p +".");
-				FileInfo[] fileInfo = info.GetFiles();
-				string first="";
-            foreach (FileInfo f in fileInfo)  
-	            s+=f.Name + " ";
-*/
-        	GameObject.Find("FatalErrorText").GetComponent<Text>().text = errorMessage;
-
+            Debug.Log(errorMessage);
+            Application.Quit();
         }
 
 
-        public void SetupErrorPanel() {
-			FatalErrorPanel = GameObject.Find("FatalError");
-        	if (FatalErrorPanel!=null)
-        		FatalErrorPanel.SetActive(false);
-
-        }
-
-
-        void CreateTestMesh( int startRange, int endRange, Mesh currMesh, int maxPointsPerMesh) {
-         Vector3[] points = new Vector3[maxPointsPerMesh];
-         int[] indexes = new int[maxPointsPerMesh];
-         Color[] colors = new Color[maxPointsPerMesh];
-         for(int i=0;i<points.Length;++i) {
-             points[i] = new Vector3(Random.Range(startRange,endRange), Random.Range (startRange,endRange), Random.Range (startRange,endRange));
-             indexes[i] = i;
-             colors[i] = new Color(Random.Range(0.0f,1.0f),Random.Range (0.0f,1.0f),Random.Range(0.0f,1.0f),1.0f);
-         }
-         
-         currMesh.vertices = points;
-         currMesh.colors = colors;
-         currMesh.SetIndices(indexes, MeshTopology.Points,0);
-
-         
-     }
-
-     public void CreateTestObject() {
-/*        GameObject go = new GameObject("Tree test mesh");
-        MeshRenderer mr = go.AddComponent<MeshRenderer>();
-        MeshFilter mf = go.AddComponent<MeshFilter>();
-        Mesh m = new Mesh();
-        CreateTestMesh(-100, 100, m, 100);
-        mf.mesh = m;
-        mr.material = (Material)Resources.Load("TreeTest");
-        go.tag = "Normal";
-        go.layer = 10;*/
-     }
-
-        public virtual void Start () {
-
+        protected void StartBasics() {
             RenderSettings.path = Application.dataPath + "/../";
             CurrentApp = Verification.MCAstName;
 
             RenderSettings.GPUSurface = GPUSurface;
 
         if (solarSystem == null)
-			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
-			SetupErrorPanel();
+            solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
 
             SzWorld = szWorld;
-            Slider = slider;
             PlanetTypes.Initialize();
-            canvas = GameObject.Find ("Canvas");
             spaceBackground = GameObject.Find("SunBackgroundSphere");
             //            spaceBackground.transform.localScale = Vector3.one*RenderSettings.LOD_Distance * 1.01f;
 
@@ -614,48 +447,26 @@ namespace LemonSpawn {
 
 
             RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
-			RenderSettings.sizeVBO = szWorld.resolution;
-			RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
-			RenderSettings.MoveCam = true;
-			RenderSettings.ResolutionScale = szWorld.resolutionScale;
-			
-			slider = GameObject.Find ("Slider");
-			if (slider!=null)
-				slider.SetActive(false);
-
-
-
-            //		CreateConfig("system1.xml");
-            //		LoadWorld("system1.xml", true);
-            //		szWorld.IterateCamera();
-            PlanetTypes.Initialize();
-			if (initializeFromScene)
-				solarSystem.InitializeFromScene();
-			Application.runInBackground = true;
-			CreateTestObject();
-           
-		}
-		
-		#if UNITY_EDITOR
-		[MenuItem("GameObject/LemonSpawn/Planet")]		
-		static void CreatePlanet () {
-			GameObject p = new GameObject("Planet");
-			if (Selection.activeGameObject != null)
-				p.transform.parent = Selection.activeGameObject.transform;
-			PlanetSettings ps = p.AddComponent<PlanetSettings>();
+            RenderSettings.sizeVBO = szWorld.resolution;
+            RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
+            RenderSettings.MoveCam = true;
+            RenderSettings.ResolutionScale = szWorld.resolutionScale;
             
-     //       ps.cloudSettings = p.AddComponent<CloudSettings>();
-            //		p.AddComponent<CloudSettings>();		
+
+
+
+            PlanetTypes.Initialize();
+            if (initializeFromScene)
+                solarSystem.InitializeFromScene();
+            Application.runInBackground = true;
+           
+
         }
-#endif
 
-
-
-
-
-
-        // Update is called once per frame
-
+        public virtual void Start () {
+            StartBasics();
+   		}
+		
 
 
         public void UpdateWorldCamera() {
@@ -670,11 +481,6 @@ namespace LemonSpawn {
 			
 			
 		}	
-		
-        protected void AddMessage(string s, float t = 1)
-        {
-            messages.Add(new Message(s, t * 100));
-        }
 
 
         public void FatalQuit() {
@@ -683,57 +489,15 @@ namespace LemonSpawn {
 
 
 
-        protected void setText(string box, string text)
-        {
-          //  Debug.Log(box);
-            GameObject.Find(box).GetComponent<Text>().text = text;
-        }
-
-
         public virtual void Update () {
 
 			UpdateWorldCamera();		
             solarSystem.Update();
-            UpdateMessages();
-
-			//		Debug.Log (WorldCamera.toVectorf());
-			//	sc.SetLookCamera(1.5f,Time.time,Vector3.up);
-			
-			
-			//Debug.Log (planet.pSettings.name);
-
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                AddCurrentCameraPos();
-                Debug.Log("Added current camera pos: " + currentTime);
-            }
-
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                //                if (!RenderSettings.RecordingVideo)
-                //                  szWorld.Cameras.Clear();
-                RenderSettings.RecordingVideo = !RenderSettings.RecordingVideo;
-                Debug.Log("Rendering Frames: " + RenderSettings.RecordingVideo);
-            }
 
 
             if (Input.GetKey(KeyCode.Escape)) {
 				FatalQuit();
 			}
-			float s = 0.35f;
-			if (Input.GetKey (KeyCode.Alpha9)) { 
-				//MainCamera.fieldOfView-=1*s;
-            }
-            if (Input.GetKey(KeyCode.Alpha0))
-            {
-                //MainCamera.fieldOfView += 1 * s;
-            }
-
-            if (Input.GetKeyUp(KeyCode.B))
-                addBall();
-            if (Input.GetKeyUp(KeyCode.V))
-                addWheels();
-
 
             if (Input.GetKeyDown (KeyCode.LeftShift)) 
 				modifier = true;
@@ -745,36 +509,17 @@ namespace LemonSpawn {
 				ctrlModifier = false;
 
 
-            if (Input.GetKeyUp(KeyCode.T))
+            if (Input.GetKeyUp(KeyCode.F11))
                 solarSystem.toggleGPUSurface();
 
-            if (modifier) // && ctrlModifier)
+            //if (modifier) // && ctrlModifier)
 			{
-				if (Input.GetKeyUp(KeyCode.K))
+				if (Input.GetKeyUp(KeyCode.F10))
 					RenderSettings.MoveCam = !RenderSettings.MoveCam;
 
-
-
-
-                if (Input.GetKeyUp(KeyCode.Alpha2))
-					RenderSettings.RenderText = !RenderSettings.RenderText;
 			}
 
-/*            if (Input.GetKeyUp(KeyCode.Tab))
-                followVehicle = !followVehicle;
-  */              
 
-			if (Input.GetKeyUp (KeyCode.F12)) {
-				RenderSettings.RenderMenu = !RenderSettings.RenderMenu;
-				canvas.SetActive(RenderSettings.RenderMenu);
-			}
-			if (Input.GetKeyUp (KeyCode.L)) {
-				RenderSettings.toggleClouds = !RenderSettings.toggleClouds;
-			}
-            if (Input.GetKeyUp(KeyCode.K))
-            {
-                RenderSettings.displayDebugLines = !RenderSettings.displayDebugLines;
-            }
             if (SolarSystem.planet!=null)
 	    		ThreadQueue.SortQueue(SolarSystem.planet.pSettings.properties.localCamera);
 
@@ -785,191 +530,22 @@ namespace LemonSpawn {
 				Log();
 
 
-            if (followVehicle)
-                FollowVehicle("car_root");
 
 
-            if (RenderSettings.RecordingVideo)
-                RecordFrames();
 		}
 
-        float maxFrames = 1;
-        float curFrames = 0;
 
-        private void RecordFrames()
-        {
-            curFrames -= Time.smoothDeltaTime * timeScale * 2f;
-            if (curFrames<=0)
-            {
-                curFrames = maxFrames;
-                Debug.Log("Adding frame:" + currentFrame);
-                AddCurrentCameraPos();
-            }
-        }
-
-
-        protected void FocusOnPlanet(string n)
-        {
-            GameObject gc = mainCamera;
-            //Camera c = gc.GetComponent<Camera>();
-            Planet planet = null;
-            foreach (Planet p in solarSystem.planets)
-                if (p.pSettings.name == n)
-                    planet = p;
-
-            if (planet == null)
-                return;
-
-            DVector pos = planet.pSettings.properties.pos;
-            float s = (float)(planet.pSettings.radius * szWorld.overview_distance / RenderSettings.AU);
-            Vector3 dir = pos.toVectorf().normalized * s;
-            Vector3 side = Vector3.Cross(Vector3.up, dir);
-
-            pos = pos - new DVector(dir) - new DVector(side.normalized * s);
-            pos.y += s;
-
-            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-            UpdateWorldCamera();
-            Update();
-            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
-            UpdateWorldCamera();
+        protected virtual void Log() {
 
         }
 
 
-        protected void PopulateOverviewList(string box)
-        {
-            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
-            cbx.ClearOptions();
-            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
-            l.Add(new Dropdown.OptionData("None"));
-            foreach (Planet p in solarSystem.planets)
-            {
-                Dropdown.OptionData ci = new Dropdown.OptionData();
-                ci.text = p.pSettings.name;
-                string n = p.pSettings.name;
-                l.Add(ci);
-            }
-            //		foreach (ComboBoxItem i in l)
-            //			Debug.Log (i.Caption);
 
-            cbx.AddOptions(l);
-
-        }
-
-        float currentTime = 0;
-        int currentFrame = 0;
-        float timeScale = 1;
-
-        public void AddCurrentCameraPos()
-        {
-            SerializedCamera sc = SpaceCamera.getSZCamera();
-            sc.fov = MainCamera.fieldOfView;
-            sc.time = currentTime;
-            sc.frame = currentFrame;
-            currentTime += currentFrame;// Time.deltaTime * timeScale*20f; 
-            szWorld.Cameras.Add(sc);
-           
-            currentFrame++;
-
-        }
-
-        public void PopulateFileCombobox(string box, string fileType) {
-				Dropdown cbx = GameObject.Find (box).GetComponent<Dropdown>();
-                cbx.ClearOptions();
-				DirectoryInfo info = new DirectoryInfo(RenderSettings.path + RenderSettings.dataDir + ".");
-				if (!info.Exists) {
-					FatalError("Could not find directory: " + RenderSettings.dataDir);
-					return;
-				}
-				FileInfo[] fileInfo = info.GetFiles();
-				string first="";
-            List<Dropdown.OptionData> data = new List<Dropdown.OptionData>();
-			data.Add(new Dropdown.OptionData("-")); 
-		    foreach (FileInfo f in fileInfo)  {
-                //string name = f.Name.Remove(f.Name.Length-4, 4);
-
-                if (!f.Name.ToLower().Contains(fileType.ToLower()))
-                    continue;
-					string[] lst = f.Name.Split('.');
-					if (lst[1].Trim().ToLower() == fileType.Trim().ToLower()) {
-
-
-                        string text = lst[0].Trim().ToLower();
-                        if (!Verification.VerifyXML(RenderSettings.path + RenderSettings.dataDir + text + ".xml", Verification.MCAstName))
-                        	continue;
-
-
-						string name = f.Name;
-						string n = f.Name;
-						if (first == "")
-							first = f.Name;
-
-                        data.Add(new Dropdown.OptionData(text));
-					}
-				}
-            cbx.AddOptions(data);
-
-
-//            LoadFromXMLFile(RenderSettings.dataDir +  first);
- 
-        }
-
-
-        public void SaveWorld()
-        {
-            string uuid = Verification.IDValues[0].ID;
-            szWorld.SaveSerializedWorld(RenderSettings.path + RenderSettings.dataDir + "example.xml", solarSystem, uuid);
-        }
-
-
-
-        private void FollowVehicle(string s)
-        {
-            GameObject go = GameObject.Find(s);
-            if (go == null)
-                return;
-            Vector3 t = go.transform.position + go.transform.forward*RenderSettings.vehicleFollowDistance;
-            Vector3 c = go.transform.position + go.transform.forward * RenderSettings.vehicleFollowDistance * -1 + go.transform.up * RenderSettings.vehicleFollowHeight;
-            Vector3 up = SolarSystem.planet.pSettings.transform.position.normalized * -1;
-            float t1 = 0.9f;
-
-            vehicleDir = vehicleDir * (1 - t1) + t * t1;
-            vehiclePos = vehiclePos * (1 - t1) + c * t1;
-
-
-            float t0 = 0.95f;
-            SpaceCamera.MoveCamera(vehiclePos*(1-t0));
-            SpaceCamera.SetLookCamera(vehicleDir.normalized * (1-t0) + SpaceCamera.curDir * t0, up);
-
-        }
 
 		
 		
 
-		protected virtual void Log() {
-			string s = "";
-			float val = 1;
-			if (ThreadQueue.orgThreads!=0)
-				val = (ThreadQueue.threadQueue.Count / (float)ThreadQueue.orgThreads);
-			
-			int percent = 100-(int)(100 * val);
-			
-			
-//			load_percent = percent;
-			
-			s+="Version: " + RenderSettings.version.ToString("0.00")  + " \n";
-			//if (RenderSettings.isVideo)
-	//			s+="Progress: " + percent + " %\n";
-			s+="Progress: " + ThreadQueue.threadQueue.Count + " \n";
-			s+="Height: " + stats.Height.ToString("0.00") + " km \n";
-			//s+="Velocity: " + stats.Velocity.ToString("0.00") + " km/s\n";
-			s+=RenderSettings.extraText;
-			GameObject info = GameObject.Find ("Logging");
-			if (info!=null)
-				info.GetComponent<Text>().text = s;
-		}
-		
+
 		
 	}
 	

@@ -200,13 +200,13 @@ namespace LemonSpawn {
             hasFlatClouds = true;
             if (forcedPlanetType != null)
                 planetType = PlanetTypes.p.FindPlanetType(forcedPlanetType);
-
             // Or else find a random one
             if (planetType == null)
                 planetType = PlanetTypes.p.getRandomPlanetType(r, radius, temperature);
             planetTypeName = planetType.name;
             planetType.Realize(r);
             planetType.setParameters(this, r);
+            radius*=RenderSettings.GlobalRadiusScale;
             //Debug.Log(atmosphereDensity);
         }
 

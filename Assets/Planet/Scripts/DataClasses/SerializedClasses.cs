@@ -239,10 +239,7 @@ namespace LemonSpawn
             if (totalFrames<2)
                 return;
             int frame = (int)(totalFrames*t);
-
-
             double dt = (totalFrames*t - frame);
-               
 
             foreach (Planet p in pl)
             {

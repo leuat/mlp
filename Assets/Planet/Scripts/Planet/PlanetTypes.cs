@@ -1117,6 +1117,7 @@ namespace LemonSpawn
 
             if (!File.Exists(fname))
             {
+                
                 World.FatalError("Could not find planet types file: " + RenderSettings.planetTypesFilename);
                 return;
             }

@@ -49,13 +49,10 @@ namespace LemonSpawn
                 return;
 
             DVector pos = f0.pos() + (f1.pos() - f0.pos()) * dt;
-            // 21pi føkk
-//            float rot2 = f1.rotation;
-//            float rot2 = f1.rotation;
 
+//            double rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
+            double rot = Util.LerpDegrees(f0.rotation, f1.rotation, dt);
 
-
-            double rot = (f0.rotation + (f1.rotation - f0.rotation) * dt);
 
             pSettings.properties.pos = pos;
             pSettings.rotation = rot;

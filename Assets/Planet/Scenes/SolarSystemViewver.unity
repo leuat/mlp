@@ -115,8 +115,8 @@ MonoBehaviour:
   sun: {fileID: 1559735422}
   spaceBackground: {fileID: 0}
   sphere: {fileID: 4300000, guid: 8784879114f624946ab37aa4a373b971, type: 3}
-  m_maxQuadNodeLevel: 2
-  m_minQuadNodeLevel: 2
+  m_maxQuadNodeLevel: 1
+  m_minQuadNodeLevel: 1
   GPUSurface: 1
   szWorld:
     Planets: []
@@ -138,10 +138,11 @@ MonoBehaviour:
   mainCamera: {fileID: 2015738359}
   effectCamera: {fileID: 0}
   initializeFromScene: 0
-  slider: {fileID: 0}
   followVehicle: 0
   vehiclePos: {x: 0, y: 0, z: 0}
   vehicleDir: {x: 0, y: 0, z: 0}
+  debugPanel: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!4 &43972463
 Transform:
   m_ObjectHideFlags: 0

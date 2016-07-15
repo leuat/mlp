@@ -18,7 +18,7 @@ namespace LemonSpawn
 
    
 
-    public class PlanetDesigner : World
+    public class PlanetDesigner : WorldMC
     {
 
     	private System.Random r;
@@ -47,10 +47,9 @@ namespace LemonSpawn
 
         public override void Start() {
 
+    		StartBasics();
             RenderSettings.path = Application.dataPath + "/../";
             CurrentApp = Verification.MCAstName;
- 
-    		base.Start();
             Update();
             pnlNumber = GameObject.Find("pnlGroupNumber");
             pnlString = GameObject.Find("pnlGroupString");

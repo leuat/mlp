@@ -15,19 +15,24 @@ using System.Collections.Generic;
 namespace LemonSpawn
 {
 
-   
 
     public class WorldMC : World
     {
 
+        protected List<Message> messages = new List<Message>();
 
-        private float m_playSpeed = 0;
+
+        protected float m_playSpeed = 0;
         protected Texture2D tx_background, tx_load, tx_record;
         protected int load_percent;
         protected GameObject helpPanel = null;
         protected GameObject settingsPanel = null;
         public GameObject debugPanel = null;
         protected MCAstSettings settings = new MCAstSettings();
+        public GameObject slider;
+        public static GameObject Slider;
+        public static GameObject canvas;
+
 
         protected void PopulateGUISettings()
         {
@@ -36,6 +41,18 @@ namespace LemonSpawn
             GameObject.Find("GridSizeCmb").GetComponent<Dropdown>().value = settings.gridSize;
             GameObject.Find("ToggleCameraEffects").GetComponent<Toggle>().isOn = settings.cameraEffects;
 
+        }
+
+        protected void setText(string box, string text)
+        {
+          //  Debug.Log(box);
+            GameObject.Find(box).GetComponent<Text>().text = text;
+        }
+
+
+        protected void AddMessage(string s, float t = 1)
+        {
+            messages.Add(new Message(s, t * 100));
         }
 
         protected void PopulateSettingsFromGUI()
@@ -54,6 +71,19 @@ namespace LemonSpawn
             }
             effectCamera.GetComponent<Camera>().enabled = settings.cameraEffects;
         }
+
+        protected void UpdateMessages()
+        {
+            foreach (Message m in messages)
+                if (m.time--<0)
+                {
+                    messages.Remove(m);
+                    return;
+                }
+
+
+        }
+
 
         protected void LoadSettings()
         {
@@ -228,6 +258,36 @@ namespace LemonSpawn
 	
 #endif
 */
+        public static void FatalError(string errorMessage) {
+            if (FatalErrorPanel == null) {
+                Debug.Log(errorMessage);
+                Application.Quit();
+                return;
+                }
+            FatalErrorPanel.SetActive(true);
+
+/*          string p = Application.dataPath.Replace("/Contents","");
+
+            string s = " files: ";
+            DirectoryInfo info = new DirectoryInfo(p +".");
+                FileInfo[] fileInfo = info.GetFiles();
+                string first="";
+            foreach (FileInfo f in fileInfo)  
+                s+=f.Name + " ";
+*/
+            GameObject.Find("FatalErrorText").GetComponent<Text>().text = errorMessage;
+
+        }
+
+
+        public void SetupErrorPanel() {
+            FatalErrorPanel = GameObject.Find("FatalError");
+            if (FatalErrorPanel!=null)
+                FatalErrorPanel.SetActive(false);
+
+        }
+
+
 
 
         protected void GenerateTextures()
@@ -418,6 +478,72 @@ namespace LemonSpawn
         }
 
 
+
+        public void PopulateFileCombobox(string box, string fileType) {
+                Dropdown cbx = GameObject.Find (box).GetComponent<Dropdown>();
+                cbx.ClearOptions();
+                DirectoryInfo info = new DirectoryInfo(RenderSettings.path + RenderSettings.dataDir + ".");
+                if (!info.Exists) {
+                    FatalError("Could not find directory: " + RenderSettings.dataDir);
+                    return;
+                }
+                FileInfo[] fileInfo = info.GetFiles();
+                string first="";
+            List<Dropdown.OptionData> data = new List<Dropdown.OptionData>();
+            data.Add(new Dropdown.OptionData("-")); 
+            foreach (FileInfo f in fileInfo)  {
+                //string name = f.Name.Remove(f.Name.Length-4, 4);
+
+                if (!f.Name.ToLower().Contains(fileType.ToLower()))
+                    continue;
+                    string[] lst = f.Name.Split('.');
+                    if (lst[1].Trim().ToLower() == fileType.Trim().ToLower()) {
+
+
+                        string text = lst[0].Trim().ToLower();
+                        if (!Verification.VerifyXML(RenderSettings.path + RenderSettings.dataDir + text + ".xml", Verification.MCAstName))
+                            continue;
+
+
+                        string name = f.Name;
+                        string n = f.Name;
+                        if (first == "")
+                            first = f.Name;
+
+                        data.Add(new Dropdown.OptionData(text));
+                    }
+                }
+            cbx.AddOptions(data);
+
+
+//            LoadFromXMLFile(RenderSettings.dataDir +  first);
+ 
+        }
+
+
+
+
+
+        protected void PopulateOverviewList(string box)
+        {
+            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+            cbx.ClearOptions();
+            List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
+            l.Add(new Dropdown.OptionData("None"));
+            foreach (Planet p in solarSystem.planets)
+            {
+                Dropdown.OptionData ci = new Dropdown.OptionData();
+                ci.text = p.pSettings.name;
+                string n = p.pSettings.name;
+                l.Add(ci);
+            }
+            //      foreach (ComboBoxItem i in l)
+            //          Debug.Log (i.Caption);
+
+            cbx.AddOptions(l);
+
+        }
+
         public void LoadFileFromMenu()
         {
             int idx = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().value;
@@ -426,7 +552,7 @@ namespace LemonSpawn
            		return;
 			name =RenderSettings.dataDir + name + ".xml";
 
-            LoadFromXMLFile(name);
+            LoadFromXMLFileMCAST(name);
             settings.previousFile = name;
             PopulateOverviewList("Overview");
             slider.GetComponent<Slider>().value = 0;
@@ -441,6 +567,19 @@ namespace LemonSpawn
 
         }
 
+        protected void ClearMovieDirectory()
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo(RenderSettings.path + RenderSettings.movieDir);
+            if (!di.Exists) {
+                FatalError("Could not find movie directory : " + RenderSettings.movieDir);
+                return;
+            }
+            foreach (System.IO.FileInfo file in di.GetFiles()) file.Delete();
+        }
+
+      
+
+
     public override void Start()
         {
             RenderSettings.path = Application.dataPath + "/../";
@@ -448,9 +587,13 @@ namespace LemonSpawn
 
 			if (solarSystem == null)
     			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
+            canvas = GameObject.Find ("Canvas");
 
             SetupGUI();
 			base.Start();
+ 
+            SetupErrorPanel();
+
 
 //            solarSystem.InitializeFromScene();
 
@@ -466,7 +609,7 @@ namespace LemonSpawn
 
             if (settings.previousFile != "")
             {
-                LoadFromXMLFile(settings.previousFile);
+                LoadFromXMLFileMCAST(settings.previousFile);
                 szWorld.IterateCamera();
                 
                 //                szWorld.getInterpolatedCamera(0, solarSystem.planets);
@@ -479,10 +622,9 @@ namespace LemonSpawn
             //	LoadCommandLineXML();
 #endif
         }
-        public override void LoadFromXMLFile(string filename, bool randomizeSeed = false)
+        public void LoadFromXMLFileMCAST(string filename, bool randomizeSeed = false)
         {
             AddMessage("Loading XML file: " + filename);
-
 
 
 			if (!Verification.VerifyXML(RenderSettings.path + filename, Verification.MCAstName)) {
@@ -559,7 +701,7 @@ namespace LemonSpawn
             {
                 //AddMessage("Setting all planets to type : " + RenderSettings.ForceAllPlanetTypes +"  (" + PlanetSettings.planetTypes.planetTypes[RenderSettings.ForceAllPlanetTypes].Name + ")", 4);
             }
-            LoadFromXMLFile(settings.previousFile, false);
+            LoadFromXMLFileMCAST(settings.previousFile, false);
 
         }
 
@@ -570,7 +712,7 @@ namespace LemonSpawn
 
         public void RandomizeSeeds() {
 			if (settings.previousFile!="") {
-            		LoadFromXMLFile(settings.previousFile, true);
+            		LoadFromXMLFileMCAST(settings.previousFile, true);
             		AddMessage("Planet seeds set to random value");
 			}
 
@@ -579,6 +721,7 @@ namespace LemonSpawn
         public override void Update()
         {
             base.Update();
+            UpdateMessages();
             UpdatePlay();
 
             if (modifier)
@@ -601,6 +744,36 @@ namespace LemonSpawn
 
 
         private int percent;
+
+
+        protected void FocusOnPlanet(string n)
+        {
+            GameObject gc = mainCamera;
+            //Camera c = gc.GetComponent<Camera>();
+            Planet planet = null;
+            foreach (Planet p in solarSystem.planets)
+                if (p.pSettings.name == n)
+                    planet = p;
+
+            if (planet == null)
+                return;
+
+            DVector pos = planet.pSettings.properties.pos;
+            float s = (float)(planet.pSettings.radius * szWorld.overview_distance / RenderSettings.AU);
+            Vector3 dir = pos.toVectorf().normalized * s;
+            Vector3 side = Vector3.Cross(Vector3.up, dir);
+
+            pos = pos - new DVector(dir) - new DVector(side.normalized * s);
+            pos.y += s;
+
+            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
+            UpdateWorldCamera();
+            Update();
+            gc.GetComponent<SpaceCamera>().SetLookCamera(pos, planet.pSettings.gameObject.transform.position, Vector3.up);
+            UpdateWorldCamera();
+
+        }
+
 
         protected override void Log()
         {
