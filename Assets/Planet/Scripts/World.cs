@@ -47,7 +47,7 @@ namespace LemonSpawn {
 		public static int CloudTextureSize = 1024;
 		public static bool RenderMenu = true;
 		public static bool GPUSurface = true;
-		public static float version = 0.12f;
+		public static float version = 0.121f;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
