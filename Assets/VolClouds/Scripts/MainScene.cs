@@ -19,6 +19,8 @@ public class MainScene : MonoBehaviour {
         int dy = 25;
         sunRotation.x = GUI.HorizontalSlider(new Rect(25, 25, w, 30), sunRotation.x, 0.0F, 360.0F);
         sunRotation.y = GUI.HorizontalSlider(new Rect(25, 25+dy, w, 30), sunRotation.y, 0.0F, 360.0F);
+        GUI.Label(new Rect(0, 0, 100, 100), "FPS: "+(int)(1.0f / Time.smoothDeltaTime)); 
+
     }
 	
 	// Update is called once per frame

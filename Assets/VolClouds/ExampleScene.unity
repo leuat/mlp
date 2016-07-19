@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 261075003}
   - 108: {fileID: 261075002}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 261075001}
-  m_LocalRotation: {x: -0.40821797, y: 0.23456939, z: -0.10938151, w: -0.8754262}
+  m_LocalRotation: {x: 0.06698729, y: 0.9330128, z: -0.25000006, w: 0.24999993}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -301,7 +301,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1963084485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.17364822, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
