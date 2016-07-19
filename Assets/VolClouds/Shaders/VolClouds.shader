@@ -1,18 +1,22 @@
 ﻿Shader "LemonSpawn/VolumetricClouds2" {
 
 	Properties{
-		_H("Height (from, to)", Vector) = (0.01, 0.016,0,0)
-		_CloudScale ("Scale", Range (0, 1)) = 1
-		_CloudColor("Color", Color) = (0.6, 0.75, 1, 1.0)
-		_CloudDistance("Distance", Range(0,1)) = 0.11
-		_MaxDetail("Max Detail (performance speed)", Range(0,1)) = 0.5
-		_CloudSubtract("Subtract", Range(0,1)) = 0.55
-		_CloudScattering("Scattering",Range(0.5,2)) = 1
+		_H("Height (from, to)", Vector) = (500, 1200,0,0)
+		_CloudScale("Scale", Range(0, 1)) = 0.3
+		_CloudColor("Color", Color) = (1, 1, 1, 1.0)
+		_CloudDistance("Distance", Range(0,0.25)) = 0.03
+		_MaxDetail("Max Detail (performance speed)", Range(0,1)) = 0.33
+		_CloudSubtract("Subtract", Range(0,1)) = 0.6
+		_CloudScattering("Scattering",Range(1,3)) = 1.5
 		_CloudHeightScatter("Height Scattering",Range(0.5,6)) = 1.5
-		_CloudAlpha("Density", Range(0,1)) = 1
-		_CloudHardness("Hardness", Range(0,1)) = 1
+		_CloudAlpha("Density", Range(0,1)) = 0.6
+		_CloudHardness("Hardness", Range(0,1)) = 0.8
 		_CloudBrightness("Brightness", Range(0,2)) = 1.4
-		_SunGlare("Sun glare",Range(0, 2)) = 1
+		_SunGlare("Sun glare",Range(0, 2)) = 0.4
+		_XShift("XShift", float) = 0
+		_YShift("YShift", float) = 0
+		_ZShift("ZShift", float) = 0
+		_CloudTime("Time", float) = 0
 	}
 
 		SubShader{
@@ -72,6 +76,10 @@
 	float _CloudBrightness;
 	float _SunGlare;
 	float _CloudHeightScatter;
+	float _XShift;
+	float _YShift;
+	float _ZShift;
+	float _CloudTime;
 
 	v2f vert(vertexInput v)
 	{
@@ -93,12 +101,14 @@
 		float ss = _CloudSubtract;
 		float A = 0;
 		float n = 0;
+		p += float3(_XShift, _YShift, _ZShift);
 		p.y*=_CloudHeightScatter;
 		[unroll]
-		for (int i = 1; i < 7; i++) {
+		for (int i = 1; i < 8; i++) {
 			float f = pow(2, i);
 			float amp = 1.0 / (2 * pow(i,_CloudScattering));
-			n += noise(p*f*10) *amp;
+			float3 t = float3(0.3234, 0.0923, 0.25234)*_CloudTime*cos(i*3.1234)*0.002;
+			n += noise((p+t)*f*10) *amp;
 			A += amp;
 		}
 		return clamp(n - ss*A,0, 1);
@@ -121,7 +131,7 @@
 		float intensity = 0;
 		int N = stepLength;
 		float sl = length(end - start)/N;
-		float scale = 0.0005*_CloudScale;
+		float scale = 0.0001*_CloudScale;
 		float4 sum = float4(0,0,0,0);
 		for (int i=0;i<N;i++)
 			{
@@ -187,7 +197,7 @@
 
 		float detail = clamp(2*100000.0/length(t0*viewDirection), 50, _MaxDetail*200);
 		float dist = length(t0*viewDirection);
-		float sub = clamp(_CloudDistance*dist*0.002, 0,1);
+		float sub = clamp(_CloudDistance*dist*0.002 - 0.2, 0,1);
 		float4 c;
 		if (sub<0.99) 
 			c = rayCast(startPos, endPos, viewDirection, detail, lightDirection, h, _CloudColor.xyz, _WorldSpaceCameraPos, light);

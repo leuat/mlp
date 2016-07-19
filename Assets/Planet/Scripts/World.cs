@@ -91,6 +91,9 @@ namespace LemonSpawn {
 #if UNITY_STANDALONE_WIN
         public static string fileDelimiter = "\\";
 #endif 
+#if UNITY_WEBGL
+        public static string fileDelimiter = "\\";
+#endif 
         public static string screenshotDir = "screenshots" + fileDelimiter;
         public static string movieDir = "movie" + fileDelimiter;
         public static string dataDir = "data" + fileDelimiter;
