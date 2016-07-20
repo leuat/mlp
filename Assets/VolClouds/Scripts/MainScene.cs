@@ -42,12 +42,22 @@ public class MainScene : MonoBehaviour {
     private Vector3 sunRotation = new Vector3(25, 300, 0);
     private float moveScale = 2.5f;
     private List<Parameter> parameters = new List<Parameter>();
+    private int timeToAutoDetail=100;
+    private bool autoDetail = false;
+
+    public Parameter getParameter(string Name) {
+        foreach (Parameter p in parameters) {
+            if (p.Name == Name)
+                return p;
+        }
+        return null;
+    }
 
     private static string infoText =
-        "LemonSpawn VolClouds 1.0 example scene\n" +
-        "Left mouse button to look, WSAD to move\n" +
-        "Volumetric clouds currently not renderable from inside the clouds, so height is constrained to below the clouds.\n" +
-        "GPU-heavy but sexy!"; 
+        "LemonSpawn VolClouds 1.0 example scene.\n" +
+        "Left mouse button to look, WSAD to move.\n" +
+        "Currently not renderable from inside the clouds, so height is constrained to stay below the cloud height.\n" +
+        "GPU-heavy but sexy - change the \"Detail\" parameter to tune performance."; 
 
                                         
 
@@ -69,13 +79,62 @@ public class MainScene : MonoBehaviour {
         parameters.Add(new Parameter("YShift", "_YShift", 0f, 0f, 1f));
         parameters.Add(new Parameter("ZShift", "_ZShift", 0f, 0f, 1f));
 
+        FillTerrain();
+    }
+
+
+    void FillTerrain() {
+        Terrain t = GameObject.Find("Terrain").GetComponent<Terrain>();
+        TerrainData terrainData = t.terrainData;
+        int ewidth = terrainData.heightmapWidth;
+        int eheight = terrainData.heightmapHeight;
+        float[,] data = terrainData.GetHeights (0, 0, ewidth, eheight);
+
+        for (int i=0;i<ewidth;i++)
+            for (int j=0;j<eheight;j++) {
+                Vector2 pos = new Vector3(i,j);
+                float scale = 0.00034f;
+                float h = 0;
+                float A = 0;
+                for (int k=1;k<10;k++) {
+                    float f = Mathf.Pow(2,k);
+                    float amp = 1.0f/(2*Mathf.Pow(k, 1f));
+                    h+=(Mathf.PerlinNoise(pos.x*scale*f, pos.y*scale*f)-0.5f)*amp;
+                    A+=amp;
+                }
+                h/=A;
+
+                data[i,j] = Mathf.Clamp(h*1.7f+ 0.04f, 0,1);
+
+            }
+
+        terrainData.SetHeights (0, 0, data);
+        t.terrainData = terrainData;
+        t.Flush();
+
+    }
+
+    void SetAutoDetail() {
+        if (autoDetail)   {
+            float fps = Mathf.Clamp(1.0f/Time.smoothDeltaTime,1,60);
+//            Debug.Log(fps);
+            float dir = (fps - 25); // Target FPS
+            Parameter detail = getParameter("Detail");
+            if (detail==null) 
+                return;
+            
+            detail.value +=dir*0.0005f;
+        }
     }
 
     void OnGUI() {
-        int w = 100;
-        int dy = 30;
+        int w = 150;
+        int dy = 27;
         int textWidth = 75;
         int margin = 10;
+
+        GUI.contentColor = Color.black;
+
 
         GUI.Label(new Rect(margin, dy, textWidth, dy), "Time of day");
         GUI.Label(new Rect(margin, 2*dy, textWidth, dy), "Sun rotation");
@@ -83,9 +142,18 @@ public class MainScene : MonoBehaviour {
         sunRotation.y = GUI.HorizontalSlider(new Rect(2* margin + textWidth, 2*dy, w, dy), sunRotation.y, 0.0F, 360.0F);
         GUI.Label(new Rect(0, 0, 100, 100), "FPS: "+(int)(1.0f / Time.smoothDeltaTime));
 
-        GUI.Label(new Rect(Screen.width - 600, 1.1f*Screen.height - 400, 600, 400), infoText);
+        GUI.Label(new Rect(Screen.width - 380, Screen.height - 100, 360, 100), infoText);
+        GUI.contentColor = Color.white;
+        GUI.Label(new Rect(Screen.width - 381, Screen.height - 101, 360, 100), infoText);
+        GUI.contentColor = Color.black;
+        string txt = "On";
+        if (autoDetail)
+            txt = "Off";
 
-        int i = 4;
+        if (GUI.Button(new Rect(margin, (int)(3.5f*dy), 200, dy), "Auto Detail " + txt +  "  (performance)")){
+            autoDetail = !autoDetail;
+        }
+        int i = 5;
         foreach (Parameter p in parameters) {
             p.Render(i++ * dy, w, textWidth, margin);
         }
@@ -144,6 +212,7 @@ public class MainScene : MonoBehaviour {
         MoveCamera();
         MoveSun();
         UpdateMaterial();
+        SetAutoDetail();
 
 	}
 }

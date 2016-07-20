@@ -26,8 +26,8 @@
 
 		Lighting Off
 		Cull off
-		ZWrite on
-		ZTest off
+		ZWrite off
+		ZTest on
 		Blend SrcAlpha OneMinusSrcAlpha
 		Pass
 	{
@@ -107,7 +107,7 @@
 		for (int i = 1; i < 8; i++) {
 			float f = pow(2, i);
 			float amp = 1.0 / (2 * pow(i,_CloudScattering));
-			float3 t = float3(0.3234, 0.0923, 0.25234)*_CloudTime*cos(i*3.1234)*0.002;
+			float3 t = float3(0.3234, 0.0923, 0.25234)*_CloudTime*cos(i*3.1234 )*0.003;
 			n += noise((p+t)*f*10) *amp;
 			A += amp;
 		}
