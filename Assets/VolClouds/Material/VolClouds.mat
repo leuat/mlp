@@ -93,46 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _CloudScale
-        second: 0.304
-      data:
-        first:
-          name: _CloudDistance
-        second: 0.051
-      data:
-        first:
-          name: _MaxDetail
-        second: 0.286
-      data:
-        first:
-          name: _CloudSubtract
-        second: 0.557
-      data:
-        first:
-          name: _CloudScattering
-        second: 1.514
-      data:
-        first:
-          name: _CloudHeightScatter
-        second: 2.07
-      data:
-        first:
-          name: _CloudAlpha
-        second: 0.647
-      data:
-        first:
-          name: _CloudHardness
-        second: 0.723
-      data:
-        first:
-          name: _CloudBrightness
-        second: 1.33
-      data:
-        first:
-          name: _SunGlare
-        second: 0.96
-      data:
-        first:
           name: _Detail
         second: 2.11
       data:
@@ -173,8 +133,32 @@ Material:
         second: 0
       data:
         first:
+          name: _CloudScale
+        second: 0.304
+      data:
+        first:
           name: _CloudIntensity
         second: 0.52
+      data:
+        first:
+          name: _CloudDistance
+        second: 0.051
+      data:
+        first:
+          name: _MaxDetail
+        second: 0.286
+      data:
+        first:
+          name: _CloudSubtract
+        second: 0.557
+      data:
+        first:
+          name: _CloudScattering
+        second: 1.514
+      data:
+        first:
+          name: _CloudAlpha
+        second: 0.647
       data:
         first:
           name: _CloudLOD
@@ -189,6 +173,22 @@ Material:
         second: 7.74
       data:
         first:
+          name: _CloudHardness
+        second: 0.723
+      data:
+        first:
+          name: _CloudBrightness
+        second: 1.33
+      data:
+        first:
+          name: _SunGlare
+        second: 0.96
+      data:
+        first:
+          name: _CloudHeightScatter
+        second: 2.07
+      data:
+        first:
           name: _XShift
         second: 0
       data:
@@ -198,6 +198,10 @@ Material:
       data:
         first:
           name: _ZShift
+        second: 0
+      data:
+        first:
+          name: _CloudTime
         second: 0
     m_Colors:
       data:
@@ -211,7 +215,7 @@ Material:
       data:
         first:
           name: _H
-        second: {r: 500, g: 1200, b: 0, a: 0}
+        second: {r: 500, g: 1500, b: 0, a: 0}
       data:
         first:
           name: _CloudColor

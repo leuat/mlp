@@ -79,7 +79,7 @@ public class MainScene : MonoBehaviour {
         parameters.Add(new Parameter("YShift", "_YShift", 0f, 0f, 1f));
         parameters.Add(new Parameter("ZShift", "_ZShift", 0f, 0f, 1f));
 
-        FillTerrain();
+        //FillTerrain();
     }
 
 
