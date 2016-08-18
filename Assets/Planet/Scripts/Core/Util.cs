@@ -43,6 +43,12 @@ namespace LemonSpawn
             y = o.y;
             z = o.z;
         }
+        public void Set(DVector o)
+        {
+            x = o.x;
+            y = o.y;
+            z = o.z;
+        }
         public DVector(DVector o)
         {
             x = o.x;

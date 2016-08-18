@@ -44,6 +44,7 @@ public class MainScene : MonoBehaviour {
     private List<Parameter> parameters = new List<Parameter>();
     private int timeToAutoDetail=100;
     private bool autoDetail = false;
+    private bool displayMenu = true;
 
     public Parameter getParameter(string Name) {
         foreach (Parameter p in parameters) {
@@ -128,6 +129,8 @@ public class MainScene : MonoBehaviour {
     }
 
     void OnGUI() {
+        if (!displayMenu)
+            return;
         int w = 150;
         int dy = 27;
         int textWidth = 75;
@@ -205,7 +208,7 @@ public class MainScene : MonoBehaviour {
         foreach (Parameter p in parameters)
             p.SetValue(mat);
 
-        mat.SetFloat("_CloudTime", Time.time);
+        mat.SetFloat("_CloudTime", Time.time*0.01f);
     }
 
     void Update () {
@@ -213,6 +216,8 @@ public class MainScene : MonoBehaviour {
         MoveSun();
         UpdateMaterial();
         SetAutoDetail();
+        if (Input.GetKeyUp(KeyCode.Space))
+            displayMenu = !displayMenu;
 
 	}
 }

@@ -152,7 +152,13 @@ namespace LemonSpawn
                         cameraObjects.Add(go);
                         continue;
                     }
-                    Planet p = new Planet(ps);
+                    Planet p;
+                    if (ps.planetTypeName=="star")
+                        p = new Star(ps);
+                    else
+                        p = new Planet(ps);
+
+
                     p.pSettings.properties.orgPos.Set(go.transform.position);
                     p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
@@ -161,7 +167,11 @@ namespace LemonSpawn
  //                   if (RenderSettings.GPUSurface)
 ///                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
-                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+                    if (ps.planetTypeName != "star")
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+                    else
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
+
                     planets.Add(p);
 
                 }
@@ -268,10 +278,20 @@ namespace LemonSpawn
 					ps.Randomize(0, sp.planetType);
 				}
 
-                Planet p = new Planet(ps);
+                Planet p;
+                if (ps.planetTypeName=="star")
+                        p = new Star(ps);
+                    else
+                        p = new Planet(ps);
 				p.pSettings.properties.parent = go;
 
-                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+
+                if (ps.planetTypeName != "star")
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+                    else
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
+
+//                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);
             }
 			world.setWorld(sz);

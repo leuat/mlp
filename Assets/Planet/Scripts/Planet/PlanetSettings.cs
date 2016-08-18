@@ -24,6 +24,7 @@ namespace LemonSpawn {
         public List<Frame> Frames = new List<Frame>();
         public Plane[] cameraPlanes;
         public GPUSurface gpuSurface;
+        public Color extraColor = new Color(1,1,1,1);
     }
     // Public settings
     public class PlanetSettings : MonoBehaviour {

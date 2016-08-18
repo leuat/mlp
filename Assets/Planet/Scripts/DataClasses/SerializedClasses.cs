@@ -28,6 +28,7 @@ namespace LemonSpawn
         public float radius = 5000;
         public int seed = 0;
         public double pos_x, pos_y, pos_z;
+        public double col_x=1, col_y=1, col_z=1;
         public string name;
         public string planetType;
 
@@ -51,11 +52,19 @@ namespace LemonSpawn
             ps.seed = seed;
             ps.properties.Frames = Frames;
             ps.radius = radius * radiusScale;
+            ps.properties.extraColor.r = (float)col_x;
+            ps.properties.extraColor.g = (float)col_y;
+            ps.properties.extraColor.b = (float)col_z;
+
+            ps.properties.orgPos.Set(ps.properties.pos);
 //            ps.atmosphereDensity = Mathf.Clamp(atmosphereDensity, 0, RenderSettings.maxAtmosphereDensity);
             //	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation % (2.0 * Mathf.PI);
-            ps.Randomize(count, planetType);
+            if (planetType!="star")
+                ps.Randomize(count, planetType);
+            else
+                ps.planetTypeName = planetType;
 
             return ps;
         }
@@ -147,6 +156,15 @@ namespace LemonSpawn
             return false;
         }
 
+
+        public int getMaxFrames() {
+            float f = 0;
+            foreach (SerializedPlanet p in Planets)
+                f = Mathf.Max(f, p.Frames.Count);
+            return (int)f;
+
+        }
+
         public void SaveSerializedWorld(string filename, SolarSystem s, string _uuid)
         {
             Planets.Clear();
@@ -235,7 +253,7 @@ namespace LemonSpawn
         public void InterpolatePlanetFrames(double t, List<Planet> pl)
         {
 
-            int totalFrames = Planets[0].Frames.Count;
+            int totalFrames = getMaxFrames();
             if (totalFrames<2)
                 return;
             int frame = (int)(totalFrames*t);
@@ -244,6 +262,7 @@ namespace LemonSpawn
             foreach (Planet p in pl)
             {
                 p.InterpolatePositions(frame, dt);
+                //Debug.Log(p.pSettings.properties.pos.toVectorf());
             }
 
 

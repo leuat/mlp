@@ -130,6 +130,17 @@ namespace LemonSpawn {
 
 		}
 
+
+        public void FocusOnPlanetClick() {
+            int idx = GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().value;
+            string name = GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().options[idx].text;
+            foreach (DisplayPlanet dp in dPlanets)
+                if (dp.planet.pSettings.name == name)
+                    SelectPlanet(dp);
+   
+        }
+
+
 		private void UpdateFocus() {
 			if (Input.GetMouseButtonDown (0)) {
 				RaycastHit hit;
@@ -186,6 +197,10 @@ namespace LemonSpawn {
                 GameObject hidden = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 hidden.transform.position = coolpos * SSVSettings.SolarSystemScale;
                 hidden.transform.localScale = Vector3.one * p.pSettings.radius*1.5f;
+
+                if (p.pSettings.planetTypeName=="star")
+                    hidden.SetActive(false);
+
                 //Destroy(hidden.GetComponent<MeshRenderer>());
 
 				dPlanets.Add (new DisplayPlanet (hidden, p,szWorld.Planets[i++]));
@@ -363,7 +378,7 @@ namespace LemonSpawn {
 
         public void Slide()
         {
-            if (szWorld.Planets[0].Frames.Count<=2)
+            if (szWorld.getMaxFrames()<=2)
                 return;
             float v = slider.GetComponent<Slider>().value;
             SSVSettings.currentFrame = v;

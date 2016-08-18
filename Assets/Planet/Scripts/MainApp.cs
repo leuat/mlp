@@ -26,6 +26,12 @@ public class MainApp : MonoBehaviour
 		//Text text = GameObject.Find ("Text").GetComponent<Text> ();
 		//text.text = cmd [0] + " " + cmd [1];
 		if (cmd.Length > 1) {
+
+            if (cmd.Length>2) {
+                if (cmd[2] == "debug")
+                    LemonSpawn.RenderSettings.debug = true;
+            }
+             
 			if (cmd [1] == "mcast") {
 				SceneManager.LoadScene (1);
 				ok = true;

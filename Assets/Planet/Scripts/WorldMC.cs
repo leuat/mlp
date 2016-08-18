@@ -526,7 +526,10 @@ namespace LemonSpawn
 
         protected void PopulateOverviewList(string box)
         {
-            Dropdown cbx = GameObject.Find(box).GetComponent<Dropdown>();
+            GameObject go = GameObject.Find(box);
+            if (go==null)
+                return;
+            Dropdown cbx = go.GetComponent<Dropdown>();
             cbx.ClearOptions();
             List<Dropdown.OptionData> l = new List<Dropdown.OptionData>();
             l.Add(new Dropdown.OptionData("None"));
@@ -535,7 +538,8 @@ namespace LemonSpawn
                 Dropdown.OptionData ci = new Dropdown.OptionData();
                 ci.text = p.pSettings.name;
                 string n = p.pSettings.name;
-                l.Add(ci);
+                if (n!="star")
+                    l.Add(ci);
             }
             //      foreach (ComboBoxItem i in l)
             //          Debug.Log (i.Caption);
@@ -723,6 +727,9 @@ namespace LemonSpawn
             base.Update();
             UpdateMessages();
             UpdatePlay();
+
+            if (!RenderSettings.debug)
+                return;
 
             if (modifier)
                 if (Input.GetKeyUp(KeyCode.P))

@@ -25,7 +25,9 @@ namespace LemonSpawn
         public VolumetricClouds volumetricClouds;
 
         
+        public Planet() {
 
+        }
 
         public Planet(PlanetSettings p)
         {
@@ -43,6 +45,11 @@ namespace LemonSpawn
         public void InterpolatePositions(int frame, double dt)
         {
             //		return;
+        //    Debug.Log("Frame:" + frame + " / " + pSettings.properties.Frames.Count);
+            if (frame>=pSettings.properties.Frames.Count) {
+                pSettings.properties.pos.Set( pSettings.properties.orgPos);
+                return;    
+                }
             Frame f0 = pSettings.getFrame(frame);
             Frame f1 = pSettings.getFrame(frame + 1);
             if (f1 == null || f0 == null)
@@ -60,7 +67,7 @@ namespace LemonSpawn
 
         }
 
-        public void Initialize(GameObject sun, Material ground, Material sky, Mesh sphere)
+        public virtual void Initialize(GameObject sun, Material ground, Material sky, Mesh sphere)
         {
 //            if (RenderSettings.GPUSurface)
   //              pSettings.properties.gpuSurface = new GPUSurface(pSettings);
@@ -246,7 +253,7 @@ namespace LemonSpawn
 
 
 
-        private void cameraAndPosition()
+        protected void cameraAndPosition()
         {
             if (World.SzWorld.useSpaceCamera)
                 UpdateSpaceCameraPlanetPosition();
@@ -260,7 +267,7 @@ namespace LemonSpawn
         }
 
 
-        public void Update()
+        public virtual void Update()
         {
             cameraAndPosition();
 
@@ -308,7 +315,7 @@ namespace LemonSpawn
 
             // Fun
 
-//           pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.04f;
+ //          pSettings.ExpSurfSettings2.z += (Mathf.PerlinNoise(Time.time*0.0521f, 0) - 0.5f) * 0.04f;
 //            pSettings.ExpSurfSettings2.x += (Mathf.PerlinNoise(Time.time*0.63452f, 0) - 0.5f) * 0.01f;
 
         }

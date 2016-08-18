@@ -48,6 +48,7 @@ namespace LemonSpawn {
 		public static bool RenderMenu = true;
 		public static bool GPUSurface = true;
 		public static float version = 0.121f;
+        public static bool debug = false;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
@@ -512,11 +513,11 @@ namespace LemonSpawn {
 				ctrlModifier = false;
 
 
-            if (Input.GetKeyUp(KeyCode.F11))
-                solarSystem.toggleGPUSurface();
+            if (RenderSettings.debug) {
 
-            //if (modifier) // && ctrlModifier)
-			{
+                if (Input.GetKeyUp(KeyCode.F11))
+                    solarSystem.toggleGPUSurface();
+
 				if (Input.GetKeyUp(KeyCode.F10))
 					RenderSettings.MoveCam = !RenderSettings.MoveCam;
 

@@ -761,7 +761,7 @@ MonoBehaviour:
     skybox: 1
     uuid: 
     EnvQuadLevel: 5
-    resolution: 48
+    resolution: 32
     useSpaceCamera: 1
     overview_distance: 4
     screenshot_width: 1024
@@ -1053,56 +1053,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e48e0ad584a49239f5f85c9c71f500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 56
+  seed: 57
   rotation: 0
   Gravity: 10
   maxQuadNodeLevel: 14
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.5318391, y: -0.27888554, z: 0.93571544}
-  ExpSurfSettings2: {x: -0.16014433, y: 0.012079242, z: 4.3940935}
-  ExpSurfSettings3: {x: 0.45415565, y: 10, z: 0.52732915}
+  ExpSurfSettings: {x: 2.541959, y: -0.27888554, z: 0.93571544}
+  ExpSurfSettings2: {x: -0.16014433, y: 0.011836513, z: 4.4157543}
+  ExpSurfSettings3: {x: 0.4891279, y: 10, z: 0.52732915}
   ExpSurfSettings4: {x: 20, y: 0, z: 20}
-  SurfaceVortex1: {x: 0.3502147, y: 1.066664, z: 0}
-  SurfaceVortex2: {x: 2.980933, y: 1.0306896, z: 0}
-  atmosphereDensity: 0.82901174
-  outerRadiusScale: 1.0250571
+  SurfaceVortex1: {x: -1.13077, y: 1.0822453, z: 0}
+  SurfaceVortex2: {x: 2.9624233, y: 0.94343096, z: 0}
+  atmosphereDensity: 0.7
+  outerRadiusScale: 1.0249596
   m_reflectionIntensity: 0
   m_atmosphereWavelengths: {x: 0.65, y: 0.57, z: 0.475}
   metallicity: 0
   specularity: 1
   atmosphereString: normal
-  m_hdrExposure: 1.4861084
+  m_hdrExposure: 1.4769343
   m_ESun: 10
   radius: 50000
   temperature: 300
-  hillyThreshold: 0.98014396
-  liquidThreshold: 0.0004792594
-  topThreshold: 0.0073768096
+  hillyThreshold: 0.9929332
+  liquidThreshold: 0.0006635004
+  topThreshold: 0.01049231
   basinThreshold: 0.001
   globalTerrainHeightScale: 2
   globalTerrainScale: 7
-  m_surfaceColor: {r: 0.76758575, g: 0.5254464, b: 0.03511728, a: 1}
-  m_surfaceColor2: {r: 0.34779897, g: 0.654614, b: 0.21255256, a: 1}
+  m_surfaceColor: {r: 0.7639488, g: 0.5021513, b: 0.059853632, a: 1}
+  m_surfaceColor2: {r: 0.3795505, g: 0.5982513, b: 0.24599625, a: 1}
   m_surfaceTexture: {fileID: 2800000, guid: 0fafee079146d47db9bed148b8046cc7, type: 3}
-  m_basinColor: {r: 0.5409127, g: 0.34801915, b: 0.1556916, a: 1}
-  m_basinColor2: {r: 0.509313, g: 0.33625367, b: 0.16053404, a: 1}
+  m_basinColor: {r: 0.5878616, g: 0.3032884, b: 0.15260579, a: 1}
+  m_basinColor2: {r: 0.5858425, g: 0.331111, b: 0.18641903, a: 1}
   m_basinTexture: {fileID: 2800000, guid: 5bcab3a7ec1f24b6d92e44d91238ee63, type: 3}
-  m_topColor: {r: 1.0049297, g: 1.0072325, b: 1.0117224, a: 1}
+  m_topColor: {r: 1.0046053, g: 1.0155425, b: 1.0001682, a: 1}
   m_topTexture: {fileID: 2800000, guid: e5cb33e91b0a34cb38995ba1297e2803, type: 3}
-  m_hillColor: {r: 0.4031507, g: 0.4084726, b: 0.4005323, a: 1}
+  m_hillColor: {r: 0.41263035, g: 0.40782627, b: 0.4056465, a: 1}
   m_hillTexture: {fileID: 2800000, guid: 7cf4a0c5213924befa252ca5b4a890cc, type: 3}
-  m_waterColor: {r: 0.30460808, g: 0.5018166, b: 0.9145995, a: 1}
+  m_waterColor: {r: 0.314302, g: 0.50255895, b: 0.91649914, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 2800000, guid: a8b809fd30fd646cd863a437530c5c48, type: 3}
   hasEnvironment: 1
-  environmentDensity: 33339
+  environmentDensity: 1
   quadEnvironmentType:
     Textures:
     - Tree1
     - 
     - DeadTree1
-    noiseValues: {x: 12.822862, y: 31.423534, z: 112.63605}
+    noiseValues: {x: 11.428045, y: 32.57531, z: 113.122505}
     noiseThresholds: {x: -0.4, y: 0, z: 0.4}
     baseColors:
     - {r: 0.48005897, g: 0.16618897, b: 0.015502011, a: 1}
@@ -1114,7 +1114,7 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 0, a: 1}
   hasRings: 1
   ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
-  ringScale: 3.3732731
+  ringScale: 4.1894817
   ringAmplitude: 0
   ringRadius: {x: 0.15, y: 0.35, z: 0}
   bumpScale: 0.4
@@ -1123,16 +1123,16 @@ MonoBehaviour:
   cloudColor: {r: 0.5112844, g: 0.65972257, b: 0.7916661, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 1.4028784
-    LS_CloudScattering: 1.4280779
-    LS_CloudIntensity: 1.1191688
-    LS_CloudSharpness: 1.5
-    LS_CloudThickness: 0.6312824
+    LS_CloudScale: 1.3444667
+    LS_CloudScattering: 0
+    LS_CloudIntensity: 1.1311665
+    LS_CloudSharpness: 0
+    LS_CloudThickness: 0
     LS_ShadowScale: 0.006
-    LS_LargeVortex: -0.73673445
+    LS_LargeVortex: -0.86504614
     LS_SmallVortex: 0.012753725
-    LS_CloudSubScale: 0.65359163
-    LS_Stretch: {x: 0.37303218, y: 1, z: 0.39917284}
+    LS_CloudSubScale: 0.5841455
+    LS_Stretch: {x: 0.43349835, y: 1, z: 0.3801123}
     cloudRadius: 0
     LS_HasCloudShadows: 0
     LS_DistScale: 10
@@ -2732,7 +2732,7 @@ MonoBehaviour:
   Gravity: 0
   maxQuadNodeLevel: 0
   castShadows: 1
-  hasSea: 0
+  hasSea: 1
   ExpSurfSettings: {x: 2.8, y: 0.7, z: 1.5}
   ExpSurfSettings2: {x: -0.3, y: 0.015, z: 5}
   ExpSurfSettings3: {x: 0.1, y: 10, z: 1}
@@ -2798,10 +2798,10 @@ MonoBehaviour:
   cloudSettings:
     LS_CloudTimeScale: 5
     LS_CloudScale: 4
-    LS_CloudScattering: 0.74
+    LS_CloudScattering: 0
     LS_CloudIntensity: 4
     LS_CloudSharpness: 1.35
-    LS_CloudThickness: 1.1
+    LS_CloudThickness: 0
     LS_ShadowScale: 0.75
     LS_LargeVortex: 0.2
     LS_SmallVortex: 0.02

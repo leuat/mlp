@@ -1,5 +1,7 @@
 ﻿Shader "LemonSpawn/Star" {
 	Properties {
+		_Color ("Main Color", Color) = (1,1,1,1)
+		_Scale("Scale", Range(0,1)) = 0.1
 	}
 	SubShader {
 //	    Tags {"Queue"="Transparent-1" "IgnoreProjector"="True" "RenderType"="Transparent"}
@@ -33,6 +35,8 @@
 #include "Include/Atmosphere.cginc"
 
         sampler2D _MainTex;
+        float4 _Color;
+        float _Scale;
 
              struct v2f
              {
@@ -114,10 +118,10 @@
 
 
 
-			float val = pow(getSun(pos, 4, 5.23)+0.6,2);
+			float val = pow(getSun(pos, 4, 50.23*_Scale)+0.6,2);
 
 			c.a = 1;
-			c.rgb = float3(1, 0.9, 0.5)*val;
+			c.rgb = _Color.xyz*val;
 
 
 			return c;
