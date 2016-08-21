@@ -93,10 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Detail
-        second: 2.11
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -133,6 +129,10 @@ Material:
         second: 0
       data:
         first:
+          name: _Detail
+        second: 2.11
+      data:
+        first:
           name: _CloudScale
         second: 0.304
       data:
@@ -150,15 +150,15 @@ Material:
       data:
         first:
           name: _CloudSubtract
-        second: 0.557
+        second: 0.536
       data:
         first:
           name: _CloudScattering
-        second: 1.514
+        second: 1.49
       data:
         first:
           name: _CloudAlpha
-        second: 0.647
+        second: 0.564
       data:
         first:
           name: _CloudLOD
@@ -174,7 +174,7 @@ Material:
       data:
         first:
           name: _CloudHardness
-        second: 0.723
+        second: 1
       data:
         first:
           name: _CloudBrightness

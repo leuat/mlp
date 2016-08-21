@@ -189,7 +189,7 @@ namespace LemonSpawn
         {
             Vector3 p = pSettings.properties.localCamera.normalized;
 
-            float dh = 10;
+            float dh = 0.00025f*pSettings.radius;
             float h;
 //            if (RenderSettings.GPUSurface && pSettings.properties.gpuSurface!=null)
                 h = pSettings.properties.gpuSurface.getPlanetSurfaceOnly(p).magnitude + dh;

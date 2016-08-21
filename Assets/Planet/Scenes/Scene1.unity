@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418534933}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
@@ -2703,7 +2703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1723561327
 Transform:
   m_ObjectHideFlags: 0
@@ -2733,80 +2733,80 @@ MonoBehaviour:
   maxQuadNodeLevel: 0
   castShadows: 1
   hasSea: 1
-  ExpSurfSettings: {x: 2.8, y: 0.7, z: 1.5}
-  ExpSurfSettings2: {x: -0.3, y: 0.015, z: 5}
-  ExpSurfSettings3: {x: 0.1, y: 10, z: 1}
-  ExpSurfSettings4: {x: 1000, y: 0, z: 0}
-  SurfaceVortex1: {x: -2, y: 2, z: 0}
-  SurfaceVortex2: {x: 24, y: 0.1, z: 0}
-  atmosphereDensity: 0.6
-  outerRadiusScale: 1.019
+  ExpSurfSettings: {x: 2.4651244, y: 0.27391398, z: 0.8507918}
+  ExpSurfSettings2: {x: 0.48515296, y: 0.008958218, z: 7.0126066}
+  ExpSurfSettings3: {x: 0.23003599, y: 10, z: 0.4853176}
+  ExpSurfSettings4: {x: 20, y: 0, z: 20}
+  SurfaceVortex1: {x: 6.0549865, y: 0.40585843, z: 0}
+  SurfaceVortex2: {x: 6.536378, y: 0.03534285, z: 0}
+  atmosphereDensity: 0.67349404
+  outerRadiusScale: 1.0245134
   m_reflectionIntensity: 0
-  m_atmosphereWavelengths: {x: 0.5, y: 0.55, z: 0.7}
+  m_atmosphereWavelengths: {x: 0.5, y: 0.54, z: 0.635}
   metallicity: 0
-  specularity: 0
-  atmosphereString: normal
-  m_hdrExposure: 2
+  specularity: 1
+  atmosphereString: yellow
+  m_hdrExposure: 1.5998574
   m_ESun: 10
-  radius: 2000
+  radius: 2500
   temperature: 300
-  hillyThreshold: 0.99
-  liquidThreshold: 0.002
-  topThreshold: 0.0045
+  hillyThreshold: 0.9890508
+  liquidThreshold: 0
+  topThreshold: 0.00790882
   basinThreshold: 0.001
   globalTerrainHeightScale: 1
   globalTerrainScale: 2
-  m_surfaceColor: {r: 0.625, g: 0.32327586, b: 0, a: 0}
-  m_surfaceColor2: {r: 0.3369377, g: 0.49287078, b: 0.60294116, a: 0}
+  m_surfaceColor: {r: 0.6925477, g: 0.5738256, b: 0.30255866, a: 1}
+  m_surfaceColor2: {r: 0.25538102, g: 0.21510251, b: 0.17204538, a: 1}
   m_surfaceTexture: {fileID: 0}
-  m_basinColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 0}
-  m_basinColor2: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+  m_basinColor: {r: 0.13394739, g: 0.12452174, b: 0.122364044, a: 1}
+  m_basinColor2: {r: 0.19823177, g: 0.17589965, b: 0.14050986, a: 1}
   m_basinTexture: {fileID: 0}
-  m_topColor: {r: 0.6297578, g: 0.71929365, b: 0.8235294, a: 1}
+  m_topColor: {r: 0.5395511, g: 0.3684715, b: 0.11096407, a: 1}
   m_topTexture: {fileID: 0}
-  m_hillColor: {r: 0, g: 0, b: 0, a: 0}
+  m_hillColor: {r: 0.41229066, g: 0.40466642, b: 0.41413826, a: 1}
   m_hillTexture: {fileID: 0}
-  m_waterColor: {r: 0.19999999, g: 0.9, b: 0.37862056, a: 1}
+  m_waterColor: {r: 0.30174837, g: 0.5002446, b: 0.9082198, a: 1}
   emissionColor: {r: 0, g: 0, b: 0, a: 0}
   bumpMap: {fileID: 0}
   hasEnvironment: 0
   environmentDensity: 0
   quadEnvironmentType:
     Textures:
-    - Tree1
-    - Tree2
-    - Tree3
-    noiseValues: {x: 0, y: 0, z: 0}
+    - 
+    - 
+    - 
+    noiseValues: {x: 11.47277, y: 31.248829, z: 111.881}
     noiseThresholds: {x: 0, y: 0, z: 0}
     baseColors:
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 0.5, g: 1, b: 0.5, a: 1}
+    - {r: 0.5, g: 1, b: 0.5, a: 1}
+    - {r: 0.5, g: 1, b: 0.5, a: 1}
     spreadColors:
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
-    - {r: 2.8991775e-38, g: 1e-45, b: -1.8560875e-11, a: 6e-45}
+    - {r: 0.5, g: 1, b: 0, a: 1}
+    - {r: 0.5, g: 1, b: 0, a: 1}
+    - {r: 0.5, g: 1, b: 0, a: 1}
   hasRings: 0
-  ringColor: {r: 1, g: 1, b: 1, a: 1}
-  ringScale: 1
-  ringAmplitude: 1
-  ringRadius: {x: 0.2, y: 0.45, z: 0}
+  ringColor: {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  ringScale: 5.665586
+  ringAmplitude: 0
+  ringRadius: {x: 0.15, y: 0.35, z: 0}
   bumpScale: 0
   cloudRadius: 0
   renderedCloudRadius: 1.03
-  cloudColor: {r: 0.7, g: 0.8, b: 1, a: 1}
+  cloudColor: {r: 0.65, g: 0.7, b: 0.9, a: 1}
   cloudSettings:
     LS_CloudTimeScale: 5
-    LS_CloudScale: 4
-    LS_CloudScattering: 0
-    LS_CloudIntensity: 4
+    LS_CloudScale: 1.0043937
+    LS_CloudScattering: 1.5295095
+    LS_CloudIntensity: 1.2472997
     LS_CloudSharpness: 1.35
     LS_CloudThickness: 0
-    LS_ShadowScale: 0.75
-    LS_LargeVortex: 0.2
+    LS_ShadowScale: 0.006
+    LS_LargeVortex: 0.07957807
     LS_SmallVortex: 0.02
-    LS_CloudSubScale: 1
-    LS_Stretch: {x: 1, y: 1, z: 1}
+    LS_CloudSubScale: 0.44396162
+    LS_Stretch: {x: 0.9996062, y: 1, z: 1}
     cloudRadius: 0
     LS_HasCloudShadows: 1
     LS_DistScale: 10
@@ -2818,7 +2818,7 @@ MonoBehaviour:
   hasFlatClouds: 0
   hasBillboardClouds: 0
   hasVolumetricClouds: 0
-  planetTypeName: 
+  planetTypeName: Yellow Desert
 --- !u!1001 &1767860168
 Prefab:
   m_ObjectHideFlags: 0
