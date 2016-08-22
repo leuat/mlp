@@ -53,7 +53,10 @@ namespace LemonSpawn
             Frame f0 = pSettings.getFrame(frame);
             Frame f1 = pSettings.getFrame(frame + 1);
             if (f1 == null || f0 == null)
+            {
+                //pSettings.properties.pos.Set(pSettings.properties.orgPos);
                 return;
+            }
 
             DVector pos = f0.pos() + (f1.pos() - f0.pos()) * dt;
 

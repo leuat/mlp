@@ -240,7 +240,7 @@
 
    	    float h = (length(i.posWorld.xyz - v3Translate) - fInnerRadius) / fInnerRadius;// - liquidThreshold;
   	    //if (h>liquidThreshold) {
-			float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2,3);
+			float3 realN = getPlanetSurfaceNormal(i.posWorld - v3Translate, i.tangent, i.binormal, 0.2/50000.0*fInnerRadius,3);
 			s.normalWorld = realN;
    	    //}
 //   	    else

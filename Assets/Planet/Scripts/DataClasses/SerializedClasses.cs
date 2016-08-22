@@ -254,15 +254,22 @@ namespace LemonSpawn
         {
 
             int totalFrames = getMaxFrames();
-            if (totalFrames<2)
+            if (totalFrames < 2)
+            {
+                foreach (Planet p in pl)
+                {
+                    p.pSettings.properties.pos = p.pSettings.properties.orgPos;
+  //                  Debug.Log(p.pSettings.properties.pos.toVectorf().x);
+                }
                 return;
+            }
             int frame = (int)(totalFrames*t);
             double dt = (totalFrames*t - frame);
 
             foreach (Planet p in pl)
             {
                 p.InterpolatePositions(frame, dt);
-                //Debug.Log(p.pSettings.properties.pos.toVectorf());
+//                Debug.Log(p.pSettings.properties.pos.toVectorf());
             }
 
 

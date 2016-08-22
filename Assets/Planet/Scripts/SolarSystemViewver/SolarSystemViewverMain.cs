@@ -45,6 +45,8 @@ namespace LemonSpawn {
             Color c = new Color(0.3f, 0.7f, 1.0f,1.0f);
             for (int i=0;i<orbitLines.Count;i++) {
                 int f = Mathf.Clamp(i - orbitLines.Count/2 + currentFrame,0,maxFrames);
+                if (f+1 >= serializedPlanet.Frames.Count)
+                    break;
                 LineRenderer lr = orbitLines[i].GetComponent<LineRenderer>();
                 Frame sp = serializedPlanet.Frames[f];
                 Frame sp2 = serializedPlanet.Frames[f+1];
@@ -123,8 +125,8 @@ namespace LemonSpawn {
             float orbit = (dp.planet.pSettings.properties.pos.toVectorf().magnitude/(float)SSVSettings.SolarSystemScale);
             infoText += "Radius           : " +radius+ "km\n";
             infoText += "Temperature      : " +(int)dp.planet.pSettings.temperature+ "K\n";
-            infoText += "Orbital distance : " +orbit+ "Au\n";
-
+            infoText += "Orbital distance : " +orbit+ "Au\n\n";
+            infoText += dp.planet.pSettings.planetType.PlanetInfo;
             setText("txtPlanetInfo", infoText);
 
 
@@ -272,6 +274,7 @@ namespace LemonSpawn {
 
         }
 
+        public static GameObject satellite = null;
 
 		public override void Start () { 
 			CurrentApp = Verification.MCAstName;
@@ -289,6 +292,8 @@ namespace LemonSpawn {
 
 
 
+            satellite = GameObject.Find("Satellite");
+            satellite.SetActive(false);
 
             pnlInfo = GameObject.Find("pnlInfo");
             pnlInfo.SetActive(false);
@@ -378,8 +383,8 @@ namespace LemonSpawn {
 
         public void Slide()
         {
-            if (szWorld.getMaxFrames()<=2)
-                return;
+//            if (szWorld.getMaxFrames()<=2)
+  //              return;
             float v = slider.GetComponent<Slider>().value;
             SSVSettings.currentFrame = v;
             szWorld.InterpolatePlanetFrames(v, solarSystem.planets);
