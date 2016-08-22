@@ -44,6 +44,8 @@ namespace LemonSpawn {
         } 
 
         public static bool VerifyXML(string fileName, string application) {
+            return true;
+
 			XDocument doc = XDocument.Load(fileName);
 			string value = findValueInElements(doc.Root.Elements(),"uuid");
 			foreach (IDValue i in IDValues) {

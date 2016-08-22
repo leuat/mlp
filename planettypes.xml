@@ -4405,7 +4405,7 @@
         <string>Environment</string>
       </groups>
       <TemperatureRange>
-        <x>300</x>
+        <x>250</x>
         <y>800</y>
         <z>0</z>
       </TemperatureRange>
@@ -6623,7 +6623,7 @@
       <PlanetInfo>Ice planets are cold, water-rich earth-like planets. Many have abundant mineral resources, but due to the extreme weather conditions colonization is difficult, and only the hardiest of mining outposts are possible..</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Ridged Moon</name>
+      <name>Ridged Planet</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -8826,7 +8826,7 @@
         <y>1500</y>
         <z>0</z>
       </RadiusRange>
-      <PlanetInfo>Rigded moons have experienced large collisions with other satellites in their past, yielding a easily recognizable scarred surface. </PlanetInfo>
+      <PlanetInfo>Rigded planets have experienced large collisions with other bodies in their distant past, yielding an easily recognizable scarred surface. </PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Small Moon</name>
@@ -13241,7 +13241,7 @@
       <PlanetInfo>Swamp planets are dense, humid, green-house gas-filled planets teeming with amphibious lifeforms. The grreen atmosphere is a direct result of chlorophyll-producing airborne algae. </PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Red Moon</name>
+      <name>Rust World</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -15444,7 +15444,7 @@
         <y>2000</y>
         <z>0</z>
       </RadiusRange>
-      <PlanetInfo>Red moons are low in noble elements but rich in iron.</PlanetInfo>
+      <PlanetInfo>These red planets are low in valuable elements but rich in iron.</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Cold Terra</name>
@@ -22065,7 +22065,7 @@
       <PlanetInfo>The entire surface of an ocean planet is covered with liquid water. Most ocean planets are teeming with aquatic life.</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Metallic Moon</name>
+      <name>Metallic World</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -28683,7 +28683,7 @@
       <PlanetInfo>The universe is scattered with these small, highly irregular asteroids.</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Purple Moon</name>
+      <name>Purple Planet</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>
@@ -30886,7 +30886,7 @@
         <y>7000</y>
         <z>0</z>
       </RadiusRange>
-      <PlanetInfo>Purple moons have usually been through a catastrophic event long since forgotten, now void of any living organisms except for the purple algae feeding off the noxious greenhouse gases.</PlanetInfo>
+      <PlanetInfo>Purple planets have usually been through a catastrophic event long since forgotten, now void of any living organisms except for the purple algae feeding off the noxious greenhouse gases.</PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
       <name>Metal Asteroid</name>
@@ -44125,7 +44125,7 @@
       <PlanetInfo>These extremely rare moons have large deposits of liquid water and strange forms of life that have evolved in a low-gravity environment. </PlanetInfo>
     </SettingsTypes>
     <SettingsTypes>
-      <name>Pink Gas Planet</name>
+      <name>Noble Gas Planet</name>
       <settingsTypes>
         <SettingsType>
           <name>Atmosphere density</name>

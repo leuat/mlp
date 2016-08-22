@@ -279,6 +279,9 @@ namespace LemonSpawn
 				}
 
                 Planet p;
+                if (ps.planetTypeName =="star" && World.CurrentApp==Verification.MCAstName)
+                    continue;
+
                 if (ps.planetTypeName=="star")
                         p = new Star(ps);
                     else

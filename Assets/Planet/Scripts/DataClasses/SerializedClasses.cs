@@ -228,6 +228,9 @@ namespace LemonSpawn
             SerializedCamera p2 = getCamera(time, 1);
             SerializedCamera p3 = getCamera(time, 2);
 
+            if (p2 == null || p1 == null)
+                return;
+
             double dt = 1.0 / (p2.time - p1.time) * (time - p1.time);
            
        

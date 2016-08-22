@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace LemonSpawn {
 
@@ -142,6 +143,13 @@ namespace LemonSpawn {
    
         }
 
+        private void DeFocus() {
+            selected = null;
+            focusPoint = Vector3.zero;
+            pnlInfo.SetActive(false);
+         
+        }
+
 
 		private void UpdateFocus() {
 			if (Input.GetMouseButtonDown (0)) {
@@ -154,8 +162,8 @@ namespace LemonSpawn {
 					}
 				}
                 else {
-                    //selected = null;
-                    //focusPoint = Vector3.zero;
+                    if (!EventSystem.current.IsPointerOverGameObject() )
+                        DeFocus();
                 }
 			}
 		}
@@ -198,12 +206,12 @@ namespace LemonSpawn {
 
                 GameObject hidden = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 hidden.transform.position = coolpos * SSVSettings.SolarSystemScale;
-                hidden.transform.localScale = Vector3.one * p.pSettings.radius*1.5f;
+                hidden.transform.localScale = Vector3.one * p.pSettings.radius*2f;
 
                 if (p.pSettings.planetTypeName=="star")
                     hidden.SetActive(false);
 
-                //Destroy(hidden.GetComponent<MeshRenderer>());
+                hidden.GetComponent<MeshRenderer>().material = (Material)Resources.Load("HiddenMaterial");
 
 				dPlanets.Add (new DisplayPlanet (hidden, p,szWorld.Planets[i++]));
 			}
@@ -277,7 +285,7 @@ namespace LemonSpawn {
         public static GameObject satellite = null;
 
 		public override void Start () { 
-			CurrentApp = Verification.MCAstName;
+			CurrentApp = Verification.SolarSystemViewerName;
             RenderSettings.path = Application.dataPath + "/../";
 
             RenderSettings.UseThreading = true;
@@ -293,7 +301,8 @@ namespace LemonSpawn {
 
 
             satellite = GameObject.Find("Satellite");
-            satellite.SetActive(false);
+            if (satellite!=null)
+                satellite.SetActive(false);
 
             pnlInfo = GameObject.Find("pnlInfo");
             pnlInfo.SetActive(false);
@@ -357,12 +366,14 @@ namespace LemonSpawn {
 
 		public void LoadFileFromMenu()
         {
+            DeFocus();
+
             int idx = GameObject.Find("ComboBoxLoadFile").GetComponent<UnityEngine.UI.Dropdown>().value;
             string name = GameObject.Find("ComboBoxLoadFile").GetComponent<Dropdown>().options[idx].text;
            	if (name=="-")
            		return;
 			name = RenderSettings.dataDir + name + ".xml";
-            
+
             LoadFromXMLFile(name);
 
 

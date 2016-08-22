@@ -34,7 +34,7 @@
       <pos_x>-1</pos_x>
       <pos_y>0.00030000001424923539</pos_y>
       <pos_z>0.00050000002374872565</pos_z>
-      <planetType>Moon Two</planetType>
+      <planetType>Small Moon</planetType>
       <rotation>0</rotation>
       <temperature>300</temperature>
       <Frames />
@@ -47,7 +47,7 @@
       <pos_x>-1.0010000467300415</pos_x>
       <pos_y>-0.00050000002374872565</pos_y>
       <pos_z>-0.00030000001424923539</pos_z>
-      <planetType>Metallic Moon</planetType>
+      <planetType>Metallic World</planetType>
       <rotation>0</rotation>
       <temperature>300</temperature>
       <Frames />
@@ -60,7 +60,7 @@
       <pos_x>-1.0009000301361084</pos_x>
       <pos_y>0.00050000002374872565</pos_y>
       <pos_z>-0.00030000001424923539</pos_z>
-      <planetType>Red Moon</planetType>
+      <planetType>Rust World</planetType>
       <rotation>0</rotation>
       <temperature>300</temperature>
       <Frames />
@@ -73,7 +73,7 @@
       <pos_x>-1.0015000104904175</pos_x>
       <pos_y>-0.00050000002374872565</pos_y>
       <pos_z>0</pos_z>
-      <planetType>Ice</planetType>
+      <planetType>Ice Planet</planetType>
       <rotation>0</rotation>
       <temperature>300</temperature>
       <Frames />
