@@ -1,4 +1,7 @@
-﻿Shader "LemonSpawn/CloudID" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+Shader "LemonSpawn/CloudID" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_CloudTex ("Base (RGB)", 2D) = "white" {}
@@ -66,11 +69,11 @@
  				 o.worldPosition = v.vertex;//mul (_Object2World, v.vertex).xyz;
  				 //o.worldPosition = mul (_Object2World, v.vertex).xyz;
 
- 				 float3 vv = mul(_Object2World, v.vertex).xyz;
+ 				 float3 vv = mul(unity_ObjectToWorld, v.vertex).xyz;
  				 vv = normalize(vv-v3Translate)*fInnerRadius*1.01;
 
 //  			   	  getGroundAtmosphere(v.vertex, o.c0, o.c1);
-  			   	  getGroundAtmosphere(mul(_World2Object,vv + v3Translate), o.c0, o.c1);
+  			   	  getGroundAtmosphere(mul(unity_WorldToObject,vv + v3Translate), o.c0, o.c1);
   				
 
                  TRANSFER_VERTEX_TO_FRAGMENT(o);

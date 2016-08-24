@@ -1,4 +1,6 @@
-﻿Shader "LemonSpawn/Star" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "LemonSpawn/Star" {
 	Properties {
 		_Color ("Main Color", Color) = (1,1,1,1)
 		_Scale("Scale", Range(0,1)) = 0.1
@@ -63,7 +65,7 @@
  				 o.worldPosition = v.vertex;//mul (_Object2World, v.vertex).xyz;
  				 //o.worldPosition = mul (_Object2World, v.vertex).xyz;
 
- 				 float3 vv = mul(_Object2World, v.vertex).xyz;
+ 				 float3 vv = mul(unity_ObjectToWorld, v.vertex).xyz;
  				 vv = normalize(vv-v3Translate)*fInnerRadius*1.01;
 
 //  			   	  getGroundAtmosphere(v.vertex, o.c0, o.c1);

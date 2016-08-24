@@ -273,7 +273,7 @@ namespace LemonSpawn
         public virtual void Update()
         {
             cameraAndPosition();
-
+            //Debug.Log("YAU");
 
             if (this == SolarSystem.planet) {
                 float ch = (World.MainCameraObject.transform.position - pSettings.transform.position).magnitude;

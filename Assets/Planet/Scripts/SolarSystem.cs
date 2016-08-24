@@ -220,6 +220,71 @@ namespace LemonSpawn
         }
 
 
+        public void LoadSZWold(World world, SerializedWorld sz, bool randomizeSeeds, float scale)
+        {
+            SetSkybox((int)sz.skybox);
+            if (RenderSettings.ignoreXMLResolution)
+            {
+                sz.resolutionScale = World.SzWorld.resolutionScale;
+                sz.resolution = World.SzWorld.resolution;
+
+            }
+            else
+            {
+                RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
+                RenderSettings.ResolutionScale = sz.resolutionScale;
+
+            }
+            World.SzWorld = sz;
+
+            RenderSettings.ScreenshotX = sz.screenshot_height;
+            RenderSettings.ScreenshotY = sz.screenshot_width;
+            int cnt = 0;
+            World.hasScene = true;
+            RenderSettings.isVideo = sz.isVideo();
+            if (RenderSettings.isVideo == true)
+                RenderSettings.ExitSaveOnRendered = false;
+
+
+            //		RenderSettings.isVideo = false;
+            if (WorldMC.Slider != null)
+                WorldMC.Slider.SetActive(RenderSettings.isVideo);
+
+            foreach (SerializedPlanet sp in sz.Planets)
+            {
+                GameObject go = new GameObject(sp.name);
+                go.transform.parent = transform;
+                //sz.global_radius_scale = RenderSettings.GlobalRadiusScale;
+                PlanetSettings ps = sp.DeSerialize(go, cnt++, scale);
+                if (randomizeSeeds)
+                {
+                    ps.seed = (int)(Random.value * 10000f);
+                    ps.Randomize(0, sp.planetType);
+                }
+
+                Planet p;
+                if (ps.planetTypeName == "star" && World.CurrentApp == Verification.MCAstName)
+                    continue;
+
+                if (ps.planetTypeName == "star")
+                    p = new Star(ps);
+                else
+                    p = new Planet(ps);
+                p.pSettings.properties.parent = go;
+
+
+                if (ps.planetTypeName != "star")
+                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+                else
+                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
+
+                //                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+                planets.Add(p);
+            }
+            world.setWorld(sz);
+
+        }
+
         public void LoadWorld(string data, bool isFile, bool ExitOnSave, World world, bool randomizeSeeds = false)
         {
             ClearStarSystem();
@@ -238,66 +303,10 @@ namespace LemonSpawn
             }
             else
                 sz = SerializedWorld.DeSerializeString(data);
-
-
             RenderSettings.ExitSaveOnRendered = ExitOnSave;
             RenderSettings.extraText = "";
-            SetSkybox((int)sz.skybox);
-            if (RenderSettings.ignoreXMLResolution) {
-				sz.resolutionScale = World.SzWorld.resolutionScale;
-				sz.resolution = World.SzWorld.resolution;
 
-			}
-			else {
-				RenderSettings.sizeVBO = Mathf.Clamp(sz.resolution, 32, 128);
-				RenderSettings.ResolutionScale = sz.resolutionScale;
-
-			}
-			World.SzWorld = sz;
-
-            RenderSettings.ScreenshotX = sz.screenshot_height;
-            RenderSettings.ScreenshotY = sz.screenshot_width;
-            int cnt = 0;
-            World.hasScene = true;
-            RenderSettings.isVideo = sz.isVideo();
-            if (RenderSettings.isVideo == true)
-                RenderSettings.ExitSaveOnRendered = false;
-
-
-            //		RenderSettings.isVideo = false;
-            if (WorldMC.Slider!=null)	
-	            WorldMC.Slider.SetActive(RenderSettings.isVideo);
-
-            foreach (SerializedPlanet sp in sz.Planets)
-            {
-                GameObject go = new GameObject(sp.name);
-                go.transform.parent = transform;
-				PlanetSettings ps = sp.DeSerialize(go, cnt++, sz.global_radius_scale);
-				if (randomizeSeeds) {
-					ps.seed = (int)(Random.value * 10000f);
-					ps.Randomize(0, sp.planetType);
-				}
-
-                Planet p;
-                if (ps.planetTypeName =="star" && World.CurrentApp==Verification.MCAstName)
-                    continue;
-
-                if (ps.planetTypeName=="star")
-                        p = new Star(ps);
-                    else
-                        p = new Planet(ps);
-				p.pSettings.properties.parent = go;
-
-
-                if (ps.planetTypeName != "star")
-                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
-                    else
-                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
-
-//                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
-                planets.Add(p);
-            }
-			world.setWorld(sz);
+            LoadSZWold(world, sz, randomizeSeeds, RenderSettings.GlobalRadiusScale);
         }
         public void ClearStarSystem()
         {

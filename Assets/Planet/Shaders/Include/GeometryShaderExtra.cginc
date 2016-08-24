@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 #ifndef GeometryShaderExtra
 #define GeometryShaderExtra
 
@@ -56,7 +58,7 @@ gIn vert(appdata_full v)
 
 	return o;
 }
-
+ 
 
 
 #ifdef L_FRAG_PASS
@@ -77,7 +79,7 @@ void setupCross(point gIn vert[1], inout TriangleStream<v2f_scast> triStream)
 
 	float4 pos = vert[0].vertex;
 
-	float3 pos3 = mul(_Object2World, vert[0].vertex);
+	float3 pos3 = mul(unity_ObjectToWorld, vert[0].vertex);
 	pos3 -= v3Translate;
 	float scale = 1 + 1.5*noise(normalize(pos3)*142343.23);
 

@@ -16,10 +16,10 @@ namespace LemonSpawn {
 	
 	
 	public class Stats {
-		
 		public float Velocity;
 		public float Height;
 		public float scale = 1000;
+		
 		
 	}
 	public enum RenderType { Normal, Overview }
@@ -48,6 +48,7 @@ namespace LemonSpawn {
 		public static bool RenderMenu = true;
 		public static bool GPUSurface = true;
 		public static float version = 0.13f;
+        public static SerializedWorld currentSZWorld;
         public static bool debug = false;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;

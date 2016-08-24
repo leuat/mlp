@@ -1,6 +1,9 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
 Shader "LemonSpawn/Water" {
 
 	Properties{
@@ -89,13 +92,13 @@ Shader "LemonSpawn/Water" {
 								{
 									v2f o;
 									
-									 float4x4 modelMatrix = _Object2World;
-									float4x4 modelMatrixInverse = _World2Object;
+									 float4x4 modelMatrix = unity_ObjectToWorld;
+									float4x4 modelMatrixInverse = unity_WorldToObject;
 
-									float4 newVertex = mul(_Object2World, v.vertex);
+									float4 newVertex = mul(unity_ObjectToWorld, v.vertex);
 									newVertex.xyz -= v3Translate;
 									newVertex.xyz = normalize(newVertex.xyz)*fInnerRadius*(1 + liquidThreshold) + v3Translate;
-									v.vertex = mul(_World2Object, newVertex);
+									v.vertex = mul(unity_WorldToObject, newVertex);
 
 									o.worldPosition = newVertex.xyz;
 

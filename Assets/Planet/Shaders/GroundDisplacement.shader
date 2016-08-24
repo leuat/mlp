@@ -1,4 +1,6 @@
-﻿Shader "LemonSpawn/GroundDisplacement"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "LemonSpawn/GroundDisplacement"
 {
 	Properties
 	{
@@ -123,12 +125,12 @@
 		VertexOutputForwardBase2 o;
 
 
-		float3 normalWorld = normalize(mul(_Object2World, v.vertex).xyz - v3Translate);
+		float3 normalWorld = normalize(mul(unity_ObjectToWorld, v.vertex).xyz - v3Translate);
 		float4 groundVertex = getPlanetSurfaceOnly(v.vertex);
 		v.vertex = groundVertex;
 		UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 		float4 capV = groundVertex;
-		float4 posWorld = mul(_Object2World, capV);
+		float4 posWorld = mul(unity_ObjectToWorld, capV);
 
 #ifdef _TANGENT_TO_WORLD
 		float3 t = v.tangent.xyz;

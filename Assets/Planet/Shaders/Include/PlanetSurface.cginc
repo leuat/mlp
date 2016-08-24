@@ -1,3 +1,6 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
 #ifndef PlanetSurface
 #define PlanetSurface
 
@@ -146,7 +149,7 @@
 
 		float4 getPlanetSurfaceOnly(in float4 v) {
 
-			float4 p = mul(_Object2World, v);
+			float4 p = mul(unity_ObjectToWorld, v);
 			p.xyz -= v3Translate;
 
 			float octaves = surfaceNoiseSettings3.y;
@@ -156,12 +159,12 @@
 
 			p.xyz = normalize(p.xyz);
 			p.xyz = getHeightPosition(p.xyz, scale, heightScale, octaves) + v3Translate;
-			return mul(_World2Object, p);
+			return mul(unity_WorldToObject, p);
 		}
 
 		float4 getPlanetSurfaceOnlyNoTranslate(in float4 v) {
 
-			float4 p = mul(_Object2World, v);
+			float4 p = mul(unity_ObjectToWorld, v);
 
 			float octaves = surfaceNoiseSettings3.y;
 
@@ -170,7 +173,7 @@
 
 			p.xyz = normalize(p.xyz);
 			p.xyz = getHeightPosition(p.xyz, scale, heightScale, octaves);
-			return mul(_World2Object, p);
+			return mul(unity_WorldToObject, p);
 		}
 
 		#endif

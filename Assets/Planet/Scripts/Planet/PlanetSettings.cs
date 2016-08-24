@@ -203,11 +203,11 @@ namespace LemonSpawn {
                 planetType = PlanetTypes.p.FindPlanetType(forcedPlanetType);
             // Or else find a random one
             if (planetType == null)
-                planetType = PlanetTypes.p.getRandomPlanetType(r, radius, temperature);
+                planetType = PlanetTypes.p.getRandomPlanetType(r, radius/RenderSettings.GlobalRadiusScale, temperature);
             planetTypeName = planetType.name;
             planetType.Realize(r);
             planetType.setParameters(this, r);
-            radius*=RenderSettings.GlobalRadiusScale;
+            //radius*=RenderSettings.GlobalRadiusScale;
             //Debug.Log(atmosphereDensity);
         }
 

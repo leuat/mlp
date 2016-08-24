@@ -8,8 +8,9 @@ namespace LemonSpawn {
 
 	public class SSVSettings {
 		public static float SolarSystemScale = 500.0f;
-		public static float PlanetSizeScale = 1.0f / 200.0f;
-		public static int OrbitalLineSegments = 100;
+	public static float PlanetSizeScale = 1.0f / 200.0f;
+//        public static float PlanetSizeScale = (float)(500.0f/RenderSettings.AU);
+        public static int OrbitalLineSegments = 100;
 		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
         public static float currentFrame = 0;
 	}
@@ -89,6 +90,8 @@ namespace LemonSpawn {
             }
         }
 
+        
+
 		public DisplayPlanet(GameObject g, Planet p, SerializedPlanet sp) {
 			go = g;
 			planet = p;
@@ -115,6 +118,8 @@ namespace LemonSpawn {
 		private DisplayPlanet selected = null;
         public static GameObject linesObject = null;
         private GameObject pnlInfo = null;
+        public static bool Reload = false;
+
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
@@ -141,6 +146,13 @@ namespace LemonSpawn {
                 if (dp.planet.pSettings.name == name)
                     SelectPlanet(dp);
    
+        }
+
+        public void ZoomPlanet()
+        {
+            //SolarSystemViewverZoom.SzWorld = SzWorld;
+            RenderSettings.currentSZWorld = SzWorld;
+            Application.LoadLevel(4);
         }
 
         private void DeFocus() {
@@ -195,7 +207,7 @@ namespace LemonSpawn {
 
             int i=0;
 			foreach (Planet p in solarSystem.planets) {
-
+                Debug.Log(p.pSettings.radius);
                 GameObject go = p.pSettings.gameObject;
 
 				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.y, (float)p.pSettings.properties.pos.z);
@@ -291,6 +303,8 @@ namespace LemonSpawn {
             RenderSettings.UseThreading = true;
             RenderSettings.reCalculateQuads = false;
             RenderSettings.GlobalRadiusScale = SSVSettings.PlanetSizeScale;
+            Debug.Log(RenderSettings.GlobalRadiusScale);
+            //RenderSettings.GlobalRadiusScale = 1;
             RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
             RenderSettings.sizeVBO = szWorld.resolution;
             RenderSettings.minQuadNodeLevel = m_minQuadNodeLevel;
@@ -319,6 +333,14 @@ namespace LemonSpawn {
 
             linesObject = new GameObject("Lines");
             CreateAxis();
+
+            if (Reload==true)
+            {
+                Debug.Log("RELOADING");
+                SzWorld = RenderSettings.currentSZWorld;
+                szWorld = SzWorld;
+                solarSystem.LoadSZWold(this, szWorld,false, RenderSettings.GlobalRadiusScale);
+            }
 //			LoadData ();
 		}
 

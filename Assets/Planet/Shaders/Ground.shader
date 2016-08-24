@@ -1,5 +1,7 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "LemonSpawn/Ground"
 {
 	Properties
@@ -179,7 +181,7 @@ struct VertexOutputForwardBase2
 			UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase2, o);
 
 			float4 capV = v.vertex;
-			float4 posWorld = mul(_Object2World, capV);
+			float4 posWorld = mul(unity_ObjectToWorld, capV);
 			#if UNITY_SPECCUBE_BOX_PROJECTION
 				o.posWorld = posWorld.xyz;
 			#endif

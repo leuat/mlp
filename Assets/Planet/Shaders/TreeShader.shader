@@ -102,6 +102,8 @@
 
 
 					 CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f_sc members uv_MainTex)
+#pragma exclude_renderers d3d11 xbox360
 // Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f2 members vertex)
 //#pragma exclude_renderers d3d11 xbox360
 
@@ -122,17 +124,17 @@
 #include "Include/PlanetSurface.cginc"
 
 #define L_SC_PASS			
+struct v2f_sc
+				 {
+					 float2 uv_MainTex;
+					 V2F_SHADOW_COLLECTOR;
+				 };
 
 
 #include "Include/GeometryShaderExtra.cginc"
 
 
 
-struct v2f_sc
-{
-	float2 uv_MainTex : TEXCOORD1;
-	V2F_SHADOW_COLLECTOR;
-};
 
 				 // ----------------------------------------------------
 
@@ -149,6 +151,7 @@ struct v2f_sc
 				 float4 frag(v2f_sc IN) : COLOR
 				 {
 					 SHADOW_COLLECTOR_FRAGMENT(IN)
+
 				 }
 					 ENDCG
 			 }
