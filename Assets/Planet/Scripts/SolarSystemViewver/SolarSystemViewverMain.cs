@@ -207,7 +207,6 @@ namespace LemonSpawn {
 
             int i=0;
 			foreach (Planet p in solarSystem.planets) {
-                Debug.Log(p.pSettings.radius);
                 GameObject go = p.pSettings.gameObject;
 
 				Vector3 coolpos = new Vector3 ((float)p.pSettings.properties.pos.x, (float)p.pSettings.properties.pos.y, (float)p.pSettings.properties.pos.z);

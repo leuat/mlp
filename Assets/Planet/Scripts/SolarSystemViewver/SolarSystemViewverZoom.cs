@@ -148,7 +148,7 @@ namespace LemonSpawn {
 
         public void LeaveZoom()
         {
-            SolarSystemViewverMain.Reload = true;
+            SolarSystemViewverMain.Reload=  true;
             Application.LoadLevel(2);
         }
 

@@ -21,7 +21,7 @@ namespace LemonSpawn {
             starMaterial = new Material(sky.shader);
             mf.mesh = sphere;
             mr.material = starMaterial;
-            pSettings.radius*=RenderSettings.GlobalRadiusScale;
+            //pSettings.radius*=RenderSettings.GlobalRadiusScale;
 
             GameObject go = pSettings.gameObject;
             go.name = "star";

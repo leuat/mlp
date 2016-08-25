@@ -588,8 +588,9 @@ namespace LemonSpawn
         {
             RenderSettings.path = Application.dataPath + "/../";
             CurrentApp = Verification.MCAstName;
+            RenderSettings.GlobalRadiusScale = 0.985f;
 
-			if (solarSystem == null)
+            if (solarSystem == null)
     			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
             canvas = GameObject.Find ("Canvas");
 
