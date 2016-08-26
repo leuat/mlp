@@ -8,12 +8,14 @@ namespace LemonSpawn {
 
 	public class SSVSettings {
 		public static float SolarSystemScale = 500.0f;
-	public static float PlanetSizeScale = 1.0f / 200.0f;
+	public static float PlanetSizeScale = 1.0f / 50f;
 //        public static float PlanetSizeScale = (float)(500.0f/RenderSettings.AU);
         public static int OrbitalLineSegments = 100;
 		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
         public static float currentFrame = 0;
 	}
+
+//    exp(1/2)  * exp(-1/2) = 
 
 	public class DisplayPlanet {
 		public Planet planet;
@@ -66,14 +68,25 @@ namespace LemonSpawn {
             }
         }
 
-        public void CreateOrbitFromFrames(int maxLines) {
-            foreach (GameObject go in orbitLines)
+        public void DestroyOrbits() {
+            foreach (GameObject go in orbitLines) {
                 GameObject.Destroy(go);
-
+                }
             orbitLines.Clear();
-            if (serializedPlanet.Frames.Count<=2)
+
+
+        }
+
+
+        public void CreateOrbitFromFrames(int maxLines) {
+
+            DestroyOrbits();
+
+            if (serializedPlanet.Frames.Count<2)
                 return;             
             for (int i = 0; i < maxLines; i++) {
+                if (i+1>=serializedPlanet.Frames.Count)
+                    break;
                 Frame sp = serializedPlanet.Frames[i];
                 Frame sp2 = serializedPlanet.Frames[i+1];
                 DVector from = new DVector (sp.pos_x, sp.pos_y,sp.pos_z) * SSVSettings.SolarSystemScale;
@@ -127,7 +140,7 @@ namespace LemonSpawn {
             setText("txtPlanetType",dp.planet.pSettings.planetType.name);
 
             string infoText = "";
-            int radius = (int)(dp.planet.pSettings.radius/(float)SSVSettings.PlanetSizeScale);
+            int radius = (int)(dp.planet.pSettings.getActualRadius());
             float orbit = (dp.planet.pSettings.properties.pos.toVectorf().magnitude/(float)SSVSettings.SolarSystemScale);
             infoText += "Radius           : " +radius+ "km\n";
             infoText += "Temperature      : " +(int)dp.planet.pSettings.temperature+ "K\n";
@@ -180,6 +193,8 @@ namespace LemonSpawn {
 			}
 		}
 
+        Vector3 euler = Vector3.zero;
+
 		private void UpdateCamera () {
 			float s = 1.0f;
 			float theta = 0.0f;
@@ -191,10 +206,22 @@ namespace LemonSpawn {
 			}
 			mouseAccel += new Vector3 (theta, phi, 0);
 			focusPointCur += (focusPoint - focusPointCur) * 0.1f;
-			mainCamera.transform.RotateAround (focusPointCur, Vector3.up, mouseAccel.x);
-			mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.right, mouseAccel.y);
-			mainCamera.transform.LookAt (focusPointCur);
-			mouseAccel *= 0.9f;
+            mouseAccel *= 0.9f;
+
+            euler+=mouseAccel*10f;
+
+			mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.up, mouseAccel.x);
+            if ((Vector3.Dot(mainCamera.transform.forward,Vector3.up))>0.99)
+                if (mouseAccel.y<0)
+                    mouseAccel.y=0;
+            if ((Vector3.Dot(mainCamera.transform.forward,Vector3.up))<-0.99)
+                if (mouseAccel.y>0)
+                    mouseAccel.y=0;
+
+
+			    mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.right, mouseAccel.y);
+                mainCamera.transform.LookAt (focusPointCur);
+
 		}
 
 
@@ -302,7 +329,7 @@ namespace LemonSpawn {
             RenderSettings.UseThreading = true;
             RenderSettings.reCalculateQuads = false;
             RenderSettings.GlobalRadiusScale = SSVSettings.PlanetSizeScale;
-            Debug.Log(RenderSettings.GlobalRadiusScale);
+           // Debug.Log(RenderSettings.GlobalRadiusScale);
             //RenderSettings.GlobalRadiusScale = 1;
             RenderSettings.maxQuadNodeLevel = m_maxQuadNodeLevel;
             RenderSettings.sizeVBO = szWorld.resolution;
@@ -310,7 +337,7 @@ namespace LemonSpawn {
             RenderSettings.MoveCam = false;
             RenderSettings.ResolutionScale = szWorld.resolutionScale;
             RenderSettings.usePointLightSource = true;
-
+            RenderSettings.logScale = true;
 
 
             satellite = GameObject.Find("Satellite");
@@ -408,8 +435,11 @@ namespace LemonSpawn {
         }
 
         private void DestroyAllGameObjects() {
-        	foreach (DisplayPlanet dp in dPlanets)
-        		GameObject.Destroy(dp.go);
+          
+        	foreach (DisplayPlanet dp in dPlanets) {
+                    dp.DestroyOrbits();
+        		    GameObject.Destroy(dp.go);
+                }
         }
 
 

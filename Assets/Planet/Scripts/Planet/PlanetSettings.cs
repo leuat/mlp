@@ -126,7 +126,13 @@ namespace LemonSpawn {
         public static PlanetTypes planetTypes;
 
 
-        
+        public float getActualRadius() {
+            float actualRadius = radius/RenderSettings.GlobalRadiusScale;
+            if (RenderSettings.logScale)
+                actualRadius = Mathf.Pow(actualRadius, 1.0f/RenderSettings.powScale);
+            return actualRadius;
+
+        }
 
 
         public void setLayer(int layer, string tag)
@@ -202,8 +208,11 @@ namespace LemonSpawn {
             if (forcedPlanetType != null)
                 planetType = PlanetTypes.p.FindPlanetType(forcedPlanetType);
             // Or else find a random one
+
+
+
             if (planetType == null)
-                planetType = PlanetTypes.p.getRandomPlanetType(r, radius/RenderSettings.GlobalRadiusScale, temperature);
+                planetType = PlanetTypes.p.getRandomPlanetType(r, getActualRadius(), temperature);
             planetTypeName = planetType.name;
             planetType.Realize(r);
             planetType.setParameters(this, r);

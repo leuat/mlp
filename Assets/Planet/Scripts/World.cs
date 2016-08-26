@@ -41,6 +41,7 @@ namespace LemonSpawn {
         public static float LOD_ProjectionDistance = 10000000;
         public static bool MoveCam = false;
 		public static bool RenderText = false;
+        public static bool logScale = false;
 		public static int waterMaxQuadNodeLever = 3;
 		public static float RingProbability = 0.5f;
 		public static float RingRadiusRequirement = 4000;
@@ -48,6 +49,7 @@ namespace LemonSpawn {
 		public static bool RenderMenu = true;
 		public static bool GPUSurface = true;
 		public static float version = 0.13f;
+        public static float powScale = 0.75f;
         public static SerializedWorld currentSZWorld;
         public static bool debug = false;
 		public static float MinCameraHeight = 1.5f;

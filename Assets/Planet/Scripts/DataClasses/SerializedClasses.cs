@@ -51,7 +51,9 @@ namespace LemonSpawn
             ps.temperature = temperature;
             ps.seed = seed;
             ps.properties.Frames = Frames;
-            ps.radius = radius * radiusScale;
+            ps.radius = radius;
+            if (RenderSettings.logScale) ps.radius = Mathf.Pow(ps.radius,RenderSettings.powScale);
+            ps.radius *= radiusScale;
             ps.properties.extraColor.r = (float)col_x;
             ps.properties.extraColor.g = (float)col_y;
             ps.properties.extraColor.b = (float)col_z;
