@@ -292,13 +292,13 @@ namespace LemonSpawn
                 lightDir =  (m_sun.transform.position - planetSettings.gameObject.transform.position).normalized;
 
             mat.SetVector("v3LightPos", lightDir);
-
+            float rscale = planetSettings.gameObject.transform.localScale.x;
             mat.SetVector("lightDir", rot * lightDir);
             mat.SetVector("v3InvWavelength", invWaveLength4);
-            mat.SetFloat("fOuterRadius", m_outerRadius * ds);
-            mat.SetFloat("fOuterRadius2", m_outerRadius * m_outerRadius * ds * ds);
-            mat.SetFloat("fInnerRadius", m_innerRadius * ds * iscale);
-            mat.SetFloat("fInnerRadius2", m_innerRadius * m_innerRadius * ds);
+            mat.SetFloat("fOuterRadius", m_outerRadius * ds*rscale);
+            mat.SetFloat("fOuterRadius2", m_outerRadius * m_outerRadius * ds * ds*rscale*rscale);
+            mat.SetFloat("fInnerRadius", m_innerRadius * ds * iscale*rscale);
+            mat.SetFloat("fInnerRadius2", m_innerRadius * m_innerRadius * ds*rscale*rscale);
             mat.SetFloat("fKrESun", m_kr * planetSettings.m_ESun); // * sunScale
             mat.SetFloat("fKmESun", m_km * planetSettings.m_ESun);// * sunScale;;
             mat.SetFloat("fKr4PI", m_kr * 4.0f * Mathf.PI);

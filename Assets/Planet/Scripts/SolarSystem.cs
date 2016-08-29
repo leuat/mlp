@@ -153,8 +153,11 @@ namespace LemonSpawn
                         continue;
                     }
                     Planet p;
-                    if (ps.planetTypeName=="star")
+                    if (ps.planetTypeName == "star")
                         p = new Star(ps);
+                    else
+                    if (ps.planetTypeName == "spacecraft")
+                        p = new Satellite(ps);
                     else
                         p = new Planet(ps);
 
@@ -163,14 +166,20 @@ namespace LemonSpawn
                     p.pSettings.properties.pos.Set(go.transform.position);
                     go.transform.parent = transform;
                     p.pSettings.properties.parent = go;
-					//p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[p.pSettings.planetTypeIndex];
- //                   if (RenderSettings.GPUSurface)
-///                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
+                    //p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[p.pSettings.planetTypeIndex];
+                    //                   if (RenderSettings.GPUSurface)
+                    ///                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
-                    if (ps.planetTypeName != "star")
-                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
-                    else
+                    
+                    if (ps.planetTypeName == "star")
                         p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
+                    else
+                    if (ps.planetTypeName.ToLower() == "spacecraft")
+                    {
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SpaceCraftMaterial"), sphere);
+                    }
+                    else
+                        p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
 
                     planets.Add(p);
 
@@ -269,15 +278,22 @@ namespace LemonSpawn
                 if (ps.planetTypeName == "star")
                     p = new Star(ps);
                 else
+                if (ps.planetTypeName == "spacecraft")
+                    p = new Satellite(ps);
+                else
                     p = new Planet(ps);
                 p.pSettings.properties.parent = go;
 
 
-                if (ps.planetTypeName != "star")
-                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
-                else
+                if (ps.planetTypeName == "star")
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
-
+                else
+                if (ps.planetTypeName.ToLower() == "spacecraft")
+                {
+                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SpaceCraftMaterial"), sphere);
+                }
+                else
+                    p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                 //                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
                 planets.Add(p);
             }

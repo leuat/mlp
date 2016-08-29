@@ -16,14 +16,19 @@ namespace LemonSpawn {
 
         public override void Initialize(GameObject sun, Material ground, Material sky, Mesh sphere)
         {
-            MeshRenderer mr = pSettings.gameObject.AddComponent<MeshRenderer>();
-            MeshFilter mf = pSettings.gameObject.AddComponent<MeshFilter>();
+            GameObject obj = new GameObject();
+            obj.transform.parent = pSettings.gameObject.transform;
+
+            MeshRenderer mr = obj.AddComponent<MeshRenderer>();
+            MeshFilter mf = obj.AddComponent<MeshFilter>();
             starMaterial = new Material(sky.shader);
+            starMaterial.CopyPropertiesFromMaterial(sky);
             mf.mesh = sphere;
+            Debug.Log(sky);
             mr.material = starMaterial;
             //pSettings.radius*=RenderSettings.GlobalRadiusScale;
 
-            GameObject go = pSettings.gameObject;
+            GameObject go = obj;
             go.name = "star";
             go.transform.localScale = Vector3.one * pSettings.radius;
 

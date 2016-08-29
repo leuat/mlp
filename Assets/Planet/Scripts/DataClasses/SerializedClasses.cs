@@ -63,11 +63,17 @@ namespace LemonSpawn
             //	ps.atmosphereHeight = atmosphereHeight;
             foreach (Frame f in Frames)
                 f.rotation = f.rotation % (2.0 * Mathf.PI);
-            if (planetType!="star")
-                ps.Randomize(count, planetType);
-            else
-                ps.planetTypeName = planetType;
+            if (planetType == null)
+                planetType = "";
 
+            if (planetType.ToLower() == "star" || planetType.ToLower() == "spacecraft")
+            {
+                ps.planetTypeName = planetType;
+//                Debug.Log(planetType);
+            }
+            else
+                ps.Randomize(count, planetType);
+    
             return ps;
         }
 

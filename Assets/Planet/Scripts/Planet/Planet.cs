@@ -66,6 +66,16 @@ namespace LemonSpawn
 
             pSettings.properties.pos = pos;
             pSettings.rotation = rot;
+
+            // IF auto :
+            if (pSettings.properties.autoOrient)
+            {
+                Vector3 dir = (f0.pos() - f1.pos()).toVectorf().normalized;
+                pSettings.rotation = 0;
+                pSettings.gameObject.transform.forward = dir;
+                //                pSettings.gameObject.transform.LookAt(f1.pos().toVectorf() - pSettings.gameObject.transform.position, Vector3.up);
+                //                Debug.Log("WTF");
+            }
             
 
         }
@@ -291,7 +301,8 @@ namespace LemonSpawn
             //     Debug.Log(pSettings.getHeight());
 
             //             rot = 0;
-            pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
+            if (!pSettings.properties.autoOrient)
+                pSettings.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, rot, 0));
 
             if (pSettings.atmosphere != null)
                 pSettings.atmosphere.Update();

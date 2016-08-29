@@ -11,49 +11,59 @@ namespace LemonSpawn {
 	public static float PlanetSizeScale = 1.0f / 50f;
 //        public static float PlanetSizeScale = (float)(500.0f/RenderSettings.AU);
         public static int OrbitalLineSegments = 100;
-		public static Vector2 OrbitalLineWidth = new Vector2 (3.03f, 3.03f);
+		public static Vector2 OrbitalLineWidth = new Vector2 (1.63f, 1.63f);
         public static float currentFrame = 0;
-	}
+        public static float LineScale = 1;
 
-//    exp(1/2)  * exp(-1/2) = 
+    }
 
-	public class DisplayPlanet {
+    //    exp(1/2)  * exp(-1/2) = 
+
+    public class DisplayPlanet {
 		public Planet planet;
         public SerializedPlanet serializedPlanet;
 		public GameObject go;
 		public List<GameObject> orbitLines = new List<GameObject>();
 
-/*		private void CreateOrbitCircles() {
-			float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
-			for (int i = 0; i < SSVSettings.OrbitalLineSegments; i++) {
-				float t0 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)i;
-				float t1 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)(i+1);
-				Vector3 from = new Vector3 (Mathf.Cos (t0), 0, Mathf.Sin (t0)) * radius;
-				Vector3 to = new Vector3 (Mathf.Cos (t1), 0, Mathf.Sin (t1)) * radius;
-			
-				GameObject g = new GameObject ();
-				g.transform.parent = SolarSystemViewverMain.linesObject.transform;
-				LineRenderer lr = g.AddComponent<LineRenderer> ();
-				lr.material = (Material)Resources.Load ("LineMaterial");
-				lr.SetWidth (SSVSettings.OrbitalLineWidth.x, SSVSettings.OrbitalLineWidth.y);
-				lr.SetPosition (0, from);
-				lr.SetPosition (1, to);
-				orbitLines.Add (g);
-			}
-		}
-*/
+        /*		private void CreateOrbitCircles() {
+                    float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
+                    for (int i = 0; i < SSVSettings.OrbitalLineSegments; i++) {
+                        float t0 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)i;
+                        float t1 = 2 * Mathf.PI / (float)SSVSettings.OrbitalLineSegments * (float)(i+1);
+                        Vector3 from = new Vector3 (Mathf.Cos (t0), 0, Mathf.Sin (t0)) * radius;
+                        Vector3 to = new Vector3 (Mathf.Cos (t1), 0, Mathf.Sin (t1)) * radius;
+
+                        GameObject g = new GameObject ();
+                        g.transform.parent = SolarSystemViewverMain.linesObject.transform;
+                        LineRenderer lr = g.AddComponent<LineRenderer> ();
+                        lr.material = (Material)Resources.Load ("LineMaterial");
+                        lr.SetWidth (SSVSettings.OrbitalLineWidth.x, SSVSettings.OrbitalLineWidth.y);
+                        lr.SetPosition (0, from);
+                        lr.SetPosition (1, to);
+                        orbitLines.Add (g);
+                    }
+                }
+        */
+
 
         public void MaintainOrbits() {
             int maxFrames = serializedPlanet.Frames.Count;
             int currentFrame = (int)(SSVSettings.currentFrame*maxFrames);
             Color c = new Color(0.3f, 0.7f, 1.0f,1.0f);
+            if (planet.pSettings.planetTypeName == "spacecraft")
+                c = new Color(1.0f, 0.5f, 0.2f, 1f);
+            int h = orbitLines.Count / 2;
+
             for (int i=0;i<orbitLines.Count;i++) {
-                int f = Mathf.Clamp(i - orbitLines.Count/2 + currentFrame,0,maxFrames);
-                if (f+1 >= serializedPlanet.Frames.Count)
+                int f1 = (int)Mathf.Clamp((i-h)*SSVSettings.LineScale +currentFrame  ,0,maxFrames);
+                int f2 = (int)Mathf.Clamp((i+1-h) * SSVSettings.LineScale + currentFrame , 0, maxFrames);
+                if (f1 >= serializedPlanet.Frames.Count || f1<0)
+                    break;
+                if (f2 >= serializedPlanet.Frames.Count || f2 < 0)
                     break;
                 LineRenderer lr = orbitLines[i].GetComponent<LineRenderer>();
-                Frame sp = serializedPlanet.Frames[f];
-                Frame sp2 = serializedPlanet.Frames[f+1];
+                Frame sp = serializedPlanet.Frames[f1];
+                Frame sp2 = serializedPlanet.Frames[f2];
                 DVector from = new DVector (sp.pos_x, sp.pos_y,sp.pos_z) * SSVSettings.SolarSystemScale;
                 DVector to = new DVector (sp2.pos_x, sp2.pos_y,sp2.pos_z) * SSVSettings.SolarSystemScale;
 
@@ -75,6 +85,15 @@ namespace LemonSpawn {
             orbitLines.Clear();
 
 
+        }
+
+        public void SetWidth(float w)
+        {
+            foreach (GameObject g in orbitLines)
+            {
+                LineRenderer lr = g.GetComponent<LineRenderer>();
+                lr.SetWidth(SSVSettings.OrbitalLineWidth.x*w, SSVSettings.OrbitalLineWidth.y*w);
+            }
         }
 
 
@@ -137,6 +156,22 @@ namespace LemonSpawn {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
             pnlInfo.SetActive(true);
+
+
+            if (dp.planet.pSettings.planetTypeName=="star")
+            {
+                setText("txtPlanetType", "Star");
+                setText("txtPlanetInfo", "A Star");
+                return;
+            }
+            else
+            if (dp.planet.pSettings.planetTypeName == "spacecraft")
+            {
+                setText("txtPlanetType", "Spacecraft");
+                setText("txtPlanetInfo", "Spacecraft");
+                return;
+            }
+
             setText("txtPlanetType",dp.planet.pSettings.planetType.name);
 
             string infoText = "";
@@ -175,8 +210,40 @@ namespace LemonSpawn {
          
         }
 
+        public void SlideScaleLines()
+        {
+            Slider slider = GameObject.Find("SliderScaleLines").GetComponent<Slider>();
 
-		private void UpdateFocus() {
+            SSVSettings.LineScale = slider.value*10;
+            foreach (DisplayPlanet dp in dPlanets)
+                dp.MaintainOrbits();
+        }   
+
+
+        public void SlideScale()
+        {
+            Slider slider = GameObject.Find("SliderScale").GetComponent<Slider>();
+            foreach (DisplayPlanet dp in dPlanets)
+            {
+
+                //1 = 0.01 + val*10;
+                // 1 - val*10 = 0.01
+                // -val = (0.01 -1 )/10
+                // val = (1-0.01)/10
+                Vector3 newScale = Vector3.one * (0.01f + slider.value*10);
+                dp.go.transform.localScale = Vector3.one*dp.planet.pSettings.radius * 2.0f;
+                dp.SetWidth(newScale.x);
+                dp.planet.pSettings.transform.localScale = newScale;
+                if (dp.planet.pSettings.gameObject!=null)
+                    dp.planet.pSettings.gameObject.transform.localScale = newScale;
+                if (dp.planet.pSettings.properties.terrainObject != null)
+                dp.planet.pSettings.properties.terrainObject.transform.localScale = newScale;
+            }
+
+        }
+
+
+        private void UpdateFocus() {
 			if (Input.GetMouseButtonDown (0)) {
 				RaycastHit hit;
 				Ray ray = MainCamera.ScreenPointToRay (Input.mousePosition);
@@ -245,9 +312,9 @@ namespace LemonSpawn {
                 GameObject hidden = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 hidden.transform.position = coolpos * SSVSettings.SolarSystemScale;
                 hidden.transform.localScale = Vector3.one * p.pSettings.radius*2f;
-
-                if (p.pSettings.planetTypeName=="star")
-                    hidden.SetActive(false);
+                hidden.transform.parent = p.pSettings.transform;
+                //if (p.pSettings.planetTypeName=="star" || p.pSettings.planetTypeName=="spacecraft")
+                //    hidden.SetActive(false);
 
                 hidden.GetComponent<MeshRenderer>().material = (Material)Resources.Load("HiddenMaterial");
 
@@ -445,9 +512,9 @@ namespace LemonSpawn {
 
         public void Slide()
         {
-//            if (szWorld.getMaxFrames()<=2)
-  //              return;
-            float v = slider.GetComponent<Slider>().value;
+            //            if (szWorld.getMaxFrames()<=2)
+            //              return;
+            float v = Mathf.Clamp(slider.GetComponent<Slider>().value, 0.01f, 0.99f) ;
             SSVSettings.currentFrame = v;
             szWorld.InterpolatePlanetFrames(v, solarSystem.planets);
             foreach (DisplayPlanet dp in dPlanets) {

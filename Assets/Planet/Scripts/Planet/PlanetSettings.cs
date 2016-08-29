@@ -16,6 +16,7 @@ namespace LemonSpawn {
         public int currentLayer = 10;
         public string currentTag = "Normal";
         public double currentDistance;
+        public bool autoOrient = false; // Auto orient to face direction
         public DVector pos = new DVector();
         public DVector orgPos = new DVector();
         public DVector posInKm;
