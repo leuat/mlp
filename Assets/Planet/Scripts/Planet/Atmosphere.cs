@@ -140,7 +140,7 @@ namespace LemonSpawn
 
         }
 
-        private Texture2D mountain, basin, top, surface;
+        private static Texture2D mountain, basin, top, surface;
 
 
         public void InitializeDefaultTextures(Material mat)

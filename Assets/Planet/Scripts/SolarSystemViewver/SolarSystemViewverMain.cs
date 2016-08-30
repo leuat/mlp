@@ -151,12 +151,14 @@ namespace LemonSpawn {
         public static GameObject linesObject = null;
         private GameObject pnlInfo = null;
         public static bool Reload = false;
-
+        private float currentDistance;
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
             pnlInfo.SetActive(true);
 
+            if (currentDistance == 0)
+                currentDistance = (dp.planet.pSettings.gameObject.transform.position - MainCamera.transform.position).magnitude;
 
             if (dp.planet.pSettings.planetTypeName=="star")
             {
@@ -210,7 +212,7 @@ namespace LemonSpawn {
             selected = null;
             focusPoint = Vector3.zero;
             pnlInfo.SetActive(false);
-         
+            currentDistance = 0;
         }
 
         public void SlideScaleLines()
@@ -231,18 +233,13 @@ namespace LemonSpawn {
             foreach (DisplayPlanet dp in dPlanets)
             {
 
-                //1 = 0.01 + val*10;
-                // 1 - val*10 = 0.01
-                // -val = (0.01 -1 )/10
-                // val = (1-0.01)/10
-
-
                 currentScale = slider.value * 10;
 
-//                int radius = (int)(dp.planet.pSettings.getActualRadius());
-  //              int displayRadius = (int)((dp.planet.pSettings.getActualRadius()) / RenderSettings.GlobalRadiusScale * currentScale);
-                if (currentScale < RenderSettings.GlobalRadiusScale)
-                    currentScale = RenderSettings.GlobalRadiusScale;
+                //                int radius = (int)(dp.planet.pSettings.getActualRadius());
+                //              int displayRadius = (int)((dp.planet.pSettings.getActualRadius()) / RenderSettings.GlobalRadiusScale * currentScale);
+                float t = 0.001f;
+                if (currentScale < t)
+                    currentScale = t;
 
 
 
@@ -253,7 +250,7 @@ namespace LemonSpawn {
                 if (dp.planet.pSettings.gameObject!=null)
                     dp.planet.pSettings.gameObject.transform.localScale = newScale;
                 if (dp.planet.pSettings.properties.terrainObject != null)
-                dp.planet.pSettings.properties.terrainObject.transform.localScale = newScale;
+                    dp.planet.pSettings.properties.terrainObject.transform.localScale = newScale;
             }
 
         }
@@ -278,6 +275,9 @@ namespace LemonSpawn {
 
         Vector3 euler = Vector3.zero;
 
+        private Vector3 cameraAdd = Vector3.zero;
+
+
 		private void UpdateCamera () {
 			float s = 1.0f;
 			float theta = 0.0f;
@@ -294,6 +294,9 @@ namespace LemonSpawn {
             euler+=mouseAccel*10f;
 
 			mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.up, mouseAccel.x);
+
+
+
             if ((Vector3.Dot(mainCamera.transform.forward,Vector3.up))>0.99)
                 if (mouseAccel.y<0)
                     mouseAccel.y=0;
@@ -305,10 +308,26 @@ namespace LemonSpawn {
 			    mainCamera.transform.RotateAround (focusPointCur, mainCamera.transform.right, mouseAccel.y);
                 mainCamera.transform.LookAt (focusPointCur);
 
-		}
+            if (selected != null && Mathf.Abs(scrollWheel)<0.001)
+            {
+                Vector3 dir = selected.planet.pSettings.gameObject.transform.position - mainCamera.transform.position;
+                float dist = dir.magnitude;
+              //  Debug.Log("LOWER:" + dist + " c: " + currentDistance);
+                if (Mathf.Abs(dist-currentDistance)>0.01)
+                {
+                    float add = dist - currentDistance;
+                    cameraAdd += dir.normalized * add * 0.06f;
+//                    mainCamera.transform.position = mainCamera.transform.position + dir.normalized * add;
+                }
+
+            }
+
+            mainCamera.transform.position = mainCamera.transform.position + cameraAdd;
+            cameraAdd *= 0.6f;
+        }
 
 
-		private void PopulateWorld() {
+        private void PopulateWorld() {
 			DestroyAllGameObjects();
 			dPlanets.Clear ();
 
@@ -459,6 +478,9 @@ namespace LemonSpawn {
                 return;
             scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f*-1;
             scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
+            if (Mathf.Abs(scrollWheel) < 0.001)
+                scrollWheel = 0;
+            if (Mathf.Abs(scrollWheel )>0) currentDistance = 0;
 //            Debug.Log(ScrollWheel);
 
             Vector3 pos = MainCamera.transform.position;
@@ -474,9 +496,10 @@ namespace LemonSpawn {
 
 		public override void Update () {
 			UpdateFocus ();
-			UpdateCamera ();
+            UpdateCamera();
             UpdateZoom();
             solarSystem.Update();
+           
             if (RenderSettings.UseThreading) 
                 ThreadQueue.MaintainThreadQueue();
 
@@ -485,6 +508,7 @@ namespace LemonSpawn {
                 SelectPlanet(selected);
 
             UpdatePlay();
+            ForceSpaceCraft();
 
             if (Input.GetKey(KeyCode.Escape))
             {
@@ -493,6 +517,60 @@ namespace LemonSpawn {
 
 
         }
+
+        protected  List<DisplayPlanet> getSpaceCrafts() {
+            List<DisplayPlanet> spaceCrafts = new List<DisplayPlanet>();
+            foreach (DisplayPlanet dp in dPlanets)
+            {
+                if (dp.planet.pSettings.planetTypeName == "spacecraft")
+                    spaceCrafts.Add(dp);
+            }
+
+            return spaceCrafts;
+        }
+
+
+        protected void ForceSpaceCraft()
+        {
+            List<DisplayPlanet> spaceCrafts = getSpaceCrafts();
+
+            foreach (DisplayPlanet spaceCraft in spaceCrafts)
+            {
+                DisplayPlanet winner = null;
+                float winnerLength = 1E30f;
+                foreach (DisplayPlanet dp in dPlanets)
+                {
+                    
+                    if (dp!=spaceCraft)
+                    {
+
+                        float dist = (dp.go.transform.position - spaceCraft.go.transform.position).magnitude;
+                        if (dist<winnerLength)
+                        {
+                            winnerLength = dist;
+                            winner = dp;
+                        }
+                    }
+
+                }
+/*                Vector3 newScale = Vector3.one * (0.00f + currentScale);
+                dp.go.transform.localScale = Vector3.one * dp.planet.pSettings.radius * 2.0f;
+                dp.SetWidth(newScale.x);
+                dp.planet.pSettings.transform.localScale = newScale;
+                */
+                Vector3 dir = (winner.go.transform.position - spaceCraft.go.transform.position);
+                float dist2 = dir.magnitude;
+                float scale = winner.go.transform.parent.transform.localScale.x*winner.planet.pSettings.radius*2;
+                if (dist2 < scale)
+                {
+                  spaceCraft.planet.pSettings.gameObject.transform.position = winner.go.transform.position + dir.normalized * scale*1.0001f;
+                }
+
+
+            }
+
+        }
+
 
         protected void OnGUI() {
 		}
@@ -557,13 +635,13 @@ namespace LemonSpawn {
 
         public void playNormal()
         {
-            setPlaySpeed(0.00025f);
+            setPlaySpeed(0.000025f);
 
         }
 
         public void playFast()
         {
-            setPlaySpeed(0.001f);
+            setPlaySpeed(0.0002f);
         }
 
 
