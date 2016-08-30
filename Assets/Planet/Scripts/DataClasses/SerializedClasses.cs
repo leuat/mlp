@@ -190,7 +190,7 @@ namespace LemonSpawn
             if (i >= 0 && i < Cameras.Count)
                 return Cameras[i];
             if (i < 0)
-                return Cameras[0];
+                return null;
             if (i >= Cameras.Count)
                 return Cameras[Cameras.Count - 1];
             return null;
@@ -230,14 +230,17 @@ namespace LemonSpawn
             double maxTime = Cameras[Cameras.Count - 1].time;
             double time = t * maxTime;
 
+
             //			SerializedCamera a = getCamera(n-1);
             SerializedCamera p0 = getCamera(time, -1);
             SerializedCamera p1 = getCamera(time, 0);
             SerializedCamera p2 = getCamera(time, 1);
             SerializedCamera p3 = getCamera(time, 2);
 
-            if (p2 == null || p1 == null)
+            if (p2 == null || p1 == null || p0==null)
+            {
                 return;
+            }
 
             double dt = 1.0 / (p2.time - p1.time) * (time - p1.time);
            
@@ -395,7 +398,7 @@ namespace LemonSpawn
 
 
         public int movieResolution = 1;
-        public int gridSize = 2;
+        public int gridSize = 1;
         public int screenShotResolution = 4 ;
         public bool advancedClouds = false;
         public bool cameraEffects = true;

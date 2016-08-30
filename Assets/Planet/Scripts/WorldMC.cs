@@ -22,7 +22,7 @@ namespace LemonSpawn
         protected List<Message> messages = new List<Message>();
 
 
-        protected float m_playSpeed = 0;
+        protected double m_playSpeed = 0;
         protected Texture2D tx_background, tx_load, tx_record;
         protected int load_percent;
         protected GameObject helpPanel = null;
@@ -115,18 +115,18 @@ namespace LemonSpawn
                 RenderSettings.renderType = RenderType.Normal;
         }
 
-
+        private double sliderScale = 10000.0;
 
         public void Slide()
         {
-            float v = slider.GetComponent<Slider>().value;
-            szWorld.getInterpolatedCamera(v, solarSystem.planets);
+            double v = slider.GetComponent<Slider>().value;
+            szWorld.getInterpolatedCamera(v/sliderScale, solarSystem.planets);
         }
 
 
 
 
-        private void setPlaySpeed(float v)
+        private void setPlaySpeed(double v)
         {
             if (m_playSpeed == v)
             {
@@ -144,13 +144,13 @@ namespace LemonSpawn
 
         public void playNormal()
         {
-            setPlaySpeed(0.000025f);
+            setPlaySpeed(0.000025);
 
         }
 
         public void playFast()
         {
-            setPlaySpeed(0.0001f);
+            setPlaySpeed(0.0001);
         }
 
 
@@ -588,7 +588,7 @@ namespace LemonSpawn
         {
             RenderSettings.path = Application.dataPath + "/../";
             CurrentApp = Verification.MCAstName;
-            RenderSettings.GlobalRadiusScale = 0.985f;
+            RenderSettings.GlobalRadiusScale = 0.995f;
 
             if (solarSystem == null)
     			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
@@ -671,8 +671,8 @@ namespace LemonSpawn
             {
                 canvas.SetActive(true);
                 float v = slider.GetComponent<Slider>().value;
-                v += m_playSpeed;
-                if (v >= 1)
+                v += (float)(m_playSpeed*sliderScale);
+                if (v >= sliderScale)
                 {
                     m_playSpeed = 0;
                     v = 0;
@@ -728,9 +728,13 @@ namespace LemonSpawn
             base.Update();
             UpdateMessages();
             UpdatePlay();
+            //            return;
 
+           
             if (!RenderSettings.debug)
                 return;
+
+
 
             if (modifier)
                 if (Input.GetKeyUp(KeyCode.P))

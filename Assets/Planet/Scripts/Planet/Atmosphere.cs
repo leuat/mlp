@@ -140,13 +140,23 @@ namespace LemonSpawn
 
         }
 
+        private Texture2D mountain, basin, top, surface;
+
 
         public void InitializeDefaultTextures(Material mat)
         {
-            m_groundMaterial.SetTexture("_Mountain", (Texture2D)Resources.Load("Textures/seamless_rock"));
-            m_groundMaterial.SetTexture("_Basin", (Texture2D)Resources.Load("Textures/seamless_drough"));
-            m_groundMaterial.SetTexture("_Top", (Texture2D)Resources.Load("Textures/snow"));
-            m_groundMaterial.SetTexture("_Surface", (Texture2D)Resources.Load("Textures/seamless_dirt"));
+            if (mountain == null)
+                mountain = (Texture2D)Resources.Load("Textures/seamless_rock");
+            if (basin == null)
+                basin = (Texture2D)Resources.Load("Textures/seamless_drough");
+            if (top == null)
+                top = (Texture2D)Resources.Load("Textures/snow");
+            if (surface == null)
+                surface = (Texture2D)Resources.Load("Textures/seamless_dirt");
+            m_groundMaterial.SetTexture("_Mountain", mountain);
+            m_groundMaterial.SetTexture("_Basin", basin);
+            m_groundMaterial.SetTexture("_Top", top);
+            m_groundMaterial.SetTexture("_Surface", surface);
         }
 
 
@@ -224,6 +234,7 @@ namespace LemonSpawn
             iscale = 1f;
             if (m_groundMaterial != null)
             {
+//                DebugLog();
                 InitAtmosphereMaterial(m_groundMaterial);
                 initGroundMaterial(true, m_groundMaterial);
 
@@ -241,6 +252,7 @@ namespace LemonSpawn
             if (!World.SzWorld.useSpaceCamera)
                 return;
             float h = planetSettings.properties.localCamera.magnitude - m_innerRadius;
+            
             float np = Mathf.Max(Mathf.Min(h * 0.01f, 50), 0.1f);
             float fp = Mathf.Min(Mathf.Max(h * 150, 100000), 200000);
             //		Debug.Log (np);

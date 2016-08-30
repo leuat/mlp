@@ -218,7 +218,11 @@ namespace LemonSpawn {
 		}
 		
 		public void createMesh() {
-			mesh = new Mesh();
+            //mesh = null;
+
+            if (mesh==null)
+	    		mesh = new Mesh();
+
 			mesh.vertices = vertexList.ToArray(); 
 			mesh.triangles = faceList.ToArray();
 			mesh.uv = uvList.ToArray();
@@ -226,7 +230,7 @@ namespace LemonSpawn {
 			mesh.tangents = tangentList.ToArray();
 			
 //			mesh.RecalculateNormals();
-			mesh.Optimize();
+			//mesh.Optimize();
 			
 		}
 		

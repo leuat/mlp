@@ -52,7 +52,7 @@ namespace LemonSpawn {
             Color c = new Color(0.3f, 0.7f, 1.0f,1.0f);
             if (planet.pSettings.planetTypeName == "spacecraft")
                 c = new Color(1.0f, 0.5f, 0.2f, 1f);
-            int h = orbitLines.Count / 2;
+            int h = orbitLines.Count / 1;
 
             for (int i=0;i<orbitLines.Count;i++) {
                 int f1 = (int)Mathf.Clamp((i-h)*SSVSettings.LineScale +currentFrame  ,0,maxFrames);
@@ -176,8 +176,11 @@ namespace LemonSpawn {
 
             string infoText = "";
             int radius = (int)(dp.planet.pSettings.getActualRadius());
+            int displayRadius = (int)((dp.planet.pSettings.getActualRadius())/RenderSettings.GlobalRadiusScale*currentScale);
             float orbit = (dp.planet.pSettings.properties.pos.toVectorf().magnitude/(float)SSVSettings.SolarSystemScale);
             infoText += "Radius           : " +radius+ "km\n";
+            infoText += "Displayed Radius : " + displayRadius/radius + " x original radius\n";
+//            infoText += "Displayed Radius : " + displayRadius + " km \n";
             infoText += "Temperature      : " +(int)dp.planet.pSettings.temperature+ "K\n";
             infoText += "Orbital distance : " +orbit+ "Au\n\n";
             infoText += dp.planet.pSettings.planetType.PlanetInfo;
@@ -217,8 +220,10 @@ namespace LemonSpawn {
             SSVSettings.LineScale = slider.value*10;
             foreach (DisplayPlanet dp in dPlanets)
                 dp.MaintainOrbits();
-        }   
+        }
 
+
+        private float currentScale = 1;
 
         public void SlideScale()
         {
@@ -230,7 +235,18 @@ namespace LemonSpawn {
                 // 1 - val*10 = 0.01
                 // -val = (0.01 -1 )/10
                 // val = (1-0.01)/10
-                Vector3 newScale = Vector3.one * (0.01f + slider.value*10);
+
+
+                currentScale = slider.value * 10;
+
+//                int radius = (int)(dp.planet.pSettings.getActualRadius());
+  //              int displayRadius = (int)((dp.planet.pSettings.getActualRadius()) / RenderSettings.GlobalRadiusScale * currentScale);
+                if (currentScale < RenderSettings.GlobalRadiusScale)
+                    currentScale = RenderSettings.GlobalRadiusScale;
+
+
+
+                Vector3 newScale = Vector3.one * (0.00f + currentScale);
                 dp.go.transform.localScale = Vector3.one*dp.planet.pSettings.radius * 2.0f;
                 dp.SetWidth(newScale.x);
                 dp.planet.pSettings.transform.localScale = newScale;
@@ -439,7 +455,9 @@ namespace LemonSpawn {
 
 
         private void UpdateZoom() {
-            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f;
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f*-1;
             scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
 //            Debug.Log(ScrollWheel);
 
@@ -539,13 +557,13 @@ namespace LemonSpawn {
 
         public void playNormal()
         {
-            setPlaySpeed(0.000025f);
+            setPlaySpeed(0.00025f);
 
         }
 
         public void playFast()
         {
-            setPlaySpeed(0.0001f);
+            setPlaySpeed(0.001f);
         }
 
 
@@ -555,7 +573,7 @@ namespace LemonSpawn {
             if (m_playSpeed > 0 && solarSystem.planets.Count!=0)
             {
                 float v = slider.GetComponent<Slider>().value;
-                v += m_playSpeed;
+                v += (float)m_playSpeed;
                 if (v >= 1)
                 {
                     m_playSpeed = 0;

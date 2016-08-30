@@ -39,8 +39,8 @@ namespace LemonSpawn
     public class SolarSystem
     {
 
-        static public Material spaceMaterial;
-        static public Material groundMaterial;
+        public Material spaceMaterial;
+        public Material groundMaterial;
         public Transform transform;
         private GameObject sun;
         private Mesh sphere;
@@ -77,6 +77,13 @@ namespace LemonSpawn
 
         }
 
+        public void reInitializeGround()
+        {
+            InitializeSurfaces();
+            foreach (Planet p in planets)
+                p.pSettings.atmosphere.ReinitializeGroundMaterial(groundMaterial);
+        }
+
         void setSun()
         {
             //		if (World.WorldCamera
@@ -109,6 +116,7 @@ namespace LemonSpawn
             InitializeSurfaces();
             foreach (Planet p in planets)
             {
+               // Debug.Log("WTF");
                 p.pSettings.atmosphere.ReinitializeGroundMaterial(groundMaterial);
 //                ReplaceMaterial(p.pSettings.properties.terrainObject, groundMaterial, p.pSettings);
                 GameObject.DestroyImmediate(p.pSettings.properties.terrainObject);
@@ -170,7 +178,8 @@ namespace LemonSpawn
                     //                   if (RenderSettings.GPUSurface)
                     ///                        p.pSettings.planetType = PlanetSettings.planetTypes.planetTypes[0];
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
-                    
+
+
                     if (ps.planetTypeName == "star")
                         p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
                     else
@@ -231,6 +240,7 @@ namespace LemonSpawn
 
         public void LoadSZWold(World world, SerializedWorld sz, bool randomizeSeeds, float scale)
         {
+            
             SetSkybox((int)sz.skybox);
             if (RenderSettings.ignoreXMLResolution)
             {
@@ -258,7 +268,8 @@ namespace LemonSpawn
             //		RenderSettings.isVideo = false;
             if (WorldMC.Slider != null)
                 WorldMC.Slider.SetActive(RenderSettings.isVideo);
-
+            InitializeSurfaces();
+            //Debug.Log("WHOO");
             foreach (SerializedPlanet sp in sz.Planets)
             {
                 GameObject go = new GameObject(sp.name);

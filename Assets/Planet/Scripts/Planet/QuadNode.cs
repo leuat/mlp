@@ -105,9 +105,9 @@ namespace LemonSpawn
             if (quadField == null)
                 return;
 
-
             quadGO = quadField.Realise(planetSettings.castShadows);
-           // GPUDebug();
+//            quadField.Destroy();
+            // GPUDebug();
 
 
             if (RenderSettings.createTerrainColliders)
@@ -131,6 +131,9 @@ namespace LemonSpawn
             //            if (currentLevel == max)
             setGOproperties();
             thread = null;
+            //System.GC.Collect();
+           // World.Collect();
+
         }
 
         public void ThreadedGenerateSurface()
@@ -420,6 +423,13 @@ namespace LemonSpawn
         public void Destroy() {
             if (quadGO!=null)
                 GameObject.Destroy(quadGO);
+
+            if (quadField != null)
+                quadField.Destroy();
+
+            quadField = null;
+            environment.Clear();
+
 
             foreach (QuadEnvironment qe in environment) {
                 qe.Destroy();

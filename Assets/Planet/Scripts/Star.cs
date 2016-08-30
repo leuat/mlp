@@ -24,7 +24,6 @@ namespace LemonSpawn {
             starMaterial = new Material(sky.shader);
             starMaterial.CopyPropertiesFromMaterial(sky);
             mf.mesh = sphere;
-            Debug.Log(sky);
             mr.material = starMaterial;
             //pSettings.radius*=RenderSettings.GlobalRadiusScale;
 

@@ -51,7 +51,7 @@ namespace LemonSpawn {
 		public static float version = 0.14f;
         public static float powScale = 0.75f;
         public static SerializedWorld currentSZWorld;
-        public static bool debug = false;
+        public static bool debug = true;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
@@ -494,13 +494,23 @@ namespace LemonSpawn {
         	Application.Quit();
         }	
 
-
+        public void Collect()
+        {
+            if (Time.frameCount % 300 == 299)
+            {
+                System.GC.Collect();
+               // Debug.Log("Collect at frame " + Time.frameCount);
+              
+                Resources.UnloadUnusedAssets();
+             
+            }
+        }
 
         public virtual void Update () {
 
 			UpdateWorldCamera();		
             solarSystem.Update();
-
+            Collect();
 
             if (Input.GetKey(KeyCode.Escape)) {
 				FatalQuit();

@@ -222,7 +222,7 @@ namespace LemonSpawn {
             if (m_playSpeed > 0 && solarSystem.planets.Count!=0)
             {
                 float v = slider.GetComponent<Slider>().value;
-                v += m_playSpeed;
+                v += (float)m_playSpeed;
                 if (v >= 1)
                 {
                     m_playSpeed = 0;

@@ -163,9 +163,11 @@ namespace LemonSpawn
             focusPointCur = SolarSystem.planet.pSettings.properties.orgPos;
 //            focusPointCur *= (float)((1.0f / RenderSettings.AU));
             mouseAccel += new Vector3(theta, phi, 0);
-
-            scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel")*0.5f;
-            scrollWheel = scrollWheel * 0.9f + scrollWheelAccel*0.1f;
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                scrollWheelAccel = Input.GetAxis("Mouse ScrollWheel") * 0.5f;
+                scrollWheel = scrollWheel * 0.9f + scrollWheelAccel * 0.1f;
+            }
 
             double scale = 10000;
             Quaternion q = Quaternion.AngleAxis(mouseAccel.x, SpaceCamera.transform.up);

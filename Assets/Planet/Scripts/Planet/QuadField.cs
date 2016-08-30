@@ -444,10 +444,29 @@ namespace LemonSpawn {
 		
 		}
 
+        public void Destroy()
+        {
+            vertexField = null;
+            normalField = null;
+            vertexNormalField = null;
+            vertexHeightNormalField = null;
+            dataNormals = null;
+            dataVertices = null;
+            dataColors = null;
+            dataMPI = null;
+            dataTexCoords = null;
+            mesh = null;
+ /*                   private Vector3[] vertexField;
+        private Vector3[] normalField;
+        private Vector3[] vertexNormalField;
+        private Vector3[] vertexHeightNormalField;
+        public float[] dataNormals, dataVertices, dataColors, dataMPI, dataTexCoords;
+        */
+         
+    }
 
 
-
-		public GameObject Realise(bool castShadows) {
+    public GameObject Realise(bool castShadows) {
 			//mesh.FacesFromVertices();
 			mesh.createMesh();
 
