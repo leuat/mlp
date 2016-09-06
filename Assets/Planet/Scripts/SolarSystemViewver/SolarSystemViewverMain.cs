@@ -14,6 +14,10 @@ namespace LemonSpawn {
 		public static Vector2 OrbitalLineWidth = new Vector2 (1.63f, 1.63f);
         public static float currentFrame = 0;
         public static float LineScale = 1;
+        public static Color orbitLinesColor = new Color(0.3f, 0.7f, 1.0f,1.0f);
+        public static Color spaceCraftColor = new Color(1.0f, 0.5f, 0.2f, 1f);
+        public static Color moonColor = new Color(0.5f, 0.7f, 1.0f, 0.9f);
+        public static Color planetColor = new Color(0.9f, 0.7f, 0.3f, 0.9f);
 
     }
 
@@ -23,7 +27,9 @@ namespace LemonSpawn {
 		public Planet planet;
         public SerializedPlanet serializedPlanet;
 		public GameObject go;
+        public GameObject textMesh;
 		public List<GameObject> orbitLines = new List<GameObject>();
+        public bool isMoon = false;
 
         /*		private void CreateOrbitCircles() {
                     float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
@@ -44,14 +50,26 @@ namespace LemonSpawn {
                     }
                 }
         */
+/*        public void CreateTextMesh() {
+            textMesh = new GameObject();
+            textMesh.transform.parent = go.transform;
+            textMesh.transform.localPosition = new Vector3(0,0,0);
+
+            GUIText tm = textMesh.AddComponent<GUIText>();
+            tm.color = new Color(0.3f, 0.6f, 1.0f,1.0f);
+            tm.text = planet.pSettings.name + "HALLA";
+            tm.fontSize = 10;
+        //    tm.font = (Font)Resources.Load("CaviarDreams");
+        }
+        */
 
 
         public void MaintainOrbits() {
             int maxFrames = serializedPlanet.Frames.Count;
             int currentFrame = (int)(SSVSettings.currentFrame*maxFrames);
-            Color c = new Color(0.3f, 0.7f, 1.0f,1.0f);
+            Color c = SSVSettings.orbitLinesColor;
             if (planet.pSettings.planetTypeName == "spacecraft")
-                c = new Color(1.0f, 0.5f, 0.2f, 1f);
+                c = SSVSettings.spaceCraftColor;
             int h = orbitLines.Count / 1;
 
             for (int i=0;i<orbitLines.Count;i++) {
@@ -102,7 +120,11 @@ namespace LemonSpawn {
             DestroyOrbits();
 
             if (serializedPlanet.Frames.Count<2)
-                return;             
+                return;     
+
+            if (isMoon)
+                return;
+                    
             for (int i = 0; i < maxLines; i++) {
                 if (i+1>=serializedPlanet.Frames.Count)
                     break;
@@ -128,8 +150,10 @@ namespace LemonSpawn {
 			go = g;
 			planet = p;
             serializedPlanet = sp;
-
+//            CreateTextMesh();
 			//CreateOrbitFromFrames ();
+            if (planet.pSettings.name.ToLower().Contains("moon"))
+                isMoon = true;
 		}
 
         public void UpdatePosition() {
@@ -152,6 +176,9 @@ namespace LemonSpawn {
         private GameObject pnlInfo = null;
         public static bool Reload = false;
         private float currentDistance;
+        private Font GUIFont;
+        private GUIStyle guiStyle = new GUIStyle();
+        private bool toggleLabels = true;
 		private void SelectPlanet(DisplayPlanet dp) {
 			selected = dp;
 			focusPoint = dp.go.transform.position;
@@ -188,9 +215,15 @@ namespace LemonSpawn {
             infoText += dp.planet.pSettings.planetType.PlanetInfo;
             setText("txtPlanetInfo", infoText);
 
-
+            UpdateOverviewClick();
 		}
 
+
+        private void UpdateOverviewClick() {
+
+            GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().value = 0;
+
+        }
 
         public void FocusOnPlanetClick() {
             int idx = GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().value;
@@ -214,6 +247,34 @@ namespace LemonSpawn {
             pnlInfo.SetActive(false);
             currentDistance = 0;
         }
+
+
+        public void ToggleLabels() {
+            toggleLabels = !toggleLabels;
+        }   
+
+        private void RenderLabels() {
+            if (!toggleLabels)
+                return;
+            GUI.skin.font = GUIFont;
+            foreach (DisplayPlanet dp in dPlanets) {
+                guiStyle.normal.textColor = SSVSettings.planetColor;
+                if (dp.isMoon)
+                    guiStyle.normal.textColor = SSVSettings.moonColor;
+                if (dp.planet.pSettings.planetTypeName =="spacecraft")
+                    guiStyle.normal.textColor = SSVSettings.spaceCraftColor;
+                    
+
+                Vector3 pos=MainCamera.WorldToScreenPoint(dp.go.transform.position);
+                int width = dp.planet.pSettings.name.Length;
+                guiStyle.fontSize = 20 + (int)Mathf.Pow(dp.planet.pSettings.radius,0.6f);
+//                if (pos.x >0 && pos.y<Screen.width && pos.y>0 && pos.y<Screen.height)
+                 if (pos.z>0)
+                    GUI.Label(new Rect(pos.x - (width/2)*10,Screen.height-pos.y,250,130),dp.planet.pSettings.name, guiStyle);   
+
+            }
+        }
+
 
         public void SlideScaleLines()
         {
@@ -267,8 +328,8 @@ namespace LemonSpawn {
 					}
 				}
                 else {
-                    if (!EventSystem.current.IsPointerOverGameObject() )
-                        DeFocus();
+                    //if (!EventSystem.current.IsPointerOverGameObject() )
+                    //    DeFocus();
                 }
 			}
 		}
@@ -425,6 +486,9 @@ namespace LemonSpawn {
         public static GameObject satellite = null;
 
 		public override void Start () { 
+            GUIFont = (Font)Resources.Load("CaviarDreams");
+            guiStyle.font = GUIFont;
+            
 			CurrentApp = Verification.SolarSystemViewerName;
             RenderSettings.path = Application.dataPath + "/../";
 
@@ -518,29 +582,38 @@ namespace LemonSpawn {
 
         }
 
-        protected  List<DisplayPlanet> getSpaceCrafts() {
+        protected  List<DisplayPlanet> getSpaceCrafts(List<DisplayPlanet> planets) {
             List<DisplayPlanet> spaceCrafts = new List<DisplayPlanet>();
             foreach (DisplayPlanet dp in dPlanets)
             {
-                if (dp.planet.pSettings.planetTypeName == "spacecraft")
+                if (dp.planet.pSettings.planetTypeName == "spacecraft" || 
+                    dp.isMoon) {
+//                    Debug.Log(dp.planet.pSettings.name);
+
                     spaceCrafts.Add(dp);
+                    }
+               else
+                    planets.Add(dp);
             }
 
             return spaceCrafts;
         }
 
 
+
         protected void ForceSpaceCraft()
         {
-            List<DisplayPlanet> spaceCrafts = getSpaceCrafts();
+            List<DisplayPlanet> planets = new List<DisplayPlanet>();;
+            List<DisplayPlanet> spaceCrafts = getSpaceCrafts(planets);
 
-            foreach (DisplayPlanet spaceCraft in spaceCrafts)
+            for (int i=0;i<spaceCrafts.Count;i++)
             {
+                DisplayPlanet spaceCraft = spaceCrafts[i];
                 DisplayPlanet winner = null;
                 float winnerLength = 1E30f;
-                foreach (DisplayPlanet dp in dPlanets)
+                for (int j=0;j<planets.Count;j++)
                 {
-                    
+                    DisplayPlanet dp = planets[j];
                     if (dp!=spaceCraft)
                     {
 
@@ -553,19 +626,28 @@ namespace LemonSpawn {
                     }
 
                 }
+
 /*                Vector3 newScale = Vector3.one * (0.00f + currentScale);
                 dp.go.transform.localScale = Vector3.one * dp.planet.pSettings.radius * 2.0f;
                 dp.SetWidth(newScale.x);
                 dp.planet.pSettings.transform.localScale = newScale;
                 */
-                Vector3 dir = (winner.go.transform.position - spaceCraft.go.transform.position);
-                float dist2 = dir.magnitude;
-                float scale = winner.go.transform.parent.transform.localScale.x*winner.planet.pSettings.radius*2;
-                if (dist2 < scale)
-                {
-                  spaceCraft.planet.pSettings.gameObject.transform.position = winner.go.transform.position + dir.normalized * scale*1.0001f;
-                }
+                if (winner!=null) {
+                    Vector3 dir = (winner.go.transform.position - spaceCraft.go.transform.position)*-1;
+                    float dist2 = dir.magnitude;
+                    float scale = winner.go.transform.parent.transform.localScale.x*winner.planet.pSettings.radius*2f;
+                    //scale = SSVSettings.SolarSystemScale;
 
+                    if (dist2 < scale && spaceCraft.planet.pSettings.radius<winner.planet.pSettings.radius)
+                     {
+                        if (spaceCraft.planet.pSettings.planetTypeName == "spacecraft")
+                            dist2 = 0;
+//                        Debug.Log(spaceCraft.planet.pSettings.radius + " vs " + winner.planet.pSettings.radius);
+
+                         spaceCraft.planet.pSettings.gameObject.transform.position = winner.go.transform.position + 
+                            dir.normalized * (scale*1.0001f+1*dist2*SSVSettings.SolarSystemScale/10.0f);
+                     }
+                }
 
             }
 
@@ -573,6 +655,7 @@ namespace LemonSpawn {
 
 
         protected void OnGUI() {
+            RenderLabels();
 		}
 
 		public void LoadFileFromMenu()
@@ -616,7 +699,7 @@ namespace LemonSpawn {
             foreach (DisplayPlanet dp in dPlanets) {
                 dp.UpdatePosition();
             }
-
+            ForceSpaceCraft();
         }
 
 
@@ -655,7 +738,7 @@ namespace LemonSpawn {
                 if (v >= 1)
                 {
                     m_playSpeed = 0;
-                    v = 0;
+                    v = 1;
                 }
 //                Debug.Log("Playspeed after: " + m_playSpeed + " " + Time.time);
                 slider.GetComponent<Slider>().value = v;

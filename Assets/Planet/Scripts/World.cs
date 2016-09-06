@@ -48,10 +48,10 @@ namespace LemonSpawn {
 		public static int CloudTextureSize = 1024;
 		public static bool RenderMenu = true;
 		public static bool GPUSurface = true;
-		public static float version = 0.14f;
+		public static float version = 0.15f;
         public static float powScale = 0.75f;
         public static SerializedWorld currentSZWorld;
-        public static bool debug = false;
+        public static bool debug = true;
 		public static float MinCameraHeight = 1.5f;
 		public static RenderType renderType = RenderType.Normal;
 		public static string extraText = "";
