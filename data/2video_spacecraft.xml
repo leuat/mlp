@@ -23,11 +23,12 @@
     <col_x>0.929065929465</col_x>
     <col_y>0.936845271591</col_y>
     <col_z>1.0</col_z>
+    <category>star</category>
     <atmosphereDensity>10</atmosphereDensity>
     <atmosphereHeight>1.025</atmosphereHeight>
     <outerRadiusScale>1.0025</outerRadiusScale>
     <name>The star</name>
-    <planetType>star</planetType>
+    <planetType></planetType>
   </SerializedPlanet>
   <SerializedPlanet>
     <pos_x>2.12130574813</pos_x>
@@ -70177,8 +70178,10 @@
     <atmosphereDensity>1</atmosphereDensity>
     <atmosphereHeight>1.025</atmosphereHeight>
     <outerRadiusScale>1.0025</outerRadiusScale>
-    <name>Spacecraft</name>
-    <planetType>spacecraft</planetType>
+    <name>Spacecraft 1</name>
+    <category>spacecraft</category>
+
+    <planetType></planetType>
   </SerializedPlanet>
 </Planets>
 <Cameras/>

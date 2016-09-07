@@ -30,11 +30,14 @@ namespace LemonSpawn {
     // Public settings
     public class PlanetSettings : MonoBehaviour {
 
+        public enum Categories { Planet, Moon, Star, Spacecraft};
+
         [Header("Planet settings")]
         public int seed;
         public double rotation;
         public float Gravity;
         public int maxQuadNodeLevel;
+        public Categories category = Categories.Planet;
  //       public int planetTypeIndex;
         public bool castShadows = true;
         public bool hasSea = false;

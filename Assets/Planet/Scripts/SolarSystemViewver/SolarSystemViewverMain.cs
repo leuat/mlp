@@ -29,7 +29,7 @@ namespace LemonSpawn {
 		public GameObject go;
         public GameObject textMesh;
 		public List<GameObject> orbitLines = new List<GameObject>();
-        public bool isMoon = false;
+//        public bool isMoon = false;
 
         /*		private void CreateOrbitCircles() {
                     float radius = (float)planet.pSettings.properties.pos.Length () * SSVSettings.SolarSystemScale;
@@ -68,8 +68,9 @@ namespace LemonSpawn {
             int maxFrames = serializedPlanet.Frames.Count;
             int currentFrame = (int)(SSVSettings.currentFrame*maxFrames);
             Color c = SSVSettings.orbitLinesColor;
-            if (planet.pSettings.planetTypeName == "spacecraft")
+            if (planet.pSettings.category == PlanetSettings.Categories.Spacecraft)
                 c = SSVSettings.spaceCraftColor;
+
             int h = orbitLines.Count / 1;
 
             for (int i=0;i<orbitLines.Count;i++) {
@@ -122,7 +123,7 @@ namespace LemonSpawn {
             if (serializedPlanet.Frames.Count<2)
                 return;     
 
-            if (isMoon)
+            if (planet.pSettings.category == PlanetSettings.Categories.Moon)
                 return;
                     
             for (int i = 0; i < maxLines; i++) {
@@ -152,8 +153,8 @@ namespace LemonSpawn {
             serializedPlanet = sp;
 //            CreateTextMesh();
 			//CreateOrbitFromFrames ();
-            if (planet.pSettings.name.ToLower().Contains("moon"))
-                isMoon = true;
+            //if (planet.pSettings.name.ToLower().Contains("moon"))
+            //    isMoon = true;
 		}
 
         public void UpdatePosition() {
@@ -187,21 +188,24 @@ namespace LemonSpawn {
             if (currentDistance == 0)
                 currentDistance = (dp.planet.pSettings.gameObject.transform.position - MainCamera.transform.position).magnitude;
 
-            if (dp.planet.pSettings.planetTypeName=="star")
+            if (dp.planet.pSettings.category==PlanetSettings.Categories.Star)
             {
+                setText("txtPlanetName", "Star");
                 setText("txtPlanetType", "Star");
-                setText("txtPlanetInfo", "A Star");
+                setText("txtPlanetInfo", "Star");
                 return;
             }
             else
-            if (dp.planet.pSettings.planetTypeName == "spacecraft")
+            if (dp.planet.pSettings.category == PlanetSettings.Categories.Spacecraft)
             {
+                setText("txtPlanetName", "Spacecraft");
                 setText("txtPlanetType", "Spacecraft");
                 setText("txtPlanetInfo", "Spacecraft");
                 return;
             }
 
             setText("txtPlanetType",dp.planet.pSettings.planetType.name);
+            setText("txtPlanetName", dp.planet.pSettings.name);
 
             string infoText = "";
             int radius = (int)(dp.planet.pSettings.getActualRadius());
@@ -259,15 +263,15 @@ namespace LemonSpawn {
             GUI.skin.font = GUIFont;
             foreach (DisplayPlanet dp in dPlanets) {
                 guiStyle.normal.textColor = SSVSettings.planetColor;
-                if (dp.isMoon)
+                if (dp.planet.pSettings.category == PlanetSettings.Categories.Moon)
                     guiStyle.normal.textColor = SSVSettings.moonColor;
-                if (dp.planet.pSettings.planetTypeName =="spacecraft")
+                if (dp.planet.pSettings.category == PlanetSettings.Categories.Spacecraft)
                     guiStyle.normal.textColor = SSVSettings.spaceCraftColor;
                     
 
                 Vector3 pos=MainCamera.WorldToScreenPoint(dp.go.transform.position);
                 int width = dp.planet.pSettings.name.Length;
-                guiStyle.fontSize = 20 + (int)Mathf.Pow(dp.planet.pSettings.radius,0.6f);
+                guiStyle.fontSize = 16 + (int)Mathf.Pow(dp.planet.pSettings.radius,0.6f);
 //                if (pos.x >0 && pos.y<Screen.width && pos.y>0 && pos.y<Screen.height)
                  if (pos.z>0)
                     GUI.Label(new Rect(pos.x - (width/2)*10,Screen.height-pos.y,250,130),dp.planet.pSettings.name, guiStyle);   
@@ -313,7 +317,7 @@ namespace LemonSpawn {
                 if (dp.planet.pSettings.properties.terrainObject != null)
                     dp.planet.pSettings.properties.terrainObject.transform.localScale = newScale;
             }
-
+            Slide();
         }
 
 
@@ -586,8 +590,8 @@ namespace LemonSpawn {
             List<DisplayPlanet> spaceCrafts = new List<DisplayPlanet>();
             foreach (DisplayPlanet dp in dPlanets)
             {
-                if (dp.planet.pSettings.planetTypeName == "spacecraft" || 
-                    dp.isMoon) {
+                if (dp.planet.pSettings.category == PlanetSettings.Categories.Spacecraft||
+                    dp.planet.pSettings.category == PlanetSettings.Categories.Moon) {
 //                    Debug.Log(dp.planet.pSettings.name);
 
                     spaceCrafts.Add(dp);
@@ -640,7 +644,7 @@ namespace LemonSpawn {
 
                     if (dist2 < scale && spaceCraft.planet.pSettings.radius<winner.planet.pSettings.radius)
                      {
-                        if (spaceCraft.planet.pSettings.planetTypeName == "spacecraft")
+                        if (spaceCraft.planet.pSettings.category == PlanetSettings.Categories.Spacecraft)
                             dist2 = 0;
 //                        Debug.Log(spaceCraft.planet.pSettings.radius + " vs " + winner.planet.pSettings.radius);
 

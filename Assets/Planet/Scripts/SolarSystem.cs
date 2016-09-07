@@ -145,6 +145,16 @@ namespace LemonSpawn
 
 
 
+        private Planet InitializeObject(PlanetSettings ps)
+        {
+            if (ps.category == PlanetSettings.Categories.Star)
+                return new Star(ps);
+            if (ps.category == PlanetSettings.Categories.Spacecraft)
+                return new Satellite(ps);
+
+            return new Planet(ps);
+        }
+
 
         public void InitializeFromScene()
         {
@@ -160,14 +170,7 @@ namespace LemonSpawn
                         cameraObjects.Add(go);
                         continue;
                     }
-                    Planet p;
-                    if (ps.planetTypeName == "star")
-                        p = new Star(ps);
-                    else
-                    if (ps.planetTypeName == "spacecraft")
-                        p = new Satellite(ps);
-                    else
-                        p = new Planet(ps);
+                    Planet p = InitializeObject(ps);
 
 
                     p.pSettings.properties.orgPos.Set(go.transform.position);
@@ -180,10 +183,10 @@ namespace LemonSpawn
                     //				p.pSettings.planetType = PlanetType.planetTypes[1];
 
 
-                    if (ps.planetTypeName == "star")
+                    if (ps.category == PlanetSettings.Categories.Star)
                         p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
                     else
-                    if (ps.planetTypeName.ToLower() == "spacecraft")
+                    if (ps.category == PlanetSettings.Categories.Spacecraft)
                     {
                         p.Initialize(sun, groundMaterial, (Material)Resources.Load("SpaceCraftMaterial"), sphere);
                     }
@@ -282,30 +285,23 @@ namespace LemonSpawn
                     ps.Randomize(0, sp.planetType);
                 }
 
-                Planet p;
-                if (ps.planetTypeName == "star" && World.CurrentApp == Verification.MCAstName)
+                Planet p = InitializeObject(ps);
+                if (ps.category == PlanetSettings.Categories.Star && World.CurrentApp == Verification.MCAstName)
                     continue;
 
-                if (ps.planetTypeName == "star")
-                    p = new Star(ps);
-                else
-                if (ps.planetTypeName == "spacecraft")
-                    p = new Satellite(ps);
-                else
-                    p = new Planet(ps);
                 p.pSettings.properties.parent = go;
 
 
-                if (ps.planetTypeName == "star")
+                if (ps.category == PlanetSettings.Categories.Star)
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("Sun"), sphere);
                 else
-                if (ps.planetTypeName.ToLower() == "spacecraft")
+                if (ps.category == PlanetSettings.Categories.Spacecraft)
                 {
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("SpaceCraftMaterial"), sphere);
                 }
                 else
                     p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
-                //                p.Initialize(sun, groundMaterial, (Material)Resources.Load("SkyMaterial"), sphere);
+
                 planets.Add(p);
             }
             world.setWorld(sz);

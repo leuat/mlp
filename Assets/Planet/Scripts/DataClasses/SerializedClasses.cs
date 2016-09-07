@@ -31,7 +31,7 @@ namespace LemonSpawn
         public double col_x=1, col_y=1, col_z=1;
         public string name;
         public string planetType;
-
+        public string category;
         public double rotation = 0;
         public float temperature = 200;
         public List<Frame> Frames = new List<Frame>();
@@ -66,12 +66,21 @@ namespace LemonSpawn
             if (planetType == null)
                 planetType = "";
 
-            if (planetType.ToLower() == "star" || planetType.ToLower() == "spacecraft")
+            if (category == "star")
+                ps.category = PlanetSettings.Categories.Star;
+            if (category == "moon")
+                ps.category = PlanetSettings.Categories.Moon;
+            if (category == "spacecraft")
+                ps.category = PlanetSettings.Categories.Spacecraft;
+            if (category == "planet")
+                ps.category = PlanetSettings.Categories.Planet;
+
+/*            if (planetType.ToLower() == "star" || planetType.ToLower() == "spacecraft")
             {
                 ps.planetTypeName = planetType;
-//                Debug.Log(planetType);
             }
-            else
+            else*/
+            if (ps.category == PlanetSettings.Categories.Moon || ps.category == PlanetSettings.Categories.Planet)
                 ps.Randomize(count, planetType);
     
             return ps;
