@@ -8823,7 +8823,7 @@
       </TemperatureRange>
       <RadiusRange>
         <x>500</x>
-        <y>1500</y>
+        <y>3000</y>
         <z>0</z>
       </RadiusRange>
       <PlanetInfo>Rigded planets have experienced large collisions with other bodies in their distant past, yielding an easily recognizable scarred surface. </PlanetInfo>
@@ -11028,8 +11028,8 @@
         <z>0</z>
       </TemperatureRange>
       <RadiusRange>
-        <x>50</x>
-        <y>500</y>
+        <x>100</x>
+        <y>3000</y>
         <z>0</z>
       </RadiusRange>
       <PlanetInfo>In the realm between asteroids and small planets, small moons are near-spherical and somewhat irregular. </PlanetInfo>
@@ -28677,7 +28677,7 @@
       </TemperatureRange>
       <RadiusRange>
         <x>3</x>
-        <y>100</y>
+        <y>1500</y>
         <z>0</z>
       </RadiusRange>
       <PlanetInfo>The universe is scattered with these small, highly irregular asteroids.</PlanetInfo>

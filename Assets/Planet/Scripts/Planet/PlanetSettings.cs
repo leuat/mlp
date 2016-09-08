@@ -36,6 +36,7 @@ namespace LemonSpawn {
         public int seed;
         public double rotation;
         public float Gravity;
+        public string givenName = "";
         public int maxQuadNodeLevel;
         public Categories category = Categories.Planet;
  //       public int planetTypeIndex;
@@ -206,6 +207,12 @@ namespace LemonSpawn {
 
         public void Randomize(int count, string forcedPlanetType) {
             System.Random r = new System.Random(seed);
+
+            SlapDash sd = new SlapDash();
+            sd.Initialize();
+            givenName = sd.getWord(r);
+            givenName = givenName[0].ToString().ToUpper() + givenName.Substring(1); 
+
 
             sea = new Sea();
             hasFlatClouds = true;

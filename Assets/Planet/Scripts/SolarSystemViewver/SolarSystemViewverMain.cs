@@ -191,6 +191,7 @@ namespace LemonSpawn {
             if (dp.planet.pSettings.category==PlanetSettings.Categories.Star)
             {
                 setText("txtPlanetName", "Star");
+                setText("txtPlanetName2", "Star");
                 setText("txtPlanetType", "Star");
                 setText("txtPlanetInfo", "Star");
                 return;
@@ -199,13 +200,15 @@ namespace LemonSpawn {
             if (dp.planet.pSettings.category == PlanetSettings.Categories.Spacecraft)
             {
                 setText("txtPlanetName", "Spacecraft");
+                setText("txtPlanetName2", "Spacecraft");
                 setText("txtPlanetType", "Spacecraft");
                 setText("txtPlanetInfo", "Spacecraft");
                 return;
             }
 
             setText("txtPlanetType",dp.planet.pSettings.planetType.name);
-            setText("txtPlanetName", dp.planet.pSettings.name);
+            setText("txtPlanetName", dp.planet.pSettings.givenName);
+            setText("txtPlanetName2", "(" + dp.planet.pSettings.name + ")");
 
             string infoText = "";
             int radius = (int)(dp.planet.pSettings.getActualRadius());
@@ -232,8 +235,9 @@ namespace LemonSpawn {
         public void FocusOnPlanetClick() {
             int idx = GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().value;
             string name = GameObject.Find("Overview").GetComponent<UnityEngine.UI.Dropdown>().options[idx].text;
+
             foreach (DisplayPlanet dp in dPlanets)
-                if (dp.planet.pSettings.name == name)
+                if (name.Contains(dp.planet.pSettings.name))
                     SelectPlanet(dp);
    
         }
@@ -270,11 +274,19 @@ namespace LemonSpawn {
                     
 
                 Vector3 pos=MainCamera.WorldToScreenPoint(dp.go.transform.position);
-                int width = dp.planet.pSettings.name.Length;
-                guiStyle.fontSize = 16 + (int)Mathf.Pow(dp.planet.pSettings.radius,0.6f);
-//                if (pos.x >0 && pos.y<Screen.width && pos.y>0 && pos.y<Screen.height)
-                 if (pos.z>0)
-                    GUI.Label(new Rect(pos.x - (width/2)*10,Screen.height-pos.y,250,130),dp.planet.pSettings.name, guiStyle);   
+                int width1 = dp.planet.pSettings.givenName.Trim().Length;
+                int width2 = dp.planet.pSettings.name.Trim().Length;
+                int fs = 16 + (int)Mathf.Pow(dp.planet.pSettings.radius, 0.6f);
+                guiStyle.fontSize = fs;
+                //                if (pos.x >0 && pos.y<Screen.width && pos.y>0 && pos.y<Screen.height)
+                if (pos.z > 0)
+                {
+                    float ha = 50;
+                    GUI.Label(new Rect(pos.x - (width1 / 2) * 10, Screen.height - pos.y-ha, 250, 130), dp.planet.pSettings.givenName, guiStyle);
+                    guiStyle.fontSize = 12;
+
+                    GUI.Label(new Rect(pos.x - (width2 / 2) * 4, Screen.height - pos.y + (int)(fs*1.0)-ha, 250, 130), dp.planet.pSettings.name, guiStyle);
+                }
 
             }
         }
@@ -489,7 +501,26 @@ namespace LemonSpawn {
 
         public static GameObject satellite = null;
 
-		public override void Start () { 
+        public void TestSlapDash()
+        {
+            SlapDash d = new SlapDash();
+            d.Initialize();
+            System.Random rnd = new System.Random();
+            foreach (Language l in d.languages)
+            {
+                string s = "";
+
+                for (int i = 0; i < 100; i++)
+                    s += l.GenerateWord(rnd) + "  ";
+                Debug.Log(s);
+
+            }
+
+
+        }
+
+        public override void Start () {
+            TestSlapDash();
             GUIFont = (Font)Resources.Load("CaviarDreams");
             guiStyle.font = GUIFont;
             

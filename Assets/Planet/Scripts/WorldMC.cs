@@ -536,7 +536,7 @@ namespace LemonSpawn
             foreach (Planet p in solarSystem.planets)
             {
                 Dropdown.OptionData ci = new Dropdown.OptionData();
-                ci.text = p.pSettings.name;
+                ci.text = p.pSettings.name + " (" + p.pSettings.givenName + ")";
                 string n = p.pSettings.name;
                 if (n!="star")
                     l.Add(ci);
