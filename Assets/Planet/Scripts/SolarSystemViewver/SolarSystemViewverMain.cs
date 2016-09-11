@@ -504,8 +504,7 @@ namespace LemonSpawn {
         public void TestSlapDash()
         {
             SlapDash d = new SlapDash();
-            d.Initialize();
-            System.Random rnd = new System.Random();
+            System.Random rnd = new System.Random(4);
             foreach (Language l in d.languages)
             {
                 string s = "";
@@ -520,7 +519,7 @@ namespace LemonSpawn {
         }
 
         public override void Start () {
-            TestSlapDash();
+//            TestSlapDash();
             GUIFont = (Font)Resources.Load("CaviarDreams");
             guiStyle.font = GUIFont;
             
