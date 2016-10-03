@@ -130,6 +130,7 @@ namespace LemonSpawn
         public double fov;
         public double time;
         public int frame;
+        public int status = 0;
         public DVector getPos()
         {
             return new DVector(cam_x, cam_y, cam_z);
@@ -226,11 +227,11 @@ namespace LemonSpawn
             return 0;
                 }
 
-        public void getInterpolatedCamera(double t, List<Planet> planets)
+        public SerializedCamera getInterpolatedCameraSpline(double t, List<Planet> planets)
         {
             // t in [0,1]
             if (Cameras.Count <= 1)
-                return;
+                return null;
             DVector pos, up;
             up = new DVector(Vector3.up);
 
@@ -246,9 +247,10 @@ namespace LemonSpawn
             SerializedCamera p2 = getCamera(time, 1);
             SerializedCamera p3 = getCamera(time, 2);
 
+
             if (p2 == null || p1 == null || p0==null)
             {
-                return;
+                return p1;
             }
 
             double dt = 1.0 / (p2.time - p1.time) * (time - p1.time);
@@ -270,7 +272,7 @@ namespace LemonSpawn
             }
 
             World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
-
+            return p1;
         }
 
         public void InterpolatePlanetFrames(double t, List<Planet> pl)
@@ -300,11 +302,11 @@ namespace LemonSpawn
 
 
 
-        public void getInterpolatedCameraLerp(double t, List<Planet> planets)
+        public SerializedCamera getInterpolatedCamera(double t, List<Planet> planets)
         {
             // t in [0,1]
             if (Cameras.Count <= 1)
-                return;
+                return null;
             DVector pos, up;
             up = new DVector(Vector3.up);
 
@@ -312,10 +314,10 @@ namespace LemonSpawn
             double maxTime = Cameras[Cameras.Count - 1].time;
             double time = t * maxTime;
 
-            SerializedCamera b = getCamera((int)time, 0);
-            SerializedCamera c = getCamera((int)time, 1);
+            SerializedCamera b = getCamera(time, 0);
+            SerializedCamera c = getCamera(time, 1);
             if (c == null)
-                return;
+                return b;
 
             double dt = 1.0 / (c.time - b.time) * (time - b.time);
 
@@ -332,7 +334,7 @@ namespace LemonSpawn
             }
 
             World.MainCamera.GetComponent<SpaceCamera>().SetLookCamera(pos, dir.toVectorf(), up.toVectorf());
-
+            return b;
         }
 
         public void IterateCamera()

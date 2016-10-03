@@ -415,7 +415,7 @@ namespace LemonSpawn {
             CloseCamera.clearFlags = CameraClearFlags.Depth;
             CloseCamera.nearClipPlane = 2;
             CloseCamera.farClipPlane = 220000;
-            CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal");
+            CloseCamera.cullingMask = 1 << LayerMask.NameToLayer("Normal") ;
 			         
             MainCamera.farClipPlane = RenderSettings.LOD_ProjectionDistance * 1.1f;
             MainCamera.depthTextureMode = DepthTextureMode.Depth;

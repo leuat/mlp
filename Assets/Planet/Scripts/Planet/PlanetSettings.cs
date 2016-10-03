@@ -209,6 +209,8 @@ namespace LemonSpawn {
             System.Random r = new System.Random(seed);
 
             SlapDash sd = new SlapDash();
+            sd.InitializeIntrinsic();
+            //sd.Load("slapdash.xml");
             givenName = sd.getWord(r);
             givenName = givenName[0].ToString().ToUpper() + givenName.Substring(1); 
 

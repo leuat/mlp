@@ -116,11 +116,23 @@ namespace LemonSpawn
         }
 
         private double sliderScale = 10000.0;
+        private SerializedCamera currentCamera = null;
+
+        public bool isInCrash = false;
 
         public void Slide()
         {
             double v = slider.GetComponent<Slider>().value;
-            szWorld.getInterpolatedCamera(v/sliderScale, solarSystem.planets);
+            currentCamera = szWorld.getInterpolatedCamera(v/sliderScale, solarSystem.planets);
+            if (currentCamera!=null) {
+
+                isInCrash = (currentCamera.status==1);
+                if (isInCrash) 
+                    noiseImage.SetActive(true);
+                else
+                   noiseImage.SetActive(false);
+     
+            }
         }
 
 
@@ -344,6 +356,8 @@ namespace LemonSpawn
 
         }
 
+        public Vector2 blinkCrash = new Vector3(10, 0,0);
+
         protected void OnGUI()
         {
 
@@ -361,6 +375,23 @@ namespace LemonSpawn
                         GUI.DrawTexture(new Rect(Screen.width-b-s, Screen.height -b -s, s,s), tx_record);
                     } 
                 }
+                if (isInCrash) 
+                {
+                    GUIStyle crash = new GUIStyle();
+                    crash.fontSize = 200;
+                
+                    crash.normal.textColor = Color.red;
+                    crash.alignment = TextAnchor.UpperCenter;
+                    blinkCrash.y-=Time.deltaTime*5f;
+                    if (blinkCrash.y<=blinkCrash.x/2) {
+                        GUI.Label(new Rect(Screen.width/2-300,Screen.height/2-200,600,400), "Crash detected!", crash);
+                    }
+                    if (blinkCrash.y<0) blinkCrash.y = blinkCrash.x;
+
+
+                }   
+
+
                 return;
             }
             // Generate Textures
@@ -372,6 +403,8 @@ namespace LemonSpawn
 
             if (RenderSettings.toggleProgressbar)
                 RenderProgressbar();
+
+
 
         }
 
@@ -581,9 +614,8 @@ namespace LemonSpawn
             foreach (System.IO.FileInfo file in di.GetFiles()) file.Delete();
         }
 
-      
 
-
+      public GameObject noiseImage = null;
     public override void Start()
         {
             RenderSettings.path = Application.dataPath + "/../";
@@ -593,9 +625,11 @@ namespace LemonSpawn
             if (solarSystem == null)
     			solarSystem = new SolarSystem(sun, sphere, transform, (int)szWorld.skybox);
             canvas = GameObject.Find ("Canvas");
-
+            noiseImage = GameObject.Find("NoiseImage");
+            noiseImage.SetActive(false);
             SetupGUI();
 			base.Start();
+
  
             SetupErrorPanel();
 
@@ -729,6 +763,10 @@ namespace LemonSpawn
             UpdateMessages();
             UpdatePlay();
             //            return;
+
+            Rect r = noiseImage.GetComponent<RawImage>().uvRect;
+            r.size = new Vector3(4 + Random.value*5, 4+ Random.value*5);
+            noiseImage.GetComponent<RawImage>().uvRect = r;
 
            
             if (!RenderSettings.debug)
