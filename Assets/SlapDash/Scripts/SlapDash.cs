@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
 
 
 namespace LemonSpawn
 {
-
+    [System.Serializable]
     public class Syllable {
         public static int Prefix = 1;
         public static int Infix = 1<<1;
@@ -24,21 +26,23 @@ namespace LemonSpawn
             type = t;
 
         }
+        public Syllable() {
 
-        public Syllable(string s, bool _isPrefix, bool _isPostfix, bool _isInfix, Types t)
+        }
+        public Syllable(string s, int f, Types t)
         {
             syllable = s;
-  /*          isPrefix = _isPrefix;
-            isPostfix = _isPostfix;
-            isInfix = _isInfix;*/
+            fix = f;
             type = t; 
         }
 
     }
         
 
+    [System.Serializable]
     public class Language
     {
+
         public int minSyllables;
         public int maxSyllables;
         public int maxDoubleC = 1;
@@ -55,7 +59,9 @@ namespace LemonSpawn
             maxDoubleC = DC;
             allowDoubleCEnd = allowDCE;
         }
+        public Language() {
 
+        }
         public void SetFix(string [] syll, int fix) {
             foreach (string s in syll)
                 foreach (Syllable sb in syllables) {
@@ -97,6 +103,8 @@ namespace LemonSpawn
         public Syllable findRandomType(Syllable.Types t, System.Random rnd, int fix)
         {
             List<Syllable> lst = findType(t, fix);
+            if (lst.Count == 0)
+               return null;
             return lst[rnd.Next() % lst.Count];
         }
         public Syllable findRandom(System.Random rnd, int fix)
@@ -114,8 +122,14 @@ namespace LemonSpawn
                    // Debug.Log("Added candidate : " + fix + " : " + s.syllable + " : sb.fix= "+s.fix);
                     }
             }
+            if (lst.Count==0)
+                return null;
             return lst[rnd.Next() % lst.Count];
         }
+
+
+
+
 
         public Syllable findRandomTypes(Syllable.Types[] tlst, System.Random rnd, int fix)
         {
@@ -152,7 +166,8 @@ namespace LemonSpawn
             }
 
 //            Debug.Log("prev: " + prev.type);
-
+            if (prev==null)
+                return null;
             if (prev.type == Syllable.Types.C)
                 return findRandomTypes(new Syllable.Types[] {Syllable.Types.VC, Syllable.Types.V, Syllable.Types.CV }, rnd, fix);
             if (prev.type == Syllable.Types.V || prev.type == Syllable.Types.CV)
@@ -166,25 +181,23 @@ namespace LemonSpawn
         }
 
         public string RemoveIllegalDoubles(string s) {
-
+            if (s=="" || s==null)
+                return "";
             string res = s[0].ToString();
             char prev = s[0];
-            bool hasChanged = false;
             for (int i=1;i<s.Length;i++) {
                 bool ok = true;
                 if ((prev == s[i])  && exceptDoubles.Contains(s[i].ToString())) {
                     ok = false;
-                    Debug.Log("Removing " + prev + " in " + s); 
-                    hasChanged = true;
                     }
+                if (prev==s[i] && i==s.Length-1 && exceptDoubleEndings.Contains(s[i].ToString()))
+                    ok = false;
 
                 if (ok) {
                     prev = s[i];
                     res+=s[i];
                     }
             }
-/*            if (hasChanged)
-                Debug.Log("Before:" + s + " , " */
             return res;
         }
 
@@ -193,10 +206,7 @@ namespace LemonSpawn
             int noSyllables = r.Next() % (maxSyllables - minSyllables) + minSyllables;
             List<Syllable> syll = new List<Syllable>();
             Syllable s = findRandom(r, Syllable.Prefix);
-//            Debug.Log(s.syllable);
             syll.Add(s);
-//            Debug.Log(noSyllables + " " + minSyllables + " " + maxSyllables);
-  //          return "";
             for (int i=0;i<noSyllables-1;i++)
             {
                 int fix = Syllable.Infix;
@@ -205,7 +215,12 @@ namespace LemonSpawn
                     }
 
                 s = findBasedOnSyllable(s, r, i==noSyllables-2, fix);
-//                Debug.Log(s.syllable + " : " + fix);
+                if (fix==Syllable.Postfix) {
+    //                    if (s!=null)
+//                        Debug.Log(s.syllable + " : " + fix);
+  //                      else
+      //                  Debug.Log("COULD NOT FIND POSTFIX");
+                    }
                 if (s != null)
                     syll.Add(s);
             }
@@ -215,38 +230,98 @@ namespace LemonSpawn
             for (int i=0;i<syll.Count ;i++)
             {
                 Syllable sb = syll[i];
+                if (sb==null)
+                    continue;
+
                 if (i>0 && remaining>0)
                 {
                     Syllable prev = syll[i - 1];
-                    if (i==syll.Count-1 && allowDoubleCEnd)
                     if (prev.type == Syllable.Types.CV || prev.type == Syllable.Types.V) {
-                        if (r.NextDouble()>0.66)
+                        if (r.NextDouble()>0.6)
                         {
+                            //bool ok=true;
                             // Double consonant
-                            if (!(i==syll.Count-1 && exceptDoubleEndings.Contains(sb.syllable[0].ToString())))
+                            //if (!(i==syll.Count-1 && exceptDoubleEndings.Contains(sb.syllable[0].ToString())))
 //                            Debug.Log("DOUBLE:" + sb.syllable[0]);
-                            if (!exceptDoubles.Contains(sb.syllable[0].ToString()))
+                            //if (i==syll.Count-1 && !allowDoubleCEnd)
+                              //  ok = false;
+
+                            if (!exceptDoubles.Contains(sb.syllable[0].ToString())) {
                                 word += sb.syllable[0];
-                            remaining--;
+                                remaining--;
+                                }
                         }
                     }
                 }
                 word += sb.syllable;
             }
+//            return word;
             return RemoveIllegalDoubles(word);
         }
 
+        public string getSyllableString(Syllable.Types t, int fix, out List<Syllable> lst) {
+            lst = findType(t, fix);
+            string str = "";
+            int idx = 0;
+            foreach (Syllable s in lst) {
+                    string add = ", ";
+                    if (idx==lst.Count-1)
+                       add="";
+                    str+=s.syllable+add; 
+
+
+                    idx++;
+                }
+
+            return str;
+         }
+
+         public void setSyllableString(List<Syllable> orglst, string str, int fix, Syllable.Types t) {
+            // first delete all originals
+            foreach (Syllable syll in orglst) 
+                syllables.Remove(syll);
+            string[] lst = str.Split(',');
+            foreach (string s in lst) {
+                if (s.Trim()!="") {
+                    Syllable syll = new Syllable(s.Trim(),fix,t);
+                    syllables.Add(syll);
+                }
+            }
+         }
+
+
+
     }
 
-
+    [System.Serializable]
     public class SlapDash
     {
      
         public List<Language> languages = new List<Language>();
 
 
+        public void DeSerialize(string filename)
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(SlapDash));
+            TextReader textReader = new StreamReader(filename);
+            SlapDash sd = (SlapDash)deserializer.Deserialize(textReader);
+            textReader.Close();
+            languages = sd.languages;
+        }
+        public void Serialize(string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(SlapDash));
+            TextWriter textWriter = new StreamWriter(filename);
+            serializer.Serialize(textWriter, this);
+            textWriter.Close();
+        }
+
+
+
         public string getWord(System.Random r)
         {
+            if (languages.Count==0)
+                return "No language defined";
             Language l = languages[r.Next() % languages.Count];
             return l.GenerateWord(r);
 
@@ -261,19 +336,28 @@ namespace LemonSpawn
             return "Language not found";
         }
 
-
-        void Initialize()
+        public void InitializeIntrinsic()
         {
             InitializeHapanese();
             InitializeKvorsk();
             InitializePinglish();
             InitializeLespanol();
-           // InitializeHapanese2();
+
+        }
+
+        public void Load(string n)
+        {
+            DeSerialize(n);
+        }
+
+        public void Save(string n)
+        {
+            Serialize(n);
 
         }
 
         public SlapDash() {
-            Initialize();
+            //Initialize();
         }
 
 
