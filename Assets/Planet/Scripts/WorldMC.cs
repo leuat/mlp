@@ -764,9 +764,12 @@ namespace LemonSpawn
             UpdatePlay();
             //            return;
 
-            Rect r = noiseImage.GetComponent<RawImage>().uvRect;
-            r.size = new Vector3(4 + Random.value*5, 4+ Random.value*5);
-            noiseImage.GetComponent<RawImage>().uvRect = r;
+            if (noiseImage != null)
+            {
+                Rect r = noiseImage.GetComponent<RawImage>().uvRect;
+                r.size = new Vector3(4 + Random.value * 5, 4 + Random.value * 5);
+                noiseImage.GetComponent<RawImage>().uvRect = r;
+            }
 
            
             if (!RenderSettings.debug)

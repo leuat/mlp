@@ -55,6 +55,11 @@ namespace LemonSpawn {
         [Header("Vortex #2: scale, amp")]
         public Vector3 SurfaceVortex2 = new Vector3(0.0f, 0, 0);
 
+        public Vector3 ExpSurfSettings5 = new Vector3(0.5f, 0.1f, 0);
+        [Header("Swiss: power add, warp")]
+        public Vector3 ExpSurfSettings6 = new Vector3(1.5f, 0.5f, 0);
+        [Header("Swiss: offset, gain")]
+
         // Public stuff to be exposed
         [Header("Atmosphere settings")]
         public float atmosphereDensity = 1.0f;

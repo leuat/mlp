@@ -72,14 +72,29 @@
 
 
       fixed4 frag (v2f i) : COLOR {
-      	float sc = scale * 0.25;
+      	float sc = scale * 0.54;
 //      	float3 lightDir = _WorldSpaceLightPos0;
       	float r = length(i.uv - float2(0.5,0.5));
-      	float4 c = tex2D( _MainTex, float2(r*sc, 0.5f) );
-      	c+= tex2D( _MainTex, float2(r*sc*7.91, 0.61f) );
-      	c+= tex2D( _MainTex, float2(r*sc*27.91, 0.912f) );
-      	c+= tex2D( _MainTex, float2(r*sc*97.91, 0.918f) );
-      	c/=3.5;
+		float4 c = 1.0;
+      	c += tex2D( _MainTex, float2(r*sc*5, 0.9f) );
+		c += tex2D(_MainTex, float2(r*sc*1.91, 0.61f))*1.2;
+		c+= tex2D( _MainTex, float2(r*sc*2.91, 0.61f) )*1.1;
+     	c+= tex2D( _MainTex, float2(r*sc*4.91, 0.912f) )*2.1;
+      	c+= tex2D( _MainTex, float2(r*sc*8.91, 0.918f) )*1.2;
+		c += tex2D(_MainTex, float2(r*sc*16.91, 0.918f))*1.3;
+		c += tex2D(_MainTex, float2(r*sc*32.91, 0.918f))*1.5;
+		c/=8;
+	//	c = clamp(c, 0, 0.65)*1.15;
+
+	//	float center = (radius1 + radius2) / 2;
+
+//		c *= clamp(exp(1000*(pow((r - center)/center, 2))),0,1);
+
+
+
+
+//		c = clamp(1 - c, 0, 1);
+
         if (r<radius1 || r>radius2)
         	discard;
 	  //     c.a = 1;

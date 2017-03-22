@@ -328,6 +328,8 @@ namespace LemonSpawn
             mat.SetVector("surfaceNoiseSettings2", planetSettings.ExpSurfSettings2);
             mat.SetVector("surfaceNoiseSettings3", planetSettings.ExpSurfSettings3);
             mat.SetVector("surfaceNoiseSettings4", planetSettings.ExpSurfSettings4);
+            mat.SetVector("surfaceNoiseSettings5", planetSettings.ExpSurfSettings5);
+            mat.SetVector("surfaceNoiseSettings6", planetSettings.ExpSurfSettings6);
             mat.SetVector("surfaceVortex1", planetSettings.SurfaceVortex1);
             mat.SetVector("surfaceVortex2", planetSettings.SurfaceVortex2);
             mat.SetMatrix("rotMatrix", rotMat);

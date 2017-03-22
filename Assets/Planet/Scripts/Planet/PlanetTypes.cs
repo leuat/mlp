@@ -395,7 +395,7 @@ namespace LemonSpawn
             SettingsType.NUMBER,
             "ExpSurfSettings3",
             "Subtracting from height",
-            new Vector3(1, 14, 1),
+            new Vector3(1, 16, 1),
             new Vector3(10, 10, 10),
             "Surface", 1));
 
@@ -408,7 +408,69 @@ namespace LemonSpawn
             new Vector3(0.9f, 1.1f, 1),
             "Surface", 2));
 
-        settingsTypes.Add(
+            settingsTypes.Add(
+    new SettingsType("Power add",
+    SettingsType.NUMBER,
+    "ExpSurfSettings5",
+    "Power add",
+    new Vector3(-3, 3, 1.0f),
+    new Vector3(0.9f, 1.1f, 1.0f),
+
+    "Surface", 0));
+
+            settingsTypes.Add(
+new SettingsType("Warp",
+SettingsType.NUMBER,
+"ExpSurfSettings5",
+"Warp",
+new Vector3(-1, 1, 0.1f),
+new Vector3(0.03f, 0.15f, 0.1f),
+
+"Surface", 1));
+
+            settingsTypes.Add(
+new SettingsType("Swiss sub",
+SettingsType.NUMBER,
+"ExpSurfSettings5",
+"Swiss sub",
+new Vector3(0, 4, 0.0f),
+new Vector3(0, 0, 0),
+
+"Surface", 2));
+
+            settingsTypes.Add(
+    new SettingsType("Swiss Offset",
+    SettingsType.NUMBER,
+    "ExpSurfSettings6",
+    "Swiss offset",
+    new Vector3(-3, 3, 1.0f),
+    new Vector3(1.5f, 1.5f, 1.5f),
+
+    "Surface", 0));
+
+            settingsTypes.Add(
+new SettingsType("Swiss gain",
+SettingsType.NUMBER,
+"ExpSurfSettings6",
+"Swiss gain",
+new Vector3(-2, 2, 0.5f),
+new Vector3(0.5f, 0.5f, 0.5f),
+
+"Surface", 1));
+
+            settingsTypes.Add(
+new SettingsType("Swiss scale",
+SettingsType.NUMBER,
+"ExpSurfSettings6",
+"Swiss scale",
+new Vector3(0, 150, 14),
+new Vector3(14, 14, 14),
+
+"Surface", 2));
+
+
+
+            settingsTypes.Add(
             new SettingsType("Noise Perturb",
             SettingsType.NUMBER,
             "ExpSurfSettings4",

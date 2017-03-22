@@ -17,6 +17,7 @@ public class GPUSurface {
         Vector3 surfaceNoiseSettings2;
         Vector3 surfaceNoiseSettings3;
         Vector3 surfaceNoiseSettings4;
+        Vector3 surfaceNoiseSettings5;
         Vector3 v3Translate;
         Vector3 surfaceVortex1;
         Vector3 surfaceVortex2;
@@ -32,6 +33,7 @@ public class GPUSurface {
 			surfaceNoiseSettings2 = planetSettings.ExpSurfSettings2;
 			surfaceNoiseSettings3 = planetSettings.ExpSurfSettings3;
             surfaceNoiseSettings4 = planetSettings.ExpSurfSettings4;
+            surfaceNoiseSettings5 = planetSettings.ExpSurfSettings5;
             surfaceVortex1 = planetSettings.SurfaceVortex1;
             surfaceVortex2 = planetSettings.SurfaceVortex2;
 			fInnerRadius = planetSettings.radius;
