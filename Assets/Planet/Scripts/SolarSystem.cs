@@ -215,8 +215,8 @@ namespace LemonSpawn
 
             findClosestPlanet();
 
-            if (planet != null)
-                planet.ConstrainCameraExterior();
+//            if (planet != null)
+//                planet.ConstrainCameraExterior();
 
             foreach (Planet p in planets)
                 p.Update();

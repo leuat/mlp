@@ -467,6 +467,44 @@ uniform sampler2D _CloudTex2;
 			return pos2uv(np)*11.342*stretch;
 		}
 
+
+float getMultiFractal2(in float3 p, float frequency, int octaves, float lacunarity, float offs, float gain, float initialO ) {
+
+            float value = 0.0f;
+            float weight = 1.0f;
+            float w = -0.05;
+            float3 vt = p * frequency;
+            float f = 1;
+
+            for (float octave = 0; octave < octaves; octave++)
+            {
+                 float signal = initialO + noise(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
+
+                // Make the ridges.
+                signal = abs(signal);
+                signal = offs - signal;
+
+
+                signal *= signal;
+
+                signal *= weight;
+                weight = signal * gain;
+                weight = clamp(weight, 0, 1);
+
+                value += (signal * pow(f, w));
+//                value += (signal * pow(f, -1));
+//                value += (signal * 1);
+//                value += (signal * pow(f, 0.05));
+//                value += (signal * pow(frequency, -1.0));
+                vt = vt * lacunarity;
+//                frequency *= lacunarity;
+                 f *= lacunarity;
+            }
+            return value;
+//			return ((value*1.25) -1);
+        }
+
+
 inline float getIQClouds(float3 pos, in int N) {
 
 		float3 p = pos*stretch;
@@ -477,16 +515,21 @@ inline float getIQClouds(float3 pos, in int N) {
 		float pp = ls_cloudscattering;
 		ms = ms * (1 + LS_LargeVortex*noise(p*3.2354 + shift) );
 		ms = ms * (1 + LS_SmallVortex*noise(p*29.2354 + shift) );
-		for (int i = 1; i <= N; i++) {
+
+	/*	for (int i = 1; i <= N; i++) {
 			float f = pow(2, i)*1.0293;
 			float amp = (2 * pow(i,pp)); 
-			n += noise(p*f*ms + shift*f) / amp;
+			n += noise(p*f + shift*f) / amp;
 			A += 1/amp;
 		}
+		*/
 
-		float v = clamp(n - ls_cloudSubScale*A, 0, 1);
+//		n = getMultiFractal2(p, ms, 12, 2.5, LS_LargeVortex, 4*LS_SmallVortex, -0.5);
+		n = getMultiFractal2(p, ms, 12, 2.5, 0.57, 4, -0.5);
 
-		return  pow(v,1)*10.75;
+		float v = clamp(n + ls_cloudSubScale, 0, 1.5);
+
+		return  0.4*(10-v*10.0);
 	}
 
 

@@ -94,8 +94,10 @@
 
             float value = 0.0f;
             float weight = 1.0f;
-
+            float w = surfaceNoiseSettings6.x;//-0.5;
             float3 vt = p * frequency;
+            float f = 1;
+
             for (float octave = 0; octave < octaves; octave++)
             {
                  float signal = initialO + noisePerturbed(vt);//perlinNoise2dSeamlessRaw(frequency, vt.x, vt.z,0,0,0,0);//   Mathf.PerlinNoise(vt.x, vt.z);
@@ -111,11 +113,17 @@
                 weight = signal * gain;
                 weight = clamp(weight, 0, 1);
 
-                value += (signal * 1);
+                value += (signal * pow(f, w));
+//                value += (signal * pow(f, -1));
+//                value += (signal * 1);
+//                value += (signal * pow(f, 0.05));
+//                value += (signal * pow(frequency, -1.0));
                 vt = vt * lacunarity;
-                frequency *= lacunarity;
+//                frequency *= lacunarity;
+                 f *= lacunarity;
             }
             return value;
+//			return ((value*1.25) -1);
         }
 
 
@@ -129,16 +137,21 @@
 			scale = scale*(1 + surfaceVortex2.y*noisePerturbed(pos*surfaceVortex2.x));
 			//float val = getMultiFractal(pos, scale, octaves*0.6, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 			float val = 1;
+			float continent = getMultiFractal(pos, scale*1.523, octaves*1, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+//			float continent = clamp(getMultiFractal(pos, scale*1.523, 6, 2.5, 1, 1.5, 0),0,0.5);
 //			float h = getMultiFractal(pos, scale*2.523, 6, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			float h = getMultiFractal(pos, scale*2.523, 6, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			//val = h;
-			val+= h*0.6*clamp(getSwissFractal(pos, scale*surfaceNoiseSettings6.z, 8, 2.2, surfaceNoiseSettings6.x, surfaceNoiseSettings6.y, surfaceNoiseSettings5.x, surfaceNoiseSettings5.y)- surfaceNoiseSettings5.z,0,100);
+//			float h = 0.5*continent*getMultiFractal(pos, scale*12, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+	//		 h+= 0.05*getMultiFractal(pos, scale*137.23, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
+			//float h  = 0.2*clamp(getSwissFractal(pos, scale*surfaceNoiseSettings6.z, 10, 2.2, surfaceNoiseSettings6.x, surfaceNoiseSettings6.y, surfaceNoiseSettings5.x, surfaceNoiseSettings5.y)- surfaceNoiseSettings5.z,0,100);
+			val = continent;// + h;
+			//val = clamp(val, 0.3, 2);
+			//val+= continent*clamp(getSwissFractal(pos, scale*surfaceNoiseSettings6.z, 8, 2.2, surfaceNoiseSettings6.x, surfaceNoiseSettings6.y, surfaceNoiseSettings5.x, surfaceNoiseSettings5.y)- surfaceNoiseSettings5.z,0,100);
 			//val += val*0.6*clamp(getSwissFractal(pos, 0.2*scale*surfaceNoiseSettings6.z, 4, 2.2, surfaceNoiseSettings6.x, surfaceNoiseSettings6.y, surfaceNoiseSettings5.x, surfaceNoiseSettings5.y) - surfaceNoiseSettings5.z, 0, 100);
 			//val += 0.2*getMultiFractal(pos, scale*11.234, octaves-2, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
 //				if (surfaceNoiseSettings4.y>0)
 //	    		val+= surfaceNoiseSettings4.y*getMultiFractal(pos*surfaceNoiseSettings4.z, scale, octaves, surfaceNoiseSettings.x, surfaceNoiseSettings.y, surfaceNoiseSettings.z, surfaceNoiseSettings2.x);
-			val = pow(val, surfaceNoiseSettings3.z);
-			return clamp(val-surfaceNoiseSettings3.x, -10, 10);
+			val =  pow(val, surfaceNoiseSettings3.z);
+			return clamp(val-surfaceNoiseSettings3.x, -0.1, 10);
 			//return getStandardPerlin(pos, scale, 1, 0.5, 8);
 
 		}
