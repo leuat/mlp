@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SerializedWorld xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<sun_intensity>0.100</sun_intensity>
+<screenshot_width>900</screenshot_width>
+<screenshot_height>900</screenshot_height>
+<global_radius_scale>0.985</global_radius_scale>
+<uuid>5acbd644-37c7-11e6-ac61-9e71128cae77</uuid> 
+<skybox>000</skybox>
+<Objects>
+  <SerializedMCAstObject>
+    <category>star</category>
+    <pos_x>0</pos_x>
+    <pos_z>0</pos_z>
+    <pos_y>0</pos_y>
+    <rot_y>0</rot_y>
+    <radius>100000</radius>
+    <temperature>4000</temperature>
+    <seed>877990</seed>
+    <atmosphereDensity>10</atmosphereDensity>
+    <atmosphereHeight>1.025</atmosphereHeight>
+    <outerRadiusScale>1.0025</outerRadiusScale>
+    <name>The star</name>
+    <Objects>
+        <SerializedMCAstObject>
+            <pos_x>1</pos_x>
+            <pos_z>0</pos_z>
+            <pos_y>0</pos_y>
+
+            <rot_y>0</rot_y>
+            <seed>123</seed>
+            <radius>20242.5546391</radius>
+            <temperature>528.684988783</temperature>
+            <atmosphereDensity>0.0293502585987</atmosphereDensity>
+            <atmosphereHeight>1.025</atmosphereHeight>
+            <outerRadiusScale>1.0025</outerRadiusScale>
+            <category>planet</category>
+            <name>Hallaballa</name>
+            <Frames>
+            <Frame>
+                <id>0</id>
+                <pos_x>1.2</pos_x>
+                <pos_z>0.5</pos_z>
+                <pos_y>0</pos_y>
+                <displayMessage>Frode gir for vanskelige oppgaver!</displayMessage>
+                <rot_y>-3.101664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>1</id>
+                <pos_x>0.5</pos_x>
+                <pos_z>0.5</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-6.201664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>2</id>
+                <pos_x>0.0</pos_x>
+                <pos_z>1</pos_z>
+                <pos_y>0</pos_y>
+                <displayMessage>Huhei!!</displayMessage>
+                <rot_y>-0.301664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>3</id>
+                <pos_x>-0.5</pos_x>
+                <pos_z>0.5</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-0.401664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>4</id>
+                <pos_x>-1</pos_x>
+                <pos_z>0</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-0.801664073846</rot_y>
+            </Frame>
+              </Frames>
+   
+            <Objects>
+                <SerializedMCAstObject>
+                    <pos_x>0.000</pos_x>
+                    <pos_z>0.001</pos_z>
+                    <pos_y>0</pos_y>
+                    <rot_x>0</rot_x>
+                    <rot_y>0</rot_y>
+                    <rot_z>0</rot_z>
+
+                    <seed>8720</seed>
+                    <radius>3542.5546391</radius>
+                    <temperature>328.684988783</temperature>
+                    <atmosphereDensity>0.0293502585987</atmosphereDensity>
+                    <atmosphereHeight>1.025</atmosphereHeight>
+                    <outerRadiusScale>1.0025</outerRadiusScale>
+                    <category>planet</category>
+                    <name>Blah1</name>
+
+           <Frames>
+            <Frame>
+                <id>0</id>
+                <pos_x>0.01</pos_x>
+                <pos_z>0</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-0.101664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>1</id>
+                <pos_x>0.00</pos_x>
+                <pos_z>0.0</pos_z>
+                <pos_y>0.02</pos_y>
+                <rot_y>-0.201664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>2</id>
+                <pos_x>0.00</pos_x>
+                <pos_z>0.01</pos_z>
+                <pos_y>0.01</pos_y>
+                <rot_y>-0.301664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>3</id>
+                <pos_x>0.0</pos_x>
+                <pos_z>0.01</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-0.401664073846</rot_y>
+            </Frame>
+          <Frame>
+                <id>4</id>
+                <pos_x>-0.01</pos_x>
+                <pos_z>0</pos_z>
+                <pos_y>0</pos_y>
+                <rot_y>-0.801664073846</rot_y>
+            </Frame>
+              </Frames>
+ 
+
+                </SerializedMCAstObject>
+                <SerializedMCAstObject>
+                    <pos_x>-0.01</pos_x>
+                    <pos_z>0.04</pos_z>
+                    <pos_y>0</pos_y>
+                    <rot_x>0</rot_x>
+                    <rot_y>0</rot_y>
+                    <rot_z>0</rot_z>
+
+                    <seed>871</seed>
+                    <radius>5542.5546391</radius>
+                    <temperature>3280.684988783</temperature>
+                    <atmosphereDensity>0.0293502585987</atmosphereDensity>
+                    <atmosphereHeight>1.025</atmosphereHeight>
+                    <outerRadiusScale>1.0025</outerRadiusScale>
+                    <category>planet</category>
+                    <name>Blah2</name>
+                </SerializedMCAstObject>
+            </Objects>
+            
+        </SerializedMCAstObject>
+
+    <SerializedMCAstObject>
+        <pos_x>0.5</pos_x>
+        <pos_z>0.5</pos_z>
+        <pos_y>0</pos_y>
+
+        <category>3dobject</category>
+        <name>SpaceBalls</name>
+        <objectString>Satellite</objectString>
+        <objectMaterial>HullMaterial</objectMaterial>
+        <objectScale>0.01</objectScale>
+        <color_r>1.0</color_r>
+        <color_g>0.0</color_g>
+        <color_b>0.0</color_b>
+        
+    </SerializedMCAstObject>
+
+    <SerializedMCAstObject>
+        <pos_x>0.8</pos_x>
+        <pos_z>0.3</pos_z>
+        <pos_y>0</pos_y>
+
+        <category>3dobject</category>
+        <name>Mummitrollet</name>
+        <objectString>Satellite</objectString>
+        <objectMaterial>HullMaterial</objectMaterial>
+        <objectScale>0.01</objectScale>
+        <color_r>0.0</color_r>
+        <color_g>1.0</color_g>
+        <color_b>1.0</color_b>
+
+                   <Frames>
+            <Frame>
+                <id>0</id>
+                <pos_x>0.8</pos_x>
+                <pos_z>0.3</pos_z>
+                <pos_y>0</pos_y>
+                <rot_x>0.234</rot_x>
+                <rot_y>0.634</rot_y>
+                <rot_z>0.234</rot_z>
+            </Frame>
+          <Frame>
+                <id>1</id>
+                <pos_x>1.2</pos_x>
+                <pos_z>0.0</pos_z>
+                <pos_y>0.04</pos_y>
+                <rot_x>2.234</rot_x>
+                <rot_y>2.634</rot_y>
+                <rot_z>5.234</rot_z>
+            </Frame>
+          <Frame>
+                <id>2</id>
+                <pos_x>0.8</pos_x>
+                <pos_z>-0.3</pos_z>
+                <pos_y>-0.1</pos_y>
+                <rot_y>-0.301664073846</rot_y>
+             <rot_x>0.634</rot_x>
+                <rot_y>0.434</rot_y>
+                <rot_z>0.934</rot_z>
+               </Frame>
+          <Frame>
+                <id>3</id>
+                <pos_x>0</pos_x>
+                <pos_z>-0.5</pos_z>
+                <pos_y>0</pos_y>
+                   <rot_x>1.234</rot_x>
+                <rot_y>0.634</rot_y>
+                <rot_z>-0.234</rot_z>
+         </Frame>
+          <Frame>
+                <id>4</id>
+                <pos_x>-0.01</pos_x>
+                <pos_z>0</pos_z>
+                <pos_y>0</pos_y>
+             <rot_x>0.0</rot_x>
+                <rot_y>0.634</rot_y>
+                <rot_z>0.234</rot_z>
+               </Frame>
+              </Frames>
+
+        
+    </SerializedMCAstObject>
+   </Objects>
+ 
+
+</SerializedMCAstObject>
+</Objects>
+
+<Cameras>
+<SerializedCamera>
+    <cam_x>1.0005</cam_x>
+    <cam_y>0</cam_y>
+    <cam_z>0</cam_z>
+    <dir_x>1</dir_x>
+    <up_y>1</up_y>
+    <fov>90</fov>
+    <scale_x>1</scale_x>
+    <scale_y>1</scale_y>
+    <scale_z>1</scale_z>
+    <time>0</time>
+    <frame>0</frame>
+
+    
+    
+</SerializedCamera>
+
+</Cameras>
+
+</SerializedWorld>
