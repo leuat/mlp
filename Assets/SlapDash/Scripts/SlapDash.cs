@@ -15,9 +15,6 @@ namespace LemonSpawn
 
         public string syllable;
         public int fix = Prefix | Infix | Postfix;
-//        public bool isPrefix;
-//        public bool isPostfix;
-//        public bool isInfix;
         public enum Types { C, CC, V, VC, CV };
         public Types type = Types.C;
 
@@ -38,7 +35,6 @@ namespace LemonSpawn
 
     }
         
-
     [System.Serializable]
     public class Language
     {
@@ -67,7 +63,6 @@ namespace LemonSpawn
                 foreach (Syllable sb in syllables) {
                     if (s == sb.syllable) {
                         sb.fix = fix;
-//                        Debug.Log(fix + " for " + s);
                         }
             }
 
@@ -109,10 +104,6 @@ namespace LemonSpawn
         }
         public Syllable findRandom(System.Random rnd, int fix)
         {
-            Syllable sb = FindSyllable("heim");
-//            if (sb!=null)
-  //              Debug.Log(sb.fix);
-
             List<Syllable> lst = new List<Syllable>();
             foreach (Syllable s in syllables)
             {
@@ -468,7 +459,7 @@ namespace LemonSpawn
             l.InitializeSyllables(V, Syllable.Types.V);
             l.InitializeSyllables(CV, Syllable.Types.CV);
 
-            l.exceptDoubles = "wshzjdbrft";
+            l.exceptDoubles = "ん";
             l.exceptDoubleEndings = "ん";
 
 
