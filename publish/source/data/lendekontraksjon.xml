@@ -19,7 +19,7 @@
 
 <Objects>
   <SerializedMCAstObject>
-    <category>star</category>
+    <category>black hole</category>
     <pos_x>0</pos_x>
     <pos_z>0</pos_z>
     <pos_y>0</pos_y>
@@ -94,6 +94,88 @@
         <pos_z>0.0001</pos_z>
         <pos_y>0</pos_y>
 
+        <category>explosion</category>
+        <name>Explosion 1</name>
+        <objectScale>50000</objectScale>
+        <color_r>1.0</color_r>
+        <color_g>0.0</color_g>
+        <color_b>0.0</color_b>
+              <Frames>
+            <Frame>
+                <id>0</id>
+                <pos_x>1.0002</pos_x>
+                <pos_z>-0.0002</pos_z>
+                <pos_y>0</pos_y>
+                <color_r>1</color_r>
+                <color_g>1</color_g>
+                <color_b>1</color_b>
+                <visible>0</visible>
+                <scale_x>0</scale_x>
+                <displayMessage></displayMessage>
+                <time>0</time>
+            </Frame>
+            <Frame>
+                <id>1</id>
+                <pos_x>1.0002</pos_x>
+                <pos_z>-0.0002</pos_z>
+                <pos_y>0</pos_y>
+                <color_r>1</color_r>
+                <color_g>1</color_g>
+                <color_b>1</color_b>
+                <visible>0</visible>
+                <scale_x>0</scale_x>
+                <displayMessage></displayMessage>
+                <time>0</time>
+            </Frame>
+            <Frame>
+                <id>2</id>
+                <pos_x>1.0002</pos_x>
+                <pos_z>-0.0001</pos_z>
+                <pos_y>0</pos_y>
+                <color_r>1</color_r>
+                <color_g>1</color_g>
+                <color_b>1</color_b>
+                <scale_x>0.1</scale_x>
+                         <sound>explosion</sound>
+
+                <displayMessage>Explosion!</displayMessage>
+                <time>0</time>
+            </Frame>
+            <Frame>
+                <id>3</id>
+                <pos_x>1.0002</pos_x>
+                <pos_z>-0.00012</pos_z>
+                <pos_y>0</pos_y>
+                <color_r>1</color_r>
+                <color_g>0.5</color_g>
+                <color_b>0.5</color_b>
+                <scale_x>2</scale_x>
+
+                <displayMessage>Explosion 2!</displayMessage>
+                <time>1</time>
+            </Frame>
+            <Frame>
+                <id>4</id>
+                <pos_x>1.0002</pos_x>
+                <pos_z>-0.00013</pos_z>
+                <pos_y>0</pos_y>
+                <color_r>0.5</color_r>
+                <color_g>1</color_g>
+                <color_b>0.5</color_b>
+                <scale_x>0.2</scale_x>
+
+                <displayMessage>Explosion 2!</displayMessage>
+                <time>1</time>
+            </Frame>
+        </Frames>            
+
+</SerializedMCAstObject>
+
+    <SerializedMCAstObject>
+        <pos_x>1.0000</pos_x>
+        <pos_z>0.0001</pos_z>
+        <pos_y>0</pos_y>
+
         <category>3dobject</category>
         <name>SpaceBalls</name>
         <objectString>Satellite</objectString>
@@ -156,11 +238,11 @@
 
         <category>3dobject</category>
         <name>Pew Pew!</name>
-        <objectString>Sphere01</objectString>
-        <objectMaterial>HullMaterial</objectMaterial>
-        <objectScale>1000</objectScale>
-        <color_r>1.0</color_r>
-        <color_g>1.0</color_g>
+        <objectString>Laser</objectString>
+        <objectMaterial>LaserMaterial</objectMaterial>
+        <objectScale>200</objectScale>
+        <color_r>3.0</color_r>
+        <color_g>3.0</color_g>
         <color_b>0.0</color_b>
             <Frames>
             <Frame>
@@ -182,7 +264,7 @@
                 <displayMessage>Pew pew!</displayMessage>
                 <time>0.1</time>
                 <visible>1</visible>
-
+                <sound>laser</sound>
                 <scale_z>0.9</scale_z>
             </Frame>
             <Frame>
@@ -234,7 +316,8 @@
     <scale_z>1</scale_z>
     <time>0</time>
     <frame>0</frame>
-    
+    <displayMessage>Herregud mann</displayMessage>
+
 </SerializedCamera>
 <SerializedCamera>
     <cam_x>1.0005</cam_x>
@@ -251,6 +334,7 @@
     <scale_z>1</scale_z>
     <time>1</time>
     <frame>1</frame>
+    <displayMessage>Jeg er kul</displayMessage>
     
 </SerializedCamera>
 <SerializedCamera>
@@ -268,6 +352,7 @@
     <scale_z>1</scale_z>
     <time>2</time>
     <frame>2</frame>
+    <displayMessage>Er du kul kanskje?</displayMessage>
     
 </SerializedCamera>
 <SerializedCamera>
