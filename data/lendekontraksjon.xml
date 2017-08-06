@@ -13,8 +13,9 @@
 <rulerTicks>10</rulerTicks>
 <rulerUnit>m</rulerUnit>
 <clockUnit>s</clockUnit>
-    
- 
+
+  <defaultPlaySpeed>0.7</defaultPlaySpeed>
+  
 
 
 <Objects>
@@ -38,7 +39,7 @@
             <pos_y>0</pos_y>
 
             <rot_y>0</rot_y>
-            <seed>5130</seed>
+            <seed>5131</seed>
             <radius>6452.5546391</radius>
             <temperature>328.684988783</temperature>
             <atmosphereDensity>0.0293502585987</atmosphereDensity>
@@ -181,6 +182,7 @@
         <objectString>Satellite</objectString>
         <objectMaterial>HullMaterial</objectMaterial>
         <objectScale>10</objectScale>
+      <autoOrient>0</autoOrient>
         <color_r>1.0</color_r>
         <color_g>0.0</color_g>
         <color_b>0.0</color_b>
@@ -192,6 +194,7 @@
                 <pos_y>0</pos_y>
                 <displayMessage>AAArrrgh</displayMessage>
                 <time>0</time>
+              <rot_x>2.321</rot_x>
                 <scale_z>1</scale_z>
             </Frame>
             <Frame>
@@ -203,6 +206,8 @@
                 <time>0.1</time>
                 <visible>1</visible>
                 <scale_z>0.1</scale_z>
+              <rot_x>-2.31</rot_x>
+              <rot_z>6.234</rot_z>
             </Frame>
             <Frame>
                 <id>2</id>
