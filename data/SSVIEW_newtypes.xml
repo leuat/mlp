@@ -7,9 +7,57 @@
 <global_radius_scale>0.985</global_radius_scale>
 <uuid>5acbd644-37c7-11e6-ac61-9e71128cae77</uuid> 
 <skybox>000</skybox>
+<displayTime>0</displayTime>
 <Objects>
+
   <SerializedMCAstObject>
     <category>star</category>
+    <pos_x>0.5</pos_x>
+    <pos_z>0</pos_z>
+    <pos_y>0</pos_y>
+    <rot_y>0</rot_y>
+    <radius>10000</radius>
+    <temperature>7000</temperature>
+    <seed>877990</seed>
+    <atmosphereDensity>10</atmosphereDensity>
+    <atmosphereHeight>1.025</atmosphereHeight>
+    <outerRadiusScale>1.0025</outerRadiusScale>
+    <name>Companion star</name>
+    <Frames>
+      <Frame>
+        <id>0</id>
+        <pos_x>0.5</pos_x>
+        <pos_z>0.0</pos_z>
+        <pos_y>0</pos_y>
+        <rot_y>-3.101664073846</rot_y>
+      </Frame>
+      <Frame>
+        <id>1</id>
+        <pos_x>0.25</pos_x>
+        <pos_z>0.25</pos_z>
+        <pos_y>0</pos_y>
+        <rot_y>-3.101664073846</rot_y>
+      </Frame>
+      <Frame>
+        <id>2</id>
+        <pos_x>0.0</pos_x>
+        <pos_z>0.5</pos_z>
+        <pos_y>0</pos_y>
+        <displayMessage>Jeg er en hvit dverg! DVERG!</displayMessage>
+        <rot_y>-3.101664073846</rot_y>
+      </Frame>
+      <Frame>
+        <id>3</id>
+        <pos_x>-0.25</pos_x>
+        <pos_z>0.25</pos_z>
+        <pos_y>0</pos_y>
+        <rot_y>-3.101664073846</rot_y>
+      </Frame>
+    </Frames>
+    </SerializedMCAstObject>
+
+  <SerializedMCAstObject>
+    <category>black hole</category>
     <pos_x>0</pos_x>
     <pos_z>0</pos_z>
     <pos_y>0</pos_y>
@@ -86,12 +134,13 @@
                     <rot_z>0</rot_z>
 
                     <seed>8720</seed>
-                    <radius>3542.5546391</radius>
+                    <radius>20542.5546391</radius>
                     <temperature>328.684988783</temperature>
                     <atmosphereDensity>0.0293502585987</atmosphereDensity>
                     <atmosphereHeight>1.025</atmosphereHeight>
                     <outerRadiusScale>1.0025</outerRadiusScale>
                     <category>planet</category>
+                  <forcePlanetSurface>gas</forcePlanetSurface>
                     <name>Blah1</name>
 
            <Frames>
