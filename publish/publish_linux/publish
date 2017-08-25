@@ -7,6 +7,9 @@ cp start_ssview MCAst/ssview
 cp start_mcast_64 MCAst/mcast_64
 cp start_ssview_64 MCAst/ssview_64
 cp -r ../source/* MCAst
+mkdir MCAst/movie
+mkdir MCAst/screenshots
+mkdir MCAst/data
 
 rm MCAst_linux.tar.gz
 tar -cf MCAst_linux.tar MCAst/

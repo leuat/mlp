@@ -4,6 +4,9 @@ cp -r mlp.app MCAst
 cp start_mcast MCAst/mcast
 cp start_ssview MCAst/ssview
 cp -r ../source/* MCAst
+mkdir MCAst/movie
+mkdir MCAst/screenshots
+mkdir MCAst/data
 
 rm MCAst_osx.tar.gz
 tar -cf MCAst_osx.tar MCAst/
