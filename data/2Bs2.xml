@@ -4,6 +4,7 @@
 <sun_intensity>0.100</sun_intensity>
 <screenshot_width>900</screenshot_width>
 <screenshot_height>900</screenshot_height>
+<renderClock>1</renderClock>
 <global_radius_scale>0.985</global_radius_scale>
 <uuid>5acbd644-37c7-11e6-ac61-9e71128cae77</uuid>
 <skybox>000</skybox>
